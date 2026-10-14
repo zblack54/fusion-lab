@@ -1,0 +1,38 @@
+[config]
+default_to_workspace = false
+
+[tasks.fmt]
+command = "cargo"
+args = ["fmt", "--all", "--", "--check"]
+
+[tasks.check]
+command = "cargo"
+args = ["check", "--locked", "--all-targets"]
+
+[tasks.clippy]
+command = "cargo"
+args = ["clippy", "--locked", "--all-targets", "--", "-D", "warnings"]
+
+[tasks.test]
+command = "cargo"
+args = ["test", "--locked"]
+
+[tasks.doctest]
+command = "cargo"
+args = ["test", "--locked", "--doc"]
+
+[tasks.api-docs]
+command = "cargo"
+args = ["doc", "--locked", "--no-deps"]
+
+[tasks.pr-check]
+description = "Check formatting, compilation, lints, tests, and API docs"
+dependencies = ["fmt", "check", "clippy", "test", "doctest", "api-docs"]
+
+[tasks.docs]
+command = "python"
+args = ["scripts/docs.py", "serve"]
+
+[tasks.docs-build]
+command = "python"
+args = ["scripts/docs.py", "build"]
