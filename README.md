@@ -38,6 +38,8 @@ These sensors are idealized world-frame observations; the velocity sensor is not
 
 ## Documentation and development
 
+Start with the [15-minute learning path](docs/learn/index.md), [math and code tour](docs/learn/math-and-code.md), and [tracked roadmap](docs/roadmap.md). The [research guide](docs/learn/research.md) connects reproducible studies to their results and limitations. The documentation portal is available for local preview; public hosting is not activated.
+
 Read the [v0.1 design contract](docs/design/v0.1.md), [experiment guide](docs/experiments.md), and [development guide](docs/development.md). Generate the public API reference with `cargo doc --locked --no-deps --open`.
 
 ```sh
