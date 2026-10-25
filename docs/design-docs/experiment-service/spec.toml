@@ -1,0 +1,81 @@
+schema_version = 3
+id = "SPEC-EXPERIMENT-SERVICE"
+title = "Local-experiment-HTTP-service"
+feature_slug = "experiment-service"
+target_crate = "fusion-experiment-service"
+target_revision = "b274c6f6deb3e86a9fdfbd31b8b92ec59396b5e8"
+status = "approved"
+ai_ready = true
+
+[target]
+edition = "2024"
+rust_version = "1.99"
+resolver = "3"
+supported_targets = ["host"]
+feature_sets = ["default"]
+toolchains = ["stable"]
+
+[[target.validation]]
+id = "CFG-001"
+target = "host"
+feature_set = "default"
+toolchain = "stable"
+
+[ownership]
+repo_root = "../../.."
+test_suite_root = "../../../tests/experiment-service"
+external_test_inputs = []
+production_roots = ["../../../crates/experiment-service", "../../../src", "../../../Cargo.toml", "../../../Cargo.lock"]
+test_owned = [
+  "spec.toml",
+  "intent",
+  "requirements",
+  "structure",
+  "constraints",
+  "tests",
+  "test-suite",
+  "decisions",
+  "traceability.toml",
+  "implementation-brief.md",
+  "implementation-plan.toml",
+  "verification",
+  "open-questions.toml",
+  "validation/waivers.toml",
+]
+implementation_roots = ["../../../crates/experiment-service"]
+mutable_seams = ["../../../crates/experiment-service/src/lib.rs"]
+
+[[phase]]
+id = "P1"
+name = "Intent"
+status = "complete"
+
+[[phase]]
+id = "P2"
+name = "Requirements"
+status = "complete"
+
+[[phase]]
+id = "P3"
+name = "Structure"
+status = "complete"
+
+[[phase]]
+id = "P4"
+name = "Invariants and Constraints"
+status = "complete"
+
+[[phase]]
+id = "P5"
+name = "Tests"
+status = "complete"
+
+[[phase]]
+id = "P6"
+name = "Decisions"
+status = "complete"
+
+[[phase]]
+id = "P7"
+name = "Validation"
+status = "complete"

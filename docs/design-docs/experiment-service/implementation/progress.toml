@@ -1,0 +1,53 @@
+# Mutable execution status only; never redefine the locked contract here.
+baseline_digest = "3862f6d829e8a739580454f0edfbfb6aff696007286c51dbcfd61bd6f7529f1f"
+revision = "working tree based on b274c6f6deb3e86a9fdfbd31b8b92ec59396b5e8; no implementation commit yet"
+contract_status = "Approved revision1 read from external approved-contracts.json and validated require-lock before resuming. All21 immutable tests and supplemental Clippy pass in trusted implementation runner. Final non-test and cross-platform acceptance remain pending."
+
+[[task]]
+id = "TASK-001"
+status = "implemented-unverified"
+evidence = "Typed strict JSON/domain checks, loopback/startup validation and HTTP status/error boundary implemented; assigned immutable tests pass on native Windows. VER-001 independent final review remains pending."
+
+[[task]]
+id = "TASK-002"
+status = "implemented-unverified"
+evidence = "Owned numerical CLI child, private CSV/report artifacts, bounded pipe drains and single admission slot implemented; numerical oracle, seed variation, controlled admission and worker-failure tests pass. No numerical core changes. VER-001 final review remains pending."
+
+[[task]]
+id = "TASK-003"
+status = "implemented-unverified"
+evidence = "Kill/wait cancellation and shutdown, bounded32 SSE subscribers and live terminal notifications pass deterministic immutable tests, including existing-stream transition. Five-second header/write and four-second shutdown drain implemented; load demonstration remains pending."
+
+[[task]]
+id = "TASK-004"
+status = "implemented-unverified"
+evidence = "Count and byte reservations, retirement leases and visible cleanup failure handling implemented; all21 contract tests pass. VER-001 exact-diff review, VER-002 load/memory, VER-003 OS/toolchain matrix and VER-004 injected failure demonstrations remain pending."
+
+[[check]]
+command = "cargo test --manifest-path tests/experiment-service/Cargo.toml --locked --no-run"
+result = "blocked"
+detail = "Historical pre-revision1 conflict: old approved harness lock listed zero-dependency seam. Orchestrator revised and reapproved the concrete dependency contract. No locked files modified by implementation agent."
+
+[[check]]
+command = "cargo clippy --manifest-path crates/experiment-service/Cargo.toml --locked --all-targets -- -D warnings"
+result = "passed"
+
+[[check]]
+command = "cargo test --manifest-path tests/experiment-service/Cargo.toml --locked --test http -- --test-threads=1"
+result = "passed"
+detail = "All21 tests passed in8.93seconds after targeted clean of stale diagnostic-seam build artifacts. Source restoration had preserved mtime; no source/test changes were required to force actual production recompilation."
+
+[[check]]
+command = "trusted verify_test_suite.py docs/design-docs/experiment-service --mode implementation --baseline-digest 3862f6d829e8a739580454f0edfbfb6aff696007286c51dbcfd61bd6f7529f1f"
+result = "passed"
+detail = "All21 compiled selectors executed and passed; supplemental Clippy passed. Exact command/output/fingerprints in implementation/execution.json."
+
+[[check]]
+command = "cargo fmt/check/clippy/test --doc/doc --no-deps with --manifest-path crates/experiment-service/Cargo.toml and --locked where applicable"
+result = "passed"
+detail = "Native Windows stable Rust1.99.0; four supplementary ownership unit regressions now pass; doctest target contains zero tests. Immutable21 HTTP tests remain unchanged. Standalone --help passed separately."
+
+[[check]]
+command = "cargo test --manifest-path crates/experiment-service/Cargo.toml --locked"
+result = "passed"
+detail = "Four production regressions cover canceled queued file-open, failed/open handle destruction, dropped-reader cancellation cleanup, and exclusive idle-root ownership/release. Requested independent-review repairs are implemented; final broader VER001–004 remain orchestrator acceptance work."

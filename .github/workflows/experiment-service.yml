@@ -1,0 +1,41 @@
+name: Experiment service contract
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  service:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        toolchain: ["1.99.0", stable]
+    runs-on: ${{ matrix.os }}
+    env:
+      RUSTUP_TOOLCHAIN: ${{ matrix.toolchain }}
+      RUSTDOCFLAGS: -D warnings
+      GIT_CONFIG_COUNT: "1"
+      GIT_CONFIG_KEY_0: core.autocrlf
+      GIT_CONFIG_VALUE_0: "false"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: rustup toolchain install ${{ matrix.toolchain }} --profile minimal --component rustfmt --component clippy
+      - run: rustc --version --verbose
+      - run: cargo fmt --manifest-path crates/experiment-service/Cargo.toml -- --check
+      - run: cargo check --manifest-path crates/experiment-service/Cargo.toml --locked --all-targets
+      - run: cargo clippy --manifest-path crates/experiment-service/Cargo.toml --locked --all-targets -- -D warnings
+      - run: cargo test --manifest-path crates/experiment-service/Cargo.toml --locked
+      - run: cargo test --manifest-path crates/experiment-service/Cargo.toml --locked --doc
+      - run: cargo doc --manifest-path crates/experiment-service/Cargo.toml --locked --no-deps
+      - run: cargo clippy --manifest-path tests/experiment-service/Cargo.toml --locked --all-targets -- -D warnings
+      - run: cargo test --manifest-path tests/experiment-service/Cargo.toml --locked -- --test-threads=1

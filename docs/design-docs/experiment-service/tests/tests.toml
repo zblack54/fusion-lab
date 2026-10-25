@@ -1,0 +1,272 @@
+[[test]]
+id = "TST-BOUND-003"
+title = "Bound slow SSE subscribers"
+kind = "boundary"
+path = "test-suite/tests/http.rs"
+selector = "tst_bound_003_sse_subscribers_bounded"
+test_target = "test:http"
+covers = ["REQ-012", "CON-001"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "EXPERIMENT_SERVICE_NOT_IMPLEMENTED"
+expected_failure_reason = "The service start seam has no event capacity handling."
+required = true
+
+[[test]]
+id = "TST-BOUND-004"
+title = "Reserve disk bytes independently of retention count"
+kind = "boundary"
+path = "test-suite/tests/http.rs"
+selector = "tst_bound_004_artifact_bytes_force_eviction"
+test_target = "test:http"
+covers = ["REQ-013"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "EXPERIMENT_SERVICE_NOT_IMPLEMENTED"
+expected_failure_reason = "The service start seam has no artifact reservation accounting."
+required = true
+
+[[test]]
+id = "TST-ACC-001"
+title = "Accept local experiments"
+kind = "acceptance"
+path = "test-suite/tests/http.rs"
+selector = "tst_acc_001_real_numerical_artifacts"
+test_target = "test:http"
+covers = ["REQ-001"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "EXPERIMENT_SERVICE_NOT_IMPLEMENTED"
+expected_failure_reason = "The production-owned start seam has no HTTP service implementation."
+required = true
+
+[[test]]
+id = "TST-NEG-001"
+title = "Validate before effects"
+kind = "negative"
+path = "test-suite/tests/http.rs"
+selector = "tst_neg_001_invalid_configuration_has_no_run"
+test_target = "test:http"
+covers = ["REQ-002"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "EXPERIMENT_SERVICE_NOT_IMPLEMENTED"
+expected_failure_reason = "The production-owned start seam has no HTTP service implementation."
+required = true
+
+[[test]]
+id = "TST-BOUND-001"
+title = "Bound request bodies"
+kind = "boundary"
+path = "test-suite/tests/http.rs"
+selector = "tst_bound_001_request_limit"
+test_target = "test:http"
+covers = ["REQ-003"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "EXPERIMENT_SERVICE_NOT_IMPLEMENTED"
+expected_failure_reason = "The production-owned start seam has no HTTP service implementation."
+required = true
+
+[[test]]
+id = "TST-STATE-001"
+title = "Cancel and reap"
+kind = "state_transition"
+path = "test-suite/tests/http.rs"
+selector = "tst_state_001_cancel_is_terminal"
+test_target = "test:http"
+covers = ["REQ-004"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "EXPERIMENT_SERVICE_NOT_IMPLEMENTED"
+expected_failure_reason = "The production-owned start seam has no HTTP service implementation."
+required = true
+
+[[test]]
+id = "TST-INV-001"
+title = "Single active run"
+kind = "invariant"
+path = "test-suite/tests/http.rs"
+selector = "tst_inv_001_single_active_admission"
+test_target = "test:http"
+covers = ["REQ-005"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "EXPERIMENT_SERVICE_NOT_IMPLEMENTED"
+expected_failure_reason = "The production-owned start seam has no HTTP service implementation."
+required = true
+
+[[test]]
+id = "TST-BEH-001"
+title = "Bound retained runs"
+kind = "behavioral"
+path = "test-suite/tests/http.rs"
+selector = "tst_beh_001_retention_evicts_oldest"
+test_target = "test:http"
+covers = ["REQ-006"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "EXPERIMENT_SERVICE_NOT_IMPLEMENTED"
+expected_failure_reason = "The production-owned start seam has no HTTP service implementation."
+required = true
+
+[[test]]
+id = "TST-CONTRACT-001"
+title = "Typed observable status"
+kind = "contract"
+path = "test-suite/tests/http.rs"
+selector = "tst_contract_001_status_and_errors"
+test_target = "test:http"
+covers = ["REQ-007"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "EXPERIMENT_SERVICE_NOT_IMPLEMENTED"
+expected_failure_reason = "The production-owned start seam has no HTTP service implementation."
+required = true
+
+[[test]]
+id = "TST-ANTI-001"
+title = "Confine artifacts"
+kind = "anti_pattern"
+path = "test-suite/tests/http.rs"
+selector = "tst_anti_001_path_traversal_denied"
+test_target = "test:http"
+covers = ["REQ-008"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "EXPERIMENT_SERVICE_NOT_IMPLEMENTED"
+expected_failure_reason = "The production-owned start seam has no HTTP service implementation."
+required = true
+
+[[test]]
+id = "TST-STRUCT-001"
+title = "Loopback binding"
+kind = "structural"
+path = "test-suite/tests/http.rs"
+selector = "tst_struct_001_non_loopback_rejected"
+test_target = "test:http"
+covers = ["REQ-009"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "EXPERIMENT_SERVICE_NOT_IMPLEMENTED"
+expected_failure_reason = "The production-owned start seam has no HTTP service implementation."
+required = true
+
+[[test]]
+id = "TST-PROP-001"
+title = "Numerical compatibility"
+kind = "property"
+path = "test-suite/tests/http.rs"
+selector = "tst_prop_001_seeded_repeatability"
+test_target = "test:http"
+covers = ["REQ-010"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "EXPERIMENT_SERVICE_NOT_IMPLEMENTED"
+expected_failure_reason = "The production-owned start seam has no HTTP service implementation."
+required = true
+
+[[test]]
+id = "TST-PERF-001"
+title = "Bound shutdown"
+kind = "performance"
+path = "test-suite/tests/http.rs"
+selector = "tst_perf_001_shutdown_bounded"
+test_target = "test:http"
+covers = ["REQ-011"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "EXPERIMENT_SERVICE_NOT_IMPLEMENTED"
+expected_failure_reason = "The production-owned start seam has no HTTP service implementation."
+required = true
+
+[[test]]
+id = "TST-BEH-002"
+title = "Event feed"
+kind = "behavioral"
+path = "test-suite/tests/http.rs"
+selector = "tst_beh_002_events_include_terminal_snapshot"
+test_target = "test:http"
+covers = ["REQ-012"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "EXPERIMENT_SERVICE_NOT_IMPLEMENTED"
+expected_failure_reason = "The production-owned start seam has no HTTP service implementation."
+required = true
+
+[[test]]
+id = "TST-BOUND-002"
+title = "Artifact budget"
+kind = "boundary"
+path = "test-suite/tests/http.rs"
+selector = "tst_bound_002_insufficient_artifact_budget"
+test_target = "test:http"
+covers = ["REQ-013"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "EXPERIMENT_SERVICE_NOT_IMPLEMENTED"
+expected_failure_reason = "The production-owned start seam has no HTTP service implementation."
+required = true
+
+[[test]]
+id = "TST-STATE-002"
+title = "Failed worker"
+kind = "state_transition"
+path = "test-suite/tests/http.rs"
+selector = "tst_state_002_worker_failure_releases_slot"
+test_target = "test:http"
+covers = ["REQ-014"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "EXPERIMENT_SERVICE_NOT_IMPLEMENTED"
+expected_failure_reason = "The production-owned start seam has no HTTP service implementation."
+required = true
+
+[[test]]
+id = "TST-ACC-002"
+title = "Acceptance scenario 2"
+kind = "acceptance"
+path = "test-suite/tests/http.rs"
+selector = "tst_acc_002_invalid_requests"
+test_target = "test:http"
+covers = ["REQ-002", "REQ-003", "REQ-009"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "EXPERIMENT_SERVICE_NOT_IMPLEMENTED"
+expected_failure_reason = "The HTTP start seam has no production behavior."
+required = true
+
+[[test]]
+id = "TST-ACC-003"
+title = "Acceptance scenario 3"
+kind = "acceptance"
+path = "test-suite/tests/http.rs"
+selector = "tst_acc_003_lifecycle"
+test_target = "test:http"
+covers = ["REQ-004", "REQ-005", "REQ-011", "REQ-014"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "EXPERIMENT_SERVICE_NOT_IMPLEMENTED"
+expected_failure_reason = "The HTTP start seam has no production behavior."
+required = true
+
+[[test]]
+id = "TST-ACC-004"
+title = "Acceptance scenario 4"
+kind = "acceptance"
+path = "test-suite/tests/http.rs"
+selector = "tst_acc_004_retained_artifacts"
+test_target = "test:http"
+covers = ["REQ-006", "REQ-008", "REQ-013"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "EXPERIMENT_SERVICE_NOT_IMPLEMENTED"
+expected_failure_reason = "The HTTP start seam has no production behavior."
+required = true
+[[test]]
+id = "TST-STATE-003"
+title = "Existing live SSE subscription observes cancellation and closes"
+kind = "state_transition"
+path = "test-suite/tests/http.rs"
+selector = "tst_state_003_existing_stream_observes_cancellation"
+test_target = "test:http"
+covers = ["REQ-012", "REQ-004"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "EXPERIMENT_SERVICE_NOT_IMPLEMENTED"
+expected_failure_reason = "The start seam cannot publish a live state transition."
+required = true
+
+[[test]]
+id = "TST-NEG-002"
+title = "Reject event cursor above current run sequence"
+kind = "negative"
+path = "test-suite/tests/http.rs"
+selector = "tst_neg_002_future_event_id_rejected"
+test_target = "test:http"
+covers = ["REQ-012"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "EXPERIMENT_SERVICE_NOT_IMPLEMENTED"
+expected_failure_reason = "The start seam has no event cursor validation."
+required = true
+

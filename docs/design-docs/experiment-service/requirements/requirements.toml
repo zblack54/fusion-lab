@@ -1,0 +1,125 @@
+[[requirement]]
+id = "REQ-001"
+title = "Accept local experiments"
+kind = "behavioral"
+statement = "The service SHALL accept a complete valid experiment configuration through POST /v1/runs and return HTTP 202 with an opaque run id and running state."
+rationale = "Bound local execution and make outcomes independently reviewable."
+source_ids = ["ACC-001"]
+status = "active"
+
+[[requirement]]
+id = "REQ-002"
+title = "Validate before effects"
+kind = "behavioral"
+statement = "The service SHALL reject invalid, missing, or unknown configuration fields with 422 invalid_config before reserving a run or creating artifacts."
+rationale = "Bound local execution and make outcomes independently reviewable."
+source_ids = ["ACC-002"]
+status = "active"
+
+[[requirement]]
+id = "REQ-003"
+title = "Bound request bodies"
+kind = "behavioral"
+statement = "The service SHALL reject request bodies exceeding 4096 bytes with 413 and malformed JSON with 400 invalid_json."
+rationale = "Bound local execution and make outcomes independently reviewable."
+source_ids = ["ACC-002"]
+status = "active"
+
+[[requirement]]
+id = "REQ-004"
+title = "Cancel and reap"
+kind = "behavioral"
+statement = "The service SHALL acknowledge DELETE /v1/runs/{id} on a running run only after terminating and reaping its child and recording cancelled."
+rationale = "Bound local execution and make outcomes independently reviewable."
+source_ids = ["ACC-003"]
+status = "active"
+
+[[requirement]]
+id = "REQ-005"
+title = "Single active run"
+kind = "behavioral"
+statement = "The service SHALL return 409 busy without launching or queueing work when its single active reservation is occupied."
+rationale = "Bound local execution and make outcomes independently reviewable."
+source_ids = ["ACC-003"]
+status = "active"
+
+[[requirement]]
+id = "REQ-006"
+title = "Bound retained runs"
+kind = "behavioral"
+statement = "The service SHALL evict the oldest terminal run and its files when terminal retention exceeds configured retained_runs."
+rationale = "Bound local execution and make outcomes independently reviewable."
+source_ids = ["ACC-004"]
+status = "active"
+
+[[requirement]]
+id = "REQ-007"
+title = "Typed observable status"
+kind = "behavioral"
+statement = "The service SHALL expose health capacity, run lists and individual states with documented JSON fields and stable error codes."
+rationale = "Bound local execution and make outcomes independently reviewable."
+source_ids = ["ACC-001"]
+status = "active"
+
+[[requirement]]
+id = "REQ-008"
+title = "Confine artifacts"
+kind = "behavioral"
+statement = "The service SHALL resolve artifacts only from internally generated run ids and the exact samples.csv and report.txt names."
+rationale = "Bound local execution and make outcomes independently reviewable."
+source_ids = ["ACC-004"]
+status = "active"
+
+[[requirement]]
+id = "REQ-009"
+title = "Loopback binding"
+kind = "behavioral"
+statement = "The service SHALL reject non-loopback listener addresses before opening the listener or artifact root."
+rationale = "Bound local execution and make outcomes independently reviewable."
+source_ids = ["ACC-002"]
+status = "active"
+
+[[requirement]]
+id = "REQ-010"
+title = "Numerical compatibility"
+kind = "behavioral"
+statement = "The service SHALL produce byte-identical CSV artifacts for repeated identical seeded configurations using the existing synchronous numerical CLI."
+rationale = "Bound local execution and make outcomes independently reviewable."
+source_ids = ["ACC-001"]
+status = "active"
+
+[[requirement]]
+id = "REQ-011"
+title = "Bound shutdown"
+kind = "behavioral"
+statement = "The service SHALL stop admission, terminate and reap active children, close event streams and release its listener within five seconds of shutdown on a healthy local host."
+rationale = "Bound local execution and make outcomes independently reviewable."
+source_ids = ["ACC-003"]
+status = "active"
+
+[[requirement]]
+id = "REQ-012"
+title = "Event feed"
+kind = "behavioral"
+statement = "The service SHALL expose a bounded SSE state feed at GET /v1/runs/{id}/events with a current snapshot and terminal closure."
+rationale = "Bound local execution and make outcomes independently reviewable."
+source_ids = ["ACC-001"]
+status = "active"
+
+[[requirement]]
+id = "REQ-013"
+title = "Artifact budget"
+kind = "behavioral"
+statement = "The service SHALL reserve 256 MiB artifact capacity before each launch and return 507 insufficient_storage without a run when configured capacity cannot reserve that amount after eviction."
+rationale = "Bound local execution and make outcomes independently reviewable."
+source_ids = ["ACC-004"]
+status = "active"
+
+[[requirement]]
+id = "REQ-014"
+title = "Failed worker"
+kind = "behavioral"
+statement = "The service SHALL record failed with a stable worker_failed error and release admission when its worker exits unsuccessfully without publishing artifacts."
+rationale = "Bound local execution and make outcomes independently reviewable."
+source_ids = ["ACC-003"]
+status = "active"

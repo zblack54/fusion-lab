@@ -1,0 +1,43 @@
+[[acceptance]]
+id = "ACC-001"
+title = "Run and inspect a reproducible experiment"
+actors = ["local researcher"]
+given = ["a local service with a valid numerical worker"]
+when = "Run and inspect a reproducible experiment"
+then = ["the documented HTTP result and bounded resource effects are observable"]
+requirement_ids = ["REQ-001", "REQ-007", "REQ-010", "REQ-012"]
+test_ids = ["TST-ACC-001"]
+status = "active"
+
+[[acceptance]]
+id = "ACC-002"
+title = "Reject invalid local requests"
+actors = ["local researcher"]
+given = ["a local service with a valid numerical worker"]
+when = "Reject invalid local requests"
+then = ["the documented HTTP result and bounded resource effects are observable"]
+requirement_ids = ["REQ-002", "REQ-003", "REQ-009"]
+test_ids = ["TST-ACC-002"]
+status = "active"
+
+[[acceptance]]
+id = "ACC-003"
+title = "Cancel, fail and stop without stranded work"
+actors = ["local researcher"]
+given = ["a local service with a valid numerical worker"]
+when = "Cancel, fail and stop without stranded work"
+then = ["the documented HTTP result and bounded resource effects are observable"]
+requirement_ids = ["REQ-004", "REQ-005", "REQ-011", "REQ-014"]
+test_ids = ["TST-ACC-003"]
+status = "active"
+
+[[acceptance]]
+id = "ACC-004"
+title = "Retain only bounded private artifacts"
+actors = ["local researcher"]
+given = ["a local service with a valid numerical worker"]
+when = "Retain only bounded private artifacts"
+then = ["the documented HTTP result and bounded resource effects are observable"]
+requirement_ids = ["REQ-006", "REQ-008", "REQ-013"]
+test_ids = ["TST-ACC-004"]
+status = "active"
