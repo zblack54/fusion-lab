@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "repository": "zblack54/fusion-lab",
+  "tracking_issue": 17,
+  "milestones": [
+    {
+      "key": "engineering",
+      "title": "Engineering and knowledge transfer",
+      "description": "Reliable continuous development, issue/spec/PR evidence, periodic engineering probes, and owner learning portal.",
+      "state": "open",
+      "issues": [
+        2,
+        3,
+        4,
+        14,
+        17,
+        18
+      ]
+    },
+    {
+      "key": "baseline",
+      "title": "v0.1 Numerical baseline",
+      "description": "Deterministic numerical core, analytical tests, reproducible CLI artifacts and existing baseline estimators.",
+      "state": "closed",
+      "issues": [
+        1,
+        9
+      ]
+    },
+    {
+      "key": "robustness",
+      "title": "v0.1b Sensor realism and robustness",
+      "description": "True versus assumed noise, controlled sensor bias, and prespecified held-out robustness experiments.",
+      "state": "open",
+      "issues": [
+        19,
+        20,
+        21
+      ]
+    },
+    {
+      "key": "demo",
+      "title": "v0.2 Interactive local demo",
+      "description": "Local bounded experiment service, browser visualization, controls and inspectable recorded results.",
+      "state": "open",
+      "issues": [
+        5,
+        7,
+        10
+      ]
+    },
+    {
+      "key": "delivery",
+      "title": "v0.3 Unreliable delivery and replay",
+      "description": "Explicit sample/arrival time, delay/loss, bounded queues, stale-data policy and reproducible replay research.",
+      "state": "open",
+      "issues": [
+        6,
+        8,
+        22
+      ]
+    },
+    {
+      "key": "estimation",
+      "title": "v0.4 Richer estimation",
+      "description": "Heading and physical sensor models, bias-state estimation and EKF evaluated on established failure cases.",
+      "state": "open",
+      "issues": [
+        23,
+        24,
+        25
+      ]
+    },
+    {
+      "key": "exploratory",
+      "title": "Exploratory research candidates",
+      "description": "Optional local learned-correction/inference ideas beyond the committed initial implementation scope; require a defined question before dispatch.",
+      "state": "open",
+      "issues": [
+        26
+      ]
+    }
+  ]
+}

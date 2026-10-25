@@ -20,7 +20,19 @@ markdown_extensions:
       permalink: true
 nav:
   - Home: index.md
-  - Experiments: experiments.md
-  - Design: design/v0.1.md
+  - Learn:
+      - Start here (15 minutes): learn/index.md
+      - Math and code tour: learn/math-and-code.md
+      - Reproduce and question results: learn/research.md
+      - Iteration handoff template: learn/iteration-handoff.md
+  - Roadmap: roadmap.md
+  - Experiments:
+      - Run an experiment: experiments.md
+      - Outage protocol: experiments/outage-study-protocol.md
+      - Outage results: experiments/outage-study.md
+      - Capacity baseline: experiments/capacity-baseline.md
+  - Design:
+      - Numerical contract: design/v0.1.md
+      - Service design and progress: https://github.com/zblack54/fusion-lab/issues/5
   - Development: development.md
   - Validation: validation.md

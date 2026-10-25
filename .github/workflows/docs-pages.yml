@@ -1,0 +1,49 @@
+name: Publish documentation portal
+on:
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: Publish the reviewed documentation publicly to GitHub Pages
+        required: true
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: documentation-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    if: github.ref == 'refs/heads/main' && inputs.publish
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/docs.py build
+      - run: cargo doc --locked --no-deps
+      - name: Include Rust API documentation
+        run: |
+          mkdir -p site/api
+          cp -R target/doc/. site/api/
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+  deploy:
+    if: github.ref == 'refs/heads/main' && inputs.publish
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy reviewed portal
+        id: deployment
+        uses: actions/deploy-pages@v4
