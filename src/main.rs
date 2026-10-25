@@ -63,10 +63,10 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             end: args.outage_end,
         }),
     };
-    let experiment = run(&config)?;
     if args.output.extension().and_then(|s| s.to_str()) != Some("csv") {
         return Err("--output must have a .csv extension".into());
     }
+    let experiment = run(&config)?;
     if let Some(parent) = args.output.parent().filter(|p| !p.as_os_str().is_empty()) {
         std::fs::create_dir_all(parent)?;
     }
