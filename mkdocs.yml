@@ -25,6 +25,7 @@ nav:
       - Math and code tour: learn/math-and-code.md
       - Reproduce and question results: learn/research.md
       - Iteration handoff template: learn/iteration-handoff.md
+      - Maintain and publish the portal: learn/portal-operations.md
   - Roadmap: roadmap.md
   - Experiments:
       - Run an experiment: experiments.md
