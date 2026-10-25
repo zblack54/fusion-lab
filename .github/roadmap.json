@@ -23,7 +23,6 @@
       "description": "Deterministic numerical core, analytical tests, reproducible CLI artifacts and existing baseline estimators.",
       "state": "closed",
       "issues": [
-        1,
         9
       ]
     },
@@ -46,7 +45,9 @@
       "issues": [
         5,
         7,
-        10
+        10,
+        28,
+        29
       ]
     },
     {

@@ -5,12 +5,14 @@ on:
       - .github/roadmap.json
       - .github/workflows/roadmap.yml
       - scripts/sync_roadmap.py
+      - scripts/tests/test_sync_roadmap.py
   push:
     branches: [main]
     paths:
       - .github/roadmap.json
       - .github/workflows/roadmap.yml
       - scripts/sync_roadmap.py
+      - scripts/tests/test_sync_roadmap.py
   workflow_dispatch:
 
 permissions:
@@ -29,6 +31,7 @@ jobs:
         with:
           python-version: '3.12'
       - run: python scripts/sync_roadmap.py
+      - run: python -m unittest discover -s scripts/tests -p test_sync_roadmap.py -v
   synchronize:
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     needs: validate
