@@ -59,6 +59,13 @@ class GitHub:
 
 
 def synchronize(data, github, assert_no_changes=False):
+    issue_cache = {}
+    for group in data["milestones"]:
+        for number in group["issues"]:
+            issue = github.request("GET", f"issues/{number}")
+            if "pull_request" in issue:
+                raise ValueError(f"roadmap entry {number} is a pull request; map its feature issue")
+            issue_cache[number] = issue
     inventory = {}
     for item in github.milestones():
         if item["title"] in inventory:
@@ -78,7 +85,7 @@ def synchronize(data, github, assert_no_changes=False):
             current = github.request("PATCH", f"milestones/{current['number']}", desired)
             changes += 1
         for number in item["issues"]:
-            issue = github.request("GET", f"issues/{number}")
+            issue = issue_cache[number]
             existing = issue.get("milestone")
             if existing is None or existing["number"] != current["number"]:
                 if assert_no_changes:
