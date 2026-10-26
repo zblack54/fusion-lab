@@ -1,0 +1,257 @@
+{
+  "environment": {
+    "platform": "Windows-10-10.0.19043-SP0",
+    "processor": "AMD64 Family 25 Model 33 Stepping 0, AuthenticAMD",
+    "logical_cpu_count": 16,
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-msvc\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+    "revision": "b274c6f6deb3e86a9fdfbd31b8b92ec59396b5e8"
+  },
+  "commands": [],
+  "binaries": {
+    "crates\\experiment-service\\target\\release\\examples\\probe_host.exe": "6e8fe68eac3e6630fff6af75f212fdd1a87c421883269a80865b40b5b7389e27",
+    "crates\\experiment-service\\target\\release\\examples\\probe_worker.exe": "7530c8cc24f5b6f82d77855dd236d87b4bf7a0755c63cfe132028775708c20b2",
+    "target\\release\\fusion-lab.exe": "68a081835c292562de25c439cae61bd8038acbf3fe6a0f5dabf689654a15a25f"
+  },
+  "limitations": [
+    "5ms requested sampling is not a hard bound on transient aggregate peaks; per-process kernel lifetime peaks retained separately.",
+    "Private commit uses Windows PrivateUsage samples and PeakPagefileUsage lifetime high-water counters, not physical memory or OS enforced limits.",
+    "One native Windows host; no Linux evidence. Host/private machine background activity uncontrolled."
+  ],
+  "maximum_duration": {
+    "runs": [
+      {
+        "warmup": true,
+        "id": "run-1",
+        "duration_seconds": 3600,
+        "seed": 42,
+        "elapsed_seconds": 1.2678869999945164,
+        "submit_latency_seconds": 0.008300499990582466,
+        "status_latency_max_seconds": 0.1841244000243023,
+        "samples": 360001,
+        "csv_bytes": 170623857,
+        "csv_sha256": "b24d83f0fce0cc8073dba7833d6065c5c035c461e3284e2b5a96c67e828d3e8e"
+      },
+      {
+        "warmup": false,
+        "id": "run-2",
+        "duration_seconds": 3600,
+        "seed": 42,
+        "elapsed_seconds": 1.3166474000317976,
+        "submit_latency_seconds": 0.005105399992316961,
+        "status_latency_max_seconds": 0.1829988999525085,
+        "samples": 360001,
+        "csv_bytes": 170623857,
+        "csv_sha256": "b24d83f0fce0cc8073dba7833d6065c5c035c461e3284e2b5a96c67e828d3e8e"
+      },
+      {
+        "warmup": false,
+        "id": "run-3",
+        "duration_seconds": 3600,
+        "seed": 42,
+        "elapsed_seconds": 1.3000448000384495,
+        "submit_latency_seconds": 0.004442300065420568,
+        "status_latency_max_seconds": 0.20845310005825013,
+        "samples": 360001,
+        "csv_bytes": 170623857,
+        "csv_sha256": "b24d83f0fce0cc8073dba7833d6065c5c035c461e3284e2b5a96c67e828d3e8e"
+      },
+      {
+        "warmup": false,
+        "id": "run-4",
+        "duration_seconds": 3600,
+        "seed": 42,
+        "elapsed_seconds": 1.2849057000130415,
+        "submit_latency_seconds": 0.004064399981871247,
+        "status_latency_max_seconds": 0.1878355999942869,
+        "samples": 360001,
+        "csv_bytes": 170623857,
+        "csv_sha256": "b24d83f0fce0cc8073dba7833d6065c5c035c461e3284e2b5a96c67e828d3e8e"
+      }
+    ],
+    "host": {
+      "shutdown": {
+        "shutdown_seconds": 0.0201667
+      },
+      "outer_shutdown_seconds": 0.03343070007394999,
+      "metrics": {
+        "sampled_aggregate_working_set_peak_bytes": 109596672,
+        "sampled_aggregate_private_commit_peak_bytes": 103460864,
+        "process_lifetime_peaks": {
+          "57856": {
+            "peak_working_set_bytes": 5586944,
+            "peak_private_commit_bytes": 1855488,
+            "private_commit_bytes_last": 77824
+          },
+          "81336": {
+            "peak_working_set_bytes": 104112128,
+            "peak_private_commit_bytes": 101629952,
+            "private_commit_bytes_last": 77824
+          },
+          "81928": {
+            "peak_working_set_bytes": 104112128,
+            "peak_private_commit_bytes": 101642240,
+            "private_commit_bytes_last": 77824
+          },
+          "81624": {
+            "peak_working_set_bytes": 104112128,
+            "peak_private_commit_bytes": 101666816,
+            "private_commit_bytes_last": 77824
+          },
+          "82508": {
+            "peak_working_set_bytes": 104112128,
+            "peak_private_commit_bytes": 101642240,
+            "private_commit_bytes_last": 77824
+          }
+        },
+        "disk_peak_bytes": 511873323,
+        "samples": 219,
+        "sampling_errors": [],
+        "requested_interval_seconds": 0.005
+      },
+      "root_remaining": [],
+      "stderr": "",
+      "returncode": 0
+    }
+  },
+  "cancellation": {
+    "seconds": 0.001703099929727614,
+    "child_listener_closed": true,
+    "busy_status": 409
+  },
+  "origin": {
+    "status": 403,
+    "value": {
+      "error": {
+        "code": "invalid_origin",
+        "message": "invalid_origin"
+      }
+    }
+  },
+  "noisy_pipes": {
+    "elapsed_seconds": 0.016639600042253733,
+    "status": {
+      "artifacts": [],
+      "config": {
+        "acceleration_density": 0.1,
+        "duration_seconds": 3600,
+        "outage": {
+          "end": 20,
+          "start": 10
+        },
+        "position_sigma": 1.0,
+        "scenario": "maneuver",
+        "seed": 9002,
+        "velocity_sigma": 0.15
+      },
+      "error": {
+        "code": "worker_failed",
+        "message": "worker_failed"
+      },
+      "id": "run-2",
+      "samples": null,
+      "sequence": 1,
+      "state": "failed"
+    },
+    "run_directory_exists": false,
+    "fixture_stdout_bytes": 2097152,
+    "fixture_stderr_bytes": 2097152,
+    "fixture_artifact_bytes_attempted": 0
+  },
+  "artifact_overflow": {
+    "elapsed_seconds": 0.07098280009813607,
+    "status": {
+      "artifacts": [],
+      "config": {
+        "acceleration_density": 0.1,
+        "duration_seconds": 3600,
+        "outage": {
+          "end": 20,
+          "start": 10
+        },
+        "position_sigma": 1.0,
+        "scenario": "maneuver",
+        "seed": 9003,
+        "velocity_sigma": 0.15
+      },
+      "error": {
+        "code": "artifact_limit",
+        "message": "artifact_limit"
+      },
+      "id": "run-3",
+      "samples": null,
+      "sequence": 1,
+      "state": "failed"
+    },
+    "run_directory_exists": false,
+    "fixture_stdout_bytes": 0,
+    "fixture_stderr_bytes": 0,
+    "fixture_artifact_bytes_attempted": 269484032
+  },
+  "load": {
+    "requested_seconds": 60,
+    "elapsed_seconds": 60.01500000001397,
+    "slow_sse_clients": 32,
+    "excess_sse_status": 429,
+    "ordinary_concurrent_requests": 33,
+    "cycles": 436,
+    "ordinary_rejections": {
+      "503": 436
+    },
+    "ordinary_latency_max_seconds": 0.02519039995968342
+  },
+  "controlled_host": {
+    "shutdown": {
+      "shutdown_seconds": 0.0037969
+    },
+    "outer_shutdown_seconds": 0.024076599976979196,
+    "metrics": {
+      "sampled_aggregate_working_set_peak_bytes": 10555392,
+      "sampled_aggregate_private_commit_peak_bytes": 4702208,
+      "process_lifetime_peaks": {
+        "82380": {
+          "peak_working_set_bytes": 7147520,
+          "peak_private_commit_bytes": 3891200,
+          "private_commit_bytes_last": 77824
+        },
+        "81184": {
+          "peak_working_set_bytes": 3416064,
+          "peak_private_commit_bytes": 815104,
+          "private_commit_bytes_last": 77824
+        },
+        "73348": {
+          "peak_working_set_bytes": 3194880,
+          "peak_private_commit_bytes": 786432,
+          "private_commit_bytes_last": 77824
+        },
+        "77976": {
+          "peak_working_set_bytes": 4464640,
+          "peak_private_commit_bytes": 1884160,
+          "private_commit_bytes_last": 73728
+        },
+        "75404": {
+          "peak_working_set_bytes": 3416064,
+          "peak_private_commit_bytes": 827392,
+          "private_commit_bytes_last": 73728
+        }
+      },
+      "disk_peak_bytes": 240123945,
+      "samples": 3377,
+      "sampling_errors": [],
+      "requested_interval_seconds": 0.005
+    },
+    "root_remaining": [],
+    "stderr": "",
+    "returncode": 0
+  },
+  "nonempty_root": {
+    "returncode": 1,
+    "stderr": "Error: Custom { kind: InvalidInput, error: \"artifact root must be empty and not a link\" }\n",
+    "sentinel_preserved": true
+  },
+  "symlink_root": {
+    "status": "not_run_privilege_blocker",
+    "error": "OSError(22, 'A required privilege is not held by the client')"
+  },
+  "status": "native_demonstrations_passed_with_recorded_gaps"
+}

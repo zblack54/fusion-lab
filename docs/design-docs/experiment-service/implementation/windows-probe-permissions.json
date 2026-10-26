@@ -1,0 +1,387 @@
+{
+  "environment": {
+    "platform": "Windows-10-10.0.19043-SP0",
+    "processor": "AMD64 Family 25 Model 33 Stepping 0, AuthenticAMD",
+    "logical_cpu_count": 16,
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-msvc\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+    "revision": "b274c6f6deb3e86a9fdfbd31b8b92ec59396b5e8"
+  },
+  "commands": [
+    [
+      "cargo",
+      "build",
+      "--release",
+      "--locked"
+    ],
+    [
+      "cargo",
+      "build",
+      "--manifest-path",
+      "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\crates\\experiment-service\\Cargo.toml",
+      "--release",
+      "--locked",
+      "--examples"
+    ]
+  ],
+  "binaries": {
+    "crates\\experiment-service\\target\\release\\examples\\probe_host.exe": "f7a90dc4bffe58fc09bd6e8a34ad7ef6cefeeb91e6dff1d234b8f483d6a620a5",
+    "crates\\experiment-service\\target\\release\\examples\\probe_worker.exe": "f910839e71245ac39018c3e8d263432ccd25b3d6b239832463bf1fd59dade393",
+    "target\\release\\fusion-lab.exe": "68a081835c292562de25c439cae61bd8038acbf3fe6a0f5dabf689654a15a25f"
+  },
+  "limitations": [
+    "5ms requested sampling is not a hard bound on transient aggregate peaks. Windows retains per-process kernel lifetime handles; Linux VmHWM is read while each process remains alive.",
+    "Windows PrivateUsage/PeakPagefileUsage report commit; Linux reports private resident pages and writable virtual allocation separately, not an exact per-process private-commit equivalent.",
+    "One native host per report; background activity uncontrolled; native release-build end-to-end times include process startup, HTTP, artifact validation and I/O."
+  ],
+  "source_sha256": {
+    "crates\\experiment-service\\Cargo.toml": "a8995f3d9ef0c402aa1834e01cd196b1eb8a2e0d9f2f6ad366639de9c09a9c3e",
+    "crates\\experiment-service\\Cargo.lock": "c4eea4f59dd42bc3bdc7c111fbd04e746e696abbe5a970cebfb7516fd82a7c27",
+    "Cargo.toml": "107801ee283d274781df7496d22eaa46a09748e2b624ccb48a8b7b9eda975462",
+    "Cargo.lock": "1ff60b850d3f5928fc13476575700400765d31f7deb3268171f66176fb6cf6f3",
+    "crates\\experiment-service\\src\\lib.rs": "ec00fd73973d4394097b2f768cda2c6458ff836ea8b5735dd6faba023d4d694e",
+    "crates\\experiment-service\\src\\main.rs": "526dbcd0cc77ecb7e03adca6713a8f3a9e863d9c61ca7e5acc47b722f638eaa2",
+    "crates\\experiment-service\\src\\server\\regression_tests.rs": "108f8af51a510df271a08a398cc9eee2eb495432153d8e7c0f2c3a8650833a33",
+    "crates\\experiment-service\\src\\server.rs": "ab31d15ef32a2aa11ff4c8693c21a0ba9a2589ac68f5d530b6b4ec6177e169b8",
+    "crates\\experiment-service\\src\\transport.rs": "dff2a727e694d846f9ab007922dada02b030eb5f63fab51520b5eaedda4b4c43",
+    "crates\\experiment-service\\examples\\probe_host.rs": "c913366825656348e65f34474834b87f3e5a10d29b6a2e2a8a374f000573c152",
+    "crates\\experiment-service\\examples\\probe_worker.rs": "b0989b492c65ecbead8eb58612281149006727c9d51e6218a02016a5fe675b36",
+    "src\\estimation.rs": "83a3b6936c53fc9d28c29a59b0840cf5d57611852246bc19c2c4cb258c092fdf",
+    "src\\evaluation.rs": "cf83337582b8887dc3ae71b62a8daf10c9f8b578eddd74b212069d30d76ba870",
+    "src\\lib.rs": "7053071c7380e45fc755884ccc1c4e3d40404b67532776cab08b2e468a3c40ea",
+    "src\\main.rs": "86dfd32ee653ff72388ef507300fecdc49b6ee5f284f692a88d2769680614d60",
+    "src\\sensors.rs": "d8eaae0d691535bcee6f68166babdb41c49de815ad0c3eb213c8b980c9ae29af",
+    "src\\simulation.rs": "bad0f2d8aa4c07eb974f72af30f3bce26e80b92391427badddb585274942b05b"
+  },
+  "reproduction_build_commands": [
+    [
+      "cargo",
+      "build",
+      "--release",
+      "--locked"
+    ],
+    [
+      "cargo",
+      "build",
+      "--manifest-path",
+      "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\crates\\experiment-service\\Cargo.toml",
+      "--release",
+      "--locked",
+      "--examples"
+    ]
+  ],
+  "slow_reader_eviction": {
+    "status_after_eviction": 404,
+    "directory_initially_retained": true,
+    "deferred_deletion_seconds": 4.98080540006049,
+    "directory_removed_without_client_reading_or_closing": true,
+    "socket_receive_buffer_bytes": 1024,
+    "initial_response_bytes_read": 126
+  },
+  "maximum_duration": {
+    "runs": [
+      {
+        "warmup": true,
+        "id": "run-1",
+        "duration_seconds": 3600,
+        "seed": 42,
+        "elapsed_seconds": 1.332562500028871,
+        "submit_latency_seconds": 0.008254699991084635,
+        "status_latency_max_seconds": 0.19943629996851087,
+        "samples": 360001,
+        "csv_bytes": 170623857,
+        "csv_sha256": "b24d83f0fce0cc8073dba7833d6065c5c035c461e3284e2b5a96c67e828d3e8e"
+      },
+      {
+        "warmup": false,
+        "id": "run-2",
+        "duration_seconds": 3600,
+        "seed": 42,
+        "elapsed_seconds": 1.328464499907568,
+        "submit_latency_seconds": 0.004922299995087087,
+        "status_latency_max_seconds": 0.19895850005559623,
+        "samples": 360001,
+        "csv_bytes": 170623857,
+        "csv_sha256": "b24d83f0fce0cc8073dba7833d6065c5c035c461e3284e2b5a96c67e828d3e8e"
+      },
+      {
+        "warmup": false,
+        "id": "run-3",
+        "duration_seconds": 3600,
+        "seed": 42,
+        "elapsed_seconds": 1.3014720999635756,
+        "submit_latency_seconds": 0.004300799919292331,
+        "status_latency_max_seconds": 0.1990553999785334,
+        "samples": 360001,
+        "csv_bytes": 170623857,
+        "csv_sha256": "b24d83f0fce0cc8073dba7833d6065c5c035c461e3284e2b5a96c67e828d3e8e"
+      },
+      {
+        "warmup": false,
+        "id": "run-4",
+        "duration_seconds": 3600,
+        "seed": 42,
+        "elapsed_seconds": 1.3021674999035895,
+        "submit_latency_seconds": 0.004900899948552251,
+        "status_latency_max_seconds": 0.2130794000113383,
+        "samples": 360001,
+        "csv_bytes": 170623857,
+        "csv_sha256": "b24d83f0fce0cc8073dba7833d6065c5c035c461e3284e2b5a96c67e828d3e8e"
+      }
+    ],
+    "host": {
+      "shutdown": {
+        "shutdown_seconds": 0.0013837
+      },
+      "outer_shutdown_seconds": 0.013909100089222193,
+      "metrics": {
+        "sampled_aggregate_working_set_peak_bytes": 109486080,
+        "sampled_aggregate_private_commit_peak_bytes": 103403520,
+        "sampled_aggregate_private_resident_peak_bytes": null,
+        "process_lifetime_peaks": {
+          "25472": {
+            "peak_working_set_bytes": 5750784,
+            "peak_private_commit_bytes": 2166784,
+            "private_commit_bytes_last": 77824
+          },
+          "80608": {
+            "peak_working_set_bytes": 104087552,
+            "peak_private_commit_bytes": 101675008,
+            "private_commit_bytes_last": 77824
+          },
+          "83348": {
+            "peak_working_set_bytes": 104091648,
+            "peak_private_commit_bytes": 101625856,
+            "private_commit_bytes_last": 77824
+          },
+          "86472": {
+            "peak_working_set_bytes": 104087552,
+            "peak_private_commit_bytes": 101658624,
+            "private_commit_bytes_last": 77824
+          },
+          "84704": {
+            "peak_working_set_bytes": 104087552,
+            "peak_private_commit_bytes": 101629952,
+            "private_commit_bytes_last": 77824
+          }
+        },
+        "disk_peak_bytes": 511873323,
+        "samples": 628,
+        "sampling_errors": [],
+        "requested_interval_seconds": 0.005,
+        "collector": "Windows GetProcessMemoryInfo with held lifetime handles"
+      },
+      "root_remaining": [],
+      "stderr": "",
+      "returncode": 0
+    }
+  },
+  "cancellation": {
+    "seconds": 0.001408000010997057,
+    "child_listener_closed": true,
+    "busy_status": 409
+  },
+  "origin": {
+    "status": 403,
+    "value": {
+      "error": {
+        "code": "invalid_origin",
+        "message": "invalid_origin"
+      }
+    }
+  },
+  "noisy_pipes": {
+    "elapsed_seconds": 0.016668199910782278,
+    "status": {
+      "artifacts": [],
+      "config": {
+        "acceleration_density": 0.1,
+        "duration_seconds": 3600,
+        "outage": {
+          "end": 20,
+          "start": 10
+        },
+        "position_sigma": 1.0,
+        "scenario": "maneuver",
+        "seed": 9002,
+        "velocity_sigma": 0.15
+      },
+      "error": {
+        "code": "worker_failed",
+        "message": "worker_failed"
+      },
+      "id": "run-2",
+      "samples": null,
+      "sequence": 1,
+      "state": "failed"
+    },
+    "run_directory_exists": false,
+    "fixture_stdout_bytes": 2097152,
+    "fixture_stderr_bytes": 2097152,
+    "fixture_artifact_bytes_attempted": 0
+  },
+  "artifact_overflow": {
+    "elapsed_seconds": 0.06973220000509173,
+    "status": {
+      "artifacts": [],
+      "config": {
+        "acceleration_density": 0.1,
+        "duration_seconds": 3600,
+        "outage": {
+          "end": 20,
+          "start": 10
+        },
+        "position_sigma": 1.0,
+        "scenario": "maneuver",
+        "seed": 9003,
+        "velocity_sigma": 0.15
+      },
+      "error": {
+        "code": "artifact_limit",
+        "message": "artifact_limit"
+      },
+      "id": "run-3",
+      "samples": null,
+      "sequence": 1,
+      "state": "failed"
+    },
+    "run_directory_exists": false,
+    "fixture_stdout_bytes": 0,
+    "fixture_stderr_bytes": 0,
+    "fixture_artifact_bytes_attempted": 269484032
+  },
+  "load": {
+    "requested_seconds": 1,
+    "elapsed_seconds": 1.062999999965541,
+    "slow_sse_clients": 32,
+    "excess_sse_status": 429,
+    "ordinary_concurrent_requests": 33,
+    "cycles": 7,
+    "ordinary_rejections": {
+      "503": 7
+    },
+    "ordinary_latency_max_seconds": 0.022977499989792705
+  },
+  "controlled_host": {
+    "shutdown": {
+      "shutdown_seconds": 0.0016326
+    },
+    "outer_shutdown_seconds": 0.012941800057888031,
+    "metrics": {
+      "sampled_aggregate_working_set_peak_bytes": 10051584,
+      "sampled_aggregate_private_commit_peak_bytes": 4833280,
+      "sampled_aggregate_private_resident_peak_bytes": null,
+      "process_lifetime_peaks": {
+        "71084": {
+          "peak_working_set_bytes": 6746112,
+          "peak_private_commit_bytes": 4009984,
+          "private_commit_bytes_last": 77824
+        },
+        "82616": {
+          "peak_working_set_bytes": 3391488,
+          "peak_private_commit_bytes": 823296,
+          "private_commit_bytes_last": 77824
+        },
+        "84936": {
+          "peak_working_set_bytes": 3170304,
+          "peak_private_commit_bytes": 790528,
+          "private_commit_bytes_last": 77824
+        },
+        "83696": {
+          "peak_working_set_bytes": 4448256,
+          "peak_private_commit_bytes": 1884160,
+          "private_commit_bytes_last": 77824
+        },
+        "82460": {
+          "peak_working_set_bytes": 3395584,
+          "peak_private_commit_bytes": 835584,
+          "private_commit_bytes_last": 77824
+        }
+      },
+      "disk_peak_bytes": 173015081,
+      "samples": 203,
+      "sampling_errors": [],
+      "requested_interval_seconds": 0.005,
+      "collector": "Windows GetProcessMemoryInfo with held lifetime handles"
+    },
+    "root_remaining": [],
+    "stderr": "",
+    "returncode": 0
+  },
+  "cleanup_permission_failure": {
+    "status": "demonstrated",
+    "injection": "Windows open file denies DELETE sharing",
+    "cancel_http_status": 500,
+    "cancel_snapshot": {
+      "artifacts": [],
+      "config": {
+        "acceleration_density": 0.1,
+        "duration_seconds": 3600,
+        "outage": {
+          "end": 20,
+          "start": 10
+        },
+        "position_sigma": 1.0,
+        "scenario": "maneuver",
+        "seed": 9001,
+        "velocity_sigma": 0.15
+      },
+      "error": {
+        "code": "cleanup_failed",
+        "message": "cleanup_failed"
+      },
+      "id": "run-1",
+      "samples": null,
+      "sequence": 1,
+      "state": "cancelled"
+    },
+    "new_admission_http_status": 507,
+    "new_admission_error": {
+      "error": {
+        "code": "cleanup_failed",
+        "message": "cleanup_failed"
+      }
+    },
+    "child_listener_closed_before_new_admission": true,
+    "directory_preserved_on_error": true,
+    "shutdown": {
+      "shutdown": null,
+      "outer_shutdown_seconds": 0.017332800081931055,
+      "metrics": {
+        "sampled_aggregate_working_set_peak_bytes": 8425472,
+        "sampled_aggregate_private_commit_peak_bytes": 2215936,
+        "sampled_aggregate_private_resident_peak_bytes": null,
+        "process_lifetime_peaks": {
+          "69600": {
+            "peak_working_set_bytes": 3399680,
+            "peak_private_commit_bytes": 843776,
+            "private_commit_bytes_last": 77824
+          },
+          "83196": {
+            "peak_working_set_bytes": 5201920,
+            "peak_private_commit_bytes": 1404928,
+            "private_commit_bytes_last": 77824
+          }
+        },
+        "disk_peak_bytes": 41,
+        "samples": 127,
+        "sampling_errors": [],
+        "requested_interval_seconds": 0.005,
+        "collector": "Windows GetProcessMemoryInfo with held lifetime handles"
+      },
+      "root_remaining": [],
+      "stderr": "Error: Custom { kind: Other, error: \"The process cannot access the file because it is being used by another process. (os error 32)\" }\n",
+      "returncode": 1
+    }
+  },
+  "nonempty_root": {
+    "returncode": 1,
+    "stderr": "Error: Custom { kind: InvalidInput, error: \"artifact root must be empty and not a link\" }\n",
+    "sentinel_preserved": true
+  },
+  "symlink_root": {
+    "status": "not_run_privilege_blocker",
+    "error": "OSError(22, 'A required privilege is not held by the client')"
+  },
+  "status": "native_demonstrations_passed_with_recorded_gaps"
+}

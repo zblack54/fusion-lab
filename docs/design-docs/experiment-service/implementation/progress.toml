@@ -1,0 +1,36 @@
+# Current verified implementation; historical attempts remain in Git/evidence JSONs.
+baseline_digest = "3862f6d829e8a739580454f0edfbfb6aff696007286c51dbcfd61bd6f7529f1f"
+accepted_code = "79cb06a5f893e6bbe0a8090e14819fcb4ea3cf81"
+status = "verified"
+publication = "Final proof/documentation commit must pass its own CI before merge."
+acceptance = "All14 requirements and10 constraints accepted by main and separate reviewer; see acceptance.md."
+
+[[task]]
+id = "TASK-001"
+status = "verified"
+evidence = "Strict local HTTP/domain validation; immutable tests and exact-source review."
+[[task]]
+id = "TASK-002"
+status = "verified"
+evidence = "One owned real numerical CLI worker, bounded pipes and streamed validated artifacts; numerical core unchanged."
+[[task]]
+id = "TASK-003"
+status = "verified"
+evidence = "Cancellation/reap, bounded SSE and healthy shutdown; same-child exceptional recovery and all task joins."
+[[task]]
+id = "TASK-004"
+status = "verified"
+evidence = "Count/byte retention, artifact leases/exclusive root, resource/load/failure demonstrations on native Windows/Linux."
+
+[[check]]
+command = "External approved digest validation + trusted implementation runner"
+result = "VALID0errors0warnings;21 immutable tests pass; no locked file changed."
+[[check]]
+command = "Windows/Linux x Rust1.99.0/stable1.99.1, run40364583095"
+result = "Each14 supplementary +21 immutable tests,0ignored; adapter gates pass; nativeLinux release resource probe passes."
+[[check]]
+command = "Root Rust/documentation run40364582814"
+result = "All4core variants and strict docs pass; roadmap validation40364582731 passes."
+[[check]]
+command = "Native resource/failure artifacts and independent exact-source review"
+result = "Windows18/18 andLinux18/18 sourcehashes match accepted_code; all VER001–004 accepted with documented measurement/fault limits."

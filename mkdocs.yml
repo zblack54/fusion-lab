@@ -24,6 +24,7 @@ nav:
       - Start here (15 minutes): learn/index.md
       - Math and code tour: learn/math-and-code.md
       - Reproduce and question results: learn/research.md
+      - Experiment service ownership: learn/experiment-service.md
       - Iteration handoff template: learn/iteration-handoff.md
       - Maintain and publish the portal: learn/portal-operations.md
   - Roadmap: roadmap.md
