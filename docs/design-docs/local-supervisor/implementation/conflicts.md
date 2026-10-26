@@ -1,6 +1,11 @@
 # Native descendant ownership proof boundary
 
-Status: affected native dispatch slice stopped pending main disposition.
+Status: original ownership/dependency conflict resolved by approved controlled revision1.
+Current native implementation preserves conservative crash ambiguity. Unattended
+execution remains blocked by the separately proposed scope-materialization
+boundary in issue #41; see scope-proposal.md.
+
+Historical original report follows (not a current stop on contained fixture execution).
 Approved contract digest: 82ad2fc0e5791995c39e56fdafeaace7021b5462a98230cae2107a68812c7842.
 
 CON-001 and REQ-009/011 require no second checkout writer while an old worker

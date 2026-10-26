@@ -4,7 +4,11 @@ use serde::{Deserialize, Serialize};
 use std::path::{Path, PathBuf};
 mod account;
 mod bridge;
+#[cfg(windows)]
+mod native;
 mod storage;
+#[cfg(windows)]
+mod worker;
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub enum Error {
@@ -260,6 +264,8 @@ pub struct DriveReport {
 pub struct Supervisor {
     root: PathBuf,
     writer: Option<std::fs::File>,
+    #[cfg(windows)]
+    quarantine: Option<(native::Owned, Option<std::fs::File>)>,
 }
 impl Supervisor {
     /// Open durable state without claiming the checkout writer.
@@ -278,52 +284,32 @@ impl Supervisor {
         account::plan(executable, model)
     }
     pub fn drive_once(&mut self, runtime: &RuntimeConfig) -> Result<DriveReport, Error> {
-        self.plan_worker(&runtime.codex_executable, &runtime.model)?;
-        if !(1..=3600000).contains(&runtime.worker_deadline_ms) {
+        #[cfg(windows)]
+        {
+            worker::drive(self, runtime)
+        }
+        #[cfg(not(windows))]
+        {
+            let _ = runtime;
+            Err(Error::InvalidInput)
+        }
+    }
+
+    /// Record an owner-identified major architecture event and enqueue one read-only probe signal.
+    /// This does not accept remediation scope or launch an inference worker.
+    pub fn record_architecture_change(&mut self, event_key: &str) -> Result<Snapshot, Error> {
+        if event_key.is_empty()
+            || event_key.len() > 256
+            || !event_key
+                .bytes()
+                .all(|b| b.is_ascii_alphanumeric() || matches!(b, b'-' | b'_' | b':'))
+        {
             return Err(Error::InvalidInput);
         }
-        let _scheduler = storage::acquire(&self.root.join("scheduler.lock"))?;
-        self.read_bridge(&runtime.bridge)?;
-        let state = self.snapshot()?;
-        if state.pause == Pause::Disabled {
-            return Err(Error::InvalidTransition);
-        }
-        let quota = match account::fetch(runtime) {
-            Ok(quota) => quota,
-            Err(error) => {
-                let auth_type = if matches!(
-                    error,
-                    Error::AuthenticationRequired | Error::UnsupportedAuth
-                ) {
-                    "unavailable"
-                } else {
-                    "chatgpt"
-                };
-                match self.apply(Event::Quota {
-                    auth_type: auth_type.into(),
-                    quota: None,
-                    now: 0,
-                }) {
-                    Ok(_) | Err(Error::UnsupportedAuth | Error::MissingQuota) => {}
-                    Err(persistence_error) => return Err(persistence_error),
-                }
-                return Err(error);
-            }
-        };
-        let now = std::time::SystemTime::now()
-            .duration_since(std::time::UNIX_EPOCH)
-            .map_err(|_| Error::Io)?
-            .as_secs();
-        let state = self.apply(Event::Quota {
-            auth_type: "chatgpt".into(),
-            quota: Some(quota),
-            now,
-        })?;
-        if state.pause == Pause::Quota {
-            return Err(Error::QuotaExhausted);
-        }
-        // Native dispatch remains gated until descendant containment has an approved proof boundary.
-        Err(Error::NotImplemented)
+        storage::update(self, "architecture_probe_event", |data| {
+            storage::probe(data, format!("architecture:{event_key}"))?;
+            Ok(data.snapshot())
+        })
     }
     pub fn write_bridge(&self, path: &Path) -> Result<Vec<Intent>, Error> {
         bridge::export(self, path)

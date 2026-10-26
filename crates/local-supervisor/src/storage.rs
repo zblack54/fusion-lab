@@ -16,6 +16,15 @@ pub(crate) struct StoredTask {
     pub deadline: Option<u64>,
 }
 #[derive(Clone, Serialize, Deserialize)]
+pub(crate) struct NativeRecord {
+    pub owner: String,
+    pub task: u64,
+    pub generation: u64,
+    pub pid: Option<u32>,
+    pub model: String,
+    pub reasoning: String,
+}
+#[derive(Clone, Serialize, Deserialize)]
 pub(crate) struct Data {
     #[serde(skip)]
     pub tasks: BTreeMap<u64, StoredTask>,
@@ -36,6 +45,16 @@ pub(crate) struct Data {
     pub acknowledgements: BTreeMap<String, Ack>,
     pub launches: u32,
     pub checkpoints: BTreeMap<u64, String>,
+    #[serde(default)]
+    pub native_active: Option<NativeRecord>,
+    #[serde(default)]
+    pub cleanup_owner: Option<String>,
+    #[serde(default)]
+    pub cancel_requested: BTreeSet<u64>,
+    #[serde(default)]
+    pub verified_heads: BTreeSet<String>,
+    #[serde(default)]
+    pub probe_events: BTreeSet<String>,
 }
 impl Default for Data {
     fn default() -> Self {
@@ -56,6 +75,11 @@ impl Default for Data {
             acknowledgements: BTreeMap::new(),
             launches: 0,
             checkpoints: BTreeMap::new(),
+            native_active: None,
+            cleanup_owner: None,
+            cancel_requested: BTreeSet::new(),
+            verified_heads: BTreeSet::new(),
+            probe_events: BTreeSet::new(),
         }
     }
 }
@@ -145,7 +169,12 @@ pub(super) fn open(path: &Path) -> Result<Supervisor, Error> {
     fs::create_dir_all(path).map_err(|_| Error::Io)?;
     let root = fs::canonicalize(path).map_err(|_| Error::Io)?;
     connection(&root)?;
-    Ok(Supervisor { root, writer: None })
+    Ok(Supervisor {
+        root,
+        writer: None,
+        #[cfg(windows)]
+        quarantine: None,
+    })
 }
 pub(crate) fn acquire(path: &Path) -> Result<File, Error> {
     let file = OpenOptions::new()
@@ -259,6 +288,9 @@ pub(crate) fn transition(data: &mut Data, event: Event) -> Result<(), Error> {
             owner: token,
             generation,
         } => {
+            if data.native_active.is_some() {
+                return Err(Error::Busy);
+            }
             let id = owner(data, &token, generation)?;
             data.tasks.get_mut(&id).ok_or(Error::InvalidInput)?.state = State::Ready;
             data.active = None;
@@ -332,11 +364,21 @@ pub(crate) fn transition(data: &mut Data, event: Event) -> Result<(), Error> {
             }
         }
         Event::Cancel(id) => {
-            let t = data.tasks.get_mut(&id).ok_or(Error::InvalidInput)?;
-            t.state = State::Cancelled;
-            if data.active == Some(id) {
-                data.active = None;
-                data.owner = None;
+            if !data.tasks.contains_key(&id) {
+                return Err(Error::InvalidInput);
+            }
+            if data
+                .native_active
+                .as_ref()
+                .is_some_and(|record| record.task == id)
+            {
+                data.cancel_requested.insert(id);
+            } else {
+                data.tasks.get_mut(&id).ok_or(Error::InvalidInput)?.state = State::Cancelled;
+                if data.active == Some(id) {
+                    data.active = None;
+                    data.owner = None;
+                }
             }
         }
         Event::Repair {
@@ -393,6 +435,14 @@ pub(crate) fn transition(data: &mut Data, event: Event) -> Result<(), Error> {
                     effect.task != task || !matches!(effect.kind, IntentKind::Merge)
                 });
             }
+            if passed {
+                let event = format!("{task}:{head}");
+                if data.verified_heads.insert(event) && data.verified_heads.len().is_multiple_of(5)
+                {
+                    probe(data, format!("verified:{}", data.verified_heads.len()))?;
+                }
+            }
+            let t = data.tasks.get_mut(&task).ok_or(Error::InvalidInput)?;
             t.state = if passed {
                 State::Verified
             } else {
@@ -457,4 +507,35 @@ pub(super) fn apply(engine: &mut Supervisor, event: Event) -> Result<Snapshot, E
         engine.writer.take();
     }
     Ok(data.snapshot())
+}
+
+/// Internal adapters commit evidence through the same immediate transaction boundary.
+pub(crate) fn update<T>(
+    engine: &Supervisor,
+    label: &str,
+    change: impl FnOnce(&mut Data) -> Result<T, Error>,
+) -> Result<T, Error> {
+    let mut connection = connection(&engine.root)?;
+    let transaction = connection
+        .transaction_with_behavior(TransactionBehavior::Immediate)
+        .map_err(|_| Error::Io)?;
+    let mut data = load(&transaction)?;
+    let prior = data.clone();
+    let result = change(&mut data)?;
+    save(&transaction, &data, &prior, label)?;
+    transaction.commit().map_err(|_| Error::Io)?;
+    Ok(result)
+}
+
+pub(crate) fn probe(data: &mut Data, key: String) -> Result<(), Error> {
+    if data.probe_events.contains(&key) {
+        return Ok(());
+    }
+    if data.suggestions.len() >= 128 {
+        return Err(Error::Capacity);
+    }
+    let suggestion = format!("probe:{key}");
+    data.suggestions.insert(suggestion, 3);
+    data.probe_events.insert(key);
+    Ok(())
 }

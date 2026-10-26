@@ -86,14 +86,15 @@ pub(super) fn plan(executable: &Path, model: &str) -> Result<WorkerPlan, Error> 
             "--model".into(),
             model.into(),
             "--json".into(),
-            "--sandbox".into(),
-            "workspace-write".into(),
+            "--config".into(),
+            "sandbox_mode=\"workspace-write\"".into(),
         ],
         removed_environment_names: STRIPPED.iter().map(|x| (*x).into()).collect(),
     })
 }
 
 /// Apply the same credential policy to account control and inference processes.
+#[cfg(windows)]
 pub(crate) fn command(runtime: &RuntimeConfig) -> std::process::Command {
     let mut command = std::process::Command::new(&runtime.codex_executable);
     command
@@ -115,12 +116,14 @@ pub(crate) fn command(runtime: &RuntimeConfig) -> std::process::Command {
     }
     command
 }
+#[cfg(windows)]
 struct Control {
-    child: std::process::Child,
+    child: Option<crate::native::Owned>,
     input: Option<std::process::ChildStdin>,
     receiver: std::sync::mpsc::Receiver<Result<Value, Error>>,
-    readers: Vec<std::thread::JoinHandle<()>>,
+    deadline: std::time::Instant,
 }
+#[cfg(windows)]
 impl Control {
     fn request(&mut self, id: u64, method: &str, params: Value) -> Result<Value, Error> {
         use std::io::Write;
@@ -133,7 +136,7 @@ impl Control {
             .and_then(|()| input.write_all(b"\n"))
             .and_then(|()| input.flush())
             .map_err(|_| Error::Io)?;
-        let deadline = std::time::Instant::now() + std::time::Duration::from_secs(30);
+        let deadline = self.deadline;
         for _ in 0..128 {
             let remaining = deadline.saturating_duration_since(std::time::Instant::now());
             let message = self
@@ -156,56 +159,44 @@ impl Control {
     fn close(&mut self) -> Result<(), Error> {
         self.input.take();
         let until = std::time::Instant::now() + std::time::Duration::from_secs(5);
-        let mut failure = None;
-        loop {
-            match self.child.try_wait() {
-                Ok(Some(status)) => {
-                    if !status.success() {
-                        failure = Some(Error::Io)
-                    }
-                    break;
-                }
-                Ok(None) => {}
-                Err(_) => {
-                    failure = Some(Error::Io);
-                    break;
-                }
+        let child = self.child.as_mut().ok_or(Error::Io)?;
+        let status = loop {
+            if let Some(status) = child.poll()? {
+                break Some(status);
             }
             if std::time::Instant::now() >= until {
-                self.child.kill().map_err(|_| Error::Io)?;
-                self.child.wait().map_err(|_| Error::Io)?;
-                failure = Some(Error::Deadline);
-                break;
+                break None;
             }
             std::thread::sleep(std::time::Duration::from_millis(10));
-        }
-        // Drop the receiver before joining a producer that may be blocked on its bounded queue.
+        };
+        child.stop(std::time::Duration::from_secs(5))?;
         let (_, empty) = std::sync::mpsc::channel();
         let receiver = std::mem::replace(&mut self.receiver, empty);
         drop(receiver);
-        for reader in self.readers.drain(..) {
-            if reader.join().is_err() {
-                failure = Some(Error::Io)
-            }
-        }
-        match failure {
-            Some(error) => Err(error),
-            None => Ok(()),
+        child.join_readers()?;
+        if status.is_some_and(|status| status.success()) {
+            Ok(())
+        } else {
+            Err(Error::Io)
         }
     }
 }
+#[cfg(windows)]
 impl Drop for Control {
     fn drop(&mut self) {
-        if !self.readers.is_empty() {
+        if self.child.is_some() {
             let _ = self.close();
         }
     }
 }
 /// Owned stdio initialize/account/quota exchange; only typed nonsecret results escape.
-pub(crate) fn fetch(runtime: &RuntimeConfig) -> Result<Quota, Error> {
+#[cfg(windows)]
+pub(crate) fn fetch(engine: &mut Supervisor, runtime: &RuntimeConfig) -> Result<Quota, Error> {
     use std::io::{BufRead, Read, Write};
     use std::process::Stdio;
-    let mut child = command(runtime)
+    let handshake_deadline = std::time::Instant::now() + std::time::Duration::from_secs(30);
+    let mut command = command(runtime);
+    command
         .args([
             "--config",
             "forced_login_method=\"chatgpt\"",
@@ -215,12 +206,19 @@ pub(crate) fn fetch(runtime: &RuntimeConfig) -> Result<Quota, Error> {
         ])
         .stdin(Stdio::piped())
         .stdout(Stdio::piped())
-        .stderr(Stdio::piped())
-        .spawn()
-        .map_err(|_| Error::Io)?;
-    let input = child.stdin.take().ok_or(Error::Io)?;
-    let stdout = child.stdout.take().ok_or(Error::Io)?;
-    let mut stderr = child.stderr.take().ok_or(Error::Io)?;
+        .stderr(Stdio::piped());
+    let mut child = match crate::native::Owned::start(&mut command) {
+        Ok(child) => child,
+        Err(failure) => {
+            if let Some(child) = failure.retained {
+                engine.quarantine = Some((child, None));
+            }
+            return Err(failure.error);
+        }
+    };
+    let input = child.child.stdin.take().ok_or(Error::Io)?;
+    let stdout = child.child.stdout.take().ok_or(Error::Io)?;
+    let mut stderr = child.child.stderr.take().ok_or(Error::Io)?;
     let (sender, receiver) = std::sync::mpsc::sync_channel(16);
     let output_reader = std::thread::spawn(move || {
         let mut reader = std::io::BufReader::new(stdout);
@@ -250,11 +248,12 @@ pub(crate) fn fetch(runtime: &RuntimeConfig) -> Result<Quota, Error> {
             }
         }
     });
+    child.readers = vec![output_reader, error_reader];
     let mut control = Control {
-        child,
+        child: Some(child),
         input: Some(input),
         receiver,
-        readers: vec![output_reader, error_reader],
+        deadline: handshake_deadline,
     };
     let outcome = (|| {
         control.request(1,"initialize",serde_json::json!({"clientInfo":{"name":"fusion-lab-supervisor","version":env!("CARGO_PKG_VERSION")}}))?;
@@ -269,6 +268,11 @@ pub(crate) fn fetch(runtime: &RuntimeConfig) -> Result<Quota, Error> {
         parse_limits(&limits.to_string())
     })();
     let cleanup = control.close();
+    if cleanup.is_err()
+        && let Some(child) = control.child.take()
+    {
+        engine.quarantine = Some((child, None));
+    }
     match (outcome, cleanup) {
         (Err(error), _) => Err(error),
         (Ok(_), Err(error)) => Err(error),

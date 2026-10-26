@@ -1,44 +1,28 @@
-# Mutable execution evidence; no acceptance or contract revision.
-status = "implementing"
-approved_digest = "82ad2fc0e5791995c39e56fdafeaace7021b5462a98230cae2107a68812c7842"
-last_contract_validation = "VALID: 0 errors, 0 warnings"
+# Mutable implementation evidence; no contract changes or product acceptance.
+status = "implemented-unverified"
+approved_digest = "1eb471a28c9cc8c21c818202de7d6202d16ff39006a2c1bebffb3e86c0e33499"
+contract_validation = "require-lock: VALID, 0 errors, 0 warnings"
+acceptance = "NOT_ACCEPTED; scope materialization issue41 and live VER003-008 remain open"
 
 [[slice]]
 id = "TASK-001"
 status = "implemented-unverified"
-evidence = "SQLite FULL-sync transactional task/control/event persistence and native writer file lock implemented. All nine linked immutable selectors passed in the full harness run. 1024 task cap exact selector passed after changed-row optimization. Live process/crash-cut VER-004/006 remain pending."
-
+evidence = "Transactional durable tasks/control/effects and append-only events, native writer and scheduler/checkout locks, owner/generation fencing, descendant-aware reconciliation. All linked immutable selectors pass. Crash-cut/storage acceptance is separate."
 [[slice]]
 id = "TASK-002"
-status = "implementing"
-evidence = "Quota/auth wire parsers and inspectable subscription-only launch plan implemented; CONTRACT-001..003 pass. Native dispatch is not implemented pending safe descendant containment proof boundary; no fake process-tree assurance or fixture-specific path is used."
-
+status = "implemented-unverified"
+evidence = "Managed subscription account/quota protocol, single30s handshake, bounded framing, credential stripping, pinned model/low-reasoning policy, manual retained Windows Job+Child containment for every native child, cancellation/deadline cleanup, explicit recorded-session resume. Immutable selectors pass; real inference remains disabled operationally pending approved scope gate issue41."
 [[slice]]
 id = "TASK-003"
 status = "implemented-unverified"
-evidence = "Typed exact-head ACK validation, transactional intake, atomic outbox, uncertain-effect fencing and verification invalidation implemented; all ten linked selectors passed in full30/43 test run. Live GitHub bridge and failure-cut demonstration remain pending."
-
+evidence = "Durable typed intents, atomic bounded bridge, exact-head evidence/ref checks, uncertain effects fenced, stale verification invalidated. All linked selectors pass; real host GitHub integration demonstration is not yet accepted."
 [[slice]]
 id = "TASK-004"
-status = "implementing"
-evidence = "Durable control/status/bridge CLI implemented; CLI enqueue/status/disable and invalid-before-state tests pass. Continuous native cycle, worker process entry and probe triggers remain incomplete."
-
+status = "implemented-unverified"
+evidence = "Validated control/status/step/run bridge CLI, dependency ready selection, persistent quota cadence, deduplicated fifth-verified and owner major-architecture probe signals. All linked selectors pass; end-to-end read-only probe execution/triage and unattended scope binding remain acceptance gaps. No extra OS scheduler registered."
 [[check]]
-command = "cargo test --manifest-path tests/local-supervisor/Cargo.toml --locked --offline --test contracts -- --test-threads=1"
-result = "30 passed, 13 failed before subsequent parser/CLI changes; remaining failures were missing native/CLI/parser behavior. Not final product acceptance."
-
+command = "trusted verify_test_suite.py --mode implementation --baseline-digest 1eb471a28c9cc8c21c818202de7d6202d16ff39006a2c1bebffb3e86c0e33499 --offline --timeout 60"
+result = "PASS: success=true, errors=[],43pass perCFG001/CFG002 (86total),all6supplemental gates pass. Exact evidence implementation/execution.json."
 [[check]]
-command = "cargo test --manifest-path tests/local-supervisor/Cargo.toml --locked --offline --test contracts tst_contract_00 -- --test-threads=1"
-result = "4 passed, 1 failed: actual dispatch still missing."
-
-[[check]]
-command = "cargo test --manifest-path tests/local-supervisor/Cargo.toml --locked --offline --test contracts cli -- --test-threads=1"
-result = "2 passed, 1 failed: native CLI step remains missing."
-
-[[check]]
-command = "cargo clippy --manifest-path crates/local-supervisor/Cargo.toml --locked --all-targets -- -D warnings"
-result = "pass after correcting local ownership/control lint diagnostics"
-
-[[check]]
-command = "trusted verify_test_suite.py --mode implementation --baseline-digest 82ad2fc0e5791995c39e56fdafeaace7021b5462a98230cae2107a68812c7842 --offline --timeout 60"
-result = "Final checkpoint: 37 passed and 6 native-dispatch failures per CFG-001/CFG-002; all six supplemental gates pass; errors=[]; success=false accurately retained. Contract validation remains zero errors/warnings. See implementation/execution.json and conflicts.md. No native inference worker has been launched by this implementation."
+command = "cargo test --manifest-path crates/local-supervisor/Cargo.toml --locked --offline --lib native::tests -- --test-threads=1 --nocapture"
+result = "PASS: three real native ownership demonstrations plus three explicitly labelled child fixture entrypoints;6testentries total. A first immediate socket-close assertion failed after membership0; bounded endpoint-close observation corrected the supplemental demo, with no locked test changes."

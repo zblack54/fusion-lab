@@ -1,0 +1,41 @@
+name: Local supervisor contract
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  supervisor:
+    runs-on: windows-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        toolchain: ["1.99.0", stable]
+    env:
+      RUSTUP_TOOLCHAIN: ${{ matrix.toolchain }}
+      RUSTDOCFLAGS: -D warnings
+      GIT_CONFIG_COUNT: "1"
+      GIT_CONFIG_KEY_0: core.autocrlf
+      GIT_CONFIG_VALUE_0: "false"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: rustup toolchain install ${{ matrix.toolchain }} --profile minimal --component rustfmt --component clippy
+      - run: rustc --version --verbose
+      - run: cargo fmt --manifest-path crates/local-supervisor/Cargo.toml -- --check
+      - run: cargo check --manifest-path crates/local-supervisor/Cargo.toml --locked --all-targets
+      - run: cargo clippy --manifest-path crates/local-supervisor/Cargo.toml --locked --all-targets -- -D warnings
+      - run: cargo test --manifest-path crates/local-supervisor/Cargo.toml --locked -- --test-threads=1
+      - run: cargo test --manifest-path crates/local-supervisor/Cargo.toml --locked --doc
+      - run: cargo doc --manifest-path crates/local-supervisor/Cargo.toml --locked --no-deps
+      - run: cargo clippy --manifest-path tests/local-supervisor/Cargo.toml --locked --all-targets -- -D warnings
+      - run: cargo test --manifest-path tests/local-supervisor/Cargo.toml --locked -- --test-threads=1
