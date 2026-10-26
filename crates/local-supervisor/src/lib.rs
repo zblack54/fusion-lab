@@ -1,8 +1,12 @@
-//! Replaceable diagnostic compile seam for SPEC-SUPERVISOR; no supervisor is implemented.
+//! Durable, fenced local orchestration with subscription-only worker boundaries.
 #![forbid(unsafe_code)]
+use serde::{Deserialize, Serialize};
 use std::path::{Path, PathBuf};
+mod account;
+mod bridge;
+mod storage;
 
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub enum Error {
     NotImplemented,
     InvalidInput,
@@ -26,7 +30,8 @@ pub enum Error {
     MalformedProtocol,
     Io,
 }
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
 pub enum State {
     Ready,
     Running,
@@ -37,7 +42,8 @@ pub enum State {
     Cancelled,
     Paused,
 }
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
 pub enum Pause {
     None,
     Disabled,
@@ -47,26 +53,27 @@ pub enum Pause {
     AwaitingHost,
     RepairExhausted,
 }
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
 pub enum Cadence {
     FiveHour,
     WeeklyLatched,
 }
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Task {
     pub id: u64,
     pub issue: u64,
     pub dependencies: Vec<u64>,
     pub scope_digest: String,
 }
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Row {
     pub id: u64,
     pub state: State,
     pub attempts: u32,
     pub head: Option<String>,
 }
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Snapshot {
     pub tasks: Vec<Row>,
     pub active: Option<u64>,
@@ -78,32 +85,33 @@ pub struct Snapshot {
     pub pending_intents: Vec<Intent>,
     pub worker_launches: u32,
 }
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Window {
     pub used_percent: u32,
     pub minutes: u32,
     pub resets_at: u64,
 }
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Quota {
     pub primary: Option<Window>,
     pub secondary: Option<Window>,
 }
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
 pub enum IntentKind {
     CreatePr,
     RequestReview,
     Merge,
     UpdateIssue,
 }
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Intent {
     pub id: String,
     pub task: u64,
     pub kind: IntentKind,
     pub expected_head: String,
 }
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Ack {
     pub id: String,
     pub expected_head: String,
@@ -112,7 +120,8 @@ pub struct Ack {
     pub outcome: AckOutcome,
     pub evidence: Option<HostEvidence>,
 }
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(tag = "kind", rename_all = "snake_case")]
 pub enum HostEvidence {
     Pr {
         head: String,
@@ -138,19 +147,20 @@ pub enum HostEvidence {
         completion_ref: String,
     },
 }
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub enum DescendantStatus {
     KnownStopped,
     Unknown,
     Alive,
 }
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
 pub enum AckOutcome {
     Applied,
     NotApplied,
     Uncertain,
 }
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub enum Event {
     Submit(Task),
     Claim {
@@ -215,21 +225,21 @@ pub enum Event {
         head: String,
     },
 }
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct WorkerPlan {
     pub executable: PathBuf,
     pub argv: Vec<String>,
     pub removed_environment_names: Vec<String>,
     pub model: String,
 }
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct WorkerOutcome {
     pub exit_code: i32,
     pub terminal: String,
     pub launches: u32,
     pub descendants_confirmed_stopped: bool,
 }
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct RuntimeConfig {
     pub codex_executable: PathBuf,
     pub checkout: PathBuf,
@@ -238,7 +248,7 @@ pub struct RuntimeConfig {
     pub environment: Vec<(String, String)>,
     pub worker_deadline_ms: u64,
 }
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct DriveReport {
     pub task: Option<u64>,
     pub terminal: String,
@@ -248,37 +258,83 @@ pub struct DriveReport {
     pub exit_code: Option<i32>,
 }
 pub struct Supervisor {
-    _state_root: PathBuf,
+    root: PathBuf,
+    writer: Option<std::fs::File>,
 }
 impl Supervisor {
-    /// Diagnostic construction only; the compile seam creates no state or effects.
+    /// Open durable state without claiming the checkout writer.
     pub fn open(path: &Path) -> Result<Self, Error> {
-        Ok(Self {
-            _state_root: path.to_path_buf(),
-        })
+        storage::open(path)
     }
-    pub fn apply(&mut self, _: Event) -> Result<Snapshot, Error> {
-        Err(Error::NotImplemented)
+    /// Apply one validated durable domain command.
+    pub fn apply(&mut self, event: Event) -> Result<Snapshot, Error> {
+        storage::apply(self, event)
     }
+    /// Observe only committed state.
     pub fn snapshot(&self) -> Result<Snapshot, Error> {
+        storage::snapshot(self)
+    }
+    pub fn plan_worker(&self, executable: &Path, model: &str) -> Result<WorkerPlan, Error> {
+        account::plan(executable, model)
+    }
+    pub fn drive_once(&mut self, runtime: &RuntimeConfig) -> Result<DriveReport, Error> {
+        self.plan_worker(&runtime.codex_executable, &runtime.model)?;
+        if !(1..=3600000).contains(&runtime.worker_deadline_ms) {
+            return Err(Error::InvalidInput);
+        }
+        let _scheduler = storage::acquire(&self.root.join("scheduler.lock"))?;
+        self.read_bridge(&runtime.bridge)?;
+        let state = self.snapshot()?;
+        if state.pause == Pause::Disabled {
+            return Err(Error::InvalidTransition);
+        }
+        let quota = match account::fetch(runtime) {
+            Ok(quota) => quota,
+            Err(error) => {
+                let auth_type = if matches!(
+                    error,
+                    Error::AuthenticationRequired | Error::UnsupportedAuth
+                ) {
+                    "unavailable"
+                } else {
+                    "chatgpt"
+                };
+                match self.apply(Event::Quota {
+                    auth_type: auth_type.into(),
+                    quota: None,
+                    now: 0,
+                }) {
+                    Ok(_) | Err(Error::UnsupportedAuth | Error::MissingQuota) => {}
+                    Err(persistence_error) => return Err(persistence_error),
+                }
+                return Err(error);
+            }
+        };
+        let now = std::time::SystemTime::now()
+            .duration_since(std::time::UNIX_EPOCH)
+            .map_err(|_| Error::Io)?
+            .as_secs();
+        let state = self.apply(Event::Quota {
+            auth_type: "chatgpt".into(),
+            quota: Some(quota),
+            now,
+        })?;
+        if state.pause == Pause::Quota {
+            return Err(Error::QuotaExhausted);
+        }
+        // Native dispatch remains gated until descendant containment has an approved proof boundary.
         Err(Error::NotImplemented)
     }
-    pub fn plan_worker(&self, _: &Path, _: &str) -> Result<WorkerPlan, Error> {
-        Err(Error::NotImplemented)
+    pub fn write_bridge(&self, path: &Path) -> Result<Vec<Intent>, Error> {
+        bridge::export(self, path)
     }
-    pub fn drive_once(&mut self, _: &RuntimeConfig) -> Result<DriveReport, Error> {
-        Err(Error::NotImplemented)
-    }
-    pub fn write_bridge(&self, _: &Path) -> Result<Vec<Intent>, Error> {
-        Err(Error::NotImplemented)
-    }
-    pub fn read_bridge(&mut self, _: &Path) -> Result<Snapshot, Error> {
-        Err(Error::NotImplemented)
+    pub fn read_bridge(&mut self, path: &Path) -> Result<Snapshot, Error> {
+        bridge::import(self, path)
     }
 }
-pub fn parse_quota(_: &str) -> Result<Quota, Error> {
-    Err(Error::NotImplemented)
+pub fn parse_quota(text: &str) -> Result<Quota, Error> {
+    account::parse_limits(text)
 }
-pub fn parse_account_type(_: &str) -> Result<String, Error> {
-    Err(Error::NotImplemented)
+pub fn parse_account_type(text: &str) -> Result<String, Error> {
+    account::parse_account(text)
 }

@@ -1,1 +1,44 @@
-# Mutable execution status only; never redefine the locked contract here.
+# Mutable execution evidence; no acceptance or contract revision.
+status = "implementing"
+approved_digest = "82ad2fc0e5791995c39e56fdafeaace7021b5462a98230cae2107a68812c7842"
+last_contract_validation = "VALID: 0 errors, 0 warnings"
+
+[[slice]]
+id = "TASK-001"
+status = "implemented-unverified"
+evidence = "SQLite FULL-sync transactional task/control/event persistence and native writer file lock implemented. All nine linked immutable selectors passed in the full harness run. 1024 task cap exact selector passed after changed-row optimization. Live process/crash-cut VER-004/006 remain pending."
+
+[[slice]]
+id = "TASK-002"
+status = "implementing"
+evidence = "Quota/auth wire parsers and inspectable subscription-only launch plan implemented; CONTRACT-001..003 pass. Native dispatch is not implemented pending safe descendant containment proof boundary; no fake process-tree assurance or fixture-specific path is used."
+
+[[slice]]
+id = "TASK-003"
+status = "implemented-unverified"
+evidence = "Typed exact-head ACK validation, transactional intake, atomic outbox, uncertain-effect fencing and verification invalidation implemented; all ten linked selectors passed in full30/43 test run. Live GitHub bridge and failure-cut demonstration remain pending."
+
+[[slice]]
+id = "TASK-004"
+status = "implementing"
+evidence = "Durable control/status/bridge CLI implemented; CLI enqueue/status/disable and invalid-before-state tests pass. Continuous native cycle, worker process entry and probe triggers remain incomplete."
+
+[[check]]
+command = "cargo test --manifest-path tests/local-supervisor/Cargo.toml --locked --offline --test contracts -- --test-threads=1"
+result = "30 passed, 13 failed before subsequent parser/CLI changes; remaining failures were missing native/CLI/parser behavior. Not final product acceptance."
+
+[[check]]
+command = "cargo test --manifest-path tests/local-supervisor/Cargo.toml --locked --offline --test contracts tst_contract_00 -- --test-threads=1"
+result = "4 passed, 1 failed: actual dispatch still missing."
+
+[[check]]
+command = "cargo test --manifest-path tests/local-supervisor/Cargo.toml --locked --offline --test contracts cli -- --test-threads=1"
+result = "2 passed, 1 failed: native CLI step remains missing."
+
+[[check]]
+command = "cargo clippy --manifest-path crates/local-supervisor/Cargo.toml --locked --all-targets -- -D warnings"
+result = "pass after correcting local ownership/control lint diagnostics"
+
+[[check]]
+command = "trusted verify_test_suite.py --mode implementation --baseline-digest 82ad2fc0e5791995c39e56fdafeaace7021b5462a98230cae2107a68812c7842 --offline --timeout 60"
+result = "Final checkpoint: 37 passed and 6 native-dispatch failures per CFG-001/CFG-002; all six supplemental gates pass; errors=[]; success=false accurately retained. Contract validation remains zero errors/warnings. See implementation/execution.json and conflicts.md. No native inference worker has been launched by this implementation."
