@@ -42,7 +42,7 @@ fn arguments() -> Result<Args, ()> {
     let allowed = match command.as_str() {
         "enqueue" => vec!["--task", "--issue", "--scope", "--depends"],
         "cancel" => vec!["--task"],
-        "step" | "run" => vec!["--codex", "--model", "--child-env"],
+        "step" | "run" => vec!["--codex", "--model", "--child-env", "--checkout"],
         _ => vec![],
     };
     if values.keys().any(|k| !allowed.contains(&k.as_str())) {
@@ -135,8 +135,14 @@ fn execute(args: Args) -> Result<serde_json::Value, Error> {
                 .unwrap_or_default();
             let runtime = RuntimeConfig {
                 codex_executable: executable,
-                checkout: args.root.clone(),
-                bridge: args.root.join("bridge"),
+                checkout: args
+                    .values
+                    .get("--checkout")
+                    .map(PathBuf::from)
+                    .unwrap_or_else(|| args.root.clone()),
+                bridge: std::fs::canonicalize(&args.root)
+                    .map_err(|_| Error::Io)?
+                    .join("bridge"),
                 model,
                 environment,
                 worker_deadline_ms: 1800000,

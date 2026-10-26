@@ -223,12 +223,22 @@ mod tests {
                 now: 1,
             })
             .unwrap();
+        // Native recovery still validates scope before inspecting ownership.
+        use sha2::{Digest, Sha256};
+        let approved=serde_json::to_vec(&serde_json::json!({"schema_version":1,"task_id":1,"issue":4,"canonical_checkout":fs::canonicalize(&path).unwrap(),"mode":"read_only","instructions":"Controlled native containment crash demonstration only","non_goals":[],"verification":[]})).unwrap();
+        let digest = format!("{:x}", Sha256::digest(&approved));
+        fs::create_dir_all(state.join("approved-scopes")).unwrap();
+        fs::write(
+            state.join("approved-scopes").join(format!("{digest}.json")),
+            approved,
+        )
+        .unwrap();
         engine
             .apply(Event::Submit(Task {
                 id: 1,
                 issue: 4,
                 dependencies: vec![],
-                scope_digest: "abc".into(),
+                scope_digest: digest,
             }))
             .unwrap();
         engine

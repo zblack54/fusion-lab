@@ -256,8 +256,14 @@ pub(super) fn drive(
     if engine.quarantine.is_some() {
         return Err(Error::AmbiguousSurvivor);
     }
+    let before = storage::load(&storage::connection(&engine.root)?)?;
+    if before.pause == Pause::EvidenceMismatch {
+        return Err(Error::EvidenceMismatch);
+    }
+    crate::scope::validate_relevant(engine, runtime, &before)?;
     engine.read_bridge(&runtime.bridge)?;
     let data = storage::load(&storage::connection(&engine.root)?)?;
+    crate::scope::validate_relevant(engine, runtime, &data)?;
     if !data.enabled {
         return report(engine, None, "disabled", None, None);
     }
@@ -282,6 +288,21 @@ pub(super) fn drive(
     }) {
         return report(engine, None, "no_ready_scope", None, None);
     }
+    let selected = data
+        .tasks
+        .values()
+        .find(|task| {
+            task.state == State::Ready
+                && task
+                    .task
+                    .dependencies
+                    .iter()
+                    .all(|id| data.tasks[id].state == State::Done)
+        })
+        .ok_or(Error::InvalidTransition)?
+        .task
+        .clone();
+    let approved = crate::scope::load(engine, runtime, &selected)?;
     let (checkout_guard, marker) = claim_checkout(engine, runtime)?;
     let owner = token()?;
     write_marker(engine, &marker, &owner)?;
@@ -345,7 +366,11 @@ pub(super) fn drive(
     let id = claimed.active.ok_or(Error::InvalidTransition)?;
     let data = storage::load(&storage::connection(&engine.root)?)?;
     let task = data.tasks[&id].task.clone();
-    storage::update(engine, "native_attempt_reserved", |data| {
+    if task != selected {
+        return Err(Error::EvidenceMismatch);
+    }
+    let prompt = approved.prompt(&task, &initial_head)?;
+    storage::update(engine, &json!({"event":"native_attempt_reserved","task":id,"initial_head":initial_head,"scope_digest":task.scope_digest,"mode":if approved.read_only {"read_only"} else {"workspace_write"}}).to_string(), |data| {
         data.native_active = Some(storage::NativeRecord {
             owner: owner.clone(),
             task: id,
@@ -368,7 +393,19 @@ pub(super) fn drive(
         arguments.insert(1, "resume".into());
         arguments.insert(2, checkpoint.clone());
     }
+    for arg in &mut arguments {
+        if arg == "sandbox_mode=\"workspace-write\"" && approved.read_only {
+            *arg = "sandbox_mode=\"read-only\"".into();
+        }
+    }
     command.args(&arguments);
+    for setting in [
+        "sandbox_workspace_write.writable_roots=[]",
+        "sandbox_workspace_write.exclude_tmpdir_env_var=true",
+        "sandbox_workspace_write.exclude_slash_tmp=true",
+    ] {
+        command.args(["--config", setting]);
+    }
     command
         .args([
             "--config",
@@ -378,7 +415,7 @@ pub(super) fn drive(
         .arg(&schema)
         .arg("--output-last-message")
         .arg(&final_path);
-    let prompt=json!({"task_id":id,"issue":task.issue,"scope_digest":task.scope_digest,"expected_head":initial_head,"instructions":"Implement only the approved issue scope. Read AGENTS.md and approved design before edits. Keep locked test contracts unchanged. Verify changes, commit locally, and return the requested JSON with the actual Git head and current session checkpoint. Do not use paid APIs, API-key auth, deployment, live trading, or host GitHub writes. Report contract conflicts rather than weakening tests."}).to_string();
+
     command
         .stdin(Stdio::piped())
         .stdout(Stdio::piped())
@@ -465,6 +502,33 @@ pub(super) fn drive(
         let mut events = event_receiver.recv().map_err(|_| Error::Io)?;
         events.malformed |= pipe_failed.load(std::sync::atomic::Ordering::SeqCst);
         storage::update(engine,&json!({"event":"native_stream_metadata","task":id,"stdout_bytes":events.bytes,"truncated":events.bytes>16*1024*1024,"stream_failed":events.malformed}).to_string(),|_|Ok(()))?;
+        let code = status.as_ref().and_then(|status| status.code());
+        let readonly_actual = if approved.read_only {
+            Some(git_head(engine, runtime)?)
+        } else {
+            None
+        };
+        if let Some(actual) = readonly_actual.as_ref()
+            && actual != &initial_head
+        {
+            storage::update(engine, &json!({"event":"read_only_mutation_rejected","task":id,"initial_head":initial_head,"changed_head":actual,"session":events.session,"exit_code":code,"job_members":0}).to_string(), |data| {
+                data.cleanup_owner=Some(owner.clone());
+                data.native_active=None;
+                data.active=None;
+                data.owner=None;
+                data.cancel_requested.remove(&id);
+                if let Some(session)=events.session.clone(){data.checkpoints.insert(id,session);}
+                let task=data.tasks.get_mut(&id).ok_or(Error::InvalidInput)?;
+                task.state=State::Paused;
+                task.head=Some(actual.clone());
+                data.pause=Pause::EvidenceMismatch;
+                data.evidence_task=Some(id);
+                Ok(())
+            })?;
+            clear_marker(&marker)?;
+            engine.writer.take();
+            return Err(Error::EvidenceMismatch);
+        }
         if let Some(error) = interrupted {
             finished(
                 engine,
@@ -527,7 +591,10 @@ pub(super) fn drive(
         if result.task_id != id || result.status != "implemented" || result.checkpoint.is_empty() {
             return Err(Error::MalformedProtocol);
         }
-        let actual = git_head(engine, runtime)?;
+        let actual = match readonly_actual {
+            Some(head) => head,
+            None => git_head(engine, runtime)?,
+        };
         if result.head != actual {
             return Err(Error::EvidenceMismatch);
         }

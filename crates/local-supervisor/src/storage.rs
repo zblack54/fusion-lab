@@ -50,6 +50,8 @@ pub(crate) struct Data {
     #[serde(default)]
     pub cleanup_owner: Option<String>,
     #[serde(default)]
+    pub evidence_task: Option<u64>,
+    #[serde(default)]
     pub cancel_requested: BTreeSet<u64>,
     #[serde(default)]
     pub verified_heads: BTreeSet<String>,
@@ -77,6 +79,7 @@ impl Default for Data {
             checkpoints: BTreeMap::new(),
             native_active: None,
             cleanup_owner: None,
+            evidence_task: None,
             cancel_requested: BTreeSet::new(),
             verified_heads: BTreeSet::new(),
             probe_events: BTreeSet::new(),
@@ -230,6 +233,14 @@ fn submit(data: &mut Data, task: Task) -> Result<(), Error> {
     Ok(())
 }
 pub(crate) fn transition(data: &mut Data, event: Event) -> Result<(), Error> {
+    if data.pause == Pause::EvidenceMismatch
+        && !matches!(
+            &event,
+            Event::Cancel(_) | Event::Submit(_) | Event::Suggest { .. }
+        )
+    {
+        return Err(Error::EvidenceMismatch);
+    }
     match event {
         Event::Submit(task) => submit(data, task)?,
         Event::Claim { owner, now: _ } => {
@@ -374,7 +385,13 @@ pub(crate) fn transition(data: &mut Data, event: Event) -> Result<(), Error> {
             {
                 data.cancel_requested.insert(id);
             } else {
+                let rejected =
+                    data.pause == Pause::EvidenceMismatch && data.evidence_task == Some(id);
                 data.tasks.get_mut(&id).ok_or(Error::InvalidInput)?.state = State::Cancelled;
+                if rejected {
+                    data.evidence_task = None;
+                    data.pause = Pause::None;
+                }
                 if data.active == Some(id) {
                     data.active = None;
                     data.owner = None;

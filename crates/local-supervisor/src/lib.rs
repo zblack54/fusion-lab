@@ -6,6 +6,8 @@ mod account;
 mod bridge;
 #[cfg(windows)]
 mod native;
+#[cfg(windows)]
+mod scope;
 mod storage;
 #[cfg(windows)]
 mod worker;

@@ -1,28 +1,37 @@
-# Mutable implementation evidence; no contract changes or product acceptance.
+# Mutable implementation evidence, not product acceptance.
 status = "implemented-unverified"
-approved_digest = "1eb471a28c9cc8c21c818202de7d6202d16ff39006a2c1bebffb3e86c0e33499"
-contract_validation = "require-lock: VALID, 0 errors, 0 warnings"
-acceptance = "NOT_ACCEPTED; scope materialization issue41 and live VER003-008 remain open"
+approved_digest = "99944ec04e65655e9c5fcb1b70a59639aa9f9c85c36147a47c46c93581a92444"
+contract_validation = "require-lock VALID, zero errors and warnings"
+acceptance = "NOT_ACCEPTED; real VER003-009 acceptance obligations remain open"
+source_scope_sha256 = "59a9850783fdb6f6118551ef42a5263d024f230d7db411c4be87392d302ecf7f"
+source_worker_sha256 = "7340be8bfe0300f96a3f2d943786bd59596ad9d06c34a052ddf6aec7438c85c1"
 
 [[slice]]
 id = "TASK-001"
 status = "implemented-unverified"
-evidence = "Transactional durable tasks/control/effects and append-only events, native writer and scheduler/checkout locks, owner/generation fencing, descendant-aware reconciliation. All linked immutable selectors pass. Crash-cut/storage acceptance is separate."
+evidence = "Durable transactions, writer/checkout locks, owner fencing and descendant-aware reconciliation retained. Live crash/storage acceptance remains separate."
+[[slice]]
+id = "TASK-005"
+status = "implemented-unverified"
+evidence = "Universal pre-ACK/account scope gate, strict eight-field SHA256 raw-byte approval,32KiB read/64KiB encoded prompt, canonical host-control separation, CLI checkout, enforced mode/temp/extra-root config. Atomic durable read-only mutation pause preserves actual changed HEAD/session audit and prevents Enable/Tick/restart relaunch. Issues45/46 open-handle reparse and missing ancestor normalization repairs included. Actual file-symlink race probe blocked Windows1314; directory-junction swap and growth probes pass."
 [[slice]]
 id = "TASK-002"
 status = "implemented-unverified"
-evidence = "Managed subscription account/quota protocol, single30s handshake, bounded framing, credential stripping, pinned model/low-reasoning policy, manual retained Windows Job+Child containment for every native child, cancellation/deadline cleanup, explicit recorded-session resume. Immutable selectors pass; real inference remains disabled operationally pending approved scope gate issue41."
+evidence = "Managed ChatGPT account/quota,30s handshake, pinned routing, bounded native ownership/cancellation retained. Actual subscription sandbox smoke authorized after independent review, not yet launched at this checkpoint. No model/API fallback."
 [[slice]]
 id = "TASK-003"
 status = "implemented-unverified"
-evidence = "Durable typed intents, atomic bounded bridge, exact-head evidence/ref checks, uncertain effects fenced, stale verification invalidated. All linked selectors pass; real host GitHub integration demonstration is not yet accepted."
+evidence = "Typed exact-head host intents/ACK reconciliation retained; real GitHub lifecycle demonstration pending."
 [[slice]]
 id = "TASK-004"
 status = "implemented-unverified"
-evidence = "Validated control/status/step/run bridge CLI, dependency ready selection, persistent quota cadence, deduplicated fifth-verified and owner major-architecture probe signals. All linked selectors pass; end-to-end read-only probe execution/triage and unattended scope binding remain acceptance gaps. No extra OS scheduler registered."
+evidence = "Persistent CLI controls, readiness, cadence and probe signals retained; no scheduler registered, unattended acceptance pending."
 [[check]]
-command = "trusted verify_test_suite.py --mode implementation --baseline-digest 1eb471a28c9cc8c21c818202de7d6202d16ff39006a2c1bebffb3e86c0e33499 --offline --timeout 60"
-result = "PASS: success=true, errors=[],43pass perCFG001/CFG002 (86total),all6supplemental gates pass. Exact evidence implementation/execution.json."
+command = "trusted implementation runner --baseline-digest 99944ec04e65655e9c5fcb1b70a59639aa9f9c85c36147a47c46c93581a92444 --offline --timeout60"
+result = "PASS112 immutable observations,56 perCFG001/CFG002,errors[],all6 supplemental gates. Final exact-source refresh after mutable native crash fixture migration completed success=true,errors=[],112 passes and all6 checks. Exact evidence implementation/execution.json."
 [[check]]
-command = "cargo test --manifest-path crates/local-supervisor/Cargo.toml --locked --offline --lib native::tests -- --test-threads=1 --nocapture"
-result = "PASS: three real native ownership demonstrations plus three explicitly labelled child fixture entrypoints;6testentries total. A first immediate socket-close assertion failed after membership0; bounded endpoint-close observation corrected the supplemental demo, with no locked test changes."
+command = "cargo test --manifest-path crates/local-supervisor/Cargo.toml --locked --lib"
+result = "PASS10 entries:3 child fixture entrypoints,3 real containment demonstrations,4 scope path/open/growth regressions. Native crash fixture now materializes real approved read_only scope; containment assertions unchanged."
+[[historical]]
+approved_digest = "1eb471a28c9cc8c21c818202de7d6202d16ff39006a2c1bebffb3e86c0e33499"
+result = "Prior revision43x2 and6gates passed before scope gate; superseded and not current acceptance. Earlier new file-symlink probe failed1314; no privilege escalation or skipped locked assertion."

@@ -75,3 +75,8 @@ parent exits is the observation that a simple try_wait-based cleanup would miss.
 Then inspect the crash demo: why does a newly opened supervisor still pause even
 though the test externally observed the old tree terminate? It cannot reopen the
 old unnamed job to independently establish that fact from persisted state.
+
+
+## Revision2 scope checkpoint (NOT_ACCEPTED)
+
+Source scope59a9850783fdb6f6118551ef42a5263d024f230d7db411c4be87392d302ecf7f and worker7340be8bfe0300f96a3f2d943786bd59596ad9d06c34a052ddf6aec7438c85c1. Issue45 opened-handle FILE_FLAG_OPEN_REPARSE_POINT check rejects a regular-file-to-directory-junction swap. Actual file-symlink swap could not be created: Windows1314 required privilege absent; this remains an acceptance gap, not a claimed execution. Issue46 native junction ancestor is canonicalized before ParentDir; missing suffix ParentDir, inside-checkout overlap and existing non-directory rejection pass without creating control directories. File grows from2bytes to65538bytes after open metadata: bounded32769-byte read returns Capacity. Four production regressions pass; all10 production unit entries pass. The older crash demo first failed InvalidInput because its toy scopeabc correctly failed the new universal gate; migrated only that mutable production fixture to SHA-bound approved read_only content and retained every containment assertion. No immutable harness change. Real sandbox write-denial, actual authenticated subscription smoke, host GitHub integration, remaining VER003-009 acceptance pending.
