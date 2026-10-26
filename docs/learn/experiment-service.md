@@ -1,6 +1,6 @@
 # Experiment service: ownership before concurrency
 
-Status: verified local service in [PR #32](https://github.com/zblack54/fusion-lab/pull/32), awaiting the final proof commit's checks and merge. [Conformance decision](../design-docs/experiment-service/implementation/acceptance.md).
+Status: verified local service, merged in [PR #32](https://github.com/zblack54/fusion-lab/pull/32). [Conformance decision](../design-docs/experiment-service/implementation/acceptance.md).
 
 ## What changed and why
 
@@ -10,7 +10,7 @@ A separate process keeps the complete numerical sample vector out of the service
 
 ## Follow the owners
 
-`crates/experiment-service/src/server.rs` owns admission, worker completion, retention and artifact leases. `src/transport.rs` owns bounded connections and HTTP deadlines. `src/main.rs` supplies local controls and explicit shutdown. The [crate guide](https://github.com/zblack54/fusion-lab/blob/feature/experiment-service/crates/experiment-service/README.md) documents requests, artifacts and failure recovery.
+`crates/experiment-service/src/server.rs` owns admission, worker completion, retention and artifact leases. `src/transport.rs` owns bounded connections and HTTP deadlines. `src/main.rs` supplies local controls and explicit shutdown. The [crate guide](https://github.com/zblack54/fusion-lab/blob/main/crates/experiment-service/README.md) documents requests, artifacts and failure recovery.
 
 A lease guard owns a retained artifact from acquisition through file close. Canceling a request cannot abandon a lease count. An atomic sibling claim owns the artifact root even while the service is idle; checking an empty directory alone could not exclude a second instance.
 
