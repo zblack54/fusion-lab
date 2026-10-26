@@ -1,0 +1,67 @@
+schema_version = 3
+id = "SPEC-SUPERVISOR"
+title = "Local Windows subscription orchestration supervisor"
+feature_slug = "local-supervisor"
+target_crate = "local-supervisor"
+target_revision = "b274c6f6deb3e86a9fdfbd31b8b92ec59396b5e8"
+status = "approved"
+ai_ready = true
+[target]
+edition = "2024"
+rust_version = "1.99"
+resolver = "3"
+supported_targets = ["host"]
+feature_sets = ["default"]
+toolchains = ["1.99.0", "stable"]
+[[target.validation]]
+id = "CFG-001"
+target = "host"
+feature_set = "default"
+toolchain = "1.99.0"
+[[target.validation]]
+id = "CFG-002"
+target = "host"
+feature_set = "default"
+toolchain = "stable"
+[ownership]
+repo_root = "../../.."
+test_suite_root = "../../../tests/local-supervisor"
+external_test_inputs = []
+production_roots = ["../../../crates/local-supervisor"]
+test_owned = ["spec.toml", "intent", "requirements", "structure", "constraints", "tests", "test-suite", "decisions", "traceability.toml", "implementation-brief.md", "implementation-plan.toml", "verification", "open-questions.toml", "validation/waivers.toml"]
+implementation_roots = ["../../../crates/local-supervisor"]
+mutable_seams = ["../../../crates/local-supervisor/src/lib.rs", "../../../crates/local-supervisor/src/main.rs"]
+[[phase]]
+id = "P1"
+name = "Intent"
+status = "complete"
+
+[[phase]]
+id = "P2"
+name = "Requirements"
+status = "complete"
+
+[[phase]]
+id = "P3"
+name = "Structure"
+status = "complete"
+
+[[phase]]
+id = "P4"
+name = "Invariants and Constraints"
+status = "complete"
+
+[[phase]]
+id = "P5"
+name = "Tests"
+status = "complete"
+
+[[phase]]
+id = "P6"
+name = "Decisions"
+status = "complete"
+
+[[phase]]
+id = "P7"
+name = "Validation"
+status = "complete"

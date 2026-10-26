@@ -1,0 +1,76 @@
+[[acceptance]]
+id = "ACC-001"
+title = "Dependencies continue work"
+actors = ["owner", "host chat", "local supervisor"]
+given = ["Given two approved tasks with dependency 2 on 1"]
+when = "an enabled supervisor completes and merges task 1"
+then = ["task 2 becomes the next active attempt"]
+requirement_ids = ["REQ-001"]
+test_ids = ["TST-ACC-001"]
+status = "active"
+
+[[acceptance]]
+id = "ACC-007"
+title = "Native dispatch and host bridge progression"
+actors = ["owner", "host chat", "local supervisor"]
+given = ["Two approved dependent tasks and a controlled external Codex process"]
+when = "The native cycle dispatches one worker and receives exact-head host ACK files"
+then = ["The actual worker configuration is observed and the next dependent task launches once"]
+requirement_ids = ["REQ-035"]
+test_ids = ["TST-ACC-007", "TST-ACC-008"]
+status = "active"
+
+[[acceptance]]
+id = "ACC-002"
+title = "Restart reconciles work"
+actors = ["owner", "host chat", "local supervisor"]
+given = ["Given a checkpointed unfinished attempt and confirmed dead worker"]
+when = "the application restarts"
+then = ["checkpoint evidence survives and one task is requeued"]
+requirement_ids = ["REQ-002"]
+test_ids = ["TST-ACC-002"]
+status = "active"
+
+[[acceptance]]
+id = "ACC-003"
+title = "Quota preserves recovery"
+actors = ["owner", "host chat", "local supervisor"]
+given = ["Given account usage is exhausted"]
+when = "the supervisor records the reset and later observes allowance"
+then = ["the weekly cadence latch survives allowance reset"]
+requirement_ids = ["REQ-003"]
+test_ids = ["TST-ACC-003"]
+status = "active"
+
+[[acceptance]]
+id = "ACC-004"
+title = "Human lifecycle evidence"
+actors = ["owner", "host chat", "local supervisor"]
+given = ["Given verified changes at a recorded head"]
+when = "a matching merge ACK arrives"
+then = ["the task becomes done only after matching evidence"]
+requirement_ids = ["REQ-004"]
+test_ids = ["TST-ACC-004"]
+status = "active"
+
+[[acceptance]]
+id = "ACC-005"
+title = "Probe triage"
+actors = ["owner", "host chat", "local supervisor"]
+given = ["Given a new read-only finding"]
+when = "the host accepts its issue/scope"
+then = ["only accepted work becomes a dispatchable task"]
+requirement_ids = ["REQ-005"]
+test_ids = ["TST-ACC-005"]
+status = "active"
+
+[[acceptance]]
+id = "ACC-006"
+title = "Native CLI control"
+actors = ["owner", "host chat", "local supervisor"]
+given = ["Given the standalone Windows application and an empty state directory"]
+when = "an operator enqueues, inspects and disables work"
+then = ["state and canonical JSON survive separate CLI invocations"]
+requirement_ids = ["REQ-028"]
+test_ids = ["TST-ACC-006"]
+status = "active"

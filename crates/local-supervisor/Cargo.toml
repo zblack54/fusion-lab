@@ -1,0 +1,18 @@
+[package]
+name = "local-supervisor"
+version = "0.0.0"
+edition = "2024"
+rust-version = "1.99"
+publish = false
+
+[workspace]
+resolver = "3"
+
+[dependencies]
+rusqlite = { version = "=0.40.1", default-features = false, features = ["bundled"] }
+serde = { version = "=1.0.228", features = ["derive"] }
+serde_json = "=1.0.149"
+getrandom = { version = "=0.3.4", features = ["std"] }
+
+[lints.rust]
+unsafe_code = "forbid"
