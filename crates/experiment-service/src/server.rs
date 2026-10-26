@@ -22,7 +22,7 @@ use std::{
         atomic::{AtomicBool, AtomicU64, AtomicUsize, Ordering},
     },
     thread,
-    time::Duration,
+    time::{Duration, Instant},
 };
 use tokio::sync::{Semaphore, mpsc};
 use tokio_stream::{StreamExt, wrappers::ReceiverStream};
@@ -80,13 +80,32 @@ struct Run {
     artifact: Arc<Artifact>,
     bytes: u64,
     subscribers: Vec<mpsc::Sender<Value>>,
+    cancel_pending: bool,
+    termination_requested: bool,
+    termination_failure: Option<(io::ErrorKind, String)>,
+    retry_at: Option<Instant>,
+    retry_delay: Duration,
     #[cfg(test)]
     wait_fault: bool,
+    #[cfg(test)]
+    termination_fault: Option<Arc<TerminationFault>>,
+    #[cfg(test)]
+    panic_monitor: bool,
+}
+#[cfg(test)]
+struct TerminationFault {
+    mode: AtomicUsize,
+    attempts: AtomicUsize,
 }
 impl Run {
     fn poll_child(&mut self) -> io::Result<Option<std::process::ExitStatus>> {
         #[cfg(test)]
-        if self.wait_fault {
+        if self.wait_fault
+            || self
+                .termination_fault
+                .as_ref()
+                .is_some_and(|fault| fault.mode.load(Ordering::SeqCst) == 2)
+        {
             return Err(io::Error::other("injected worker wait failure"));
         }
         self.child
@@ -576,8 +595,8 @@ fn launch(state: &Shared, config: Configuration) -> Response {
     let stdout = child.stdout.take().unwrap();
     let stderr = child.stderr.take().unwrap();
     let pipes = [
-        thread::spawn(move || drain(stdout)),
-        thread::spawn(move || drain(stderr)),
+        pipe_reader(stdout, s.cleanup_errors.clone()),
+        pipe_reader(stderr, s.cleanup_errors.clone()),
     ];
     let run = Run {
         id: id.clone(),
@@ -596,14 +615,23 @@ fn launch(state: &Shared, config: Configuration) -> Response {
         }),
         bytes: 0,
         subscribers: Vec::new(),
+        cancel_pending: false,
+        termination_requested: false,
+        termination_failure: None,
+        retry_at: None,
+        retry_delay: Duration::from_millis(50),
         #[cfg(test)]
         wait_fault: false,
+        #[cfg(test)]
+        termination_fault: None,
+        #[cfg(test)]
+        panic_monitor: false,
     };
     let snapshot = run.snapshot();
     s.runs.push_back(run);
+    s.workers.extend(pipes);
     let shared = state.clone();
-    s.workers
-        .push(thread::spawn(move || monitor(shared, id, pipes)));
+    s.workers.push(thread::spawn(move || monitor(shared, id)));
     response(202, snapshot)
 }
 fn drain(mut pipe: impl Read) -> io::Result<Vec<u8>> {
@@ -628,76 +656,96 @@ fn directory_bytes(path: &Path) -> io::Result<u64> {
         Ok(total.saturating_add(e?.metadata()?.len()))
     })
 }
-fn monitor(state: Shared, id: String, pipes: [thread::JoinHandle<io::Result<Vec<u8>>>; 2]) {
+fn pipe_reader(
+    pipe: impl Read + Send + 'static,
+    errors: Arc<Mutex<Vec<String>>>,
+) -> thread::JoinHandle<()> {
+    thread::spawn(move || {
+        if let Err(error) = drain(pipe) {
+            record(&errors, error.to_string());
+        }
+    })
+}
+fn monitor(state: Shared, id: String) {
     loop {
         let done = {
             let mut s = locked(&state);
             let mut done = true;
+            let stopping = s.stopping;
             if let Some(run) = s.runs.iter_mut().find(|r| r.id == id)
                 && run.state == "running"
             {
-                match run.poll_child() {
-                    Ok(Some(status)) => {
-                        run.child.take();
-                        if directory_bytes(&run.artifact.path)
-                            .is_ok_and(|bytes| bytes > RESERVATION)
-                        {
-                            fail(run, "artifact_limit");
-                        } else if status.success() {
-                            match validate_artifacts(run) {
-                                Ok(samples) => {
-                                    run.samples = Some(samples);
-                                    run.state = "completed";
-                                    run.bytes =
-                                        directory_bytes(&run.artifact.path).unwrap_or(RESERVATION);
-                                    run.artifact.bytes.store(run.bytes, Ordering::SeqCst);
+                #[cfg(test)]
+                if run.panic_monitor {
+                    panic!("injected owning monitor failure");
+                }
+                if stopping || run.cancel_pending {
+                    recover_termination(run);
+                    done = run.child.is_none();
+                } else {
+                    match run.poll_child() {
+                        Ok(Some(status)) => {
+                            run.child.take();
+                            if directory_bytes(&run.artifact.path)
+                                .is_ok_and(|bytes| bytes > RESERVATION)
+                            {
+                                fail(run, "artifact_limit");
+                            } else if status.success() {
+                                match validate_artifacts(run) {
+                                    Ok(samples) => {
+                                        run.samples = Some(samples);
+                                        run.state = "completed";
+                                        run.bytes = directory_bytes(&run.artifact.path)
+                                            .unwrap_or(RESERVATION);
+                                        run.artifact.bytes.store(run.bytes, Ordering::SeqCst);
+                                    }
+                                    Err(_) => fail(run, "artifact_failed"),
                                 }
-                                Err(_) => fail(run, "artifact_failed"),
-                            }
-                        } else {
-                            fail(run, "worker_failed");
-                        }
-                        run.sequence += 1;
-                        run.publish();
-                    }
-                    Ok(None) => {
-                        let disk = directory_bytes(&run.artifact.path);
-                        if !disk.as_ref().is_ok_and(|bytes| *bytes <= RESERVATION) {
-                            if let Err(error) = terminate(run) {
-                                run.error = Some(
-                                    json!({"code":"cancellation_failed","message":"cancellation_failed"}),
-                                );
-                                record(&run.artifact.errors, error.to_string());
-                                done = false;
                             } else {
-                                fail(
-                                    run,
-                                    if disk.is_err() {
-                                        "artifact_failed"
-                                    } else {
-                                        "artifact_limit"
-                                    },
-                                );
-                                run.sequence += 1;
-                                run.publish();
+                                fail(run, "worker_failed");
                             }
-                        } else {
-                            done = false;
-                        }
-                    }
-                    Err(_) => {
-                        let changed = run
-                            .error
-                            .as_ref()
-                            .is_none_or(|error| error["code"] != "worker_wait_failed");
-                        run.error = Some(
-                            json!({"code":"worker_wait_failed","message":"worker_wait_failed"}),
-                        );
-                        if changed {
                             run.sequence += 1;
                             run.publish();
                         }
-                        done = false;
+                        Ok(None) => {
+                            let disk = directory_bytes(&run.artifact.path);
+                            if !disk.as_ref().is_ok_and(|bytes| *bytes <= RESERVATION) {
+                                if let Err(error) = terminate(run) {
+                                    run.error = Some(
+                                        json!({"code":"cancellation_failed","message":"cancellation_failed"}),
+                                    );
+                                    record(&run.artifact.errors, error.to_string());
+                                    done = false;
+                                } else {
+                                    fail(
+                                        run,
+                                        if disk.is_err() {
+                                            "artifact_failed"
+                                        } else {
+                                            "artifact_limit"
+                                        },
+                                    );
+                                    run.sequence += 1;
+                                    run.publish();
+                                }
+                            } else {
+                                done = false;
+                            }
+                        }
+                        Err(_) => {
+                            let changed = run
+                                .error
+                                .as_ref()
+                                .is_none_or(|error| error["code"] != "worker_wait_failed");
+                            run.error = Some(
+                                json!({"code":"worker_wait_failed","message":"worker_wait_failed"}),
+                            );
+                            if changed {
+                                run.sequence += 1;
+                                run.publish();
+                            }
+                            done = false;
+                        }
                     }
                 }
             }
@@ -711,16 +759,6 @@ fn monitor(state: Shared, id: String, pipes: [thread::JoinHandle<io::Result<Vec<
             break;
         }
         thread::sleep(Duration::from_millis(5));
-    }
-    for pipe in pipes {
-        match pipe.join() {
-            Ok(Ok(_)) => {}
-            Ok(Err(e)) => record(&locked(&state).cleanup_errors, e.to_string()),
-            Err(_) => record(
-                &locked(&state).cleanup_errors,
-                "worker pipe reader panicked".to_owned(),
-            ),
-        }
     }
 }
 fn validate_artifacts(run: &Run) -> io::Result<u64> {
@@ -771,7 +809,13 @@ fn fail(run: &mut Run, code: &str) {
     }
 }
 fn cancel(run: &mut Run) -> io::Result<()> {
-    terminate(run)?;
+    run.cancel_pending = true;
+    if let Err(error) = terminate(run) {
+        termination_failed(run, &error);
+        return Err(error);
+    }
+    run.cancel_pending = false;
+    run.retry_at = None;
     run.state = "cancelled";
     run.sequence += 1;
     if let Err(e) = fs::remove_dir_all(&run.artifact.path) {
@@ -784,17 +828,74 @@ fn cancel(run: &mut Run) -> io::Result<()> {
     Ok(())
 }
 fn terminate(run: &mut Run) -> io::Result<()> {
+    #[cfg(test)]
+    if let Some(fault) = &run.termination_fault {
+        let mode = fault.mode.load(Ordering::SeqCst);
+        if mode != 0 {
+            fault.attempts.fetch_add(1, Ordering::SeqCst);
+        }
+        if mode == 1 || mode == 3 {
+            if mode == 3 {
+                fault.mode.store(0, Ordering::SeqCst);
+            }
+            return Err(io::Error::other("injected termination kill failure"));
+        }
+        if mode == 2 {
+            // The real kill occurs, but neither normal poll nor this boundary
+            // may confirm reaping while the fault remains injected.
+            if !run.termination_requested
+                && let Some(child) = run.child.as_mut()
+            {
+                child.kill()?;
+                run.termination_requested = true;
+            }
+            return Err(io::Error::other("injected termination reap failure"));
+        }
+    }
     if let Some(child) = run.child.as_mut() {
         match child.try_wait()? {
             Some(_) => {}
             None => {
-                child.kill()?;
+                if !run.termination_requested {
+                    child.kill()?;
+                    run.termination_requested = true;
+                }
                 child.wait()?;
             }
         }
         run.child.take();
     }
     Ok(())
+}
+fn termination_failed(run: &mut Run, error: &io::Error) {
+    if run.termination_failure.is_none() {
+        run.termination_failure = Some((error.kind(), error.to_string()));
+        record(&run.artifact.errors, error.to_string());
+        eprintln!(
+            "Fusion Lab: waiting to recover owned child {} after cancellation failure",
+            run.id
+        );
+    }
+    let changed = run
+        .error
+        .as_ref()
+        .is_none_or(|value| value["code"] != "cancellation_failed");
+    run.error = Some(json!({"code":"cancellation_failed","message":"cancellation_failed"}));
+    if changed {
+        run.sequence += 1;
+        run.publish();
+    }
+    run.retry_at = Some(Instant::now() + run.retry_delay);
+    run.retry_delay = (run.retry_delay * 2).min(Duration::from_secs(1));
+}
+fn recover_termination(run: &mut Run) {
+    if run.child.is_some()
+        && run
+            .retry_at
+            .is_none_or(|deadline| Instant::now() >= deadline)
+    {
+        let _ = cancel(run);
+    }
 }
 fn evict(state: &mut State) -> bool {
     let Some(index) = state.runs.iter().position(|r| r.state != "running") else {
@@ -816,13 +917,66 @@ fn evict(state: &mut State) -> bool {
 pub(super) fn stop(state: &Shared) -> io::Result<()> {
     let mut s = locked(state);
     s.stopping = true;
+    let mut first = None;
     for run in &mut s.runs {
-        if run.state == "running" {
-            cancel(run)?;
+        if run.state == "running"
+            && let Err(error) = cancel(run)
+        {
+            first.get_or_insert(error);
         }
         run.subscribers.clear();
     }
-    Ok(())
+    match first {
+        Some(error) => Err(error),
+        None => Ok(()),
+    }
+}
+/// The caller retains Service and its root fence while exceptional OS failures persist.
+/// This is recovery of the same Child, never another numerical job or detached task.
+pub(super) fn recover_children(state: &Shared) -> io::Result<()> {
+    loop {
+        let (pending, failure) = {
+            let mut s = locked(state);
+            for run in &mut s.runs {
+                if run.child.is_some() {
+                    run.cancel_pending = true;
+                    recover_termination(run);
+                }
+            }
+            (
+                s.runs.iter().any(|r| r.child.is_some()),
+                s.runs.iter().find_map(|r| {
+                    r.termination_failure
+                        .as_ref()
+                        .map(|(kind, message)| io::Error::new(*kind, message.clone()))
+                }),
+            )
+        };
+        if !pending {
+            return match failure {
+                Some(error) => Err(error),
+                None => Ok(()),
+            };
+        }
+        thread::sleep(Duration::from_millis(50));
+    }
+}
+pub(super) fn wait_for_leases(state: &Shared) {
+    loop {
+        let pending = {
+            let s = locked(state);
+            s.runs
+                .iter()
+                .any(|r| r.artifact.leases.load(Ordering::SeqCst) > 0)
+                || s.retired
+                    .iter()
+                    .any(|a| a.leases.load(Ordering::SeqCst) > 0)
+        };
+        if !pending {
+            return;
+        }
+        thread::sleep(Duration::from_millis(50));
+    }
 }
 pub(super) fn join_workers(state: &Shared) -> io::Result<()> {
     let workers = std::mem::take(&mut locked(state).workers);

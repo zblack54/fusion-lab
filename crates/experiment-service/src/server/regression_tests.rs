@@ -330,3 +330,238 @@ fn worker_join_failure_still_observes_all_remaining_owned_threads() {
             .contains("worker monitor panicked")
     );
 }
+struct TerminationCase {
+    state: Shared,
+    fault: Arc<TerminationFault>,
+    path: PathBuf,
+    claim: PathBuf,
+    child_address: std::net::SocketAddr,
+    result: std::sync::mpsc::Receiver<io::Result<()>>,
+    joiner: Option<thread::JoinHandle<()>>,
+    early: Option<io::Result<()>>,
+}
+impl TerminationCase {
+    fn start(mode: usize, panic_monitor: bool) -> Self {
+        let path = root();
+        let mut settings = options(&path);
+        settings.worker = probe_worker();
+        let service = Service::start(settings).unwrap();
+        let configuration = json!({"seed":9001,"duration_seconds":3600,"scenario":"straight","position_sigma":0,"velocity_sigma":0,"acceleration_density":0.1,"outage":null});
+        let (status, submitted) = http(service.address(), "POST", "/v1/runs", &configuration);
+        assert_eq!(status, 202);
+        let id = submitted["id"].as_str().unwrap();
+        let marker = path.join(id).join("worker.ready");
+        let deadline = std::time::Instant::now() + Duration::from_secs(5);
+        let ready: Value = loop {
+            if let Ok(text) = fs::read_to_string(&marker)
+                && let Ok(value) = serde_json::from_str(&text)
+            {
+                break value;
+            }
+            assert!(std::time::Instant::now() < deadline);
+            thread::sleep(Duration::from_millis(5));
+        };
+        let child_address = ready["address"].as_str().unwrap().parse().unwrap();
+        let fault = Arc::new(TerminationFault {
+            mode: AtomicUsize::new(mode),
+            attempts: AtomicUsize::new(0),
+        });
+        {
+            let mut s = locked(&service.state);
+            let run = s.runs.iter_mut().find(|r| r.id == id).unwrap();
+            run.termination_fault = Some(fault.clone());
+            run.panic_monitor = panic_monitor;
+        }
+        if panic_monitor {
+            loop {
+                if locked(&service.state)
+                    .workers
+                    .iter()
+                    .any(thread::JoinHandle::is_finished)
+                {
+                    break;
+                }
+                assert!(std::time::Instant::now() < deadline);
+                thread::sleep(Duration::from_millis(5));
+            }
+        }
+        let state = service.state.clone();
+        let claim = service.claim.as_ref().unwrap().path.clone();
+        let (tx, result) = std::sync::mpsc::channel();
+        let joiner = thread::spawn(move || {
+            let _ = tx.send(service.shutdown());
+        });
+        let case = Self {
+            state,
+            fault,
+            path,
+            claim,
+            child_address,
+            result,
+            joiner: Some(joiner),
+            early: None,
+        };
+        loop {
+            if locked(&case.state).stopping && case.fault.attempts.load(Ordering::SeqCst) > 0 {
+                break;
+            }
+            assert!(std::time::Instant::now() < deadline);
+            thread::sleep(Duration::from_millis(5));
+        }
+        case
+    }
+    fn observe_pending(&mut self) -> (bool, bool, bool, Value, usize) {
+        if let Ok(result) = self.result.recv_timeout(Duration::from_millis(150)) {
+            self.early = Some(result);
+        }
+        let s = locked(&self.state);
+        let child_owned = s
+            .runs
+            .iter()
+            .any(|r| r.child.is_some() && r.state == "running");
+        let snapshot = s.runs.front().map(Run::snapshot).unwrap_or(Value::Null);
+        (
+            self.early.is_none(),
+            self.claim.exists(),
+            child_owned,
+            snapshot,
+            self.fault.attempts.load(Ordering::SeqCst),
+        )
+    }
+    fn recover(&mut self) -> (bool, io::Result<()>) {
+        self.fault.mode.store(0, Ordering::SeqCst);
+        let mut result = self
+            .early
+            .take()
+            .or_else(|| self.result.recv_timeout(Duration::from_secs(2)).ok());
+        let automatic = result.is_some();
+        // Original-red implementations may never retry. Always finish their
+        // real child and owned threads before asserting that the behavior failed.
+        {
+            let mut s = locked(&self.state);
+            for run in &mut s.runs {
+                if run.child.is_some() {
+                    let _ = cancel(run);
+                }
+            }
+        }
+        if result.is_none() {
+            result = Some(self.result.recv_timeout(Duration::from_secs(5)).unwrap());
+        }
+        self.joiner.take().unwrap().join().unwrap();
+        (automatic, result.unwrap())
+    }
+}
+impl Drop for TerminationCase {
+    fn drop(&mut self) {
+        self.fault.mode.store(0, Ordering::SeqCst);
+        {
+            let mut s = locked(&self.state);
+            for run in &mut s.runs {
+                if run.child.is_some() {
+                    let _ = cancel(run);
+                }
+            }
+        }
+        if let Some(joiner) = self.joiner.take() {
+            let _ = joiner.join();
+        }
+        let _ = fs::remove_dir_all(&self.path);
+    }
+}
+
+#[test]
+fn termination_failure_persistent_kill_recovers_without_another_shutdown_call() {
+    let mut case = TerminationCase::start(1, false);
+    let (pending, fenced, owned, snapshot, attempts) = case.observe_pending();
+    let alive = std::net::TcpStream::connect(case.child_address).is_ok();
+    let (automatic, result) = case.recover();
+    assert!(
+        pending && fenced && owned && alive,
+        "pending failure must retain the real child and root ownership"
+    );
+    assert!(
+        automatic,
+        "clearing a termination kill fault must automatically recover the same shutdown call"
+    );
+    assert_eq!(snapshot["error"]["code"], "cancellation_failed");
+    assert!(
+        attempts <= 10,
+        "persistent lifecycle errors must not busy-spin"
+    );
+    assert!(
+        result
+            .unwrap_err()
+            .to_string()
+            .contains("injected termination kill failure")
+    );
+    assert!(!case.claim.exists());
+    assert!(std::net::TcpStream::connect(case.child_address).is_err());
+}
+#[test]
+fn termination_failure_reap_confirmation_stays_owned_until_fault_clears() {
+    let mut case = TerminationCase::start(2, false);
+    let (pending, fenced, owned, snapshot, attempts) = case.observe_pending();
+    let killed = std::net::TcpStream::connect(case.child_address).is_err();
+    let (automatic, result) = case.recover();
+    assert!(
+        pending && fenced && owned && killed,
+        "kill acknowledgment is not confirmation that the owned child was reaped"
+    );
+    assert!(automatic);
+    assert_eq!(
+        snapshot["error"]["code"], "cancellation_failed",
+        "termination recovery must not revert to ordinary completion polling"
+    );
+    assert_eq!(snapshot["state"], "running");
+    assert_eq!(snapshot["samples"], Value::Null);
+    assert_eq!(snapshot["artifacts"], json!([]));
+    assert!(attempts <= 10);
+    assert!(
+        result
+            .unwrap_err()
+            .to_string()
+            .contains("injected termination reap failure")
+    );
+    assert!(!case.claim.exists());
+}
+#[test]
+fn termination_failure_once_is_preserved_after_automatic_recovery() {
+    let mut case = TerminationCase::start(3, false);
+    let (automatic, result) = case.recover();
+    assert!(
+        automatic,
+        "one rejected kill must not leave the normal-poll monitor running forever"
+    );
+    assert!(
+        result
+            .unwrap_err()
+            .to_string()
+            .contains("injected termination kill failure")
+    );
+    assert_eq!(case.fault.attempts.load(Ordering::SeqCst), 1);
+    assert!(!case.claim.exists());
+}
+
+#[test]
+fn monitor_panic_retains_child_until_shutdown_owner_recovers_it() {
+    let mut case = TerminationCase::start(1, true);
+    let (pending, fenced, owned, _, _) = case.observe_pending();
+    let (automatic, result) = case.recover();
+    assert!(
+        pending && fenced && owned,
+        "failed monitor cannot authorize premature root release or child drop"
+    );
+    assert!(
+        automatic,
+        "the shutdown owner must recover even without a live monitor"
+    );
+    assert!(
+        result
+            .unwrap_err()
+            .to_string()
+            .contains("injected termination kill failure")
+    );
+    assert!(!case.claim.exists());
+    assert!(std::net::TcpStream::connect(case.child_address).is_err());
+}

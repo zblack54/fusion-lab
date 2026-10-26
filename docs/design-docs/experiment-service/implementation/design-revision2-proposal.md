@@ -1,6 +1,6 @@
 # Issue40: exceptional shutdown ownership proposal
 
-Status: PROPOSED_FOR_ORCHESTRATOR_REVIEW; NOT_IMPLEMENTED; NO_CONTRACT_LOCK_CHANGED
+Status: TECHNICAL_INTERPRETATION_APPROVED_FOR_IMPLEMENTATION; NO_CONTRACT_LOCK_CHANGED
 
 Approved digest remains `3862f6d829e8a739580454f0edfbfb6aff696007286c51dbcfd61bd6f7529f1f`. This is an implementation/failure-policy proposal, not an approved schema revision or authorization to change tests. Issue39's separate join-all repair is implemented and evidenced separately.
 
@@ -52,3 +52,7 @@ The orchestrator reports native Windows/Linux Rust1.99/stable21approved tests pl
 ## Review decision required
 
 The orchestrator should approve or reject this exact retained-pending completion policy and its fault matrix before issue40 production edits. If approved, record authority/scope here or in the actual issue approval and implement in dependency order: test-only termination-boundary injection seam and deterministic original-red fault harness without repairing behavior; termination owner/stage model and stop/monitor recovery; final ownership barrier/error preservation; green fault regressions; full unchanged verification and exact-source conformance review. No locked artifact has been changed by this proposal.
+
+## Approval record
+
+Main orchestrator and separate reviewer accepted this as a compatible repair under REQ011 healthy-host qualification and CON004/010, with unchanged approved digest. Authority is owner delegation in AGENTS.md and explicit service/supervisor continuation. Actual issue40 approval records the exact policy and mandatory fault matrix on2026-10-26. Proposal alone is not evidence; native regressions, full gates and final independent conformance remain required.

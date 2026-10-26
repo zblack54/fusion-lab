@@ -39,6 +39,12 @@ impl Service {
         self.address
     }
     /// Stop admission, reap workers, close clients and report cleanup failures.
+    ///
+    /// If an OS termination/reaping operation keeps failing, this call remains
+    /// pending while retaining the same child and root claim. Recovery retries
+    /// are rate bounded; after ownership is completed the first failure is
+    /// returned. The healthy-host shutdown bound does not promise a deadline
+    /// for an unresponsive or persistently failing kernel operation.
     pub fn shutdown(mut self) -> io::Result<()> {
         self.finish()
     }
@@ -54,7 +60,11 @@ impl Service {
             },
             None => Ok(()),
         };
+        // Recover before blocking pipe-reader joins: a failed monitor cannot
+        // otherwise close those pipes, and its Child must never be abandoned.
+        let ownership = server::recover_children(&self.state);
         let workers = server::join_workers(&self.state);
+        server::wait_for_leases(&self.state);
         let cleanup = server::cleanup(&self.state);
         let claim = match self.claim.as_mut() {
             Some(claim) => claim.release(),
@@ -62,6 +72,7 @@ impl Service {
         };
         cancellation
             .and(serving)
+            .and(ownership)
             .and(workers)
             .and(cleanup)
             .and(claim)
