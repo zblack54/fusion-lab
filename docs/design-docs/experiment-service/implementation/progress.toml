@@ -1,6 +1,6 @@
 # Mutable execution status only; never redefine the locked contract here.
 baseline_digest = "3862f6d829e8a739580454f0edfbfb6aff696007286c51dbcfd61bd6f7529f1f"
-revision = "working tree based on b274c6f6deb3e86a9fdfbd31b8b92ec59396b5e8; no implementation commit yet"
+revision = "local working tree HEAD b274c6f... is context only; actual source hashes in windows-probe-final.json. Orchestrator reported PR32 snapshot bf856232cdc5fb49472507c1dd13d574b4bfffed; final exact-source review pending."
 contract_status = "Approved revision1 read from external approved-contracts.json and validated require-lock before resuming. All21 immutable tests and supplemental Clippy pass in trusted implementation runner. Final non-test and cross-platform acceptance remain pending."
 
 [[task]]
@@ -16,12 +16,12 @@ evidence = "Owned numerical CLI child, private CSV/report artifacts, bounded pip
 [[task]]
 id = "TASK-003"
 status = "implemented-unverified"
-evidence = "Kill/wait cancellation and shutdown, bounded32 SSE subscribers and live terminal notifications pass deterministic immutable tests, including existing-stream transition. Five-second header/write and four-second shutdown drain implemented; load demonstration remains pending."
+evidence = "Kill/wait cancellation and shutdown, bounded32 SSE subscribers and live terminal notifications pass immutable tests. Actual native60.172second389cycle subscriber/request rejection load passed; current Linux repetition and final review remain pending."
 
 [[task]]
 id = "TASK-004"
 status = "implemented-unverified"
-evidence = "Count and byte reservations, retirement leases and visible cleanup failure handling implemented; all21 contract tests pass. VER-001 exact-diff review, VER-002 load/memory, VER-003 OS/toolchain matrix and VER-004 injected failure demonstrations remain pending."
+evidence = "All21 contract tests and9 supplementary native tests pass. Native rebuilt resource/slow-reader/pipe/overflow/origin/root/permission evidence recorded. Final VER-001 review, current platform CI and Linux resource/failure evidence remain pending; modeled wait failure is explicitly partial evidence."
 
 [[check]]
 command = "cargo test --manifest-path tests/experiment-service/Cargo.toml --locked --no-run"
@@ -51,3 +51,21 @@ detail = "Native Windows stable Rust1.99.0; four supplementary ownership unit re
 command = "cargo test --manifest-path crates/experiment-service/Cargo.toml --locked"
 result = "passed"
 detail = "Four production regressions cover canceled queued file-open, failed/open handle destruction, dropped-reader cancellation cleanup, and exclusive idle-root ownership/release. Requested independent-review repairs are implemented; final broader VER001–004 remain orchestrator acceptance work."
+[[check]]
+command = "python crates/experiment-service/scripts/service_resource_probe.py --build --output docs/design-docs/experiment-service/implementation/windows-probe-final.json"
+result = "passed_with_recorded_gaps"
+detail = "Native rebuilt release: warmup+3max runs,109486080bytes aggregate sampled RSS,103378944privatecommit,60.172s/389cycle rejection load,4.9708s deferred slow-reader eviction, Origin/noisy2MiB-pipes/257MiB-overflow and real cleanup permission failure evidence. Source/binary SHA inventory and dirty HEAD distinction recorded. Linux probe pending; kernel wait failure not claimed."
+
+[[check]]
+command = "python crates/experiment-service/scripts/windows_reparse_probe.py --output docs/design-docs/experiment-service/implementation/windows-reparse-probe.json"
+result = "passed"
+detail = "A real empty Windows junction is rejected without symlink privilege elevation; target stays empty."
+
+[[check]]
+command = "cargo test --manifest-path crates/experiment-service/Cargo.toml --locked --lib"
+result = "passed"
+detail = "Current9 supplementary native tests include actual pipe-tail drain, injected monitor wait failure with a real owned child, and three independently reviewed shutdown fault regressions. Final cross-platform current-source CI remains pending."
+[[check]]
+command = "issue38: rebuilt portable resource probe with --build; trusted implementation runner; crate and root AGENTS gates"
+result = "native_windows_passed_linux_rerun_pending"
+detail = "Strict cleanup repaired by writer4s plus cleanup1s reserve; Windows actual3.974633s,60.093s/396cycle load,110047232resident bytes. All21 immutable tests,9supplementary tests, root15tests+1doctest and quality gates pass. Original Linux5.001802873failure preserved verbatim; threshold and approved digest unchanged."

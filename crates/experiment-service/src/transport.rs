@@ -109,6 +109,10 @@ async fn drain_connections(tasks: &mut JoinSet<()>, deadline: Duration) -> io::R
         None => Ok(()),
     }
 }
+// The public five-second bound includes closing the reader and deleting its
+// retired files. Reserve one second for that work instead of spending the
+// entire end-to-end budget waiting for another socket write.
+const WRITE_IDLE_BUDGET: Duration = Duration::from_secs(4);
 struct WriteDeadline {
     stream: TcpStream,
     timer: Pin<Box<Sleep>>,
@@ -117,13 +121,13 @@ impl WriteDeadline {
     fn new(stream: TcpStream) -> Self {
         Self {
             stream,
-            timer: Box::pin(tokio::time::sleep(Duration::from_secs(5))),
+            timer: Box::pin(tokio::time::sleep(WRITE_IDLE_BUDGET)),
         }
     }
     fn reset(&mut self) {
         self.timer
             .as_mut()
-            .reset(Instant::now() + Duration::from_secs(5));
+            .reset(Instant::now() + WRITE_IDLE_BUDGET);
     }
     fn stalled(&mut self, cx: &mut Context<'_>) -> Poll<io::Result<usize>> {
         if self.timer.as_mut().poll(cx).is_ready() {
