@@ -1,0 +1,39 @@
+[[task]]
+id = "TASK-001"
+title = "Typed HTTP boundary and validation"
+depends_on = []
+requirement_ids = ["REQ-002", "REQ-003", "REQ-007", "REQ-009"]
+constraint_ids = []
+test_ids = ["TST-NEG-001", "TST-BOUND-001", "TST-CONTRACT-001", "TST-STRUCT-001"]
+verification_ids = ["VER-001"]
+completion = "Assigned contracts pass and required review evidence is recorded against the implementation revision."
+
+[[task]]
+id = "TASK-002"
+title = "Worker and numerical artifacts"
+depends_on = ["TASK-001"]
+requirement_ids = ["REQ-001", "REQ-005", "REQ-010", "REQ-014"]
+constraint_ids = []
+test_ids = ["TST-ACC-001", "TST-INV-001", "TST-PROP-001", "TST-STATE-002"]
+verification_ids = ["VER-001"]
+completion = "Assigned contracts pass and required review evidence is recorded against the implementation revision."
+
+[[task]]
+id = "TASK-003"
+title = "Cancellation shutdown and bounded events"
+depends_on = ["TASK-002"]
+requirement_ids = ["REQ-004", "REQ-011", "REQ-012"]
+constraint_ids = []
+test_ids = ["TST-STATE-001", "TST-PERF-001", "TST-BEH-002", "TST-BOUND-003", "TST-STATE-003", "TST-NEG-002"]
+verification_ids = ["VER-001"]
+completion = "Assigned contracts pass and required review evidence is recorded against the implementation revision."
+
+[[task]]
+id = "TASK-004"
+title = "Retention budgets and conformance"
+depends_on = ["TASK-003"]
+requirement_ids = ["REQ-006", "REQ-008", "REQ-013"]
+constraint_ids = ["CON-001", "CON-002", "CON-003", "CON-004", "CON-005", "CON-006", "CON-007", "CON-008", "CON-009", "CON-010"]
+test_ids = ["TST-BEH-001", "TST-ANTI-001", "TST-BOUND-002", "TST-BOUND-004", "TST-ACC-002", "TST-ACC-003", "TST-ACC-004"]
+verification_ids = ["VER-001", "VER-002", "VER-003", "VER-004"]
+completion = "Assigned contracts pass and required review evidence is recorded against the implementation revision."

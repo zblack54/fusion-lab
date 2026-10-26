@@ -1,0 +1,4 @@
+# Local experiment service
+Issue #5 adds a usable loopback HTTP service around the existing deterministic offline experiment. Actors are local researchers and the future #7 dashboard. A complete run produces the existing CSV and text report. The core remains synchronous; the adapter owns scheduling, OS child lifecycle, retention and HTTP. Issue #10 measurements motivate one active job, not CPU-count concurrency.
+
+Non-goals: remote hosting, authentication, trading, model inference, persistent run history across restarts, frontend UI, per-tick observation transport (#6), and hard OS memory isolation. Admission reserves engineering budgets; it does not prove worst-case memory use. Application data is local only. Within-scope technical choices use the owner's delegated authority; independent review precedes approval.

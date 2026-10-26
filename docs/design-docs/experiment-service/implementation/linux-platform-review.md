@@ -1,0 +1,7 @@
+# Independent Linux evidence verification
+
+Exact source: `d89c809b324146e385036e0804d1a52071b3e673`; Actions run40319744745, artifact12648896951. Separate reviewer independently downloaded ZIP and checked SHA256 `e59696e580bdaffe26f88bcf27c3023ac011aa842a371c75b2686bf74918be36` against GitHub metadata. Extracted JSON SHA256 `ba56ec7669b294256b72bdd8aaf93ba6bd0202e8958ac2a8f674a1b655629373` matches the local evidence byte for byte. All18 recorded source hashes match GitHub files at that exact PR head. CI merge-context HEAD is not being mistaken for a different source revision.
+
+All four service variants passed21 approved tests and9 supplementary regressions, adapter quality gates and root Rust/docs gates. Native Linux release probe passed one warmup plus three maximum3600-second runs (median1.98654919s); sampled aggregateRSS108666880bytes; private resident103964672bytes (not Windows private commit);60.00686s load428rejections503 and excessSSE429; slow-reader cleanup3.99225949s under unchanged5s criterion. Native permission and symlink failure demonstrations passed. Raw evidence: linux-probe-issue38-passed.json. Prior failed Linux probe5.001802873s remains preserved.
+
+These validate the resource/platform evidence and issue38 repair. They do not close separate ownership conformance blockers39/40 or establish hard OS memory limits, unsampled transient maxima, or universal kernel-failure recovery.

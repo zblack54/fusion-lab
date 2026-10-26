@@ -1,0 +1,41 @@
+[[verification]]
+id = "VER-001"
+method = "inspection"
+stage = "implementation"
+owner = "independent implementation reviewer"
+covers = ["REQ-001", "REQ-002", "REQ-003", "REQ-004", "REQ-005", "REQ-006", "REQ-007", "REQ-008", "REQ-009", "REQ-010", "REQ-011", "REQ-012", "REQ-013", "REQ-014", "CON-002", "CON-003", "CON-004"]
+procedure = "Inspect exact production diff, spawn/cancel/finalize races, unknown JSON handling, response schema and event behavior, filesystem confinement, cleanup error propagation, unsafe exclusion and unchanged numerical loop; map every requirement to execution evidence."
+acceptance = "Every entrypoint preserves the stated contract; no compile seam, unobserved task, retained numerical sample vector, arbitrary path exposure or ignored cleanup failure remains. Record revision and evidence per obligation."
+
+[[verification]]
+id = "VER-002"
+method = "demonstration"
+stage = "implementation"
+owner = "service performance reviewer"
+covers = ["CON-001"]
+procedure = "Release build; one warmup and three maximum-duration runs; record combined service+worker working set and private commit, disk peak, request latency, cancellation time; sustain 33 slow SSE clients and 33 concurrent requests for 60 seconds; verify queue limits, explicit 429/503 rejection, bounded memory and cleanup. Repeat on Windows and Linux CI runner; report hardware, compiler, seed and all observations."
+acceptance = "One active worker, zero queued runs, maximum 32 event clients each with 16 events and 32 in-flight HTTP requests; reservations 256 MiB job plus 256 MiB overhead and 256 MiB active artifact. Measured aggregate working set below 512 MiB on the recorded reference host; otherwise stop and revise budget through design review. No claim of OS hard-limit enforcement."
+
+[[command]]
+id = "CMD-001"
+stage = "both"
+purpose = "Compile and lint the contract harness."
+argv = ["cargo", "clippy", "--manifest-path", "tests/experiment-service/Cargo.toml", "--locked", "--all-targets", "--", "-D", "warnings"]
+[[verification]]
+id = "VER-003"
+method = "demonstration"
+stage = "implementation"
+owner = "cross-platform CI reviewer"
+covers = ["CON-005"]
+procedure = "Execute the complete unchanged contract harness on native Windows and Linux with Rust 1.99.0 and stable; use cargo test --manifest-path tests/experiment-service/Cargo.toml --locked. Run adapter fmt/check/clippy/doc and root AGENTS gates. Record exact compiler, target, revision, commands and per-test outcomes. Compilation alone is insufficient."
+acceptance = "All 21 tests execute and pass on each of four native OS/toolchain combinations; every required repository and adapter gate passes. No claim of Linux execution is based on Windows-only design evidence."
+
+[[verification]]
+id = "VER-004"
+method = "demonstration"
+stage = "implementation"
+owner = "failure-path and resource-ownership reviewer"
+covers = ["CON-006", "CON-007", "CON-008", "CON-009", "CON-010"]
+procedure = "On Windows and Linux, preserve a sentinel in a nonempty root and reject startup; attempt a symlink/reparse root and reject it (record privilege blocker honestly). Send malicious Origin mutation and verify rejection/no child. Run a fixture emitting over 1 MiB per stdout/stderr pipe and verify drain/no deadlock plus each retained tail <=65536 bytes. Run an artifact-producing fixture beyond256MiB and observe artifact_limit, terminated child and freed admission only after wait. Hold a slow artifact reader through eviction, verify immediate404 and deferred deletion bounded by5second idle/write deadline. Inject cleanup permission and wait failures, verify visible error and no second unowned child. Inspect all spawned-task joins and shutdown ownership at the exact revision."
+acceptance = "Every documented branch has recorded command, output and filesystem/process evidence; existing files unchanged on rejected startup, no cross-origin launch, bounded diagnostic tails, overflow child reaped, no partial artifacts published, no premature slot release, and cleanup failures reported. Unsupported injections remain acceptance gaps until verified."
+

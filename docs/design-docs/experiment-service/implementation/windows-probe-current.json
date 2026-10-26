@@ -1,0 +1,305 @@
+{
+  "environment": {
+    "platform": "Windows-10-10.0.19043-SP0",
+    "processor": "AMD64 Family 25 Model 33 Stepping 0, AuthenticAMD",
+    "logical_cpu_count": 16,
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-msvc\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+    "revision": "b274c6f6deb3e86a9fdfbd31b8b92ec59396b5e8"
+  },
+  "commands": [],
+  "binaries": {
+    "crates\\experiment-service\\target\\release\\examples\\probe_host.exe": "89b67e1744b8a18be059ce7c440f72d79130efbbabac8e10119f278a35237f5e",
+    "crates\\experiment-service\\target\\release\\examples\\probe_worker.exe": "7aa5c60d57b282dd545bb630730b1e1e088e7285d0b0e118f10728d2cc3cda9a",
+    "target\\release\\fusion-lab.exe": "68a081835c292562de25c439cae61bd8038acbf3fe6a0f5dabf689654a15a25f"
+  },
+  "limitations": [
+    "5ms requested sampling is not a hard bound on transient aggregate peaks. Windows retains per-process kernel lifetime handles; Linux VmHWM is read while each process remains alive.",
+    "Windows PrivateUsage/PeakPagefileUsage report commit; Linux reports private resident pages and writable virtual allocation separately, not an exact per-process private-commit equivalent.",
+    "One native host per report; background activity uncontrolled; native release-build end-to-end times include process startup, HTTP, artifact validation and I/O."
+  ],
+  "source_sha256": {
+    "crates\\experiment-service\\Cargo.toml": "a8995f3d9ef0c402aa1834e01cd196b1eb8a2e0d9f2f6ad366639de9c09a9c3e",
+    "crates\\experiment-service\\Cargo.lock": "c4eea4f59dd42bc3bdc7c111fbd04e746e696abbe5a970cebfb7516fd82a7c27",
+    "Cargo.toml": "107801ee283d274781df7496d22eaa46a09748e2b624ccb48a8b7b9eda975462",
+    "Cargo.lock": "1ff60b850d3f5928fc13476575700400765d31f7deb3268171f66176fb6cf6f3",
+    "crates\\experiment-service\\src\\lib.rs": "839803f19d3c750a125d918ca1b48d5b1a07ebbb2fbcb0167c80b7a23e2709e0",
+    "crates\\experiment-service\\src\\main.rs": "526dbcd0cc77ecb7e03adca6713a8f3a9e863d9c61ca7e5acc47b722f638eaa2",
+    "crates\\experiment-service\\src\\server\\regression_tests.rs": "108f8af51a510df271a08a398cc9eee2eb495432153d8e7c0f2c3a8650833a33",
+    "crates\\experiment-service\\src\\server.rs": "ab31d15ef32a2aa11ff4c8693c21a0ba9a2589ac68f5d530b6b4ec6177e169b8",
+    "crates\\experiment-service\\src\\transport.rs": "73923f4f208d82d1a2eab8073642a27ace9b6b332490513c36e02f2a926254f1",
+    "crates\\experiment-service\\examples\\probe_host.rs": "c913366825656348e65f34474834b87f3e5a10d29b6a2e2a8a374f000573c152",
+    "crates\\experiment-service\\examples\\probe_worker.rs": "b0989b492c65ecbead8eb58612281149006727c9d51e6218a02016a5fe675b36",
+    "src\\estimation.rs": "83a3b6936c53fc9d28c29a59b0840cf5d57611852246bc19c2c4cb258c092fdf",
+    "src\\evaluation.rs": "cf83337582b8887dc3ae71b62a8daf10c9f8b578eddd74b212069d30d76ba870",
+    "src\\lib.rs": "7053071c7380e45fc755884ccc1c4e3d40404b67532776cab08b2e468a3c40ea",
+    "src\\main.rs": "86dfd32ee653ff72388ef507300fecdc49b6ee5f284f692a88d2769680614d60",
+    "src\\sensors.rs": "d8eaae0d691535bcee6f68166babdb41c49de815ad0c3eb213c8b980c9ae29af",
+    "src\\simulation.rs": "bad0f2d8aa4c07eb974f72af30f3bce26e80b92391427badddb585274942b05b"
+  },
+  "reproduction_build_commands": [
+    [
+      "cargo",
+      "build",
+      "--release",
+      "--locked"
+    ],
+    [
+      "cargo",
+      "build",
+      "--manifest-path",
+      "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\crates\\experiment-service\\Cargo.toml",
+      "--release",
+      "--locked",
+      "--examples"
+    ]
+  ],
+  "slow_reader_eviction": {
+    "status_after_eviction": 404,
+    "directory_initially_retained": true,
+    "deferred_deletion_seconds": 4.9864881000248715,
+    "directory_removed_without_client_reading_or_closing": true,
+    "socket_receive_buffer_bytes": 1024,
+    "initial_response_bytes_read": 126
+  },
+  "maximum_duration": {
+    "runs": [
+      {
+        "warmup": true,
+        "id": "run-1",
+        "duration_seconds": 3600,
+        "seed": 42,
+        "elapsed_seconds": 1.3290748000144958,
+        "submit_latency_seconds": 0.024849899928085506,
+        "status_latency_max_seconds": 0.18941900006029755,
+        "samples": 360001,
+        "csv_bytes": 170623857,
+        "csv_sha256": "b24d83f0fce0cc8073dba7833d6065c5c035c461e3284e2b5a96c67e828d3e8e"
+      },
+      {
+        "warmup": false,
+        "id": "run-2",
+        "duration_seconds": 3600,
+        "seed": 42,
+        "elapsed_seconds": 1.3022636000532657,
+        "submit_latency_seconds": 0.004623800050467253,
+        "status_latency_max_seconds": 0.19575980002991855,
+        "samples": 360001,
+        "csv_bytes": 170623857,
+        "csv_sha256": "b24d83f0fce0cc8073dba7833d6065c5c035c461e3284e2b5a96c67e828d3e8e"
+      },
+      {
+        "warmup": false,
+        "id": "run-3",
+        "duration_seconds": 3600,
+        "seed": 42,
+        "elapsed_seconds": 1.3721840999787673,
+        "submit_latency_seconds": 0.016058700042776763,
+        "status_latency_max_seconds": 0.24159460002556443,
+        "samples": 360001,
+        "csv_bytes": 170623857,
+        "csv_sha256": "b24d83f0fce0cc8073dba7833d6065c5c035c461e3284e2b5a96c67e828d3e8e"
+      },
+      {
+        "warmup": false,
+        "id": "run-4",
+        "duration_seconds": 3600,
+        "seed": 42,
+        "elapsed_seconds": 1.3249615000095218,
+        "submit_latency_seconds": 0.00451910006813705,
+        "status_latency_max_seconds": 0.20753960008732975,
+        "samples": 360001,
+        "csv_bytes": 170623857,
+        "csv_sha256": "b24d83f0fce0cc8073dba7833d6065c5c035c461e3284e2b5a96c67e828d3e8e"
+      }
+    ],
+    "host": {
+      "shutdown": {
+        "shutdown_seconds": 0.0014478
+      },
+      "outer_shutdown_seconds": 0.012298299930989742,
+      "metrics": {
+        "sampled_aggregate_working_set_peak_bytes": 110006272,
+        "sampled_aggregate_private_commit_peak_bytes": 103469056,
+        "sampled_aggregate_private_resident_peak_bytes": null,
+        "process_lifetime_peaks": {
+          "80532": {
+            "peak_working_set_bytes": 6254592,
+            "peak_private_commit_bytes": 2236416,
+            "private_commit_bytes_last": 77824
+          },
+          "84908": {
+            "peak_working_set_bytes": 104448000,
+            "peak_private_commit_bytes": 101654528,
+            "private_commit_bytes_last": 77824
+          },
+          "83388": {
+            "peak_working_set_bytes": 104087552,
+            "peak_private_commit_bytes": 101679104,
+            "private_commit_bytes_last": 73728
+          },
+          "4652": {
+            "peak_working_set_bytes": 104087552,
+            "peak_private_commit_bytes": 101670912,
+            "private_commit_bytes_last": 77824
+          },
+          "86580": {
+            "peak_working_set_bytes": 104087552,
+            "peak_private_commit_bytes": 101691392,
+            "private_commit_bytes_last": 77824
+          }
+        },
+        "disk_peak_bytes": 511873323,
+        "samples": 543,
+        "sampling_errors": [],
+        "requested_interval_seconds": 0.005,
+        "collector": "Windows GetProcessMemoryInfo with held lifetime handles"
+      },
+      "root_remaining": [],
+      "stderr": "",
+      "returncode": 0
+    }
+  },
+  "cancellation": {
+    "seconds": 0.0015756000066176057,
+    "child_listener_closed": true,
+    "busy_status": 409
+  },
+  "origin": {
+    "status": 403,
+    "value": {
+      "error": {
+        "code": "invalid_origin",
+        "message": "invalid_origin"
+      }
+    }
+  },
+  "noisy_pipes": {
+    "elapsed_seconds": 0.017102900077588856,
+    "status": {
+      "artifacts": [],
+      "config": {
+        "acceleration_density": 0.1,
+        "duration_seconds": 3600,
+        "outage": {
+          "end": 20,
+          "start": 10
+        },
+        "position_sigma": 1.0,
+        "scenario": "maneuver",
+        "seed": 9002,
+        "velocity_sigma": 0.15
+      },
+      "error": {
+        "code": "worker_failed",
+        "message": "worker_failed"
+      },
+      "id": "run-2",
+      "samples": null,
+      "sequence": 1,
+      "state": "failed"
+    },
+    "run_directory_exists": false,
+    "fixture_stdout_bytes": 2097152,
+    "fixture_stderr_bytes": 2097152,
+    "fixture_artifact_bytes_attempted": 0
+  },
+  "artifact_overflow": {
+    "elapsed_seconds": 0.06998479994945228,
+    "status": {
+      "artifacts": [],
+      "config": {
+        "acceleration_density": 0.1,
+        "duration_seconds": 3600,
+        "outage": {
+          "end": 20,
+          "start": 10
+        },
+        "position_sigma": 1.0,
+        "scenario": "maneuver",
+        "seed": 9003,
+        "velocity_sigma": 0.15
+      },
+      "error": {
+        "code": "artifact_limit",
+        "message": "artifact_limit"
+      },
+      "id": "run-3",
+      "samples": null,
+      "sequence": 1,
+      "state": "failed"
+    },
+    "run_directory_exists": false,
+    "fixture_stdout_bytes": 0,
+    "fixture_stderr_bytes": 0,
+    "fixture_artifact_bytes_attempted": 269484032
+  },
+  "load": {
+    "requested_seconds": 60,
+    "elapsed_seconds": 60.01599999994505,
+    "slow_sse_clients": 32,
+    "excess_sse_status": 429,
+    "ordinary_concurrent_requests": 33,
+    "cycles": 395,
+    "ordinary_rejections": {
+      "503": 395
+    },
+    "ordinary_latency_max_seconds": 0.02605230000335723
+  },
+  "controlled_host": {
+    "shutdown": {
+      "shutdown_seconds": 0.0038116
+    },
+    "outer_shutdown_seconds": 0.021805099910125136,
+    "metrics": {
+      "sampled_aggregate_working_set_peak_bytes": 10469376,
+      "sampled_aggregate_private_commit_peak_bytes": 5156864,
+      "sampled_aggregate_private_resident_peak_bytes": null,
+      "process_lifetime_peaks": {
+        "50916": {
+          "peak_working_set_bytes": 7086080,
+          "peak_private_commit_bytes": 4337664,
+          "private_commit_bytes_last": 77824
+        },
+        "84112": {
+          "peak_working_set_bytes": 3391488,
+          "peak_private_commit_bytes": 819200,
+          "private_commit_bytes_last": 77824
+        },
+        "82308": {
+          "peak_working_set_bytes": 3162112,
+          "peak_private_commit_bytes": 778240,
+          "private_commit_bytes_last": 77824
+        },
+        "81564": {
+          "peak_working_set_bytes": 4456448,
+          "peak_private_commit_bytes": 1921024,
+          "private_commit_bytes_last": 77824
+        },
+        "73888": {
+          "peak_working_set_bytes": 3391488,
+          "peak_private_commit_bytes": 835584,
+          "private_commit_bytes_last": 77824
+        }
+      },
+      "disk_peak_bytes": 159383593,
+      "samples": 3862,
+      "sampling_errors": [],
+      "requested_interval_seconds": 0.005,
+      "collector": "Windows GetProcessMemoryInfo with held lifetime handles"
+    },
+    "root_remaining": [],
+    "stderr": "",
+    "returncode": 0
+  },
+  "nonempty_root": {
+    "returncode": 1,
+    "stderr": "Error: Custom { kind: InvalidInput, error: \"artifact root must be empty and not a link\" }\n",
+    "sentinel_preserved": true
+  },
+  "symlink_root": {
+    "status": "not_run_privilege_blocker",
+    "error": "OSError(22, 'A required privilege is not held by the client')"
+  },
+  "status": "native_demonstrations_passed_with_recorded_gaps"
+}

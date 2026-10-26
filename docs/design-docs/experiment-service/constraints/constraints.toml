@@ -1,0 +1,109 @@
+[[constraint]]
+id = "CON-001"
+title = "Bound memory and queues"
+kind = "performance"
+statement = "The adapter SHALL keep one active child, no pending run queue, at most 32 SSE clients with 16 events each, and at most 32 concurrent HTTP requests."
+rationale = "Maintain deterministic core behavior and bounded resource ownership."
+enforcement = "mixed"
+test_ids = ["TST-BOUND-003"]
+verification_ids = ["VER-002"]
+status = "active"
+
+[[constraint]]
+id = "CON-002"
+title = "Preserve numerical separation"
+kind = "invariant"
+statement = "The adapter SHALL NOT introduce wall-clock or transport state into the synchronous numerical loop."
+rationale = "Maintain deterministic core behavior and bounded resource ownership."
+enforcement = "verification"
+test_ids = []
+verification_ids = ["VER-001"]
+status = "active"
+
+[[constraint]]
+id = "CON-003"
+title = "Safe local ownership"
+kind = "anti_pattern"
+statement = "The adapter SHALL NOT use unsafe Rust or retain complete numerical experiments in the HTTP process."
+rationale = "Maintain deterministic core behavior and bounded resource ownership."
+enforcement = "verification"
+test_ids = []
+verification_ids = ["VER-001"]
+status = "active"
+
+[[constraint]]
+id = "CON-004"
+title = "Bound artifact ownership"
+kind = "invariant"
+statement = "The adapter SHALL stop and reap the child before removing any active run directory."
+rationale = "Maintain deterministic core behavior and bounded resource ownership."
+enforcement = "verification"
+test_ids = []
+verification_ids = ["VER-001"]
+status = "active"
+[[constraint]]
+id = "CON-005"
+title = "Preserve platform and compiler compatibility"
+kind = "invariant"
+statement = "The adapter SHALL preserve Rust 1.99 and stable support on Windows x86_64-msvc and Linux x86_64-gnu."
+rationale = "Existing project compatibility is not narrowed by a native-only design baseline."
+enforcement = "verification"
+test_ids = []
+verification_ids = ["VER-003"]
+status = "active"
+
+[[constraint]]
+id = "CON-006"
+title = "Exclusive artifact root"
+kind = "negative"
+statement = "Startup SHALL reject nonempty, symlink or reparse-point artifact roots without deleting existing content."
+rationale = "A local service cannot take ownership of unrelated files."
+enforcement = "verification"
+test_ids = []
+verification_ids = ["VER-004"]
+status = "active"
+
+[[constraint]]
+id = "CON-007"
+title = "Local browser request origin"
+kind = "negative"
+statement = "The service SHALL reject state-changing requests with an Origin differing from the bound listener origin and omit wildcard CORS permission."
+rationale = "Loopback binding alone does not prevent cross-site browser requests."
+enforcement = "verification"
+test_ids = []
+verification_ids = ["VER-004"]
+status = "active"
+
+[[constraint]]
+id = "CON-008"
+title = "Bound worker diagnostics"
+kind = "invariant"
+statement = "The adapter SHALL continuously drain each child stdout and stderr pipe while retaining at most 65536 diagnostic bytes from each pipe."
+rationale = "A noisy worker must neither deadlock nor accumulate unbounded output."
+enforcement = "verification"
+test_ids = []
+verification_ids = ["VER-004"]
+status = "active"
+
+[[constraint]]
+id = "CON-009"
+title = "Terminate artifact overflow"
+kind = "invariant"
+statement = "The service SHALL terminate and reap a child exceeding 268435456 aggregate artifact bytes and record failed artifact_limit before releasing admission."
+rationale = "Reservation accounting requires an overflow response and cleanup ownership."
+enforcement = "verification"
+test_ids = []
+verification_ids = ["VER-004"]
+status = "active"
+
+[[constraint]]
+id = "CON-010"
+title = "Observe stream and cleanup ownership"
+kind = "invariant"
+statement = "The service SHALL surface cleanup and child-wait failures while retaining ownership until children, artifact leases and spawned tasks terminate."
+rationale = "Windows open-file semantics and partial failures cannot silently release ownership."
+enforcement = "verification"
+test_ids = []
+verification_ids = ["VER-004"]
+status = "active"
+
