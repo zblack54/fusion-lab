@@ -69,3 +69,7 @@ detail = "Current9 supplementary native tests include actual pipe-tail drain, in
 command = "issue38: rebuilt portable resource probe with --build; trusted implementation runner; crate and root AGENTS gates"
 result = "native_windows_passed_linux_rerun_pending"
 detail = "Strict cleanup repaired by writer4s plus cleanup1s reserve; Windows actual3.974633s,60.093s/396cycle load,110047232resident bytes. All21 immutable tests,9supplementary tests, root15tests+1doctest and quality gates pass. Original Linux5.001802873failure preserved verbatim; threshold and approved digest unchanged."
+[[check]]
+command = "issue39 worker_join_failure_still_observes_all_remaining_owned_threads original-red then repaired rerun; cargo test --lib and Clippy"
+result = "native_passed_current_platform_pending"
+detail = "Original failedexit101 before releasing another ownedworker; unchanged regression nowpasses0.11s afterjoinallaggregate. All10supplementarytests+Clippypass. Issue40 is proposalonly in design-revision2-proposal.md, no terminationpolicyimplementation authorized yet."

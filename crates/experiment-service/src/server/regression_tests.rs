@@ -273,3 +273,60 @@ fn injected_wait_failure_is_visible_and_keeps_the_real_child_owned() {
     );
     fs::remove_dir(root).unwrap();
 }
+#[test]
+fn worker_join_failure_still_observes_all_remaining_owned_threads() {
+    let path = root();
+    let service = Service::start(options(&path)).unwrap();
+    let first = thread::spawn(|| panic!("injected first worker panic"));
+    let deadline = std::time::Instant::now() + Duration::from_secs(5);
+    while !first.is_finished() {
+        assert!(std::time::Instant::now() < deadline);
+        thread::yield_now();
+    }
+    let (ready_tx, ready_rx) = std::sync::mpsc::channel();
+    let (release_tx, release_rx) = std::sync::mpsc::channel();
+    let (finished_tx, finished_rx) = std::sync::mpsc::channel();
+    let second = thread::spawn(move || {
+        ready_tx.send(()).unwrap();
+        release_rx.recv().unwrap();
+        finished_tx.send(()).unwrap();
+    });
+    ready_rx.recv().unwrap();
+    {
+        let mut state = locked(&service.state);
+        state.workers.extend([first, second]);
+    }
+    let shared = service.state.clone();
+    let (entered_tx, entered_rx) = std::sync::mpsc::channel();
+    let (result_tx, result_rx) = std::sync::mpsc::channel();
+    let joiner = thread::spawn(move || {
+        entered_tx.send(()).unwrap();
+        result_tx.send(join_workers(&shared)).unwrap();
+    });
+    entered_rx.recv().unwrap();
+    let premature = result_rx.recv_timeout(Duration::from_millis(100));
+    // Clean up the deliberately stalled worker even when testing the broken
+    // implementation: the failing regression must not leave its fixture alive.
+    release_tx.send(()).unwrap();
+    finished_rx.recv_timeout(Duration::from_secs(5)).unwrap();
+    let result = match premature {
+        Ok(result) => Some(result),
+        Err(std::sync::mpsc::RecvTimeoutError::Timeout) => None,
+        Err(error) => panic!("join result channel failed: {error}"),
+    };
+    let returned_early = result.is_some();
+    let result = result.unwrap_or_else(|| result_rx.recv_timeout(Duration::from_secs(5)).unwrap());
+    joiner.join().unwrap();
+    service.shutdown().unwrap();
+    fs::remove_dir(path).unwrap();
+    assert!(
+        !returned_early,
+        "join_workers returned after the first failure while another owned worker was still blocked"
+    );
+    assert!(
+        result
+            .unwrap_err()
+            .to_string()
+            .contains("worker monitor panicked")
+    );
+}

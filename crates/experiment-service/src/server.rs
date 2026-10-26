@@ -826,12 +826,17 @@ pub(super) fn stop(state: &Shared) -> io::Result<()> {
 }
 pub(super) fn join_workers(state: &Shared) -> io::Result<()> {
     let workers = std::mem::take(&mut locked(state).workers);
-    for worker in workers {
-        worker
-            .join()
-            .map_err(|_| io::Error::other("worker monitor panicked"))?;
+    let mut failures = Vec::new();
+    for (index, worker) in workers.into_iter().enumerate() {
+        if worker.join().is_err() {
+            failures.push(format!("worker {index}: worker monitor panicked"));
+        }
     }
-    Ok(())
+    if failures.is_empty() {
+        Ok(())
+    } else {
+        Err(io::Error::other(failures.join("; ")))
+    }
 }
 pub(super) fn cleanup(state: &Shared) -> io::Result<()> {
     let mut s = locked(state);
