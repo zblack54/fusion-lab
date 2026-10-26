@@ -58,3 +58,11 @@ libc/WASI/EFI crates were uncached; cargo fetch --locked filled the exact closur
 then the offline inventory succeeded. No manifest or lock outside owned roots
 was changed.
 
+
+## Revision1 (issue #37), main + independent reviewer source audit
+
+Current closure has38 registry packages. Adds Windows-only direct subc-jobobject=0.2.2 (MIT; no declared MSRV), plus its unconditional Tokio-process and Windows FFI closure; all28 prior registry versions are unchanged. Tokio1.54.1 declares1.85, windows-sys0.61.2 declares1.71; full inventory preserves every license/floor and both lock hashes. Native1.99 compilation and final expected-red runner establish supported configuration.
+
+Reviewed exact registry source lib.rs/sys.rs/cleanup.rs. Root job is static, noninheritable, kill-on-close and installed only at standalone driver entry before any children. Per-worker safe primitives retain Child+Job across suspended spawn, assignment and resume, then use kernel membership count for proof. Manual retained ownership avoids convenience setup error paths losing handles or using unbounded wait. PID liveness helpers are excluded as proof. Unknown post-crash ownership stays fenced; unnamed job reopen is unavailable. Native setup/crash/grandchild evidence remains VER004.
+
+Rejected alternative process-wrap10.0.1 after source inspection: its std Job Object uses kill_on_drop=false, and completion-port wait helper does not establish ACTIVE_PROCESS_ZERO; direct-root try_wait is insufficient. No dependency on that crate is added. This is a focused source/closure review, not a vulnerability audit or unexecuted native-proof claim. Own unsafe remains forbidden.

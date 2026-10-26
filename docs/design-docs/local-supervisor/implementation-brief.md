@@ -1,3 +1,7 @@
+## Approved controlled revision1
+
+Issue #37 requires concrete native Job Object containment. Prior approval digest82ad2fc0e5791995c39e56fdafeaace7021b5462a98230cae2107a68812c7842 is preserved outside the candidate with production/harness backups. Main independently reviewed exact safe Job Object primitives, dependency closure, ownership/error policy and successful43x2 expected-red draft execution. Revision1 technical approval is granted under the same owner delegation; implementation resumes only after final refreshed evidence, new external lock validation and restoration of preserved implementation. Existing requirements and assertions are not weakened.
+
 # Implementation handoff: approved technical contract
 
 Status: AI_READY after final execution refresh and external lock validation.

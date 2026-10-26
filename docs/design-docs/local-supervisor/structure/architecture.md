@@ -179,3 +179,11 @@ resource characterization and main-chat GitHub integration. No mocked success
 is acceptance for those obligations. The real GitHub host bridge must be
 demonstrated before issue #4 completion. A standalone authenticated GitHub client
 is a future alternative, not a prerequisite or assumed current capability.
+
+## Controlled revision1: native descendant containment (issue #37)
+
+Use pinned subc-jobobject0.2.2 through its safe primitives. Install ensure_root_job at standalone driver entry before any app-server/worker child, never idle open/status construction. This noninheritable kill-on-close root job covers the crash window between suspended spawn and per-worker enrollment. For each child create and retain a JobObject first, call suspend_on_create on the direct std Command, spawn while retaining Child, assign to the retained job, then resume_main_thread while the Child handle prevents PID reuse. No breakaway is permitted. Keep Child+job together until confirmed job.process_count()==0. A direct parent exit alone never proves cleanup.
+
+Do not use the convenience spawn_contained/ContainedChild::contain error path: failed setup can lose returned child ownership and use blocking wait. The application retains the Child and Job through every manual setup step. On setup/cancel/deadline failure terminate the job and/or suspended owned child, poll membership and direct Child completion within the shared deadline, observe threads, and preserve the checkout fence whenever confirmation fails. process_exists and wait_for_process_exit are forbidden as proof because access failure can appear absent. Normal completion, cancellation and setup failures need native evidence. Unnamed jobs cannot be reopened after supervisor death; old ambiguous attempts remain fenced, never inferred clean from a timeout or PID alone.
+
+This is process lifetime containment for owned workers, not an adversarial OS security sandbox. Installing the root job affects the entire standalone driver process; do not install it in unrelated embedding/observation processes. Own application code remains unsafe-forbidden; this narrowly reviewed dependency owns Windows FFI. Existing behavioral requirements and all43 test assertions are preserved.

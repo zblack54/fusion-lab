@@ -16,3 +16,6 @@ getrandom = { version = "=0.3.4", features = ["std"] }
 
 [lints.rust]
 unsafe_code = "forbid"
+
+[target.'cfg(windows)'.dependencies]
+subc-jobobject = "=0.2.2"

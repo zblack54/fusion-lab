@@ -179,3 +179,11 @@ Main reviewed typed per-kind host evidence, atomic negative ACK cases, confirmed
 ## Final approval lock
 
 Main refreshed final approved bytes:43 expected-red tests per configuration,86 total, errors=[], all six supplemental gates passed. Trusted lock and require-lock validation passed with zero errors and zero warnings. Approved digest: `82ad2fc0e5791995c39e56fdafeaace7021b5462a98230cae2107a68812c7842`. Baseline is recorded outside implementation ownership in the host approval registry and issue #4. This proves contract preservation, not implementation acceptance.
+
+Controlled revision1 in progress for issue37: pinned safe containment dependency and proof policy. Previous37/43 implementation source is preserved; final43-test diagnostic seam refresh follows dependency review.
+
+## Controlled revision1 approval (issue37)
+
+Main and separate reviewer audited exact subc-jobobject0.2.2 registry source and accepted only safe primitives with retained ownership, pre-spawn root job, suspended per-child enrollment, membership-count proof, bounded cleanup and ambiguous crash fallback. Convenience cleanup paths/PID liveness are excluded. All28 prior registry versions are unchanged;10 required packages added, complete licenses and declaredfloors<=1.99; native compile and43expectedred perconfiguration passed. No test assertion or publicbehavior requirement weakened. Prior approvedlock+harness+37/43 implementation are preserved in host contracthistory. Main approves revision1 under ownerdelegation; finalmetadataexecution/lockfollow.
+
+Revision1 final approved-byte runner:43expected-red perconfiguration,86total, all6gatespass; trustedlock41entries andrequire-lock0errors0warnings. CURRENT approved external digest `1eb471a28c9cc8c21c818202de7d6202d16ff39006a2c1bebffb3e86c0e33499`, superseding82ad2fc0e5791995c39e56fdafeaace7021b5462a98230cae2107a68812c7842. Preserved37/43 implementation sources restored with freshwrites after lock; no lockedfile changed.

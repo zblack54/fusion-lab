@@ -1,12 +1,18 @@
 {
-  "harness_lock_sha256": "a2f787810961e2dd284287505a119751233c642afdd77059bb9f338822b58a09",
-  "production_lock_sha256": "00a5e601e2b4bcfdfd058449ea1d6e9f0f722c5a377ca013cf06bf50c27b9224",
+  "harness_lock_sha256": "681cce2048916f3a5c4c8cfe494ec152e2e807cee11e1ef9595811fd6687e2c6",
+  "production_lock_sha256": "c3efea36fd292e7fdaaa270a7fd4840118eb13da7db2fc6e7eec0b0904afeba8",
   "registry_packages": [
     {
       "name": "bitflags",
       "version": "2.13.2",
       "license": "MIT OR Apache-2.0",
       "declared_rust_version": "1.56.0"
+    },
+    {
+      "name": "bytes",
+      "version": "1.12.1",
+      "license": "MIT",
+      "declared_rust_version": "1.57"
     },
     {
       "name": "cc",
@@ -19,6 +25,12 @@
       "version": "1.0.5",
       "license": "MIT OR Apache-2.0",
       "declared_rust_version": "1.32"
+    },
+    {
+      "name": "errno",
+      "version": "0.3.14",
+      "license": "MIT OR Apache-2.0",
+      "declared_rust_version": "1.56"
     },
     {
       "name": "fallible-iterator",
@@ -67,6 +79,18 @@
       "version": "2.8.3",
       "license": "Unlicense OR MIT",
       "declared_rust_version": "1.61"
+    },
+    {
+      "name": "mio",
+      "version": "1.2.4",
+      "license": "MIT",
+      "declared_rust_version": "1.71"
+    },
+    {
+      "name": "pin-project-lite",
+      "version": "0.2.17",
+      "license": "Apache-2.0 OR MIT",
+      "declared_rust_version": "1.37"
     },
     {
       "name": "pkg-config",
@@ -129,9 +153,21 @@
       "declared_rust_version": "1.46.0"
     },
     {
+      "name": "signal-hook-registry",
+      "version": "1.4.8",
+      "license": "MIT OR Apache-2.0",
+      "declared_rust_version": "1.26"
+    },
+    {
       "name": "smallvec",
       "version": "1.16.4",
       "license": "MIT OR Apache-2.0",
+      "declared_rust_version": null
+    },
+    {
+      "name": "subc-jobobject",
+      "version": "0.2.2",
+      "license": "MIT",
       "declared_rust_version": null
     },
     {
@@ -139,6 +175,12 @@
       "version": "2.0.119",
       "license": "MIT OR Apache-2.0",
       "declared_rust_version": "1.71"
+    },
+    {
+      "name": "tokio",
+      "version": "1.54.1",
+      "license": "MIT",
+      "declared_rust_version": "1.85"
     },
     {
       "name": "unicode-ident",
@@ -153,10 +195,28 @@
       "declared_rust_version": null
     },
     {
+      "name": "wasi",
+      "version": "0.11.1+wasi-snapshot-preview1",
+      "license": "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT",
+      "declared_rust_version": null
+    },
+    {
       "name": "wasip2",
       "version": "1.0.4+wasi-0.2.12",
       "license": "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT",
       "declared_rust_version": "1.87.0"
+    },
+    {
+      "name": "windows-link",
+      "version": "0.2.1",
+      "license": "MIT OR Apache-2.0",
+      "declared_rust_version": "1.71"
+    },
+    {
+      "name": "windows-sys",
+      "version": "0.61.2",
+      "license": "MIT OR Apache-2.0",
+      "declared_rust_version": "1.71"
     },
     {
       "name": "wit-bindgen",
