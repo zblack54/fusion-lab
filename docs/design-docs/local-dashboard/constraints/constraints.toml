@@ -1,0 +1,87 @@
+[[constraint]]
+id = "CON-001"
+title = "Local self-contained assets"
+kind = "negative"
+statement = "The dashboard SHALL NOT require cloud hosting, external assets, CDNs, paid APIs or npm runtime dependencies."
+rationale = "Preserve local autonomy, numerical integrity and bounded resources."
+enforcement = "verification"
+test_ids = []
+verification_ids = ["VER-001"]
+status = "active"
+
+[[constraint]]
+id = "CON-002"
+title = "Numerical truth separation"
+kind = "invariant"
+statement = "The dashboard SHALL NOT feed simulated truth or visual state back into estimators or alter numerical event ordering."
+rationale = "Preserve local autonomy, numerical integrity and bounded resources."
+enforcement = "verification"
+test_ids = []
+verification_ids = ["VER-001", "VER-004"]
+status = "active"
+
+[[constraint]]
+id = "CON-003"
+title = "Bound owned memory"
+kind = "performance"
+statement = "Application-owned numeric recording storage SHALL remain at most100800280bytes while the reference renderer plus workers stays below512MiB in the maximum-recording demonstration."
+rationale = "Preserve local autonomy, numerical integrity and bounded resources."
+enforcement = "verification"
+test_ids = []
+verification_ids = ["VER-003", "VER-006"]
+status = "active"
+
+[[constraint]]
+id = "CON-004"
+title = "No hidden interpolation"
+kind = "negative"
+statement = "The display SHALL NOT interpolate absent sensor measurements or describe downsampled rounded data as exact latent-state replay."
+rationale = "Preserve local autonomy, numerical integrity and bounded resources."
+enforcement = "verification"
+test_ids = []
+verification_ids = ["VER-002"]
+status = "active"
+
+[[constraint]]
+id = "CON-005"
+title = "No surprise experiment mutation"
+kind = "negative"
+statement = "View changes, pause, reset and uncertain POST replies SHALL NOT automatically cancel or resubmit an experiment."
+rationale = "Preserve local autonomy, numerical integrity and bounded resources."
+enforcement = "verification"
+test_ids = []
+verification_ids = ["VER-002"]
+status = "active"
+
+[[constraint]]
+id = "CON-006"
+title = "Preserve prior approval"
+kind = "invariant"
+statement = "Implementation SHALL preserve the approved service digest and its unchanged executable test surface."
+rationale = "Preserve local autonomy, numerical integrity and bounded resources."
+enforcement = "verification"
+test_ids = []
+verification_ids = ["VER-004"]
+status = "active"
+
+[[constraint]]
+id = "CON-007"
+title = "No main-thread CSV buffering"
+kind = "anti_pattern"
+statement = "The browser SHALL NOT retain the complete CSV text or parse its full recording on the main UI thread."
+rationale = "Preserve local autonomy, numerical integrity and bounded resources."
+enforcement = "verification"
+test_ids = []
+verification_ids = ["VER-001", "VER-003"]
+status = "active"
+
+[[constraint]]
+id = "CON-008"
+title = "Current platform compatibility"
+kind = "invariant"
+statement = "The adapter SHALL support Rust1.99 and stable on native Windows/Linux with Node24 contract checks and a recorded native Chromium browser walkthrough."
+rationale = "Preserve local autonomy, numerical integrity and bounded resources."
+enforcement = "verification"
+test_ids = []
+verification_ids = ["VER-004", "VER-005"]
+status = "active"

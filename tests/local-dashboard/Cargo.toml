@@ -1,0 +1,13 @@
+[package]
+name = "local-dashboard-spec-tests"
+version = "0.0.0"
+edition = "2024"
+rust-version = "1.99"
+publish = false
+
+[workspace]
+resolver = "3"
+
+[dependencies]
+fusion-experiment-service = { path = "../../crates/experiment-service" }
+serde_json = "1"

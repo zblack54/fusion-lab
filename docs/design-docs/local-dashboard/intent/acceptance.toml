@@ -1,0 +1,21 @@
+[[acceptance]]
+id = "ACC-001"
+title = "Inspect exact recorded rows and replay their numerical context"
+actors = ["local researcher"]
+given = ["a known recording or a local Fusion Lab service"]
+when = "Inspect exact recorded rows and replay their numerical context"
+then = ["the independently specified values, controls and resource bounds are observable"]
+requirement_ids = ["REQ-003", "REQ-004", "REQ-005", "REQ-006", "REQ-007", "REQ-010", "REQ-011"]
+test_ids = ["TST-ACC-001"]
+status = "active"
+
+[[acceptance]]
+id = "ACC-002"
+title = "Launch locally and control experiments through a usable dashboard"
+actors = ["local researcher"]
+given = ["a known recording or a local Fusion Lab service"]
+when = "Launch locally and control experiments through a usable dashboard"
+then = ["the independently specified values, controls and resource bounds are observable"]
+requirement_ids = ["REQ-001", "REQ-002", "REQ-008", "REQ-009", "REQ-012", "REQ-013", "REQ-014", "REQ-015", "REQ-016", "REQ-017", "REQ-018", "REQ-019", "REQ-020"]
+test_ids = ["TST-ACC-002"]
+status = "active"
