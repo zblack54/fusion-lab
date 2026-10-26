@@ -50,6 +50,7 @@ pub enum State {
 #[serde(rename_all = "snake_case")]
 pub enum Pause {
     None,
+    EvidenceMismatch,
     Disabled,
     Quota,
     Authentication,

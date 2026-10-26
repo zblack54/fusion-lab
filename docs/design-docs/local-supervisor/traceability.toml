@@ -249,3 +249,59 @@ test_ids = ["TST-NEG-009", "TST-NEG-010", "TST-NEG-011"]
 verification_ids = ["VER-002", "VER-007"]
 module_ids = ["MOD-004"]
 decision_ids = ["ADR-001", "ADR-002"]
+
+[[link]]
+source_id = "REQ-037"
+test_ids = ["TST-NEG-013", "TST-NEG-014", "TST-CONTRACT-005", "TST-ACC-008"]
+verification_ids = ["VER-002", "VER-009"]
+module_ids = ["MOD-007"]
+decision_ids = ["ADR-003"]
+
+[[link]]
+source_id = "REQ-038"
+test_ids = ["TST-NEG-015", "TST-NEG-016"]
+verification_ids = ["VER-002", "VER-009"]
+module_ids = ["MOD-007"]
+decision_ids = ["ADR-003"]
+
+[[link]]
+source_id = "REQ-039"
+test_ids = ["TST-CONTRACT-005", "TST-ACC-008", "TST-ACC-009", "TST-ACC-010"]
+verification_ids = ["VER-002", "VER-009"]
+module_ids = ["MOD-007"]
+decision_ids = ["ADR-003"]
+
+[[link]]
+source_id = "REQ-040"
+test_ids = ["TST-CONTRACT-005", "TST-ACC-009", "TST-ACC-010"]
+verification_ids = ["VER-002", "VER-009"]
+module_ids = ["MOD-007"]
+decision_ids = ["ADR-003"]
+
+[[link]]
+source_id = "REQ-041"
+test_ids = ["TST-ANTI-003", "TST-ANTI-004", "TST-ANTI-005"]
+verification_ids = ["VER-002", "VER-009"]
+module_ids = ["MOD-007"]
+decision_ids = ["ADR-003"]
+
+[[link]]
+source_id = "REQ-042"
+test_ids = ["TST-BOUND-005", "TST-BOUND-006"]
+verification_ids = ["VER-002", "VER-009"]
+module_ids = ["MOD-007"]
+decision_ids = ["ADR-003"]
+
+[[link]]
+source_id = "REQ-043"
+test_ids = ["TST-ACC-008", "TST-ACC-009", "TST-NEG-017", "TST-ACC-010"]
+verification_ids = ["VER-002", "VER-009"]
+module_ids = ["MOD-007"]
+decision_ids = ["ADR-003"]
+
+[[link]]
+source_id = "REQ-044"
+test_ids = ["TST-NEG-018"]
+verification_ids = ["VER-002", "VER-009"]
+module_ids = ["MOD-007"]
+decision_ids = ["ADR-003"]

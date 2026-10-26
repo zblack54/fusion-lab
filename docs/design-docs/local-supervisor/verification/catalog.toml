@@ -14,7 +14,7 @@ id = "VER-002"
 method = "inspection"
 stage = "design"
 owner = "main orchestrator technical reviewer"
-covers = ["REQ-001", "REQ-002", "REQ-003", "REQ-004", "REQ-005", "REQ-006", "REQ-007", "REQ-008", "REQ-009", "REQ-010", "REQ-011", "REQ-012", "REQ-013", "REQ-014", "REQ-015", "REQ-016", "REQ-017", "REQ-018", "REQ-019", "REQ-020", "REQ-021", "REQ-022", "REQ-023", "REQ-024", "REQ-025", "REQ-026", "REQ-027", "REQ-028", "REQ-029", "REQ-030", "REQ-031", "REQ-032", "REQ-033", "REQ-034", "REQ-035", "REQ-036", "CON-006"]
+covers = ["REQ-001", "REQ-002", "REQ-003", "REQ-004", "REQ-005", "REQ-006", "REQ-007", "REQ-008", "REQ-009", "REQ-010", "REQ-011", "REQ-012", "REQ-013", "REQ-014", "REQ-015", "REQ-016", "REQ-017", "REQ-018", "REQ-019", "REQ-020", "REQ-021", "REQ-022", "REQ-023", "REQ-024", "REQ-025", "REQ-026", "REQ-027", "REQ-028", "REQ-029", "REQ-030", "REQ-031", "REQ-032", "REQ-033", "REQ-034", "REQ-035", "REQ-036", "CON-006", "REQ-037", "REQ-038", "REQ-039", "REQ-040", "REQ-041", "REQ-042", "REQ-043", "REQ-044"]
 procedure = "Review every test oracle, normal red diagnostic, class, protocol fixture and ownership inventory against issue #4."
 acceptance = "Every normative obligation has meaningful executable coverage or an explicit implementation verification plan; no fixture implements production behavior."
 design_evidence = "verification/suite-review.md"
@@ -115,3 +115,12 @@ id = "CMD-006"
 stage = "both"
 purpose = "Application docs"
 argv = ["cargo", "doc", "--manifest-path", "crates/local-supervisor/Cargo.toml", "--locked", "--no-deps"]
+
+[[verification]]
+id = "VER-009"
+method = "demonstration"
+stage = "implementation"
+owner = "independent scope and native sandbox reviewer"
+covers = ["REQ-037", "REQ-038", "REQ-039", "REQ-040", "REQ-041", "REQ-042", "REQ-043", "CON-008", "CON-009", "REQ-044", "CON-010"]
+procedure = "Inspect every native dispatch and bridge intake path against the exact approved scope bytes and universal gate; compare the received approved_scope raw UTF8 SHA256 with the independent file digest and observed expected_head with initial Git HEAD; execute missing/altered/schema/identity/size/control tests. Demonstrate unchanged initial/post Git HEAD for read-only positives and deliberate peer commit mutation rejection with matching current-head output, durable EvidenceMismatch pause, no accepted implementation or host intent, no Enable/Tick bypass, preserved before/after evidence and explicit owner-inspection/cancel/new-scope recovery. On native Windows verify pinned CLI accepts writable_roots=[], exclude_tmpdir_env_var=true and exclude_slash_tmp=true, then attempt real writes to sibling host state, ACK bridge and scope control from workspace-write and read-only workers. Demonstrate file growth, symlink/reparse rejection (record privilege blockers), wrong checkout aliases, no approval/attempt mutation on rejection, and an approved read-only subscription smoke with exact instructions. Review SHA2 closure and native1.99/stable compilation; preserve all old assertions. No paid API or actual inference before the gate."
+acceptance = "Prelaunch negatives remain fail closed without worker launch or host ACK/state forgery; deliberate read-only peer mutation is a one-launch postlaunch negative that preserves the change and blocks acceptance/relaunch; actual Windows write-denial evidence supports isolation, not documentation or fake-peer argv alone. Bounded scope/prompt and exact raw-byte digest match independently reviewed host approval. Missing privilege/capability evidence remains an acceptance gap."

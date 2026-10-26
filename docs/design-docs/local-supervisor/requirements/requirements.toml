@@ -321,3 +321,75 @@ statement = "The host bridge SHALL require issue, scope, PR URL, exact-head revi
 rationale = "Makes issue #4 lifecycle behavior observable and prevents duplicate or unauthorized work."
 source_ids = ["ACC-006"]
 status = "active"
+
+[[requirement]]
+id = "REQ-037"
+title = "Hash-bound approved scope"
+kind = "behavioral"
+statement = "Before native dispatch the driver SHALL require a private materialized scope whose exact-byte SHA-256 equals the task scope digest."
+rationale = "Bind actual work to host approval and prevent worker forgery of host control state (issue #41)."
+source_ids = ["ACC-008"]
+status = "active"
+
+[[requirement]]
+id = "REQ-038"
+title = "Strict scope identity and schema"
+kind = "behavioral"
+statement = "The driver SHALL reject a scope with invalid version, JSON types, unknown fields, empty instructions or mismatched task, issue or canonical checkout before account work or attempt reservation."
+rationale = "Bind actual work to host approval and prevent worker forgery of host control state (issue #41)."
+source_ids = ["ACC-008"]
+status = "active"
+
+[[requirement]]
+id = "REQ-039"
+title = "Approved instructions reach the worker"
+kind = "behavioral"
+statement = "The driver SHALL include the complete approved scope bytes and digest in the bounded worker stdin prompt."
+rationale = "Bind actual work to host approval and prevent worker forgery of host control state (issue #41)."
+source_ids = ["ACC-008"]
+status = "active"
+
+[[requirement]]
+id = "REQ-040"
+title = "Enforced scope mode"
+kind = "behavioral"
+statement = "The driver SHALL configure the Codex sandbox to read-only or workspace-write according to the approved scope mode."
+rationale = "Bind actual work to host approval and prevent worker forgery of host control state (issue #41)."
+source_ids = ["ACC-008"]
+status = "active"
+
+[[requirement]]
+id = "REQ-041"
+title = "Private host control isolation"
+kind = "behavioral"
+statement = "The driver SHALL reject workspace-write when canonical state, bridge or approved-scope control resolves inside its writable checkout."
+rationale = "Bind actual work to host approval and prevent worker forgery of host control state (issue #41)."
+source_ids = ["ACC-008"]
+status = "active"
+
+[[requirement]]
+id = "REQ-042"
+title = "Scope and encoded prompt caps"
+kind = "behavioral"
+statement = "The driver SHALL reject scope files above32768bytes and encoded final prompts above65536bytes before worker launch."
+rationale = "Bind actual work to host approval and prevent worker forgery of host control state (issue #41)."
+source_ids = ["ACC-008"]
+status = "active"
+
+[[requirement]]
+id = "REQ-043"
+title = "Explicit CLI checkout"
+kind = "behavioral"
+statement = "The CLI step/run commands SHALL honor optional --checkout while permitting legacy state-equals-checkout only for approved read-only scope."
+rationale = "Bind actual work to host approval and prevent worker forgery of host control state (issue #41)."
+source_ids = ["ACC-008"]
+status = "active"
+
+[[requirement]]
+id = "REQ-044"
+title = "Reject read-only commit mutation"
+kind = "behavioral"
+statement = "After a read-only worker changes Git HEAD, the driver SHALL return EvidenceMismatch and durably pause that task before accepting implementation or exporting a PR intent."
+rationale = "A matching worker-claimed final head is insufficient when approved read-only work changed the repository."
+source_ids = ["ACC-008"]
+status = "active"

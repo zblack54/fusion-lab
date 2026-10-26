@@ -1,6 +1,9 @@
-# Preapproval dependency review
+# Preapproval dependency review (current revision2 closure:46 registry packages)
 
 Status: reviewed by design author; independent package rereview pending.
+The chronological sections below preserve original28-package and revision1
+38-package reviews; the final revision2 section/inventory is authoritative for
+the current46-package candidate.
 This closes the dependency gap before locking; it implements no supervisor behavior.
 
 | Direct dependency | Exact version/features | Purpose | Declared Rust floor | License |
@@ -66,3 +69,32 @@ Current closure has38 registry packages. Adds Windows-only direct subc-jobobject
 Reviewed exact registry source lib.rs/sys.rs/cleanup.rs. Root job is static, noninheritable, kill-on-close and installed only at standalone driver entry before any children. Per-worker safe primitives retain Child+Job across suspended spawn, assignment and resume, then use kernel membership count for proof. Manual retained ownership avoids convenience setup error paths losing handles or using unbounded wait. PID liveness helpers are excluded as proof. Unknown post-crash ownership stays fenced; unnamed job reopen is unavailable. Native setup/crash/grandchild evidence remains VER004.
 
 Rejected alternative process-wrap10.0.1 after source inspection: its std Job Object uses kill_on_drop=false, and completion-port wait helper does not establish ACTIVE_PROCESS_ZERO; direct-root try_wait is insufficient. No dependency on that crate is added. This is a focused source/closure review, not a vulnerability audit or unexecuted native-proof claim. Own unsafe remains forbidden.
+
+## Controlled revision2 hash closure (issue41)
+
+Both production and independent harness fixtures pin sha2=0.10.9 with default
+std features. Native cargo info inspected the exact downloaded release: license
+MIT OR Apache-2.0; no rust-version is declared, so no upstream MSRV is invented.
+The exact normalized release manifest and source in the registry cache were
+reviewed. Primary release source: [sha2 0.10.9 manifest](https://docs.rs/crate/sha2/0.10.9/source/Cargo.toml).
+This is the RustCrypto SHA256 implementation, not handwritten application crypto.
+Optional asm/sha2-asm/force-soft/oid features are not enabled. CPU feature
+detection is supplied by the reviewed transitive crate, not own unsafe code.
+
+The eight added registry packages are sha2 0.10.9, digest 0.10.7, block-buffer
+0.10.4, crypto-common 0.1.7, generic-array 0.14.7, cpufeatures 0.2.17, typenum
+1.20.1 and version_check 0.9.5. All38 prior registry names/versions remain
+unchanged; the full reviewed closure is now46. Complete license expressions and
+declared floors are preserved in dependency-inventory.json. New licenses are
+MIT and MIT/Apache alternatives; typenum declares1.41, other newly added releases
+do not all declare a floor. Actual native1.99.0/stable builds establish project
+compatibility. No declared floor exceeds1.99 and no license metadata is absent.
+
+Harness direct serde_json=1.0.149 is the already reviewed production version; it
+allows explicit independent fixture JSON rather than asking the production gate
+to author its own expected input. SHA256 fixture helper checks the fixed known
+abc vector, then hashes exact scope file bytes independently of the supervisor.
+Offline resolution initially reported missing cpufeatures index input; the
+normal verified Cargo fetch filled the exact closure, with no TLS bypass or
+API/provider secret use. Both refreshed locks and their SHA256 fingerprints
+are inventoried before preapproval verification. No root manifest/core changed.

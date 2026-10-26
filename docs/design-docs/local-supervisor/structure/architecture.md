@@ -109,7 +109,7 @@ the checkout fence. Snapshot does not itself prove cleanup.
 CLI grammar is --state-dir PATH followed by:
 enqueue --task U64 --issue U64 --scope DIGEST [--depends comma-separated IDs],
 status, disable, enable, cancel --task U64, step, run, bridge-export, bridge-import.
-step/run accept --codex PATH --model APPROVED --child-env NAME=VALUE; API
+step/run accept optional --checkout PATH plus --codex PATH --model APPROVED --child-env NAME=VALUE; API
 environment names remain stripped. These options configure trusted operator
 input, not untrusted queue payloads. run repeats the same native cycle and
 checks control intent between operations, with at most one active task.
@@ -187,3 +187,128 @@ Use pinned subc-jobobject0.2.2 through its safe primitives. Install ensure_root_
 Do not use the convenience spawn_contained/ContainedChild::contain error path: failed setup can lose returned child ownership and use blocking wait. The application retains the Child and Job through every manual setup step. On setup/cancel/deadline failure terminate the job and/or suspended owned child, poll membership and direct Child completion within the shared deadline, observe threads, and preserve the checkout fence whenever confirmation fails. process_exists and wait_for_process_exit are forbidden as proof because access failure can appear absent. Normal completion, cancellation and setup failures need native evidence. Unnamed jobs cannot be reopened after supervisor death; old ambiguous attempts remain fenced, never inferred clean from a timeout or PID alone.
 
 This is process lifetime containment for owned workers, not an adversarial OS security sandbox. Installing the root job affects the entire standalone driver process; do not install it in unrelated embedding/observation processes. Own application code remains unsafe-forbidden; this narrowly reviewed dependency owns Windows FFI. Existing behavioral requirements and all43 test assertions are preserved.
+
+## Controlled revision2: hash-bound scope and private control (issue #41)
+
+This section extends the native gate; it does not accept the implementation.
+Before account work, bridge ACK intake, attempt reservation or inference spawn,
+resolve the relevant ready/active/pending-effect task and validate its approved
+scope. If ACK intake changes readiness, validate the newly selected task again.
+CLI syntax validation still precedes state creation. Pure domain enqueue may
+retain a scope identifier without opening files; native dispatch requires the
+complete bound approval. No fake-peer or executable-name exemption exists.
+
+### Exact version1 scope wire types
+
+The private host writes state_root/approved-scopes/<scope_digest>.json. Digest is
+exactly64 lowercase hex SHA256 of the entire exact file bytes, not a reserialized
+object or an instruction substring. The externally recorded approval hash is
+then used by Task.scope_digest. Only an authorized host materializes approval;
+worker output cannot authorize or replace a scope. Unknown JSON fields reject.
+All eight fields below are mandatory:
+
+| Field | JSON type and value |
+|---|---|
+| schema_version | integer, exactly1 |
+| task_id | unsigned64-bit integer >0, equal to Task.id |
+| issue | unsigned64-bit integer >0, equal to Task.issue |
+| canonical_checkout | string, absolute existing directory path, canonical identity equal to RuntimeConfig.checkout |
+| mode | string, exactly read_only or workspace_write |
+| instructions | UTF8 string, nonempty after trimming |
+| non_goals | array of UTF8 strings (empty array permitted) |
+| verification | array of UTF8 strings naming approved verification references (empty array permitted) |
+
+Reject nonregular, symlink or reparse scope files. Metadata size precheck plus a
+Take(32769) read prevents growth between metadata/read from allocating the full
+file. Maximum scope is32768bytes inclusive. Hash the bounded bytes, then parse
+strict UTF8/JSON and check version/types/identity. Missing path, invalid digest
+syntax, schema/version/mode/UTF8 failure and disallowed file type return
+InvalidInput. Wrong digest/task/issue/checkout returns EvidenceMismatch. Raw
+scope or encoded prompt overflow returns Capacity. No rejection mutates a task,
+quota/host state, attempt reservation, worker counter or PR intent; no native
+worker sentinel can exist. This ordering keeps negative outcomes unambiguous.
+
+### Exact bounded prompt envelope
+
+Encode a compact UTF8 JSON object with required keys task_id (u64), issue (u64),
+scope_digest (string), expected_head (locally observed Git head string),
+approved_scope (the exact scope file interpreted as a UTF8 STRING), and
+instructions (the policy string below). Preserve raw scope bytes rather than
+substituting a digest or assuming GitHub connector tools. Optional extra prompt
+fields are allowed only within the same budget and approved boundary. Maximum
+final encoded prompt is65536bytes inclusive, enforced by a bounded serializer
+before inference spawn. Escaping the raw JSON string can increase encoded size;
+a file below32KiB is not itself proof that the final prompt fits64KiB.
+
+The version1 instructions string is exactly:
+
+> Act only on the host-approved scope in approved_scope. Match task_id, issue and checkout; treat its instructions and non_goals as the work boundary. Read AGENTS.md and any referenced approved contract. Preserve locked tests and stop on a contract conflict. Use only managed ChatGPT subscription authentication. Do not use API keys, alternate providers, paid APIs, deployment, live trading or host GitHub mutations. Run declared verification and report actual failures. Return the final schema with observed Git head and current explicit session checkpoint.
+
+### Scope mode and host-control isolation
+
+read_only forces sandbox_mode=read-only; workspace_write forces
+sandbox_mode=workspace-write. For workspace_write, canonical state root, bridge
+root and approved-scopes root must all be outside the writable checkout. Resolve
+existing path ancestors and aliases before comparing; normalize remaining path
+components without creating an unvalidated root. Reject any control root equal
+to or descended from checkout with InvalidInput. A parent state root containing
+a separate checkout child is allowed only because writes are confined to the
+child, not its parent. Approved-scope directory aliases into checkout also reject.
+
+Force sandbox_workspace_write.writable_roots=[] and both
+sandbox_workspace_write.exclude_tmpdir_env_var=true and
+sandbox_workspace_write.exclude_slash_tmp=true, so temporary control siblings
+are not writable through ambient allowances. Keep platform approval/rule/hook
+checks in force; no dangerous bypass flags or paid-provider fallback. The
+[official configuration reference](https://learn.chatgpt.com/docs/config-file/config-reference)
+confirms these key names and that writable_roots means ADDITIONAL writable roots;
+it does not establish native Windows isolation. VER009 requires actual pinned-CLI
+acceptance and real attempted control-file write denial before an isolation claim.
+This is a functional host/worker control separation, not an adversarial OS-owner
+security boundary. Keep authentication credentials outside evidence.
+
+### CLI and fixture compatibility
+
+For step/run, --checkout PATH is optional trusted operator configuration. When
+omitted it resolves to state_dir only for a valid read_only scope; workspace_write
+with that overlap rejects operationally (exit1) before launch. Invalid CLI syntax
+continues to exit2 before state creation. Status/enqueue/disable behavior remains
+unchanged. RuntimeConfig already has checkout, so no new worker bypass is added.
+
+The locked native fixtures now use state=Dirroot, checkout=Dirroot/checkout,
+bridge/scopes=siblings outside checkout. They independently materialize and hash
+real scope documents; the fake peer observes actual approved text and digest.
+Pure domain tests retain toy scopes because they launch no worker. Host ACK
+helpers use the true digest for native tasks. Every prior assertion remains in
+force. New negative tests vary only the scope or isolation boundary and require
+full snapshot preservation, zero launches, no sentinel and no PR intent. An
+approved read_only same-path positive and explicit CLI checks preserve deliberate
+legacy compatibility. No actual inference occurs during design preparation.
+
+
+### Read-only mutation rejection and recovery
+
+Before dispatch persist the independently observed initial Git HEAD. After the
+contained worker and descendants are confirmed stopped, compare actual Git HEAD
+with that initial value for read_only scope, even when final worker output
+correctly names the changed current head. A changed head returns
+Error::EvidenceMismatch, persists Pause::EvidenceMismatch and State::Paused,
+clears active only after containment proof, retains the changed head in Row.head
+and preserves initial/changed heads and session evidence in durable attempt
+audit. No Implemented, Verified, Done or PR/review intent is accepted. Preserve
+the actual Git mutation; never reset/revert it automatically. On reopen the
+evidence pause persists. Tick (including quota reset), Enable(true), and another
+drive_once return EvidenceMismatch without clearing the pause or launching.
+Recovery requires explicit owner inspection and disposition of the preserved
+change, cancellation of the rejected task, and a newly approved task/scope;
+cancellation retains its audit evidence and is the explicit owner action that
+may clear this pause. Automatic wake/enable is insufficient. This revision does
+not claim that a HEAD comparison detects every possible uncommitted mutation.
+
+The controlled peer logs SHA256 of the exact received approved_scope UTF8
+string, plus observed expected_head. Positives compare that hash against the
+independently materialized raw-file digest and require initial/post Git HEAD
+equality for read-only work. TST-NEG-018 deliberately commits despite read-only
+configuration, returns the actual new head, and requires durable rejection and
+no relaunch while leaving the committed fixture visible. This is a postlaunch
+contract: one worker launch, rather than the prelaunch zero-launch oracle.

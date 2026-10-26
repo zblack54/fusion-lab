@@ -3,7 +3,7 @@ id = "SPEC-SUPERVISOR"
 title = "Local Windows subscription orchestration supervisor"
 feature_slug = "local-supervisor"
 target_crate = "local-supervisor"
-target_revision = "b274c6f6deb3e86a9fdfbd31b8b92ec59396b5e8"
+target_revision = "9204bdbfeaa24c0923aee0ac3c33ebc293e1570d"
 status = "approved"
 ai_ready = true
 [target]

@@ -538,7 +538,7 @@ path = "test-suite/tests/contracts.rs"
 selector = "tst_contract_005_actual_dispatch_uses_subscription_launch_policy"
 test_target = "test:contracts"
 configuration_ids = ["CFG-001", "CFG-002"]
-covers = ["REQ-019","CON-002"]
+covers = ["REQ-019","CON-002", "REQ-037", "REQ-039", "REQ-040", "CON-008"]
 expected_pre_implementation = "fail"
 expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
 expected_failure_reason = "The diagnostic production seam returns NotImplemented at the first required behavior; later independent assertions exercise actual controlled subprocess/file boundaries."
@@ -594,8 +594,190 @@ path = "test-suite/tests/contracts.rs"
 selector = "tst_acc_008_cli_step_runs_real_child_and_exports_bridge"
 test_target = "test:contracts"
 configuration_ids = ["CFG-001", "CFG-002"]
-covers = ["REQ-035"]
+covers = ["REQ-035", "REQ-043", "REQ-037", "REQ-039"]
 expected_pre_implementation = "fail"
 expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
 expected_failure_reason = "The diagnostic production seam returns NotImplemented at the first required behavior; later independent assertions exercise actual controlled subprocess/file boundaries."
+required = true
+
+[[test]]
+id = "TST-NEG-013"
+title = "missing approved scope cannot launch"
+kind = "negative"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_neg_013_missing_approved_scope_cannot_launch"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-037"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The minimal diagnostic seam has no materialized-scope dispatch behavior."
+required = true
+
+[[test]]
+id = "TST-NEG-014"
+title = "altered scope hash cannot launch"
+kind = "negative"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_neg_014_altered_scope_hash_cannot_launch"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-037"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The minimal diagnostic seam has no materialized-scope dispatch behavior."
+required = true
+
+[[test]]
+id = "TST-NEG-015"
+title = "scope identity must match task issue checkout"
+kind = "negative"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_neg_015_scope_identity_must_match_task_issue_checkout"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-038"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The minimal diagnostic seam has no materialized-scope dispatch behavior."
+required = true
+
+[[test]]
+id = "TST-NEG-016"
+title = "scope schema is strict and versioned"
+kind = "negative"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_neg_016_scope_schema_is_strict_and_versioned"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-038"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The minimal diagnostic seam has no materialized-scope dispatch behavior."
+required = true
+
+[[test]]
+id = "TST-BOUND-005"
+title = "scope file is bounded before launch"
+kind = "boundary"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_bound_005_scope_file_is_bounded_before_launch"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-042"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The minimal diagnostic seam has no materialized-scope dispatch behavior."
+required = true
+
+[[test]]
+id = "TST-BOUND-006"
+title = "encoded prompt is bounded before launch"
+kind = "boundary"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_bound_006_encoded_prompt_is_bounded_before_launch"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-042"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The minimal diagnostic seam has no materialized-scope dispatch behavior."
+required = true
+
+[[test]]
+id = "TST-ANTI-003"
+title = "workspace worker cannot write state control"
+kind = "anti_pattern"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_anti_003_workspace_worker_cannot_write_state_control"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-041", "CON-008"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The minimal diagnostic seam has no materialized-scope dispatch behavior."
+required = true
+
+[[test]]
+id = "TST-ANTI-004"
+title = "workspace worker cannot write host bridge"
+kind = "anti_pattern"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_anti_004_workspace_worker_cannot_write_host_bridge"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-041", "CON-008"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The minimal diagnostic seam has no materialized-scope dispatch behavior."
+required = true
+
+[[test]]
+id = "TST-ANTI-005"
+title = "canonical alias cannot hide control overlap"
+kind = "anti_pattern"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_anti_005_canonical_alias_cannot_hide_control_overlap"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-041", "CON-008"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The minimal diagnostic seam has no materialized-scope dispatch behavior."
+required = true
+
+[[test]]
+id = "TST-ACC-009"
+title = "readonly scope supports legacy same path"
+kind = "acceptance"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_acc_009_readonly_scope_supports_legacy_same_path"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-040", "REQ-043", "REQ-039"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The minimal diagnostic seam has no materialized-scope dispatch behavior."
+required = true
+
+[[test]]
+id = "TST-NEG-017"
+title = "cli workspace without isolated checkout cannot launch"
+kind = "negative"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_neg_017_cli_workspace_without_isolated_checkout_cannot_launch"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-043", "CON-008"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The minimal diagnostic seam has no materialized-scope dispatch behavior."
+required = true
+
+[[test]]
+id = "TST-ACC-010"
+title = "cli readonly legacy checkout is explicitly sandboxed"
+kind = "acceptance"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_acc_010_cli_readonly_legacy_checkout_is_explicitly_sandboxed"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-040", "REQ-043", "REQ-039"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The minimal diagnostic seam has no materialized-scope dispatch behavior."
+required = true
+
+[[test]]
+id = "TST-NEG-018"
+title = "readonly peer mutation is not accepted or reverted"
+kind = "negative"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_neg_018_readonly_peer_mutation_is_not_accepted_or_reverted"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-044", "CON-010"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic seam does not execute or reject an actual read-only peer commit mutation."
 required = true

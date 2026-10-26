@@ -1,12 +1,18 @@
 {
-  "harness_lock_sha256": "681cce2048916f3a5c4c8cfe494ec152e2e807cee11e1ef9595811fd6687e2c6",
-  "production_lock_sha256": "c3efea36fd292e7fdaaa270a7fd4840118eb13da7db2fc6e7eec0b0904afeba8",
+  "harness_lock_sha256": "ab989015c0ae6c759f118b2938107044f0a04cd2746816131f7c8459be8377f7",
+  "production_lock_sha256": "62c4b2f694c9bad396badc1cc0ac6325dc254287997bbf7356ce8c8a864def15",
   "registry_packages": [
     {
       "name": "bitflags",
       "version": "2.13.2",
       "license": "MIT OR Apache-2.0",
       "declared_rust_version": "1.56.0"
+    },
+    {
+      "name": "block-buffer",
+      "version": "0.10.4",
+      "license": "MIT OR Apache-2.0",
+      "declared_rust_version": null
     },
     {
       "name": "bytes",
@@ -25,6 +31,24 @@
       "version": "1.0.5",
       "license": "MIT OR Apache-2.0",
       "declared_rust_version": "1.32"
+    },
+    {
+      "name": "cpufeatures",
+      "version": "0.2.17",
+      "license": "MIT OR Apache-2.0",
+      "declared_rust_version": null
+    },
+    {
+      "name": "crypto-common",
+      "version": "0.1.7",
+      "license": "MIT OR Apache-2.0",
+      "declared_rust_version": null
+    },
+    {
+      "name": "digest",
+      "version": "0.10.7",
+      "license": "MIT OR Apache-2.0",
+      "declared_rust_version": null
     },
     {
       "name": "errno",
@@ -49,6 +73,12 @@
       "version": "0.1.15",
       "license": "MIT OR Apache-2.0",
       "declared_rust_version": "1.65.0"
+    },
+    {
+      "name": "generic-array",
+      "version": "0.14.7",
+      "license": "MIT",
+      "declared_rust_version": null
     },
     {
       "name": "getrandom",
@@ -147,6 +177,12 @@
       "declared_rust_version": "1.68"
     },
     {
+      "name": "sha2",
+      "version": "0.10.9",
+      "license": "MIT OR Apache-2.0",
+      "declared_rust_version": null
+    },
+    {
       "name": "shlex",
       "version": "2.0.1",
       "license": "MIT OR Apache-2.0",
@@ -183,6 +219,12 @@
       "declared_rust_version": "1.85"
     },
     {
+      "name": "typenum",
+      "version": "1.20.1",
+      "license": "MIT OR Apache-2.0",
+      "declared_rust_version": "1.41.0"
+    },
+    {
       "name": "unicode-ident",
       "version": "1.0.27",
       "license": "(MIT OR Apache-2.0) AND Unicode-3.0",
@@ -191,6 +233,12 @@
     {
       "name": "vcpkg",
       "version": "0.2.15",
+      "license": "MIT/Apache-2.0",
+      "declared_rust_version": null
+    },
+    {
+      "name": "version_check",
+      "version": "0.9.5",
       "license": "MIT/Apache-2.0",
       "declared_rust_version": null
     },

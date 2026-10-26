@@ -74,3 +74,14 @@ then = ["state and canonical JSON survive separate CLI invocations"]
 requirement_ids = ["REQ-028"]
 test_ids = ["TST-ACC-006"]
 status = "active"
+
+[[acceptance]]
+id = "ACC-008"
+title = "Only approved instructions execute outside private host control"
+actors = ["authorizing local host", "bounded subscription worker"]
+given = ["an independently materialized approved scope and canonical checkout", "private host state and bridge"]
+when = "the host starts a native cycle"
+then = ["exact approved content reaches the worker only after validation", "workspace writers cannot mutate the host control plane", "read-only legacy checkout remains explicitly sandboxed"]
+requirement_ids = ["REQ-037", "REQ-038", "REQ-039", "REQ-040", "REQ-041", "REQ-042", "REQ-043", "REQ-044"]
+test_ids = ["TST-ACC-008", "TST-ACC-009", "TST-ACC-010"]
+status = "active"

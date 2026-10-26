@@ -1,4 +1,5 @@
 //! Test-owned external Codex protocol peer. Never used as production behavior.
+use sha2::{Digest, Sha256};
 use std::{
     env, fs,
     io::{self, BufRead, Read, Write},
@@ -67,6 +68,29 @@ fn main() {
         .open(root.join("launch.txt"))
         .unwrap();
     writeln!(f, "task_id={id}").unwrap();
+    let wire: serde_json::Value = serde_json::from_str(&prompt).unwrap();
+    let observed_scope_sha256 = format!(
+        "{:x}",
+        Sha256::digest(wire["approved_scope"].as_str().unwrap().as_bytes())
+    );
+    writeln!(f, "observed_scope_sha256={observed_scope_sha256}").unwrap();
+    writeln!(
+        f,
+        "observed_expected_head={}",
+        wire["expected_head"].as_str().unwrap()
+    )
+    .unwrap();
+    let scope: serde_json::Value =
+        serde_json::from_str(wire["approved_scope"].as_str().unwrap()).unwrap();
+    writeln!(
+        f,
+        "approved_scope_present={}",
+        scope["instructions"]
+            .as_str()
+            .is_some_and(|s| s.contains(&format!("approved-fixture-task-{id}")))
+    )
+    .unwrap();
+    writeln!(f, "scope_digest={}", wire["scope_digest"].as_str().unwrap()).unwrap();
     for a in &args {
         writeln!(f, "arg={a}").unwrap();
     }
@@ -82,27 +106,30 @@ fn main() {
     }
     let checkout = root.parent().unwrap();
     let file = format!("fixture-task-{id}.txt");
-    fs::write(checkout.join(&file), format!("task {id}")).unwrap();
-    for args in [
-        vec!["add".to_string(), file],
-        vec![
-            "-c".into(),
-            "user.name=Spec".into(),
-            "-c".into(),
-            "user.email=spec@example.invalid".into(),
-            "-c".into(),
-            "commit.gpgsign=false".into(),
-            "commit".into(),
-            "-m".into(),
-            format!("fixture task {id}"),
-        ],
-    ] {
-        let result = std::process::Command::new("git")
-            .current_dir(checkout)
-            .args(args)
-            .output()
-            .unwrap();
-        assert!(result.status.success(), "fixture git commit failed");
+    let read_only = args.iter().any(|arg| arg == "sandbox_mode=\"read-only\"");
+    if !read_only || scenario == "readonly_mutates" {
+        fs::write(checkout.join(&file), format!("task {id}")).unwrap();
+        for args in [
+            vec!["add".to_string(), file],
+            vec![
+                "-c".into(),
+                "user.name=Spec".into(),
+                "-c".into(),
+                "user.email=spec@example.invalid".into(),
+                "-c".into(),
+                "commit.gpgsign=false".into(),
+                "commit".into(),
+                "-m".into(),
+                format!("fixture task {id}"),
+            ],
+        ] {
+            let result = std::process::Command::new("git")
+                .current_dir(checkout)
+                .args(args)
+                .output()
+                .unwrap();
+            assert!(result.status.success(), "fixture git commit failed");
+        }
     }
     let observed = std::process::Command::new("git")
         .current_dir(checkout)

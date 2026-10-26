@@ -41,3 +41,65 @@ No scheduler, OS recurring task or GitHub write was started during design.
 There is no test-owned private credential input, external path support crate,
 network test dependency or hidden root manifest change. Only owned production
 crate files and harness/package files are used.
+
+## Revision2 scope efficacy and fixture migration
+
+This author technical review does not approve or lock the package. All prior43
+selectors/assertions remain in force; only actual-dispatch fixture paths, bound
+scope content/digests and host evidence parameters change. Pure domain tests
+retain toy scopes because they never invoke a worker. The fake peer is still a
+real subprocess, not a supervisor implementation: it observes argv/env and the
+actual approved_scope stdin string, and respects the requested read-only mode
+in its own controlled file-writing behavior. It grants no runtime exception.
+
+Twelve added entrypoint tests vary missing scope, altered raw bytes, task/issue/
+checkout identity, strict JSON/version/type/mode, raw-file size, final encoded
+prompt size, canonical control isolation and CLI legacy/read-only behavior.
+Rejections require exact errors, full committed snapshot preservation, zero
+worker launches, absent sentinel/native reservation and no PR intent. Positive
+workspace dispatch checks the actual approved instruction marker/digest and
+all extra/temp sandbox settings. Positive read-only SDK/CLI use same-path legacy
+control only with exact sandbox_mode=read-only. No assertion is skipped, retried,
+quarantined or made conditional on peer identity.
+
+The encoded-prompt boundary uses independently constructed maximum-size scope
+bytes dominated by JSON backslashes: raw<=32768 yet the MINIMUM required prompt
+encoding exceeds65536. Its oracle passed before the diagnostic seam was reached.
+This distinguishes encoded-byte limits from input character counts. The fixture
+SHA256 helper first checks the independently known abc vector, not SUT output.
+
+Symlink/reparse privileges, concurrent file growth and actual Windows sandbox
+write denial are concrete VER009 obligations; fake-peer flags and documentation
+are not claimed as OS-isolation proof. Current design execution only establishes
+compilation/enumeration and normal expected-red reachability. Selective omission
+of a scope gate or private-root check would violate explicit downstream errors
+and absence-of-effects assertions after implementation. No production mutation
+result or live inference success is claimed during this design revision.
+
+
+### Read-only mutation rejection and recovery
+
+Before dispatch persist the independently observed initial Git HEAD. After the
+contained worker and descendants are confirmed stopped, compare actual Git HEAD
+with that initial value for read_only scope, even when final worker output
+correctly names the changed current head. A changed head returns
+Error::EvidenceMismatch, persists Pause::EvidenceMismatch and State::Paused,
+clears active only after containment proof, retains the changed head in Row.head
+and preserves initial/changed heads and session evidence in durable attempt
+audit. No Implemented, Verified, Done or PR/review intent is accepted. Preserve
+the actual Git mutation; never reset/revert it automatically. On reopen the
+evidence pause persists. Tick (including quota reset), Enable(true), and another
+drive_once return EvidenceMismatch without clearing the pause or launching.
+Recovery requires explicit owner inspection and disposition of the preserved
+change, cancellation of the rejected task, and a newly approved task/scope;
+cancellation retains its audit evidence and is the explicit owner action that
+may clear this pause. Automatic wake/enable is insufficient. This revision does
+not claim that a HEAD comparison detects every possible uncommitted mutation.
+
+The controlled peer logs SHA256 of the exact received approved_scope UTF8
+string, plus observed expected_head. Positives compare that hash against the
+independently materialized raw-file digest and require initial/post Git HEAD
+equality for read-only work. TST-NEG-018 deliberately commits despite read-only
+configuration, returns the actual new head, and requires durable rejection and
+no relaunch while leaving the committed fixture visible. This is a postlaunch
+contract: one worker launch, rather than the prelaunch zero-launch oracle.

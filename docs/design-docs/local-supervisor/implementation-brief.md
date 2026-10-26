@@ -1,19 +1,12 @@
-## Approved controlled revision1
+# Implementation handoff: controlled revision2 reviewable draft
 
-Issue #37 requires concrete native Job Object containment. Prior approval digest82ad2fc0e5791995c39e56fdafeaace7021b5462a98230cae2107a68812c7842 is preserved outside the candidate with production/harness backups. Main independently reviewed exact safe Job Object primitives, dependency closure, ownership/error policy and successful43x2 expected-red draft execution. Revision1 technical approval is granted under the same owner delegation; implementation resumes only after final refreshed evidence, new external lock validation and restoration of preserved implementation. Existing requirements and assertions are not weakened.
-
-# Implementation handoff: approved technical contract
-
-Status: AI_READY after final execution refresh and external lock validation.
-Approver: main orchestrator /root, separate from both design authors.
-Authority: owner delegation recorded in repository AGENTS.md (2026-10-25),
-continued explicitly by owner request to autonomously build supervisor/service
-and maintain issues/PRs/docs. Scope: issue #4, 36 requirements, seven constraints,
-43 executable tests, four ordered implementation slices; repairs #33/#34 and
-concrete pinned dependency closure reviewed before approval on 2026-10-26.
-Approval permits implementation under the immutable contract; it does not accept
-the product or authorize deployment, paid APIs, credential extraction or a second
-scheduler. VER-003–008 remain mandatory acceptance obligations.
+Status: approved / ai_ready=true; final-byte execution and new lock required.
+Revision2 approver: main orchestrator /root,2026-10-26, after independent /root/capacity_baseline review and main exact-oracle/architecture review. Authority: owner delegation2026-10-25 and repository AGENTS.md. Approved44requirements/10constraints/56tests/5slices. Historical revision1 digest cannot authorize this changed surface.
+Preparation authority: main/user delegation and issue41 comment6422273739 permit
+design preparation; main separately approves this final reviewed scope. No actual inference before implemented gate or deployment is authorized.
+Current scope:44requirements,10constraints,56executable tests,5ordered slices.
+Native published baseline:9204bdbfeaa24c0923aee0ac3c33ebc293e1570d; service main
+advanced independently without changing the preserved supervisor baseline.
 
 1. Make all required tests pass.
 2. Do not modify any test-owned file, test catalog, fixture, snapshot, test dependency, test command, or test lock.
@@ -52,3 +45,11 @@ bridge and descendant ambiguity. Update implementation/progress.toml only.
 Conflict report includes package/digest, task/revision, exact REQ/CON/TST/VER IDs,
 minimal reproducer, commands/output and proposed design correction. Do not
 change the locked surface without returning to design and approval.
+
+Revision2 adds exactly pinned sha2=0.10.9 to production and independent harness fixtures, with serde_json1.0.149 direct harness use already in the production closure. Original assertions are preserved; native paths/scope helpers and new rejection/read-only cases are reviewed changes, not fixture exceptions. TASK005 scope gate precedes new native dispatch. Do not run real inference before this revision is independently approved, locked and implemented; live VER009 write-denial remains required before unattended acceptance.
+
+Interface handoff: Pause::EvidenceMismatch is a new approved-surface enum variant
+in the diagnostic lib. When restoring preserved full native revision-one lib,
+reapply this variant before compiling; do not overwrite the new contract types.
+Implement its durable fail-closed owner-disposition policy from architecture
+and TST-NEG-018. Original native backup stays untouched.

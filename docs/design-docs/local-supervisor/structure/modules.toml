@@ -57,3 +57,13 @@ depends_on = ["MOD-005"]
 exposes = ["Supervisor public boundary and documented CLI"]
 requirement_ids = ["REQ-027", "REQ-028", "REQ-029", "REQ-030"]
 status = "planned"
+
+[[module]]
+id = "MOD-007"
+path = "crates/local-supervisor/src/scope.rs"
+responsibility = "Bounded host-approved scope validation, content hashing and control isolation"
+owns = ["scope bytes", "validated mode", "encoded prompt budget", "canonical control isolation"]
+depends_on = []
+exposes = ["pre-dispatch approved-scope gate"]
+requirement_ids = ["REQ-037", "REQ-038", "REQ-039", "REQ-040", "REQ-041", "REQ-042", "REQ-043", "REQ-044"]
+status = "planned"

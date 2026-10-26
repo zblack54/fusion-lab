@@ -74,3 +74,36 @@ enforcement = "mixed"
 test_ids = ["TST-STRUCT-001"]
 verification_ids = ["VER-005"]
 status = "active"
+
+[[constraint]]
+id = "CON-008"
+title = "Worker cannot forge host control"
+kind = "invariant"
+statement = "Workspace dispatch SHALL force empty extra writable roots and both temp exclusions while keeping canonical host state, bridge and approved scopes outside the checkout."
+rationale = "Outside-checkout control is insufficient when ambient temp write allowances can still reach it."
+enforcement = "mixed"
+test_ids = ["TST-CONTRACT-005", "TST-ANTI-003", "TST-ANTI-004", "TST-ANTI-005", "TST-NEG-017"]
+verification_ids = ["VER-009"]
+status = "active"
+
+[[constraint]]
+id = "CON-009"
+title = "Scope path and read confinement"
+kind = "invariant"
+statement = "The scope gate SHALL reject symlink, reparse or nonregular scope files and use metadata plus bounded reads to prevent size-race over-allocation."
+rationale = "Private approval paths and bounds remain enforced under aliases and file growth."
+enforcement = "verification"
+test_ids = []
+verification_ids = ["VER-009"]
+status = "active"
+
+[[constraint]]
+id = "CON-010"
+title = "Preserve rejected read-only mutation evidence"
+kind = "invariant"
+statement = "Read-only mutation rejection SHALL preserve the changed Git state and before/after evidence without automatic reversion or another launch until explicit owner inspection, cancellation and newly approved task scope; Enable and quota-reset Tick cannot clear the evidence pause."
+rationale = "Failures must remain reviewable while a committed worker mutation cannot masquerade as accepted read-only work."
+enforcement = "mixed"
+test_ids = ["TST-NEG-018"]
+verification_ids = ["VER-009"]
+status = "active"

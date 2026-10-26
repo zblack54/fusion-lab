@@ -1,4 +1,6 @@
 use local_supervisor::*;
+use serde_json::{Value, json};
+use sha2::{Digest, Sha256};
 fn verified(e: &mut Supervisor, id: u64, head: &str) {
     allow(e);
     submit(e, id, &[]);
@@ -236,17 +238,21 @@ fn tst_neg_012_dead_root_unknown_descendants_keep_writer_fence() {
 fn tst_acc_008_cli_step_runs_real_child_and_exports_bridge() {
     let dir = Dir::new();
     let fake = runtime(&dir, "ok");
+    let digest = materialize(&dir, &scope_document(&fake, 1, "workspace_write"));
+    let checkout = fake.checkout.to_string_lossy().into_owned();
     let first = cli(
         &dir,
-        &["enqueue", "--task", "1", "--issue", "4", "--scope", "abc"],
+        &["enqueue", "--task", "1", "--issue", "4", "--scope", &digest],
     );
     assert_eq!(first.status.code(), Some(0));
     let executable = fake.codex_executable.to_str().unwrap();
-    let env = format!("FAKE_CODEX_ROOT={}", dir.0.join("fake").display());
+    let env = format!("FAKE_CODEX_ROOT={}", dir.0.join("checkout/fake").display());
     let result = cli(
         &dir,
         &[
             "step",
+            "--checkout",
+            &checkout,
             "--codex",
             executable,
             "--model",
@@ -259,11 +265,67 @@ fn tst_acc_008_cli_step_runs_real_child_and_exports_bridge() {
     let report = String::from_utf8(result.stdout).unwrap();
     assert!(report.contains("\"task\":1"));
     assert!(report.contains("\"terminal\":\"awaiting_host\""));
-    assert!(dir.0.join("fake/launch.txt").exists());
+    assert!(dir.0.join("checkout/fake/launch.txt").exists());
     assert!(dir.0.join("bridge/outbox").exists());
 }
+
+fn observed_head(checkout: &Path) -> String {
+    let output = Command::new("git")
+        .args(["rev-parse", "HEAD"])
+        .current_dir(checkout)
+        .output()
+        .unwrap();
+    assert!(output.status.success());
+    String::from_utf8(output.stdout).unwrap().trim().to_owned()
+}
+fn scope_document(runtime: &RuntimeConfig, id: u64, mode: &str) -> Value {
+    json!({"schema_version":1,"task_id":id,"issue":4,
+        "canonical_checkout":std::fs::canonicalize(&runtime.checkout).unwrap().to_string_lossy(),
+        "mode":mode,"instructions":format!("approved-fixture-task-{id}: perform only the declared controlled fixture work"),
+        "non_goals":["no deployment","no paid APIs"],"verification":["controlled fixture checks"]})
+}
+fn scope_bytes(d: &Dir, bytes: &[u8]) -> String {
+    assert_eq!(
+        format!("{:x}", Sha256::digest(b"abc")),
+        "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
+    );
+    let digest = format!("{:x}", Sha256::digest(bytes));
+    std::fs::create_dir_all(d.0.join("approved-scopes")).unwrap();
+    std::fs::write(
+        d.0.join("approved-scopes").join(format!("{digest}.json")),
+        bytes,
+    )
+    .unwrap();
+    digest
+}
+fn materialize(d: &Dir, document: &Value) -> String {
+    scope_bytes(d, &serde_json::to_vec(document).unwrap())
+}
+fn native_submit(
+    e: &mut Supervisor,
+    d: &Dir,
+    runtime: &RuntimeConfig,
+    id: u64,
+    deps: &[u64],
+    mode: &str,
+) -> String {
+    let digest = materialize(d, &scope_document(runtime, id, mode));
+    call(e.apply(Event::Submit(Task {
+        id,
+        issue: 4,
+        dependencies: deps.into(),
+        scope_digest: digest.clone(),
+    })))
+    .unwrap();
+    digest
+}
+
 fn runtime(d: &Dir, scenario: &str) -> RuntimeConfig {
-    if !d.0.join(".git").exists() {
+    runtime_at(d, scenario, d.0.join("checkout"))
+}
+fn runtime_at(d: &Dir, scenario: &str, checkout: PathBuf) -> RuntimeConfig {
+    std::fs::create_dir_all(checkout.clone()).unwrap();
+    if !checkout.join(".git").exists() {
         for args in [
             vec!["init"],
             vec![
@@ -280,7 +342,7 @@ fn runtime(d: &Dir, scenario: &str) -> RuntimeConfig {
             ],
         ] {
             let output = Command::new("git")
-                .current_dir(&d.0)
+                .current_dir(checkout.clone())
                 .args(args)
                 .output()
                 .unwrap();
@@ -291,12 +353,12 @@ fn runtime(d: &Dir, scenario: &str) -> RuntimeConfig {
             );
         }
     }
-    let fake = d.0.join("fake");
+    let fake = checkout.join("fake");
     std::fs::create_dir_all(&fake).unwrap();
     std::fs::write(fake.join("scenario.txt"), scenario).unwrap();
     RuntimeConfig {
         codex_executable: PathBuf::from(env!("CARGO_BIN_EXE_fake-codex")),
-        checkout: d.0.clone(),
+        checkout: checkout.clone(),
         bridge: d.0.join("bridge"),
         model: "gpt-6-luna".into(),
         environment: vec![(
@@ -306,7 +368,7 @@ fn runtime(d: &Dir, scenario: &str) -> RuntimeConfig {
         worker_deadline_ms: 5000,
     }
 }
-fn finish_host(e: &mut Supervisor, id: u64, head: &str) {
+fn finish_host(e: &mut Supervisor, id: u64, head: &str, scope_digest: &str) {
     let d = Dir::new();
     let bridge = d.0.join("bridge");
     std::fs::create_dir_all(bridge.join("inbox")).unwrap();
@@ -331,7 +393,7 @@ fn finish_host(e: &mut Supervisor, id: u64, head: &str) {
         call(e.write_bridge(&bridge)).unwrap();
         let evidence = match &intent.kind {
             IntentKind::CreatePr => format!(
-                r#"{{"kind":"pr","head":"{head}","pr_url":"https://github.com/zblack54/fusion-lab/pull/1","issue":4,"scope_digest":"abc"}}"#
+                r#"{{"kind":"pr","head":"{head}","pr_url":"https://github.com/zblack54/fusion-lab/pull/1","issue":4,"scope_digest":"{scope_digest}"}}"#
             ),
             IntentKind::RequestReview => format!(
                 r#"{{"kind":"review","head":"{head}","checks_ref":"checks:{head}","review_ref":"review:{head}","approved":true,"checks_passed":true}}"#
@@ -439,7 +501,7 @@ fn finish(e: &mut Supervisor, id: u64, head: &str) {
         passed: true,
     }))
     .unwrap();
-    finish_host(e, id, head);
+    finish_host(e, id, head, "abc");
 }
 fn cli(d: &Dir, args: &[&str]) -> Output {
     let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../crates/local-supervisor");
@@ -581,7 +643,7 @@ fn tst_acc_004_host_ack_required_before_done() {
         .unwrap_err(),
         Error::InvalidTransition
     );
-    finish_host(&mut e, 1, "h");
+    finish_host(&mut e, 1, "h", "abc");
     let s = call(e.snapshot()).unwrap();
     assert_eq!(row(&s, 1).state, State::Done);
     assert!(s.pending_intents.is_empty());
@@ -965,14 +1027,14 @@ fn tst_contract_003_worker_plan_enforces_subscription_and_model() {
 fn tst_beh_002_actual_worker_exit_is_not_success() {
     let dir = Dir::new();
     let mut e = engine(&dir);
-    submit(&mut e, 1, &[]);
     let runtime = runtime(&dir, "nonzero");
+    let _scope1 = native_submit(&mut e, &dir, &runtime, 1, &[], "workspace_write");
     let out = call(e.drive_once(&runtime)).unwrap();
     assert_eq!(out.terminal, "failed");
     assert_eq!(out.exit_code, Some(7));
     assert_eq!(out.launches, 1);
     assert_eq!(out.task, Some(1));
-    assert!(dir.0.join("fake/launch.txt").exists());
+    assert!(dir.0.join("checkout/fake/launch.txt").exists());
 }
 
 #[test]
@@ -1200,8 +1262,8 @@ fn tst_neg_008_gated_dispatch_never_launches_on_bad_account() {
     for scenario in ["unauth", "api", "zero", "missing"] {
         let dir = Dir::new();
         let mut e = engine(&dir);
-        submit(&mut e, 1, &[]);
         let runtime = runtime(&dir, scenario);
+        let _scope1 = native_submit(&mut e, &dir, &runtime, 1, &[], "workspace_write");
         let result = call(e.drive_once(&runtime));
         let expected = match scenario {
             "unauth" => Error::AuthenticationRequired,
@@ -1210,7 +1272,7 @@ fn tst_neg_008_gated_dispatch_never_launches_on_bad_account() {
             _ => Error::MissingQuota,
         };
         assert_eq!(result.unwrap_err(), expected);
-        assert!(!dir.0.join("fake/launch.txt").exists());
+        assert!(!dir.0.join("checkout/fake/launch.txt").exists());
         assert_eq!(call(e.snapshot()).unwrap().worker_launches, 0);
     }
 }
@@ -1218,45 +1280,60 @@ fn tst_neg_008_gated_dispatch_never_launches_on_bad_account() {
 fn tst_contract_005_actual_dispatch_uses_subscription_launch_policy() {
     let dir = Dir::new();
     let mut e = engine(&dir);
-    submit(&mut e, 1, &[]);
     let mut runtime = runtime(&dir, "ok");
+    let scope1 = native_submit(&mut e, &dir, &runtime, 1, &[], "workspace_write");
     runtime
         .environment
         .push(("CODEX_API_KEY".into(), "fixture-not-a-secret".into()));
     runtime
         .environment
         .push(("OPENAI_API_KEY".into(), "fixture-not-a-secret".into()));
+    let initial_head = observed_head(&runtime.checkout);
     let report = call(e.drive_once(&runtime)).unwrap();
     assert_eq!(report.task, Some(1));
     assert_eq!(report.terminal, "awaiting_host");
     assert_eq!(report.checkpoint.as_deref(), Some("session-1"));
-    let observed = std::fs::read_to_string(dir.0.join("fake/launch.txt")).unwrap();
+    let observed = std::fs::read_to_string(dir.0.join("checkout/fake/launch.txt")).unwrap();
     assert!(observed.contains("arg=forced_login_method=\"chatgpt\""));
     assert!(observed.contains("arg=model_provider=\"openai\""));
     assert!(observed.contains("arg=gpt-6-luna"));
     assert!(observed.contains("env_present_CODEX_API_KEY=false"));
     assert!(observed.contains("env_present_OPENAI_API_KEY=false"));
+    assert!(observed.contains("approved_scope_present=true"));
+    assert!(observed.contains(&format!("observed_expected_head={initial_head}")));
+    assert!(observed.contains(&format!("scope_digest={scope1}")));
+    assert!(
+        observed.contains(&format!("observed_scope_sha256={scope1}")),
+        "actual raw approved bytes must match independent file digest"
+    );
+    for option in [
+        "sandbox_workspace_write.writable_roots=[]",
+        "sandbox_workspace_write.exclude_tmpdir_env_var=true",
+        "sandbox_workspace_write.exclude_slash_tmp=true",
+    ] {
+        assert!(observed.contains(option), "{observed}");
+    }
 }
 #[test]
 fn tst_bound_004_actual_child_deadline_keeps_task_unverified() {
     let dir = Dir::new();
     let mut e = engine(&dir);
-    submit(&mut e, 1, &[]);
     let mut runtime = runtime(&dir, "slow");
+    let _scope1 = native_submit(&mut e, &dir, &runtime, 1, &[], "workspace_write");
     runtime.worker_deadline_ms = 100;
     assert_eq!(call(e.drive_once(&runtime)).unwrap_err(), Error::Deadline);
     let s = call(e.snapshot()).unwrap();
     assert_ne!(row(&s, 1).state, State::Verified);
     assert_ne!(row(&s, 1).state, State::Done);
-    assert!(dir.0.join("fake/launch.txt").exists());
+    assert!(dir.0.join("checkout/fake/launch.txt").exists());
 }
 #[test]
 fn tst_acc_007_native_cycle_host_ack_then_next_ready() {
     let dir = Dir::new();
     let mut e = engine(&dir);
-    submit(&mut e, 1, &[]);
-    submit(&mut e, 2, &[1]);
     let runtime = runtime(&dir, "ok");
+    let scope1 = native_submit(&mut e, &dir, &runtime, 1, &[], "workspace_write");
+    native_submit(&mut e, &dir, &runtime, 2, &[1], "workspace_write");
     let first = call(e.drive_once(&runtime)).unwrap();
     assert_eq!(first.task, Some(1));
     assert_eq!(first.terminal, "awaiting_host");
@@ -1274,13 +1351,13 @@ fn tst_acc_007_native_cycle_host_ack_then_next_ready() {
         passed: true,
     }))
     .unwrap();
-    finish_host(&mut e, 1, &head);
+    finish_host(&mut e, 1, &head, &scope1);
     drop(e);
     let mut e = engine(&dir);
     let second = call(e.drive_once(&runtime)).unwrap();
     assert_eq!(second.task, Some(2));
     assert_eq!(second.checkpoint.as_deref(), Some("session-2"));
-    let observed = std::fs::read_to_string(dir.0.join("fake/launch.txt")).unwrap();
+    let observed = std::fs::read_to_string(dir.0.join("checkout/fake/launch.txt")).unwrap();
     assert_eq!(observed.matches("task_id=1").count(), 1);
     assert_eq!(observed.matches("task_id=2").count(), 1);
 }
@@ -1288,12 +1365,12 @@ fn tst_acc_007_native_cycle_host_ack_then_next_ready() {
 fn tst_state_004_active_cancel_requests_owned_child_shutdown() {
     let dir = Dir::new();
     let mut e = engine(&dir);
-    submit(&mut e, 1, &[]);
     let runtime = runtime(&dir, "slow");
+    let _scope1 = native_submit(&mut e, &dir, &runtime, 1, &[], "workspace_write");
     let state = dir.0.clone();
     let driver = std::thread::spawn(move || call(e.drive_once(&runtime)));
     let until = std::time::Instant::now() + std::time::Duration::from_secs(5);
-    while !state.join("fake/launch.txt").exists() {
+    while !state.join("checkout/fake/launch.txt").exists() {
         assert!(
             std::time::Instant::now() < until,
             "fixture launch not observed"
@@ -1341,4 +1418,375 @@ fn tst_neg_007_failed_verification_cannot_complete() {
         .unwrap_err(),
         Error::InvalidTransition
     );
+}
+
+const WORKER_POLICY_V1: &str = "Act only on the host-approved scope in approved_scope. Match task_id, issue and checkout; treat its instructions and non_goals as the work boundary. Read AGENTS.md and any referenced approved contract. Preserve locked tests and stop on a contract conflict. Use only managed ChatGPT subscription authentication. Do not use API keys, alternate providers, paid APIs, deployment, live trading or host GitHub mutations. Run declared verification and report actual failures. Return the final schema with observed Git head and current explicit session checkpoint.";
+fn reject_scope(
+    d: &Dir,
+    runtime: &RuntimeConfig,
+    bytes: Option<&[u8]>,
+    digest_override: Option<&str>,
+    expected: Error,
+) {
+    let digest = bytes
+        .map(|bytes| scope_bytes(d, bytes))
+        .unwrap_or_else(|| "0".repeat(64));
+    let mut e = engine(d);
+    call(e.apply(Event::Submit(Task {
+        id: 1,
+        issue: 4,
+        dependencies: vec![],
+        scope_digest: digest_override.unwrap_or(&digest).into(),
+    })))
+    .unwrap();
+    let before = call(e.snapshot()).unwrap();
+    assert_eq!(call(e.drive_once(runtime)).unwrap_err(), expected);
+    assert_eq!(
+        call(e.snapshot()).unwrap(),
+        before,
+        "scope rejection must preserve all committed task/control state"
+    );
+    assert_eq!(before.worker_launches, 0);
+    assert!(before.pending_intents.is_empty());
+    assert!(
+        !runtime.checkout.join("fake/launch.txt").exists(),
+        "invalid scope cannot invoke the real worker boundary"
+    );
+    assert!(
+        !runtime
+            .checkout
+            .join(".git/fusion-supervisor-active.json")
+            .exists(),
+        "invalid scope cannot reserve a native attempt"
+    );
+}
+#[test]
+fn tst_neg_013_missing_approved_scope_cannot_launch() {
+    let d = Dir::new();
+    let r = runtime(&d, "ok");
+    reject_scope(&d, &r, None, None, Error::InvalidInput);
+}
+#[test]
+fn tst_neg_014_altered_scope_hash_cannot_launch() {
+    let d = Dir::new();
+    let r = runtime(&d, "ok");
+    let original = scope_document(&r, 1, "workspace_write");
+    let digest = materialize(&d, &original);
+    let mut altered = original;
+    altered["instructions"] = json!("unapproved alteration");
+    std::fs::write(
+        d.0.join("approved-scopes").join(format!("{digest}.json")),
+        serde_json::to_vec(&altered).unwrap(),
+    )
+    .unwrap();
+    let mut e = engine(&d);
+    call(e.apply(Event::Submit(Task {
+        id: 1,
+        issue: 4,
+        dependencies: vec![],
+        scope_digest: digest,
+    })))
+    .unwrap();
+    let before = call(e.snapshot()).unwrap();
+    assert_eq!(call(e.drive_once(&r)).unwrap_err(), Error::EvidenceMismatch);
+    assert_eq!(call(e.snapshot()).unwrap(), before);
+    assert!(!r.checkout.join("fake/launch.txt").exists());
+    assert_eq!(before.worker_launches, 0);
+    assert!(before.pending_intents.is_empty());
+}
+#[test]
+fn tst_neg_015_scope_identity_must_match_task_issue_checkout() {
+    for field in ["task_id", "issue", "canonical_checkout"] {
+        let d = Dir::new();
+        let r = runtime(&d, "ok");
+        let mut doc = scope_document(&r, 1, "workspace_write");
+        doc[field] = match field {
+            "task_id" => json!(2),
+            "issue" => json!(99),
+            _ => json!(std::fs::canonicalize(&d.0).unwrap().to_string_lossy()),
+        };
+        reject_scope(
+            &d,
+            &r,
+            Some(&serde_json::to_vec(&doc).unwrap()),
+            None,
+            Error::EvidenceMismatch,
+        );
+    }
+}
+#[test]
+fn tst_neg_016_scope_schema_is_strict_and_versioned() {
+    for case in [
+        "unknown",
+        "missing",
+        "empty",
+        "wrong_type",
+        "mode",
+        "version",
+        "list_type",
+        "utf8",
+        "malformed",
+    ] {
+        let d = Dir::new();
+        let r = runtime(&d, "ok");
+        let mut doc = scope_document(&r, 1, "workspace_write");
+        match case {
+            "unknown" => doc["unauthorized"] = json!(true),
+            "missing" => {
+                doc.as_object_mut().unwrap().remove("instructions");
+            }
+            "empty" => doc["instructions"] = json!(""),
+            "wrong_type" => doc["task_id"] = json!("1"),
+            "mode" => doc["mode"] = json!("danger_full_access"),
+            "version" => doc["schema_version"] = json!(2),
+            "list_type" => doc["non_goals"] = json!("not an array"),
+            _ => {}
+        }
+        let bytes = match case {
+            "utf8" => vec![255],
+            "malformed" => b"{".to_vec(),
+            _ => serde_json::to_vec(&doc).unwrap(),
+        };
+        reject_scope(&d, &r, Some(&bytes), None, Error::InvalidInput);
+    }
+}
+#[test]
+fn tst_bound_005_scope_file_is_bounded_before_launch() {
+    let d = Dir::new();
+    let r = runtime(&d, "ok");
+    let mut doc = scope_document(&r, 1, "workspace_write");
+    doc["instructions"] = json!("a".repeat(32768));
+    let bytes = serde_json::to_vec(&doc).unwrap();
+    assert!(bytes.len() > 32768);
+    reject_scope(&d, &r, Some(&bytes), None, Error::Capacity);
+}
+#[test]
+fn tst_bound_006_encoded_prompt_is_bounded_before_launch() {
+    let d = Dir::new();
+    let r = runtime(&d, "ok");
+    let mut doc = scope_document(&r, 1, "workspace_write");
+    doc["instructions"] = json!("");
+    let overhead = serde_json::to_vec(&doc).unwrap().len();
+    doc["instructions"] = json!("\\".repeat((32768 - overhead) / 2));
+    let bytes = serde_json::to_vec(&doc).unwrap();
+    assert!(bytes.len() <= 32768);
+    let raw = std::str::from_utf8(&bytes).unwrap();
+    let minimum_prompt = json!({"task_id":1,"issue":4,"scope_digest":"a".repeat(64),"expected_head":"b".repeat(40),"approved_scope":raw,"instructions":WORKER_POLICY_V1});
+    assert!(
+        serde_json::to_vec(&minimum_prompt).unwrap().len() > 65536,
+        "the independent byte oracle must exercise the final prompt cap"
+    );
+    reject_scope(&d, &r, Some(&bytes), None, Error::Capacity);
+}
+#[test]
+fn tst_anti_003_workspace_worker_cannot_write_state_control() {
+    let outer = Dir::new();
+    let r = runtime(&outer, "ok");
+    let d = Dir(r.checkout.join("state"));
+    std::fs::create_dir_all(&d.0).unwrap();
+    let bytes = serde_json::to_vec(&scope_document(&r, 1, "workspace_write")).unwrap();
+    reject_scope(&d, &r, Some(&bytes), None, Error::InvalidInput);
+}
+#[test]
+fn tst_anti_004_workspace_worker_cannot_write_host_bridge() {
+    let d = Dir::new();
+    let mut r = runtime(&d, "ok");
+    r.bridge = r.checkout.join("bridge");
+    let bytes = serde_json::to_vec(&scope_document(&r, 1, "workspace_write")).unwrap();
+    reject_scope(&d, &r, Some(&bytes), None, Error::InvalidInput);
+}
+#[test]
+fn tst_anti_005_canonical_alias_cannot_hide_control_overlap() {
+    let d = Dir::new();
+    let mut r = runtime_at(&d, "ok", d.0.clone());
+    std::fs::create_dir_all(d.0.join("alias")).unwrap();
+    r.checkout = d.0.join("alias/..");
+    let bytes = serde_json::to_vec(&scope_document(&r, 1, "workspace_write")).unwrap();
+    reject_scope(&d, &r, Some(&bytes), None, Error::InvalidInput);
+}
+#[test]
+fn tst_acc_009_readonly_scope_supports_legacy_same_path() {
+    let d = Dir::new();
+    let r = runtime_at(&d, "ok", d.0.clone());
+    let mut e = engine(&d);
+    let initial_head = observed_head(&r.checkout);
+    let digest = native_submit(&mut e, &d, &r, 1, &[], "read_only");
+    let result = call(e.drive_once(&r)).unwrap();
+    assert_eq!(result.task, Some(1));
+    assert_eq!(result.terminal, "awaiting_host");
+    assert_eq!(result.launches, 1);
+    let observed = std::fs::read_to_string(d.0.join("fake/launch.txt")).unwrap();
+    assert!(
+        observed.contains("arg=sandbox_mode=\"read-only\""),
+        "{observed}"
+    );
+    assert!(observed.contains("approved_scope_present=true"));
+    assert_eq!(
+        observed_head(&r.checkout),
+        initial_head,
+        "read-only peer must leave Git HEAD unchanged"
+    );
+    assert!(observed.contains(&format!("observed_expected_head={initial_head}")));
+    assert!(observed.contains(&format!("scope_digest={digest}")));
+    assert!(
+        observed.contains(&format!("observed_scope_sha256={digest}")),
+        "actual raw approved bytes must match independent file digest"
+    );
+}
+
+#[test]
+fn tst_neg_017_cli_workspace_without_isolated_checkout_cannot_launch() {
+    let d = Dir::new();
+    let r = runtime_at(&d, "ok", d.0.clone());
+    let digest = materialize(&d, &scope_document(&r, 1, "workspace_write"));
+    assert_eq!(
+        cli(
+            &d,
+            &["enqueue", "--task", "1", "--issue", "4", "--scope", &digest]
+        )
+        .status
+        .code(),
+        Some(0)
+    );
+    let before = String::from_utf8(cli(&d, &["status"]).stdout).unwrap();
+    let env = format!("FAKE_CODEX_ROOT={}", d.0.join("fake").display());
+    let result = cli(
+        &d,
+        &[
+            "step",
+            "--codex",
+            r.codex_executable.to_str().unwrap(),
+            "--model",
+            "gpt-6-luna",
+            "--child-env",
+            &env,
+        ],
+    );
+    assert_eq!(result.status.code(), Some(1));
+    assert_eq!(
+        String::from_utf8(cli(&d, &["status"]).stdout).unwrap(),
+        before
+    );
+    assert!(!d.0.join("fake/launch.txt").exists());
+}
+#[test]
+fn tst_acc_010_cli_readonly_legacy_checkout_is_explicitly_sandboxed() {
+    let d = Dir::new();
+    let r = runtime_at(&d, "ok", d.0.clone());
+    let initial_head = observed_head(&r.checkout);
+    let digest = materialize(&d, &scope_document(&r, 1, "read_only"));
+    assert_eq!(
+        cli(
+            &d,
+            &["enqueue", "--task", "1", "--issue", "4", "--scope", &digest]
+        )
+        .status
+        .code(),
+        Some(0)
+    );
+    let env = format!("FAKE_CODEX_ROOT={}", d.0.join("fake").display());
+    let result = cli(
+        &d,
+        &[
+            "step",
+            "--codex",
+            r.codex_executable.to_str().unwrap(),
+            "--model",
+            "gpt-6-luna",
+            "--child-env",
+            &env,
+        ],
+    );
+    assert_eq!(result.status.code(), Some(0));
+    assert!(
+        String::from_utf8(result.stdout)
+            .unwrap()
+            .contains("\"terminal\":\"awaiting_host\"")
+    );
+    let observed = std::fs::read_to_string(d.0.join("fake/launch.txt")).unwrap();
+    assert!(observed.contains("arg=sandbox_mode=\"read-only\""));
+    assert!(observed.contains("approved_scope_present=true"));
+    assert_eq!(
+        observed_head(&r.checkout),
+        initial_head,
+        "read-only peer must leave Git HEAD unchanged"
+    );
+    assert!(observed.contains(&format!("observed_expected_head={initial_head}")));
+    assert!(observed.contains(&format!("scope_digest={digest}")));
+    assert!(
+        observed.contains(&format!("observed_scope_sha256={digest}")),
+        "actual raw approved bytes must match independent file digest"
+    );
+}
+
+#[test]
+fn tst_neg_018_readonly_peer_mutation_is_not_accepted_or_reverted() {
+    let d = Dir::new();
+    let r = runtime(&d, "readonly_mutates");
+    let initial_head = observed_head(&r.checkout);
+    let mut e = engine(&d);
+    native_submit(&mut e, &d, &r, 1, &[], "read_only");
+    assert_eq!(call(e.drive_once(&r)).unwrap_err(), Error::EvidenceMismatch);
+    let changed_head = observed_head(&r.checkout);
+    assert_ne!(
+        changed_head, initial_head,
+        "controlled peer must actually commit the forbidden mutation"
+    );
+    let state = call(e.snapshot()).unwrap();
+    assert_eq!(
+        state.worker_launches, 1,
+        "postlaunch rejection is not a no-launch case"
+    );
+    assert_eq!(state.pause, Pause::EvidenceMismatch);
+    assert_eq!(
+        state.active, None,
+        "known reaped worker is not a surviving-process ambiguity"
+    );
+    assert_eq!(row(&state, 1).state, State::Paused);
+    assert_eq!(
+        row(&state, 1).head.as_deref(),
+        Some(changed_head.as_str()),
+        "rejected mutation head must remain observable evidence, not an accepted implementation"
+    );
+    assert_ne!(row(&state, 1).state, State::ImplementedUnverified);
+    assert_ne!(row(&state, 1).state, State::Verified);
+    assert_ne!(row(&state, 1).state, State::Done);
+    assert!(state.pending_intents.is_empty());
+    assert!(
+        r.checkout.join("fixture-task-1.txt").exists(),
+        "mutation evidence must not be silently reverted"
+    );
+    drop(e);
+    let mut reopened = engine(&d);
+    assert_eq!(
+        call(reopened.snapshot()).unwrap().pause,
+        Pause::EvidenceMismatch
+    );
+    assert_eq!(
+        observed_head(&r.checkout),
+        changed_head,
+        "restart must preserve observed mutation"
+    );
+    assert_eq!(
+        call(reopened.drive_once(&r)).unwrap_err(),
+        Error::EvidenceMismatch
+    );
+    assert_eq!(
+        call(reopened.snapshot()).unwrap().worker_launches,
+        1,
+        "evidence pause must not launch another worker"
+    );
+    assert_eq!(
+        call(reopened.apply(Event::Enable(true))).unwrap_err(),
+        Error::EvidenceMismatch
+    );
+    assert_eq!(
+        call(reopened.apply(Event::Tick { now: u64::MAX })).unwrap_err(),
+        Error::EvidenceMismatch
+    );
+    assert_eq!(
+        call(reopened.snapshot()).unwrap().pause,
+        Pause::EvidenceMismatch
+    );
+    assert_eq!(observed_head(&r.checkout), changed_head);
 }
