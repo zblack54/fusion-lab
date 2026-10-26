@@ -324,6 +324,9 @@ async fn handle(HttpState(state): HttpState<Shared>, request: Request) -> Respon
         Ok(Err(_)) => return error(413, "body_too_large"),
         Err(_) => return error(408, "request_timeout"),
     };
+    if let Some(asset) = crate::web::asset(&path, &method) {
+        return asset;
+    }
     if path == "/v1/health" && method == "GET" {
         let s = locked(&state);
         return response(

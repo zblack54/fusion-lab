@@ -3,8 +3,7 @@
 Fusion Lab asks a concrete question: where is a moving robot when its position
 beacon disappears, but velocity measurements keep arriving? The current v0.1
 experiment is an offline Rust program. Truth is known to simulation and evaluation;
-the estimator sees observations only. A service, browser UI, and delayed delivery
-are planned work, not prerequisites for this walkthrough.
+the estimator sees observations only. The local service is available; browser UI and delayed delivery remain in progress or planned. None is required for this walkthrough.
 
 ## Minutes 0–3: run one experiment
 

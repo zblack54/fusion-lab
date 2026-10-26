@@ -1,6 +1,7 @@
 //! Bounded loopback experiment HTTP adapter around the synchronous Fusion Lab CLI.
 mod server;
 mod transport;
+mod web;
 use std::{
     io,
     net::SocketAddr,

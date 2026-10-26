@@ -1,0 +1,24 @@
+{
+  "captured_utc": "2026-10-26T23:07:51.577Z",
+  "platform": "win32",
+  "node": "v24.22.1",
+  "revision": "da784bb6bf3bdda4f68df5ed76d19c63c44af9a1",
+  "dirty_worktree": true,
+  "source_sha256": {
+    "crates/experiment-service/Cargo.lock": "c4eea4f59dd42bc3bdc7c111fbd04e746e696abbe5a970cebfb7516fd82a7c27",
+    "crates/experiment-service/Cargo.toml": "a8995f3d9ef0c402aa1834e01cd196b1eb8a2e0d9f2f6ad366639de9c09a9c3e",
+    "crates/experiment-service/src/lib.rs": "9c7e841dea7734fd2541693643bef70bf4303e05b10dd23789728a47ba736a14",
+    "crates/experiment-service/src/main.rs": "526dbcd0cc77ecb7e03adca6713a8f3a9e863d9c61ca7e5acc47b722f638eaa2",
+    "crates/experiment-service/src/server.rs": "38a5fb1a3923620897e4cb459c4d493ce5c83a0d7957df0968f19cdca37aacab",
+    "crates/experiment-service/src/server/regression_tests.rs": "036edb9c195adb72f8f86e923399815fcf1af49ec1cc859fc5f408acf6552ed1",
+    "crates/experiment-service/src/transport.rs": "9c337edd1b628e6f6c82427f823977b1c1cf4de89da64a0f4eb230b484ebc39c",
+    "crates/experiment-service/src/web.rs": "d8e35c2033f7a80b7d66162d1eece20aba499750bb04532abdb7e8fd414c34b4",
+    "crates/experiment-service/web/dashboard.css": "a169b3a6e39d38858f9443c6e6ca657d47ec09d5c499f9129d3009bfcc3c36f4",
+    "crates/experiment-service/web/dashboard.mjs": "5cfec0f1da015e1746049bf0a73de7bfaf74948bdd3a302d2a049a1d3a804a6b",
+    "crates/experiment-service/web/data.mjs": "e6ef2a8ce2908b40197474689eabde43fe7254268f09dbd4f8241f8c8d3a0974",
+    "crates/experiment-service/web/index.html": "8ed50de140ae64fc5499212b9c91e8216beb9f8bedff26c924c8f3c2d8b83ddc",
+    "crates/experiment-service/web/parser-worker.mjs": "fe3ab1eb83e8123107025889127a195104f17ddee1656089dba145e265aecfc4",
+    "crates/experiment-service/web/regressions.test.mjs": "6ba701786a78b9d81c7a87e96b45782e6c7f774037ae83555d6c184f7bc018d4"
+  },
+  "acceptance": "not accepted; native browser/resource and four-way CI evidence pending"
+}
