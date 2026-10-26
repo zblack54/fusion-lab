@@ -1,6 +1,10 @@
+> Current decision: [accepted conformance](acceptance.md) for code79cb06a, including final native Linux/Windows proof. Earlier pending statements below are historical checkpoint records.
+
 # Native resource and failure demonstrations
 
 Status: NATIVE_WINDOWS_EVIDENCE_RECORDED; FINAL_ACCEPTANCE_PENDING
+
+Latest issue40 checkpoint: `issue40-termination-recovery.md` and `windows-probe-issue40.json` record the approved exceptional-ownership repair,14supplementary tests plus unchanged21contract tests, and rebuilt60.031second387cycle Windows resource proof. Strict slow-reader cleanup is3.9797252seconds; sampled RSS109518848/private commit103395328bytes. Independent read-only lifecycle review is clear on the held source hashes; current PR32head79cb06a... platform and Linux resource reruns remain pending. Older issue38/historical observations below are not substituted for this newer source.
 
 Latest repair checkpoint: issue38 subsequently exposed a strict Linux cleanup failure at5.001802873seconds. The failure is preserved, not waived. `issue38-write-cleanup.md` records the four-second writer budget with one-second cleanup reserve and rebuilt native Windows rerun at3.974633seconds, unchanged `<5` assertion, full gates and source hashes. Earlier native results below remain historical observations; Linux repair execution is pending.
 

@@ -1,22 +1,26 @@
 # Experiment service: ownership before concurrency
 
-Status: implemented, under acceptance verification in [PR #32](https://github.com/zblack54/fusion-lab/pull/32). This page describes that branch; it does not claim the service has shipped on main.
+Status: verified local service in [PR #32](https://github.com/zblack54/fusion-lab/pull/32), awaiting the final proof commit's checks and merge. [Conformance decision](../design-docs/experiment-service/implementation/acceptance.md).
 
 ## What changed and why
 
-The adapter exposes the existing deterministic experiment through loopback HTTP. It admits one worker and returns a run identifier, then offers lifecycle status, cancellation, bounded state events and completed CSV/report downloads. The numerical algorithm is unchanged: simulation still owns truth, and the estimator receives observations only. HTTP timing cannot change the integer simulation clock.
+The adapter exposes the existing deterministic experiment through loopback HTTP. It admits one worker and returns a run identifier, then offers lifecycle status, cancellation, bounded state events and completed CSV/report downloads. Simulation still owns truth, and the estimator receives observations only. HTTP timing cannot change the integer simulation clock.
 
-A separate process keeps the complete numerical sample vector out of the service. One active worker is a deliberate starting capacity, informed by the [CLI capacity baseline](../experiments/capacity-baseline.md). The proposed 512 MiB aggregate allocation is an engineering budget, not an operating-system memory limit; service-level measurements remain an acceptance gate.
+A separate process keeps the complete numerical sample vector out of the service. One active worker is the starting capacity, informed by the [CLI capacity baseline](../experiments/capacity-baseline.md) and verified service measurements. The512MiB aggregate allocation is an engineering budget, not an operating-system memory limit.
 
 ## Follow the owners
 
-`crates/experiment-service/src/server.rs` owns admission, worker completion, retention and artifact leases. `src/transport.rs` owns bounded connections and HTTP deadlines. `src/main.rs` supplies the local command line and explicit shutdown. The [crate guide](https://github.com/zblack54/fusion-lab/blob/feature/experiment-service/crates/experiment-service/README.md) documents requests and artifact paths.
+`crates/experiment-service/src/server.rs` owns admission, worker completion, retention and artifact leases. `src/transport.rs` owns bounded connections and HTTP deadlines. `src/main.rs` supplies local controls and explicit shutdown. The [crate guide](https://github.com/zblack54/fusion-lab/blob/feature/experiment-service/crates/experiment-service/README.md) documents requests, artifacts and failure recovery.
 
-Two review findings illustrate why passing protocol tests is insufficient. An artifact lease acquired before an asynchronous open could leak when the request was canceled. A guard now owns the lease immediately and travels with the file operation, closing the file before releasing retention ownership. Separately, checking an empty artifact root did not exclude a second idle service. Atomic sibling-file creation now claims that root for the instance. Crashes can leave a stale claim; automatic recovery is outside this service version.
+A lease guard owns a retained artifact from acquisition through file close. Canceling a request cannot abandon a lease count. An atomic sibling claim owns the artifact root even while the service is idle; checking an empty directory alone could not exclude a second instance.
 
-## Reproduce the verified boundary
+Shutdown is also an ownership operation. Review found a nested result where a timeout completed successfully while its inner task drain failed; checking only the outer result hid a task panic. One drain now owns the deadline, joins every connection and reports failures. Worker joins likewise observe every handle after an earlier panic, and explicit finish performs cleanup after a runtime-thread failure.
 
-Check out the PR branch in a separate checkout, then run:
+If the OS rejects termination or reap confirmation, the same Child and root fence remain owned. The caller-owned shutdown call can stay pending while that exceptional fault persists. Shared bounded recovery never restarts the numerical experiment. After the fault clears, actual reaping and all joins precede release, and the original error is returned. Real-child fault tests demonstrated persistent kill/reap rejection, transient recovery and failed-monitor cleanup. The healthy-host five-second guarantee does not promise a return deadline for a persistently failing kernel.
+
+## Reproduce
+
+From the PR checkout, run:
 
 ```text
 cargo test --manifest-path tests/experiment-service/Cargo.toml --locked -- --test-threads=1
@@ -25,18 +29,14 @@ cargo build --locked
 cargo run --manifest-path crates/experiment-service/Cargo.toml --locked -- --bind 127.0.0.1:8080
 ```
 
-The first command runs the 21 approved protocol tests; the second includes four additional ownership regressions at the initial PR revision. Use the complete JSON configuration in the crate guide when submitting a run. Ctrl+C invokes shutdown; embedding callers must observe the fallible shutdown result.
+The first command runs21 approved protocol tests; the second runs14 supplemental ownership/failure tests at the accepted revision. Submit the complete JSON configuration from the crate guide. Ctrl+C invokes shutdown; embedding callers must observe its fallible result.
 
 ## Evidence and limits
 
-Native Windows tests and quality gates passed before publication. The PR adds actual Windows/Linux × Rust 1.99/stable CI, whose exact-head results must be inspected rather than inferred from local success. Release workload memory/latency measurements, sustained load and injected failure demonstrations remain acceptance work. See the PR's `implementation/evidence.md` and `implementation/acceptance.md` for the current record. Artifacts are transient, POST retries are not idempotent, and no remote service or authentication is provided.
+All35 tests and quality gates passed on native Windows/Linux with Rust1.99.0 and stable1.99.1. Independent review checked both native release artifacts against exact GitHub source hashes. Maximum-run sampled aggregate memory was about104.4MiB on Windows and103.8MiB on Linux; both60-second overload probes passed. Strict slow-reader cleanup was3.980sWindows/3.999sLinux. An earlier Linux5.002s failure remains recorded; the fix reduced socket idle time to4seconds to reserve cleanup time, keeping the original `<5s` criterion.
+
+Sampling can miss transient peaks, Linux private resident memory differs from Windows private commit, and these are recorded-host results rather than universal latency guarantees. Artifacts are transient, POST retries create new runs, and this version provides loopback access without remote authentication or automatic crash recovery. No numerical algorithm or offline experiment API changed.
 
 ## Check your understanding
 
-Start one idle service with an empty artifact root, then try another instance using the same root and a different port. The second must fail without changing the first instance's files. After graceful shutdown, the root claim should be released. Explain why an empty-directory check alone cannot establish exclusive ownership.
-
-## Shutdown failures are part of ownership
-
-[Issue #35](https://github.com/zblack54/fusion-lab/issues/35) exposed a nested result: a timeout can finish successfully while its inner task drain returns an error. Checking only the outer result hid a connection-task panic. The adapter now gives one drain the shutdown deadline, observes every connection, aborts and joins survivors, and returns the first failure. Explicit completion also performs worker/artifact/root cleanup after a runtime-thread panic. Native regressions failed on the original behavior and pass after the repair. This is why a successful HTTP response and a successful shutdown are separate contracts.
-
-The native release probe records one warmup and three maximum-duration runs, aggregate service-plus-worker memory, disk, cancellation, 60-second overload, slow-reader eviction, noisy pipes and artifact overflow. Raw records preserve source/executable hashes and failed attempts. These are measurements on named hosts; sampling cannot establish an OS hard limit. Linux CI runs the same workload and labels its private-resident metric separately from Windows private commit. See the PR acceptance evidence for completed versus pending checks.
+Start one idle service with an empty artifact root, then try another instance using that root on a different port. The second must fail without changing the first instance's files. Graceful shutdown should release the claim. Explain why an empty-directory check cannot establish exclusivity, and why a successful kill request cannot establish that a child was reaped.

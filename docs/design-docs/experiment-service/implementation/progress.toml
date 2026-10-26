@@ -1,75 +1,36 @@
-# Mutable execution status only; never redefine the locked contract here.
+# Current verified implementation; historical attempts remain in Git/evidence JSONs.
 baseline_digest = "3862f6d829e8a739580454f0edfbfb6aff696007286c51dbcfd61bd6f7529f1f"
-revision = "local working tree HEAD b274c6f... is context only; actual source hashes in windows-probe-final.json. Orchestrator reported PR32 snapshot bf856232cdc5fb49472507c1dd13d574b4bfffed; final exact-source review pending."
-contract_status = "Approved revision1 read from external approved-contracts.json and validated require-lock before resuming. All21 immutable tests and supplemental Clippy pass in trusted implementation runner. Final non-test and cross-platform acceptance remain pending."
+accepted_code = "79cb06a5f893e6bbe0a8090e14819fcb4ea3cf81"
+status = "verified"
+publication = "Final proof/documentation commit must pass its own CI before merge."
+acceptance = "All14 requirements and10 constraints accepted by main and separate reviewer; see acceptance.md."
 
 [[task]]
 id = "TASK-001"
-status = "implemented-unverified"
-evidence = "Typed strict JSON/domain checks, loopback/startup validation and HTTP status/error boundary implemented; assigned immutable tests pass on native Windows. VER-001 independent final review remains pending."
-
+status = "verified"
+evidence = "Strict local HTTP/domain validation; immutable tests and exact-source review."
 [[task]]
 id = "TASK-002"
-status = "implemented-unverified"
-evidence = "Owned numerical CLI child, private CSV/report artifacts, bounded pipe drains and single admission slot implemented; numerical oracle, seed variation, controlled admission and worker-failure tests pass. No numerical core changes. VER-001 final review remains pending."
-
+status = "verified"
+evidence = "One owned real numerical CLI worker, bounded pipes and streamed validated artifacts; numerical core unchanged."
 [[task]]
 id = "TASK-003"
-status = "implemented-unverified"
-evidence = "Kill/wait cancellation and shutdown, bounded32 SSE subscribers and live terminal notifications pass immutable tests. Actual native60.172second389cycle subscriber/request rejection load passed; current Linux repetition and final review remain pending."
-
+status = "verified"
+evidence = "Cancellation/reap, bounded SSE and healthy shutdown; same-child exceptional recovery and all task joins."
 [[task]]
 id = "TASK-004"
-status = "implemented-unverified"
-evidence = "All21 contract tests and9 supplementary native tests pass. Native rebuilt resource/slow-reader/pipe/overflow/origin/root/permission evidence recorded. Final VER-001 review, current platform CI and Linux resource/failure evidence remain pending; modeled wait failure is explicitly partial evidence."
+status = "verified"
+evidence = "Count/byte retention, artifact leases/exclusive root, resource/load/failure demonstrations on native Windows/Linux."
 
 [[check]]
-command = "cargo test --manifest-path tests/experiment-service/Cargo.toml --locked --no-run"
-result = "blocked"
-detail = "Historical pre-revision1 conflict: old approved harness lock listed zero-dependency seam. Orchestrator revised and reapproved the concrete dependency contract. No locked files modified by implementation agent."
-
+command = "External approved digest validation + trusted implementation runner"
+result = "VALID0errors0warnings;21 immutable tests pass; no locked file changed."
 [[check]]
-command = "cargo clippy --manifest-path crates/experiment-service/Cargo.toml --locked --all-targets -- -D warnings"
-result = "passed"
-
+command = "Windows/Linux x Rust1.99.0/stable1.99.1, run40364583095"
+result = "Each14 supplementary +21 immutable tests,0ignored; adapter gates pass; nativeLinux release resource probe passes."
 [[check]]
-command = "cargo test --manifest-path tests/experiment-service/Cargo.toml --locked --test http -- --test-threads=1"
-result = "passed"
-detail = "All21 tests passed in8.93seconds after targeted clean of stale diagnostic-seam build artifacts. Source restoration had preserved mtime; no source/test changes were required to force actual production recompilation."
-
+command = "Root Rust/documentation run40364582814"
+result = "All4core variants and strict docs pass; roadmap validation40364582731 passes."
 [[check]]
-command = "trusted verify_test_suite.py docs/design-docs/experiment-service --mode implementation --baseline-digest 3862f6d829e8a739580454f0edfbfb6aff696007286c51dbcfd61bd6f7529f1f"
-result = "passed"
-detail = "All21 compiled selectors executed and passed; supplemental Clippy passed. Exact command/output/fingerprints in implementation/execution.json."
-
-[[check]]
-command = "cargo fmt/check/clippy/test --doc/doc --no-deps with --manifest-path crates/experiment-service/Cargo.toml and --locked where applicable"
-result = "passed"
-detail = "Native Windows stable Rust1.99.0; four supplementary ownership unit regressions now pass; doctest target contains zero tests. Immutable21 HTTP tests remain unchanged. Standalone --help passed separately."
-
-[[check]]
-command = "cargo test --manifest-path crates/experiment-service/Cargo.toml --locked"
-result = "passed"
-detail = "Four production regressions cover canceled queued file-open, failed/open handle destruction, dropped-reader cancellation cleanup, and exclusive idle-root ownership/release. Requested independent-review repairs are implemented; final broader VER001–004 remain orchestrator acceptance work."
-[[check]]
-command = "python crates/experiment-service/scripts/service_resource_probe.py --build --output docs/design-docs/experiment-service/implementation/windows-probe-final.json"
-result = "passed_with_recorded_gaps"
-detail = "Native rebuilt release: warmup+3max runs,109486080bytes aggregate sampled RSS,103378944privatecommit,60.172s/389cycle rejection load,4.9708s deferred slow-reader eviction, Origin/noisy2MiB-pipes/257MiB-overflow and real cleanup permission failure evidence. Source/binary SHA inventory and dirty HEAD distinction recorded. Linux probe pending; kernel wait failure not claimed."
-
-[[check]]
-command = "python crates/experiment-service/scripts/windows_reparse_probe.py --output docs/design-docs/experiment-service/implementation/windows-reparse-probe.json"
-result = "passed"
-detail = "A real empty Windows junction is rejected without symlink privilege elevation; target stays empty."
-
-[[check]]
-command = "cargo test --manifest-path crates/experiment-service/Cargo.toml --locked --lib"
-result = "passed"
-detail = "Current9 supplementary native tests include actual pipe-tail drain, injected monitor wait failure with a real owned child, and three independently reviewed shutdown fault regressions. Final cross-platform current-source CI remains pending."
-[[check]]
-command = "issue38: rebuilt portable resource probe with --build; trusted implementation runner; crate and root AGENTS gates"
-result = "native_windows_passed_linux_rerun_pending"
-detail = "Strict cleanup repaired by writer4s plus cleanup1s reserve; Windows actual3.974633s,60.093s/396cycle load,110047232resident bytes. All21 immutable tests,9supplementary tests, root15tests+1doctest and quality gates pass. Original Linux5.001802873failure preserved verbatim; threshold and approved digest unchanged."
-[[check]]
-command = "issue39 worker_join_failure_still_observes_all_remaining_owned_threads original-red then repaired rerun; cargo test --lib and Clippy"
-result = "native_passed_current_platform_pending"
-detail = "Original failedexit101 before releasing another ownedworker; unchanged regression nowpasses0.11s afterjoinallaggregate. All10supplementarytests+Clippypass. Issue40 is proposalonly in design-revision2-proposal.md, no terminationpolicyimplementation authorized yet."
+command = "Native resource/failure artifacts and independent exact-source review"
+result = "Windows18/18 andLinux18/18 sourcehashes match accepted_code; all VER001–004 accepted with documented measurement/fault limits."

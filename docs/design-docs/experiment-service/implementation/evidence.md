@@ -1,3 +1,5 @@
+> Current decision: [accepted conformance](acceptance.md) for code79cb06a, including final native Linux/Windows proof. Earlier pending statements below are historical checkpoint records.
+
 # Native implementation checkpoint
 
 Status: IMPLEMENTED_UNVERIFIED
