@@ -39,3 +39,26 @@ jobs:
       - run: cargo doc --manifest-path crates/experiment-service/Cargo.toml --locked --no-deps
       - run: cargo clippy --manifest-path tests/experiment-service/Cargo.toml --locked --all-targets -- -D warnings
       - run: cargo test --manifest-path tests/experiment-service/Cargo.toml --locked -- --test-threads=1
+
+  resource-probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      RUSTUP_TOOLCHAIN: stable
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: rustup toolchain install stable --profile minimal
+      - name: Release workload, overload and failure demonstrations
+        run: python crates/experiment-service/scripts/service_resource_probe.py --build --output service-linux-probe.json
+      - name: Preserve actual measurements even after a failed demonstration
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: experiment-service-linux-evidence
+          path: service-linux-probe.json
+          if-no-files-found: warn

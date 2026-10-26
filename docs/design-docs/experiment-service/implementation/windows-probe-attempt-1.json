@@ -1,0 +1,124 @@
+{
+  "environment": {
+    "platform": "Windows-10-10.0.19043-SP0",
+    "processor": "AMD64 Family 25 Model 33 Stepping 0, AuthenticAMD",
+    "logical_cpu_count": 16,
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-msvc\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+    "revision": "b274c6f6deb3e86a9fdfbd31b8b92ec59396b5e8"
+  },
+  "commands": [],
+  "binaries": {
+    "crates\\experiment-service\\target\\release\\examples\\probe_host.exe": "5451d17499795e5ee0e86da37885c455ebbb1d8c65d3e12bcf85b2ac917a6dbe",
+    "crates\\experiment-service\\target\\release\\examples\\probe_worker.exe": "0f1f64b816e75f0439cc349f67f52b9fb3204929038572313c3017f091f310cb",
+    "target\\release\\fusion-lab.exe": "68a081835c292562de25c439cae61bd8038acbf3fe6a0f5dabf689654a15a25f"
+  },
+  "limitations": [
+    "5ms requested sampling is not a hard bound on transient aggregate peaks; per-process kernel lifetime peaks retained separately.",
+    "Private commit uses Windows PrivateUsage samples and PeakPagefileUsage lifetime high-water counters, not physical memory or OS enforced limits.",
+    "One native Windows host; no Linux evidence. Host/private machine background activity uncontrolled."
+  ],
+  "maximum_duration": {
+    "runs": [
+      {
+        "warmup": true,
+        "id": "run-1",
+        "duration_seconds": 3600,
+        "seed": 42,
+        "elapsed_seconds": 1.354944400023669,
+        "submit_latency_seconds": 0.07298850000370294,
+        "status_latency_max_seconds": 0.18455800006631762,
+        "samples": 360001,
+        "csv_bytes": 170623857,
+        "csv_sha256": "b24d83f0fce0cc8073dba7833d6065c5c035c461e3284e2b5a96c67e828d3e8e"
+      },
+      {
+        "warmup": false,
+        "id": "run-2",
+        "duration_seconds": 3600,
+        "seed": 42,
+        "elapsed_seconds": 1.2830665999790654,
+        "submit_latency_seconds": 0.005444500013254583,
+        "status_latency_max_seconds": 0.18345300003420562,
+        "samples": 360001,
+        "csv_bytes": 170623857,
+        "csv_sha256": "b24d83f0fce0cc8073dba7833d6065c5c035c461e3284e2b5a96c67e828d3e8e"
+      },
+      {
+        "warmup": false,
+        "id": "run-3",
+        "duration_seconds": 3600,
+        "seed": 42,
+        "elapsed_seconds": 1.2758894000435248,
+        "submit_latency_seconds": 0.004261100082658231,
+        "status_latency_max_seconds": 0.19107099995017052,
+        "samples": 360001,
+        "csv_bytes": 170623857,
+        "csv_sha256": "b24d83f0fce0cc8073dba7833d6065c5c035c461e3284e2b5a96c67e828d3e8e"
+      },
+      {
+        "warmup": false,
+        "id": "run-4",
+        "duration_seconds": 3600,
+        "seed": 42,
+        "elapsed_seconds": 1.33095420000609,
+        "submit_latency_seconds": 0.004576000035740435,
+        "status_latency_max_seconds": 0.2028031999943778,
+        "samples": 360001,
+        "csv_bytes": 170623857,
+        "csv_sha256": "b24d83f0fce0cc8073dba7833d6065c5c035c461e3284e2b5a96c67e828d3e8e"
+      }
+    ],
+    "host": {
+      "shutdown": {
+        "shutdown_seconds": 0.0209465
+      },
+      "outer_shutdown_seconds": 0.0347575000487268,
+      "metrics": {
+        "sampled_aggregate_working_set_peak_bytes": 110268416,
+        "sampled_aggregate_private_commit_peak_bytes": 103464960,
+        "process_lifetime_peaks": {
+          "78336": {
+            "peak_working_set_bytes": 6279168,
+            "peak_private_commit_bytes": 1863680,
+            "private_commit_bytes_last": 77824
+          },
+          "70332": {
+            "peak_working_set_bytes": 104112128,
+            "peak_private_commit_bytes": 101650432,
+            "private_commit_bytes_last": 77824
+          },
+          "82228": {
+            "peak_working_set_bytes": 104112128,
+            "peak_private_commit_bytes": 101683200,
+            "private_commit_bytes_last": 77824
+          },
+          "3144": {
+            "peak_working_set_bytes": 104112128,
+            "peak_private_commit_bytes": 101670912,
+            "private_commit_bytes_last": 77824
+          },
+          "75404": {
+            "peak_working_set_bytes": 104112128,
+            "peak_private_commit_bytes": 101658624,
+            "private_commit_bytes_last": 77824
+          }
+        },
+        "disk_peak_bytes": 511873323,
+        "samples": 219,
+        "sampling_errors": [],
+        "requested_interval_seconds": 0.005
+      },
+      "root_remaining": [],
+      "stderr": ""
+    }
+  },
+  "status": "failed",
+  "error": "TimeoutError('controlled worker readiness')",
+  "emergency_cleanup": [
+    {
+      "error": "AssertionError(('', 'Error: Os { code: 3, kind: NotFound, message: \"The system cannot find the path specified.\" }\\n'))",
+      "pid": 82152
+    }
+  ]
+}

@@ -34,3 +34,9 @@ Native Windows tests and quality gates passed before publication. The PR adds ac
 ## Check your understanding
 
 Start one idle service with an empty artifact root, then try another instance using the same root and a different port. The second must fail without changing the first instance's files. After graceful shutdown, the root claim should be released. Explain why an empty-directory check alone cannot establish exclusive ownership.
+
+## Shutdown failures are part of ownership
+
+[Issue #35](https://github.com/zblack54/fusion-lab/issues/35) exposed a nested result: a timeout can finish successfully while its inner task drain returns an error. Checking only the outer result hid a connection-task panic. The adapter now gives one drain the shutdown deadline, observes every connection, aborts and joins survivors, and returns the first failure. Explicit completion also performs worker/artifact/root cleanup after a runtime-thread panic. Native regressions failed on the original behavior and pass after the repair. This is why a successful HTTP response and a successful shutdown are separate contracts.
+
+The native release probe records one warmup and three maximum-duration runs, aggregate service-plus-worker memory, disk, cancellation, 60-second overload, slow-reader eviction, noisy pipes and artifact overflow. Raw records preserve source/executable hashes and failed attempts. These are measurements on named hosts; sampling cannot establish an OS hard limit. Linux CI runs the same workload and labels its private-resident metric separately from Windows private commit. See the PR acceptance evidence for completed versus pending checks.

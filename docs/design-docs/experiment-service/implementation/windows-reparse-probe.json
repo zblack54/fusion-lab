@@ -1,0 +1,21 @@
+{
+  "command": [
+    "cmd.exe",
+    "/d",
+    "/c",
+    "mklink",
+    "/J",
+    "C:\\Users\\Admin\\AppData\\Local\\Temp\\fusion-reparse-probe-e0gkteq0\\root-junction",
+    "C:\\Users\\Admin\\AppData\\Local\\Temp\\fusion-reparse-probe-e0gkteq0\\empty-target"
+  ],
+  "create_returncode": 0,
+  "create_stdout": "Junction created for C:\\Users\\Admin\\AppData\\Local\\Temp\\fusion-reparse-probe-e0gkteq0\\root-junction <<===>> C:\\Users\\Admin\\AppData\\Local\\Temp\\fusion-reparse-probe-e0gkteq0\\empty-target\n",
+  "create_stderr": "",
+  "host_sha256": "67c6cd4759ab9561668fd8be3e74b9ca1b13f716995e84b94d39bbb4674d0a3b",
+  "probe_sha256": "b9698cf4e9cb2699fd126c4d6962fc2e83e943e7045e8f1f39e8ea1e7eea1585",
+  "startup_returncode": 1,
+  "startup_stderr": "Error: Custom { kind: InvalidInput, error: \"artifact root must be empty and not a link\" }\n",
+  "target_still_empty": true,
+  "root_is_junction": true,
+  "status": "empty_junction_root_rejected"
+}

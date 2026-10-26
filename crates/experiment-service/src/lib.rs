@@ -48,9 +48,10 @@ impl Service {
             let _ = stop.send(());
         }
         let serving = match self.thread.take() {
-            Some(thread) => thread
-                .join()
-                .map_err(|_| io::Error::other("HTTP runtime thread panicked"))?,
+            Some(thread) => match thread.join() {
+                Ok(result) => result,
+                Err(_) => Err(io::Error::other("HTTP runtime thread panicked")),
+            },
             None => Ok(()),
         };
         let workers = server::join_workers(&self.state);
@@ -69,5 +70,46 @@ impl Service {
 impl Drop for Service {
     fn drop(&mut self) {
         let _ = self.finish();
+    }
+}
+
+#[cfg(test)]
+mod shutdown_tests {
+    use super::{Service, ServiceOptions};
+    use std::{
+        fs,
+        path::PathBuf,
+        sync::atomic::{AtomicU64, Ordering},
+        thread,
+    };
+    static SEQUENCE: AtomicU64 = AtomicU64::new(0);
+    fn options(root: PathBuf) -> ServiceOptions {
+        ServiceOptions {
+            bind: "127.0.0.1:0".parse().unwrap(),
+            artifact_root: root,
+            worker: std::env::current_exe().unwrap(),
+            retained_runs: 1,
+            artifact_budget_bytes: 512 * 1024 * 1024,
+        }
+    }
+    #[test]
+    fn runtime_panic_does_not_skip_explicit_cleanup_or_root_release() {
+        let root = std::env::temp_dir().join(format!(
+            "fusion-runtime-panic-{}-{}",
+            std::process::id(),
+            SEQUENCE.fetch_add(1, Ordering::SeqCst)
+        ));
+        let mut service = Service::start(options(root.clone())).unwrap();
+        service.stop.take().unwrap().send(()).unwrap();
+        service.thread.take().unwrap().join().unwrap().unwrap();
+        service.thread = Some(thread::spawn(|| panic!("injected HTTP runtime panic")));
+        let error = service.finish().unwrap_err();
+        assert!(error.to_string().contains("HTTP runtime thread panicked"));
+        // Keep the original handle alive: its destructor must not be required
+        // for explicit fallible completion to release the exclusive root claim.
+        let replacement = Service::start(options(root.clone())).unwrap();
+        replacement.shutdown().unwrap();
+        drop(service);
+        fs::remove_dir(root).unwrap();
     }
 }

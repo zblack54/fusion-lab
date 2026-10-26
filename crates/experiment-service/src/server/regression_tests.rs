@@ -128,3 +128,148 @@ fn dropped_stream_receiver_unblocks_reader_and_releases_file_before_cleanup() {
     assert!(!artifact.path.exists());
     assert!(artifact.errors.lock().unwrap().is_empty());
 }
+
+fn probe_worker() -> PathBuf {
+    let manifest = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("Cargo.toml");
+    let build = Command::new("cargo")
+        .args([
+            "build",
+            "--locked",
+            "--example",
+            "probe_worker",
+            "--manifest-path",
+        ])
+        .arg(&manifest)
+        .output()
+        .unwrap();
+    assert!(
+        build.status.success(),
+        "fixture build failed: {}",
+        String::from_utf8_lossy(&build.stderr)
+    );
+    let metadata = Command::new("cargo")
+        .args([
+            "metadata",
+            "--format-version",
+            "1",
+            "--no-deps",
+            "--manifest-path",
+        ])
+        .arg(&manifest)
+        .output()
+        .unwrap();
+    assert!(metadata.status.success());
+    let metadata: Value = serde_json::from_slice(&metadata.stdout).unwrap();
+    PathBuf::from(metadata["target_directory"].as_str().unwrap())
+        .join("debug/examples")
+        .join(if cfg!(windows) {
+            "probe_worker.exe"
+        } else {
+            "probe_worker"
+        })
+}
+
+#[test]
+fn noisy_child_stdout_and_stderr_are_drained_with_bounded_tails() {
+    // Actual OS pipes and two MiB per pipe establish subprocess drain behavior.
+    let mut child = Command::new(probe_worker())
+        .args(["--seed", "9002", "--output"])
+        .arg(std::env::temp_dir().join("unused-fusion-pipe-probe.csv"))
+        .stdout(Stdio::piped())
+        .stderr(Stdio::piped())
+        .spawn()
+        .unwrap();
+    let stdout = child.stdout.take().unwrap();
+    let stderr = child.stderr.take().unwrap();
+    let output = thread::spawn(move || drain(stdout));
+    let errors = thread::spawn(move || drain(stderr));
+    assert_eq!(child.wait().unwrap().code(), Some(7));
+    let output = output.join().unwrap().unwrap();
+    let errors = errors.join().unwrap().unwrap();
+    assert_eq!(output.len(), 65536);
+    assert!(output.iter().all(|byte| *byte == b'a'));
+    assert_eq!(errors.len(), 65536);
+    assert!(errors.iter().all(|byte| *byte == b'b'));
+}
+
+fn http(address: std::net::SocketAddr, method: &str, path: &str, body: &Value) -> (u16, Value) {
+    use std::io::Write;
+    let mut socket = std::net::TcpStream::connect(address).unwrap();
+    socket
+        .set_read_timeout(Some(Duration::from_secs(5)))
+        .unwrap();
+    let body = body.to_string();
+    write!(socket,"{method} {path} HTTP/1.1\r\nHost: {address}\r\nContent-Type: application/json\r\nContent-Length: {}\r\nConnection: close\r\n\r\n{body}",body.len()).unwrap();
+    let mut response = String::new();
+    socket.read_to_string(&mut response).unwrap();
+    let (status, body) = response.split_once("\r\n\r\n").unwrap();
+    (
+        status.split_whitespace().nth(1).unwrap().parse().unwrap(),
+        serde_json::from_str(body).unwrap(),
+    )
+}
+
+#[test]
+fn injected_wait_failure_is_visible_and_keeps_the_real_child_owned() {
+    let root = root();
+    let mut settings = options(&root);
+    settings.worker = probe_worker();
+    let service = Service::start(settings).unwrap();
+    let configuration = json!({"seed":9001,"duration_seconds":3600,"scenario":"straight","position_sigma":0,"velocity_sigma":0,"acceleration_density":0.1,"outage":null});
+    let (status, submitted) = http(service.address(), "POST", "/v1/runs", &configuration);
+    assert_eq!(status, 202);
+    let id = submitted["id"].as_str().unwrap();
+    let deadline = std::time::Instant::now() + Duration::from_secs(5);
+    let marker = root.join(id).join("worker.ready");
+    let ready: Value = loop {
+        if let Ok(text) = fs::read_to_string(&marker)
+            && let Ok(value) = serde_json::from_str(&text)
+        {
+            break value;
+        }
+        assert!(std::time::Instant::now() < deadline);
+        thread::sleep(Duration::from_millis(5));
+    };
+    let child_address: std::net::SocketAddr = ready["address"].as_str().unwrap().parse().unwrap();
+    assert!(std::net::TcpStream::connect(child_address).is_ok());
+    {
+        let mut state = locked(&service.state);
+        let run = state.runs.iter_mut().find(|run| run.id == id).unwrap();
+        run.wait_fault = true;
+    }
+    loop {
+        let (status, snapshot) = http(
+            service.address(),
+            "GET",
+            &format!("/v1/runs/{id}"),
+            &Value::Null,
+        );
+        assert_eq!(status, 200);
+        if snapshot["error"]["code"] == "worker_wait_failed" {
+            assert_eq!(snapshot["state"], "running");
+            assert!(snapshot["sequence"].as_u64().unwrap() > 0);
+            break;
+        }
+        assert!(std::time::Instant::now() < deadline);
+        thread::sleep(Duration::from_millis(5));
+    }
+    assert_eq!(
+        http(service.address(), "POST", "/v1/runs", &configuration).0,
+        409
+    );
+    {
+        let state = locked(&service.state);
+        assert_eq!(state.runs.len(), 1);
+        assert!(
+            state.runs[0].child.is_some(),
+            "failed wait cannot discard the live Child owner"
+        );
+    }
+    assert!(std::net::TcpStream::connect(child_address).is_ok());
+    service.shutdown().unwrap();
+    assert!(
+        std::net::TcpStream::connect(child_address).is_err(),
+        "shutdown still kills and reaps the retained real child"
+    );
+    fs::remove_dir(root).unwrap();
+}

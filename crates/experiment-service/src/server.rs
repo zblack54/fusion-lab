@@ -80,8 +80,20 @@ struct Run {
     artifact: Arc<Artifact>,
     bytes: u64,
     subscribers: Vec<mpsc::Sender<Value>>,
+    #[cfg(test)]
+    wait_fault: bool,
 }
 impl Run {
+    fn poll_child(&mut self) -> io::Result<Option<std::process::ExitStatus>> {
+        #[cfg(test)]
+        if self.wait_fault {
+            return Err(io::Error::other("injected worker wait failure"));
+        }
+        self.child
+            .as_mut()
+            .ok_or_else(|| io::Error::other("running worker has no owned child"))?
+            .try_wait()
+    }
     fn snapshot(&self) -> Value {
         json!({"id":self.id,"config":self.config,"state":self.state,"sequence":self.sequence,"samples":self.samples,"error":self.error,"artifacts":if self.state=="completed" {vec![format!("/v1/runs/{}/artifacts/samples.csv",self.id),format!("/v1/runs/{}/artifacts/report.txt",self.id)]}else{vec![]}})
     }
@@ -584,6 +596,8 @@ fn launch(state: &Shared, config: Configuration) -> Response {
         }),
         bytes: 0,
         subscribers: Vec::new(),
+        #[cfg(test)]
+        wait_fault: false,
     };
     let snapshot = run.snapshot();
     s.runs.push_back(run);
@@ -622,7 +636,7 @@ fn monitor(state: Shared, id: String, pipes: [thread::JoinHandle<io::Result<Vec<
             if let Some(run) = s.runs.iter_mut().find(|r| r.id == id)
                 && run.state == "running"
             {
-                match run.child.as_mut().unwrap().try_wait() {
+                match run.poll_child() {
                     Ok(Some(status)) => {
                         run.child.take();
                         if directory_bytes(&run.artifact.path)
@@ -672,9 +686,17 @@ fn monitor(state: Shared, id: String, pipes: [thread::JoinHandle<io::Result<Vec<
                         }
                     }
                     Err(_) => {
+                        let changed = run
+                            .error
+                            .as_ref()
+                            .is_none_or(|error| error["code"] != "worker_wait_failed");
                         run.error = Some(
                             json!({"code":"worker_wait_failed","message":"worker_wait_failed"}),
                         );
+                        if changed {
+                            run.sequence += 1;
+                            run.publish();
+                        }
                         done = false;
                     }
                 }
