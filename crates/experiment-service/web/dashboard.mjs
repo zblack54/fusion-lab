@@ -7,8 +7,8 @@ let points=null,current=null,rowCount=0,playing=false,dirty=false,renderedAt=0,l
 const colors=['#f0f4fa','#85e1c4','#e9bb73','#d2a6ef','#77b9ff'];
 function notice(text){byId('notice').textContent=String(text).slice(0,1024);}
 function command(type,payload={}){worker.postMessage({type,generation,...payload});}
-function controls(enabled){for(const id of ['play','pause','reset','cursor','tick'])byId(id).disabled=!enabled;}
-function selectInput(input){pendingInput=input;if(resetPending)return;resetPending=true;generation++;points=null;current=null;rowCount=0;playing=false;controls(false);dirty=true;command('resetInput');}
+function controls(enabled){for(const id of ['play','pause','reset','cursor','tick','speed'])byId(id).disabled=!enabled;}
+function selectInput(input){pendingInput=input;if(resetPending)return;resetPending=true;generation++;points=null;current=null;rowCount=0;playing=false;controls(false);byId('fidelity').textContent='No recording loaded';byId('sensor').textContent='Sensor status awaits the selected recording.';byId('sample').textContent='No sample from the selected recording is loaded.';for(const id of ['cursor','tick']){byId(id).value='0';byId(id).max='0';}dirty=true;command('resetInput');}
 worker.onmessage=({data:message})=>{
  if(message.generation!==generation)return;
  if(message.type==='resetAck'){
@@ -20,7 +20,7 @@ worker.onmessage=({data:message})=>{
   points=message.points;rowCount=message.rowCount;
   byId('fidelity').textContent=`${points.length/20} plotted / ${rowCount.toLocaleString()} recorded samples · 12-decimal CSV`;
   for(const id of ['cursor','tick']){byId(id).max=String(rowCount-1);byId(id).value='0';}
-  controls(true);notice(`Recording ready · ${(message.allocatedNumericBytes/1048576).toFixed(2)} MiB numeric buffers. Replay controls do not alter experiments.`);dirty=true;
+  command('speed',{rate:Number(byId('speed').value)});controls(true);notice(`Recording ready · ${(message.allocatedNumericBytes/1048576).toFixed(2)} MiB numeric buffers. Replay controls do not alter experiments.`);dirty=true;
  }
  if(message.type==='frame'){current=message.row;playing=message.playing;byId('cursor').value=String(current.tick);byId('tick').value=String(current.tick);dirty=true;command('frameAck');}
  if(message.type==='error'){points=null;current=null;controls(false);notice(message.message);dirty=true;}

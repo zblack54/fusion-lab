@@ -40,3 +40,4 @@ jobs:
       - run: node --check crates/experiment-service/web/data.mjs
       - run: node --check crates/experiment-service/web/dashboard.mjs
       - run: node --check crates/experiment-service/web/parser-worker.mjs
+      - run: node --test crates/experiment-service/web/regressions.test.mjs crates/experiment-service/web/dashboard-regressions.test.mjs
