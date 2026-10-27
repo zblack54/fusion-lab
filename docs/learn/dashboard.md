@@ -1,10 +1,10 @@
 # Recorded dashboard: preserve evidence while changing the view
 
-Status: approved design and implementation in progress in [PR #44](https://github.com/zblack54/fusion-lab/pull/44). Browser acceptance, screenshots and resource measurements are pending. This page explains the contract; it does not claim a shipped UI.
+Status: implemented and under review in [PR #44](https://github.com/zblack54/fusion-lab/pull/44). Known-row browser screenshots and comparisons are available; total browser resource acceptance remains pending. The dashboard has not merged as a shipped feature.
 
 ## Why recorded replay is separate from live status
 
-The Rust service runs the deterministic CLI and publishes lifecycle status. Its SSE stream reports queued/running/completed/cancelled states; it is not a stream of every numerical observation. The dashboard will load completed CSV artifacts, retain their recorded rows and move a playback cursor over them. Changing playback speed changes the view clock, never the numerical 10 ms clock or filter result. Pausing or resetting the view does not cancel an experiment.
+The Rust service runs the deterministic CLI and publishes lifecycle status. Its SSE stream reports running/completed/failed/cancelled states; it is not a stream of every numerical observation. The dashboard will load completed CSV artifacts, retain their recorded rows and move a playback cursor over them. Changing playback speed changes the view clock, never the numerical 10 ms clock or filter result. Pausing or resetting the view does not cancel an experiment.
 
 ## A complete row and a bounded plot
 
@@ -33,6 +33,14 @@ cargo test --manifest-path tests/local-dashboard/Cargo.toml --locked -- --test-t
 ~~~
 
 Native Windows/Linux and Rust 1.99/stable, unchanged service tests, actual browser interaction, known-row screenshots, a maximum real artifact and independent source review remain acceptance obligations. Follow [issue #7](https://github.com/zblack54/fusion-lab/issues/7) for actual current evidence.
+
+## Current observed evidence
+
+The current implementation passed all 17 locked tests on each local compiler, six supplementary regressions and the unchanged service tests. Published head `7fa29649` also passed native Windows/Linux with Rust 1.99/stable, plus service/root/docs checks. These checks apply to that exact head; later diagnostic changes need fresh review.
+
+A real 170624208 byte maximum artifact loaded 360001 rows, with 4096 plotted samples and exact cursor row 7777. Browser DOM values at rows 0, 1500, 2100 and 7777 were compared across all 35 fields with recorded CSV. [Actual screenshots and comparisons](https://github.com/zblack54/fusion-lab/tree/7fa29649b15a06e73b037eac9cd1bdc892733493/docs/design-docs/local-dashboard/implementation) are immutable review evidence. They establish inspected values and interactions, not total memory or broad calibration.
+
+[Issue #57](https://github.com/zblack54/fusion-lab/issues/57) tracks bounded diagnostics and actual owned-renderer measurements for maximum imports, repeated aborts and control responsiveness. Warmup plus three runs, 50 selection/abort cycles, p95 control response and long-task evidence remain acceptance work. Unsupported measurements must be reported as unavailable; zero is a measured result only when observation actually worked.
 
 ## Exercise
 
