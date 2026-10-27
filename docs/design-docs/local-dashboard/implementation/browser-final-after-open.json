@@ -1,0 +1,115 @@
+{
+  "derived_filter_only": true,
+  "original_sha256": "18d4a7a98abd57e2eae37472d6cde1fb5363fc6240e22e00b239ab75f11ffd52",
+  "original_private_file": "18d4a7a98abd57e2eae37472d6cde1fb5363fc6240e22e00b239ab75f11ffd52-browser-final-after-open.json",
+  "sampled_utc_seconds": 1793112570.3044329,
+  "original_candidate_count": 74,
+  "original_new_renderer_count": 1,
+  "owned_renderer_pid": 94864,
+  "context_parent_pid": 73556,
+  "owned_renderer_rows": [
+    {
+      "pid": 94864,
+      "parent": 73556,
+      "name": "ChatGPT.exe",
+      "type": "renderer",
+      "renderer_client_id": "66",
+      "rss_bytes": 99639296,
+      "peak_rss_bytes": 99958784,
+      "private_bytes": 47362048,
+      "threads": {
+        "total_threads": 18,
+        "query_successes": 18,
+        "query_failures": 0,
+        "named_threads": [
+          {
+            "tid": 80920,
+            "description": "CrRendererMain"
+          },
+          {
+            "tid": 96276,
+            "description": "PerfettoTrace"
+          },
+          {
+            "tid": 57704,
+            "description": "HangWatcher"
+          },
+          {
+            "tid": 95356,
+            "description": "ThreadPoolServiceThread"
+          },
+          {
+            "tid": 89596,
+            "description": "ThreadPoolForegroundWorker"
+          },
+          {
+            "tid": 83304,
+            "description": "ThreadPoolPresentationWorker"
+          },
+          {
+            "tid": 75772,
+            "description": "ThreadPoolAudioWorker"
+          },
+          {
+            "tid": 72464,
+            "description": "ThreadPoolBackgroundWorker"
+          },
+          {
+            "tid": 73800,
+            "description": "Chrome_ChildIOThread"
+          },
+          {
+            "tid": 95756,
+            "description": "Compositor"
+          },
+          {
+            "tid": 82408,
+            "description": "ThreadPoolBackgroundWorker"
+          },
+          {
+            "tid": 81152,
+            "description": "ThreadPoolSingleThreadSharedForegroundBlocking"
+          },
+          {
+            "tid": 77652,
+            "description": "ThreadPoolForegroundWorker"
+          },
+          {
+            "tid": 64668,
+            "description": "ThreadPoolForegroundWorker"
+          },
+          {
+            "tid": 87044,
+            "description": "ThreadPoolForegroundWorker"
+          },
+          {
+            "tid": 17516,
+            "description": "ThreadPoolForegroundWorker"
+          },
+          {
+            "tid": 92088,
+            "description": "DedicatedWorker thread"
+          }
+        ],
+        "query_error_codes": {}
+      }
+    }
+  ],
+  "context_parent": [
+    {
+      "pid": 73556,
+      "parent": 62896,
+      "name": "ChatGPT.exe",
+      "type": "browser-or-other"
+    }
+  ],
+  "owned_new_dedicated_workers": [
+    {
+      "pid": 94864,
+      "client": "66",
+      "tid": 92088,
+      "description": "DedicatedWorker thread"
+    }
+  ],
+  "scope_note": "Only the attributed final renderer is retained. Parent is identity context, not memory charged. Early snapshots can show this PID as a spare before it acquires the dedicated worker; the final create/load/close chain is required. Full originals remain privately available by SHA. No sampler measurement is modified."
+}

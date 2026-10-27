@@ -1,0 +1,142 @@
+{
+  "pid": 94864,
+  "creation_filetime": 134375851409162979,
+  "requested_seconds": 600,
+  "requested_interval_seconds": 0.005,
+  "started_utc_seconds": 1793112584.1509192,
+  "method": "Held native process handle prevents PID-reuse confusion; lifetime RSS peaks plus periodic working set; no browser UI automation",
+  "ownership_threads_at_start": {
+    "total_threads": 28,
+    "query_successes": 28,
+    "query_failures": 0,
+    "named_threads": [
+      {
+        "tid": 80920,
+        "description": "CrRendererMain"
+      },
+      {
+        "tid": 96276,
+        "description": "PerfettoTrace"
+      },
+      {
+        "tid": 57704,
+        "description": "HangWatcher"
+      },
+      {
+        "tid": 95356,
+        "description": "ThreadPoolServiceThread"
+      },
+      {
+        "tid": 89596,
+        "description": "ThreadPoolForegroundWorker"
+      },
+      {
+        "tid": 83304,
+        "description": "ThreadPoolPresentationWorker"
+      },
+      {
+        "tid": 75772,
+        "description": "ThreadPoolAudioWorker"
+      },
+      {
+        "tid": 72464,
+        "description": "ThreadPoolBackgroundWorker"
+      },
+      {
+        "tid": 73800,
+        "description": "Chrome_ChildIOThread"
+      },
+      {
+        "tid": 95756,
+        "description": "Compositor"
+      },
+      {
+        "tid": 82408,
+        "description": "ThreadPoolBackgroundWorker"
+      },
+      {
+        "tid": 81152,
+        "description": "ThreadPoolSingleThreadSharedForegroundBlocking"
+      },
+      {
+        "tid": 77652,
+        "description": "ThreadPoolForegroundWorker"
+      },
+      {
+        "tid": 64668,
+        "description": "ThreadPoolForegroundWorker"
+      },
+      {
+        "tid": 87044,
+        "description": "ThreadPoolForegroundWorker"
+      },
+      {
+        "tid": 17516,
+        "description": "ThreadPoolForegroundWorker"
+      },
+      {
+        "tid": 92088,
+        "description": "DedicatedWorker thread"
+      },
+      {
+        "tid": 93900,
+        "description": "ThreadPoolForegroundWorker"
+      },
+      {
+        "tid": 88932,
+        "description": "ThreadPoolForegroundWorker"
+      },
+      {
+        "tid": 95948,
+        "description": "ThreadPoolForegroundWorker"
+      },
+      {
+        "tid": 89796,
+        "description": "ThreadPoolForegroundWorker"
+      },
+      {
+        "tid": 25120,
+        "description": "ThreadPoolForegroundWorker"
+      },
+      {
+        "tid": 92700,
+        "description": "ThreadPoolForegroundWorker"
+      },
+      {
+        "tid": 90352,
+        "description": "ThreadPoolForegroundWorker"
+      },
+      {
+        "tid": 96156,
+        "description": "ThreadPoolForegroundWorker"
+      },
+      {
+        "tid": 79308,
+        "description": "ThreadPoolForegroundWorker"
+      },
+      {
+        "tid": 56296,
+        "description": "ThreadPoolForegroundWorker"
+      }
+    ],
+    "query_error_codes": {}
+  },
+  "samples": 72947,
+  "sampled_rss_peak_bytes": 253399040,
+  "lifetime_rss_peak_bytes": 253980672,
+  "sampled_private_peak_bytes": 203972608,
+  "sampling_interval_max_seconds": 0.01600000006146729,
+  "errors": [],
+  "process_exited": true,
+  "attribution": "Requires fresh-tab create/close and named dedicated-worker/main-renderer thread evidence; no shared browser/GPU charge claimed",
+  "elapsed_seconds": 418.09399999980815,
+  "ownership_threads_at_end": {
+    "total_threads": 1,
+    "query_successes": 0,
+    "query_failures": 1,
+    "named_threads": [],
+    "query_error_codes": {
+      "open:87": 1
+    }
+  }
+}

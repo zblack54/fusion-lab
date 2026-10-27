@@ -32,9 +32,9 @@ test('issue50 fractional replay time survives speed changes and pause/resume',()
  const paused=new Replay(recording);paused.play(0);paused.pause(5);paused.play(100);assert.equal(paused.frame(105).tick,1);
 });
 
-test('issue48 final paused seek is delivered after an outstanding frame acknowledgment',async()=>{
+async function assertControlledWorker(delayLoadedMs=0){
  const moduleUrl=new URL(process.env.FUSION_WORKER_MODULE??'./parser-worker.mjs',import.meta.url).href;
- const adapter=`const {parentPort}=require('node:worker_threads');globalThis.onmessage=null;globalThis.postMessage=(message,transfer)=>parentPort.postMessage(message,transfer);import(${JSON.stringify(moduleUrl)}).then(()=>{parentPort.on('message',data=>globalThis.onmessage({data}));parentPort.postMessage({type:'adapterReady'});});`;
+ const adapter=`const {parentPort}=require('node:worker_threads');globalThis.onmessage=null;globalThis.postMessage=(message,transfer)=>{if(message.type==='loaded'){const until=performance.now()+${delayLoadedMs};while(performance.now()<until){}}parentPort.postMessage(message,transfer);};import(${JSON.stringify(moduleUrl)}).then(()=>{parentPort.on('message',data=>globalThis.onmessage({data}));parentPort.postMessage({type:'adapterReady'});});`;
  const worker=new Worker(adapter,{eval:true});
  const queued=[],waiters=[];
  worker.on('message',message=>{const at=waiters.findIndex(waiter=>waiter.type===message.type);if(at>=0){const waiter=waiters.splice(at,1)[0];clearTimeout(waiter.timer);waiter.resolve(message);}else queued.push(message);});
@@ -49,5 +49,10 @@ test('issue48 final paused seek is delivered after an outstanding frame acknowle
   // Intentionally withhold the first frame ACK until the later seek is queued.
   worker.postMessage({type:'seek',generation:1,index:1});worker.postMessage({type:'frameAck',generation:1});
   const final=await next('frame');assert.equal(final.row.tick,1);assert.equal(final.playing,false);assert.equal(final.generation,1);
+  const completedMetrics=(await next('metrics')).metrics;assert.equal(completedMetrics.input_readers,0);assert.equal(completedMetrics.recording_owners,1);assert.equal(completedMetrics.parser_owners,0);assert.ok(completedMetrics.numeric_buffers_bytes>0);assert.ok(completedMetrics.numeric_buffers_bytes<=100800280);
+  if(delayLoadedMs)assert.ok(completedMetrics.max_active_work_before_yield_ms>=delayLoadedMs*.8,'continuous timing must observe synchronous notification work outside parser snippets');
+  worker.postMessage({type:'resetInput',generation:2});const reset=await next('resetAck');assert.equal(reset.metrics.input_readers,0);assert.equal(reset.metrics.recording_owners,0);assert.equal(reset.metrics.numeric_buffers_bytes,0);
  }finally{await worker.terminate();for(const waiter of waiters)clearTimeout(waiter.timer);}
-});
+}
+test('issue48 final paused seek is delivered after an outstanding frame acknowledgment',()=>assertControlledWorker());
+test('issue57 continuous worker meter detects a deliberately slow final notification',()=>assertControlledWorker(12));

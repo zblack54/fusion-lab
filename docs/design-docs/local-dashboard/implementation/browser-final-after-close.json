@@ -1,0 +1,21 @@
+{
+  "derived_filter_only": true,
+  "original_sha256": "a88d78a81935d4fbcf449bbfac87007f06dde6f7fa74d5fe1143618433e42b24",
+  "original_private_file": "a88d78a81935d4fbcf449bbfac87007f06dde6f7fa74d5fe1143618433e42b24-browser-final-after-close.json",
+  "sampled_utc_seconds": 1793113010.2906747,
+  "original_candidate_count": 73,
+  "original_new_renderer_count": 0,
+  "owned_renderer_pid": 94864,
+  "context_parent_pid": 73556,
+  "owned_renderer_rows": [],
+  "context_parent": [
+    {
+      "pid": 73556,
+      "parent": 62896,
+      "name": "ChatGPT.exe",
+      "type": "browser-or-other"
+    }
+  ],
+  "owned_new_dedicated_workers": [],
+  "scope_note": "Only the attributed final renderer is retained. Parent is identity context, not memory charged. Early snapshots can show this PID as a spare before it acquires the dedicated worker; the final create/load/close chain is required. Full originals remain privately available by SHA. No sampler measurement is modified."
+}
