@@ -1,0 +1,783 @@
+[[test]]
+id = "TST-NEG-009"
+title = "applied ack requires matching evidence kind"
+kind = "negative"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_neg_009_applied_ack_requires_matching_evidence_kind"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-036"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic seam does not implement kind-specific host evidence or explicit descendant-proof validation."
+required = true
+
+[[test]]
+id = "TST-NEG-010"
+title = "denied review or failed checks cannot authorize merge"
+kind = "negative"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_neg_010_denied_review_or_failed_checks_cannot_authorize_merge"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-036"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic seam does not implement kind-specific host evidence or explicit descendant-proof validation."
+required = true
+
+[[test]]
+id = "TST-NEG-011"
+title = "merge requires same approved refs and merge sha"
+kind = "negative"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_neg_011_merge_requires_same_approved_refs_and_merge_sha"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-036"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic seam does not implement kind-specific host evidence or explicit descendant-proof validation."
+required = true
+
+[[test]]
+id = "TST-NEG-012"
+title = "dead root unknown descendants keep writer fence"
+kind = "negative"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_neg_012_dead_root_unknown_descendants_keep_writer_fence"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-011", "CON-001"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic seam does not implement kind-specific host evidence or explicit descendant-proof validation."
+required = true
+
+[[test]]
+id = "TST-ACC-001"
+title = "runs ready dependency then continues"
+kind = "acceptance"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_acc_001_runs_ready_dependency_then_continues"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-001"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic production seam returns NotImplemented at the first required behavior; later independent assertions exercise actual controlled subprocess/file boundaries."
+required = true
+
+[[test]]
+id = "TST-ACC-002"
+title = "restart preserves checkpoint and requeues"
+kind = "acceptance"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_acc_002_restart_preserves_checkpoint_and_requeues"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-002"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic production seam returns NotImplemented at the first required behavior; later independent assertions exercise actual controlled subprocess/file boundaries."
+required = true
+
+[[test]]
+id = "TST-ACC-003"
+title = "quota checkpoint and weekly latch"
+kind = "acceptance"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_acc_003_quota_checkpoint_and_weekly_latch"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-003"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic production seam returns NotImplemented at the first required behavior; later independent assertions exercise actual controlled subprocess/file boundaries."
+required = true
+
+[[test]]
+id = "TST-ACC-004"
+title = "host ack required before done"
+kind = "acceptance"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_acc_004_host_ack_required_before_done"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-004"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic production seam returns NotImplemented at the first required behavior; later independent assertions exercise actual controlled subprocess/file boundaries."
+required = true
+
+[[test]]
+id = "TST-ACC-005"
+title = "probe triage is required"
+kind = "acceptance"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_acc_005_probe_triage_is_required"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-005"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic production seam returns NotImplemented at the first required behavior; later independent assertions exercise actual controlled subprocess/file boundaries."
+required = true
+
+[[test]]
+id = "TST-BEH-001"
+title = "durable enqueue is exact"
+kind = "behavioral"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_beh_001_durable_enqueue_is_exact"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-006"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic production seam returns NotImplemented at the first required behavior; later independent assertions exercise actual controlled subprocess/file boundaries."
+required = true
+
+[[test]]
+id = "TST-NEG-001"
+title = "duplicate id rejected atomically"
+kind = "negative"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_neg_001_duplicate_id_rejected_atomically"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-006"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic production seam returns NotImplemented at the first required behavior; later independent assertions exercise actual controlled subprocess/file boundaries."
+required = true
+
+[[test]]
+id = "TST-NEG-002"
+title = "unknown dependency and cycle rejected"
+kind = "negative"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_neg_002_unknown_dependency_and_cycle_rejected"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-007"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic production seam returns NotImplemented at the first required behavior; later independent assertions exercise actual controlled subprocess/file boundaries."
+required = true
+
+[[test]]
+id = "TST-BOUND-001"
+title = "task limit has no partial insert"
+kind = "boundary"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_bound_001_task_limit_has_no_partial_insert"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-008","CON-004"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic production seam returns NotImplemented at the first required behavior; later independent assertions exercise actual controlled subprocess/file boundaries."
+required = true
+
+[[test]]
+id = "TST-INV-001"
+title = "second owner cannot write"
+kind = "invariant"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_inv_001_second_owner_cannot_write"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-009","CON-001"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic production seam returns NotImplemented at the first required behavior; later independent assertions exercise actual controlled subprocess/file boundaries."
+required = true
+
+[[test]]
+id = "TST-STATE-001"
+title = "stale generation cannot checkpoint"
+kind = "state_transition"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_state_001_stale_generation_cannot_checkpoint"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-010"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic production seam returns NotImplemented at the first required behavior; later independent assertions exercise actual controlled subprocess/file boundaries."
+required = true
+
+[[test]]
+id = "TST-NEG-003"
+title = "ambiguous survivor blocks requeue"
+kind = "negative"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_neg_003_ambiguous_survivor_blocks_requeue"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-011","CON-001"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic production seam returns NotImplemented at the first required behavior; later independent assertions exercise actual controlled subprocess/file boundaries."
+required = true
+
+[[test]]
+id = "TST-STATE-002"
+title = "disable then cancel is durable"
+kind = "state_transition"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_state_002_disable_then_cancel_is_durable"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-012"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic production seam returns NotImplemented at the first required behavior; later independent assertions exercise actual controlled subprocess/file boundaries."
+required = true
+
+[[test]]
+id = "TST-BOUND-002"
+title = "repair cap and deadline are exact"
+kind = "boundary"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_bound_002_repair_cap_and_deadline_are_exact"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-013"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic production seam returns NotImplemented at the first required behavior; later independent assertions exercise actual controlled subprocess/file boundaries."
+required = true
+
+[[test]]
+id = "TST-ANTI-001"
+title = "api auth never launches"
+kind = "anti_pattern"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_anti_001_api_auth_never_launches"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-014","CON-002"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic production seam returns NotImplemented at the first required behavior; later independent assertions exercise actual controlled subprocess/file boundaries."
+required = true
+
+[[test]]
+id = "TST-NEG-004"
+title = "missing quota fails closed"
+kind = "negative"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_neg_004_missing_quota_fails_closed"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-015"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic production seam returns NotImplemented at the first required behavior; later independent assertions exercise actual controlled subprocess/file boundaries."
+required = true
+
+[[test]]
+id = "TST-BOUND-003"
+title = "five hour reset is reported value"
+kind = "boundary"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_bound_003_five_hour_reset_is_reported_value"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-016"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic production seam returns NotImplemented at the first required behavior; later independent assertions exercise actual controlled subprocess/file boundaries."
+required = true
+
+[[test]]
+id = "TST-PROP-001"
+title = "quota all percentages preserve weekly latch"
+kind = "property"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_prop_001_quota_all_percentages_preserve_weekly_latch"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-017"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic production seam returns NotImplemented at the first required behavior; later independent assertions exercise actual controlled subprocess/file boundaries."
+required = true
+
+[[test]]
+id = "TST-CONTRACT-001"
+title = "quota wire ignores order and rejects malformed"
+kind = "contract"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_contract_001_quota_wire_ignores_order_and_rejects_malformed"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-018"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic production seam returns NotImplemented at the first required behavior; later independent assertions exercise actual controlled subprocess/file boundaries."
+required = true
+
+[[test]]
+id = "TST-CONTRACT-002"
+title = "account wire requires managed chatgpt"
+kind = "contract"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_contract_002_account_wire_requires_managed_chatgpt"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-014"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic production seam returns NotImplemented at the first required behavior; later independent assertions exercise actual controlled subprocess/file boundaries."
+required = true
+
+[[test]]
+id = "TST-CONTRACT-003"
+title = "worker plan enforces subscription and model"
+kind = "contract"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_contract_003_worker_plan_enforces_subscription_and_model"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-019"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic production seam returns NotImplemented at the first required behavior; later independent assertions exercise actual controlled subprocess/file boundaries."
+required = true
+
+[[test]]
+id = "TST-BEH-002"
+title = "actual worker exit is not success"
+kind = "behavioral"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_beh_002_actual_worker_exit_is_not_success"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-020"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic production seam returns NotImplemented at the first required behavior; later independent assertions exercise actual controlled subprocess/file boundaries."
+required = true
+
+[[test]]
+id = "TST-CONTRACT-004"
+title = "bridge writes durable typed intent"
+kind = "contract"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_contract_004_bridge_writes_durable_typed_intent"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-021"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic production seam returns NotImplemented at the first required behavior; later independent assertions exercise actual controlled subprocess/file boundaries."
+required = true
+
+[[test]]
+id = "TST-NEG-005"
+title = "ack head mismatch cannot merge"
+kind = "negative"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_neg_005_ack_head_mismatch_cannot_merge"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-022"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic production seam returns NotImplemented at the first required behavior; later independent assertions exercise actual controlled subprocess/file boundaries."
+required = true
+
+[[test]]
+id = "TST-INV-002"
+title = "uncertain remote effect is not replayed"
+kind = "invariant"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_inv_002_uncertain_remote_effect_is_not_replayed"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-023","CON-005"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic production seam returns NotImplemented at the first required behavior; later independent assertions exercise actual controlled subprocess/file boundaries."
+required = true
+
+[[test]]
+id = "TST-STATE-003"
+title = "changed head invalidates verification"
+kind = "state_transition"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_state_003_changed_head_invalidates_verification"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-024"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic production seam returns NotImplemented at the first required behavior; later independent assertions exercise actual controlled subprocess/file boundaries."
+required = true
+
+[[test]]
+id = "TST-PERF-001"
+title = "suggestion work is bounded and deduplicated"
+kind = "performance"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_perf_001_suggestion_work_is_bounded_and_deduplicated"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-025","CON-004"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic production seam returns NotImplemented at the first required behavior; later independent assertions exercise actual controlled subprocess/file boundaries."
+required = true
+
+[[test]]
+id = "TST-BEH-003"
+title = "bridge rejects unknown ack atomically"
+kind = "behavioral"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_beh_003_bridge_rejects_unknown_ack_atomically"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-026"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic production seam returns NotImplemented at the first required behavior; later independent assertions exercise actual controlled subprocess/file boundaries."
+required = true
+
+[[test]]
+id = "TST-STRUCT-001"
+title = "downstream types and initial state"
+kind = "structural"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_struct_001_downstream_types_and_initial_state"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-027","CON-007"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic production seam returns NotImplemented at the first required behavior; later independent assertions exercise actual controlled subprocess/file boundaries."
+required = true
+
+[[test]]
+id = "TST-ACC-006"
+title = "cli file bridge end to end"
+kind = "acceptance"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_acc_006_cli_file_bridge_end_to_end"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-028"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic production seam returns NotImplemented at the first required behavior; later independent assertions exercise actual controlled subprocess/file boundaries."
+required = true
+
+[[test]]
+id = "TST-NEG-006"
+title = "cli invalid command does not mutate"
+kind = "negative"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_neg_006_cli_invalid_command_does_not_mutate"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-029"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic production seam returns NotImplemented at the first required behavior; later independent assertions exercise actual controlled subprocess/file boundaries."
+required = true
+
+[[test]]
+id = "TST-ANTI-002"
+title = "diagnostic seam is absent from real status"
+kind = "anti_pattern"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_anti_002_diagnostic_seam_is_absent_from_real_status"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-030"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic production seam returns NotImplemented at the first required behavior; later independent assertions exercise actual controlled subprocess/file boundaries."
+required = true
+
+[[test]]
+id = "TST-NEG-007"
+title = "failed verification cannot complete"
+kind = "negative"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_neg_007_failed_verification_cannot_complete"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-024"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic production seam returns NotImplemented at the first required behavior; later independent assertions exercise actual controlled subprocess/file boundaries."
+required = true
+
+[[test]]
+id = "TST-NEG-008"
+title = "gated dispatch never launches on bad account"
+kind = "negative"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_neg_008_gated_dispatch_never_launches_on_bad_account"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-014","CON-002"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic production seam returns NotImplemented at the first required behavior; later independent assertions exercise actual controlled subprocess/file boundaries."
+required = true
+
+[[test]]
+id = "TST-CONTRACT-005"
+title = "actual dispatch uses subscription launch policy"
+kind = "contract"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_contract_005_actual_dispatch_uses_subscription_launch_policy"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-019","CON-002", "REQ-037", "REQ-039", "REQ-040", "CON-008"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic production seam returns NotImplemented at the first required behavior; later independent assertions exercise actual controlled subprocess/file boundaries."
+required = true
+
+[[test]]
+id = "TST-BOUND-004"
+title = "actual child deadline keeps task unverified"
+kind = "boundary"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_bound_004_actual_child_deadline_keeps_task_unverified"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-013"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic production seam returns NotImplemented at the first required behavior; later independent assertions exercise actual controlled subprocess/file boundaries."
+required = true
+
+[[test]]
+id = "TST-ACC-007"
+title = "native cycle host ack then next ready"
+kind = "acceptance"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_acc_007_native_cycle_host_ack_then_next_ready"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-035"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic production seam returns NotImplemented at the first required behavior; later independent assertions exercise actual controlled subprocess/file boundaries."
+required = true
+
+[[test]]
+id = "TST-STATE-004"
+title = "active cancel requests owned child shutdown"
+kind = "state_transition"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_state_004_active_cancel_requests_owned_child_shutdown"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-012"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic production seam returns NotImplemented at the first required behavior; later independent assertions exercise actual controlled subprocess/file boundaries."
+required = true
+
+[[test]]
+id = "TST-ACC-008"
+title = "cli step runs real child and exports bridge"
+kind = "acceptance"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_acc_008_cli_step_runs_real_child_and_exports_bridge"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-035", "REQ-043", "REQ-037", "REQ-039"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic production seam returns NotImplemented at the first required behavior; later independent assertions exercise actual controlled subprocess/file boundaries."
+required = true
+
+[[test]]
+id = "TST-NEG-013"
+title = "missing approved scope cannot launch"
+kind = "negative"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_neg_013_missing_approved_scope_cannot_launch"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-037"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The minimal diagnostic seam has no materialized-scope dispatch behavior."
+required = true
+
+[[test]]
+id = "TST-NEG-014"
+title = "altered scope hash cannot launch"
+kind = "negative"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_neg_014_altered_scope_hash_cannot_launch"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-037"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The minimal diagnostic seam has no materialized-scope dispatch behavior."
+required = true
+
+[[test]]
+id = "TST-NEG-015"
+title = "scope identity must match task issue checkout"
+kind = "negative"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_neg_015_scope_identity_must_match_task_issue_checkout"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-038"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The minimal diagnostic seam has no materialized-scope dispatch behavior."
+required = true
+
+[[test]]
+id = "TST-NEG-016"
+title = "scope schema is strict and versioned"
+kind = "negative"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_neg_016_scope_schema_is_strict_and_versioned"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-038"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The minimal diagnostic seam has no materialized-scope dispatch behavior."
+required = true
+
+[[test]]
+id = "TST-BOUND-005"
+title = "scope file is bounded before launch"
+kind = "boundary"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_bound_005_scope_file_is_bounded_before_launch"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-042"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The minimal diagnostic seam has no materialized-scope dispatch behavior."
+required = true
+
+[[test]]
+id = "TST-BOUND-006"
+title = "encoded prompt is bounded before launch"
+kind = "boundary"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_bound_006_encoded_prompt_is_bounded_before_launch"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-042"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The minimal diagnostic seam has no materialized-scope dispatch behavior."
+required = true
+
+[[test]]
+id = "TST-ANTI-003"
+title = "workspace worker cannot write state control"
+kind = "anti_pattern"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_anti_003_workspace_worker_cannot_write_state_control"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-041", "CON-008"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The minimal diagnostic seam has no materialized-scope dispatch behavior."
+required = true
+
+[[test]]
+id = "TST-ANTI-004"
+title = "workspace worker cannot write host bridge"
+kind = "anti_pattern"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_anti_004_workspace_worker_cannot_write_host_bridge"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-041", "CON-008"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The minimal diagnostic seam has no materialized-scope dispatch behavior."
+required = true
+
+[[test]]
+id = "TST-ANTI-005"
+title = "canonical alias cannot hide control overlap"
+kind = "anti_pattern"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_anti_005_canonical_alias_cannot_hide_control_overlap"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-041", "CON-008"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The minimal diagnostic seam has no materialized-scope dispatch behavior."
+required = true
+
+[[test]]
+id = "TST-ACC-009"
+title = "readonly scope supports legacy same path"
+kind = "acceptance"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_acc_009_readonly_scope_supports_legacy_same_path"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-040", "REQ-043", "REQ-039"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The minimal diagnostic seam has no materialized-scope dispatch behavior."
+required = true
+
+[[test]]
+id = "TST-NEG-017"
+title = "cli workspace without isolated checkout cannot launch"
+kind = "negative"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_neg_017_cli_workspace_without_isolated_checkout_cannot_launch"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-043", "CON-008"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The minimal diagnostic seam has no materialized-scope dispatch behavior."
+required = true
+
+[[test]]
+id = "TST-ACC-010"
+title = "cli readonly legacy checkout is explicitly sandboxed"
+kind = "acceptance"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_acc_010_cli_readonly_legacy_checkout_is_explicitly_sandboxed"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-040", "REQ-043", "REQ-039"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The minimal diagnostic seam has no materialized-scope dispatch behavior."
+required = true
+
+[[test]]
+id = "TST-NEG-018"
+title = "readonly peer mutation is not accepted or reverted"
+kind = "negative"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_neg_018_readonly_peer_mutation_is_not_accepted_or_reverted"
+test_target = "test:contracts"
+configuration_ids = ["CFG-001", "CFG-002"]
+covers = ["REQ-044", "CON-010"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "SUPERVISOR_NOT_IMPLEMENTED"
+expected_failure_reason = "The diagnostic seam does not execute or reject an actual read-only peer commit mutation."
+required = true

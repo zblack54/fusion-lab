@@ -1,0 +1,395 @@
+[[requirement]]
+id = "REQ-001"
+title = "Continuous dependency dispatch"
+kind = "behavioral"
+statement = "The supervisor SHALL select the lowest ready task ID whose dependencies are done when an enabled cycle has no active attempt."
+rationale = "Makes issue #4 lifecycle behavior observable and prevents duplicate or unauthorized work."
+source_ids = ["ACC-001"]
+status = "active"
+
+[[requirement]]
+id = "REQ-002"
+title = "Restart reconciliation"
+kind = "behavioral"
+statement = "After a confirmed dead worker, restart reconciliation SHALL preserve its checkpoint and requeue its unfinished task with its previous attempt count."
+rationale = "Makes issue #4 lifecycle behavior observable and prevents duplicate or unauthorized work."
+source_ids = ["ACC-002"]
+status = "active"
+
+[[requirement]]
+id = "REQ-003"
+title = "Exhaustion stops dispatch"
+kind = "behavioral"
+statement = "The supervisor SHALL persist a quota pause and next eligible account reset when a required usage window is exhausted."
+rationale = "Makes issue #4 lifecycle behavior observable and prevents duplicate or unauthorized work."
+source_ids = ["ACC-003"]
+status = "active"
+
+[[requirement]]
+id = "REQ-004"
+title = "Merged evidence completes work"
+kind = "behavioral"
+statement = "The supervisor SHALL mark a verified task done only after matching successful merge evidence for its current head."
+rationale = "Makes issue #4 lifecycle behavior observable and prevents duplicate or unauthorized work."
+source_ids = ["ACC-004"]
+status = "active"
+
+[[requirement]]
+id = "REQ-005"
+title = "Probe triage"
+kind = "behavioral"
+statement = "The supervisor SHALL dispatch a probe suggestion only after explicit acceptance produces an approved-scope task."
+rationale = "Makes issue #4 lifecycle behavior observable and prevents duplicate or unauthorized work."
+source_ids = ["ACC-005"]
+status = "active"
+
+[[requirement]]
+id = "REQ-006"
+title = "Durable task identity"
+kind = "behavioral"
+statement = "The supervisor SHALL persist each unique task ID exactly once across reopen."
+rationale = "Makes issue #4 lifecycle behavior observable and prevents duplicate or unauthorized work."
+source_ids = ["ACC-001"]
+status = "active"
+
+[[requirement]]
+id = "REQ-007"
+title = "Dependency validation"
+kind = "behavioral"
+statement = "The supervisor SHALL reject self dependencies and unknown dependency IDs without inserting a task."
+rationale = "Makes issue #4 lifecycle behavior observable and prevents duplicate or unauthorized work."
+source_ids = ["ACC-001"]
+status = "active"
+
+[[requirement]]
+id = "REQ-008"
+title = "Task capacity"
+kind = "behavioral"
+statement = "The supervisor SHALL reject insertion beyond 1024 retained task records without changing existing records."
+rationale = "Makes issue #4 lifecycle behavior observable and prevents duplicate or unauthorized work."
+source_ids = ["ACC-001"]
+status = "active"
+
+[[requirement]]
+id = "REQ-009"
+title = "One checkout writer"
+kind = "behavioral"
+statement = "The supervisor SHALL deny a second checkout writer while an owned worker or exclusive checkout lock remains active."
+rationale = "Makes issue #4 lifecycle behavior observable and prevents duplicate or unauthorized work."
+source_ids = ["ACC-001"]
+status = "active"
+
+[[requirement]]
+id = "REQ-010"
+title = "Fenced writes"
+kind = "behavioral"
+statement = "The supervisor SHALL reject checkpoints whose owner token or generation differs from the current attempt."
+rationale = "Makes issue #4 lifecycle behavior observable and prevents duplicate or unauthorized work."
+source_ids = ["ACC-001"]
+status = "active"
+
+[[requirement]]
+id = "REQ-011"
+title = "Ambiguous survivor"
+kind = "behavioral"
+statement = "The supervisor SHALL pause the checkout without requeue when a recorded worker may survive with uncertain identity or descendant state."
+rationale = "Makes issue #4 lifecycle behavior observable and prevents duplicate or unauthorized work."
+source_ids = ["ACC-001"]
+status = "active"
+
+[[requirement]]
+id = "REQ-012"
+title = "Disable and cancel"
+kind = "behavioral"
+statement = "The supervisor SHALL persist disable/cancellation intent before requesting bounded worker shutdown."
+rationale = "Makes issue #4 lifecycle behavior observable and prevents duplicate or unauthorized work."
+source_ids = ["ACC-001"]
+status = "active"
+
+[[requirement]]
+id = "REQ-013"
+title = "Repair bounds"
+kind = "behavioral"
+statement = "The supervisor SHALL reject a third repair attempt or any repair at or beyond its recorded deadline."
+rationale = "Makes issue #4 lifecycle behavior observable and prevents duplicate or unauthorized work."
+source_ids = ["ACC-001"]
+status = "active"
+
+[[requirement]]
+id = "REQ-014"
+title = "ChatGPT only"
+kind = "behavioral"
+statement = "The supervisor SHALL reject account authentication other than managed ChatGPT before worker execution."
+rationale = "Makes issue #4 lifecycle behavior observable and prevents duplicate or unauthorized work."
+source_ids = ["ACC-001"]
+status = "active"
+
+[[requirement]]
+id = "REQ-015"
+title = "Missing quota"
+kind = "behavioral"
+statement = "The supervisor SHALL fail closed before worker execution when required quota evidence is missing."
+rationale = "Makes issue #4 lifecycle behavior observable and prevents duplicate or unauthorized work."
+source_ids = ["ACC-001"]
+status = "active"
+
+[[requirement]]
+id = "REQ-016"
+title = "Reported reset schedule"
+kind = "behavioral"
+statement = "The supervisor SHALL use the returned exhausted primary window reset timestamp rather than a fixed five-hour delay when the weekly allowance remains positive."
+rationale = "Makes issue #4 lifecycle behavior observable and prevents duplicate or unauthorized work."
+source_ids = ["ACC-001"]
+status = "active"
+
+[[requirement]]
+id = "REQ-017"
+title = "Weekly latch"
+kind = "behavioral"
+statement = "The supervisor SHALL preserve weekly recovery cadence after weekly exhaustion until an explicit owner cadence change is recorded."
+rationale = "Makes issue #4 lifecycle behavior observable and prevents duplicate or unauthorized work."
+source_ids = ["ACC-001"]
+status = "active"
+
+[[requirement]]
+id = "REQ-018"
+title = "Quota wire contract"
+kind = "behavioral"
+statement = "The quota adapter SHALL parse the codex bucket by field names and reject invalid percentages or absent required windows."
+rationale = "Makes issue #4 lifecycle behavior observable and prevents duplicate or unauthorized work."
+source_ids = ["ACC-001"]
+status = "active"
+
+[[requirement]]
+id = "REQ-019"
+title = "Worker launch policy"
+kind = "behavioral"
+statement = "The worker adapter SHALL launch only an approved model with forced ChatGPT login, the OpenAI provider and API credential variables removed."
+rationale = "Makes issue #4 lifecycle behavior observable and prevents duplicate or unauthorized work."
+source_ids = ["ACC-001"]
+status = "active"
+
+[[requirement]]
+id = "REQ-020"
+title = "Observe child outcome"
+kind = "behavioral"
+statement = "The worker adapter SHALL classify a nonzero child exit as failed and retain its exit status and descendant cleanup outcome."
+rationale = "Makes issue #4 lifecycle behavior observable and prevents duplicate or unauthorized work."
+source_ids = ["ACC-001"]
+status = "active"
+
+[[requirement]]
+id = "REQ-021"
+title = "Durable host intents"
+kind = "behavioral"
+statement = "The supervisor SHALL export each fixed typed intent ID through an atomic durable file bridge before awaiting host execution."
+rationale = "Makes issue #4 lifecycle behavior observable and prevents duplicate or unauthorized work."
+source_ids = ["ACC-001"]
+status = "active"
+
+[[requirement]]
+id = "REQ-022"
+title = "Exact-head host evidence"
+kind = "behavioral"
+statement = "The supervisor SHALL reject acknowledgement evidence whose expected or observed head differs from its intent head."
+rationale = "Makes issue #4 lifecycle behavior observable and prevents duplicate or unauthorized work."
+source_ids = ["ACC-001"]
+status = "active"
+
+[[requirement]]
+id = "REQ-023"
+title = "Uncertain external effects"
+kind = "behavioral"
+statement = "The supervisor SHALL retain uncertain host effects for reconciliation without issuing the same write again."
+rationale = "Makes issue #4 lifecycle behavior observable and prevents duplicate or unauthorized work."
+source_ids = ["ACC-001"]
+status = "active"
+
+[[requirement]]
+id = "REQ-024"
+title = "Verification invalidation"
+kind = "behavioral"
+statement = "The supervisor SHALL invalidate verification on a head change or failed check."
+rationale = "Makes issue #4 lifecycle behavior observable and prevents duplicate or unauthorized work."
+source_ids = ["ACC-001"]
+status = "active"
+
+[[requirement]]
+id = "REQ-025"
+title = "Bounded deduplicated inbox"
+kind = "behavioral"
+statement = "The supervisor SHALL deduplicate suggestions by stable key and reject a 129th distinct retained suggestion."
+rationale = "Makes issue #4 lifecycle behavior observable and prevents duplicate or unauthorized work."
+source_ids = ["ACC-001"]
+status = "active"
+
+[[requirement]]
+id = "REQ-026"
+title = "Bridge validation"
+kind = "behavioral"
+statement = "The supervisor SHALL reject an unknown or malformed ACK atomically without changing task state."
+rationale = "Makes issue #4 lifecycle behavior observable and prevents duplicate or unauthorized work."
+source_ids = ["ACC-001"]
+status = "active"
+
+[[requirement]]
+id = "REQ-027"
+title = "Application boundary"
+kind = "behavioral"
+statement = "The supervisor SHALL keep orchestration state in its standalone Windows application without changing the synchronous numerical core API."
+rationale = "Makes issue #4 lifecycle behavior observable and prevents duplicate or unauthorized work."
+source_ids = ["ACC-001"]
+status = "active"
+
+[[requirement]]
+id = "REQ-028"
+title = "CLI persistence"
+kind = "behavioral"
+statement = "The CLI SHALL expose enqueue/status/disable commands over the same durable state and canonical JSON contract as the library."
+rationale = "Makes issue #4 lifecycle behavior observable and prevents duplicate or unauthorized work."
+source_ids = ["ACC-006"]
+status = "active"
+
+[[requirement]]
+id = "REQ-029"
+title = "CLI prevalidation"
+kind = "behavioral"
+statement = "The CLI SHALL reject invalid commands with exit code 2 before state creation."
+rationale = "Makes issue #4 lifecycle behavior observable and prevents duplicate or unauthorized work."
+source_ids = ["ACC-001"]
+status = "active"
+
+[[requirement]]
+id = "REQ-030"
+title = "Replace diagnostic seam"
+kind = "behavioral"
+statement = "The implemented application SHALL return ordinary status results without the diagnostic compile-seam marker or exit code 78."
+rationale = "Makes issue #4 lifecycle behavior observable and prevents duplicate or unauthorized work."
+source_ids = ["ACC-001"]
+status = "active"
+
+[[requirement]]
+id = "REQ-031"
+title = "Real app-server control"
+kind = "operational"
+statement = "The app-server adapter SHALL initialize its owned stdio process and obtain managed ChatGPT account and usage-window evidence before dispatch."
+rationale = "Makes issue #4 lifecycle behavior observable and prevents duplicate or unauthorized work."
+source_ids = ["ACC-006"]
+status = "active"
+
+[[requirement]]
+id = "REQ-032"
+title = "Recorded model routing"
+kind = "operational"
+statement = "Each attempt SHALL persist its approved role/model/reasoning selection without silent provider or model substitution."
+rationale = "Makes issue #4 lifecycle behavior observable and prevents duplicate or unauthorized work."
+source_ids = ["ACC-006"]
+status = "active"
+
+[[requirement]]
+id = "REQ-033"
+title = "Event-triggered probes"
+kind = "operational"
+statement = "The supervisor SHALL enqueue one read-only probe suggestion task after each fifth verified slice or recorded major architecture change using a deduplication event key."
+rationale = "Makes issue #4 lifecycle behavior observable and prevents duplicate or unauthorized work."
+source_ids = ["ACC-006"]
+status = "active"
+
+[[requirement]]
+id = "REQ-034"
+title = "No secret evidence"
+kind = "operational"
+statement = "The supervisor SHALL exclude authentication tokens, email and account identifiers from logs and host bridge files."
+rationale = "Makes issue #4 lifecycle behavior observable and prevents duplicate or unauthorized work."
+source_ids = ["ACC-006"]
+status = "active"
+
+[[requirement]]
+id = "REQ-035"
+title = "One scheduler owner"
+kind = "operational"
+statement = "The run command SHALL continue bounded ready work until a documented stop reason while holding exclusive scheduler ownership."
+rationale = "Makes issue #4 lifecycle behavior observable and prevents duplicate or unauthorized work."
+source_ids = ["ACC-007"]
+status = "active"
+
+[[requirement]]
+id = "REQ-036"
+title = "Host GitHub lifecycle"
+kind = "operational"
+statement = "The host bridge SHALL require issue, scope, PR URL, exact-head review/check and merge evidence before accepting final issue completion."
+rationale = "Makes issue #4 lifecycle behavior observable and prevents duplicate or unauthorized work."
+source_ids = ["ACC-006"]
+status = "active"
+
+[[requirement]]
+id = "REQ-037"
+title = "Hash-bound approved scope"
+kind = "behavioral"
+statement = "Before native dispatch the driver SHALL require a private materialized scope whose exact-byte SHA-256 equals the task scope digest."
+rationale = "Bind actual work to host approval and prevent worker forgery of host control state (issue #41)."
+source_ids = ["ACC-008"]
+status = "active"
+
+[[requirement]]
+id = "REQ-038"
+title = "Strict scope identity and schema"
+kind = "behavioral"
+statement = "The driver SHALL reject a scope with invalid version, JSON types, unknown fields, empty instructions or mismatched task, issue or canonical checkout before account work or attempt reservation."
+rationale = "Bind actual work to host approval and prevent worker forgery of host control state (issue #41)."
+source_ids = ["ACC-008"]
+status = "active"
+
+[[requirement]]
+id = "REQ-039"
+title = "Approved instructions reach the worker"
+kind = "behavioral"
+statement = "The driver SHALL include the complete approved scope bytes and digest in the bounded worker stdin prompt."
+rationale = "Bind actual work to host approval and prevent worker forgery of host control state (issue #41)."
+source_ids = ["ACC-008"]
+status = "active"
+
+[[requirement]]
+id = "REQ-040"
+title = "Enforced scope mode"
+kind = "behavioral"
+statement = "The driver SHALL configure the Codex sandbox to read-only or workspace-write according to the approved scope mode."
+rationale = "Bind actual work to host approval and prevent worker forgery of host control state (issue #41)."
+source_ids = ["ACC-008"]
+status = "active"
+
+[[requirement]]
+id = "REQ-041"
+title = "Private host control isolation"
+kind = "behavioral"
+statement = "The driver SHALL reject workspace-write when canonical state, bridge or approved-scope control resolves inside its writable checkout."
+rationale = "Bind actual work to host approval and prevent worker forgery of host control state (issue #41)."
+source_ids = ["ACC-008"]
+status = "active"
+
+[[requirement]]
+id = "REQ-042"
+title = "Scope and encoded prompt caps"
+kind = "behavioral"
+statement = "The driver SHALL reject scope files above32768bytes and encoded final prompts above65536bytes before worker launch."
+rationale = "Bind actual work to host approval and prevent worker forgery of host control state (issue #41)."
+source_ids = ["ACC-008"]
+status = "active"
+
+[[requirement]]
+id = "REQ-043"
+title = "Explicit CLI checkout"
+kind = "behavioral"
+statement = "The CLI step/run commands SHALL honor optional --checkout while permitting legacy state-equals-checkout only for approved read-only scope."
+rationale = "Bind actual work to host approval and prevent worker forgery of host control state (issue #41)."
+source_ids = ["ACC-008"]
+status = "active"
+
+[[requirement]]
+id = "REQ-044"
+title = "Reject read-only commit mutation"
+kind = "behavioral"
+statement = "After a read-only worker changes Git HEAD, the driver SHALL return EvidenceMismatch and durably pause that task before accepting implementation or exporting a PR intent."
+rationale = "A matching worker-claimed final head is insufficient when approved read-only work changed the repository."
+source_ids = ["ACC-008"]
+status = "active"

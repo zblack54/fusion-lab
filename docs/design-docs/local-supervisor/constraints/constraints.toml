@@ -1,0 +1,109 @@
+[[constraint]]
+id = "CON-001"
+title = "One writer including descendants"
+kind = "invariant"
+statement = "A timed-out lease SHALL NOT admit a new writer while an old worker or descendant may survive."
+rationale = "Preserves authorized scope and the issue #4 failure/lifecycle contract."
+enforcement = "mixed"
+test_ids = ["TST-INV-001", "TST-NEG-003", "TST-NEG-012"]
+verification_ids = ["VER-004"]
+status = "active"
+
+[[constraint]]
+id = "CON-002"
+title = "Subscription isolation"
+kind = "negative"
+statement = "Worker dispatch SHALL NOT use API-key or alternate-provider fallback."
+rationale = "Preserves authorized scope and the issue #4 failure/lifecycle contract."
+enforcement = "mixed"
+test_ids = ["TST-ANTI-001", "TST-CONTRACT-005", "TST-NEG-008"]
+verification_ids = ["VER-003"]
+status = "active"
+
+[[constraint]]
+id = "CON-003"
+title = "No own unsafe code"
+kind = "anti_pattern"
+statement = "The application SHALL NOT contain unsafe Rust code."
+rationale = "Preserves authorized scope and the issue #4 failure/lifecycle contract."
+enforcement = "verification"
+test_ids = []
+verification_ids = ["VER-005"]
+status = "active"
+
+[[constraint]]
+id = "CON-004"
+title = "Resource caps"
+kind = "performance"
+statement = "The application SHALL bound retained tasks to 1024 and suggestions to 128."
+rationale = "Preserves authorized scope and the issue #4 failure/lifecycle contract."
+enforcement = "mixed"
+test_ids = ["TST-BOUND-001", "TST-PERF-001"]
+verification_ids = ["VER-006"]
+status = "active"
+
+[[constraint]]
+id = "CON-005"
+title = "External side effects"
+kind = "invariant"
+statement = "An uncertain host write SHALL NOT be replayed before read-only reconciliation."
+rationale = "Preserves authorized scope and the issue #4 failure/lifecycle contract."
+enforcement = "mixed"
+test_ids = ["TST-INV-002"]
+verification_ids = ["VER-007"]
+status = "active"
+
+[[constraint]]
+id = "CON-006"
+title = "No scheduler replacement during design"
+kind = "non_goal"
+statement = "This design SHALL NOT start a scheduler or replace the current active goal."
+rationale = "Preserves authorized scope and the issue #4 failure/lifecycle contract."
+enforcement = "verification"
+test_ids = []
+verification_ids = ["VER-002"]
+status = "active"
+
+[[constraint]]
+id = "CON-007"
+title = "Immutable core"
+kind = "negative"
+statement = "Supervisor implementation SHALL NOT change the numerical core public API."
+rationale = "Preserves authorized scope and the issue #4 failure/lifecycle contract."
+enforcement = "mixed"
+test_ids = ["TST-STRUCT-001"]
+verification_ids = ["VER-005"]
+status = "active"
+
+[[constraint]]
+id = "CON-008"
+title = "Worker cannot forge host control"
+kind = "invariant"
+statement = "Workspace dispatch SHALL force empty extra writable roots and both temp exclusions while keeping canonical host state, bridge and approved scopes outside the checkout."
+rationale = "Outside-checkout control is insufficient when ambient temp write allowances can still reach it."
+enforcement = "mixed"
+test_ids = ["TST-CONTRACT-005", "TST-ANTI-003", "TST-ANTI-004", "TST-ANTI-005", "TST-NEG-017"]
+verification_ids = ["VER-009"]
+status = "active"
+
+[[constraint]]
+id = "CON-009"
+title = "Scope path and read confinement"
+kind = "invariant"
+statement = "The scope gate SHALL reject symlink, reparse or nonregular scope files and use metadata plus bounded reads to prevent size-race over-allocation."
+rationale = "Private approval paths and bounds remain enforced under aliases and file growth."
+enforcement = "verification"
+test_ids = []
+verification_ids = ["VER-009"]
+status = "active"
+
+[[constraint]]
+id = "CON-010"
+title = "Preserve rejected read-only mutation evidence"
+kind = "invariant"
+statement = "Read-only mutation rejection SHALL preserve the changed Git state and before/after evidence without automatic reversion or another launch until explicit owner inspection, cancellation and newly approved task scope; Enable and quota-reset Tick cannot clear the evidence pause."
+rationale = "Failures must remain reviewable while a committed worker mutation cannot masquerade as accepted read-only work."
+enforcement = "mixed"
+test_ids = ["TST-NEG-018"]
+verification_ids = ["VER-009"]
+status = "active"

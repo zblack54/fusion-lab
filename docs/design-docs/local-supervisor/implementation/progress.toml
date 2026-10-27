@@ -1,0 +1,37 @@
+# Mutable implementation evidence, not product acceptance.
+status = "implemented-unverified"
+approved_digest = "99944ec04e65655e9c5fcb1b70a59639aa9f9c85c36147a47c46c93581a92444"
+contract_validation = "require-lock VALID, zero errors and warnings"
+acceptance = "NOT_ACCEPTED; real VER003-009 acceptance obligations remain open"
+source_scope_sha256 = "59a9850783fdb6f6118551ef42a5263d024f230d7db411c4be87392d302ecf7f"
+source_worker_sha256 = "7340be8bfe0300f96a3f2d943786bd59596ad9d06c34a052ddf6aec7438c85c1"
+
+[[slice]]
+id = "TASK-001"
+status = "implemented-unverified"
+evidence = "Durable transactions, writer/checkout locks, owner fencing and descendant-aware reconciliation retained. Live crash/storage acceptance remains separate."
+[[slice]]
+id = "TASK-005"
+status = "implemented-unverified"
+evidence = "Universal pre-ACK/account scope gate, strict eight-field SHA256 raw-byte approval,32KiB read/64KiB encoded prompt, canonical host-control separation, CLI checkout, enforced mode/temp/extra-root config. Atomic durable read-only mutation pause preserves actual changed HEAD/session audit and prevents Enable/Tick/restart relaunch. Issues45/46 open-handle reparse and missing ancestor normalization repairs included. Actual file-symlink race probe blocked Windows1314; directory-junction swap and growth probes pass."
+[[slice]]
+id = "TASK-002"
+status = "implemented-unverified"
+evidence = "Managed ChatGPT account/quota,30s handshake, pinned routing, bounded native ownership/cancellation retained. Actual ChatGPT/Luna read_only and workspace probes completed after independent approval: readonly HEAD unchanged and allowed workspace sentinel written. Issue55 deterministic actual tool calls proved private state/bridge/scopes append denial exit1 Access is denied in both modes, independently unchanged bytes, and allowed workspace write/read. Original failed/syntax cases preserved. Workspace Git index.lock permission denial remains an unresolved live blocker; no Git metadata retry or scope change approved. No model/API fallback."
+[[slice]]
+id = "TASK-003"
+status = "implemented-unverified"
+evidence = "Typed exact-head host intents/ACK reconciliation retained; real GitHub lifecycle demonstration pending."
+[[slice]]
+id = "TASK-004"
+status = "implemented-unverified"
+evidence = "Persistent CLI controls, readiness, cadence and probe signals retained; no scheduler registered, unattended acceptance pending."
+[[check]]
+command = "trusted implementation runner --baseline-digest 99944ec04e65655e9c5fcb1b70a59639aa9f9c85c36147a47c46c93581a92444 --offline --timeout60"
+result = "PASS112 immutable observations,56 perCFG001/CFG002,errors[],all6 supplemental gates. Final exact-source refresh after mutable native crash fixture migration completed success=true,errors=[],112 passes and all6 checks. Exact evidence implementation/execution.json."
+[[check]]
+command = "cargo test --manifest-path crates/local-supervisor/Cargo.toml --locked --lib"
+result = "PASS10 entries:3 child fixture entrypoints,3 real containment demonstrations,4 scope path/open/growth regressions. Native crash fixture now materializes real approved read_only scope; containment assertions unchanged."
+[[historical]]
+approved_digest = "1eb471a28c9cc8c21c818202de7d6202d16ff39006a2c1bebffb3e86c0e33499"
+result = "Prior revision43x2 and6gates passed before scope gate; superseded and not current acceptance. Earlier new file-symlink probe failed1314; no privilege escalation or skipped locked assertion."

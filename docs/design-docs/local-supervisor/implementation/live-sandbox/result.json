@@ -1,0 +1,70 @@
+[
+  {
+    "mode": "read_only",
+    "case": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\outputs\\supervisor-scope-smoke\\read_only-1793056481",
+    "scope_sha256": "dc2c6471f18e9b9d5ff76394f31523e913bdffaa3554f41f5256846355eab19a",
+    "scope_bytes": 1818,
+    "initial_head": "ec3831e924cf847773ec7a58b1c404a819522ae7",
+    "targets": [
+      "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\outputs\\supervisor-scope-smoke\\read_only-1793056481\\private-state\\probe-state.txt",
+      "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\outputs\\supervisor-scope-smoke\\read_only-1793056481\\private-state\\bridge\\probe-ack.txt",
+      "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\outputs\\supervisor-scope-smoke\\read_only-1793056481\\private-state\\approved-scopes\\probe-scope.txt"
+    ],
+    "allowed": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\outputs\\supervisor-scope-smoke\\read_only-1793056481\\checkout\\probe-allowed.txt",
+    "started": 1793056481.3940706,
+    "enqueue": {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\crates\\local-supervisor\\target\\debug\\local-supervisor.exe",
+        "--state-dir",
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\outputs\\supervisor-scope-smoke\\read_only-1793056481\\private-state",
+        "enqueue",
+        "--task",
+        "1",
+        "--issue",
+        "41",
+        "--scope",
+        "dc2c6471f18e9b9d5ff76394f31523e913bdffaa3554f41f5256846355eab19a"
+      ],
+      "code": 0,
+      "stdout": "{\"accepted\":1}\n",
+      "stderr": ""
+    },
+    "step": {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\crates\\local-supervisor\\target\\debug\\local-supervisor.exe",
+        "--state-dir",
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\outputs\\supervisor-scope-smoke\\read_only-1793056481\\private-state",
+        "step",
+        "--checkout",
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\outputs\\supervisor-scope-smoke\\read_only-1793056481\\checkout",
+        "--codex",
+        "C:/Users/Admin/AppData/Local/OpenAI/Codex/bin/2993767bd1dfb009/codex.exe",
+        "--model",
+        "gpt-6-luna"
+      ],
+      "code": 1,
+      "stdout": "",
+      "stderr": "EvidenceMismatch\n"
+    },
+    "final_head": "ec3831e924cf847773ec7a58b1c404a819522ae7",
+    "private_contents": [
+      "UNCHANGED",
+      "UNCHANGED",
+      "UNCHANGED"
+    ],
+    "private_unchanged": true,
+    "checkout_allowed_exists": false,
+    "status": {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\crates\\local-supervisor\\target\\debug\\local-supervisor.exe",
+        "--state-dir",
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\outputs\\supervisor-scope-smoke\\read_only-1793056481\\private-state",
+        "status"
+      ],
+      "code": 0,
+      "stdout": "{\"active\":null,\"cadence\":\"five_hour\",\"generation\":1,\"next_wake\":null,\"pause\":\"none\",\"pending_intents\":[],\"suggestion_count\":0,\"tasks\":[{\"attempts\":1,\"head\":null,\"id\":1,\"state\":\"paused\"}],\"worker_launches\":1}\n",
+      "stderr": ""
+    },
+    "finished": 1793056493.7791111
+  }
+]

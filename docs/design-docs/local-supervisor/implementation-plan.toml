@@ -1,0 +1,49 @@
+[[task]]
+id = "TASK-001"
+title = "Durable state and fenced ownership"
+depends_on = []
+requirement_ids = ["REQ-002", "REQ-006", "REQ-007", "REQ-008", "REQ-009", "REQ-010", "REQ-011"]
+constraint_ids = ["CON-001", "CON-004"]
+test_ids = ["TST-ACC-002", "TST-BEH-001", "TST-NEG-001", "TST-NEG-002", "TST-BOUND-001", "TST-INV-001", "TST-STATE-001", "TST-NEG-003", "TST-NEG-012"]
+verification_ids = ["VER-004", "VER-006", "VER-001", "VER-002"]
+completion = "All linked executable contracts pass, implementation-stage evidence is reviewed, and the externally approved contract digest is preserved."
+
+[[task]]
+id = "TASK-002"
+title = "Subscription protocol and worker lifecycle"
+depends_on = ["TASK-001", "TASK-005"]
+requirement_ids = ["REQ-003", "REQ-012", "REQ-013", "REQ-014", "REQ-015", "REQ-016", "REQ-017", "REQ-018", "REQ-019", "REQ-020", "REQ-031", "REQ-032"]
+constraint_ids = ["CON-002", "CON-003"]
+test_ids = ["TST-ACC-003", "TST-STATE-002", "TST-BOUND-002", "TST-ANTI-001", "TST-NEG-004", "TST-BOUND-003", "TST-PROP-001", "TST-CONTRACT-001", "TST-CONTRACT-002", "TST-CONTRACT-003", "TST-BEH-002", "TST-NEG-008", "TST-CONTRACT-005", "TST-BOUND-004", "TST-STATE-004"]
+verification_ids = ["VER-003", "VER-004", "VER-005", "VER-001", "VER-002"]
+completion = "All linked executable contracts pass, implementation-stage evidence is reviewed, and the externally approved contract digest is preserved."
+
+[[task]]
+id = "TASK-003"
+title = "Host bridge and exact-head lifecycle"
+depends_on = ["TASK-001"]
+requirement_ids = ["REQ-004", "REQ-021", "REQ-022", "REQ-023", "REQ-024", "REQ-026", "REQ-034", "REQ-036"]
+constraint_ids = ["CON-005"]
+test_ids = ["TST-ACC-004", "TST-CONTRACT-004", "TST-NEG-005", "TST-INV-002", "TST-STATE-003", "TST-BEH-003", "TST-NEG-007", "TST-NEG-009", "TST-NEG-010", "TST-NEG-011"]
+verification_ids = ["VER-005", "VER-007", "VER-001", "VER-002"]
+completion = "All linked executable contracts pass, implementation-stage evidence is reviewed, and the externally approved contract digest is preserved."
+
+[[task]]
+id = "TASK-004"
+title = "Continuous scheduler and native CLI"
+depends_on = ["TASK-002", "TASK-003"]
+requirement_ids = ["REQ-001", "REQ-005", "REQ-025", "REQ-027", "REQ-028", "REQ-029", "REQ-030", "REQ-033", "REQ-035"]
+constraint_ids = ["CON-006", "CON-007"]
+test_ids = ["TST-ACC-001", "TST-ACC-005", "TST-PERF-001", "TST-STRUCT-001", "TST-ACC-006", "TST-NEG-006", "TST-ANTI-002", "TST-ACC-007", "TST-ACC-008"]
+verification_ids = ["VER-005", "VER-006", "VER-008", "VER-001", "VER-002"]
+completion = "All linked executable contracts pass, implementation-stage evidence is reviewed, and the externally approved contract digest is preserved."
+
+[[task]]
+id = "TASK-005"
+title = "Approved scope and private host-control gate"
+depends_on = ["TASK-001"]
+requirement_ids = ["REQ-037", "REQ-038", "REQ-039", "REQ-040", "REQ-041", "REQ-042", "REQ-043", "REQ-044"]
+constraint_ids = ["CON-008", "CON-009", "CON-010"]
+test_ids = ["TST-NEG-013", "TST-NEG-014", "TST-NEG-015", "TST-NEG-016", "TST-BOUND-005", "TST-BOUND-006", "TST-ANTI-003", "TST-ANTI-004", "TST-ANTI-005", "TST-ACC-009", "TST-NEG-017", "TST-ACC-010", "TST-CONTRACT-005", "TST-ACC-008", "TST-NEG-018"]
+verification_ids = ["VER-009"]
+completion = "All assigned scope and isolation contracts pass, prior assertions remain unchanged in force, and native sandbox/host approval evidence is independently reviewed before unattended execution."

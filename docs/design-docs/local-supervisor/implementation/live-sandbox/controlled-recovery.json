@@ -1,0 +1,331 @@
+{
+  "kind": "CONTROLLED PEER; NO REAL INFERENCE",
+  "case": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\outputs\\supervisor-scope-smoke\\controlled-recovery-1793111588",
+  "initial_head": "a56fa20ef17f3f6fc44f8fe547b908d91c706811",
+  "preserved_mutation_head": "fec5396c26880f8512a65a403cc724294dadbbce",
+  "scope_digests": [
+    "41f0d36cf33803469f07900aa1c04a2094894fc68fc2a8afc226ef13120eeafa",
+    "d724f38bd94bdc8d78970a353f0cd0d3f4e678c403695a8a1e2cc45891c7d7aa"
+  ],
+  "mutation_audit": [
+    {
+      "changed_head": "fec5396c26880f8512a65a403cc724294dadbbce",
+      "event": "read_only_mutation_rejected",
+      "exit_code": 0,
+      "initial_head": "a56fa20ef17f3f6fc44f8fe547b908d91c706811",
+      "job_members": 0,
+      "session": "session-1",
+      "task": 1
+    }
+  ],
+  "paused": {
+    "active": null,
+    "cadence": "five_hour",
+    "generation": 1,
+    "next_wake": null,
+    "pause": "evidence_mismatch",
+    "pending_intents": [],
+    "suggestion_count": 0,
+    "tasks": [
+      {
+        "attempts": 1,
+        "head": "fec5396c26880f8512a65a403cc724294dadbbce",
+        "id": 1,
+        "state": "paused"
+      }
+    ],
+    "worker_launches": 1
+  },
+  "after_owner_cancel": {
+    "active": null,
+    "cadence": "five_hour",
+    "generation": 1,
+    "next_wake": null,
+    "pause": "none",
+    "pending_intents": [],
+    "suggestion_count": 0,
+    "tasks": [
+      {
+        "attempts": 1,
+        "head": "fec5396c26880f8512a65a403cc724294dadbbce",
+        "id": 1,
+        "state": "cancelled"
+      }
+    ],
+    "worker_launches": 1
+  },
+  "after_new_scope": {
+    "active": null,
+    "cadence": "five_hour",
+    "generation": 2,
+    "next_wake": null,
+    "pause": "awaiting_host",
+    "pending_intents": [
+      {
+        "expected_head": "077836ff8eeb1d83a268c3630d7f619e64f85945",
+        "id": "pr:2:077836ff8eeb1d83a268c3630d7f619e64f85945",
+        "kind": "create_pr",
+        "task": 2
+      }
+    ],
+    "suggestion_count": 0,
+    "tasks": [
+      {
+        "attempts": 1,
+        "head": "fec5396c26880f8512a65a403cc724294dadbbce",
+        "id": 1,
+        "state": "cancelled"
+      },
+      {
+        "attempts": 1,
+        "head": "077836ff8eeb1d83a268c3630d7f619e64f85945",
+        "id": 2,
+        "state": "implemented_unverified"
+      }
+    ],
+    "worker_launches": 2
+  },
+  "marker_exists": false,
+  "records": [
+    {
+      "argv": [
+        "git",
+        "-C",
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\outputs\\supervisor-scope-smoke\\controlled-recovery-1793111588\\checkout",
+        "init",
+        "--quiet"
+      ],
+      "code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\outputs\\supervisor-scope-smoke\\controlled-recovery-1793111588\\checkout",
+        "-c",
+        "user.name=Fixture",
+        "-c",
+        "user.email=fixture@example.invalid",
+        "-c",
+        "commit.gpgsign=false",
+        "commit",
+        "--allow-empty",
+        "--quiet",
+        "-m",
+        "baseline"
+      ],
+      "code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\outputs\\supervisor-scope-smoke\\controlled-recovery-1793111588\\checkout",
+        "rev-parse",
+        "HEAD"
+      ],
+      "code": 0,
+      "stdout": "a56fa20ef17f3f6fc44f8fe547b908d91c706811\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\crates\\local-supervisor\\target\\debug\\local-supervisor.exe",
+        "--state-dir",
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\outputs\\supervisor-scope-smoke\\controlled-recovery-1793111588\\private-state",
+        "enqueue",
+        "--task",
+        "1",
+        "--issue",
+        "41",
+        "--scope",
+        "41f0d36cf33803469f07900aa1c04a2094894fc68fc2a8afc226ef13120eeafa"
+      ],
+      "code": 0,
+      "stdout": "{\"accepted\":1}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\crates\\local-supervisor\\target\\debug\\local-supervisor.exe",
+        "--state-dir",
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\outputs\\supervisor-scope-smoke\\controlled-recovery-1793111588\\private-state",
+        "step",
+        "--checkout",
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\outputs\\supervisor-scope-smoke\\controlled-recovery-1793111588\\checkout",
+        "--codex",
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\local-supervisor\\target\\debug\\fake-codex.exe",
+        "--model",
+        "gpt-6-luna",
+        "--child-env",
+        "FAKE_CODEX_ROOT=C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\outputs\\supervisor-scope-smoke\\controlled-recovery-1793111588\\checkout\\fake"
+      ],
+      "code": 1,
+      "stdout": "",
+      "stderr": "EvidenceMismatch\n"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\outputs\\supervisor-scope-smoke\\controlled-recovery-1793111588\\checkout",
+        "rev-parse",
+        "HEAD"
+      ],
+      "code": 0,
+      "stdout": "fec5396c26880f8512a65a403cc724294dadbbce\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\crates\\local-supervisor\\target\\debug\\local-supervisor.exe",
+        "--state-dir",
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\outputs\\supervisor-scope-smoke\\controlled-recovery-1793111588\\private-state",
+        "status"
+      ],
+      "code": 0,
+      "stdout": "{\"active\":null,\"cadence\":\"five_hour\",\"generation\":1,\"next_wake\":null,\"pause\":\"evidence_mismatch\",\"pending_intents\":[],\"suggestion_count\":0,\"tasks\":[{\"attempts\":1,\"head\":\"fec5396c26880f8512a65a403cc724294dadbbce\",\"id\":1,\"state\":\"paused\"}],\"worker_launches\":1}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\crates\\local-supervisor\\target\\debug\\local-supervisor.exe",
+        "--state-dir",
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\outputs\\supervisor-scope-smoke\\controlled-recovery-1793111588\\private-state",
+        "enable"
+      ],
+      "code": 1,
+      "stdout": "",
+      "stderr": "EvidenceMismatch\n"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\crates\\local-supervisor\\target\\debug\\local-supervisor.exe",
+        "--state-dir",
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\outputs\\supervisor-scope-smoke\\controlled-recovery-1793111588\\private-state",
+        "step",
+        "--checkout",
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\outputs\\supervisor-scope-smoke\\controlled-recovery-1793111588\\checkout",
+        "--codex",
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\local-supervisor\\target\\debug\\fake-codex.exe",
+        "--model",
+        "gpt-6-luna",
+        "--child-env",
+        "FAKE_CODEX_ROOT=C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\outputs\\supervisor-scope-smoke\\controlled-recovery-1793111588\\checkout\\fake"
+      ],
+      "code": 1,
+      "stdout": "",
+      "stderr": "EvidenceMismatch\n"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\crates\\local-supervisor\\target\\debug\\local-supervisor.exe",
+        "--state-dir",
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\outputs\\supervisor-scope-smoke\\controlled-recovery-1793111588\\private-state",
+        "status"
+      ],
+      "code": 0,
+      "stdout": "{\"active\":null,\"cadence\":\"five_hour\",\"generation\":1,\"next_wake\":null,\"pause\":\"evidence_mismatch\",\"pending_intents\":[],\"suggestion_count\":0,\"tasks\":[{\"attempts\":1,\"head\":\"fec5396c26880f8512a65a403cc724294dadbbce\",\"id\":1,\"state\":\"paused\"}],\"worker_launches\":1}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\outputs\\supervisor-scope-smoke\\controlled-recovery-1793111588\\checkout",
+        "rev-parse",
+        "HEAD"
+      ],
+      "code": 0,
+      "stdout": "fec5396c26880f8512a65a403cc724294dadbbce\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\crates\\local-supervisor\\target\\debug\\local-supervisor.exe",
+        "--state-dir",
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\outputs\\supervisor-scope-smoke\\controlled-recovery-1793111588\\private-state",
+        "cancel",
+        "--task",
+        "1"
+      ],
+      "code": 0,
+      "stdout": "{\"active\":null,\"cadence\":\"five_hour\",\"generation\":1,\"next_wake\":null,\"pause\":\"none\",\"pending_intents\":[],\"suggestion_count\":0,\"tasks\":[{\"attempts\":1,\"head\":\"fec5396c26880f8512a65a403cc724294dadbbce\",\"id\":1,\"state\":\"cancelled\"}],\"worker_launches\":1}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\crates\\local-supervisor\\target\\debug\\local-supervisor.exe",
+        "--state-dir",
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\outputs\\supervisor-scope-smoke\\controlled-recovery-1793111588\\private-state",
+        "status"
+      ],
+      "code": 0,
+      "stdout": "{\"active\":null,\"cadence\":\"five_hour\",\"generation\":1,\"next_wake\":null,\"pause\":\"none\",\"pending_intents\":[],\"suggestion_count\":0,\"tasks\":[{\"attempts\":1,\"head\":\"fec5396c26880f8512a65a403cc724294dadbbce\",\"id\":1,\"state\":\"cancelled\"}],\"worker_launches\":1}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\outputs\\supervisor-scope-smoke\\controlled-recovery-1793111588\\checkout",
+        "rev-parse",
+        "HEAD"
+      ],
+      "code": 0,
+      "stdout": "fec5396c26880f8512a65a403cc724294dadbbce\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\crates\\local-supervisor\\target\\debug\\local-supervisor.exe",
+        "--state-dir",
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\outputs\\supervisor-scope-smoke\\controlled-recovery-1793111588\\private-state",
+        "enqueue",
+        "--task",
+        "2",
+        "--issue",
+        "41",
+        "--scope",
+        "d724f38bd94bdc8d78970a353f0cd0d3f4e678c403695a8a1e2cc45891c7d7aa"
+      ],
+      "code": 0,
+      "stdout": "{\"accepted\":2}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\crates\\local-supervisor\\target\\debug\\local-supervisor.exe",
+        "--state-dir",
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\outputs\\supervisor-scope-smoke\\controlled-recovery-1793111588\\private-state",
+        "step",
+        "--checkout",
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\outputs\\supervisor-scope-smoke\\controlled-recovery-1793111588\\checkout",
+        "--codex",
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\local-supervisor\\target\\debug\\fake-codex.exe",
+        "--model",
+        "gpt-6-luna",
+        "--child-env",
+        "FAKE_CODEX_ROOT=C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\outputs\\supervisor-scope-smoke\\controlled-recovery-1793111588\\checkout\\fake"
+      ],
+      "code": 0,
+      "stdout": "{\"checkpoint\":\"session-2\",\"exit_code\":0,\"launches\":2,\"next_wake\":null,\"task\":2,\"terminal\":\"awaiting_host\"}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\crates\\local-supervisor\\target\\debug\\local-supervisor.exe",
+        "--state-dir",
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\outputs\\supervisor-scope-smoke\\controlled-recovery-1793111588\\private-state",
+        "status"
+      ],
+      "code": 0,
+      "stdout": "{\"active\":null,\"cadence\":\"five_hour\",\"generation\":2,\"next_wake\":null,\"pause\":\"awaiting_host\",\"pending_intents\":[{\"expected_head\":\"077836ff8eeb1d83a268c3630d7f619e64f85945\",\"id\":\"pr:2:077836ff8eeb1d83a268c3630d7f619e64f85945\",\"kind\":\"create_pr\",\"task\":2}],\"suggestion_count\":0,\"tasks\":[{\"attempts\":1,\"head\":\"fec5396c26880f8512a65a403cc724294dadbbce\",\"id\":1,\"state\":\"cancelled\"},{\"attempts\":1,\"head\":\"077836ff8eeb1d83a268c3630d7f619e64f85945\",\"id\":2,\"state\":\"implemented_unverified\"}],\"worker_launches\":2}\n",
+      "stderr": ""
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+[
+  {
+    "mode": "read_only",
+    "session": "01a17db7-c2f9-7111-b2d3-61cec7487560",
+    "scope_sha256": "fc68943542b02ce5518a5baaab061885d9d8d64ad1eabf1064ad51db89c90800",
+    "source_log_sha256": "0043773b272250a326ab6d873aa3574942f6b564a157b51820a61deaaa01d39c",
+    "calls": [
+      {
+        "call_id": "call_8e14801c155449fb8f1341ff311ce87e",
+        "input": "const c = [\n\"echo PROBE>>C:\\\\Users\\\\Admin\\\\Documents\\\\Codex\\\\2026-10-20\\\\if-x20\\\\outputs\\\\supervisor-scope-smoke\\\\issue55-read_only-1793110555\\\\private-state\\\\probe-state.txt\",\n\"echo PROBE>>C:\\\\Users\\\\Admin\\\\Documents\\\\Codex\\\\2026-10-20\\\\if-x20\\\\outputs\\\\supervisor-scope-smoke\\\\issue55-read_only-1793110555\\\\private-state\\\\bridge\\\\probe-ack.txt\",\n\"echo PROBE>>C:\\\\Users\\\\Admin\\\\Documents\\\\Codex\\\\2026-10-20\\\\if-x20\\\\outputs\\\\supervisor-scope-smoke\\\\issue55-read_only-1793110555\\\\private-state\\\\approved-scopes\\\\probe-scope.txt\"\n];\nfor (const cmd of c) {\n const r = await tools.exec_command({cmd,workdir:\"C:\\\\Users\\\\Admin\\\\Documents\\\\Codex\\\\2026-10-20\\\\if-x20\\\\outputs\\\\supervisor-scope-smoke\\\\issue55-read_only-1793110555\\\\checkout\",shell:\"cmd.exe\",login:false,max_output_tokens:500});\n text(JSON.stringify({cmd,...r}));\n if (r.exit_code === 0) break;\n}\n"
+      }
+    ],
+    "outputs": [
+      {
+        "call_id": "call_8e14801c155449fb8f1341ff311ce87e",
+        "output": [
+          {
+            "type": "input_text",
+            "text": "Script completed\nWall time 1.3 seconds\nOutput:\n"
+          },
+          {
+            "type": "input_text",
+            "text": "{\"cmd\":\"echo PROBE>>C:\\\\Users\\\\Admin\\\\Documents\\\\Codex\\\\2026-10-20\\\\if-x20\\\\outputs\\\\supervisor-scope-smoke\\\\issue55-read_only-1793110555\\\\private-state\\\\probe-state.txt\",\"chunk_id\":\"d348a1\",\"wall_time_seconds\":0.0000034,\"exit_code\":1,\"original_token_count\":5,\"output\":\"Access is denied.\\r\\n\"}"
+          },
+          {
+            "type": "input_text",
+            "text": "{\"cmd\":\"echo PROBE>>C:\\\\Users\\\\Admin\\\\Documents\\\\Codex\\\\2026-10-20\\\\if-x20\\\\outputs\\\\supervisor-scope-smoke\\\\issue55-read_only-1793110555\\\\private-state\\\\bridge\\\\probe-ack.txt\",\"chunk_id\":\"35f3ec\",\"wall_time_seconds\":0.000005,\"exit_code\":1,\"original_token_count\":5,\"output\":\"Access is denied.\\r\\n\"}"
+          },
+          {
+            "type": "input_text",
+            "text": "{\"cmd\":\"echo PROBE>>C:\\\\Users\\\\Admin\\\\Documents\\\\Codex\\\\2026-10-20\\\\if-x20\\\\outputs\\\\supervisor-scope-smoke\\\\issue55-read_only-1793110555\\\\private-state\\\\approved-scopes\\\\probe-scope.txt\",\"chunk_id\":\"7cd709\",\"wall_time_seconds\":0.0000042,\"exit_code\":1,\"original_token_count\":5,\"output\":\"Access is denied.\\r\\n\"}"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "mode": "workspace_write",
+    "session": "01a17db8-110e-76b0-89bc-78af28bb7982",
+    "scope_sha256": "fc1714f66dab37267b01525dbfa084fdd3bca4a265f5b0d6b575074025cef21d",
+    "source_log_sha256": "e9ad6ae037774868502d63e8f0a3e97743adeb130a5c4caade22a34c255effed",
+    "calls": [
+      {
+        "call_id": "call_ebfc543a63f14acfab9e82c59fc20cb2",
+        "input": "const root = \"C:\\\\Users\\\\Admin\\\\Documents\\\\Codex\\\\2026-10-20\\\\if-x20\\\\outputs\\\\supervisor-scope-smoke\\\\issue55-workspace_write-1793110575\\\\private-state\";\nconst cmds = [\n\"echo PROBE>>C:\\\\Users\\\\Admin\\\\Documents\\\\Codex\\\\2026-10-20\\\\if-x20\\\\outputs\\\\supervisor-scope-smoke\\\\issue55-workspace_write-1793110575\\\\private-state\\\\probe-state.txt\",\n\"echo PROBE>>C:\\\\Users\\\\Admin\\\\Documents\\\\Codex\\\\2026-10-20\\\\if-x20\\\\outputs\\\\supervisor-scope-smoke\\\\issue55-workspace_write-1793110575\\\\private-state\\\\bridge\\\\probe-ack.txt\",\n\"echo PROBE>>C:\\\\Users\\\\Admin\\\\Documents\\\\Codex\\\\2026-10-20\\\\if-x20\\\\outputs\\\\supervisor-scope-smoke\\\\issue55-workspace_write-1793110575\\\\private-state\\\\approved-scopes\\\\probe-scope.txt\"\n];\nfor (const cmd of cmds) { const r = await tools.exec_command({cmd,shell:\"cmd.exe\",login:false,workdir:\"C:\\\\Users\\\\Admin\\\\Documents\\\\Codex\\\\2026-10-20\\\\if-x20\\\\outputs\\\\supervisor-scope-smoke\\\\issue55-workspace_write-1793110575\\\\checkout\",max_output_tokens:1000}); text(JSON.stringify({cmd,...r})); if (r.exit_code === 0) exit(); }\n"
+      },
+      {
+        "call_id": "call_d945408ddeac4940991dfee40a5169f2",
+        "input": "const wd=\"C:\\\\Users\\\\Admin\\\\Documents\\\\Codex\\\\2026-10-20\\\\if-x20\\\\outputs\\\\supervisor-scope-smoke\\\\issue55-workspace_write-1793110575\\\\checkout\";\nconst a=await tools.exec_command({cmd:\"echo ALLOWED>probe-allowed.txt\",shell:\"cmd.exe\",login:false,workdir:wd,max_output_tokens:1000});\ntext(JSON.stringify({cmd:\"echo ALLOWED>probe-allowed.txt\",...a}));\nconst b=await tools.exec_command({cmd:\"type probe-allowed.txt\",shell:\"cmd.exe\",login:false,workdir:wd,max_output_tokens:1000});\ntext(JSON.stringify({cmd:\"type probe-allowed.txt\",...b}));\nconst c=await tools.exec_command({cmd:\"git rev-parse HEAD\",shell:\"cmd.exe\",login:false,workdir:wd,max_output_tokens:1000});\ntext(JSON.stringify({cmd:\"git rev-parse HEAD\",...c}))\n"
+      }
+    ],
+    "outputs": [
+      {
+        "call_id": "call_ebfc543a63f14acfab9e82c59fc20cb2",
+        "output": [
+          {
+            "type": "input_text",
+            "text": "Script completed\nWall time 1.4 seconds\nOutput:\n"
+          },
+          {
+            "type": "input_text",
+            "text": "{\"cmd\":\"echo PROBE>>C:\\\\Users\\\\Admin\\\\Documents\\\\Codex\\\\2026-10-20\\\\if-x20\\\\outputs\\\\supervisor-scope-smoke\\\\issue55-workspace_write-1793110575\\\\private-state\\\\probe-state.txt\",\"chunk_id\":\"d21905\",\"wall_time_seconds\":0.0000038,\"exit_code\":1,\"original_token_count\":5,\"output\":\"Access is denied.\\r\\n\"}"
+          },
+          {
+            "type": "input_text",
+            "text": "{\"cmd\":\"echo PROBE>>C:\\\\Users\\\\Admin\\\\Documents\\\\Codex\\\\2026-10-20\\\\if-x20\\\\outputs\\\\supervisor-scope-smoke\\\\issue55-workspace_write-1793110575\\\\private-state\\\\bridge\\\\probe-ack.txt\",\"chunk_id\":\"9afc53\",\"wall_time_seconds\":0.000005,\"exit_code\":1,\"original_token_count\":5,\"output\":\"Access is denied.\\r\\n\"}"
+          },
+          {
+            "type": "input_text",
+            "text": "{\"cmd\":\"echo PROBE>>C:\\\\Users\\\\Admin\\\\Documents\\\\Codex\\\\2026-10-20\\\\if-x20\\\\outputs\\\\supervisor-scope-smoke\\\\issue55-workspace_write-1793110575\\\\private-state\\\\approved-scopes\\\\probe-scope.txt\",\"chunk_id\":\"ef4826\",\"wall_time_seconds\":0.0000044,\"exit_code\":1,\"original_token_count\":5,\"output\":\"Access is denied.\\r\\n\"}"
+          }
+        ]
+      },
+      {
+        "call_id": "call_d945408ddeac4940991dfee40a5169f2",
+        "output": [
+          {
+            "type": "input_text",
+            "text": "Script completed\nWall time 1.4 seconds\nOutput:\n"
+          },
+          {
+            "type": "input_text",
+            "text": "{\"cmd\":\"echo ALLOWED>probe-allowed.txt\",\"chunk_id\":\"6c9246\",\"wall_time_seconds\":0.0000029,\"exit_code\":0,\"original_token_count\":0,\"output\":\"\"}"
+          },
+          {
+            "type": "input_text",
+            "text": "{\"cmd\":\"type probe-allowed.txt\",\"chunk_id\":\"32d0cb\",\"wall_time_seconds\":0.0000034,\"exit_code\":0,\"original_token_count\":3,\"output\":\"ALLOWED\\r\\n\"}"
+          },
+          {
+            "type": "input_text",
+            "text": "{\"cmd\":\"git rev-parse HEAD\",\"chunk_id\":\"133220\",\"wall_time_seconds\":0.0000038,\"exit_code\":0,\"original_token_count\":11,\"output\":\"1c5622467323a7198cb13fb10dffda78a462d09a\\n\"}"
+          }
+        ]
+      }
+    ]
+  }
+]

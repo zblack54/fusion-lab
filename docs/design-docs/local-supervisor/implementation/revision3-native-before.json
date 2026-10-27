@@ -1,0 +1,48 @@
+{
+  "approvedDigest": "99944ec04e65655e9c5fcb1b70a59639aa9f9c85c36147a47c46c93581a92444",
+  "publishedHead": "84f503de948304f3385a9df2ab8c6c84bcdf7824",
+  "preservedInventoryCount": 48,
+  "verifiedPreservationErrors": [],
+  "files": [
+    {
+      "path": "crates/local-supervisor/src/account.rs",
+      "sha256": "7cfd4ec258d05537ae33d32a36cd3ad7d262187394455d0a811d1f638f9cb1c7",
+      "bytes": 9702
+    },
+    {
+      "path": "crates/local-supervisor/src/bridge.rs",
+      "sha256": "81496d05c9a88a94eb7fb208e366193a8b3bf69c1ed57aa50fe2b461cf864d06",
+      "bytes": 11732
+    },
+    {
+      "path": "crates/local-supervisor/src/lib.rs",
+      "sha256": "1feea6f23719ebebaee16f5d1cfce2e9752ca2acaab18817d97550c5f059ce15",
+      "bytes": 8334
+    },
+    {
+      "path": "crates/local-supervisor/src/main.rs",
+      "sha256": "92827d746bd5ef98451d88cff0923af18e2ed139bc348bb03766de26f1f56f40",
+      "bytes": 5877
+    },
+    {
+      "path": "crates/local-supervisor/src/native.rs",
+      "sha256": "88408f3b1d2fb98211df09595f9c4169b3df9821f7240a9c6d361646e2943445",
+      "bytes": 13498
+    },
+    {
+      "path": "crates/local-supervisor/src/scope.rs",
+      "sha256": "59a9850783fdb6f6118551ef42a5263d024f230d7db411c4be87392d302ecf7f",
+      "bytes": 10424
+    },
+    {
+      "path": "crates/local-supervisor/src/storage.rs",
+      "sha256": "ee009f629dcb1b1862b9c7dbcd278d2a51ee9cc6bea95e1ae27a670a3e89d260",
+      "bytes": 19774
+    },
+    {
+      "path": "crates/local-supervisor/src/worker.rs",
+      "sha256": "7340be8bfe0300f96a3f2d943786bd59596ad9d06c34a052ddf6aec7438c85c1",
+      "bytes": 24100
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "cases": [
+    {
+      "case": "issue55-read_only-1793110555",
+      "active": null,
+      "native_active": null,
+      "cleanup_owner": "ef9e252c53dded1840b1edee4766c2a5",
+      "cleanup_events": [
+        {
+          "event": "native_cleanup_confirmed",
+          "exit_code": 0,
+          "job_members": 0,
+          "task": 1
+        }
+      ],
+      "marker_exists": false
+    },
+    {
+      "case": "issue55-workspace_write-1793110575",
+      "active": null,
+      "native_active": null,
+      "cleanup_owner": "985c6fe8e991daf0185a9cc5dad6a102",
+      "cleanup_events": [
+        {
+          "event": "native_cleanup_confirmed",
+          "exit_code": 0,
+          "job_members": 0,
+          "task": 1
+        }
+      ],
+      "marker_exists": false
+    }
+  ],
+  "supervisor_processes": []
+}
