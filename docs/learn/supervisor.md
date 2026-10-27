@@ -44,6 +44,12 @@ Read-only work also compares initial and final actual Git HEAD. If a controlled 
 
 The reviewed revision-two implementation has a first complete trusted run of 56 passing tests on each compiler, with six supplemental gates passing. Native path/reparse/growth probes and actual subscription/sandbox/host integration remain separate acceptance evidence. The external approved digest is recorded in issue #4; passing tests alone do not accept the product.
 
+## What the native sandbox revealed
+
+Real managed-subscription workers have now attempted writes to harmless sentinels under private state, the ACK bridge and approved scopes. All six attempts across read-only and workspace-write modes returned Access is denied; a workspace checkout write succeeded. Owned-process cleanup was observed. The first attempts failed because of Windows shell launch and command quoting; those failures are preserved and excluded from isolation evidence.
+
+The same native sandbox also denied Git index metadata writes. A worker could edit a checkout file but could not create the commit required by the current lifecycle. [Issue #56](https://github.com/zblack54/fusion-lab/issues/56) is evaluating a trusted host-owned commit boundary. The contract will require independent review and a controlled revision if that boundary changes. The supervisor remains unaccepted and the current host continues coordinating work.
+
 ## Reproduce and question the evidence
 
 From the PR checkout, on native Windows with Rust 1.99 or the supported stable toolchain:

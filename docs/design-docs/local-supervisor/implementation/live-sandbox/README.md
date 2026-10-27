@@ -1,0 +1,7 @@
+# Actual native subscription sandbox probes
+
+Main independently reviewed the selected tool calls/results and cleanup on2026-10-27. Original result.json failed because the default shell could not launch (CET); result-issue54.json used cmd.exe but private append commands had quoting syntax errors. Neither establishes isolation. Those failures remain preserved.
+
+result-issue55.json and tool-evidence-issue55.json show prevalidated cmd.exe/login=false commands: six private state/bridge/scope append attempts returned exit1 with Access is denied, while a workspace checkout sentinel write returned0 and readback ALLOWED. Host observed unchanged private bytes/HEAD; cleanup-issue55.json records no active/native child, job membership0, absent markers and no supervisor processes. Scope filenames bind exact raw JSON bytes. Extracted source-log hashes identify only the known probe sessions; no reasoning or credential files are included.
+
+This establishes the tested functional control separation on this native configuration, not an adversarial OS-owner boundary or general Git commit capability. git-denial-issue54.json separately records git index.lock denial. Issue56 remains a lifecycle blocker: protected Git metadata prevents the worker commit required by the current design. No bypass, deployment, scheduler migration or host GitHub mutation occurred. File-symlink privilege1314 limitation remains separate from actual directory-reparse/growth proof.

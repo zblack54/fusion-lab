@@ -17,7 +17,7 @@ evidence = "Universal pre-ACK/account scope gate, strict eight-field SHA256 raw-
 [[slice]]
 id = "TASK-002"
 status = "implemented-unverified"
-evidence = "Managed ChatGPT account/quota,30s handshake, pinned routing, bounded native ownership/cancellation retained. Actual subscription sandbox smoke authorized after independent review, not yet launched at this checkpoint. No model/API fallback."
+evidence = "Managed ChatGPT account/quota,30s handshake, pinned routing, bounded native ownership/cancellation retained. Actual ChatGPT/Luna read_only and workspace probes completed after independent approval: readonly HEAD unchanged and allowed workspace sentinel written. Issue55 deterministic actual tool calls proved private state/bridge/scopes append denial exit1 Access is denied in both modes, independently unchanged bytes, and allowed workspace write/read. Original failed/syntax cases preserved. Workspace Git index.lock permission denial remains an unresolved live blocker; no Git metadata retry or scope change approved. No model/API fallback."
 [[slice]]
 id = "TASK-003"
 status = "implemented-unverified"
