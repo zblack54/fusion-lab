@@ -26,6 +26,7 @@ nav:
       - Reproduce and question results: learn/research.md
       - Experiment service ownership: learn/experiment-service.md
       - Development supervisor: learn/supervisor.md
+      - Recorded dashboard design: learn/dashboard.md
       - Iteration handoff template: learn/iteration-handoff.md
       - Maintain and publish the portal: learn/portal-operations.md
   - Roadmap: roadmap.md
