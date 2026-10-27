@@ -4,7 +4,7 @@ Status: implemented and under review in [PR #44](https://github.com/zblack54/fus
 
 ## Why recorded replay is separate from live status
 
-The Rust service runs the deterministic CLI and publishes lifecycle status. Its SSE stream reports queued/running/completed/cancelled states; it is not a stream of every numerical observation. The dashboard will load completed CSV artifacts, retain their recorded rows and move a playback cursor over them. Changing playback speed changes the view clock, never the numerical 10 ms clock or filter result. Pausing or resetting the view does not cancel an experiment.
+The Rust service runs the deterministic CLI and publishes lifecycle status. Its SSE stream reports running/completed/failed/cancelled states; it is not a stream of every numerical observation. The dashboard will load completed CSV artifacts, retain their recorded rows and move a playback cursor over them. Changing playback speed changes the view clock, never the numerical 10 ms clock or filter result. Pausing or resetting the view does not cancel an experiment.
 
 ## A complete row and a bounded plot
 
