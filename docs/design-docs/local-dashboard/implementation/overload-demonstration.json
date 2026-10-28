@@ -1,0 +1,6 @@
+{
+  "concurrent_partial_requests": 32,
+  "initial_health_status": 503,
+  "fixture_deadline_seconds": 20,
+  "status": "closed"
+}

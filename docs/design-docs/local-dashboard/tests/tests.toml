@@ -1,0 +1,218 @@
+[[test]]
+id = "TST-ACC-001"
+title = "stream known recording with independent full35field literal row oracle"
+kind = "acceptance"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_acc_001_stream_known_recording"
+test_target = "test:contracts"
+covers = ["REQ-003", "REQ-012", "REQ-016"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "LOCAL_DASHBOARD_NOT_IMPLEMENTED"
+expected_failure_reason = "The separately authorized JS diagnostic seam has no behavior."
+required = true
+
+[[test]]
+id = "TST-BEH-001"
+title = "independent errors and ellipse"
+kind = "behavioral"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_beh_001_independent_errors_and_ellipse"
+test_target = "test:contracts"
+covers = ["REQ-007"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "LOCAL_DASHBOARD_NOT_IMPLEMENTED"
+expected_failure_reason = "The separately authorized JS diagnostic seam has no behavior."
+required = true
+
+[[test]]
+id = "TST-STATE-001"
+title = "replay pause seek reset"
+kind = "state_transition"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_state_001_replay_pause_seek_reset"
+test_target = "test:contracts"
+covers = ["REQ-008"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "LOCAL_DASHBOARD_NOT_IMPLEMENTED"
+expected_failure_reason = "The separately authorized JS diagnostic seam has no behavior."
+required = true
+
+[[test]]
+id = "TST-CONTRACT-001"
+title = "full u64 wire fidelity"
+kind = "contract"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_contract_001_full_u64_wire_fidelity"
+test_target = "test:contracts"
+covers = ["REQ-006"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "LOCAL_DASHBOARD_NOT_IMPLEMENTED"
+expected_failure_reason = "The separately authorized JS diagnostic seam has no behavior."
+required = true
+
+[[test]]
+id = "TST-NEG-001"
+title = "schema and numeric rejections"
+kind = "negative"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_neg_001_schema_and_numeric_rejections"
+test_target = "test:contracts"
+covers = ["REQ-004"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "LOCAL_DASHBOARD_NOT_IMPLEMENTED"
+expected_failure_reason = "The separately authorized JS diagnostic seam has no behavior."
+required = true
+
+[[test]]
+id = "TST-BOUND-001"
+title = "row byte and line caps"
+kind = "boundary"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_bound_001_row_byte_and_line_caps"
+test_target = "test:contracts"
+covers = ["REQ-010"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "LOCAL_DASHBOARD_NOT_IMPLEMENTED"
+expected_failure_reason = "The separately authorized JS diagnostic seam has no behavior."
+required = true
+
+[[test]]
+id = "TST-PROP-001"
+title = "chunk partition invariance"
+kind = "property"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_prop_001_chunk_partition_invariance"
+test_target = "test:contracts"
+covers = ["REQ-003"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "LOCAL_DASHBOARD_NOT_IMPLEMENTED"
+expected_failure_reason = "The separately authorized JS diagnostic seam has no behavior."
+required = true
+
+[[test]]
+id = "TST-INV-001"
+title = "measurement absence differs from explicit presentzero pairs"
+kind = "invariant"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_inv_001_measurement_absence_is_not_zero"
+test_target = "test:contracts"
+covers = ["REQ-005"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "LOCAL_DASHBOARD_NOT_IMPLEMENTED"
+expected_failure_reason = "The separately authorized JS diagnostic seam has no behavior."
+required = true
+
+[[test]]
+id = "TST-STRUCT-001"
+title = "downsample validates0/1/2limits singleton clamp and keeps exact cursor"
+kind = "structural"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_struct_001_downsample_keeps_exact_cursor"
+test_target = "test:contracts"
+covers = ["REQ-009"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "LOCAL_DASHBOARD_NOT_IMPLEMENTED"
+expected_failure_reason = "The separately authorized JS diagnostic seam has no behavior."
+required = true
+
+[[test]]
+id = "TST-PERF-001"
+title = "maximum rows have bounded storage"
+kind = "performance"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_perf_001_maximum_rows_have_bounded_storage"
+test_target = "test:contracts"
+covers = ["REQ-009", "REQ-010"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "LOCAL_DASHBOARD_NOT_IMPLEMENTED"
+expected_failure_reason = "The separately authorized JS diagnostic seam has no behavior."
+required = true
+
+[[test]]
+id = "TST-ANTI-001"
+title = "row snapshots do not mutate store"
+kind = "anti_pattern"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_anti_001_row_snapshots_do_not_mutate_store"
+test_target = "test:contracts"
+covers = ["REQ-008", "REQ-011"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "LOCAL_DASHBOARD_NOT_IMPLEMENTED"
+expected_failure_reason = "The separately authorized JS diagnostic seam has no behavior."
+required = true
+
+[[test]]
+id = "TST-NEG-002"
+title = "invalid utf8 and partial recording"
+kind = "negative"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_neg_002_invalid_utf8_and_partial_recording"
+test_target = "test:contracts"
+covers = ["REQ-004"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "LOCAL_DASHBOARD_NOT_IMPLEMENTED"
+expected_failure_reason = "The separately authorized JS diagnostic seam has no behavior."
+required = true
+
+[[test]]
+id = "TST-BOUND-002"
+title = "rounded covariance is explicit"
+kind = "boundary"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_bound_002_rounded_covariance_is_explicit"
+test_target = "test:contracts"
+covers = ["REQ-007"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "LOCAL_DASHBOARD_NOT_IMPLEMENTED"
+expected_failure_reason = "The separately authorized JS diagnostic seam has no behavior."
+required = true
+
+[[test]]
+id = "TST-NEG-003"
+title = "unsigned integer tokens are strict"
+kind = "negative"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_neg_003_unsigned_integer_tokens_are_strict"
+test_target = "test:contracts"
+covers = ["REQ-006"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "LOCAL_DASHBOARD_NOT_IMPLEMENTED"
+expected_failure_reason = "The separately authorized JS diagnostic seam has no behavior."
+required = true
+
+[[test]]
+id = "TST-CONTRACT-003"
+title = "parser consumes real http artifact"
+kind = "contract"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_contract_003_parser_consumes_real_http_artifact"
+test_target = "test:contracts"
+covers = ["REQ-003", "REQ-006"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "LOCAL_DASHBOARD_NOT_IMPLEMENTED"
+expected_failure_reason = "The separately authorized JS diagnostic seam has no behavior."
+required = true
+
+[[test]]
+id = "TST-ACC-002"
+title = "real http dashboard and assets"
+kind = "acceptance"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_acc_002_real_http_dashboard_and_assets"
+test_target = "test:contracts"
+covers = ["REQ-001"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "dashboard route unavailable"
+expected_failure_reason = "Existing real service has no dashboard static routes yet."
+required = true
+
+[[test]]
+id = "TST-CONTRACT-002"
+title = "existing service artifact schema"
+kind = "contract"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_contract_002_existing_service_artifact_schema"
+test_target = "test:contracts"
+covers = ["REQ-002", "REQ-017"]
+expected_pre_implementation = "pass"
+required = true

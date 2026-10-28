@@ -1,0 +1,15 @@
+{
+  "viewport_override": {
+    "width": 390,
+    "height": 844
+  },
+  "actual_viewport": {
+    "clientWidth": 375,
+    "scrollWidth": 375
+  },
+  "arrow_up_tick": 1501,
+  "enter_play": "Tick 1511 · 15.11 s · Position: recorded outage · Velocity: unscheduled tick · playing",
+  "space_pause": "Tick 1514 · 15.14 s · Position: recorded outage · Velocity: unscheduled tick · paused",
+  "enter_reset": 0,
+  "focus_after_tab": "speed"
+}

@@ -1,0 +1,163 @@
+{
+  "at": "2026-10-28T14:28:32.348Z",
+  "source_sha256": {
+    "crates/experiment-service/Cargo.lock": "c4eea4f59dd42bc3bdc7c111fbd04e746e696abbe5a970cebfb7516fd82a7c27",
+    "crates/experiment-service/Cargo.toml": "a8995f3d9ef0c402aa1834e01cd196b1eb8a2e0d9f2f6ad366639de9c09a9c3e",
+    "crates/experiment-service/src/lib.rs": "9c7e841dea7734fd2541693643bef70bf4303e05b10dd23789728a47ba736a14",
+    "crates/experiment-service/src/main.rs": "3726260c3e61c885aa14a5b269474c9b8dd3d4f0a1d5ad892ef1a73c4744edfb",
+    "crates/experiment-service/src/server.rs": "38a5fb1a3923620897e4cb459c4d493ce5c83a0d7957df0968f19cdca37aacab",
+    "crates/experiment-service/src/server/regression_tests.rs": "036edb9c195adb72f8f86e923399815fcf1af49ec1cc859fc5f408acf6552ed1",
+    "crates/experiment-service/src/transport.rs": "9c337edd1b628e6f6c82427f823977b1c1cf4de89da64a0f4eb230b484ebc39c",
+    "crates/experiment-service/src/web.rs": "d8e35c2033f7a80b7d66162d1eece20aba499750bb04532abdb7e8fd414c34b4",
+    "crates/experiment-service/web/dashboard-regressions.test.mjs": "19ca946f18bc9bba1b922ebdda69ad08f0763cdf50bbc5fc820ece94f4e25e9b",
+    "crates/experiment-service/web/dashboard.css": "a169b3a6e39d38858f9443c6e6ca657d47ec09d5c499f9129d3009bfcc3c36f4",
+    "crates/experiment-service/web/dashboard.mjs": "97eef8cf1e0df69fb5b4325f90591be6d0b301f9027893b74930b59d4142ac4a",
+    "crates/experiment-service/web/data.mjs": "6f32ce2fdb071c30a4904eccb0e742538bcc8712e2234812b18c3add250284cf",
+    "crates/experiment-service/web/index.html": "aa12193d747c3a619d77cbb0f31dc1600e997316121142ef3c538baa7b4825b7",
+    "crates/experiment-service/web/parser-worker.mjs": "b26f8554f71a684376b0f0a8b25cfed78c1186bf5072213301b8793f0babdf9d",
+    "crates/experiment-service/web/regressions.test.mjs": "24ae93be574d16d7b73ee5f46bbfe56d13e19f6ac11c5f19be0f1b59cccdfc59"
+  },
+  "dashboard_execution": {
+    "success": true,
+    "tests": 34,
+    "errors": []
+  },
+  "root_service_gates": [
+    {
+      "argv": [
+        "cargo",
+        "fmt",
+        "--all",
+        "--",
+        "--check"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "check",
+        "--locked",
+        "--all-targets"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "clippy",
+        "--locked",
+        "--all-targets",
+        "--",
+        "-D",
+        "warnings"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "test",
+        "--locked"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "test",
+        "--locked",
+        "--doc"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "doc",
+        "--locked",
+        "--no-deps"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "fmt",
+        "--manifest-path",
+        "crates/experiment-service/Cargo.toml",
+        "--",
+        "--check"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "check",
+        "--manifest-path",
+        "crates/experiment-service/Cargo.toml",
+        "--locked",
+        "--all-targets"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "clippy",
+        "--manifest-path",
+        "crates/experiment-service/Cargo.toml",
+        "--locked",
+        "--all-targets",
+        "--",
+        "-D",
+        "warnings"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "test",
+        "--manifest-path",
+        "crates/experiment-service/Cargo.toml",
+        "--locked"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "test",
+        "--manifest-path",
+        "crates/experiment-service/Cargo.toml",
+        "--locked",
+        "--doc"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "doc",
+        "--manifest-path",
+        "crates/experiment-service/Cargo.toml",
+        "--locked",
+        "--no-deps"
+      ],
+      "exit": 0
+    }
+  ],
+  "service_locked_execution": {
+    "success": true,
+    "tests": 21
+  },
+  "supplementary": {
+    "passed": 12,
+    "failed": 0
+  },
+  "docs_build": "passed strict",
+  "independent_review": "final_review bounded source/conformance clear; main approval not claimed",
+  "runtime": "8087health unreachable; no inherited sessions or handles restarted; no new standalone owned runtime"
+}

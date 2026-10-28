@@ -1,0 +1,85 @@
+[[verification]]
+id = "VER-001"
+method = "inspection"
+stage = "implementation"
+owner = "Independent code reviewer"
+covers = ["REQ-001", "REQ-003", "REQ-004", "REQ-006", "REQ-013", "REQ-017", "CON-001", "CON-002", "CON-007"]
+procedure = "Inspect exact source for same-origin bounded static routing/CSP, strict parser and u64 token handling, worker ownership/latest-selection queue, textContent escaping, no CDN/eval/npm and numerical separation. Audit every construction/error/cancellation path."
+acceptance = "No complete CSV text or main-thread full parse, arbitrary route/file exposure, wire rounding, duplicate owner or changed numerical loop; each mapped obligation has an explicit argument."
+
+[[verification]]
+id = "VER-002"
+method = "demonstration"
+stage = "implementation"
+owner = "Native browser reviewer"
+covers = ["REQ-001", "REQ-002", "REQ-007", "REQ-008", "REQ-009", "REQ-012", "REQ-014", "REQ-015", "REQ-016", "REQ-018", "CON-004", "CON-005"]
+procedure = "Launch local app; create healthy and outage runs, observe lifecycle and cancellation/errors, import known local CSV with no running experiment, inspect rows0/1/100 and a nonplotted row7777, pause/seek/speed/reset, switch runs while loading, reconnect status, keyboard navigation and resize; compare every value with independent fixture/CLI and capture screenshots at known ticks."
+acceptance = "All controls act as specified; no view-only action mutates experiments; no duplicate POST after uncertain reply; stale snapshots do not replace selected run; all curves/ellipse/error/outage/recovery visible, legends/fidelity/calibration/delivery labels explicit."
+
+[[verification]]
+id = "VER-003"
+method = "demonstration"
+stage = "implementation"
+owner = "Browser resource reviewer"
+covers = ["REQ-010", "REQ-013", "REQ-014", "REQ-019", "CON-003", "CON-007"]
+procedure = "Record hardware/browser/build. Load a real3600second approximately170MB artifact after one warmup, repeat three times; measure tab renderer plus dedicated-worker resident memory and application numeric allocation. Perform50 rapid selection/abort/reset cycles and30 control interactions while loading. Record long tasks, worker/SSE counts, parser yield intervals, canvas dimensions and queue sizes."
+acceptance = "Reachable numeric buffers<=100800280bytes; one worker, one selected SSE, one pending selection, carry<=8192bytes; no whole-text retain. Renderer+workers<512MiB on reference host, control response p95<=250ms, no main-thread task>100ms due parsing, worker yields after2048rows or8ms, render<=30fps, at most two4096x2160 internal canvases. Any exceeded budget requires reviewed revision before acceptance."
+
+[[verification]]
+id = "VER-004"
+method = "demonstration"
+stage = "implementation"
+owner = "Cross-platform integration reviewer"
+covers = ["REQ-017", "CON-002", "CON-006", "CON-008"]
+procedure = "Run complete unchanged dashboard harness and Node24 checks natively on Windows/Linux with Rust1.99/stable. Run root and service quality gates; validate unchanged service locked digest and execute its21approved tests and all current production regressions. Compare root numerical sources to baseline."
+acceptance = "All17dashboard cataloged tests execute/pass in four native configurations, Node24 checks pass, prior service contract unchanged and all its gates pass. No source-only or compile-only claim replaces native execution."
+
+[[verification]]
+id = "VER-005"
+method = "demonstration"
+stage = "implementation"
+owner = "Handoff reviewer"
+covers = ["REQ-020", "CON-008"]
+procedure = "Follow README from a clean local checkout with no external web access, run documented commands, inspect healthy/outage/recovery screenshots and interaction walkthrough in current native Chromium. Record exact app/browser revision and known limitations."
+acceptance = "Local launch works; screenshots and walkthrough correspond to real observed current build and known recorded ticks; keyboard and visual access checked."
+
+[[verification]]
+id = "VER-006"
+method = "analysis"
+stage = "both"
+owner = "Design arithmetic reviewer"
+covers = ["REQ-010", "CON-003"]
+procedure = "Check storage shape:360001rows\u00d735columns\u00d78bytes=100800280; final typed chunk uses remaining capacity rather than a full spare chunk. Bound carry8192bytes, input268435456bytes, selected indices4096, view queues and canvas pixels separately."
+acceptance = "Arithmetic and ownership inventory justify reachable numeric bound without claiming an OS cap; implementation stats must derive actual allocated buffers."
+design_evidence = "verification/storage-bound.md"
+reviewed_by = "main /root independent arithmetic review, 2026-10-26"
+
+[[command]]
+id = "CMD-001"
+stage = "both"
+purpose = "Execute required native code/syntax gate. Node24 is additionally checked by every JS libtest wrapper."
+argv = ["cargo", "clippy", "--manifest-path", "tests/local-dashboard/Cargo.toml", "--locked", "--all-targets", "--", "-D", "warnings"]
+
+[[command]]
+id = "CMD-002"
+stage = "both"
+purpose = "Execute required native code/syntax gate. Node24 is additionally checked by every JS libtest wrapper."
+argv = ["node", "--check", "crates/experiment-service/web/data.mjs"]
+
+[[command]]
+id = "CMD-003"
+stage = "both"
+purpose = "Execute required native code/syntax gate. Node24 is additionally checked by every JS libtest wrapper."
+argv = ["node", "--check", "tests/local-dashboard/node/data.test.mjs"]
+
+[[command]]
+id = "CMD-004"
+stage = "implementation"
+purpose = "Execute required native code/syntax gate. Node24 is additionally checked by every JS libtest wrapper."
+argv = ["node", "--check", "crates/experiment-service/web/dashboard.mjs"]
+
+[[command]]
+id = "CMD-005"
+stage = "implementation"
+purpose = "Execute required native code/syntax gate. Node24 is additionally checked by every JS libtest wrapper."
+argv = ["node", "--check", "crates/experiment-service/web/parser-worker.mjs"]

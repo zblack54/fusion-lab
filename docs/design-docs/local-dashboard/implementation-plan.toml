@@ -1,0 +1,39 @@
+[[task]]
+id = "TASK-001"
+title = "Same-origin launch and preserved service contracts"
+depends_on = []
+requirement_ids = ["REQ-001", "REQ-002", "REQ-017"]
+constraint_ids = []
+test_ids = ["TST-ACC-002", "TST-CONTRACT-002"]
+verification_ids = ["VER-001", "VER-002", "VER-004"]
+completion = "Mapped executable tests and reviewed non-test evidence establish the specified behavior at the implementation revision."
+
+[[task]]
+id = "TASK-002"
+title = "Bounded parser and exact data model"
+depends_on = ["TASK-001"]
+requirement_ids = ["REQ-003", "REQ-004", "REQ-005", "REQ-006", "REQ-007", "REQ-009", "REQ-010", "REQ-011"]
+constraint_ids = []
+test_ids = ["TST-ACC-001", "TST-ANTI-001", "TST-BEH-001", "TST-BOUND-001", "TST-BOUND-002", "TST-CONTRACT-001", "TST-CONTRACT-003", "TST-INV-001", "TST-NEG-001", "TST-NEG-002", "TST-NEG-003", "TST-PERF-001", "TST-PROP-001", "TST-STRUCT-001"]
+verification_ids = ["VER-001", "VER-002", "VER-003", "VER-006"]
+completion = "Mapped executable tests and reviewed non-test evidence establish the specified behavior at the implementation revision."
+
+[[task]]
+id = "TASK-003"
+title = "Replay worker and lifecycle controls"
+depends_on = ["TASK-002"]
+requirement_ids = ["REQ-008", "REQ-013", "REQ-014", "REQ-016", "REQ-019"]
+constraint_ids = []
+test_ids = ["TST-ACC-001", "TST-ANTI-001", "TST-STATE-001"]
+verification_ids = ["VER-001", "VER-002", "VER-003"]
+completion = "Mapped executable tests and reviewed non-test evidence establish the specified behavior at the implementation revision."
+
+[[task]]
+id = "TASK-004"
+title = "Visual fidelity accessibility and handoff"
+depends_on = ["TASK-003"]
+requirement_ids = ["REQ-012", "REQ-015", "REQ-018", "REQ-020"]
+constraint_ids = ["CON-001", "CON-002", "CON-003", "CON-004", "CON-005", "CON-006", "CON-007", "CON-008"]
+test_ids = ["TST-ACC-001"]
+verification_ids = ["VER-001", "VER-002", "VER-003", "VER-004", "VER-005", "VER-006"]
+completion = "Mapped executable tests and reviewed non-test evidence establish the specified behavior at the implementation revision."

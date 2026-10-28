@@ -1,0 +1,35 @@
+{
+  "captured_utc": "2026-10-26T23:13:03.776Z",
+  "method": "Actual browser rendered sample JSON compared against all35 independently indexed raw CSV fields",
+  "observations": [
+    {
+      "run": "run-1",
+      "tick": 0,
+      "verified_fields": 35,
+      "result": "pass"
+    },
+    {
+      "run": "run-1",
+      "tick": 1500,
+      "verified_fields": 35,
+      "result": "pass"
+    },
+    {
+      "run": "run-1",
+      "tick": 2100,
+      "verified_fields": 35,
+      "result": "pass"
+    },
+    {
+      "run": "run-2",
+      "tick": 7777,
+      "verified_fields": 35,
+      "result": "pass"
+    }
+  ],
+  "maximum_artifact_bytes": 170624208,
+  "limitations": [
+    "This verifies sample fidelity and maximum-row loading only, not browser RSS/p95/longtask or repeated-abort ownership budgets",
+    "Screenshots before issues52/53 narrow repairs; numerical rendering implementation unchanged by those repairs"
+  ]
+}

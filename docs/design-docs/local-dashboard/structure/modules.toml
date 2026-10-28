@@ -1,0 +1,29 @@
+[[module]]
+id = "MOD-001"
+path = "crates/experiment-service/src"
+responsibility = "Serve same-origin static assets while preserving the service API."
+owns = ["Serve same-origin static assets while preserving the service API."]
+depends_on = []
+exposes = ["local dashboard contracts"]
+requirement_ids = ["REQ-001", "REQ-002", "REQ-017"]
+status = "planned"
+
+[[module]]
+id = "MOD-002"
+path = "crates/experiment-service/web/data.mjs"
+responsibility = "Own streamed recorded data, exact wire values, derived display quantities and replay."
+owns = ["Own streamed recorded data, exact wire values, derived display quantities and replay."]
+depends_on = []
+exposes = ["local dashboard contracts"]
+requirement_ids = ["REQ-003", "REQ-004", "REQ-005", "REQ-006", "REQ-007", "REQ-008", "REQ-009", "REQ-010", "REQ-011"]
+status = "planned"
+
+[[module]]
+id = "MOD-003"
+path = "crates/experiment-service/web"
+responsibility = "Own worker, lifecycle subscriptions, controls and bounded canvas rendering."
+owns = ["Own worker, lifecycle subscriptions, controls and bounded canvas rendering."]
+depends_on = ["MOD-001", "MOD-002"]
+exposes = ["local dashboard contracts"]
+requirement_ids = ["REQ-012", "REQ-013", "REQ-014", "REQ-015", "REQ-016", "REQ-018", "REQ-019", "REQ-020"]
+status = "planned"

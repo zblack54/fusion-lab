@@ -1,0 +1,179 @@
+[[requirement]]
+id = "REQ-001"
+title = "Serve a local entry point"
+kind = "behavioral"
+statement = "The adapter SHALL serve the dashboard and its declared static assets from the existing loopback service origin."
+rationale = "Local reproducible inspection with bounded and honest display behavior."
+source_ids = ["ACC-002"]
+status = "active"
+
+[[requirement]]
+id = "REQ-002"
+title = "Inspect and control experiments"
+kind = "behavioral"
+statement = "The dashboard SHALL expose the existing full configuration, run list, selected status and explicit cancellation through the local service API."
+rationale = "Local reproducible inspection with bounded and honest display behavior."
+source_ids = ["ACC-002"]
+status = "active"
+
+[[requirement]]
+id = "REQ-003"
+title = "Decode recorded numeric data"
+kind = "behavioral"
+statement = "The parser SHALL preserve every valid recorded row and its35fields through streamed UTF-8 decoding."
+rationale = "Local reproducible inspection with bounded and honest display behavior."
+source_ids = ["ACC-001"]
+status = "active"
+
+[[requirement]]
+id = "REQ-004"
+title = "Reject malformed recordings"
+kind = "behavioral"
+statement = "The parser SHALL reject invalid schema, numeric data, UTF-8 and truncated records without publishing a complete recording."
+rationale = "Local reproducible inspection with bounded and honest display behavior."
+source_ids = ["ACC-001"]
+status = "active"
+
+[[requirement]]
+id = "REQ-005"
+title = "Preserve observation absence"
+kind = "behavioral"
+statement = "The parser SHALL preserve absent measurement pairs as null and reject partially present pairs."
+rationale = "Local reproducible inspection with bounded and honest display behavior."
+source_ids = ["ACC-001"]
+status = "active"
+
+[[requirement]]
+id = "REQ-006"
+title = "Preserve unsigned wire integers"
+kind = "behavioral"
+statement = "The client SHALL preserve unsigned64bit seed and sequence values exactly during service serialization and parsing."
+rationale = "Local reproducible inspection with bounded and honest display behavior."
+source_ids = ["ACC-001"]
+status = "active"
+
+[[requirement]]
+id = "REQ-007"
+title = "Derive known visual quantities"
+kind = "behavioral"
+statement = "The display model SHALL compute row Euclidean errors and the recorded95percent position ellipse from the selected recorded values."
+rationale = "Local reproducible inspection with bounded and honest display behavior."
+source_ids = ["ACC-001"]
+status = "active"
+
+[[requirement]]
+id = "REQ-008"
+title = "Replay recorded ticks"
+kind = "behavioral"
+statement = "Replay SHALL implement play, pause, seek, speed and reset without mutating recorded data or submitting another experiment."
+rationale = "Local reproducible inspection with bounded and honest display behavior."
+source_ids = ["ACC-002"]
+status = "active"
+
+[[requirement]]
+id = "REQ-009"
+title = "Bound plotted points"
+kind = "behavioral"
+statement = "Plot selection SHALL require finite integer maxPoints>=2 (RangeError otherwise), clamp larger valid limits to4096, return no more than that many distinct ordered recorded indices including both endpoints for multirow recordings, return[0] for a singleton and[] for empty, while preserving exact access to every stored row."
+rationale = "Local reproducible inspection with bounded and honest display behavior."
+source_ids = ["ACC-002"]
+status = "active"
+
+[[requirement]]
+id = "REQ-010"
+title = "Bound parser storage and inputs"
+kind = "behavioral"
+statement = "The parser SHALL enforce360001rows,268435456input bytes,8192bytes per row and100800280numeric storage bytes."
+rationale = "Local reproducible inspection with bounded and honest display behavior."
+source_ids = ["ACC-001"]
+status = "active"
+
+[[requirement]]
+id = "REQ-011"
+title = "Keep row snapshots isolated"
+kind = "behavioral"
+statement = "Recording row access SHALL return snapshots whose modification cannot alter stored numerical values."
+rationale = "Local reproducible inspection with bounded and honest display behavior."
+source_ids = ["ACC-001"]
+status = "active"
+
+[[requirement]]
+id = "REQ-012"
+title = "Render complete experiment context"
+kind = "behavioral"
+statement = "The dashboard SHALL show truth, KF, both baselines, observations, covariance, error, outage and recovery with exact current-row values."
+rationale = "Local reproducible inspection with bounded and honest display behavior."
+source_ids = ["ACC-002"]
+status = "active"
+
+[[requirement]]
+id = "REQ-013"
+title = "Use bounded client ownership"
+kind = "behavioral"
+statement = "The dashboard SHALL own at most one parsing worker, one selected-run SSE stream and one latest pending selection."
+rationale = "Local reproducible inspection with bounded and honest display behavior."
+source_ids = ["ACC-002"]
+status = "active"
+
+[[requirement]]
+id = "REQ-014"
+title = "Follow lifecycle events safely"
+kind = "behavioral"
+statement = "The dashboard SHALL close terminal subscriptions, ignore stale/wrong-run snapshots and expose busy, overload, eviction and pending-cancellation errors."
+rationale = "Local reproducible inspection with bounded and honest display behavior."
+source_ids = ["ACC-002"]
+status = "active"
+
+[[requirement]]
+id = "REQ-015"
+title = "Provide accessible controls"
+kind = "behavioral"
+statement = "The dashboard SHALL provide labeled keyboard-operable controls, textual values and curve distinctions beyond color."
+rationale = "Local reproducible inspection with bounded and honest display behavior."
+source_ids = ["ACC-002"]
+status = "active"
+
+[[requirement]]
+id = "REQ-016"
+title = "Replay local CSV files"
+kind = "behavioral"
+statement = "The dashboard SHALL import a user-selected local CSV through the same bounded parser without uploading it or requiring a running experiment."
+rationale = "Local reproducible inspection with bounded and honest display behavior."
+source_ids = ["ACC-002"]
+status = "active"
+
+[[requirement]]
+id = "REQ-017"
+title = "Preserve core and service behavior"
+kind = "behavioral"
+statement = "Dashboard integration SHALL preserve existing numerical behavior and the approved service contract."
+rationale = "Local reproducible inspection with bounded and honest display behavior."
+source_ids = ["ACC-002"]
+status = "active"
+
+[[requirement]]
+id = "REQ-018"
+title = "Make display fidelity explicit"
+kind = "behavioral"
+statement = "The dashboard SHALL label total versus plotted samples, rounded CSV precision, recorded delivery mode and descriptive uncalibrated covariance."
+rationale = "Local reproducible inspection with bounded and honest display behavior."
+source_ids = ["ACC-002"]
+status = "active"
+
+[[requirement]]
+id = "REQ-019"
+title = "Keep interaction responsive"
+kind = "behavioral"
+statement = "The worker adapter SHALL yield after2048rows or8milliseconds of work and render at most30frames per second."
+rationale = "Local reproducible inspection with bounded and honest display behavior."
+source_ids = ["ACC-002"]
+status = "active"
+
+[[requirement]]
+id = "REQ-020"
+title = "Deliver review evidence"
+kind = "behavioral"
+statement = "The handoff SHALL include a reproducible local launch, screenshots at known recorded ticks and an interaction walkthrough."
+rationale = "Local reproducible inspection with bounded and honest display behavior."
+source_ids = ["ACC-002"]
+status = "active"

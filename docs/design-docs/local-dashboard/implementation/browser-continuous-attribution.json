@@ -1,0 +1,208 @@
+{
+  "derived_filter_only": true,
+  "owned_renderer_pid": 50516,
+  "context_parent_pid": 73556,
+  "private_directory": "../ci-evidence/dashboard-native-private",
+  "phases": [
+    {
+      "phase": "before-navigation",
+      "raw_private_file": "continuous-before-navigation.json",
+      "raw_sha256": "68eb756c26a879374e729a4e111f40b07e7425e22bc6fd464e5dc6a07bb8e9a8",
+      "sampled_utc_seconds": 1793129190.1750288,
+      "candidate_count": 78,
+      "new_renderer_candidate_count": null,
+      "owned_rows": [
+        {
+          "pid": 50516,
+          "parent": 73556,
+          "name": "ChatGPT.exe",
+          "type": "renderer",
+          "renderer_client_id": "67",
+          "rss_bytes": 25436160,
+          "peak_rss_bytes": 32055296,
+          "private_bytes": 16097280,
+          "threads": {
+            "total_threads": 13,
+            "query_successes": 13,
+            "query_failures": 0,
+            "named_threads": [
+              {
+                "tid": 56308,
+                "description": "CrRendererMain"
+              },
+              {
+                "tid": 83544,
+                "description": "PerfettoTrace"
+              },
+              {
+                "tid": 91796,
+                "description": "HangWatcher"
+              },
+              {
+                "tid": 41536,
+                "description": "ThreadPoolServiceThread"
+              },
+              {
+                "tid": 78264,
+                "description": "ThreadPoolForegroundWorker"
+              },
+              {
+                "tid": 90272,
+                "description": "ThreadPoolPresentationWorker"
+              },
+              {
+                "tid": 96188,
+                "description": "ThreadPoolAudioWorker"
+              },
+              {
+                "tid": 90196,
+                "description": "ThreadPoolBackgroundWorker"
+              },
+              {
+                "tid": 77552,
+                "description": "Chrome_ChildIOThread"
+              },
+              {
+                "tid": 85072,
+                "description": "Compositor"
+              },
+              {
+                "tid": 92332,
+                "description": "ThreadPoolBackgroundWorker"
+              },
+              {
+                "tid": 89032,
+                "description": "ThreadPoolSingleThreadSharedForegroundBlocking"
+              },
+              {
+                "tid": 81708,
+                "description": "MemoryInfra"
+              }
+            ],
+            "query_error_codes": {}
+          }
+        }
+      ],
+      "owned_new_dedicated_workers": []
+    },
+    {
+      "phase": "after-navigation",
+      "raw_private_file": "continuous-after-navigation.json",
+      "raw_sha256": "611389bddf919d37d46816a53ade014bb18e390d47787809226dc0b78a738d0d",
+      "sampled_utc_seconds": 1793129218.2713308,
+      "candidate_count": 79,
+      "new_renderer_candidate_count": 1,
+      "owned_rows": [
+        {
+          "pid": 50516,
+          "parent": 73556,
+          "name": "ChatGPT.exe",
+          "type": "renderer",
+          "renderer_client_id": "67",
+          "rss_bytes": 97181696,
+          "peak_rss_bytes": 101265408,
+          "private_bytes": 47206400,
+          "threads": {
+            "total_threads": 19,
+            "query_successes": 19,
+            "query_failures": 0,
+            "named_threads": [
+              {
+                "tid": 56308,
+                "description": "CrRendererMain"
+              },
+              {
+                "tid": 83544,
+                "description": "PerfettoTrace"
+              },
+              {
+                "tid": 91796,
+                "description": "HangWatcher"
+              },
+              {
+                "tid": 41536,
+                "description": "ThreadPoolServiceThread"
+              },
+              {
+                "tid": 78264,
+                "description": "ThreadPoolForegroundWorker"
+              },
+              {
+                "tid": 90272,
+                "description": "ThreadPoolPresentationWorker"
+              },
+              {
+                "tid": 96188,
+                "description": "ThreadPoolAudioWorker"
+              },
+              {
+                "tid": 90196,
+                "description": "ThreadPoolBackgroundWorker"
+              },
+              {
+                "tid": 77552,
+                "description": "Chrome_ChildIOThread"
+              },
+              {
+                "tid": 85072,
+                "description": "Compositor"
+              },
+              {
+                "tid": 92332,
+                "description": "ThreadPoolBackgroundWorker"
+              },
+              {
+                "tid": 89032,
+                "description": "ThreadPoolSingleThreadSharedForegroundBlocking"
+              },
+              {
+                "tid": 81708,
+                "description": "MemoryInfra"
+              },
+              {
+                "tid": 87376,
+                "description": "ThreadPoolForegroundWorker"
+              },
+              {
+                "tid": 93828,
+                "description": "ThreadPoolForegroundWorker"
+              },
+              {
+                "tid": 55716,
+                "description": "ThreadPoolForegroundWorker"
+              },
+              {
+                "tid": 97144,
+                "description": "ThreadPoolForegroundWorker"
+              },
+              {
+                "tid": 59728,
+                "description": "DedicatedWorker thread"
+              }
+            ],
+            "query_error_codes": {}
+          }
+        }
+      ],
+      "owned_new_dedicated_workers": [
+        {
+          "pid": 50516,
+          "client": "67",
+          "tid": 59728,
+          "description": "DedicatedWorker thread"
+        }
+      ]
+    },
+    {
+      "phase": "after-close",
+      "raw_private_file": "continuous-after-close.json",
+      "raw_sha256": "74dc278d9fc207574bcf407b3c376b8e042877d8ace2810b4aee8417af57c5d1",
+      "sampled_utc_seconds": 1793129392.4029117,
+      "candidate_count": 78,
+      "new_renderer_candidate_count": 0,
+      "owned_rows": [],
+      "owned_new_dedicated_workers": []
+    }
+  ],
+  "note": "The blank/spare renderer already existed before navigation; attribution is the new dedicated worker59728, actual recording allocation, held process identity and PID exit on owned tab close. Unrelated process rows remain private. Browser/GPU shared services are excluded, never described as zero."
+}

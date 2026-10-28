@@ -1,0 +1,43 @@
+name: Local dashboard contract
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  dashboard:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        toolchain: ["1.99.0", stable]
+    runs-on: ${{ matrix.os }}
+    env:
+      RUSTUP_TOOLCHAIN: ${{ matrix.toolchain }}
+      GIT_CONFIG_COUNT: "1"
+      GIT_CONFIG_KEY_0: core.autocrlf
+      GIT_CONFIG_VALUE_0: "false"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - run: rustup toolchain install ${{ matrix.toolchain }} --profile minimal --component rustfmt --component clippy
+      - run: rustc --version --verbose
+      - run: node --version
+      - run: cargo fmt --manifest-path tests/local-dashboard/Cargo.toml -- --check
+      - run: cargo clippy --manifest-path tests/local-dashboard/Cargo.toml --locked --all-targets -- -D warnings
+      - run: cargo test --manifest-path tests/local-dashboard/Cargo.toml --locked -- --test-threads=1
+      - run: node --check crates/experiment-service/web/data.mjs
+      - run: node --check crates/experiment-service/web/dashboard.mjs
+      - run: node --check crates/experiment-service/web/parser-worker.mjs
+      - run: node --test crates/experiment-service/web/regressions.test.mjs crates/experiment-service/web/dashboard-regressions.test.mjs

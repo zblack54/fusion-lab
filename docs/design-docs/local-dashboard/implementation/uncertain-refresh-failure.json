@@ -1,0 +1,24 @@
+{
+  "mode": "drop-post",
+  "fail_recovery": true,
+  "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+  "started_utc": "2026-10-27T19:45:42.332Z",
+  "backend": "127.0.0.1:8089",
+  "fixture": "127.0.0.1:8090",
+  "counts": {
+    "GET:asset": 6,
+    "GET:runs": 2,
+    "POST:runs": 1
+  },
+  "accepted_posts": [
+    {
+      "id": "run-3",
+      "state": "running",
+      "after_ms": 20583
+    }
+  ],
+  "sse_open_ms": [],
+  "origin_translations": 4,
+  "status": "stopped",
+  "elapsed_ms": 26432
+}

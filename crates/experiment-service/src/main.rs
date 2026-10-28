@@ -22,7 +22,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         })?;
         if matches!(name, "--help" | "-h") {
             println!(
-                "Fusion Lab local experiment service\n\nOptions:\n  --bind ADDRESS                 Loopback socket [127.0.0.1:8080]\n  --artifact-root PATH           Empty private root [results/service]\n  --worker PATH                  Numerical CLI [target/debug/fusion-lab]\n  --retained-runs COUNT          Terminal retention 1..32 [2]\n  --artifact-budget-bytes BYTES  At least 268435456 [805306368]\n\nBuild the numerical CLI first with cargo build --locked. POST a complete JSON configuration to /v1/runs. Press Ctrl+C to cancel/reap workers and stop. Artifacts are transient; an interrupted nonempty root requires inspection before reuse. POST retries create distinct runs."
+                "Fusion Lab local experiment service\n\nOptions:\n  --bind ADDRESS                 Loopback socket [127.0.0.1:8080]\n  --artifact-root PATH           Empty private root [results/service]\n  --worker PATH                  Numerical CLI [target/debug/fusion-lab]\n  --retained-runs COUNT          Terminal retention 1..32 [2]\n  --artifact-budget-bytes BYTES  At least 268435456 [805306368]\n\nBuild the numerical CLI first with cargo build --locked. Open GET / at the bound local origin for the dashboard, recording import and replay controls. POST a complete JSON configuration to /v1/runs. Press Ctrl+C to cancel/reap workers and stop. Artifacts are transient; an interrupted nonempty root requires inspection before reuse. POST retries create distinct runs."
             );
             return Ok(());
         }

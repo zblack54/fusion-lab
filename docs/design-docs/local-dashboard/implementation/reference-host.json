@@ -1,0 +1,16 @@
+{
+  "captured_utc_seconds": 1793130045.4398253,
+  "os": "Windows-10-10.0.19043-SP0",
+  "windows_version": [
+    "10",
+    "10.0.19043",
+    "SP0",
+    "Multiprocessor Free"
+  ],
+  "architecture": "AMD64",
+  "cpu": "AMD Ryzen 7 5800X 8-Core Processor",
+  "logical_processors": 16,
+  "physical_memory_bytes": 34266181632,
+  "python": "3.12.14",
+  "note": "Stable reference-host hardware metadata recorded after workload; this does not measure memory pressure during the run. No user identity or process inventory."
+}

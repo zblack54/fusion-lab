@@ -1,0 +1,122 @@
+[
+  {
+    "tick": 251,
+    "timeSeconds": 2.51
+  },
+  {
+    "tick": 502,
+    "timeSeconds": 5.02
+  },
+  {
+    "tick": 753,
+    "timeSeconds": 7.53
+  },
+  {
+    "tick": 1004,
+    "timeSeconds": 10.04
+  },
+  {
+    "tick": 1255,
+    "timeSeconds": 12.55
+  },
+  {
+    "tick": 1506,
+    "timeSeconds": 15.06
+  },
+  {
+    "tick": 1757,
+    "timeSeconds": 17.57
+  },
+  {
+    "tick": 2008,
+    "timeSeconds": 20.08
+  },
+  {
+    "tick": 2259,
+    "timeSeconds": 22.59
+  },
+  {
+    "tick": 2510,
+    "timeSeconds": 25.1
+  },
+  {
+    "tick": 2761,
+    "timeSeconds": 27.61
+  },
+  {
+    "tick": 3012,
+    "timeSeconds": 30.12
+  },
+  {
+    "tick": 3263,
+    "timeSeconds": 32.63
+  },
+  {
+    "tick": 3514,
+    "timeSeconds": 35.14
+  },
+  {
+    "tick": 3765,
+    "timeSeconds": 37.65
+  },
+  {
+    "tick": 4016,
+    "timeSeconds": 40.16
+  },
+  {
+    "tick": 4267,
+    "timeSeconds": 42.67
+  },
+  {
+    "tick": 4518,
+    "timeSeconds": 45.18
+  },
+  {
+    "tick": 4769,
+    "timeSeconds": 47.69
+  },
+  {
+    "tick": 5020,
+    "timeSeconds": 50.2
+  },
+  {
+    "tick": 5271,
+    "timeSeconds": 52.71
+  },
+  {
+    "tick": 5522,
+    "timeSeconds": 55.22
+  },
+  {
+    "tick": 5773,
+    "timeSeconds": 57.73
+  },
+  {
+    "tick": 6024,
+    "timeSeconds": 60.24
+  },
+  {
+    "tick": 6275,
+    "timeSeconds": 62.75
+  },
+  {
+    "tick": 6526,
+    "timeSeconds": 65.26
+  },
+  {
+    "tick": 6777,
+    "timeSeconds": 67.77
+  },
+  {
+    "tick": 7028,
+    "timeSeconds": 70.28
+  },
+  {
+    "tick": 7279,
+    "timeSeconds": 72.79
+  },
+  {
+    "tick": 7530,
+    "timeSeconds": 75.3
+  }
+]

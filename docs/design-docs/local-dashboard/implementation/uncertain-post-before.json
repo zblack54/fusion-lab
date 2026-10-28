@@ -1,0 +1,22 @@
+{
+  "mode": "drop-post",
+  "started_utc": "2026-10-27T19:36:21.868Z",
+  "backend": "127.0.0.1:8089",
+  "fixture": "127.0.0.1:8090",
+  "counts": {
+    "GET:asset": 6,
+    "GET:runs": 1,
+    "POST:runs": 1
+  },
+  "accepted_posts": [
+    {
+      "id": "run-2",
+      "state": "running",
+      "after_ms": 18977
+    }
+  ],
+  "sse_open_ms": [],
+  "origin_translations": 4,
+  "status": "stopped",
+  "elapsed_ms": 120020
+}

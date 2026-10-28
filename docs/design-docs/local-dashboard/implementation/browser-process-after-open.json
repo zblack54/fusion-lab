@@ -1,0 +1,33 @@
+{
+  "derived_filter_only": true,
+  "original_sha256": "25d3a3cd859abe7eb792ab237bc97418945e1505b24a218bc9199249eba554e5",
+  "original_private_file": "25d3a3cd859abe7eb792ab237bc97418945e1505b24a218bc9199249eba554e5-browser-process-after-open.json",
+  "sampled_utc_seconds": 1793112219.4565961,
+  "original_candidate_count": 75,
+  "original_new_renderer_count": 3,
+  "owned_renderer_pid": 94864,
+  "context_parent_pid": 73556,
+  "owned_renderer_rows": [
+    {
+      "pid": 94864,
+      "parent": 73556,
+      "name": "ChatGPT.exe",
+      "type": "renderer",
+      "renderer_client_id": "66",
+      "rss_bytes": 31449088,
+      "peak_rss_bytes": 31633408,
+      "private_bytes": 15843328,
+      "named_worker_renderer_threads": []
+    }
+  ],
+  "context_parent": [
+    {
+      "pid": 73556,
+      "parent": 62896,
+      "name": "ChatGPT.exe",
+      "type": "browser-or-other"
+    }
+  ],
+  "owned_new_dedicated_workers": [],
+  "scope_note": "Only the attributed final renderer is retained. Parent is identity context, not memory charged. Early snapshots can show this PID as a spare before it acquires the dedicated worker; the final create/load/close chain is required. Full originals remain privately available by SHA. No sampler measurement is modified."
+}

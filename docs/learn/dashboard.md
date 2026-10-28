@@ -40,7 +40,25 @@ The current implementation passed all 17 locked tests on each local compiler, si
 
 A real 170624208 byte maximum artifact loaded 360001 rows, with 4096 plotted samples and exact cursor row 7777. Browser DOM values at rows 0, 1500, 2100 and 7777 were compared across all 35 fields with recorded CSV. [Actual screenshots and comparisons](https://github.com/zblack54/fusion-lab/tree/7fa29649b15a06e73b037eac9cd1bdc892733493/docs/design-docs/local-dashboard/implementation) are immutable review evidence. They establish inspected values and interactions, not total memory or broad calibration.
 
-[Issue #57](https://github.com/zblack54/fusion-lab/issues/57) tracks bounded diagnostics and actual owned-renderer measurements for maximum imports, repeated aborts and control responsiveness. Warmup plus three runs, 50 selection/abort cycles, p95 control response and long-task evidence remain acceptance work. Unsupported measurements must be reported as unavailable; zero is a measured result only when observation actually worked.
+## Reference-host resource evidence
+
+The reviewed continuous-timing build used the real maximum artifact after one warmup and three measured imports. On the Windows reference host, a held native process handle sampled the renderer that gained the page's dedicated worker; closing the owned tab ended that process. The peak below includes both renderer and worker, and excludes shared browser/GPU processes. It is a reference observation, not an OS memory limit or a Linux browser measurement.
+
+| Observation | Actual result | Contract budget |
+|---|---:|---:|
+| Allocated numeric buffers | 100800280 bytes | 100800280 bytes |
+| Renderer and worker lifetime working-set peak | 252489728 bytes | less than 512 MiB |
+| Continuous worker work before yielding | warmup 6.8 ms; measured 5.3, 4.7, 4.7 ms | at most 8 ms |
+| Rows parsed between yields | at most 651 | at most 2048 |
+| Loading-control p95 | 72.3 ms next-RAF proxy | 250 ms response budget |
+| Supported main-thread long-task observations | 0 | no parsing task above 100 ms |
+
+Fifty selection/reset interactions included 49 whose prior state was explicitly loading; they are not described as fifty proven active-reader aborts. Thirty further exact seeks exercised the completed recording. The loading-only sample window was preserved before later bounded history replaced older entries. The timing proxy includes event dispatch through the next animation-frame opportunity; it does not prove physical display presentation.
+
+The native sampler took 27351 observations over 158.563 seconds, requested 5 ms spacing and observed a 16 ms maximum gap. Its operating-system lifetime peak complements periodic samples. Earlier snippet-only worker timing missed bookkeeping, was withdrawn and replaced with continuous accounting; a deliberate 12 ms worker-notification regression verifies that the old blind spot is detected. Raw evidence, source hashes, scoped process provenance and limitations remain in [issue #57](https://github.com/zblack54/fusion-lab/issues/57) and the PR.
+
+Broader failure/accessibility checks, current-head CI and final conformance still determine product acceptance. The XY plot marks position observations; velocity observations remain exact values/status in the sample panel, without an invented vector scale.
+
 
 ## Exercise
 

@@ -1,0 +1,163 @@
+[
+  {
+    "argv": [
+      "cargo",
+      "fmt",
+      "--all",
+      "--",
+      "--check"
+    ],
+    "exit": 0,
+    "seconds": 0.1720000000204891,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "cargo",
+      "check",
+      "--locked",
+      "--all-targets"
+    ],
+    "exit": 0,
+    "seconds": 0.35900000017136335,
+    "stdout": "",
+    "stderr": "    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.30s\n"
+  },
+  {
+    "argv": [
+      "cargo",
+      "clippy",
+      "--locked",
+      "--all-targets",
+      "--",
+      "-D",
+      "warnings"
+    ],
+    "exit": 0,
+    "seconds": 0.29699999978765845,
+    "stdout": "",
+    "stderr": "    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.17s\n"
+  },
+  {
+    "argv": [
+      "cargo",
+      "test",
+      "--locked"
+    ],
+    "exit": 0,
+    "seconds": 2.4530000002123415,
+    "stdout": "\nrunning 5 tests\ntest evaluation::tests::metrics_use_euclidean_error_and_joint_ellipse ... ok\ntest estimation::tests::prediction_transports_velocity_and_covariance ... ok\ntest estimation::tests::white_acceleration_covariance_has_correct_units ... ok\ntest estimation::tests::failed_update_preserves_filter_state ... ok\ntest estimation::tests::known_scalar_measurement_update ... ok\n\ntest result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest tests::csv_has_full_covariance_and_empty_unsampled_measurements ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s\n\n\nrunning 1 test\ntest invalid_output_is_rejected_before_simulation_validation ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s\n\n\nrunning 8 tests\ntest invalid_configuration_is_rejected_before_a_run ... ok\ntest noiseless_straight_motion_matches_analytical_solution ... ok\ntest maneuver_truth_integrates_scripted_acceleration ... ok\ntest sample_rates_and_outage_boundaries_are_exact ... ok\ntest covariance_stays_symmetric_positive_definite_and_grows_during_outage ... ok\ntest outages_do_not_perturb_sensor_random_streams ... ok\ntest seeded_runs_are_identical_and_other_seeds_change_observations ... ok\ntest fusion_beats_baselines_across_fixed_seed_suite ... ok\n\ntest result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.82s\n\n\nrunning 1 test\ntest src\\lib.rs - (line 3) ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s\n\nall doctests ran in 0.75s; merged doctests compilation took 0.55s\n",
+    "stderr": "    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.16s\n     Running unittests src\\lib.rs (target\\debug\\deps\\fusion_lab-1d27257bf1ef4ffd.exe)\n     Running unittests src\\main.rs (target\\debug\\deps\\fusion_lab-3f14e8ad536c45ff.exe)\n     Running tests\\cli.rs (target\\debug\\deps\\cli-545e1590ac6e1549.exe)\n     Running tests\\experiments.rs (target\\debug\\deps\\experiments-e061d5991a9514fc.exe)\n   Doc-tests fusion_lab\n"
+  },
+  {
+    "argv": [
+      "cargo",
+      "test",
+      "--locked",
+      "--doc"
+    ],
+    "exit": 0,
+    "seconds": 0.7659999998286366,
+    "stdout": "\nrunning 1 test\ntest src\\lib.rs - (line 3) ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s\n\nall doctests ran in 0.56s; merged doctests compilation took 0.36s\n",
+    "stderr": "    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.08s\n   Doc-tests fusion_lab\n"
+  },
+  {
+    "argv": [
+      "cargo",
+      "doc",
+      "--locked",
+      "--no-deps"
+    ],
+    "exit": 0,
+    "seconds": 1.0620000001508743,
+    "stdout": "",
+    "stderr": " Documenting fusion-lab v0.1.0 (C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.00s\n   Generated C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\target\\doc\\fusion_lab\\index.html\n"
+  },
+  {
+    "argv": [
+      "cargo",
+      "fmt",
+      "--manifest-path",
+      "crates/experiment-service/Cargo.toml",
+      "--",
+      "--check"
+    ],
+    "exit": 0,
+    "seconds": 0.14099999982863665,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "cargo",
+      "check",
+      "--manifest-path",
+      "crates/experiment-service/Cargo.toml",
+      "--locked",
+      "--all-targets"
+    ],
+    "exit": 0,
+    "seconds": 1.375,
+    "stdout": "",
+    "stderr": "    Checking fusion-experiment-service v0.0.0 (C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\crates\\experiment-service)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.32s\n"
+  },
+  {
+    "argv": [
+      "cargo",
+      "clippy",
+      "--manifest-path",
+      "crates/experiment-service/Cargo.toml",
+      "--locked",
+      "--all-targets",
+      "--",
+      "-D",
+      "warnings"
+    ],
+    "exit": 0,
+    "seconds": 0.625,
+    "stdout": "",
+    "stderr": "    Checking fusion-experiment-service v0.0.0 (C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\crates\\experiment-service)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.52s\n"
+  },
+  {
+    "argv": [
+      "cargo",
+      "test",
+      "--manifest-path",
+      "crates/experiment-service/Cargo.toml",
+      "--locked"
+    ],
+    "exit": 0,
+    "seconds": 6.266000000061467,
+    "stdout": "\nrunning 14 tests\ntest transport::tests::shutdown_reports_task_panic_and_observes_remaining_connections ... ok\ntest server::regression_tests::cancelled_pending_open_releases_its_owned_lease ... ok\ntest shutdown_tests::runtime_panic_does_not_skip_explicit_cleanup_or_root_release ... ok\ntest server::regression_tests::same_empty_root_is_exclusively_claimed_and_released ... ok\ntest server::regression_tests::dropped_stream_receiver_unblocks_reader_and_releases_file_before_cleanup ... ok\ntest server::regression_tests::failed_open_and_prepared_file_drop_release_without_handle_leaks ... ok\ntest transport::tests::shutdown_deadline_aborts_and_observes_pending_connection ... ok\ntest server::regression_tests::worker_join_failure_still_observes_all_remaining_owned_threads ... ok\ntest server::regression_tests::noisy_child_stdout_and_stderr_are_drained_with_bounded_tails ... ok\ntest server::regression_tests::termination_failure_once_is_preserved_after_automatic_recovery ... ok\ntest server::regression_tests::injected_wait_failure_is_visible_and_keeps_the_real_child_owned ... ok\ntest server::regression_tests::monitor_panic_retains_child_until_shutdown_owner_recovers_it ... ok\ntest server::regression_tests::termination_failure_persistent_kill_recovers_without_another_shutdown_call ... ok\ntest server::regression_tests::termination_failure_reap_confirmation_stays_owned_until_fault_clears ... ok\n\ntest result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.96s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+    "stderr": "   Compiling fusion-experiment-service v0.0.0 (C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\crates\\experiment-service)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.80s\n     Running unittests src\\lib.rs (crates\\experiment-service\\target\\debug\\deps\\fusion_experiment_service-319e43f76b5da297.exe)\n     Running unittests src\\main.rs (crates\\experiment-service\\target\\debug\\deps\\fusion_experiment_service-8968b134659d52e6.exe)\n   Doc-tests fusion_experiment_service\n"
+  },
+  {
+    "argv": [
+      "cargo",
+      "test",
+      "--manifest-path",
+      "crates/experiment-service/Cargo.toml",
+      "--locked",
+      "--doc"
+    ],
+    "exit": 0,
+    "seconds": 0.1869999999180436,
+    "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+    "stderr": "    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.07s\n   Doc-tests fusion_experiment_service\n"
+  },
+  {
+    "argv": [
+      "cargo",
+      "doc",
+      "--manifest-path",
+      "crates/experiment-service/Cargo.toml",
+      "--locked",
+      "--no-deps"
+    ],
+    "exit": 0,
+    "seconds": 0.625,
+    "stdout": "",
+    "stderr": " Documenting fusion-experiment-service v0.0.0 (C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\crates\\experiment-service)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.58s\n   Generated C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\crates\\experiment-service\\target\\doc\\fusion_experiment_service\\index.html\n"
+  }
+]

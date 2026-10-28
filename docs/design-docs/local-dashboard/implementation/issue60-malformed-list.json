@@ -1,0 +1,20 @@
+{
+  "issue": 60,
+  "at": "2026-10-28T14:23:22.655Z",
+  "before_source_sha256": "4285b6dd4e169a58e7db70274d757b22d6764c1ee7c3a8deca8b61573013f8e1",
+  "before_behavior": "A200list with validrun2 then malformedentry resets native select to empty before catch returns failure; prior cursor90/selectionrun1 must remain.",
+  "production_change": "Validate all entries before replaceChildren; no new behavior or retry.",
+  "pre_fix_run": {
+    "chunk_id": "b07948",
+    "wall_time_seconds": 0.0000102,
+    "exit_code": 1,
+    "original_token_count": 239,
+    "output": "✖ issue60 malformed recovery list preserves native select and existing view (33.6161ms)\nℹ tests 1\nℹ suites 0\nℹ pass 0\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 88.8993\n\n✖ failing tests:\n\ntest at crates\\experiment-service\\web\\dashboard-regressions.test.mjs:91:1\n✖ issue60 malformed recovery list preserves native select and existing view (33.6161ms)\n  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n  \n  '' !== 'run-1'\n  \n      at TestContext.<anonymous> (file:///C:/Users/Admin/Documents/Codex/2026-10-20/if-x20/work/fusion-lab/crates/experiment-service/web/dashboard-regressions.test.mjs:108:10)\n      at async Test.run (node:internal/test_runner/test:1409:7)\n      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {\n    generatedMessage: true,\n    code: 'ERR_ASSERTION',\n    actual: '',\n    expected: 'run-1',\n    operator: 'strictEqual',\n    diff: 'simple'\n  }\n"
+  },
+  "after": {
+    "source_sha256": "97eef8cf1e0df69fb5b4325f90591be6d0b301f9027893b74930b59d4142ac4a",
+    "regressions": 12,
+    "failures": 0,
+    "scope": "two bounded validation loops before mutation; no parser/worker/render changes"
+  }
+}

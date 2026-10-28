@@ -1,0 +1,45 @@
+{
+  "private_directory": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\ci-evidence\\dashboard-native-private",
+  "files": [
+    {
+      "file": "browser-final-after-close.json",
+      "original_sha256": "a88d78a81935d4fbcf449bbfac87007f06dde6f7fa74d5fe1143618433e42b24",
+      "private_file": "a88d78a81935d4fbcf449bbfac87007f06dde6f7fa74d5fe1143618433e42b24-browser-final-after-close.json"
+    },
+    {
+      "file": "browser-final-after-open.json",
+      "original_sha256": "18d4a7a98abd57e2eae37472d6cde1fb5363fc6240e22e00b239ab75f11ffd52",
+      "private_file": "18d4a7a98abd57e2eae37472d6cde1fb5363fc6240e22e00b239ab75f11ffd52-browser-final-after-open.json"
+    },
+    {
+      "file": "browser-final-before-open.json",
+      "original_sha256": "16d594ca00ec1e66d5d15ee8c8ffa8c398678d218e0bf65420b5b1a31e3e084c",
+      "private_file": "16d594ca00ec1e66d5d15ee8c8ffa8c398678d218e0bf65420b5b1a31e3e084c-browser-final-before-open.json"
+    },
+    {
+      "file": "browser-process-after-close.json",
+      "original_sha256": "9beacafe47cf16110c837dcba0b43dd89dce10f2a469a0b37d61e58b4fd421b5",
+      "private_file": "9beacafe47cf16110c837dcba0b43dd89dce10f2a469a0b37d61e58b4fd421b5-browser-process-after-close.json"
+    },
+    {
+      "file": "browser-process-after-load.json",
+      "original_sha256": "faabb39a593569e47c443959697f0c6f824b95196361fd394b8e7b0ffab4325f",
+      "private_file": "faabb39a593569e47c443959697f0c6f824b95196361fd394b8e7b0ffab4325f-browser-process-after-load.json"
+    },
+    {
+      "file": "browser-process-after-open.json",
+      "original_sha256": "25d3a3cd859abe7eb792ab237bc97418945e1505b24a218bc9199249eba554e5",
+      "private_file": "25d3a3cd859abe7eb792ab237bc97418945e1505b24a218bc9199249eba554e5-browser-process-after-open.json"
+    },
+    {
+      "file": "browser-process-before-load.json",
+      "original_sha256": "9c087740675884d3409d04d62bbd1e958a5f329c4022a7e77374de5448cc9684",
+      "private_file": "9c087740675884d3409d04d62bbd1e958a5f329c4022a7e77374de5448cc9684-browser-process-before-load.json"
+    },
+    {
+      "file": "browser-process-before.json",
+      "original_sha256": "30931e9cfe11183a30eabc70063859e07df02518c2fc705e238db6652a4f466a",
+      "private_file": "30931e9cfe11183a30eabc70063859e07df02518c2fc705e238db6652a4f466a-browser-process-before.json"
+    }
+  ]
+}

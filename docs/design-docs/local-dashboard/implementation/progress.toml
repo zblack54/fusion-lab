@@ -1,0 +1,33 @@
+# Mutable implementation status; approved contract unchanged.
+approved_digest = "d33ff5c8c1828d503d0cecfb144df72ab96621fa0f2e8dd8096c7f98ba0ddd95"
+updated_utc = "2026-10-28T14:27:53.295Z"
+state = "ready-for-main-acceptance"
+acceptance = "READY_FOR_MAIN_ACCEPTANCE; exact published-head CI and main acceptance pending"
+source_inventory = "source-checkpoint.json"
+dashboard_contracts = "34/34 trusted executions pass;5supplemental checks; externalbaseline valid"
+supplementary_regressions = "12/12pass, including native-select malformed-list red-to-green"
+service_contract = "21trusted +14production regressions pass; external386baseline preserved"
+root_service_gates = "all required fmt/check/clippy/test/doctest/doc pass"
+resource_evidence = "continuous b26 worker warmup+3maximports;6.8/5.3/4.7/4.7ms;RSS252489728;49loadingp95nextRAF72.3ms; process exited; no physicalpaintclaim"
+remaining = ["Final published-head Windows/Linux Rust1.99/stable CI", "Main acceptance and verified merge"]
+owned_runtime = "Historical service8087 is no longer reachable; no inherited sessions/handles assumed or restarted. No new runtime needed for the narrow validation-order repair."
+
+[[task]]
+id = "TASK-001"
+state = "implemented-locally-verified"
+evidence = "See final acceptance.md obligation table and execution.json; product release remains main review/CI gated."
+
+[[task]]
+id = "TASK-002"
+state = "implemented-locally-verified"
+evidence = "See final acceptance.md obligation table and execution.json; product release remains main review/CI gated."
+
+[[task]]
+id = "TASK-003"
+state = "implemented-locally-verified"
+evidence = "See final acceptance.md obligation table and execution.json; product release remains main review/CI gated."
+
+[[task]]
+id = "TASK-004"
+state = "implemented-locally-verified"
+evidence = "See final acceptance.md obligation table and execution.json; product release remains main review/CI gated."
