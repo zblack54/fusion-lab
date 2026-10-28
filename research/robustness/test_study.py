@@ -129,4 +129,86 @@ class ExecutionGuards(unittest.TestCase):
                 study.bounded_run([study.sys.executable,'-c',"from pathlib import Path;import time;Path(r'%s').write_bytes(b'x'*2048);time.sleep(5)"%str(output/'current.test')],output,2,cap_bytes=1024)
             self.assertTrue((output/'current.test').exists())
 
+class CheckpointSharing(unittest.TestCase):
+    def test_transient_replace_retries_only_promotion_and_preserves_errors(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            checkpoint=Path(temporary)/'checkpoint.json';checkpoint.write_text('{"old":true}')
+            original=Path.replace;calls=[]
+            def sharing_then_release(source,target):
+                calls.append(source.read_bytes())
+                if len(calls)<3:raise PermissionError(13,'synthetic sharing violation')
+                return original(source,target)
+            with mock.patch.object(Path,'replace',sharing_then_release),mock.patch.object(study.time,'sleep') as sleep,mock.patch.object(study,'bounded_run') as run:
+                study.commit_checkpoint(checkpoint,{'new':'verified'})
+            self.assertEqual(json.loads(checkpoint.read_text()),{'new':'verified'})
+            self.assertEqual(len(calls),3);self.assertEqual(len(set(calls)),1)
+            self.assertEqual(sleep.call_count,2);run.assert_not_called()
+            self.assertFalse(checkpoint.with_suffix('.tmp').exists())
+            events=[json.loads(line) for line in checkpoint.with_name('checkpoint-replace-events.jsonl').read_text().splitlines()]
+            self.assertEqual([event.get('attempt') for event in events],[1,2,3])
+            self.assertEqual(events[-1]['status'],'promoted')
+            self.assertEqual(events[0]['message'],'[Errno 13] synthetic sharing violation')
+    def test_exhaustion_preserves_old_and_exact_pending_journal(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            checkpoint=Path(temporary)/'checkpoint.json';original=b'{"old":true}';checkpoint.write_bytes(original)
+            with mock.patch.object(Path,'replace',side_effect=PermissionError(13,'held reader')) as replace,mock.patch.object(study.time,'sleep') as sleep,mock.patch.object(study,'bounded_run') as run:
+                with self.assertRaises(study.CheckpointReplaceError) as raised:study.commit_checkpoint(checkpoint,{'new':'verified'})
+            self.assertEqual(replace.call_count,5);self.assertEqual(sleep.call_count,4);run.assert_not_called()
+            self.assertEqual(checkpoint.read_bytes(),original)
+            self.assertEqual(json.loads(checkpoint.with_suffix('.tmp').read_text()),{'new':'verified'})
+            self.assertEqual(len(raised.exception.errors),5)
+            events=checkpoint.with_name('checkpoint-replace-events.jsonl').read_text().splitlines()
+            self.assertEqual(len(events),5)
+            # Resume cannot silently rerun the already computed pending key.
+            args=SimpleNamespace(output=checkpoint.parent,binary=checkpoint.parent/'never-run',freeze=False,execute=True,retry_key=None)
+            (checkpoint.parent/'frozen.json').write_text('{"source":"same"}')
+            with mock.patch.object(study,'fingerprints',return_value={'source':'same'}),mock.patch.object(study,'bounded_run') as run:
+                with self.assertRaisesRegex(ValueError,'pending checkpoint'):study.execute(args)
+                run.assert_not_called()
+    def test_non_permission_failure_is_not_retried(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            checkpoint=Path(temporary)/'checkpoint.json';checkpoint.write_text('old')
+            with mock.patch.object(Path,'replace',side_effect=OSError(28,'no space')) as replace,mock.patch.object(study.time,'sleep') as sleep:
+                with self.assertRaises(OSError):study.commit_checkpoint(checkpoint,{'new':True})
+            self.assertEqual(replace.call_count,1);sleep.assert_not_called()
+            self.assertEqual(checkpoint.read_text(),'old')
+            self.assertTrue(checkpoint.with_suffix('.tmp').exists())
+    def test_freeze_rejects_nonempty_directory_before_provenance_or_writes(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            output=Path(temporary);sentinel=output/'current.owner-file';sentinel.write_text('preserve')
+            args=SimpleNamespace(output=output,binary=output/'never-run',freeze=True,execute=False,retry_key=None)
+            with mock.patch.object(study,'fingerprints') as fingerprints,mock.patch.object(study,'bounded_run') as run:
+                with self.assertRaisesRegex(ValueError,'fresh dedicated empty'):study.execute(args)
+                fingerprints.assert_not_called();run.assert_not_called()
+            self.assertEqual(sentinel.read_text(),'preserve')
+            self.assertEqual(list(output.iterdir()),[sentinel])
+    @unittest.skipUnless(study.sys.platform=='win32','native Windows sharing semantics')
+    def test_actual_windows_reader_without_delete_share_is_released(self):
+        import ctypes
+        from ctypes import wintypes
+        kernel=ctypes.WinDLL('kernel32',use_last_error=True)
+        kernel.CreateFileW.argtypes=[wintypes.LPCWSTR,wintypes.DWORD,wintypes.DWORD,ctypes.c_void_p,wintypes.DWORD,wintypes.DWORD,wintypes.HANDLE]
+        kernel.CreateFileW.restype=wintypes.HANDLE
+        kernel.CloseHandle.argtypes=[wintypes.HANDLE];kernel.CloseHandle.restype=wintypes.BOOL
+        with tempfile.TemporaryDirectory() as temporary:
+            checkpoint=Path(temporary)/'checkpoint.json';checkpoint.write_text('{"old":true}')
+            handle=kernel.CreateFileW(str(checkpoint),0x80000000,3,None,3,0x80,None)
+            if handle==ctypes.c_void_p(-1).value:raise ctypes.WinError(ctypes.get_last_error())
+            closed=False
+            def release_reader(_seconds):
+                nonlocal closed
+                if not closed:
+                    if not kernel.CloseHandle(handle):raise ctypes.WinError(ctypes.get_last_error())
+                    closed=True
+            try:
+                with mock.patch.object(study.time,'sleep',side_effect=release_reader):study.commit_checkpoint(checkpoint,{'new':'verified'})
+            finally:
+                if not closed:kernel.CloseHandle(handle)
+            self.assertTrue(closed)
+            self.assertEqual(json.loads(checkpoint.read_text()),{'new':'verified'})
+            events=[json.loads(line) for line in checkpoint.with_name('checkpoint-replace-events.jsonl').read_text().splitlines()]
+            self.assertEqual(events[0]['error_type'],'PermissionError')
+            self.assertEqual(events[0]['winerror'],5)
+            self.assertEqual(events[-1]['status'],'promoted')
+
 if __name__=='__main__':unittest.main()

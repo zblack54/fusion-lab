@@ -5,6 +5,7 @@ import hashlib
 import itertools
 import json
 import math
+import os
 import platform
 import sys
 from pathlib import Path
@@ -237,18 +238,59 @@ def bounded_run(command,output,seconds,cap_bytes=32*1024*1024):
         raise ValueError('artifact cap exceeded')
     return stdout.read_text(),stderr.read_text()
 
+class CheckpointReplaceError(RuntimeError):
+    """Bounded journal promotion failed; old and pending states remain inspectable."""
+    def __init__(self,checkpoint,temporary,errors):
+        self.checkpoint=checkpoint
+        self.temporary=temporary
+        self.errors=tuple(errors)
+        super().__init__('checkpoint promotion exhausted; reconcile preserved old/tmp before resume')
+
+def checkpoint_event(path,event):
+    with path.open('a',encoding='utf-8') as stream:
+        stream.write(json.dumps(event,separators=(',',':'))+'\n')
+        stream.flush();os.fsync(stream.fileno())
+
+def commit_checkpoint(checkpoint,state):
+    temporary=checkpoint.with_suffix('.tmp')
+    # Never overwrite a previously unacknowledged journal on a fresh attempt.
+    with temporary.open('x',encoding='utf-8') as stream:
+        json.dump(state,stream,separators=(',',':'))
+        stream.flush();os.fsync(stream.fileno())
+    events=checkpoint.with_name('checkpoint-replace-events.jsonl')
+    errors=[]
+    for attempt in range(1,6):
+        try:
+            temporary.replace(checkpoint)
+        except PermissionError as error:
+            event={'operation':'checkpoint_replace','attempt':attempt,'error_type':type(error).__name__,'errno':error.errno,'winerror':getattr(error,'winerror',None),'message':str(error),'pending_sha256':digest(temporary)}
+            errors.append(event)
+            checkpoint_event(events,event)
+            if attempt==5:
+                raise CheckpointReplaceError(checkpoint,temporary,errors) from error
+            time.sleep(.1)
+        else:
+            if errors:checkpoint_event(events,{'operation':'checkpoint_replace','status':'promoted','attempt':attempt,'checkpoint_sha256':digest(checkpoint)})
+            return
+
 def execute(args):
     output=args.output.resolve();output.mkdir(parents=True,exist_ok=True)
+    if args.freeze and any(output.iterdir()):
+        raise ValueError('freeze requires a fresh dedicated empty output directory')
     binary=args.binary.resolve()
     fingerprint=fingerprints(binary)
     frozen=output/'frozen.json'
     if args.freeze:
         if frozen.exists(): raise ValueError('freeze already exists')
-        frozen.write_text(json.dumps(fingerprint,indent=2))
+        with frozen.open('x',encoding='utf-8') as stream:
+            json.dump(fingerprint,stream,indent=2)
+            stream.flush();os.fsync(stream.fileno())
         return
     if not frozen.exists() or load_json(frozen)!=fingerprint: raise ValueError('freeze mismatch; no execution')
     if not args.execute: raise ValueError('explicit --execute required')
     checkpoint=output/'checkpoint.json'
+    if checkpoint.with_suffix('.tmp').exists():
+        raise ValueError('pending checkpoint journal exists; independently reconcile before resume')
     state=load_json(checkpoint) if checkpoint.exists() else {'records':{},'reference':[],'group':None}
     records=state['records'];check_inventory(records)
     started=time.monotonic();reference=state['reference'];group=tuple(state['group']) if state['group'] else None
@@ -288,7 +330,7 @@ def execute(args):
         history.append(dict(attempt));attempt['attempts']=history
         records[key_text(key)]=attempt
         state={'records':records,'group':list(group),'reference':reference}
-        temporary=checkpoint.with_suffix('.tmp');temporary.write_text(json.dumps(state,separators=(',',':')));temporary.replace(checkpoint)
+        commit_checkpoint(checkpoint,state)
         if attempt['status']!='verified': raise ValueError('failed key checkpointed; interpretation stopped')
         # Compact checked metrics/hash records plus the bounded reference are durable.
         for artifact in output.glob('current.*'): artifact.unlink()

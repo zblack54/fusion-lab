@@ -1,6 +1,6 @@
 # Fixed held-out robustness executor (issue21)
 
-Status: implementation awaiting independent review and source freeze. No576-run study has been executed. Do not infer results from synthetic self-checks. Main approval6479640606 applies to the unchanged protocol SHA25605f4bb8553c7166a4707fa0f9e466f5857252ef5976b9a9c96d0a553c919ea2e; actual execution requires separate main release after reviewed runner/source/toolchain freeze. Constant-bias prerequisite is merged PR63.
+Status: the original reviewed and frozen runner completed the fixed576-key workload after main release6479893719. Study interpretation/acceptance belongs to the independent audit and main review, not synthetic self-checks. Checkpoint hardening below is a later source revision under review; it has not rerun the study. Main approval6479640606 applies to the unchanged protocol SHA25605f4bb8553c7166a4707fa0f9e466f5857252ef5976b9a9c96d0a553c919ea2e. Constant-bias prerequisite is merged PR63.
 
 ## Files and ownership
 
@@ -31,3 +31,15 @@ The first failure stops interpretation and is retained with originalartifact has
 IndependentCSV coverage checks symmetry<=1e-10, positive diagonals/determinant, and fullcross-term. FixedRMSE tolerance1e-8absolute+1e-8relative. Boundaryrows within1e-8mofrecoverythreshold or1e-7ofcoveragequadratic threshold are explicitly listed with rounded/roundtrip/sourceclassifications, with originalartifactsretained. No aggregate mismatch is silently waived. Acrossseeds use samplesd denominator31 and pairedMCSEsd/sqrt32; always include recoverycensoringdenominator, no pooledwinner or tuningselection.
 
 The protocol file retains its original DRAFT header because its approved bytes are frozen. Delegated main approval is recorded externally in issue21comment6479640606, not by editing the hashed protocol.
+
+## Checkpoint sharing hardening after the executed study (issue64)
+
+The completed576-key study used the original executor source preserved in PR65commit57a71f5 and the external executed-source archive. Its study.py SHA256 was4764f053ee17b060e0fba205fb7cc246713bc24aeb9f6ddc9e531b37e3171185. The executed freeze identifies the original source, binary and compiler. Do not claim the hardening below produced those observations, and do not edit an old freeze to accept changed source. Future regeneration uses a new dedicated output directory and new reviewed freeze.
+
+Windows denied one atomic checkpoint replacement while a reader held the destination without delete sharing (WinError5). The old journal contained141verified keys; the complete pending journal and current artifacts described key142. Main and independent review checked the exact prefix, pending key, source/binary fingerprint and retained artifacts, promoted that exact pending journal, and resumed by skipping142acknowledged keys. This was journal acknowledgement recovery, not a numerical rerun, seed replacement or altered result. The original evidence is retained separately.
+
+The hardened executor writes and fsyncs the pending journal once, then retries only PermissionError from atomic promotion at most5times with100ms between attempts (maximum4waits). Each original exception and pending-journal hash is appended and fsynced to checkpoint-replace-events.jsonl. A successful retry records the acknowledged journal hash. No model process or verifier is called again during these retries. Other I/O errors are not retried. On exhaustion both the old checkpoint and exact pending.tmp are preserved, with a typed error and the original exceptions. Resume refuses any pending journal until independent reconciliation; it cannot silently recompute already verified data. This does not claim crash-proof power-loss durability of the surrounding filesystem.
+
+Freeze now rejects any nonempty output directory before fingerprint work or writes and creates frozen.json exclusively. This establishes a fresh dedicated staging directory before the executor owns current.* artifacts. It prevents accidentally adopting an existing directory containing unrelated current.* files.
+
+Regression verification includes synthetic sharing-release and exhausted-sharing cases, non-PermissionError rejection, nonempty-directory preservation, and an actual Windows CreateFileW reader that omits delete sharing. The latter reproduced WinError5, released the owned handle, then observed successful promotion; on non-Windows it is an explicitly platform-specific fixture. These are checkpoint-only tests. The hardened executor was not used to rerun the completed held-out study.

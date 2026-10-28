@@ -28,6 +28,8 @@ jobs:
       - run: cargo check --locked --all-targets
       - run: cargo clippy --locked --all-targets -- -D warnings
       - run: cargo test --locked
+      - run: cargo test --locked --example robustness-run
+      - run: python -m unittest discover -s research/robustness -p test_study.py -v
       - run: cargo test --locked --doc
       - run: cargo doc --locked --no-deps
       - run: cargo run --locked -- --seed 42 --output results/run.csv
@@ -39,3 +41,4 @@ jobs:
         with:
           python-version: "3.12"
       - run: python scripts/docs.py build
+      - run: python research/robustness/audit_results.py --data-dir docs/experiments/robustness
