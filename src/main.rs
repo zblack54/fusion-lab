@@ -23,12 +23,18 @@ struct Args {
     duration: u32,
     #[arg(long, value_enum, default_value_t = Trajectory::Maneuver)]
     scenario: Trajectory,
-    /// Position noise standard deviation in metres.
+    /// True position noise sigma in metres; also assumed unless overridden.
     #[arg(long, default_value_t = 1.0)]
     position_sigma: f64,
-    /// Velocity noise standard deviation in metres per second.
+    /// True velocity noise sigma in m/s; also assumed unless overridden.
     #[arg(long, default_value_t = 0.15)]
     velocity_sigma: f64,
+    /// Filter-assumed position sigma in metres (omitted: follow true noise).
+    #[arg(long)]
+    assumed_position_sigma: Option<f64>,
+    /// Filter-assumed velocity sigma in m/s (omitted: follow true noise).
+    #[arg(long)]
+    assumed_velocity_sigma: Option<f64>,
     /// Continuous white acceleration density in m^2/s^3.
     #[arg(long, default_value_t = 0.1)]
     acceleration_density: f64,
@@ -57,6 +63,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         },
         position_sigma: args.position_sigma,
         velocity_sigma: args.velocity_sigma,
+        assumed_position_sigma: args.assumed_position_sigma,
+        assumed_velocity_sigma: args.assumed_velocity_sigma,
         acceleration_density: args.acceleration_density,
         outage: (!args.no_outage).then_some(Outage {
             start: args.outage_start,
@@ -137,6 +145,33 @@ fn report(experiment: &Experiment) -> String {
         env!("CARGO_PKG_VERSION"),
         experiment.config
     );
+    let config = &experiment.config;
+    let assumed_position = config
+        .assumed_position_sigma
+        .unwrap_or(config.position_sigma);
+    let assumed_velocity = config
+        .assumed_velocity_sigma
+        .unwrap_or(config.velocity_sigma);
+    let position_source = if config.assumed_position_sigma.is_some() {
+        "override"
+    } else {
+        "follows true"
+    };
+    let velocity_source = if config.assumed_velocity_sigma.is_some() {
+        "override"
+    } else {
+        "follows true"
+    };
+    report.push_str(&format!(
+        "Measurement noise (per-axis sigma): true position={:.12} m; assumed position={assumed_position:.12} m ({position_source}); true velocity={:.12} m/s; assumed velocity={assumed_velocity:.12} m/s ({velocity_source})\n",
+        config.position_sigma, config.velocity_sigma
+    ));
+    let requested_position = assumed_position.powi(2);
+    let requested_velocity = assumed_velocity.powi(2);
+    report.push_str(&format!(
+        "Measurement covariance R (per-axis): requested position={requested_position:.12e} m^2; effective position={:.12e} m^2; requested velocity={requested_velocity:.12e} (m/s)^2; effective velocity={:.12e} (m/s)^2 (variance floor=1e-12)\n",
+        requested_position.max(1e-12), requested_velocity.max(1e-12)
+    ));
     report.push_str(&metric_report("Overall", experiment.summary.overall));
     if let Some(metrics) = experiment.summary.outage {
         report.push_str(&metric_report("Position outage", metrics));

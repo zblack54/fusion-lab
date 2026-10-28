@@ -22,6 +22,10 @@ pub struct Outage {
 }
 
 /// Experiment inputs, validated by [`run`] before allocating or sampling.
+///
+/// The optional assumed-noise fields default to following true sensor noise.
+/// In 0.1, complete external struct literals must include these new fields;
+/// literals using `..Config::default()` retain the matched-noise defaults.
 #[derive(Debug, Clone, PartialEq)]
 pub struct Config {
     /// Run length: 1–3600 whole seconds, inclusive.
@@ -30,10 +34,14 @@ pub struct Config {
     pub seed: u64,
     /// Scripted trajectory.
     pub scenario: Scenario,
-    /// Per-axis position noise standard deviation, 0–100 m.
+    /// True per-axis position noise standard deviation, 0–100 m.
     pub position_sigma: f64,
-    /// Per-axis velocity noise standard deviation, 0–100 m/s.
+    /// True per-axis velocity noise standard deviation, 0–100 m/s.
     pub velocity_sigma: f64,
+    /// Filter-assumed position sigma, 0–100 m; `None` follows true position noise.
+    pub assumed_position_sigma: Option<f64>,
+    /// Filter-assumed velocity sigma, 0–100 m/s; `None` follows true velocity noise.
+    pub assumed_velocity_sigma: Option<f64>,
     /// Filter's continuous white acceleration spectral density, 0–100 m²/s³.
     pub acceleration_density: f64,
     /// Optional outage; must satisfy 0 <= start < end <= duration.
@@ -48,6 +56,8 @@ impl Default for Config {
             scenario: Scenario::Maneuver,
             position_sigma: 1.0,
             velocity_sigma: 0.15,
+            assumed_position_sigma: None,
+            assumed_velocity_sigma: None,
             acceleration_density: 0.1,
             outage: Some(Outage { start: 10, end: 20 }),
         }
@@ -65,6 +75,16 @@ impl Config {
             ("acceleration_density", self.acceleration_density),
         ] {
             if !value.is_finite() || !(0.0..=100.0).contains(&value) {
+                return Err(Error::InvalidConfig(name));
+            }
+        }
+        for (name, value) in [
+            ("assumed_position_sigma", self.assumed_position_sigma),
+            ("assumed_velocity_sigma", self.assumed_velocity_sigma),
+        ] {
+            if let Some(value) = value
+                && (!value.is_finite() || !(0.0..=100.0).contains(&value))
+            {
                 return Err(Error::InvalidConfig(name));
             }
         }
@@ -136,6 +156,12 @@ pub struct Experiment {
 /// [`Error::NumericalFailure`] if a covariance cannot be factored.
 pub fn run(config: &Config) -> Result<Experiment, Error> {
     config.validate()?;
+    let assumed_position_sigma = config
+        .assumed_position_sigma
+        .unwrap_or(config.position_sigma);
+    let assumed_velocity_sigma = config
+        .assumed_velocity_sigma
+        .unwrap_or(config.velocity_sigma);
     let last_tick = config.duration_seconds * TICKS_PER_SECOND;
     let mut samples = Vec::with_capacity(last_tick as usize + 1);
     let mut truth = State {
@@ -171,12 +197,12 @@ pub fn run(config: &Config) -> Result<Experiment, Error> {
         };
 
         if let Some(value) = position_measurement {
-            filter.update(value, config.position_sigma.powi(2), false)?;
+            filter.update(value, assumed_position_sigma.powi(2), false)?;
             held_position = value;
             integrated_position = value;
         }
         if let Some(value) = velocity_measurement {
-            filter.update(value, config.velocity_sigma.powi(2), true)?;
+            filter.update(value, assumed_velocity_sigma.powi(2), true)?;
             last_velocity = value;
         }
         samples.push(Sample {

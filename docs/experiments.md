@@ -24,7 +24,7 @@ cargo run --locked -- --position-sigma 3 --output results/noisy-position.csv
 cargo run --locked -- --outage-start 5 --outage-end 25 --output results/long-outage.csv
 ```
 
-Changing process density adjusts the filter's motion uncertainty, not the robot's acceleration. Changing sensor sigma changes both generated noise and the filter's measurement covariance. A mismatch between true and assumed sensor noise is not yet configurable.
+Changing process density adjusts the filter's motion uncertainty, not the robot's acceleration. The existing sensor sigmas control actual noise and, when no assumed override is supplied, the matching filter covariance. Use `--assumed-position-sigma` and `--assumed-velocity-sigma` to change only estimator assumptions; each omitted override follows its own true sigma. For example, `--position-sigma 2 --assumed-position-sigma 1` generates 2 m noise but assumes 1 m. The [noise-mismatch lesson](learn/noise-mismatch.md) explains provenance, independent tests and the small fixed-seed demonstration. Service-created jobs retain matched noise; use CLI output/local CSV import for this initial feature.
 
 Use `--no-outage` for short experiments whose duration is below the default outage end. All durations and outage endpoints are whole seconds. `--output` requires a `.csv` extension; existing CSV and companion `.txt` files are overwritten.
 
