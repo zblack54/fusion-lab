@@ -1,0 +1,56 @@
+{
+  "status": "measured_with_remaining_acceptance_obligations",
+  "method_revision": "continuous-worker-b26f8554",
+  "loads": [
+    {
+      "index": 0,
+      "warmup": true,
+      "max_active_ms": 6.799999952316284,
+      "max_parsed_rows_between_yields": 639,
+      "allocated_numeric_bytes": 100800280
+    },
+    {
+      "index": 1,
+      "warmup": false,
+      "max_active_ms": 5.300000190734863,
+      "max_parsed_rows_between_yields": 651,
+      "allocated_numeric_bytes": 100800280
+    },
+    {
+      "index": 2,
+      "warmup": false,
+      "max_active_ms": 4.700000047683716,
+      "max_parsed_rows_between_yields": 651,
+      "allocated_numeric_bytes": 100800280
+    },
+    {
+      "index": 3,
+      "warmup": false,
+      "max_active_ms": 4.700000047683716,
+      "max_parsed_rows_between_yields": 644,
+      "allocated_numeric_bytes": 100800280
+    }
+  ],
+  "selection_reset_count": 50,
+  "explicit_prior_loading_count": 49,
+  "loading_control_p95_next_raf_proxy_ms": 72.29999995231628,
+  "loading_control_max_next_raf_proxy_ms": 74.79999995231628,
+  "final_retained_control_p95_next_raf_proxy_ms": 58.200000047683716,
+  "supported_main_thread_long_tasks": {
+    "count": 0,
+    "max_ms": 0
+  },
+  "lifetime_renderer_and_worker_rss_peak_bytes": 252489728,
+  "native_samples": 27351,
+  "native_elapsed_seconds": 158.56299999984913,
+  "native_max_sample_gap_seconds": 0.01600000006146729,
+  "native_sampling_errors": [],
+  "owned_renderer_exited": true,
+  "limitations": [
+    "NextRAF is a presentation proxy, not physical display proof.",
+    "Continuous timing subtracts only actual suspension of the load continuation; constant-size control callbacks are separately measured.",
+    "Prior snippet-only4.9ms evidence is preserved and cannot establish the whole-worker limit.",
+    "Native Windows/IAB reference observation is not a universal OS memory cap or Linux browser measurement.",
+    "Remaining lifecycle-failure/accessibility/browser and exact-head CI acceptance remains open."
+  ]
+}

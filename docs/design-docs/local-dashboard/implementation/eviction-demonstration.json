@@ -1,0 +1,47 @@
+{
+  "method": "Real service with existing controlled worker; this is lifecycle/error evidence, not numerical artifact evidence",
+  "child_listener_closed_after_UI_cancel": true,
+  "admitted": "run-2",
+  "terminal": {
+    "artifacts": [],
+    "config": {
+      "acceleration_density": 0.1,
+      "duration_seconds": 1,
+      "outage": null,
+      "position_sigma": 0,
+      "scenario": "straight",
+      "seed": 9002,
+      "velocity_sigma": 0
+    },
+    "error": {
+      "code": "worker_failed",
+      "message": "worker_failed"
+    },
+    "id": "run-2",
+    "samples": null,
+    "sequence": 1,
+    "state": "failed"
+  },
+  "list": [
+    {
+      "artifacts": [],
+      "config": {
+        "acceleration_density": 0.1,
+        "duration_seconds": 1,
+        "outage": null,
+        "position_sigma": 0,
+        "scenario": "straight",
+        "seed": 9002,
+        "velocity_sigma": 0
+      },
+      "error": {
+        "code": "worker_failed",
+        "message": "worker_failed"
+      },
+      "id": "run-2",
+      "samples": null,
+      "sequence": 1,
+      "state": "failed"
+    }
+  ]
+}

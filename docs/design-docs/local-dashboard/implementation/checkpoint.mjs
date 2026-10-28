@@ -10,5 +10,5 @@ async function inventory(directory){for(const entry of await readdir(directory,{
 for(const directory of ['crates/experiment-service/src','crates/experiment-service/web'])await inventory(directory);
 files.push('crates/experiment-service/Cargo.toml','crates/experiment-service/Cargo.lock');
 const hashes={};for(const file of files.sort())hashes[file]=createHash('sha256').update(await readFile(file)).digest('hex');
-const report={captured_utc:new Date().toISOString(),platform:process.platform,node:process.version,revision:git('rev-parse','HEAD'),dirty_worktree:git('status','--porcelain').length!==0,source_sha256:hashes,acceptance:'not accepted; native browser/resource and four-way CI evidence pending'};
+const report={captured_utc:new Date().toISOString(),platform:process.platform,node:process.version,revision:git('rev-parse','HEAD'),dirty_worktree:git('status','--porcelain').length!==0,source_sha256:hashes,acceptance:'source inventory only; final acceptance is separately recorded in acceptance.md'};
 const output=path.join(root,'docs/design-docs/local-dashboard/implementation/source-checkpoint.json');await writeFile(output,JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));

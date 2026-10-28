@@ -1,0 +1,2502 @@
+[
+  {
+    "index": 1,
+    "prior_status": "Recording ready · 96.13 MiB numeric buffers. Replay controls do not alter experiments.",
+    "status": "Loading recording: 146 rows parsed…",
+    "generation": 5,
+    "active_workers": 1,
+    "pending_selection": 1,
+    "reset_pending": true,
+    "worker": {
+      "yield_count": 683,
+      "max_slice_ms": 3.1000001430511475,
+      "max_active_work_before_yield_ms": 4.700000047683716,
+      "max_rows_between_yields": 644,
+      "parsed_rows": 360001,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.5,
+      "control_callback_max_ms": 0.09999990463256836,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 3.1000001430511475,
+          "total_ms": 2677.7000031471252
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0.2999999523162842,
+          "total_ms": 9.099999904632568
+        }
+      },
+      "numeric_buffers_bytes": 0,
+      "input_readers": 0,
+      "recording_owners": 0,
+      "parser_owners": 0,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 4,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 13.700000047683716,
+      "input_to_draw_ms": 13.700000047683716,
+      "input_to_next_raf_proxy_ms": 30.200000047683716,
+      "handler_to_next_raf_proxy_ms": 30.200000047683716
+    }
+  },
+  {
+    "index": 2,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading recording: 146 rows parsed…",
+    "generation": 6,
+    "active_workers": 1,
+    "pending_selection": 1,
+    "reset_pending": true,
+    "worker": {
+      "yield_count": 21,
+      "max_slice_ms": 2.0999999046325684,
+      "max_active_work_before_yield_ms": 5.1000001430511475,
+      "max_rows_between_yields": 618,
+      "parsed_rows": 9190,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.5,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 2.0999999046325684,
+          "total_ms": 84.20000004768372
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 2580480,
+      "input_readers": 1,
+      "recording_owners": 0,
+      "parser_owners": 1,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 5,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 12.899999856948853,
+      "input_to_draw_ms": 12.899999856948853,
+      "input_to_next_raf_proxy_ms": 29.09999990463257,
+      "handler_to_next_raf_proxy_ms": 29.09999990463257
+    }
+  },
+  {
+    "index": 3,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading recording: 146 rows parsed…",
+    "generation": 7,
+    "active_workers": 1,
+    "pending_selection": 0,
+    "reset_pending": false,
+    "worker": {
+      "yield_count": 0,
+      "max_slice_ms": 0.20000004768371582,
+      "max_active_work_before_yield_ms": 1.2999999523162842,
+      "max_rows_between_yields": 146,
+      "parsed_rows": 146,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.40000009536743164,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.20000004768371582,
+          "total_ms": 1.2000000476837158
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 286720,
+      "input_readers": 1,
+      "recording_owners": 0,
+      "parser_owners": 1,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 6,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 33.700000047683716,
+      "input_to_draw_ms": 33.700000047683716,
+      "input_to_next_raf_proxy_ms": 50.40000009536743,
+      "handler_to_next_raf_proxy_ms": 50.40000009536743
+    }
+  },
+  {
+    "index": 4,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading recording: 146 rows parsed…",
+    "generation": 7,
+    "active_workers": 1,
+    "pending_selection": 0,
+    "reset_pending": false,
+    "worker": {
+      "yield_count": 25,
+      "max_slice_ms": 0.3000001907348633,
+      "max_active_work_before_yield_ms": 4.1000001430511475,
+      "max_rows_between_yields": 633,
+      "parsed_rows": 13692,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.40000009536743164,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.3000001907348633,
+          "total_ms": 101.40000057220459
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 4014080,
+      "input_readers": 1,
+      "recording_owners": 0,
+      "parser_owners": 1,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 7,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 8.800000190734863,
+      "input_to_draw_ms": 8.800000190734863,
+      "input_to_next_raf_proxy_ms": 25.200000047683716,
+      "handler_to_next_raf_proxy_ms": 25.200000047683716
+    }
+  },
+  {
+    "index": 5,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading recording: 146 rows parsed…",
+    "generation": 8,
+    "active_workers": 1,
+    "pending_selection": 0,
+    "reset_pending": false,
+    "worker": {
+      "yield_count": 24,
+      "max_slice_ms": 0.39999985694885254,
+      "max_active_work_before_yield_ms": 4.1000001430511475,
+      "max_rows_between_yields": 636,
+      "parsed_rows": 13692,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.6000001430511475,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.39999985694885254,
+          "total_ms": 97.00000023841858
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 4014080,
+      "input_readers": 1,
+      "recording_owners": 0,
+      "parser_owners": 1,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 8,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 15.400000095367432,
+      "input_to_draw_ms": 15.400000095367432,
+      "input_to_next_raf_proxy_ms": 31.90000009536743,
+      "handler_to_next_raf_proxy_ms": 31.90000009536743
+    }
+  },
+  {
+    "index": 6,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading local CSV; no upload or experiment mutation.",
+    "generation": 9,
+    "active_workers": 1,
+    "pending_selection": 0,
+    "reset_pending": false,
+    "worker": {
+      "yield_count": 25,
+      "max_slice_ms": 0.3000001907348633,
+      "max_active_work_before_yield_ms": 4.299999952316284,
+      "max_rows_between_yields": 635,
+      "parsed_rows": 13692,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.6000001430511475,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.3000001907348633,
+          "total_ms": 97.80000066757202
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 4014080,
+      "input_readers": 1,
+      "recording_owners": 0,
+      "parser_owners": 1,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 9,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 15.5,
+      "input_to_draw_ms": 15.5,
+      "input_to_next_raf_proxy_ms": 31.90000009536743,
+      "handler_to_next_raf_proxy_ms": 31.90000009536743
+    }
+  },
+  {
+    "index": 7,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading recording: 146 rows parsed…",
+    "generation": 10,
+    "active_workers": 1,
+    "pending_selection": 0,
+    "reset_pending": false,
+    "worker": {
+      "yield_count": 25,
+      "max_slice_ms": 0.5,
+      "max_active_work_before_yield_ms": 4.200000047683716,
+      "max_rows_between_yields": 628,
+      "parsed_rows": 13692,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.5,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.5,
+          "total_ms": 100.89999985694885
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 4014080,
+      "input_readers": 1,
+      "recording_owners": 0,
+      "parser_owners": 1,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 10,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 55.5,
+      "input_to_draw_ms": 55.5,
+      "input_to_next_raf_proxy_ms": 72.29999995231628,
+      "handler_to_next_raf_proxy_ms": 72.29999995231628
+    }
+  },
+  {
+    "index": 8,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading recording: 146 rows parsed…",
+    "generation": 12,
+    "active_workers": 1,
+    "pending_selection": 1,
+    "reset_pending": true,
+    "worker": {
+      "yield_count": 24,
+      "max_slice_ms": 0.3000001907348633,
+      "max_active_work_before_yield_ms": 4.1000001430511475,
+      "max_rows_between_yields": 629,
+      "parsed_rows": 13692,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.5,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.3000001907348633,
+          "total_ms": 97.20000004768372
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 4014080,
+      "input_readers": 1,
+      "recording_owners": 0,
+      "parser_owners": 1,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 11,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 12.700000047683716,
+      "input_to_draw_ms": 12.700000047683716,
+      "input_to_next_raf_proxy_ms": 29,
+      "handler_to_next_raf_proxy_ms": 29
+    }
+  },
+  {
+    "index": 9,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading local CSV; no upload or experiment mutation.",
+    "generation": 12,
+    "active_workers": 1,
+    "pending_selection": 0,
+    "reset_pending": false,
+    "worker": {
+      "yield_count": 25,
+      "max_slice_ms": 0.3000001907348633,
+      "max_active_work_before_yield_ms": 4.1000001430511475,
+      "max_rows_between_yields": 633,
+      "parsed_rows": 13692,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.5,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.3000001907348633,
+          "total_ms": 98.40000033378601
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 4014080,
+      "input_readers": 1,
+      "recording_owners": 0,
+      "parser_owners": 1,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 12,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0.09999990463256836,
+      "handler_to_draw_ms": 35.700000047683716,
+      "input_to_draw_ms": 35.799999952316284,
+      "input_to_next_raf_proxy_ms": 52.40000009536743,
+      "handler_to_next_raf_proxy_ms": 52.30000019073486
+    }
+  },
+  {
+    "index": 10,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading local CSV; no upload or experiment mutation.",
+    "generation": 13,
+    "active_workers": 1,
+    "pending_selection": 0,
+    "reset_pending": false,
+    "worker": {
+      "yield_count": 25,
+      "max_slice_ms": 0.3000001907348633,
+      "max_active_work_before_yield_ms": 4.1000001430511475,
+      "max_rows_between_yields": 629,
+      "parsed_rows": 13692,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.5,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.3000001907348633,
+          "total_ms": 98.70000004768372
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 4014080,
+      "input_readers": 1,
+      "recording_owners": 0,
+      "parser_owners": 1,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 13,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 39.60000014305115,
+      "input_to_draw_ms": 39.60000014305115,
+      "input_to_next_raf_proxy_ms": 56.30000019073486,
+      "handler_to_next_raf_proxy_ms": 56.30000019073486
+    }
+  },
+  {
+    "index": 11,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading local CSV; no upload or experiment mutation.",
+    "generation": 14,
+    "active_workers": 1,
+    "pending_selection": 0,
+    "reset_pending": false,
+    "worker": {
+      "yield_count": 25,
+      "max_slice_ms": 0.5,
+      "max_active_work_before_yield_ms": 4.1000001430511475,
+      "max_rows_between_yields": 615,
+      "parsed_rows": 13692,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.40000009536743164,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.5,
+          "total_ms": 100.29999923706055
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 4014080,
+      "input_readers": 1,
+      "recording_owners": 0,
+      "parser_owners": 1,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 14,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0.10000014305114746,
+      "handler_to_draw_ms": 57.89999985694885,
+      "input_to_draw_ms": 58,
+      "input_to_next_raf_proxy_ms": 74.79999995231628,
+      "handler_to_next_raf_proxy_ms": 74.69999980926514
+    }
+  },
+  {
+    "index": 12,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading recording: 146 rows parsed…",
+    "generation": 16,
+    "active_workers": 1,
+    "pending_selection": 1,
+    "reset_pending": true,
+    "worker": {
+      "yield_count": 38,
+      "max_slice_ms": 0.5,
+      "max_active_work_before_yield_ms": 4.1000001430511475,
+      "max_rows_between_yields": 617,
+      "parsed_rows": 19631,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.40000009536743164,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.5,
+          "total_ms": 147.60000157356262
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 0,
+      "input_readers": 0,
+      "recording_owners": 0,
+      "parser_owners": 0,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 15,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 12.299999952316284,
+      "input_to_draw_ms": 12.299999952316284,
+      "input_to_next_raf_proxy_ms": 27.899999856948853,
+      "handler_to_next_raf_proxy_ms": 27.899999856948853
+    }
+  },
+  {
+    "index": 13,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading recording: 146 rows parsed…",
+    "generation": 17,
+    "active_workers": 1,
+    "pending_selection": 1,
+    "reset_pending": true,
+    "worker": {
+      "yield_count": 39,
+      "max_slice_ms": 0.5,
+      "max_active_work_before_yield_ms": 4.1000001430511475,
+      "max_rows_between_yields": 618,
+      "parsed_rows": 20773,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.40000009536743164,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.5,
+          "total_ms": 152.60000109672546
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 0,
+      "input_readers": 0,
+      "recording_owners": 0,
+      "parser_owners": 0,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 16,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 13.200000047683716,
+      "input_to_draw_ms": 13.200000047683716,
+      "input_to_next_raf_proxy_ms": 29.59999990463257,
+      "handler_to_next_raf_proxy_ms": 29.59999990463257
+    }
+  },
+  {
+    "index": 14,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading recording: 146 rows parsed…",
+    "generation": 18,
+    "active_workers": 1,
+    "pending_selection": 0,
+    "reset_pending": false,
+    "worker": {
+      "yield_count": 0,
+      "max_slice_ms": 0.20000004768371582,
+      "max_active_work_before_yield_ms": 1.2000000476837158,
+      "max_rows_between_yields": 146,
+      "parsed_rows": 146,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.5,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.20000004768371582,
+          "total_ms": 1.2000000476837158
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 286720,
+      "input_readers": 1,
+      "recording_owners": 0,
+      "parser_owners": 1,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 17,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0.09999990463256836,
+      "handler_to_draw_ms": 14.5,
+      "input_to_draw_ms": 14.599999904632568,
+      "input_to_next_raf_proxy_ms": 30.899999856948853,
+      "handler_to_next_raf_proxy_ms": 30.799999952316284
+    }
+  },
+  {
+    "index": 15,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading recording: 146 rows parsed…",
+    "generation": 19,
+    "active_workers": 1,
+    "pending_selection": 0,
+    "reset_pending": false,
+    "worker": {
+      "yield_count": 0,
+      "max_slice_ms": 0.20000004768371582,
+      "max_active_work_before_yield_ms": 1.2999999523162842,
+      "max_rows_between_yields": 146,
+      "parsed_rows": 146,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.5,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.20000004768371582,
+          "total_ms": 1.2000000476837158
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 286720,
+      "input_readers": 1,
+      "recording_owners": 0,
+      "parser_owners": 1,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 18,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 13.899999856948853,
+      "input_to_draw_ms": 13.899999856948853,
+      "input_to_next_raf_proxy_ms": 30.299999952316284,
+      "handler_to_next_raf_proxy_ms": 30.299999952316284
+    }
+  },
+  {
+    "index": 16,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading recording: 146 rows parsed…",
+    "generation": 20,
+    "active_workers": 1,
+    "pending_selection": 1,
+    "reset_pending": true,
+    "worker": {
+      "yield_count": 25,
+      "max_slice_ms": 0.5,
+      "max_active_work_before_yield_ms": 4.299999952316284,
+      "max_rows_between_yields": 618,
+      "parsed_rows": 13692,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.5,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.5,
+          "total_ms": 99.69999957084656
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 4014080,
+      "input_readers": 1,
+      "recording_owners": 0,
+      "parser_owners": 1,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 19,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 16.799999952316284,
+      "input_to_draw_ms": 16.799999952316284,
+      "input_to_next_raf_proxy_ms": 33,
+      "handler_to_next_raf_proxy_ms": 33
+    }
+  },
+  {
+    "index": 17,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading recording: 146 rows parsed…",
+    "generation": 21,
+    "active_workers": 1,
+    "pending_selection": 0,
+    "reset_pending": false,
+    "worker": {
+      "yield_count": 0,
+      "max_slice_ms": 0.20000004768371582,
+      "max_active_work_before_yield_ms": 1.2999999523162842,
+      "max_rows_between_yields": 146,
+      "parsed_rows": 146,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.5,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.20000004768371582,
+          "total_ms": 1.2999999523162842
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 286720,
+      "input_readers": 1,
+      "recording_owners": 0,
+      "parser_owners": 1,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 20,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 36.90000009536743,
+      "input_to_draw_ms": 36.90000009536743,
+      "input_to_next_raf_proxy_ms": 53.5,
+      "handler_to_next_raf_proxy_ms": 53.5
+    }
+  },
+  {
+    "index": 18,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading recording: 146 rows parsed…",
+    "generation": 22,
+    "active_workers": 1,
+    "pending_selection": 1,
+    "reset_pending": true,
+    "worker": {
+      "yield_count": 40,
+      "max_slice_ms": 0.3000001907348633,
+      "max_active_work_before_yield_ms": 4.799999952316284,
+      "max_rows_between_yields": 633,
+      "parsed_rows": 21441,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.5,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.3000001907348633,
+          "total_ms": 156.7999987602234
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 0,
+      "input_readers": 0,
+      "recording_owners": 0,
+      "parser_owners": 0,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 21,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 8.599999904632568,
+      "input_to_draw_ms": 8.599999904632568,
+      "input_to_next_raf_proxy_ms": 25,
+      "handler_to_next_raf_proxy_ms": 25
+    }
+  },
+  {
+    "index": 19,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading recording: 146 rows parsed…",
+    "generation": 23,
+    "active_workers": 1,
+    "pending_selection": 1,
+    "reset_pending": true,
+    "worker": {
+      "yield_count": 39,
+      "max_slice_ms": 1.1000001430511475,
+      "max_active_work_before_yield_ms": 4.299999952316284,
+      "max_rows_between_yields": 615,
+      "parsed_rows": 20597,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.5,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 1.1000001430511475,
+          "total_ms": 152.50000023841858
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 0,
+      "input_readers": 0,
+      "recording_owners": 0,
+      "parser_owners": 0,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 22,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 15,
+      "input_to_draw_ms": 15,
+      "input_to_next_raf_proxy_ms": 31.299999952316284,
+      "handler_to_next_raf_proxy_ms": 31.299999952316284
+    }
+  },
+  {
+    "index": 20,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading local CSV; no upload or experiment mutation.",
+    "generation": 23,
+    "active_workers": 1,
+    "pending_selection": 0,
+    "reset_pending": false,
+    "worker": {
+      "yield_count": 25,
+      "max_slice_ms": 0.40000009536743164,
+      "max_active_work_before_yield_ms": 4.099999904632568,
+      "max_rows_between_yields": 629,
+      "parsed_rows": 13692,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.5,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.40000009536743164,
+          "total_ms": 98.1999990940094
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 4014080,
+      "input_readers": 1,
+      "recording_owners": 0,
+      "parser_owners": 1,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 23,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 36.200000047683716,
+      "input_to_draw_ms": 36.200000047683716,
+      "input_to_next_raf_proxy_ms": 52.90000009536743,
+      "handler_to_next_raf_proxy_ms": 52.90000009536743
+    }
+  },
+  {
+    "index": 21,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading local CSV; no upload or experiment mutation.",
+    "generation": 24,
+    "active_workers": 1,
+    "pending_selection": 0,
+    "reset_pending": false,
+    "worker": {
+      "yield_count": 25,
+      "max_slice_ms": 0.7000000476837158,
+      "max_active_work_before_yield_ms": 4.1000001430511475,
+      "max_rows_between_yields": 629,
+      "parsed_rows": 13692,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.5,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.7000000476837158,
+          "total_ms": 97.39999961853027
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 4014080,
+      "input_readers": 1,
+      "recording_owners": 0,
+      "parser_owners": 1,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 24,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 54.299999952316284,
+      "input_to_draw_ms": 54.299999952316284,
+      "input_to_next_raf_proxy_ms": 71.09999990463257,
+      "handler_to_next_raf_proxy_ms": 71.09999990463257
+    }
+  },
+  {
+    "index": 22,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading recording: 146 rows parsed…",
+    "generation": 26,
+    "active_workers": 1,
+    "pending_selection": 0,
+    "reset_pending": false,
+    "worker": {
+      "yield_count": 0,
+      "max_slice_ms": 0.20000004768371582,
+      "max_active_work_before_yield_ms": 1.2999999523162842,
+      "max_rows_between_yields": 146,
+      "parsed_rows": 146,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.5,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.20000004768371582,
+          "total_ms": 1.2999999523162842
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 286720,
+      "input_readers": 1,
+      "recording_owners": 0,
+      "parser_owners": 1,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 25,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 9.900000095367432,
+      "input_to_draw_ms": 9.900000095367432,
+      "input_to_next_raf_proxy_ms": 26.40000009536743,
+      "handler_to_next_raf_proxy_ms": 26.40000009536743
+    }
+  },
+  {
+    "index": 23,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading recording: 146 rows parsed…",
+    "generation": 27,
+    "active_workers": 1,
+    "pending_selection": 1,
+    "reset_pending": true,
+    "worker": {
+      "yield_count": 41,
+      "max_slice_ms": 0.6999998092651367,
+      "max_active_work_before_yield_ms": 4.1000001430511475,
+      "max_rows_between_yields": 636,
+      "parsed_rows": 21880,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.5999999046325684,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.6999998092651367,
+          "total_ms": 160.79999947547913
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 0,
+      "input_readers": 0,
+      "recording_owners": 0,
+      "parser_owners": 0,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 26,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 11.200000047683716,
+      "input_to_draw_ms": 11.200000047683716,
+      "input_to_next_raf_proxy_ms": 27.5,
+      "handler_to_next_raf_proxy_ms": 27.5
+    }
+  },
+  {
+    "index": 24,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading local CSV; no upload or experiment mutation.",
+    "generation": 27,
+    "active_workers": 1,
+    "pending_selection": 0,
+    "reset_pending": false,
+    "worker": {
+      "yield_count": 25,
+      "max_slice_ms": 0.3000001907348633,
+      "max_active_work_before_yield_ms": 4.199999809265137,
+      "max_rows_between_yields": 615,
+      "parsed_rows": 13692,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.39999985694885254,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.3000001907348633,
+          "total_ms": 99.5
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 4014080,
+      "input_readers": 1,
+      "recording_owners": 0,
+      "parser_owners": 1,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 27,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 16.59999990463257,
+      "input_to_draw_ms": 16.59999990463257,
+      "input_to_next_raf_proxy_ms": 32.69999980926514,
+      "handler_to_next_raf_proxy_ms": 32.69999980926514
+    }
+  },
+  {
+    "index": 25,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading recording: 146 rows parsed…",
+    "generation": 28,
+    "active_workers": 1,
+    "pending_selection": 0,
+    "reset_pending": false,
+    "worker": {
+      "yield_count": 25,
+      "max_slice_ms": 0.3000001907348633,
+      "max_active_work_before_yield_ms": 4.1000001430511475,
+      "max_rows_between_yields": 628,
+      "parsed_rows": 13692,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.5,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.3000001907348633,
+          "total_ms": 100
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 4014080,
+      "input_readers": 1,
+      "recording_owners": 0,
+      "parser_owners": 1,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 28,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 55.09999990463257,
+      "input_to_draw_ms": 55.09999990463257,
+      "input_to_next_raf_proxy_ms": 72,
+      "handler_to_next_raf_proxy_ms": 72
+    }
+  },
+  {
+    "index": 26,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading recording: 146 rows parsed…",
+    "generation": 30,
+    "active_workers": 1,
+    "pending_selection": 1,
+    "reset_pending": true,
+    "worker": {
+      "yield_count": 40,
+      "max_slice_ms": 0.3000001907348633,
+      "max_active_work_before_yield_ms": 4.1000001430511475,
+      "max_rows_between_yields": 615,
+      "parsed_rows": 21476,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.40000009536743164,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.3000001907348633,
+          "total_ms": 155.99999952316284
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 0,
+      "input_readers": 0,
+      "recording_owners": 0,
+      "parser_owners": 0,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 29,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 9.799999952316284,
+      "input_to_draw_ms": 9.799999952316284,
+      "input_to_next_raf_proxy_ms": 25.200000047683716,
+      "handler_to_next_raf_proxy_ms": 25.200000047683716
+    }
+  },
+  {
+    "index": 27,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading recording: 146 rows parsed…",
+    "generation": 31,
+    "active_workers": 1,
+    "pending_selection": 1,
+    "reset_pending": true,
+    "worker": {
+      "yield_count": 40,
+      "max_slice_ms": 0.2999999523162842,
+      "max_active_work_before_yield_ms": 4.3999998569488525,
+      "max_rows_between_yields": 618,
+      "parsed_rows": 21546,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.5,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.2999999523162842,
+          "total_ms": 157.2999997138977
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 0,
+      "input_readers": 0,
+      "recording_owners": 0,
+      "parser_owners": 0,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 30,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 15.799999952316284,
+      "input_to_draw_ms": 15.799999952316284,
+      "input_to_next_raf_proxy_ms": 32.09999990463257,
+      "handler_to_next_raf_proxy_ms": 32.09999990463257
+    }
+  },
+  {
+    "index": 28,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading recording: 146 rows parsed…",
+    "generation": 31,
+    "active_workers": 1,
+    "pending_selection": 0,
+    "reset_pending": false,
+    "worker": {
+      "yield_count": 25,
+      "max_slice_ms": 0.5,
+      "max_active_work_before_yield_ms": 4.1000001430511475,
+      "max_rows_between_yields": 636,
+      "parsed_rows": 13692,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.5,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.5,
+          "total_ms": 101.29999995231628
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 4014080,
+      "input_readers": 1,
+      "recording_owners": 0,
+      "parser_owners": 1,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 31,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 7.3999998569488525,
+      "input_to_draw_ms": 7.3999998569488525,
+      "input_to_next_raf_proxy_ms": 22.199999809265137,
+      "handler_to_next_raf_proxy_ms": 22.199999809265137
+    }
+  },
+  {
+    "index": 29,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading recording: 146 rows parsed…",
+    "generation": 33,
+    "active_workers": 1,
+    "pending_selection": 0,
+    "reset_pending": false,
+    "worker": {
+      "yield_count": 0,
+      "max_slice_ms": 0.20000004768371582,
+      "max_active_work_before_yield_ms": 1.2000000476837158,
+      "max_rows_between_yields": 146,
+      "parsed_rows": 146,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.5,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.20000004768371582,
+          "total_ms": 1.2000000476837158
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 286720,
+      "input_readers": 1,
+      "recording_owners": 0,
+      "parser_owners": 1,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 32,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 12.599999904632568,
+      "input_to_draw_ms": 12.599999904632568,
+      "input_to_next_raf_proxy_ms": 29,
+      "handler_to_next_raf_proxy_ms": 29
+    }
+  },
+  {
+    "index": 30,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading recording: 146 rows parsed…",
+    "generation": 34,
+    "active_workers": 1,
+    "pending_selection": 0,
+    "reset_pending": false,
+    "worker": {
+      "yield_count": 0,
+      "max_slice_ms": 0.20000004768371582,
+      "max_active_work_before_yield_ms": 1.3000001907348633,
+      "max_rows_between_yields": 146,
+      "parsed_rows": 146,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.39999985694885254,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.20000004768371582,
+          "total_ms": 1.2000000476837158
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 286720,
+      "input_readers": 1,
+      "recording_owners": 0,
+      "parser_owners": 1,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 33,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 2.8000001907348633,
+      "input_to_draw_ms": 2.8000001907348633,
+      "input_to_next_raf_proxy_ms": 18,
+      "handler_to_next_raf_proxy_ms": 18
+    }
+  },
+  {
+    "index": 31,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading local CSV; no upload or experiment mutation.",
+    "generation": 34,
+    "active_workers": 1,
+    "pending_selection": 0,
+    "reset_pending": false,
+    "worker": {
+      "yield_count": 25,
+      "max_slice_ms": 0.5,
+      "max_active_work_before_yield_ms": 4.1000001430511475,
+      "max_rows_between_yields": 646,
+      "parsed_rows": 13692,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.39999985694885254,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.5,
+          "total_ms": 100.70000004768372
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 4014080,
+      "input_readers": 1,
+      "recording_owners": 0,
+      "parser_owners": 1,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 34,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 9.299999952316284,
+      "input_to_draw_ms": 9.299999952316284,
+      "input_to_next_raf_proxy_ms": 25.59999990463257,
+      "handler_to_next_raf_proxy_ms": 25.59999990463257
+    }
+  },
+  {
+    "index": 32,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading local CSV; no upload or experiment mutation.",
+    "generation": 35,
+    "active_workers": 1,
+    "pending_selection": 0,
+    "reset_pending": false,
+    "worker": {
+      "yield_count": 26,
+      "max_slice_ms": 0.9000000953674316,
+      "max_active_work_before_yield_ms": 4.099999904632568,
+      "max_rows_between_yields": 615,
+      "parsed_rows": 13692,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.5,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.9000000953674316,
+          "total_ms": 105.40000009536743
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 4014080,
+      "input_readers": 1,
+      "recording_owners": 0,
+      "parser_owners": 1,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 35,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 16.200000047683716,
+      "input_to_draw_ms": 16.200000047683716,
+      "input_to_next_raf_proxy_ms": 32.5,
+      "handler_to_next_raf_proxy_ms": 32.5
+    }
+  },
+  {
+    "index": 33,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading recording: 146 rows parsed…",
+    "generation": 36,
+    "active_workers": 1,
+    "pending_selection": 0,
+    "reset_pending": false,
+    "worker": {
+      "yield_count": 24,
+      "max_slice_ms": 0.3000001907348633,
+      "max_active_work_before_yield_ms": 4.1000001430511475,
+      "max_rows_between_yields": 632,
+      "parsed_rows": 13692,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.5,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.3000001907348633,
+          "total_ms": 95.40000033378601
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 4014080,
+      "input_readers": 1,
+      "recording_owners": 0,
+      "parser_owners": 1,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 36,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 38.5,
+      "input_to_draw_ms": 38.5,
+      "input_to_next_raf_proxy_ms": 55,
+      "handler_to_next_raf_proxy_ms": 55
+    }
+  },
+  {
+    "index": 34,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading local CSV; no upload or experiment mutation.",
+    "generation": 37,
+    "active_workers": 1,
+    "pending_selection": 0,
+    "reset_pending": false,
+    "worker": {
+      "yield_count": 25,
+      "max_slice_ms": 0.3000001907348633,
+      "max_active_work_before_yield_ms": 4.1000001430511475,
+      "max_rows_between_yields": 620,
+      "parsed_rows": 13692,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.39999985694885254,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.3000001907348633,
+          "total_ms": 97.40000009536743
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 4014080,
+      "input_readers": 1,
+      "recording_owners": 0,
+      "parser_owners": 1,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 37,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 9.300000190734863,
+      "input_to_draw_ms": 9.300000190734863,
+      "input_to_next_raf_proxy_ms": 24.5,
+      "handler_to_next_raf_proxy_ms": 24.5
+    }
+  },
+  {
+    "index": 35,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading recording: 146 rows parsed…",
+    "generation": 39,
+    "active_workers": 1,
+    "pending_selection": 0,
+    "reset_pending": false,
+    "worker": {
+      "yield_count": 0,
+      "max_slice_ms": 0.2999999523162842,
+      "max_active_work_before_yield_ms": 1.2999999523162842,
+      "max_rows_between_yields": 146,
+      "parsed_rows": 146,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.5,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.2999999523162842,
+          "total_ms": 1.2999999523162842
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 286720,
+      "input_readers": 1,
+      "recording_owners": 0,
+      "parser_owners": 1,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 38,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 14.099999904632568,
+      "input_to_draw_ms": 14.099999904632568,
+      "input_to_next_raf_proxy_ms": 29.59999990463257,
+      "handler_to_next_raf_proxy_ms": 29.59999990463257
+    }
+  },
+  {
+    "index": 36,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading recording: 146 rows parsed…",
+    "generation": 40,
+    "active_workers": 1,
+    "pending_selection": 1,
+    "reset_pending": true,
+    "worker": {
+      "yield_count": 26,
+      "max_slice_ms": 0.5,
+      "max_active_work_before_yield_ms": 4.1000001430511475,
+      "max_rows_between_yields": 629,
+      "parsed_rows": 13692,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.5,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.5,
+          "total_ms": 102.2999997138977
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 4014080,
+      "input_readers": 1,
+      "recording_owners": 0,
+      "parser_owners": 1,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 39,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 7.8999998569488525,
+      "input_to_draw_ms": 7.8999998569488525,
+      "input_to_next_raf_proxy_ms": 24,
+      "handler_to_next_raf_proxy_ms": 24
+    }
+  },
+  {
+    "index": 37,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading recording: 146 rows parsed…",
+    "generation": 41,
+    "active_workers": 1,
+    "pending_selection": 1,
+    "reset_pending": true,
+    "worker": {
+      "yield_count": 25,
+      "max_slice_ms": 0.3000001907348633,
+      "max_active_work_before_yield_ms": 4.299999952316284,
+      "max_rows_between_yields": 618,
+      "parsed_rows": 13692,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.7000000476837158,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.3000001907348633,
+          "total_ms": 100.70000004768372
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 4014080,
+      "input_readers": 1,
+      "recording_owners": 0,
+      "parser_owners": 1,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 40,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0.09999990463256836,
+      "handler_to_draw_ms": 35.799999952316284,
+      "input_to_draw_ms": 35.89999985694885,
+      "input_to_next_raf_proxy_ms": 52.59999990463257,
+      "handler_to_next_raf_proxy_ms": 52.5
+    }
+  },
+  {
+    "index": 38,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading local CSV; no upload or experiment mutation.",
+    "generation": 41,
+    "active_workers": 1,
+    "pending_selection": 0,
+    "reset_pending": false,
+    "worker": {
+      "yield_count": 25,
+      "max_slice_ms": 0.3000001907348633,
+      "max_active_work_before_yield_ms": 4.199999809265137,
+      "max_rows_between_yields": 617,
+      "parsed_rows": 13692,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.6000001430511475,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.3000001907348633,
+          "total_ms": 101.00000023841858
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 4014080,
+      "input_readers": 1,
+      "recording_owners": 0,
+      "parser_owners": 1,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 41,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 37.700000047683716,
+      "input_to_draw_ms": 37.700000047683716,
+      "input_to_next_raf_proxy_ms": 54.30000019073486,
+      "handler_to_next_raf_proxy_ms": 54.30000019073486
+    }
+  },
+  {
+    "index": 39,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading recording: 146 rows parsed…",
+    "generation": 42,
+    "active_workers": 1,
+    "pending_selection": 0,
+    "reset_pending": false,
+    "worker": {
+      "yield_count": 25,
+      "max_slice_ms": 0.3000001907348633,
+      "max_active_work_before_yield_ms": 4.3999998569488525,
+      "max_rows_between_yields": 618,
+      "parsed_rows": 13692,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.5,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.3000001907348633,
+          "total_ms": 100.99999976158142
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 4014080,
+      "input_readers": 1,
+      "recording_owners": 0,
+      "parser_owners": 1,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 42,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 37.89999985694885,
+      "input_to_draw_ms": 37.89999985694885,
+      "input_to_next_raf_proxy_ms": 54.59999990463257,
+      "handler_to_next_raf_proxy_ms": 54.59999990463257
+    }
+  },
+  {
+    "index": 40,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading recording: 146 rows parsed…",
+    "generation": 44,
+    "active_workers": 1,
+    "pending_selection": 0,
+    "reset_pending": false,
+    "worker": {
+      "yield_count": 0,
+      "max_slice_ms": 0.20000004768371582,
+      "max_active_work_before_yield_ms": 1.2999999523162842,
+      "max_rows_between_yields": 146,
+      "parsed_rows": 146,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.40000009536743164,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.20000004768371582,
+          "total_ms": 1.2999999523162842
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 286720,
+      "input_readers": 1,
+      "recording_owners": 0,
+      "parser_owners": 1,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 43,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 10.399999856948853,
+      "input_to_draw_ms": 10.399999856948853,
+      "input_to_next_raf_proxy_ms": 25,
+      "handler_to_next_raf_proxy_ms": 25
+    }
+  },
+  {
+    "index": 41,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading local CSV; no upload or experiment mutation.",
+    "generation": 44,
+    "active_workers": 1,
+    "pending_selection": 0,
+    "reset_pending": false,
+    "worker": {
+      "yield_count": 25,
+      "max_slice_ms": 0.5,
+      "max_active_work_before_yield_ms": 4.299999952316284,
+      "max_rows_between_yields": 654,
+      "parsed_rows": 13692,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.40000009536743164,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.5,
+          "total_ms": 99.19999980926514
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 4014080,
+      "input_readers": 1,
+      "recording_owners": 0,
+      "parser_owners": 1,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 44,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 11.400000095367432,
+      "input_to_draw_ms": 11.400000095367432,
+      "input_to_next_raf_proxy_ms": 27.5,
+      "handler_to_next_raf_proxy_ms": 27.5
+    }
+  },
+  {
+    "index": 42,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading recording: 146 rows parsed…",
+    "generation": 46,
+    "active_workers": 1,
+    "pending_selection": 0,
+    "reset_pending": false,
+    "worker": {
+      "yield_count": 38,
+      "max_slice_ms": 0.2999999523162842,
+      "max_active_work_before_yield_ms": 4.1000001430511475,
+      "max_rows_between_yields": 618,
+      "parsed_rows": 20562,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.5,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.2999999523162842,
+          "total_ms": 147.90000009536743
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 0,
+      "input_readers": 0,
+      "recording_owners": 0,
+      "parser_owners": 0,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 45,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 17.600000143051147,
+      "input_to_draw_ms": 17.600000143051147,
+      "input_to_next_raf_proxy_ms": 32.60000014305115,
+      "handler_to_next_raf_proxy_ms": 32.60000014305115
+    }
+  },
+  {
+    "index": 43,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading recording: 146 rows parsed…",
+    "generation": 47,
+    "active_workers": 1,
+    "pending_selection": 1,
+    "reset_pending": true,
+    "worker": {
+      "yield_count": 39,
+      "max_slice_ms": 0.3000001907348633,
+      "max_active_work_before_yield_ms": 4.6000001430511475,
+      "max_rows_between_yields": 615,
+      "parsed_rows": 20949,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.5999999046325684,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.3000001907348633,
+          "total_ms": 152.80000042915344
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 0,
+      "input_readers": 0,
+      "recording_owners": 0,
+      "parser_owners": 0,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 46,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 5.200000047683716,
+      "input_to_draw_ms": 5.200000047683716,
+      "input_to_next_raf_proxy_ms": 21.600000143051147,
+      "handler_to_next_raf_proxy_ms": 21.600000143051147
+    }
+  },
+  {
+    "index": 44,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading local CSV; no upload or experiment mutation.",
+    "generation": 47,
+    "active_workers": 1,
+    "pending_selection": 0,
+    "reset_pending": false,
+    "worker": {
+      "yield_count": 25,
+      "max_slice_ms": 0.40000009536743164,
+      "max_active_work_before_yield_ms": 4.1000001430511475,
+      "max_rows_between_yields": 611,
+      "parsed_rows": 13692,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.5,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.40000009536743164,
+          "total_ms": 101.70000004768372
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 4014080,
+      "input_readers": 1,
+      "recording_owners": 0,
+      "parser_owners": 1,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 47,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 8.5,
+      "input_to_draw_ms": 8.5,
+      "input_to_next_raf_proxy_ms": 23.199999809265137,
+      "handler_to_next_raf_proxy_ms": 23.199999809265137
+    }
+  },
+  {
+    "index": 45,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading local CSV; no upload or experiment mutation.",
+    "generation": 48,
+    "active_workers": 1,
+    "pending_selection": 0,
+    "reset_pending": false,
+    "worker": {
+      "yield_count": 26,
+      "max_slice_ms": 1.2000000476837158,
+      "max_active_work_before_yield_ms": 4.5,
+      "max_rows_between_yields": 615,
+      "parsed_rows": 13692,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.6000001430511475,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 1.2000000476837158,
+          "total_ms": 103.50000095367432
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 4014080,
+      "input_readers": 1,
+      "recording_owners": 0,
+      "parser_owners": 1,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 48,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 41.700000047683716,
+      "input_to_draw_ms": 41.700000047683716,
+      "input_to_next_raf_proxy_ms": 58.200000047683716,
+      "handler_to_next_raf_proxy_ms": 58.200000047683716
+    }
+  },
+  {
+    "index": 46,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading recording: 146 rows parsed…",
+    "generation": 50,
+    "active_workers": 1,
+    "pending_selection": 0,
+    "reset_pending": false,
+    "worker": {
+      "yield_count": 0,
+      "max_slice_ms": 0.20000004768371582,
+      "max_active_work_before_yield_ms": 1.2999999523162842,
+      "max_rows_between_yields": 146,
+      "parsed_rows": 146,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.40000009536743164,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.20000004768371582,
+          "total_ms": 1.2999999523162842
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 286720,
+      "input_readers": 1,
+      "recording_owners": 0,
+      "parser_owners": 1,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 49,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 12.799999952316284,
+      "input_to_draw_ms": 12.799999952316284,
+      "input_to_next_raf_proxy_ms": 27.90000009536743,
+      "handler_to_next_raf_proxy_ms": 27.90000009536743
+    }
+  },
+  {
+    "index": 47,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading recording: 146 rows parsed…",
+    "generation": 51,
+    "active_workers": 1,
+    "pending_selection": 1,
+    "reset_pending": true,
+    "worker": {
+      "yield_count": 25,
+      "max_slice_ms": 0.5,
+      "max_active_work_before_yield_ms": 4.099999904632568,
+      "max_rows_between_yields": 619,
+      "parsed_rows": 13692,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.40000009536743164,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.5,
+          "total_ms": 99.59999966621399
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 4014080,
+      "input_readers": 1,
+      "recording_owners": 0,
+      "parser_owners": 1,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 50,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 11.100000143051147,
+      "input_to_draw_ms": 11.100000143051147,
+      "input_to_next_raf_proxy_ms": 27.299999952316284,
+      "handler_to_next_raf_proxy_ms": 27.299999952316284
+    }
+  },
+  {
+    "index": 48,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading local CSV; no upload or experiment mutation.",
+    "generation": 51,
+    "active_workers": 1,
+    "pending_selection": 0,
+    "reset_pending": false,
+    "worker": {
+      "yield_count": 25,
+      "max_slice_ms": 0.3000001907348633,
+      "max_active_work_before_yield_ms": 4.1000001430511475,
+      "max_rows_between_yields": 615,
+      "parsed_rows": 13692,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.5,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.3000001907348633,
+          "total_ms": 99.70000100135803
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 4014080,
+      "input_readers": 1,
+      "recording_owners": 0,
+      "parser_owners": 1,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 51,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 35.09999990463257,
+      "input_to_draw_ms": 35.09999990463257,
+      "input_to_next_raf_proxy_ms": 51.799999952316284,
+      "handler_to_next_raf_proxy_ms": 51.799999952316284
+    }
+  },
+  {
+    "index": 49,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading recording: 146 rows parsed…",
+    "generation": 52,
+    "active_workers": 1,
+    "pending_selection": 0,
+    "reset_pending": false,
+    "worker": {
+      "yield_count": 25,
+      "max_slice_ms": 0.6000001430511475,
+      "max_active_work_before_yield_ms": 4.1000001430511475,
+      "max_rows_between_yields": 617,
+      "parsed_rows": 13692,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.6000001430511475,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.6000001430511475,
+          "total_ms": 99.80000042915344
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 4014080,
+      "input_readers": 1,
+      "recording_owners": 0,
+      "parser_owners": 1,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 52,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 56.69999980926514,
+      "input_to_draw_ms": 56.69999980926514,
+      "input_to_next_raf_proxy_ms": 73.5,
+      "handler_to_next_raf_proxy_ms": 73.5
+    }
+  },
+  {
+    "index": 50,
+    "prior_status": "Loading recording: 146 rows parsed…",
+    "status": "Loading recording: 146 rows parsed…",
+    "generation": 53,
+    "active_workers": 1,
+    "pending_selection": 0,
+    "reset_pending": false,
+    "worker": {
+      "yield_count": 25,
+      "max_slice_ms": 0.7000000476837158,
+      "max_active_work_before_yield_ms": 4.1000001430511475,
+      "max_rows_between_yields": 629,
+      "parsed_rows": 13692,
+      "yield_trigger_ms": 4,
+      "approved_work_budget_ms": 8,
+      "excluded_await_idle_ms": 0.6999998092651367,
+      "control_callback_max_ms": 0,
+      "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+      "phases": {
+        "csv": {
+          "max_slice_ms": 0.7000000476837158,
+          "total_ms": 100.30000042915344
+        },
+        "finish": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        },
+        "plot": {
+          "max_slice_ms": 0,
+          "total_ms": 0
+        }
+      },
+      "numeric_buffers_bytes": 4014080,
+      "input_readers": 1,
+      "recording_owners": 0,
+      "parser_owners": 1,
+      "frame_in_flight": 0,
+      "coalesced_frame_pending": 0
+    },
+    "control_total": 53,
+    "last_control_sample": {
+      "type": "resetInput",
+      "event_queue_delay_ms": 0,
+      "handler_to_draw_ms": 8.700000047683716,
+      "input_to_draw_ms": 8.700000047683716,
+      "input_to_next_raf_proxy_ms": 24.100000143051147,
+      "handler_to_next_raf_proxy_ms": 24.100000143051147
+    }
+  }
+]

@@ -2,7 +2,7 @@
 
 Reproducible Rust experiments that estimate a moving robot's position from noisy position and velocity sensors, then measure what happens when its position beacon goes offline.
 
-The v0.1 CLI compares a linear Kalman filter with last-position hold and measured-velocity integration. It records ground truth, observations, estimates, and full covariance at 100 Hz. A browser dashboard and asynchronous sensor delivery are planned for v0.2 and v0.3.
+The v0.1 CLI compares a linear Kalman filter with last-position hold and measured-velocity integration. It records ground truth, observations, estimates, and full covariance at 100 Hz. The local application adds recorded-result inspection and replay; asynchronous sensor delivery remains planned for v0.3.
 
 ## Quick start
 
@@ -26,6 +26,19 @@ cargo run --locked -- --scenario straight --no-outage --position-sigma 0 --veloc
 cargo run --locked -- --help
 ```
 
+## Local browser application
+
+Build the numerical CLI first, then start the loopback service from the repository root:
+
+```sh
+cargo build --locked
+cargo run --manifest-path crates/experiment-service/Cargo.toml --locked -- --bind 127.0.0.1:8080
+```
+
+Open [the local dashboard](http://127.0.0.1:8080/). Create a healthy or outage experiment, select a completed run, or import a local CSV without uploading it. Playback controls move over recorded samples; they do not pause or restart the numerical job. Cancel is a separate explicit action. Position observations appear on the XY plot; exact velocity observations and sensor status are available in the sample panel.
+
+The service requires an empty artifact root and serves transient results. Ctrl+C cancels/reaps owned work and shuts it down. Inspect leftovers after a crash or choose a new empty `--artifact-root`; do not delete an unknown directory to make startup pass. Read the [service guide](crates/experiment-service/README.md) and [dashboard lesson](docs/learn/dashboard.md) for limits, evidence and local review instructions.
+
 ## Model and scope
 
 - World-frame state `[px, py, vx, vy]`, in metres and metres per second.
@@ -38,7 +51,7 @@ These sensors are idealized world-frame observations; the velocity sensor is not
 
 ## Documentation and development
 
-Start with the [15-minute learning path](docs/learn/index.md), [math and code tour](docs/learn/math-and-code.md), and [tracked roadmap](docs/roadmap.md). The [research guide](docs/learn/research.md) connects reproducible studies to their results and limitations. The documentation portal is available for local preview; public hosting is not activated.
+Start with the [15-minute learning path](docs/learn/index.md), [math and code tour](docs/learn/math-and-code.md), and [tracked roadmap](docs/roadmap.md). The [research guide](docs/learn/research.md) connects reproducible studies to their results and limitations. The documentation portal is available for local preview; the owner manages public hosting.
 
 Read the [v0.1 design contract](docs/design/v0.1.md), [experiment guide](docs/experiments.md), and [development guide](docs/development.md). Generate the public API reference with `cargo doc --locked --no-deps --open`.
 

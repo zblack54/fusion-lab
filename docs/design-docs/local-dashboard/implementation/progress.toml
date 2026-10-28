@@ -1,36 +1,33 @@
-# Mutable execution status only; never redefine the locked contract here.
+# Mutable implementation status; approved contract unchanged.
 approved_digest = "d33ff5c8c1828d503d0cecfb144df72ab96621fa0f2e8dd8096c7f98ba0ddd95"
-updated_utc = "2026-10-27T15:00:00Z"
-state = "implemented-unverified"
-acceptance = "NOT_ACCEPTED"
+updated_utc = "2026-10-28T14:27:53.295Z"
+state = "ready-for-main-acceptance"
+acceptance = "READY_FOR_MAIN_ACCEPTANCE; exact published-head CI and main acceptance pending"
 source_inventory = "source-checkpoint.json"
-execution_evidence = "execution.json"
-native_platform = "Windows x86_64-msvc; Node24.22.1"
-dashboard_contracts = "Prior57b3c4113e source passed trusted34executions and all supplemental checks. New continuous-worker timing source b26f8554 requires refreshed34execution evidence before acceptance."
-supplementary_regressions = "9/9 pass including genuineWorker12ms notification fault showing continuous meter detects work missed by snippet timing; unavailable observer and bounded timing independently clocked"
-service_regressions = "14/14 production regressions pass; unchanged service21locked contracts pass trusted implementation mode"
-root_gates = "fmt/check/clippy/test/doc-tests/doc all passed native Windows"
-remaining = ["Final independent source/resource-method review", "Final-source UIbusy/overload/eviction/reconnect/uncertainPOST/cancellation demonstrations", "Narrowviewport and keyboard/focus walkthrough", "Exact-head native Windows/Linux Rust1.99/stable CI", "Final local launch and knowledge handoff documentation"]
-resource_evidence = "browser-final-memory.json: attributedrenderer94864 withmainthread+DedicatedWorker92088,72947samples418.094seconds, lifetimeRSS253980672bytes, nativeprocess exited onownedtabclose. Warmup+3real170624208byte imports;50replacementresets(49whileloading)+30exactseeks. Workermax4.9ms/691rows; input-nextRAFproxy p9569.7ms/max74.1ms; supportedLongTasks0. Proxy is not physicaldisplay proof."
-resource_status = "OwnedRSS/controlproxy/longtasks observed within reference budgets. Prior4.9ms timing covered snippets only and DOES NOT establish whole-worker8ms obligation. Continuous-source b26f8554 rerun pending; NOT_ACCEPTED."
-owned_runtime = "Release service8087 session2922 active0; original IABtab1 retained. Resource tab4 closed; ownedPID94864 exited, sampler45569completed."
+dashboard_contracts = "34/34 trusted executions pass;5supplemental checks; externalbaseline valid"
+supplementary_regressions = "12/12pass, including native-select malformed-list red-to-green"
+service_contract = "21trusted +14production regressions pass; external386baseline preserved"
+root_service_gates = "all required fmt/check/clippy/test/doctest/doc pass"
+resource_evidence = "continuous b26 worker warmup+3maximports;6.8/5.3/4.7/4.7ms;RSS252489728;49loadingp95nextRAF72.3ms; process exited; no physicalpaintclaim"
+remaining = ["Final published-head Windows/Linux Rust1.99/stable CI", "Main acceptance and verified merge"]
+owned_runtime = "Historical service8087 is no longer reachable; no inherited sessions/handles assumed or restarted. No new runtime needed for the narrow validation-order repair."
 
 [[task]]
 id = "TASK-001"
-state = "implemented-unverified"
-evidence = "Explicit embedded asset routes, CSP/MIME/length, actual HTTP acceptance and preserved service characterization pass. Browser launch observed; complete VER001/002/004 pending."
+state = "implemented-locally-verified"
+evidence = "See final acceptance.md obligation table and execution.json; product release remains main review/CI gated."
 
 [[task]]
 id = "TASK-002"
-state = "implemented-unverified"
-evidence = "All mapped immutable17test invocation passes, including actualHTTPartifact integration, full35field literal oracle, max360001rows and fullu64. Independent narrow data review cleared hashes in source-checkpoint. Final browser resource evidence pending."
+state = "implemented-locally-verified"
+evidence = "See final acceptance.md obligation table and execution.json; product release remains main review/CI gated."
 
 [[task]]
 id = "TASK-003"
-state = "implemented-unverified"
-evidence = "One persistent worker with serialized reset and latest replacement, streaming subpartitions/yields, replay/SSE controls. Issue48 true worker ACK regression passes. Browser stress/ownership/interaction measurements pending."
+state = "implemented-locally-verified"
+evidence = "See final acceptance.md obligation table and execution.json; product release remains main review/CI gated."
 
 [[task]]
 id = "TASK-004"
-state = "implemented-unverified"
-evidence = "Canvas trajectories/error/covariance, outage bands, exact sample panel, accessible native controls and precision labels implemented. Initial real30second run3001rows rendered. No final screenshots/resource/acceptance claim."
+state = "implemented-locally-verified"
+evidence = "See final acceptance.md obligation table and execution.json; product release remains main review/CI gated."

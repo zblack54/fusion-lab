@@ -9,6 +9,10 @@ cargo run --manifest-path crates/experiment-service/Cargo.toml --locked -- --bin
 
 The service invokes the existing numerical CLI without a shell. Configure a different executable or empty artifact directory with `--worker` and `--artifact-root`. Use `--help` for bounded retention and capacity options. Ctrl+C stops admission, cancels and reaps active work, closes clients and removes service-owned transient artifacts. The embedding API exposes explicit fallible `Service::shutdown` for the same operation.
 
+Open http://127.0.0.1:8080/ after startup to inspect the local dashboard. Use Run experiment for a new job, select a completed recording, or import a local CSV; imports stay in the browser. The exact cursor can inspect every row while plots use at most 4096 actual recorded rows and label their fidelity. Play/pause/reset affect replay only; Cancel explicitly stops the selected numerical job. The XY plot marks position observations, while velocity observations are shown as exact current-row values/status.
+
+A recorded 3600 second artifact can contain 360001 rows. The dedicated parser worker bounds numeric storage to 100800280 bytes; this is separate from total browser resident memory. Optional local diagnostics expose bounded verification counters without telemetry. See [the dashboard lesson](../../docs/learn/dashboard.md) for observed resource evidence and limitations; a descriptive 95 percent ellipse is not a calibration guarantee.
+
 Submit a complete configuration to `POST /v1/runs`:
 
 ```json

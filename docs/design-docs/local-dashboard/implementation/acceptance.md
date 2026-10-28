@@ -1,26 +1,36 @@
-# Final Conformance Review
+# Final conformance review
 
-Status: NOT_ACCEPTED
+Status: READY_FOR_MAIN_ACCEPTANCE — local verification and independent bounded source/conformance review complete; exact published-head native CI and main acceptance remain.
 
-Timing review correction: original browser-maximum-loads.json preserves a4.9ms maximum of measured snippets, not continuous whole-worker work. It cannot establish REQ019's8ms work obligation because notification/bookkeeping gaps were unmeasured. RSS and control timings remain independently corroborated. New worker b26f8554 uses continuous active segments excluding only actual suspended awaits; a genuineWorker regression injects12ms into final notification and detects it. Its full native workload and exact-source gates must be refreshed. No threshold was relaxed; previous timing is retained as incomplete evidence.
+Approved external dashboard digest: d33ff5c8c1828d503d0cecfb144df72ab96621fa0f2e8dd8096c7f98ba0ddd95. Accepted service digest3862f6d829e8a739580454f0edfbfb6aff696007286c51dbcfd61bd6f7529f1f is preserved. No locked tests, dependencies, numerical source or threshold changed. Source inventory: source-checkpoint.json.
 
-Approved digest:d33ff5c8c1828d503d0cecfb144df72ab96621fa0f2e8dd8096c7f98ba0ddd95. Exact local source hashes:source-checkpoint.json; published parent PR44f6eb4a83ac468584921cc6646847ae5f602c223b, local issue57 source still requires publication/CI. Native Windows34locked executions and8supplementary regressions pass after57. No lock/test/dependency/numerical-core changes.
+## Per-obligation evidence
 
-| Obligations | Actual evidence | Remaining acceptance work |
+| Obligations | Completed local evidence | Release gate |
 |---|---|---|
-| REQ001 | Real embedded route/MIME/CSP HTTP acceptance passes | Final independent static-route/security audit |
-| REQ002,014 | Real create/list/status/terminal SSE observed;47/52/53 repaired | Final-source cancellation, busy/overload/eviction/reconnect/uncertainPOST browser scenarios |
-| REQ003–006,011 | Immutable parser/wire tests; realHTTPfetch test; all35fields compared at0/1500/2100/7777 in browser-fidelity.json | Final source audit; no outstanding numerical test failure |
-| REQ007 | Independent5/10/13errors, known ellipse;49–51supplementary regressions | Reviewer final conformance; covariance remains descriptive |
-| REQ008–009 | Locked replay/bounds tests,30real exact seeks,7777nonplotted browser sample | Final broader keyboard/playback walkthrough |
-| REQ010,013,019,CON003,007 | Warmup+3maximumimports,50resets/49whileloading, boundednumeric100800280, plot655360; ownedrenderer lifetimeRSS253980672; worker4.9ms/691rows; supportedLongTasks0 | Independent resource-method review; render cadence source audit. Input→nextRAF p95proxy69.7ms is explicitly not physical display proof |
-| REQ012,018,CON004 | Actual healthy/outage/recovery screenshots; exact sample comparison and explicit precision/delivery/downsample labels | Final-source visual/accessibility audit |
-| REQ015 | Labeled native controls, keyboardArrowUp and exact seeks observed | Narrowviewport, complete keyboard/focus walkthrough |
-| REQ016 | Real local170624208byte CSV imported without any running experiment; no upload path | Independent source audit |
-| REQ017,CON002,006 | Service locked digest preserved; root gates and14service regressions pass; prior21contracts pass, final rerun pending atcheckpoint | Final21rerun completion and exact-head four-platform CI |
-| REQ020,CON008 | Reproduction commands in native-evidence.md; rawJSON and known-tick screenshots | Final launch/learning handoff and native four-way CI |
-| CON001,005 | Same-origin embedded assets, no runtime npm/cloud/API; replay/import never submit jobs | Independent network/mutation/error-path audit incl uncertainPOST |
+| REQ001 | Real HTTP root/assets/MIME/CSP locked acceptance; explicit embedded route whitelist, no filesystem route translation | Independent final source review and CI |
+| REQ002,014 | Real config/create/status/SSE, busy409, Cancel→cancelled with controlled child listener closed, retention1 eviction, worker_failed, overload503. Reconnect fixture opens four SSE attempts with1.057/2.051/4.051s gaps then stops for manual recovery. | Review/CI |
+| REQ003–006,011 | Unchanged17-test parser/wire suite executes34times across local1.99/stable; full35-field literal oracle and real HTTP artifact; browser rows0/1500/2100/7777 compare to actual CSV. Presence[0,0] vsabsence and fullu64 exact; numeric-token spoof regression passes. | Review/CI |
+| REQ007 | Independent5/10/13 errors and ellipse oracle; anisotropy/MAX_VALUE/tiny examples retained; no calibration claim | Review/CI |
+| REQ008–009 | Play/pause/seek/speed/reset contract tests; real keyboard and30exact seeks, nonplotted7777; distinct recorded indices≤4096; no interpolation | Review/CI |
+| REQ010,013,019; CON003,007 | Continuous-worker warmup+3maximum170624208byte imports;100800280numericbytes, maxima6.8/5.3/4.7/4.7ms,≤651rows betweenyields; oneWorker/latestpendingselection, worker ownership resets. Fiftyselection/reset interactions,49 explicitly priorLoading;30additional seeks. Ownedrenderer+DedicatedWorker lifetimeRSS252489728,27351samples/158.563s,16ms maxgap; tabclose/PIDexit confirmed. Loading49 p95nextRAFproxy72.3ms/max74.8; supportedLongTasks0; source render≤30fps and two capped canvases. | Review/CI; reference-host/proxy limitations below |
+| REQ012,018; CON004 | Actual healthy0/outage1500/recovery2100/max7777 screenshots and exact DOM/CSV records; total/plotted/precision/delivery/calibration labels present | Review/CI |
+| REQ015 | Real390×844 override actualclient375/scroll375, no horizontaloverflow; ArrowUp1501, EnterPlay, SpacePause, EnterReset0, TabSpeed; curve styles and exact text | Review/CI |
+| REQ016 | Actual localCSV import without experiment/upload, same bounded worker parser | Review/CI |
+| REQ017; CON002,006 | Final root6gates and service6gates pass;14service production regressions; trusted service21pass; both external lock validators valid0errors0warnings. Numerical sources unchanged. | Four native OS/compiler variants at final published head |
+| REQ020; CON008 | Root/serviceREADME launch path, helpGET/dashboard sentence, owner lesson, actual Chromium156/Win10 UA, referencehardware metadata, known-tick screenshots and walkthrough | Review/CI |
+| CON001,005 | Sameorigin/self-only assets, no npm/cloud/API. Replay/view never submit/cancel. Actual uncertainPOST fixture beforePOST1/GET1 vsafterPOST1/GET2; accepted/lost reply stays uncertain, existinglocalCSVcursor1500 retained. FailedGET503 explicitmanualrecovery. New malformed200list regression records red→green and validates entire list before DOMmutation; selectedrun1/options/cursor90/workermessages preserved, noPOSTretry. | Review/CI |
 
-VER001 final independent code audit pending. VER002 partial actual demonstrations as above. VER003 actual reference workload complete, independent review pending. VER004 final exact-head four-native matrix pending. VER005 final launch/interaction handoff pending. VER006 approved independent arithmetic unchanged. Acceptance authority remains the independently reviewing main orchestrator.
+## Actual final local checks
 
-Native RSS method: browser_process_sample.py --monitor94864 --seconds600 --outputbrowser-final-memory.json (normal argv separate tokens). Held process handle and creationFILETIME preventPIDreuse;72947samples,418.094seconds,requested5ms/actualmax16ms interval, native lifetime peak fills sampling gaps. OS thread descriptions independently locate CrRendererMain and oneDedicatedWorker92088 in thatPID; full before/open/load/close originals preserved privately with SHA provenance, scoped public inventories explicitly derived/filter-only. The PID exited on tab close. Shared browser/GPU processes are excluded and never described as zero. Early spare-renderer attribution was rejected before measurement.
+Trusted dashboard implementation runner:34/34pass, all5supplemental checks, errors=[] against externald33 baseline. Supplementary production Node tests:12pass/0fail, including new native-select malformed-list case and realWorker12ms notification fault. Root fmt/check/clippy/test/doctest/doc and service fmt/check/clippy/test/doctest/doc allpass; service14regressions pass; trusted unchanged service21pass. Raw final-local-gates.json and execution.json retain exact commands/output.
+
+## Scope interpretation and measurement limits
+
+Issue7comment6451759075 records main's v1 interpretation: XY crosses show position observations in metres; velocity observations are exact [vx,vy] values(m/s) and received/unscheduled status, not vectors or another plot. No locked file changed; no vector scale invented.
+
+The independent reviewer corroborated continuous b26 worker/resource evidence. Earlier4.9ms snippet evidence is historical and cannot establish whole-worker timing. Current12th regression/validation-loop change affects only malformed-list rejection before DOMmutation; #60 error-path repair and help/docs do not change parser, worker, rendering or replay hot paths, as independently reviewed. Do not label a historical executable hash as the current executable: source hashes and measured method identify each session.
+
+The p95 metric is input timestamp through a later animation-frame opportunity, a presentation proxy, not physical screen proof. Loading-only49 samples are independently retained before bounded64history replaces older events. Fiftyreset interactions are not claimed as fifty proven active-reader aborts. Native held process handles identify an existingblank renderer gaining aDedicatedWorker then exiting when its ownedtab closes; no absent-before/newPID claim. Sharedbrowser/GPU processes are excluded, not zero. Windows reference RSS is not an OS cap or Linux browser measurement. Raw process inventories remain private; published derived views retain SHA provenance and owned rows only.
+
+VER001–003 and005 local evidence is complete and independently reviewed by /root/final_review; VER004 requires current-head four-native CI; VER006 independently approved arithmetic unchanged. Only main records final ACCEPTED after those gates. No selfacceptance is claimed.

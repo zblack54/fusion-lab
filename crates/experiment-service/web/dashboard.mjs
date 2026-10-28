@@ -109,12 +109,19 @@ async function chooseRun(id,timing=null){
  if(!id){notice('Choose a completed run or import a CSV.');return;}
  try{const snapshot=await getStatus(id,mine);if(snapshot){acceptSnapshot(snapshot,mine);if(snapshot.state==='running')connectEvents(id,mine);}}catch(error){if(mine===statusGeneration)notice(error.message);}
 }
-async function refresh(timing=null){
+async function refresh(timing=null,{preserveView=false}={}){
  try{const response=await fetch('/v1/runs');if(!response.ok)throw new Error(`Run list HTTP${response.status}`);const list=JSON.parse(await response.text());if(!Array.isArray(list)||list.length>32)throw new Error('Invalid bounded run list');
+  for(const item of list){if(!item||typeof item.id!=='string'||!/^run-[1-9]\d*$/.test(item.id)||!['running','completed','failed','cancelled'].includes(item.state))throw new Error('Invalid run list entry');}
   const select=byId('runs');select.replaceChildren(new Option('Choose a run',''));
-  for(const item of list){if(!item||typeof item.id!=='string'||!/^run-[1-9]\d*$/.test(item.id)||!['running','completed','failed','cancelled'].includes(item.state))throw new Error('Invalid run list entry');select.add(new Option(`${item.id} · ${item.state}`,item.id));}
-  select.value=selected;if(selected&&!list.some(item=>item.id===selected)){notice('Selected run was evicted. Its already-loaded browser recording can still be replayed.');closeEvents();byId('cancel').disabled=true;}else if(selected)await chooseRun(selected,timing);else notice('Local service connected. Start an experiment or import a recording.');
- }catch(error){notice(error.message);}
+  for(const item of list)select.add(new Option(`${item.id} · ${item.state}`,item.id));
+  const selectionMissing=Boolean(selected&&!list.some(item=>item.id===selected));
+  if(preserveView){
+   if(selectionMissing)select.add(new Option(`${selected} · retained view; absent from server list`,selected));
+   select.value=selected;return {ok:true,selectionMissing};
+  }
+  select.value=selected;if(selectionMissing){notice('Selected run was evicted. Its already-loaded browser recording can still be replayed.');closeEvents();byId('cancel').disabled=true;}else if(selected)await chooseRun(selected,timing);else notice('Local service connected. Start an experiment or import a recording.');
+  return {ok:true,selectionMissing};
+ }catch(error){if(!preserveView)notice(error.message);return {ok:false,error:String(error.message).slice(0,256)};}
 }
 byId('runs').onchange=event=>chooseRun(event.target.value,inputTiming(event));
 byId('refresh').onclick=event=>refresh(inputTiming(event));
@@ -124,7 +131,11 @@ byId('configuration').onsubmit=async event=>{
  try{body=serializeConfig({seed:String(form.get('seed')),duration_seconds:Number(form.get('duration_seconds')),scenario:form.get('scenario'),position_sigma:Number(form.get('position_sigma')),velocity_sigma:Number(form.get('velocity_sigma')),acceleration_density:Number(form.get('acceleration_density')),outage:form.has('outage_enabled')?{start:Number(form.get('outage_start')),end:Number(form.get('outage_end'))}:null});}catch(error){notice(error.message);return;}
  submitting=true;byId('create').disabled=true;
  try{const response=await fetch('/v1/runs',{method:'POST',headers:{'Content-Type':'application/json'},body});if(!response.ok){const text=await response.text();notice(`Submission HTTP${response.status}: ${text.slice(0,512)}`);return;}const snapshot=parseSnapshot(await response.text());selected=snapshot.id;await refresh();}
- catch(error){notice(`Submission outcome uncertain: ${error.message}. It will not be resubmitted. Refresh the run list to inspect the outcome.`);}
+ catch(error){
+  const refreshed=await refresh(null,{preserveView:true});
+  const recovery=refreshed.ok?`The run list was refreshed without selecting a result.${refreshed.selectionMissing?' The previous selection is absent from the server list; its local view was retained.':''}`:`Read-only run-list refresh failed: ${refreshed.error}. Use Refresh to inspect the outcome.`;
+  notice(`Submission outcome uncertain: ${error.message}. It will not be resubmitted. ${recovery}`);
+ }
  finally{submitting=false;byId('create').disabled=false;}
 };
 byId('cancel').onclick=async()=>{const id=selected,mine=statusGeneration;byId('cancel').disabled=true;notice('Cancellation requested; waiting for service confirmation and cleanup.');try{const response=await fetch(`/v1/runs/${id}`,{method:'DELETE'});if(!response.ok)throw new Error(`Cancellation HTTP${response.status}: ${(await response.text()).slice(0,256)}`);const snapshot=parseSnapshot(await response.text());acceptSnapshot(snapshot,mine);}catch(error){notice(error.message);if(mine===statusGeneration)byId('cancel').disabled=false;}};

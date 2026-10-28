@@ -1,0 +1,412 @@
+[
+  {
+    "index": 0,
+    "warmup": true,
+    "observed_load_ms": 6418,
+    "progress": [
+      "Loading recording: 177,892 rows parsed…",
+      "Recording ready · 96.13 MiB numeric buffers. Replay controls do not alter experiments."
+    ],
+    "diagnostics": {
+      "generation": 1,
+      "active_workers": 1,
+      "selected_sse": 0,
+      "pending_selection": 0,
+      "reset_pending": false,
+      "numeric_buffers_bytes": 100800280,
+      "worker": {
+        "yield_count": 687,
+        "max_slice_ms": 1.4000000953674316,
+        "max_active_work_before_yield_ms": 6.799999952316284,
+        "max_rows_between_yields": 639,
+        "parsed_rows": 360001,
+        "yield_trigger_ms": 4,
+        "approved_work_budget_ms": 8,
+        "excluded_await_idle_ms": 8.59999942779541,
+        "control_callback_max_ms": 0.10000014305114746,
+        "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+        "phases": {
+          "csv": {
+            "max_slice_ms": 1.4000000953674316,
+            "total_ms": 2690.6999990940094
+          },
+          "finish": {
+            "max_slice_ms": 0.20000004768371582,
+            "total_ms": 0.20000004768371582
+          },
+          "plot": {
+            "max_slice_ms": 0.5,
+            "total_ms": 11.899999856948853
+          }
+        },
+        "numeric_buffers_bytes": 100800280,
+        "input_readers": 0,
+        "recording_owners": 1,
+        "parser_owners": 0,
+        "frame_in_flight": 0,
+        "coalesced_frame_pending": 0
+      },
+      "retained_plot_payloads": 1,
+      "plot_payload_bytes": 655360,
+      "canvas_pixels": [
+        {
+          "id": "trajectory",
+          "width": 1204,
+          "height": 510
+        },
+        {
+          "id": "timeline",
+          "width": 1204,
+          "height": 330
+        }
+      ],
+      "control_timing": {
+        "samples_retained": 1,
+        "samples_total": 1,
+        "input_timestamp_samples": 1,
+        "p95_input_to_next_raf_proxy_ms": 33.09999990463257,
+        "max_input_to_next_raf_proxy_ms": 33.09999990463257,
+        "pending": 0,
+        "pending_presentation": 0,
+        "superseded": 0,
+        "retention_limit": 64,
+        "recent_samples": [
+          {
+            "type": "resetInput",
+            "event_queue_delay_ms": 0.20000004768371582,
+            "handler_to_draw_ms": 15.099999904632568,
+            "input_to_draw_ms": 15.299999952316284,
+            "input_to_next_raf_proxy_ms": 33.09999990463257,
+            "handler_to_next_raf_proxy_ms": 32.89999985694885
+          }
+        ],
+        "presentation_limitation": "The next animation-frame opportunity is a presentation proxy, not proof of physical display. Missing input timestamps remain null."
+      },
+      "main_thread_long_tasks": {
+        "count": 0,
+        "max_ms": 0
+      },
+      "renderer_rss_bytes": null,
+      "renderer_rss_note": "Use the separately attributed native process collector."
+    }
+  },
+  {
+    "index": 1,
+    "warmup": false,
+    "observed_load_ms": 6380,
+    "progress": [
+      "Loading recording: 177,892 rows parsed…",
+      "Recording ready · 96.13 MiB numeric buffers. Replay controls do not alter experiments."
+    ],
+    "diagnostics": {
+      "generation": 2,
+      "active_workers": 1,
+      "selected_sse": 0,
+      "pending_selection": 0,
+      "reset_pending": false,
+      "numeric_buffers_bytes": 100800280,
+      "worker": {
+        "yield_count": 695,
+        "max_slice_ms": 3.1000001430511475,
+        "max_active_work_before_yield_ms": 5.300000190734863,
+        "max_rows_between_yields": 651,
+        "parsed_rows": 360001,
+        "yield_trigger_ms": 4,
+        "approved_work_budget_ms": 8,
+        "excluded_await_idle_ms": 0.8999996185302734,
+        "control_callback_max_ms": 0.09999990463256836,
+        "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+        "phases": {
+          "csv": {
+            "max_slice_ms": 3.1000001430511475,
+            "total_ms": 2718.60000371933
+          },
+          "finish": {
+            "max_slice_ms": 0.09999990463256836,
+            "total_ms": 0.09999990463256836
+          },
+          "plot": {
+            "max_slice_ms": 0.3000001907348633,
+            "total_ms": 13.199999809265137
+          }
+        },
+        "numeric_buffers_bytes": 100800280,
+        "input_readers": 0,
+        "recording_owners": 1,
+        "parser_owners": 0,
+        "frame_in_flight": 0,
+        "coalesced_frame_pending": 0
+      },
+      "retained_plot_payloads": 1,
+      "plot_payload_bytes": 655360,
+      "canvas_pixels": [
+        {
+          "id": "trajectory",
+          "width": 1204,
+          "height": 510
+        },
+        {
+          "id": "timeline",
+          "width": 1204,
+          "height": 330
+        }
+      ],
+      "control_timing": {
+        "samples_retained": 2,
+        "samples_total": 2,
+        "input_timestamp_samples": 2,
+        "p95_input_to_next_raf_proxy_ms": 33.09999990463257,
+        "max_input_to_next_raf_proxy_ms": 33.09999990463257,
+        "pending": 0,
+        "pending_presentation": 0,
+        "superseded": 0,
+        "retention_limit": 64,
+        "recent_samples": [
+          {
+            "type": "resetInput",
+            "event_queue_delay_ms": 0.20000004768371582,
+            "handler_to_draw_ms": 15.099999904632568,
+            "input_to_draw_ms": 15.299999952316284,
+            "input_to_next_raf_proxy_ms": 33.09999990463257,
+            "handler_to_next_raf_proxy_ms": 32.89999985694885
+          },
+          {
+            "type": "resetInput",
+            "event_queue_delay_ms": 0,
+            "handler_to_draw_ms": 4.300000190734863,
+            "input_to_draw_ms": 4.300000190734863,
+            "input_to_next_raf_proxy_ms": 19.5,
+            "handler_to_next_raf_proxy_ms": 19.5
+          }
+        ],
+        "presentation_limitation": "The next animation-frame opportunity is a presentation proxy, not proof of physical display. Missing input timestamps remain null."
+      },
+      "main_thread_long_tasks": {
+        "count": 0,
+        "max_ms": 0
+      },
+      "renderer_rss_bytes": null,
+      "renderer_rss_note": "Use the separately attributed native process collector."
+    }
+  },
+  {
+    "index": 2,
+    "warmup": false,
+    "observed_load_ms": 6298,
+    "progress": [
+      "Loading recording: 173,489 rows parsed…"
+    ],
+    "diagnostics": {
+      "generation": 3,
+      "active_workers": 1,
+      "selected_sse": 0,
+      "pending_selection": 0,
+      "reset_pending": false,
+      "numeric_buffers_bytes": 100800280,
+      "worker": {
+        "yield_count": 682,
+        "max_slice_ms": 3.0999999046325684,
+        "max_active_work_before_yield_ms": 4.700000047683716,
+        "max_rows_between_yields": 651,
+        "parsed_rows": 360001,
+        "yield_trigger_ms": 4,
+        "approved_work_budget_ms": 8,
+        "excluded_await_idle_ms": 0.7000000476837158,
+        "control_callback_max_ms": 0,
+        "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+        "phases": {
+          "csv": {
+            "max_slice_ms": 3.0999999046325684,
+            "total_ms": 2665.400002479553
+          },
+          "finish": {
+            "max_slice_ms": 0,
+            "total_ms": 0
+          },
+          "plot": {
+            "max_slice_ms": 0.2999999523162842,
+            "total_ms": 10.400000095367432
+          }
+        },
+        "numeric_buffers_bytes": 100800280,
+        "input_readers": 0,
+        "recording_owners": 1,
+        "parser_owners": 0,
+        "frame_in_flight": 0,
+        "coalesced_frame_pending": 0
+      },
+      "retained_plot_payloads": 1,
+      "plot_payload_bytes": 655360,
+      "canvas_pixels": [
+        {
+          "id": "trajectory",
+          "width": 1204,
+          "height": 510
+        },
+        {
+          "id": "timeline",
+          "width": 1204,
+          "height": 330
+        }
+      ],
+      "control_timing": {
+        "samples_retained": 3,
+        "samples_total": 3,
+        "input_timestamp_samples": 3,
+        "p95_input_to_next_raf_proxy_ms": 33.09999990463257,
+        "max_input_to_next_raf_proxy_ms": 33.09999990463257,
+        "pending": 0,
+        "pending_presentation": 0,
+        "superseded": 0,
+        "retention_limit": 64,
+        "recent_samples": [
+          {
+            "type": "resetInput",
+            "event_queue_delay_ms": 0.20000004768371582,
+            "handler_to_draw_ms": 15.099999904632568,
+            "input_to_draw_ms": 15.299999952316284,
+            "input_to_next_raf_proxy_ms": 33.09999990463257,
+            "handler_to_next_raf_proxy_ms": 32.89999985694885
+          },
+          {
+            "type": "resetInput",
+            "event_queue_delay_ms": 0,
+            "handler_to_draw_ms": 4.300000190734863,
+            "input_to_draw_ms": 4.300000190734863,
+            "input_to_next_raf_proxy_ms": 19.5,
+            "handler_to_next_raf_proxy_ms": 19.5
+          },
+          {
+            "type": "resetInput",
+            "event_queue_delay_ms": 0,
+            "handler_to_draw_ms": 7.1000001430511475,
+            "input_to_draw_ms": 7.1000001430511475,
+            "input_to_next_raf_proxy_ms": 22.700000047683716,
+            "handler_to_next_raf_proxy_ms": 22.700000047683716
+          }
+        ],
+        "presentation_limitation": "The next animation-frame opportunity is a presentation proxy, not proof of physical display. Missing input timestamps remain null."
+      },
+      "main_thread_long_tasks": {
+        "count": 0,
+        "max_ms": 0
+      },
+      "renderer_rss_bytes": null,
+      "renderer_rss_note": "Use the separately attributed native process collector."
+    }
+  },
+  {
+    "index": 3,
+    "warmup": false,
+    "observed_load_ms": 6283,
+    "progress": [
+      "Loading recording: 182,295 rows parsed…"
+    ],
+    "diagnostics": {
+      "generation": 4,
+      "active_workers": 1,
+      "selected_sse": 0,
+      "pending_selection": 0,
+      "reset_pending": false,
+      "numeric_buffers_bytes": 100800280,
+      "worker": {
+        "yield_count": 683,
+        "max_slice_ms": 3.1000001430511475,
+        "max_active_work_before_yield_ms": 4.700000047683716,
+        "max_rows_between_yields": 644,
+        "parsed_rows": 360001,
+        "yield_trigger_ms": 4,
+        "approved_work_budget_ms": 8,
+        "excluded_await_idle_ms": 0.5,
+        "control_callback_max_ms": 0.09999990463256836,
+        "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+        "phases": {
+          "csv": {
+            "max_slice_ms": 3.1000001430511475,
+            "total_ms": 2677.7000031471252
+          },
+          "finish": {
+            "max_slice_ms": 0,
+            "total_ms": 0
+          },
+          "plot": {
+            "max_slice_ms": 0.2999999523162842,
+            "total_ms": 9.099999904632568
+          }
+        },
+        "numeric_buffers_bytes": 100800280,
+        "input_readers": 0,
+        "recording_owners": 1,
+        "parser_owners": 0,
+        "frame_in_flight": 0,
+        "coalesced_frame_pending": 0
+      },
+      "retained_plot_payloads": 1,
+      "plot_payload_bytes": 655360,
+      "canvas_pixels": [
+        {
+          "id": "trajectory",
+          "width": 1204,
+          "height": 510
+        },
+        {
+          "id": "timeline",
+          "width": 1204,
+          "height": 330
+        }
+      ],
+      "control_timing": {
+        "samples_retained": 4,
+        "samples_total": 4,
+        "input_timestamp_samples": 4,
+        "p95_input_to_next_raf_proxy_ms": 33.09999990463257,
+        "max_input_to_next_raf_proxy_ms": 33.09999990463257,
+        "pending": 0,
+        "pending_presentation": 0,
+        "superseded": 0,
+        "retention_limit": 64,
+        "recent_samples": [
+          {
+            "type": "resetInput",
+            "event_queue_delay_ms": 0.20000004768371582,
+            "handler_to_draw_ms": 15.099999904632568,
+            "input_to_draw_ms": 15.299999952316284,
+            "input_to_next_raf_proxy_ms": 33.09999990463257,
+            "handler_to_next_raf_proxy_ms": 32.89999985694885
+          },
+          {
+            "type": "resetInput",
+            "event_queue_delay_ms": 0,
+            "handler_to_draw_ms": 4.300000190734863,
+            "input_to_draw_ms": 4.300000190734863,
+            "input_to_next_raf_proxy_ms": 19.5,
+            "handler_to_next_raf_proxy_ms": 19.5
+          },
+          {
+            "type": "resetInput",
+            "event_queue_delay_ms": 0,
+            "handler_to_draw_ms": 7.1000001430511475,
+            "input_to_draw_ms": 7.1000001430511475,
+            "input_to_next_raf_proxy_ms": 22.700000047683716,
+            "handler_to_next_raf_proxy_ms": 22.700000047683716
+          },
+          {
+            "type": "resetInput",
+            "event_queue_delay_ms": 0,
+            "handler_to_draw_ms": 13.700000047683716,
+            "input_to_draw_ms": 13.700000047683716,
+            "input_to_next_raf_proxy_ms": 30.200000047683716,
+            "handler_to_next_raf_proxy_ms": 30.200000047683716
+          }
+        ],
+        "presentation_limitation": "The next animation-frame opportunity is a presentation proxy, not proof of physical display. Missing input timestamps remain null."
+      },
+      "main_thread_long_tasks": {
+        "count": 0,
+        "max_ms": 0
+      },
+      "renderer_rss_bytes": null,
+      "renderer_rss_note": "Use the separately attributed native process collector."
+    }
+  }
+]

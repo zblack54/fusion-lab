@@ -1,0 +1,586 @@
+{
+  "generation": 54,
+  "active_workers": 1,
+  "selected_sse": 0,
+  "pending_selection": 0,
+  "reset_pending": false,
+  "numeric_buffers_bytes": 100800280,
+  "worker": {
+    "yield_count": 686,
+    "max_slice_ms": 1.1999998092651367,
+    "max_active_work_before_yield_ms": 4.700000047683716,
+    "max_rows_between_yields": 636,
+    "parsed_rows": 360001,
+    "yield_trigger_ms": 4,
+    "approved_work_budget_ms": 8,
+    "excluded_await_idle_ms": 0.5,
+    "control_callback_max_ms": 0.10000014305114746,
+    "timing_method": "Continuous load segment wall time minus suspended fetch/read/cancel awaits; only a real timer yield resets the segment. Includes loop, notifications, Replay, finish, plot and cleanup bookkeeping.",
+    "phases": {
+      "csv": {
+        "max_slice_ms": 1.1999998092651367,
+        "total_ms": 2688.9999969005585
+      },
+      "finish": {
+        "max_slice_ms": 0.20000004768371582,
+        "total_ms": 0.20000004768371582
+      },
+      "plot": {
+        "max_slice_ms": 0.3000001907348633,
+        "total_ms": 12.199999809265137
+      }
+    },
+    "numeric_buffers_bytes": 100800280,
+    "input_readers": 0,
+    "recording_owners": 1,
+    "parser_owners": 0,
+    "frame_in_flight": 0,
+    "coalesced_frame_pending": 0
+  },
+  "retained_plot_payloads": 1,
+  "plot_payload_bytes": 655360,
+  "canvas_pixels": [
+    {
+      "id": "trajectory",
+      "width": 1204,
+      "height": 510
+    },
+    {
+      "id": "timeline",
+      "width": 1204,
+      "height": 330
+    }
+  ],
+  "control_timing": {
+    "samples_retained": 64,
+    "samples_total": 84,
+    "input_timestamp_samples": 64,
+    "p95_input_to_next_raf_proxy_ms": 58.200000047683716,
+    "max_input_to_next_raf_proxy_ms": 73.5,
+    "pending": 0,
+    "pending_presentation": 0,
+    "superseded": 0,
+    "retention_limit": 64,
+    "recent_samples": [
+      {
+        "type": "resetInput",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 8.599999904632568,
+        "input_to_draw_ms": 8.599999904632568,
+        "input_to_next_raf_proxy_ms": 25,
+        "handler_to_next_raf_proxy_ms": 25
+      },
+      {
+        "type": "resetInput",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 15,
+        "input_to_draw_ms": 15,
+        "input_to_next_raf_proxy_ms": 31.299999952316284,
+        "handler_to_next_raf_proxy_ms": 31.299999952316284
+      },
+      {
+        "type": "resetInput",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 36.200000047683716,
+        "input_to_draw_ms": 36.200000047683716,
+        "input_to_next_raf_proxy_ms": 52.90000009536743,
+        "handler_to_next_raf_proxy_ms": 52.90000009536743
+      },
+      {
+        "type": "resetInput",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 54.299999952316284,
+        "input_to_draw_ms": 54.299999952316284,
+        "input_to_next_raf_proxy_ms": 71.09999990463257,
+        "handler_to_next_raf_proxy_ms": 71.09999990463257
+      },
+      {
+        "type": "resetInput",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 9.900000095367432,
+        "input_to_draw_ms": 9.900000095367432,
+        "input_to_next_raf_proxy_ms": 26.40000009536743,
+        "handler_to_next_raf_proxy_ms": 26.40000009536743
+      },
+      {
+        "type": "resetInput",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 11.200000047683716,
+        "input_to_draw_ms": 11.200000047683716,
+        "input_to_next_raf_proxy_ms": 27.5,
+        "handler_to_next_raf_proxy_ms": 27.5
+      },
+      {
+        "type": "resetInput",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 16.59999990463257,
+        "input_to_draw_ms": 16.59999990463257,
+        "input_to_next_raf_proxy_ms": 32.69999980926514,
+        "handler_to_next_raf_proxy_ms": 32.69999980926514
+      },
+      {
+        "type": "resetInput",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 55.09999990463257,
+        "input_to_draw_ms": 55.09999990463257,
+        "input_to_next_raf_proxy_ms": 72,
+        "handler_to_next_raf_proxy_ms": 72
+      },
+      {
+        "type": "resetInput",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 9.799999952316284,
+        "input_to_draw_ms": 9.799999952316284,
+        "input_to_next_raf_proxy_ms": 25.200000047683716,
+        "handler_to_next_raf_proxy_ms": 25.200000047683716
+      },
+      {
+        "type": "resetInput",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 15.799999952316284,
+        "input_to_draw_ms": 15.799999952316284,
+        "input_to_next_raf_proxy_ms": 32.09999990463257,
+        "handler_to_next_raf_proxy_ms": 32.09999990463257
+      },
+      {
+        "type": "resetInput",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 7.3999998569488525,
+        "input_to_draw_ms": 7.3999998569488525,
+        "input_to_next_raf_proxy_ms": 22.199999809265137,
+        "handler_to_next_raf_proxy_ms": 22.199999809265137
+      },
+      {
+        "type": "resetInput",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 12.599999904632568,
+        "input_to_draw_ms": 12.599999904632568,
+        "input_to_next_raf_proxy_ms": 29,
+        "handler_to_next_raf_proxy_ms": 29
+      },
+      {
+        "type": "resetInput",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 2.8000001907348633,
+        "input_to_draw_ms": 2.8000001907348633,
+        "input_to_next_raf_proxy_ms": 18,
+        "handler_to_next_raf_proxy_ms": 18
+      },
+      {
+        "type": "resetInput",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 9.299999952316284,
+        "input_to_draw_ms": 9.299999952316284,
+        "input_to_next_raf_proxy_ms": 25.59999990463257,
+        "handler_to_next_raf_proxy_ms": 25.59999990463257
+      },
+      {
+        "type": "resetInput",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 16.200000047683716,
+        "input_to_draw_ms": 16.200000047683716,
+        "input_to_next_raf_proxy_ms": 32.5,
+        "handler_to_next_raf_proxy_ms": 32.5
+      },
+      {
+        "type": "resetInput",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 38.5,
+        "input_to_draw_ms": 38.5,
+        "input_to_next_raf_proxy_ms": 55,
+        "handler_to_next_raf_proxy_ms": 55
+      },
+      {
+        "type": "resetInput",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 9.300000190734863,
+        "input_to_draw_ms": 9.300000190734863,
+        "input_to_next_raf_proxy_ms": 24.5,
+        "handler_to_next_raf_proxy_ms": 24.5
+      },
+      {
+        "type": "resetInput",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 14.099999904632568,
+        "input_to_draw_ms": 14.099999904632568,
+        "input_to_next_raf_proxy_ms": 29.59999990463257,
+        "handler_to_next_raf_proxy_ms": 29.59999990463257
+      },
+      {
+        "type": "resetInput",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 7.8999998569488525,
+        "input_to_draw_ms": 7.8999998569488525,
+        "input_to_next_raf_proxy_ms": 24,
+        "handler_to_next_raf_proxy_ms": 24
+      },
+      {
+        "type": "resetInput",
+        "event_queue_delay_ms": 0.09999990463256836,
+        "handler_to_draw_ms": 35.799999952316284,
+        "input_to_draw_ms": 35.89999985694885,
+        "input_to_next_raf_proxy_ms": 52.59999990463257,
+        "handler_to_next_raf_proxy_ms": 52.5
+      },
+      {
+        "type": "resetInput",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 37.700000047683716,
+        "input_to_draw_ms": 37.700000047683716,
+        "input_to_next_raf_proxy_ms": 54.30000019073486,
+        "handler_to_next_raf_proxy_ms": 54.30000019073486
+      },
+      {
+        "type": "resetInput",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 37.89999985694885,
+        "input_to_draw_ms": 37.89999985694885,
+        "input_to_next_raf_proxy_ms": 54.59999990463257,
+        "handler_to_next_raf_proxy_ms": 54.59999990463257
+      },
+      {
+        "type": "resetInput",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 10.399999856948853,
+        "input_to_draw_ms": 10.399999856948853,
+        "input_to_next_raf_proxy_ms": 25,
+        "handler_to_next_raf_proxy_ms": 25
+      },
+      {
+        "type": "resetInput",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 11.400000095367432,
+        "input_to_draw_ms": 11.400000095367432,
+        "input_to_next_raf_proxy_ms": 27.5,
+        "handler_to_next_raf_proxy_ms": 27.5
+      },
+      {
+        "type": "resetInput",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 17.600000143051147,
+        "input_to_draw_ms": 17.600000143051147,
+        "input_to_next_raf_proxy_ms": 32.60000014305115,
+        "handler_to_next_raf_proxy_ms": 32.60000014305115
+      },
+      {
+        "type": "resetInput",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 5.200000047683716,
+        "input_to_draw_ms": 5.200000047683716,
+        "input_to_next_raf_proxy_ms": 21.600000143051147,
+        "handler_to_next_raf_proxy_ms": 21.600000143051147
+      },
+      {
+        "type": "resetInput",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 8.5,
+        "input_to_draw_ms": 8.5,
+        "input_to_next_raf_proxy_ms": 23.199999809265137,
+        "handler_to_next_raf_proxy_ms": 23.199999809265137
+      },
+      {
+        "type": "resetInput",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 41.700000047683716,
+        "input_to_draw_ms": 41.700000047683716,
+        "input_to_next_raf_proxy_ms": 58.200000047683716,
+        "handler_to_next_raf_proxy_ms": 58.200000047683716
+      },
+      {
+        "type": "resetInput",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 12.799999952316284,
+        "input_to_draw_ms": 12.799999952316284,
+        "input_to_next_raf_proxy_ms": 27.90000009536743,
+        "handler_to_next_raf_proxy_ms": 27.90000009536743
+      },
+      {
+        "type": "resetInput",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 11.100000143051147,
+        "input_to_draw_ms": 11.100000143051147,
+        "input_to_next_raf_proxy_ms": 27.299999952316284,
+        "handler_to_next_raf_proxy_ms": 27.299999952316284
+      },
+      {
+        "type": "resetInput",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 35.09999990463257,
+        "input_to_draw_ms": 35.09999990463257,
+        "input_to_next_raf_proxy_ms": 51.799999952316284,
+        "handler_to_next_raf_proxy_ms": 51.799999952316284
+      },
+      {
+        "type": "resetInput",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 56.69999980926514,
+        "input_to_draw_ms": 56.69999980926514,
+        "input_to_next_raf_proxy_ms": 73.5,
+        "handler_to_next_raf_proxy_ms": 73.5
+      },
+      {
+        "type": "resetInput",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 8.700000047683716,
+        "input_to_draw_ms": 8.700000047683716,
+        "input_to_next_raf_proxy_ms": 24.100000143051147,
+        "handler_to_next_raf_proxy_ms": 24.100000143051147
+      },
+      {
+        "type": "resetInput",
+        "event_queue_delay_ms": 0.10000014305114746,
+        "handler_to_draw_ms": 14.399999856948853,
+        "input_to_draw_ms": 14.5,
+        "input_to_next_raf_proxy_ms": 32.10000014305115,
+        "handler_to_next_raf_proxy_ms": 32
+      },
+      {
+        "type": "seek",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 14.299999952316284,
+        "input_to_draw_ms": 14.299999952316284,
+        "input_to_next_raf_proxy_ms": 28.09999990463257,
+        "handler_to_next_raf_proxy_ms": 28.09999990463257
+      },
+      {
+        "type": "seek",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 24.40000009536743,
+        "input_to_draw_ms": 24.40000009536743,
+        "input_to_next_raf_proxy_ms": 33.30000019073486,
+        "handler_to_next_raf_proxy_ms": 33.30000019073486
+      },
+      {
+        "type": "seek",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 17.5,
+        "input_to_draw_ms": 17.5,
+        "input_to_next_raf_proxy_ms": 29.299999952316284,
+        "handler_to_next_raf_proxy_ms": 29.299999952316284
+      },
+      {
+        "type": "seek",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 10.700000047683716,
+        "input_to_draw_ms": 10.700000047683716,
+        "input_to_next_raf_proxy_ms": 22.59999990463257,
+        "handler_to_next_raf_proxy_ms": 22.59999990463257
+      },
+      {
+        "type": "seek",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 18.299999952316284,
+        "input_to_draw_ms": 18.299999952316284,
+        "input_to_next_raf_proxy_ms": 30.59999990463257,
+        "handler_to_next_raf_proxy_ms": 30.59999990463257
+      },
+      {
+        "type": "seek",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 9.200000047683716,
+        "input_to_draw_ms": 9.200000047683716,
+        "input_to_next_raf_proxy_ms": 21.600000143051147,
+        "handler_to_next_raf_proxy_ms": 21.600000143051147
+      },
+      {
+        "type": "seek",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 16,
+        "input_to_draw_ms": 16,
+        "input_to_next_raf_proxy_ms": 29.799999952316284,
+        "handler_to_next_raf_proxy_ms": 29.799999952316284
+      },
+      {
+        "type": "seek",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 8,
+        "input_to_draw_ms": 8,
+        "input_to_next_raf_proxy_ms": 21.5,
+        "handler_to_next_raf_proxy_ms": 21.5
+      },
+      {
+        "type": "seek",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 16,
+        "input_to_draw_ms": 16,
+        "input_to_next_raf_proxy_ms": 27.899999856948853,
+        "handler_to_next_raf_proxy_ms": 27.899999856948853
+      },
+      {
+        "type": "seek",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 19.59999990463257,
+        "input_to_draw_ms": 19.59999990463257,
+        "input_to_next_raf_proxy_ms": 32.799999952316284,
+        "handler_to_next_raf_proxy_ms": 32.799999952316284
+      },
+      {
+        "type": "seek",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 12.799999952316284,
+        "input_to_draw_ms": 12.799999952316284,
+        "input_to_next_raf_proxy_ms": 26.59999990463257,
+        "handler_to_next_raf_proxy_ms": 26.59999990463257
+      },
+      {
+        "type": "seek",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 6,
+        "input_to_draw_ms": 6,
+        "input_to_next_raf_proxy_ms": 19,
+        "handler_to_next_raf_proxy_ms": 19
+      },
+      {
+        "type": "seek",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 5.400000095367432,
+        "input_to_draw_ms": 5.400000095367432,
+        "input_to_next_raf_proxy_ms": 19.200000047683716,
+        "handler_to_next_raf_proxy_ms": 19.200000047683716
+      },
+      {
+        "type": "seek",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 11.5,
+        "input_to_draw_ms": 11.5,
+        "input_to_next_raf_proxy_ms": 24.700000047683716,
+        "handler_to_next_raf_proxy_ms": 24.700000047683716
+      },
+      {
+        "type": "seek",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 7.599999904632568,
+        "input_to_draw_ms": 7.599999904632568,
+        "input_to_next_raf_proxy_ms": 21.399999856948853,
+        "handler_to_next_raf_proxy_ms": 21.399999856948853
+      },
+      {
+        "type": "seek",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 7.099999904632568,
+        "input_to_draw_ms": 7.099999904632568,
+        "input_to_next_raf_proxy_ms": 21.200000047683716,
+        "handler_to_next_raf_proxy_ms": 21.200000047683716
+      },
+      {
+        "type": "seek",
+        "event_queue_delay_ms": 0.09999990463256836,
+        "handler_to_draw_ms": 14.200000047683716,
+        "input_to_draw_ms": 14.299999952316284,
+        "input_to_next_raf_proxy_ms": 27.799999952316284,
+        "handler_to_next_raf_proxy_ms": 27.700000047683716
+      },
+      {
+        "type": "seek",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 14.599999904632568,
+        "input_to_draw_ms": 14.599999904632568,
+        "input_to_next_raf_proxy_ms": 28,
+        "handler_to_next_raf_proxy_ms": 28
+      },
+      {
+        "type": "seek",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 6.3999998569488525,
+        "input_to_draw_ms": 6.3999998569488525,
+        "input_to_next_raf_proxy_ms": 19.799999952316284,
+        "handler_to_next_raf_proxy_ms": 19.799999952316284
+      },
+      {
+        "type": "seek",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 15.699999809265137,
+        "input_to_draw_ms": 15.699999809265137,
+        "input_to_next_raf_proxy_ms": 27.09999990463257,
+        "handler_to_next_raf_proxy_ms": 27.09999990463257
+      },
+      {
+        "type": "seek",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 5.200000047683716,
+        "input_to_draw_ms": 5.200000047683716,
+        "input_to_next_raf_proxy_ms": 18.399999856948853,
+        "handler_to_next_raf_proxy_ms": 18.399999856948853
+      },
+      {
+        "type": "seek",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 3.8000001907348633,
+        "input_to_draw_ms": 3.8000001907348633,
+        "input_to_next_raf_proxy_ms": 18,
+        "handler_to_next_raf_proxy_ms": 18
+      },
+      {
+        "type": "seek",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 15.400000095367432,
+        "input_to_draw_ms": 15.400000095367432,
+        "input_to_next_raf_proxy_ms": 23.100000143051147,
+        "handler_to_next_raf_proxy_ms": 23.100000143051147
+      },
+      {
+        "type": "seek",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 19.09999990463257,
+        "input_to_draw_ms": 19.09999990463257,
+        "input_to_next_raf_proxy_ms": 32.89999985694885,
+        "handler_to_next_raf_proxy_ms": 32.89999985694885
+      },
+      {
+        "type": "seek",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 14.5,
+        "input_to_draw_ms": 14.5,
+        "input_to_next_raf_proxy_ms": 27.899999856948853,
+        "handler_to_next_raf_proxy_ms": 27.899999856948853
+      },
+      {
+        "type": "seek",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 8.199999809265137,
+        "input_to_draw_ms": 8.199999809265137,
+        "input_to_next_raf_proxy_ms": 20.899999856948853,
+        "handler_to_next_raf_proxy_ms": 20.899999856948853
+      },
+      {
+        "type": "seek",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 14.900000095367432,
+        "input_to_draw_ms": 14.900000095367432,
+        "input_to_next_raf_proxy_ms": 28.799999952316284,
+        "handler_to_next_raf_proxy_ms": 28.799999952316284
+      },
+      {
+        "type": "seek",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 5.799999952316284,
+        "input_to_draw_ms": 5.799999952316284,
+        "input_to_next_raf_proxy_ms": 18.899999856948853,
+        "handler_to_next_raf_proxy_ms": 18.899999856948853
+      },
+      {
+        "type": "seek",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 16.09999990463257,
+        "input_to_draw_ms": 16.09999990463257,
+        "input_to_next_raf_proxy_ms": 29.799999952316284,
+        "handler_to_next_raf_proxy_ms": 29.799999952316284
+      },
+      {
+        "type": "seek",
+        "event_queue_delay_ms": 0,
+        "handler_to_draw_ms": 17.5,
+        "input_to_draw_ms": 17.5,
+        "input_to_next_raf_proxy_ms": 31.59999990463257,
+        "handler_to_next_raf_proxy_ms": 31.59999990463257
+      }
+    ],
+    "presentation_limitation": "The next animation-frame opportunity is a presentation proxy, not proof of physical display. Missing input timestamps remain null."
+  },
+  "main_thread_long_tasks": {
+    "count": 0,
+    "max_ms": 0
+  },
+  "renderer_rss_bytes": null,
+  "renderer_rss_note": "Use the separately attributed native process collector."
+}
