@@ -1,0 +1,226 @@
+{
+  "protocol": {
+    "status": "prespecified before demonstration execution",
+    "seeds": [
+      7,
+      42,
+      314159
+    ],
+    "biases": [
+      [
+        0,
+        0
+      ],
+      [
+        0.5,
+        -0.25
+      ]
+    ],
+    "duration": 30,
+    "scenario": "maneuver",
+    "outage": [
+      10,
+      20
+    ],
+    "positionSigma": 1,
+    "velocitySigma": 0.15,
+    "q": 0.1,
+    "interpretation": "descriptive paired comparison only; no tuning/calibration/general ranking"
+  },
+  "commands": [
+    {
+      "name": "7-zero",
+      "args": [
+        "run",
+        "--locked",
+        "--",
+        "--seed",
+        "7",
+        "--velocity-bias-x",
+        "0",
+        "--velocity-bias-y",
+        "0",
+        "--output",
+        "C:/Users/Admin/Documents/Codex/2026-10-20/if-x20/work/velocity-bias-demo/7-zero.csv"
+      ]
+    },
+    {
+      "name": "7-bias",
+      "args": [
+        "run",
+        "--locked",
+        "--",
+        "--seed",
+        "7",
+        "--velocity-bias-x",
+        "0.5",
+        "--velocity-bias-y",
+        "-0.25",
+        "--output",
+        "C:/Users/Admin/Documents/Codex/2026-10-20/if-x20/work/velocity-bias-demo/7-bias.csv"
+      ]
+    },
+    {
+      "name": "42-zero",
+      "args": [
+        "run",
+        "--locked",
+        "--",
+        "--seed",
+        "42",
+        "--velocity-bias-x",
+        "0",
+        "--velocity-bias-y",
+        "0",
+        "--output",
+        "C:/Users/Admin/Documents/Codex/2026-10-20/if-x20/work/velocity-bias-demo/42-zero.csv"
+      ]
+    },
+    {
+      "name": "42-bias",
+      "args": [
+        "run",
+        "--locked",
+        "--",
+        "--seed",
+        "42",
+        "--velocity-bias-x",
+        "0.5",
+        "--velocity-bias-y",
+        "-0.25",
+        "--output",
+        "C:/Users/Admin/Documents/Codex/2026-10-20/if-x20/work/velocity-bias-demo/42-bias.csv"
+      ]
+    },
+    {
+      "name": "314159-zero",
+      "args": [
+        "run",
+        "--locked",
+        "--",
+        "--seed",
+        "314159",
+        "--velocity-bias-x",
+        "0",
+        "--velocity-bias-y",
+        "0",
+        "--output",
+        "C:/Users/Admin/Documents/Codex/2026-10-20/if-x20/work/velocity-bias-demo/314159-zero.csv"
+      ]
+    },
+    {
+      "name": "314159-bias",
+      "args": [
+        "run",
+        "--locked",
+        "--",
+        "--seed",
+        "314159",
+        "--velocity-bias-x",
+        "0.5",
+        "--velocity-bias-y",
+        "-0.25",
+        "--output",
+        "C:/Users/Admin/Documents/Codex/2026-10-20/if-x20/work/velocity-bias-demo/314159-bias.csv"
+      ]
+    }
+  ],
+  "outcomes": [
+    {
+      "name": "7-zero",
+      "seed": 7,
+      "bias": [
+        0,
+        0
+      ],
+      "report": "Fusion Lab 0.1.0\nConfiguration: Config { duration_seconds: 30, seed: 7, scenario: Maneuver, position_sigma: 1.0, velocity_sigma: 0.15, assumed_position_sigma: None, assumed_velocity_sigma: None, velocity_bias: [0.0, 0.0], acceleration_density: 0.1, outage: Some(Outage { start: 10, end: 20 }) }\nMeasurement noise (per-axis sigma): true position=1.000000000000 m; assumed position=1.000000000000 m (follows true); true velocity=0.150000000000 m/s; assumed velocity=0.150000000000 m/s (follows true)\nFixed velocity sensor bias (world frame): x=0.000000000000 m/s; y=0.000000000000 m/s; deterministic offset, not Gaussian sigma or filter correction\nMeasurement covariance R (per-axis): requested position=1.000000000000e0 m^2; effective position=1.000000000000e0 m^2; requested velocity=2.250000000000e-2 (m/s)^2; effective velocity=2.250000000000e-2 (m/s)^2 (variance floor=1e-12)\nOverall (3001 samples):\n  position RMSE: filter=0.2128 m, hold=7.2665 m, integration=1.2499 m\n  nominal 95% position ellipse coverage: 100.00%\nPosition outage (1000 samples):\n  position RMSE: filter=0.0873 m, hold=12.4332 m, integration=0.9519 m\n  nominal 95% position ellipse coverage: 100.00%\nCoverage is descriptive; this run does not establish covariance calibration.\nCSV: C:/Users/Admin/Documents/Codex/2026-10-20/if-x20/work/velocity-bias-demo/7-zero.csv\n",
+      "csvSha256": "4e0c1dfb35bcafa7d936e759da73c36bc33fb384ed1d882cd20ea34d13f52bb1"
+    },
+    {
+      "name": "7-bias",
+      "seed": 7,
+      "bias": [
+        0.5,
+        -0.25
+      ],
+      "report": "Fusion Lab 0.1.0\nConfiguration: Config { duration_seconds: 30, seed: 7, scenario: Maneuver, position_sigma: 1.0, velocity_sigma: 0.15, assumed_position_sigma: None, assumed_velocity_sigma: None, velocity_bias: [0.5, -0.25], acceleration_density: 0.1, outage: Some(Outage { start: 10, end: 20 }) }\nMeasurement noise (per-axis sigma): true position=1.000000000000 m; assumed position=1.000000000000 m (follows true); true velocity=0.150000000000 m/s; assumed velocity=0.150000000000 m/s (follows true)\nFixed velocity sensor bias (world frame): x=0.500000000000 m/s; y=-0.250000000000 m/s; deterministic offset, not Gaussian sigma or filter correction\nMeasurement covariance R (per-axis): requested position=1.000000000000e0 m^2; effective position=1.000000000000e0 m^2; requested velocity=2.250000000000e-2 (m/s)^2; effective velocity=2.250000000000e-2 (m/s)^2 (variance floor=1e-12)\nOverall (3001 samples):\n  position RMSE: filter=5.1778 m, hold=7.2665 m, integration=2.2516 m\n  nominal 95% position ellipse coverage: 8.90%\nPosition outage (1000 samples):\n  position RMSE: filter=5.8113 m, hold=12.4332 m, integration=3.3772 m\n  nominal 95% position ellipse coverage: 0.00%\nCoverage is descriptive; this run does not establish covariance calibration.\nCSV: C:/Users/Admin/Documents/Codex/2026-10-20/if-x20/work/velocity-bias-demo/7-bias.csv\n",
+      "csvSha256": "5c74639e74cb8cb37021b96c3c2ef900f5ba0dffc5e3235799af8486ed61d137"
+    },
+    {
+      "name": "42-zero",
+      "seed": 42,
+      "bias": [
+        0,
+        0
+      ],
+      "report": "Fusion Lab 0.1.0\nConfiguration: Config { duration_seconds: 30, seed: 42, scenario: Maneuver, position_sigma: 1.0, velocity_sigma: 0.15, assumed_position_sigma: None, assumed_velocity_sigma: None, velocity_bias: [0.0, 0.0], acceleration_density: 0.1, outage: Some(Outage { start: 10, end: 20 }) }\nMeasurement noise (per-axis sigma): true position=1.000000000000 m; assumed position=1.000000000000 m (follows true); true velocity=0.150000000000 m/s; assumed velocity=0.150000000000 m/s (follows true)\nFixed velocity sensor bias (world frame): x=0.000000000000 m/s; y=0.000000000000 m/s; deterministic offset, not Gaussian sigma or filter correction\nMeasurement covariance R (per-axis): requested position=1.000000000000e0 m^2; effective position=1.000000000000e0 m^2; requested velocity=2.250000000000e-2 (m/s)^2; effective velocity=2.250000000000e-2 (m/s)^2 (variance floor=1e-12)\nOverall (3001 samples):\n  position RMSE: filter=0.2667 m, hold=7.7399 m, integration=1.2877 m\n  nominal 95% position ellipse coverage: 100.00%\nPosition outage (1000 samples):\n  position RMSE: filter=0.1769 m, hold=13.2392 m, integration=0.8181 m\n  nominal 95% position ellipse coverage: 100.00%\nCoverage is descriptive; this run does not establish covariance calibration.\nCSV: C:/Users/Admin/Documents/Codex/2026-10-20/if-x20/work/velocity-bias-demo/42-zero.csv\n",
+      "csvSha256": "8e6444c2339cd9d334fdd71f2de3cb8c7529440549d59c6dd5aa542719ab3526"
+    },
+    {
+      "name": "42-bias",
+      "seed": 42,
+      "bias": [
+        0.5,
+        -0.25
+      ],
+      "report": "Fusion Lab 0.1.0\nConfiguration: Config { duration_seconds: 30, seed: 42, scenario: Maneuver, position_sigma: 1.0, velocity_sigma: 0.15, assumed_position_sigma: None, assumed_velocity_sigma: None, velocity_bias: [0.5, -0.25], acceleration_density: 0.1, outage: Some(Outage { start: 10, end: 20 }) }\nMeasurement noise (per-axis sigma): true position=1.000000000000 m; assumed position=1.000000000000 m (follows true); true velocity=0.150000000000 m/s; assumed velocity=0.150000000000 m/s (follows true)\nFixed velocity sensor bias (world frame): x=0.500000000000 m/s; y=-0.250000000000 m/s; deterministic offset, not Gaussian sigma or filter correction\nMeasurement covariance R (per-axis): requested position=1.000000000000e0 m^2; effective position=1.000000000000e0 m^2; requested velocity=2.250000000000e-2 (m/s)^2; effective velocity=2.250000000000e-2 (m/s)^2 (variance floor=1e-12)\nOverall (3001 samples):\n  position RMSE: filter=5.2089 m, hold=7.7399 m, integration=2.4142 m\n  nominal 95% position ellipse coverage: 4.90%\nPosition outage (1000 samples):\n  position RMSE: filter=5.8922 m, hold=13.2392 m, integration=3.6288 m\n  nominal 95% position ellipse coverage: 0.00%\nCoverage is descriptive; this run does not establish covariance calibration.\nCSV: C:/Users/Admin/Documents/Codex/2026-10-20/if-x20/work/velocity-bias-demo/42-bias.csv\n",
+      "csvSha256": "39a6b54c03c2121c636ead96bc6d2c332f72b338dd65d63acb5acb299ba1fd99"
+    },
+    {
+      "name": "314159-zero",
+      "seed": 314159,
+      "bias": [
+        0,
+        0
+      ],
+      "report": "Fusion Lab 0.1.0\nConfiguration: Config { duration_seconds: 30, seed: 314159, scenario: Maneuver, position_sigma: 1.0, velocity_sigma: 0.15, assumed_position_sigma: None, assumed_velocity_sigma: None, velocity_bias: [0.0, 0.0], acceleration_density: 0.1, outage: Some(Outage { start: 10, end: 20 }) }\nMeasurement noise (per-axis sigma): true position=1.000000000000 m; assumed position=1.000000000000 m (follows true); true velocity=0.150000000000 m/s; assumed velocity=0.150000000000 m/s (follows true)\nFixed velocity sensor bias (world frame): x=0.000000000000 m/s; y=0.000000000000 m/s; deterministic offset, not Gaussian sigma or filter correction\nMeasurement covariance R (per-axis): requested position=1.000000000000e0 m^2; effective position=1.000000000000e0 m^2; requested velocity=2.250000000000e-2 (m/s)^2; effective velocity=2.250000000000e-2 (m/s)^2 (variance floor=1e-12)\nOverall (3001 samples):\n  position RMSE: filter=0.4147 m, hold=7.3583 m, integration=1.2733 m\n  nominal 95% position ellipse coverage: 65.14%\nPosition outage (1000 samples):\n  position RMSE: filter=0.4473 m, hold=12.5930 m, integration=0.9958 m\n  nominal 95% position ellipse coverage: 15.00%\nCoverage is descriptive; this run does not establish covariance calibration.\nCSV: C:/Users/Admin/Documents/Codex/2026-10-20/if-x20/work/velocity-bias-demo/314159-zero.csv\n",
+      "csvSha256": "abfb1f78d0ed94326460b10eac7b6de3ca529291654225655b23176b7e3e6908"
+    },
+    {
+      "name": "314159-bias",
+      "seed": 314159,
+      "bias": [
+        0.5,
+        -0.25
+      ],
+      "report": "Fusion Lab 0.1.0\nConfiguration: Config { duration_seconds: 30, seed: 314159, scenario: Maneuver, position_sigma: 1.0, velocity_sigma: 0.15, assumed_position_sigma: None, assumed_velocity_sigma: None, velocity_bias: [0.5, -0.25], acceleration_density: 0.1, outage: Some(Outage { start: 10, end: 20 }) }\nMeasurement noise (per-axis sigma): true position=1.000000000000 m; assumed position=1.000000000000 m (follows true); true velocity=0.150000000000 m/s; assumed velocity=0.150000000000 m/s (follows true)\nFixed velocity sensor bias (world frame): x=0.500000000000 m/s; y=-0.250000000000 m/s; deterministic offset, not Gaussian sigma or filter correction\nMeasurement covariance R (per-axis): requested position=1.000000000000e0 m^2; effective position=1.000000000000e0 m^2; requested velocity=2.250000000000e-2 (m/s)^2; effective velocity=2.250000000000e-2 (m/s)^2 (variance floor=1e-12)\nOverall (3001 samples):\n  position RMSE: filter=4.9711 m, hold=7.3583 m, integration=2.1196 m\n  nominal 95% position ellipse coverage: 9.33%\nPosition outage (1000 samples):\n  position RMSE: filter=5.5338 m, hold=12.5930 m, integration=3.0974 m\n  nominal 95% position ellipse coverage: 0.00%\nCoverage is descriptive; this run does not establish covariance calibration.\nCSV: C:/Users/Admin/Documents/Codex/2026-10-20/if-x20/work/velocity-bias-demo/314159-bias.csv\n",
+      "csvSha256": "409fb94d91eaa3a5c370e13722a8baec1772dbdaeaff2075ce82dd7d6b8919c9"
+    }
+  ],
+  "compatibility": {
+    "reference": {
+      "head": "0bbd098061294827721177b6243ebfb2ffbe58d9",
+      "rust": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-msvc\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+      "hashes": {
+        "src/simulation.rs": "42d34c92d34ca7c156cb332b56d0de13e7a2666eb157f2cb905e015e27d8fad1",
+        "src/main.rs": "5646e7ff1a607d3e2ba9d8101b5f940141641bc4747603ff2f933ea6265e2d78",
+        "Cargo.lock": "1ff60b850d3f5928fc13476575700400765d31f7deb3268171f66176fb6cf6f3"
+      },
+      "csv": {
+        "default.csv": "8e6444c2339cd9d334fdd71f2de3cb8c7529440549d59c6dd5aa542719ab3526",
+        "straight.csv": "5c663368fb7db611d843e0479c735cb1ffe453e92b28c01e496d0d005fa6312c"
+      }
+    },
+    "comparisons": [
+      {
+        "name": "default",
+        "equal": true,
+        "beforeSha256": "8e6444c2339cd9d334fdd71f2de3cb8c7529440549d59c6dd5aa542719ab3526",
+        "afterSha256": "8e6444c2339cd9d334fdd71f2de3cb8c7529440549d59c6dd5aa542719ab3526"
+      },
+      {
+        "name": "straight",
+        "equal": true,
+        "beforeSha256": "5c663368fb7db611d843e0479c735cb1ffe453e92b28c01e496d0d005fa6312c",
+        "afterSha256": "5c663368fb7db611d843e0479c735cb1ffe453e92b28c01e496d0d005fa6312c"
+      }
+    ]
+  },
+  "sourceHashes": {
+    "src/simulation.rs": "ed0fba62df04b4374130d06891e129a80e04b831c3525f89b9584fd81ae82afb",
+    "src/main.rs": "6a9373bb7f31a1fe788d81879e8df3321229f1fae128b353c04e952507889612",
+    "src/sensors.rs": "d8eaae0d691535bcee6f68166babdb41c49de815ad0c3eb213c8b980c9ae29af",
+    "src/estimation.rs": "83a3b6936c53fc9d28c29a59b0840cf5d57611852246bc19c2c4cb258c092fdf",
+    "Cargo.lock": "1ff60b850d3f5928fc13476575700400765d31f7deb3268171f66176fb6cf6f3"
+  }
+}
