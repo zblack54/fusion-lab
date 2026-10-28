@@ -1,6 +1,6 @@
 # Fixed velocity sensor bias
 
-Status: constant-bias slice implemented for library/CLI under [issue20](https://github.com/zblack54/fusion-lab/issues/20), pending review and exact-head CI. Drift remains planned; this slice does not close the issue.
+Status: constant-bias slice accepted and merged in [PR63](https://github.com/zblack54/fusion-lab/pull/63) for library/CLI under [issue20](https://github.com/zblack54/fusion-lab/issues/20). Drift remains planned; this slice does not close the issue.
 
 ## Meaning and ownership
 
