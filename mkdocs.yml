@@ -23,6 +23,7 @@ nav:
   - Learn:
       - Start here (15 minutes): learn/index.md
       - Math and code tour: learn/math-and-code.md
+      - True and assumed sensor noise: learn/noise-mismatch.md
       - Reproduce and question results: learn/research.md
       - Experiment service ownership: learn/experiment-service.md
       - Development supervisor: learn/supervisor.md

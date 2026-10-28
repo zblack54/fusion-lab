@@ -60,12 +60,15 @@ Its proposed service budget is a design input, not implemented enforcement or a
 worst-case guarantee. The probe is Windows-specific. Reproduce only with the
 platform and prerequisites described in that report.
 
-## What is not configurable yet
+## Measurement mismatch and remaining work
 
-The current sensor sigma controls both generated noise and filter R; separate
-true/assumed noise is planned. Constant velocity-sensor bias is also planned.
-Neither experiment should be simulated by merely relabelling existing sigma or
-q output. Delay/loss and late-observation policy need their own implementation.
+The CLI/library now support separate true and assumed measurement noise through
+optional assumed-sigma overrides. Omission preserves matched noise. Read the
+[noise-mismatch lesson](noise-mismatch.md): its three fixed seeds demonstrate
+controlled observations and report counterexamples, not calibration or tuning.
+The service JSON is unchanged and still creates matched-noise jobs. Constant
+velocity-sensor bias remains planned; it is not a relabelled sigma or q value.
+Delay/loss and late-observation policy need their own implementation.
 Track these through the [roadmap](../roadmap.md), with separate tuning and held-out
 evaluation seeds and a protocol written before comparisons.
 

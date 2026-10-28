@@ -52,7 +52,7 @@
       "key": "demo",
       "title": "v0.2 Interactive local demo",
       "description": "Local bounded experiment service, browser visualization, controls and inspectable recorded results.",
-      "state": "open",
+      "state": "closed",
       "issues": [
         5,
         7,

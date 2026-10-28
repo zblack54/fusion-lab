@@ -161,3 +161,140 @@ fn invalid_configuration_is_rejected_before_a_run() {
         assert!(matches!(run(&config), Err(Error::InvalidConfig(_))));
     }
 }
+
+#[test]
+fn explicit_matched_assumptions_preserve_default_samples() -> Result<(), Error> {
+    let config = Config::default();
+    let legacy = run(&config)?;
+    let explicit = run(&Config {
+        assumed_position_sigma: Some(config.position_sigma),
+        assumed_velocity_sigma: Some(config.velocity_sigma),
+        ..config
+    })?;
+    assert_eq!(legacy.samples, explicit.samples);
+    assert_eq!(legacy.summary, explicit.summary);
+    Ok(())
+}
+
+#[test]
+fn assumed_noise_does_not_change_truth_observations_or_baselines() -> Result<(), Error> {
+    let first = run(&Config {
+        position_sigma: 2.0,
+        velocity_sigma: 0.3,
+        assumed_position_sigma: Some(1.0),
+        assumed_velocity_sigma: Some(0.15),
+        ..Config::default()
+    })?;
+    let second = run(&Config {
+        assumed_position_sigma: Some(4.0),
+        assumed_velocity_sigma: Some(0.6),
+        ..first.config.clone()
+    })?;
+    assert_eq!(first.samples.len(), 3001);
+    assert_eq!(first.samples.len(), second.samples.len());
+    for (a, b) in first.samples.iter().zip(&second.samples) {
+        assert_eq!(a.tick, b.tick);
+        assert_eq!(a.truth, b.truth);
+        assert_eq!(a.position_measurement, b.position_measurement);
+        assert_eq!(a.velocity_measurement, b.velocity_measurement);
+        assert_eq!(a.position_outage, b.position_outage);
+        assert_eq!(a.held_position, b.held_position);
+        assert_eq!(a.integrated_position, b.integrated_position);
+    }
+    assert_ne!(first.samples[0].covariance, second.samples[0].covariance);
+    Ok(())
+}
+
+#[test]
+fn mismatched_tick_zero_matches_independent_scalar_updates() -> Result<(), Error> {
+    let result = run(&Config {
+        duration_seconds: 1,
+        scenario: Scenario::Straight,
+        position_sigma: 0.0,
+        velocity_sigma: 0.0,
+        assumed_position_sigma: Some(3.0),
+        assumed_velocity_sigma: Some(2.0),
+        acceleration_density: 0.0,
+        outage: None,
+        ..Config::default()
+    })?;
+    let sample = &result.samples[0];
+    assert_eq!(sample.position_measurement, Some([0.0, 0.0]));
+    assert_eq!(sample.velocity_measurement, Some([1.0, 0.5]));
+    assert_eq!(sample.estimate.position, [0.0, 0.0]);
+    assert!((sample.estimate.velocity[0] - 0.5).abs() < 1e-12);
+    assert!((sample.estimate.velocity[1] - 0.25).abs() < 1e-12);
+    for r in 0..4 {
+        for col in 0..4 {
+            let expected = if r != col {
+                0.0
+            } else if r < 2 {
+                225.0 / 34.0
+            } else {
+                2.0
+            };
+            assert!((sample.covariance[r][col] - expected).abs() < 1e-12);
+        }
+    }
+    Ok(())
+}
+
+#[test]
+fn omitted_assumptions_follow_their_own_channel() -> Result<(), Error> {
+    let config = Config {
+        duration_seconds: 1,
+        outage: None,
+        position_sigma: 2.0,
+        velocity_sigma: 0.3,
+        ..Config::default()
+    };
+    for (position, velocity) in [(Some(1.0), None), (None, Some(0.6))] {
+        let implicit = run(&Config {
+            assumed_position_sigma: position,
+            assumed_velocity_sigma: velocity,
+            ..config.clone()
+        })?;
+        let explicit = run(&Config {
+            assumed_position_sigma: Some(position.unwrap_or(2.0)),
+            assumed_velocity_sigma: Some(velocity.unwrap_or(0.3)),
+            ..config.clone()
+        })?;
+        assert_eq!(implicit.samples, explicit.samples);
+    }
+    Ok(())
+}
+
+#[test]
+fn assumed_noise_validation_is_finite_and_inclusive() -> Result<(), Error> {
+    for position in [true, false] {
+        for value in [f64::NAN, f64::INFINITY, f64::NEG_INFINITY, -0.1, 100.1] {
+            let mut config = Config {
+                duration_seconds: 1,
+                outage: None,
+                ..Config::default()
+            };
+            let field = if position {
+                config.assumed_position_sigma = Some(value);
+                "assumed_position_sigma"
+            } else {
+                config.assumed_velocity_sigma = Some(value);
+                "assumed_velocity_sigma"
+            };
+            assert_eq!(run(&config), Err(Error::InvalidConfig(field)));
+        }
+        for value in [0.0, 100.0] {
+            let mut config = Config {
+                duration_seconds: 1,
+                outage: None,
+                ..Config::default()
+            };
+            if position {
+                config.assumed_position_sigma = Some(value);
+            } else {
+                config.assumed_velocity_sigma = Some(value);
+            }
+            assert_eq!(run(&config)?.samples.len(), 101);
+        }
+    }
+    Ok(())
+}

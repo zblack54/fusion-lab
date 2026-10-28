@@ -1,0 +1,288 @@
+{
+  "captured_utc_seconds": 1793198797.9755235,
+  "protocol": "Main predeclared3seeds x3assumption scales;30s maneuver/outage10-20,true2/.3,q.1;not tuned or held-out general claim",
+  "baseline_head": "080adb5ca59e44b41d80b38128387bdbbee3e27a",
+  "baseline_toolchain": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-msvc\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+  "baseline_source_sha256": {
+    "src\\estimation.rs": "83a3b6936c53fc9d28c29a59b0840cf5d57611852246bc19c2c4cb258c092fdf",
+    "src\\evaluation.rs": "cf83337582b8887dc3ae71b62a8daf10c9f8b578eddd74b212069d30d76ba870",
+    "src\\lib.rs": "7053071c7380e45fc755884ccc1c4e3d40404b67532776cab08b2e468a3c40ea",
+    "src\\main.rs": "86dfd32ee653ff72388ef507300fecdc49b6ee5f284f692a88d2769680614d60",
+    "src\\sensors.rs": "d8eaae0d691535bcee6f68166babdb41c49de815ad0c3eb213c8b980c9ae29af",
+    "src\\simulation.rs": "bad0f2d8aa4c07eb974f72af30f3bce26e80b92391427badddb585274942b05b",
+    "Cargo.toml": "107801ee283d274781df7496d22eaa46a09748e2b624ccb48a8b7b9eda975462",
+    "Cargo.lock": "1ff60b850d3f5928fc13476575700400765d31f7deb3268171f66176fb6cf6f3"
+  },
+  "current_source_sha256": {
+    "src\\estimation.rs": "83a3b6936c53fc9d28c29a59b0840cf5d57611852246bc19c2c4cb258c092fdf",
+    "src\\evaluation.rs": "cf83337582b8887dc3ae71b62a8daf10c9f8b578eddd74b212069d30d76ba870",
+    "src\\lib.rs": "7053071c7380e45fc755884ccc1c4e3d40404b67532776cab08b2e468a3c40ea",
+    "src\\main.rs": "5646e7ff1a607d3e2ba9d8101b5f940141641bc4747603ff2f933ea6265e2d78",
+    "src\\sensors.rs": "d8eaae0d691535bcee6f68166babdb41c49de815ad0c3eb213c8b980c9ae29af",
+    "src\\simulation.rs": "42d34c92d34ca7c156cb332b56d0de13e7a2666eb157f2cb905e015e27d8fad1",
+    "Cargo.toml": "107801ee283d274781df7496d22eaa46a09748e2b624ccb48a8b7b9eda975462",
+    "Cargo.lock": "1ff60b850d3f5928fc13476575700400765d31f7deb3268171f66176fb6cf6f3"
+  },
+  "legacy_csv_comparison": {
+    "default": {
+      "legacy_sha256": "8e6444c2339cd9d334fdd71f2de3cb8c7529440549d59c6dd5aa542719ab3526",
+      "current_sha256": "8e6444c2339cd9d334fdd71f2de3cb8c7529440549d59c6dd5aa542719ab3526",
+      "identical": true
+    },
+    "nondefault": {
+      "legacy_sha256": "4212a9c5ceaf0d15e9ecd7abddc032da3b6ea26295f65cc75594aeb8e10fd814",
+      "current_sha256": "4212a9c5ceaf0d15e9ecd7abddc032da3b6ea26295f65cc75594aeb8e10fd814",
+      "identical": true
+    },
+    "noiseless": {
+      "legacy_sha256": "f8d13d647439ee8ea13fb9c3dd08380f52748c8886b4023c68e79cbf3623db27",
+      "current_sha256": "f8d13d647439ee8ea13fb9c3dd08380f52748c8886b4023c68e79cbf3623db27",
+      "identical": true
+    }
+  },
+  "paired_observation_comparison": [
+    {
+      "seed": 7,
+      "truth_observations_outage_and_baselines_identical": true
+    },
+    {
+      "seed": 42,
+      "truth_observations_outage_and_baselines_identical": true
+    },
+    {
+      "seed": 314159,
+      "truth_observations_outage_and_baselines_identical": true
+    }
+  ],
+  "runs": [
+    {
+      "seed": 7,
+      "assumed_scale": 0.5,
+      "true_position_sigma_m": 2,
+      "true_velocity_sigma_m_per_s": 0.3,
+      "assumed_position_sigma_m": 1.0,
+      "assumed_velocity_sigma_m_per_s": 0.15,
+      "csv_sha256": "859a7cbeec7de1152b0ce62a5dbad8b47f7919043453c029df248c755f8cc257",
+      "rows": 3001,
+      "metrics_rounded_as_reported": {
+        "overall": {
+          "filter_rmse_m": 0.4258,
+          "hold_rmse_m": 7.2812,
+          "integration_rmse_m": 2.5015,
+          "coverage_percent": 88.07
+        },
+        "outage": {
+          "filter_rmse_m": 0.1751,
+          "hold_rmse_m": 11.9949,
+          "integration_rmse_m": 1.9102,
+          "coverage_percent": 100.0
+        }
+      },
+      "report": "Fusion Lab 0.1.0\nConfiguration: Config { duration_seconds: 30, seed: 7, scenario: Maneuver, position_sigma: 2.0, velocity_sigma: 0.3, assumed_position_sigma: Some(1.0), assumed_velocity_sigma: Some(0.15), acceleration_density: 0.1, outage: Some(Outage { start: 10, end: 20 }) }\nMeasurement noise (per-axis sigma): true position=2.000000000000 m; assumed position=1.000000000000 m (override); true velocity=0.300000000000 m/s; assumed velocity=0.150000000000 m/s (override)\nMeasurement covariance R (per-axis): requested position=1.000000000000e0 m^2; effective position=1.000000000000e0 m^2; requested velocity=2.250000000000e-2 (m/s)^2; effective velocity=2.250000000000e-2 (m/s)^2 (variance floor=1e-12)\nOverall (3001 samples):\n  position RMSE: filter=0.4258 m, hold=7.2812 m, integration=2.5015 m\n  nominal 95% position ellipse coverage: 88.07%\nPosition outage (1000 samples):\n  position RMSE: filter=0.1751 m, hold=11.9949 m, integration=1.9102 m\n  nominal 95% position ellipse coverage: 100.00%\nCoverage is descriptive; this run does not establish covariance calibration.\n"
+    },
+    {
+      "seed": 7,
+      "assumed_scale": 1.0,
+      "true_position_sigma_m": 2,
+      "true_velocity_sigma_m_per_s": 0.3,
+      "assumed_position_sigma_m": 2.0,
+      "assumed_velocity_sigma_m_per_s": 0.3,
+      "csv_sha256": "aa25e3abde43f9479b74517df6c12ba9de772a49622b2224528ec4d12aa26629",
+      "rows": 3001,
+      "metrics_rounded_as_reported": {
+        "overall": {
+          "filter_rmse_m": 0.4078,
+          "hold_rmse_m": 7.2812,
+          "integration_rmse_m": 2.5015,
+          "coverage_percent": 100.0
+        },
+        "outage": {
+          "filter_rmse_m": 0.174,
+          "hold_rmse_m": 11.9949,
+          "integration_rmse_m": 1.9102,
+          "coverage_percent": 100.0
+        }
+      },
+      "report": "Fusion Lab 0.1.0\nConfiguration: Config { duration_seconds: 30, seed: 7, scenario: Maneuver, position_sigma: 2.0, velocity_sigma: 0.3, assumed_position_sigma: Some(2.0), assumed_velocity_sigma: Some(0.3), acceleration_density: 0.1, outage: Some(Outage { start: 10, end: 20 }) }\nMeasurement noise (per-axis sigma): true position=2.000000000000 m; assumed position=2.000000000000 m (override); true velocity=0.300000000000 m/s; assumed velocity=0.300000000000 m/s (override)\nMeasurement covariance R (per-axis): requested position=4.000000000000e0 m^2; effective position=4.000000000000e0 m^2; requested velocity=9.000000000000e-2 (m/s)^2; effective velocity=9.000000000000e-2 (m/s)^2 (variance floor=1e-12)\nOverall (3001 samples):\n  position RMSE: filter=0.4078 m, hold=7.2812 m, integration=2.5015 m\n  nominal 95% position ellipse coverage: 100.00%\nPosition outage (1000 samples):\n  position RMSE: filter=0.1740 m, hold=11.9949 m, integration=1.9102 m\n  nominal 95% position ellipse coverage: 100.00%\nCoverage is descriptive; this run does not establish covariance calibration.\n"
+    },
+    {
+      "seed": 7,
+      "assumed_scale": 2.0,
+      "true_position_sigma_m": 2,
+      "true_velocity_sigma_m_per_s": 0.3,
+      "assumed_position_sigma_m": 4.0,
+      "assumed_velocity_sigma_m_per_s": 0.6,
+      "csv_sha256": "8ba3f1a0a7f80025fada196486835f6c9270652eb27ab27b30e0ade174897e03",
+      "rows": 3001,
+      "metrics_rounded_as_reported": {
+        "overall": {
+          "filter_rmse_m": 0.3634,
+          "hold_rmse_m": 7.2812,
+          "integration_rmse_m": 2.5015,
+          "coverage_percent": 100.0
+        },
+        "outage": {
+          "filter_rmse_m": 0.171,
+          "hold_rmse_m": 11.9949,
+          "integration_rmse_m": 1.9102,
+          "coverage_percent": 100.0
+        }
+      },
+      "report": "Fusion Lab 0.1.0\nConfiguration: Config { duration_seconds: 30, seed: 7, scenario: Maneuver, position_sigma: 2.0, velocity_sigma: 0.3, assumed_position_sigma: Some(4.0), assumed_velocity_sigma: Some(0.6), acceleration_density: 0.1, outage: Some(Outage { start: 10, end: 20 }) }\nMeasurement noise (per-axis sigma): true position=2.000000000000 m; assumed position=4.000000000000 m (override); true velocity=0.300000000000 m/s; assumed velocity=0.600000000000 m/s (override)\nMeasurement covariance R (per-axis): requested position=1.600000000000e1 m^2; effective position=1.600000000000e1 m^2; requested velocity=3.600000000000e-1 (m/s)^2; effective velocity=3.600000000000e-1 (m/s)^2 (variance floor=1e-12)\nOverall (3001 samples):\n  position RMSE: filter=0.3634 m, hold=7.2812 m, integration=2.5015 m\n  nominal 95% position ellipse coverage: 100.00%\nPosition outage (1000 samples):\n  position RMSE: filter=0.1710 m, hold=11.9949 m, integration=1.9102 m\n  nominal 95% position ellipse coverage: 100.00%\nCoverage is descriptive; this run does not establish covariance calibration.\n"
+    },
+    {
+      "seed": 42,
+      "assumed_scale": 0.5,
+      "true_position_sigma_m": 2,
+      "true_velocity_sigma_m_per_s": 0.3,
+      "assumed_position_sigma_m": 1.0,
+      "assumed_velocity_sigma_m_per_s": 0.15,
+      "csv_sha256": "54619197b59d4cbd7ecba264219b87b6bc530b09a9dfaee6f78e75797d72a398",
+      "rows": 3001,
+      "metrics_rounded_as_reported": {
+        "overall": {
+          "filter_rmse_m": 0.5337,
+          "hold_rmse_m": 8.2078,
+          "integration_rmse_m": 2.5735,
+          "coverage_percent": 57.61
+        },
+        "outage": {
+          "filter_rmse_m": 0.3547,
+          "hold_rmse_m": 13.5889,
+          "integration_rmse_m": 1.6272,
+          "coverage_percent": 87.9
+        }
+      },
+      "report": "Fusion Lab 0.1.0\nConfiguration: Config { duration_seconds: 30, seed: 42, scenario: Maneuver, position_sigma: 2.0, velocity_sigma: 0.3, assumed_position_sigma: Some(1.0), assumed_velocity_sigma: Some(0.15), acceleration_density: 0.1, outage: Some(Outage { start: 10, end: 20 }) }\nMeasurement noise (per-axis sigma): true position=2.000000000000 m; assumed position=1.000000000000 m (override); true velocity=0.300000000000 m/s; assumed velocity=0.150000000000 m/s (override)\nMeasurement covariance R (per-axis): requested position=1.000000000000e0 m^2; effective position=1.000000000000e0 m^2; requested velocity=2.250000000000e-2 (m/s)^2; effective velocity=2.250000000000e-2 (m/s)^2 (variance floor=1e-12)\nOverall (3001 samples):\n  position RMSE: filter=0.5337 m, hold=8.2078 m, integration=2.5735 m\n  nominal 95% position ellipse coverage: 57.61%\nPosition outage (1000 samples):\n  position RMSE: filter=0.3547 m, hold=13.5889 m, integration=1.6272 m\n  nominal 95% position ellipse coverage: 87.90%\nCoverage is descriptive; this run does not establish covariance calibration.\n"
+    },
+    {
+      "seed": 42,
+      "assumed_scale": 1.0,
+      "true_position_sigma_m": 2,
+      "true_velocity_sigma_m_per_s": 0.3,
+      "assumed_position_sigma_m": 2.0,
+      "assumed_velocity_sigma_m_per_s": 0.3,
+      "csv_sha256": "4212a9c5ceaf0d15e9ecd7abddc032da3b6ea26295f65cc75594aeb8e10fd814",
+      "rows": 3001,
+      "metrics_rounded_as_reported": {
+        "overall": {
+          "filter_rmse_m": 0.5196,
+          "hold_rmse_m": 8.2078,
+          "integration_rmse_m": 2.5735,
+          "coverage_percent": 100.0
+        },
+        "outage": {
+          "filter_rmse_m": 0.3528,
+          "hold_rmse_m": 13.5889,
+          "integration_rmse_m": 1.6272,
+          "coverage_percent": 100.0
+        }
+      },
+      "report": "Fusion Lab 0.1.0\nConfiguration: Config { duration_seconds: 30, seed: 42, scenario: Maneuver, position_sigma: 2.0, velocity_sigma: 0.3, assumed_position_sigma: Some(2.0), assumed_velocity_sigma: Some(0.3), acceleration_density: 0.1, outage: Some(Outage { start: 10, end: 20 }) }\nMeasurement noise (per-axis sigma): true position=2.000000000000 m; assumed position=2.000000000000 m (override); true velocity=0.300000000000 m/s; assumed velocity=0.300000000000 m/s (override)\nMeasurement covariance R (per-axis): requested position=4.000000000000e0 m^2; effective position=4.000000000000e0 m^2; requested velocity=9.000000000000e-2 (m/s)^2; effective velocity=9.000000000000e-2 (m/s)^2 (variance floor=1e-12)\nOverall (3001 samples):\n  position RMSE: filter=0.5196 m, hold=8.2078 m, integration=2.5735 m\n  nominal 95% position ellipse coverage: 100.00%\nPosition outage (1000 samples):\n  position RMSE: filter=0.3528 m, hold=13.5889 m, integration=1.6272 m\n  nominal 95% position ellipse coverage: 100.00%\nCoverage is descriptive; this run does not establish covariance calibration.\n"
+    },
+    {
+      "seed": 42,
+      "assumed_scale": 2.0,
+      "true_position_sigma_m": 2,
+      "true_velocity_sigma_m_per_s": 0.3,
+      "assumed_position_sigma_m": 4.0,
+      "assumed_velocity_sigma_m_per_s": 0.6,
+      "csv_sha256": "9c0fca77a8413772b59e0735309673a8208991eea0990d7ff964ac671bbf7682",
+      "rows": 3001,
+      "metrics_rounded_as_reported": {
+        "overall": {
+          "filter_rmse_m": 0.4842,
+          "hold_rmse_m": 8.2078,
+          "integration_rmse_m": 2.5735,
+          "coverage_percent": 100.0
+        },
+        "outage": {
+          "filter_rmse_m": 0.3449,
+          "hold_rmse_m": 13.5889,
+          "integration_rmse_m": 1.6272,
+          "coverage_percent": 100.0
+        }
+      },
+      "report": "Fusion Lab 0.1.0\nConfiguration: Config { duration_seconds: 30, seed: 42, scenario: Maneuver, position_sigma: 2.0, velocity_sigma: 0.3, assumed_position_sigma: Some(4.0), assumed_velocity_sigma: Some(0.6), acceleration_density: 0.1, outage: Some(Outage { start: 10, end: 20 }) }\nMeasurement noise (per-axis sigma): true position=2.000000000000 m; assumed position=4.000000000000 m (override); true velocity=0.300000000000 m/s; assumed velocity=0.600000000000 m/s (override)\nMeasurement covariance R (per-axis): requested position=1.600000000000e1 m^2; effective position=1.600000000000e1 m^2; requested velocity=3.600000000000e-1 (m/s)^2; effective velocity=3.600000000000e-1 (m/s)^2 (variance floor=1e-12)\nOverall (3001 samples):\n  position RMSE: filter=0.4842 m, hold=8.2078 m, integration=2.5735 m\n  nominal 95% position ellipse coverage: 100.00%\nPosition outage (1000 samples):\n  position RMSE: filter=0.3449 m, hold=13.5889 m, integration=1.6272 m\n  nominal 95% position ellipse coverage: 100.00%\nCoverage is descriptive; this run does not establish covariance calibration.\n"
+    },
+    {
+      "seed": 314159,
+      "assumed_scale": 0.5,
+      "true_position_sigma_m": 2,
+      "true_velocity_sigma_m_per_s": 0.3,
+      "assumed_position_sigma_m": 1.0,
+      "assumed_velocity_sigma_m_per_s": 0.15,
+      "csv_sha256": "9f14765c87c9d7d3d09c1390ea87058017734ff8bdb2fe54b0fb39de1ac954a3",
+      "rows": 3001,
+      "metrics_rounded_as_reported": {
+        "overall": {
+          "filter_rmse_m": 0.8294,
+          "hold_rmse_m": 7.4684,
+          "integration_rmse_m": 2.5494,
+          "coverage_percent": 19.86
+        },
+        "outage": {
+          "filter_rmse_m": 0.8946,
+          "hold_rmse_m": 12.3252,
+          "integration_rmse_m": 2.002,
+          "coverage_percent": 0.0
+        }
+      },
+      "report": "Fusion Lab 0.1.0\nConfiguration: Config { duration_seconds: 30, seed: 314159, scenario: Maneuver, position_sigma: 2.0, velocity_sigma: 0.3, assumed_position_sigma: Some(1.0), assumed_velocity_sigma: Some(0.15), acceleration_density: 0.1, outage: Some(Outage { start: 10, end: 20 }) }\nMeasurement noise (per-axis sigma): true position=2.000000000000 m; assumed position=1.000000000000 m (override); true velocity=0.300000000000 m/s; assumed velocity=0.150000000000 m/s (override)\nMeasurement covariance R (per-axis): requested position=1.000000000000e0 m^2; effective position=1.000000000000e0 m^2; requested velocity=2.250000000000e-2 (m/s)^2; effective velocity=2.250000000000e-2 (m/s)^2 (variance floor=1e-12)\nOverall (3001 samples):\n  position RMSE: filter=0.8294 m, hold=7.4684 m, integration=2.5494 m\n  nominal 95% position ellipse coverage: 19.86%\nPosition outage (1000 samples):\n  position RMSE: filter=0.8946 m, hold=12.3252 m, integration=2.0020 m\n  nominal 95% position ellipse coverage: 0.00%\nCoverage is descriptive; this run does not establish covariance calibration.\n"
+    },
+    {
+      "seed": 314159,
+      "assumed_scale": 1.0,
+      "true_position_sigma_m": 2,
+      "true_velocity_sigma_m_per_s": 0.3,
+      "assumed_position_sigma_m": 2.0,
+      "assumed_velocity_sigma_m_per_s": 0.3,
+      "csv_sha256": "e39393a32fbbb5601f47b163b3d0730a16a66f1306304898137335a6a0a0fccc",
+      "rows": 3001,
+      "metrics_rounded_as_reported": {
+        "overall": {
+          "filter_rmse_m": 0.8164,
+          "hold_rmse_m": 7.4684,
+          "integration_rmse_m": 2.5494,
+          "coverage_percent": 64.81
+        },
+        "outage": {
+          "filter_rmse_m": 0.8932,
+          "hold_rmse_m": 12.3252,
+          "integration_rmse_m": 2.002,
+          "coverage_percent": 14.3
+        }
+      },
+      "report": "Fusion Lab 0.1.0\nConfiguration: Config { duration_seconds: 30, seed: 314159, scenario: Maneuver, position_sigma: 2.0, velocity_sigma: 0.3, assumed_position_sigma: Some(2.0), assumed_velocity_sigma: Some(0.3), acceleration_density: 0.1, outage: Some(Outage { start: 10, end: 20 }) }\nMeasurement noise (per-axis sigma): true position=2.000000000000 m; assumed position=2.000000000000 m (override); true velocity=0.300000000000 m/s; assumed velocity=0.300000000000 m/s (override)\nMeasurement covariance R (per-axis): requested position=4.000000000000e0 m^2; effective position=4.000000000000e0 m^2; requested velocity=9.000000000000e-2 (m/s)^2; effective velocity=9.000000000000e-2 (m/s)^2 (variance floor=1e-12)\nOverall (3001 samples):\n  position RMSE: filter=0.8164 m, hold=7.4684 m, integration=2.5494 m\n  nominal 95% position ellipse coverage: 64.81%\nPosition outage (1000 samples):\n  position RMSE: filter=0.8932 m, hold=12.3252 m, integration=2.0020 m\n  nominal 95% position ellipse coverage: 14.30%\nCoverage is descriptive; this run does not establish covariance calibration.\n"
+    },
+    {
+      "seed": 314159,
+      "assumed_scale": 2.0,
+      "true_position_sigma_m": 2,
+      "true_velocity_sigma_m_per_s": 0.3,
+      "assumed_position_sigma_m": 4.0,
+      "assumed_velocity_sigma_m_per_s": 0.6,
+      "csv_sha256": "b857166e0b090d8a6efb529a16189406a33e3be946395e634d2ba27813e57acc",
+      "rows": 3001,
+      "metrics_rounded_as_reported": {
+        "overall": {
+          "filter_rmse_m": 0.7815,
+          "hold_rmse_m": 7.4684,
+          "integration_rmse_m": 2.5494,
+          "coverage_percent": 100.0
+        },
+        "outage": {
+          "filter_rmse_m": 0.8882,
+          "hold_rmse_m": 12.3252,
+          "integration_rmse_m": 2.002,
+          "coverage_percent": 100.0
+        }
+      },
+      "report": "Fusion Lab 0.1.0\nConfiguration: Config { duration_seconds: 30, seed: 314159, scenario: Maneuver, position_sigma: 2.0, velocity_sigma: 0.3, assumed_position_sigma: Some(4.0), assumed_velocity_sigma: Some(0.6), acceleration_density: 0.1, outage: Some(Outage { start: 10, end: 20 }) }\nMeasurement noise (per-axis sigma): true position=2.000000000000 m; assumed position=4.000000000000 m (override); true velocity=0.300000000000 m/s; assumed velocity=0.600000000000 m/s (override)\nMeasurement covariance R (per-axis): requested position=1.600000000000e1 m^2; effective position=1.600000000000e1 m^2; requested velocity=3.600000000000e-1 (m/s)^2; effective velocity=3.600000000000e-1 (m/s)^2 (variance floor=1e-12)\nOverall (3001 samples):\n  position RMSE: filter=0.7815 m, hold=7.4684 m, integration=2.5494 m\n  nominal 95% position ellipse coverage: 100.00%\nPosition outage (1000 samples):\n  position RMSE: filter=0.8882 m, hold=12.3252 m, integration=2.0020 m\n  nominal 95% position ellipse coverage: 100.00%\nCoverage is descriptive; this run does not establish covariance calibration.\n"
+    }
+  ],
+  "limits": [
+    "RMSE printed4decimals and coverage2decimals; raw values not inferred",
+    "Three fixed paired seeds are a demonstration, not coverage calibration/general ranking or the issue21robustness study"
+  ]
+}
