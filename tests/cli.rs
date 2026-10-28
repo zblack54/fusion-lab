@@ -138,3 +138,66 @@ fn reports_distinguish_true_assumed_and_effective_zero_variance() {
         );
     }
 }
+
+#[test]
+fn invalid_velocity_bias_creates_no_output_parent() {
+    let root = Temp::new();
+    for field in ["velocity-bias-x", "velocity-bias-y"] {
+        for value in ["NaN", "inf", "-inf", "-100.1", "100.1"] {
+            let destination = root.0.join(field).join(value).join("run.csv");
+            let output = Command::new(env!("CARGO_BIN_EXE_fusion-lab"))
+                .args([
+                    "--duration",
+                    "1",
+                    "--no-outage",
+                    &format!("--{field}"),
+                    value,
+                    "--output",
+                ])
+                .arg(&destination)
+                .output()
+                .unwrap();
+            assert!(!output.status.success());
+            assert!(
+                String::from_utf8(output.stderr)
+                    .unwrap()
+                    .contains("InvalidConfig")
+            );
+            assert!(!destination.parent().unwrap().exists());
+        }
+    }
+}
+
+#[test]
+fn signed_bias_cli_reports_units_and_preserves_csv_shape() {
+    let root = Temp::new();
+    let destination = root.0.join("bias.csv");
+    let output = Command::new(env!("CARGO_BIN_EXE_fusion-lab"))
+        .args([
+            "--duration",
+            "1",
+            "--no-outage",
+            "--velocity-bias-x",
+            "2",
+            "--velocity-bias-y",
+            "-1",
+            "--output",
+        ])
+        .arg(&destination)
+        .output()
+        .unwrap();
+    assert!(
+        output.status.success(),
+        "{}",
+        String::from_utf8_lossy(&output.stderr)
+    );
+    let report = std::fs::read_to_string(destination.with_extension("txt")).unwrap();
+    assert!(report.contains("x=2.000000000000 m/s; y=-1.000000000000 m/s"));
+    assert!(report.contains("deterministic offset, not Gaussian sigma or filter correction"));
+    assert!(
+        std::fs::read_to_string(destination)
+            .unwrap()
+            .lines()
+            .all(|line| line.split(',').count() == 35)
+    );
+}

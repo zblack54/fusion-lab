@@ -24,7 +24,7 @@ pub struct Outage {
 /// Experiment inputs, validated by [`run`] before allocating or sampling.
 ///
 /// The optional assumed-noise fields default to following true sensor noise.
-/// In 0.1, complete external struct literals must include these new fields;
+/// In 0.1, complete external struct literals must include new input fields;
 /// literals using `..Config::default()` retain the matched-noise defaults.
 #[derive(Debug, Clone, PartialEq)]
 pub struct Config {
@@ -42,6 +42,9 @@ pub struct Config {
     pub assumed_position_sigma: Option<f64>,
     /// Filter-assumed velocity sigma, 0–100 m/s; `None` follows true velocity noise.
     pub assumed_velocity_sigma: Option<f64>,
+    /// Fixed world-frame velocity sensor offset [x, y], each -100–100 m/s.
+    /// This affects observations, not truth or the filter model.
+    pub velocity_bias: [f64; 2],
     /// Filter's continuous white acceleration spectral density, 0–100 m²/s³.
     pub acceleration_density: f64,
     /// Optional outage; must satisfy 0 <= start < end <= duration.
@@ -58,6 +61,7 @@ impl Default for Config {
             velocity_sigma: 0.15,
             assumed_position_sigma: None,
             assumed_velocity_sigma: None,
+            velocity_bias: [0.0; 2],
             acceleration_density: 0.1,
             outage: Some(Outage { start: 10, end: 20 }),
         }
@@ -86,6 +90,11 @@ impl Config {
                 && (!value.is_finite() || !(0.0..=100.0).contains(&value))
             {
                 return Err(Error::InvalidConfig(name));
+            }
+        }
+        for value in self.velocity_bias {
+            if !value.is_finite() || !(-100.0..=100.0).contains(&value) {
+                return Err(Error::InvalidConfig("velocity_bias"));
             }
         }
         if let Some(outage) = self.outage
@@ -191,7 +200,14 @@ pub fn run(config: &Config) -> Result<Experiment, Error> {
             None
         };
         let velocity_measurement = if tick % 5 == 0 {
-            Some(sensors.velocity(truth.velocity, config.velocity_sigma))
+            let mut observation = sensors.velocity(truth.velocity, config.velocity_sigma);
+            for (value, bias) in observation.iter_mut().zip(config.velocity_bias) {
+                // Skip even signed zero to preserve the original arithmetic exactly.
+                if bias != 0.0 {
+                    *value += bias;
+                }
+            }
+            Some(observation)
         } else {
             None
         };

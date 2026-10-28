@@ -1,0 +1,68 @@
+{
+  "status": "local gates passed; independent review and exact-head CI pending",
+  "rootTests": 27,
+  "doctests": 1,
+  "serviceContract": 21,
+  "dashboardContract": 17,
+  "nodeRegressions": 12,
+  "commands": [
+    {
+      "command": "cargo fmt --all -- --check",
+      "passed": true
+    },
+    {
+      "command": "cargo check --locked --all-targets",
+      "passed": true
+    },
+    {
+      "command": "cargo clippy --locked --all-targets -- -D warnings",
+      "passed": true
+    },
+    {
+      "command": "cargo test --locked",
+      "passed": true
+    },
+    {
+      "command": "cargo test --locked --doc",
+      "passed": true
+    },
+    {
+      "command": "cargo doc --locked --no-deps",
+      "passed": true
+    },
+    {
+      "command": "cargo test --manifest-path tests/experiment-service/Cargo.toml --locked -- --test-threads=1",
+      "passed": true
+    },
+    {
+      "command": "cargo test --manifest-path tests/local-dashboard/Cargo.toml --locked -- --test-threads=1",
+      "passed": true
+    },
+    {
+      "command": "bundled Python scripts/docs.py build",
+      "passed": true
+    },
+    {
+      "command": "bundled Node --test crates/experiment-service/web/regressions.test.mjs crates/experiment-service/web/dashboard-regressions.test.mjs",
+      "passed": true
+    }
+  ],
+  "sourceFiles": {
+    "src/simulation.rs": "ed0fba62df04b4374130d06891e129a80e04b831c3525f89b9584fd81ae82afb",
+    "src/main.rs": "6a9373bb7f31a1fe788d81879e8df3321229f1fae128b353c04e952507889612",
+    "tests/experiments.rs": "013680fae12dd2b23971f719c49dab2eed7bf9e1102edd8e8b4d7cfdca55c820",
+    "tests/cli.rs": "4ecfcdae8438d59ba3d54a77c0860416100ad8f38358dc6f66808ae80013987d",
+    "docs/design/velocity-bias.md": "6f1faa647290a9d01cecd36b524c77394d4058ae1efef0825a20f4041e2b693d",
+    "docs/design/v0.1.md": "bf70967593988d0140103589383652684177d5aae24c56278ed1d55094387e1e",
+    "docs/learn/velocity-bias.md": "0098897eb342493cb568c870c88f9a0cf2808a3fc34fbcbae25a2eff73042ab9",
+    "docs/experiments/velocity-bias-demo.json": "674f6353adb03d15c667c01c33e7370f09d6077eab122b90d781218de71f5b79",
+    "docs/roadmap.md": "551b65c077eff91e91e5fe44fe47a1b723828a339db18352122633e1934f95a1",
+    "mkdocs.yml": "c558b6198dacfc911e9f8e2ed5a9cacf298d8217ccc6a82a05797e24d4896f3f"
+  },
+  "limitations": [
+    "One local Windows Rust1.99 compiler execution; exact-head native CI pending",
+    "No service/dashboard wire changes",
+    "Drift deferred under issue20",
+    "No statistical calibration claim"
+  ]
+}
