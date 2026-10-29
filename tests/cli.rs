@@ -201,3 +201,96 @@ fn signed_bias_cli_reports_units_and_preserves_csv_shape() {
             .all(|line| line.split(',').count() == 35)
     );
 }
+
+#[test]
+fn invalid_drift_rates_and_whole_horizons_create_no_output_parent() {
+    let root = Temp::new();
+    for field in ["velocity-drift-rate-x", "velocity-drift-rate-y"] {
+        for value in ["NaN", "inf", "-inf", "-1.01", "1.01"] {
+            let destination = root.0.join(field).join(value).join("run.csv");
+            let output = Command::new(env!("CARGO_BIN_EXE_fusion-lab"))
+                .args([
+                    "--duration",
+                    "1",
+                    "--no-outage",
+                    &format!("--{field}"),
+                    value,
+                    "--output",
+                ])
+                .arg(&destination)
+                .output()
+                .unwrap();
+            assert!(!output.status.success());
+            assert!(
+                String::from_utf8(output.stderr)
+                    .unwrap()
+                    .contains("velocity_drift_rate")
+            );
+            assert!(!destination.parent().unwrap().exists());
+        }
+    }
+    let destination = root.0.join("whole-horizon").join("run.csv");
+    let output = Command::new(env!("CARGO_BIN_EXE_fusion-lab"))
+        .args([
+            "--duration",
+            "3600",
+            "--no-outage",
+            "--velocity-drift-rate-x",
+            "1",
+            "--output",
+        ])
+        .arg(&destination)
+        .output()
+        .unwrap();
+    assert!(!output.status.success());
+    assert!(
+        String::from_utf8(output.stderr)
+            .unwrap()
+            .contains("velocity_bias_horizon")
+    );
+    assert!(!destination.parent().unwrap().exists());
+}
+
+#[test]
+fn signed_drift_cli_reports_initial_rate_duration_and_final_offset() {
+    let root = Temp::new();
+    let destination = root.0.join("drift.csv");
+    let output = Command::new(env!("CARGO_BIN_EXE_fusion-lab"))
+        .args([
+            "--duration",
+            "1",
+            "--no-outage",
+            "--velocity-bias-x",
+            "0.2",
+            "--velocity-bias-y",
+            "-0.1",
+            "--velocity-drift-rate-x",
+            "0.4",
+            "--velocity-drift-rate-y",
+            "-0.2",
+            "--output",
+        ])
+        .arg(&destination)
+        .output()
+        .unwrap();
+    assert!(
+        output.status.success(),
+        "{}",
+        String::from_utf8_lossy(&output.stderr)
+    );
+    let report = std::fs::read_to_string(destination.with_extension("txt")).unwrap();
+    for fragment in [
+        "Initial velocity sensor bias (world frame): x=0.200000000000 m/s; y=-0.100000000000 m/s",
+        "rate x=0.400000000000 m/s^2; y=-0.200000000000 m/s^2; duration=1 s",
+        "final offset x=0.600000000000 m/s; y=-0.300000000000 m/s",
+        "bias(t)=initial_bias+rate*t_seconds, not physical acceleration or filter correction",
+    ] {
+        assert!(report.contains(fragment), "missing {fragment}: {report}");
+    }
+    assert!(
+        std::fs::read_to_string(destination)
+            .unwrap()
+            .lines()
+            .all(|line| line.split(',').count() == 35)
+    );
+}

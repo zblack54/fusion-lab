@@ -1,0 +1,80 @@
+{
+  "status": "implemented; local gates passed; independent review and exact-head CI pending",
+  "approval": "https://github.com/zblack54/fusion-lab/issues/20#issuecomment-6480183228",
+  "rootTests": 34,
+  "doctests": 1,
+  "researchExampleSyntheticTests": 1,
+  "serviceContractTests": 21,
+  "dashboardContractTests": 17,
+  "nodeRegressions": 16,
+  "pythonResearchSyntheticFixtures": 14,
+  "commands": [
+    {
+      "command": "cargo fmt --all -- --check",
+      "passed": true
+    },
+    {
+      "command": "cargo check --locked --all-targets",
+      "passed": true
+    },
+    {
+      "command": "cargo clippy --locked --all-targets -- -D warnings",
+      "passed": true
+    },
+    {
+      "command": "cargo test --locked",
+      "passed": true
+    },
+    {
+      "command": "cargo test --locked --doc",
+      "passed": true
+    },
+    {
+      "command": "cargo doc --locked --no-deps",
+      "passed": true
+    },
+    {
+      "command": "cargo test --locked --example robustness-run",
+      "passed": true
+    },
+    {
+      "command": "cargo test --manifest-path tests/experiment-service/Cargo.toml --locked -- --test-threads=1",
+      "passed": true
+    },
+    {
+      "command": "cargo test --manifest-path tests/local-dashboard/Cargo.toml --locked -- --test-threads=1",
+      "passed": true
+    },
+    {
+      "command": "bundled Node --test crates/experiment-service/web/regressions.test.mjs crates/experiment-service/web/dashboard-regressions.test.mjs",
+      "passed": true
+    },
+    {
+      "command": "bundled Python -m unittest discover -s research/robustness -p test_study.py -v",
+      "passed": true
+    },
+    {
+      "command": "bundled Python scripts/docs.py build",
+      "passed": true
+    }
+  ],
+  "sourceHashes": {
+    "src/simulation.rs": "c0fd739c26e7190549736636c69720dc963707059463a45b7095159099fd7691",
+    "src/main.rs": "76574d18911bdce81082b9f76308cf3a31f69fa9967a0592f28eaf2630901d6b",
+    "tests/velocity_drift.rs": "84b88fb0a2ab5803fb6c104ca4f58abab7320e8a4eb2183d32050cf661519f97",
+    "tests/cli.rs": "c94b6888d73c2eb1b7eb97a6869996336501ab207bb1f075520d1864e30cb179",
+    "examples/robustness-run.rs": "3c4223b8b6101557ef96dcba12737dca1a2dadb4402c9cfe06d1528df9b204d2",
+    "docs/design/velocity-drift.md": "c8485b13ef2ae1cb205925a035a18b83987d00ebe55abed658afbb01010a64fc",
+    "docs/design/v0.1.md": "cb36e0955c89ca60b7180f978f33abd223eb196e20453c5478d8611033295fe5",
+    "docs/learn/velocity-drift.md": "efbb734d661fbd995ecee446d21b64180a48623e195944493c3e2e150cf6bcf4",
+    "docs/experiments/velocity-drift-demo.json": "1a7e5d8100399248cfedf41f2c58995149f96e6647e1ee176eb6edb86d2237c4"
+  },
+  "limits": [
+    "Windows Rust1.99 local execution only; exact-head native CI pending",
+    "No cross-platform bitwise promise",
+    "No random walk, bias estimation, tuning or service/dashboard wire extension",
+    "Historical576-key no-drift study/protocol/archivedsource/results unchanged; current research Config adds explicit zero only; study not rerun"
+  ],
+  "defaultCompatibility": "All9implicit/signedzero comparisons for3actualprecode CSVs match byte-for-byte on reference target",
+  "demonstration": "Six prespecified descriptive runs; no calibration or generalranking claim"
+}

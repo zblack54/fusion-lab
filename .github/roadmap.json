@@ -40,12 +40,13 @@
     {
       "key": "robustness",
       "title": "v0.1b Sensor realism and robustness",
-      "description": "True versus assumed noise, controlled sensor bias, and prespecified held-out robustness experiments.",
-      "state": "open",
+      "description": "True versus assumed noise, controlled constant/linear sensor offsets, and prespecified held-out constant-bias robustness experiments.",
+      "state": "closed",
       "issues": [
         19,
         20,
-        21
+        21,
+        64
       ]
     },
     {
@@ -71,7 +72,8 @@
         52,
         53,
         57,
-        60
+        60,
+        66
       ]
     },
     {

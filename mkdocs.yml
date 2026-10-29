@@ -25,6 +25,7 @@ nav:
       - Math and code tour: learn/math-and-code.md
       - True and assumed sensor noise: learn/noise-mismatch.md
       - Fixed velocity sensor bias: learn/velocity-bias.md
+      - Linear velocity sensor drift: learn/velocity-drift.md
       - Held-out robustness study: learn/robustness-study.md
       - Reproduce and question results: learn/research.md
       - Experiment service ownership: learn/experiment-service.md

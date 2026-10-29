@@ -45,6 +45,9 @@ pub struct Config {
     /// Fixed world-frame velocity sensor offset [x, y], each -100–100 m/s.
     /// This affects observations, not truth or the filter model.
     pub velocity_bias: [f64; 2],
+    /// Linear world-frame velocity-offset rate [x, y], each -1–1 m/s².
+    /// The combined offset must stay within -100–100 m/s for the entire run.
+    pub velocity_drift_rate: [f64; 2],
     /// Filter's continuous white acceleration spectral density, 0–100 m²/s³.
     pub acceleration_density: f64,
     /// Optional outage; must satisfy 0 <= start < end <= duration.
@@ -62,6 +65,7 @@ impl Default for Config {
             assumed_position_sigma: None,
             assumed_velocity_sigma: None,
             velocity_bias: [0.0; 2],
+            velocity_drift_rate: [0.0; 2],
             acceleration_density: 0.1,
             outage: Some(Outage { start: 10, end: 20 }),
         }
@@ -95,6 +99,15 @@ impl Config {
         for value in self.velocity_bias {
             if !value.is_finite() || !(-100.0..=100.0).contains(&value) {
                 return Err(Error::InvalidConfig("velocity_bias"));
+            }
+        }
+        for (initial, rate) in self.velocity_bias.into_iter().zip(self.velocity_drift_rate) {
+            if !rate.is_finite() || !(-1.0..=1.0).contains(&rate) {
+                return Err(Error::InvalidConfig("velocity_drift_rate"));
+            }
+            let final_bias = initial + rate * f64::from(self.duration_seconds);
+            if !final_bias.is_finite() || !(-100.0..=100.0).contains(&final_bias) {
+                return Err(Error::InvalidConfig("velocity_bias_horizon"));
             }
         }
         if let Some(outage) = self.outage
@@ -201,8 +214,14 @@ pub fn run(config: &Config) -> Result<Experiment, Error> {
         };
         let velocity_measurement = if tick % 5 == 0 {
             let mut observation = sensors.velocity(truth.velocity, config.velocity_sigma);
-            for (value, bias) in observation.iter_mut().zip(config.velocity_bias) {
-                // Skip even signed zero to preserve the original arithmetic exactly.
+            for (axis, value) in observation.iter_mut().enumerate() {
+                let mut bias = config.velocity_bias[axis];
+                let rate = config.velocity_drift_rate[axis];
+                // Keep the accepted constant-bias path exact for zero/signed-zero
+                // rate, and the initial offset exact at tick zero.
+                if rate != 0.0 && tick != 0 {
+                    bias += rate * (f64::from(tick) / f64::from(TICKS_PER_SECOND));
+                }
                 if bias != 0.0 {
                     *value += bias;
                 }
@@ -255,5 +274,28 @@ fn advance_truth(truth: &mut State, scenario: Scenario, interval_tick: u32) {
     for (axis, a) in acceleration.into_iter().enumerate() {
         truth.position[axis] += truth.velocity[axis] * DT + 0.5 * a * DT * DT;
         truth.velocity[axis] += a * DT;
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn affine_endpoint_validation_accepts_exact_long_horizon_bounds_without_sampling() {
+        for sign in [-1.0, 1.0] {
+            let config = Config {
+                duration_seconds: 3600,
+                velocity_bias: [43.75 * sign, 0.0],
+                velocity_drift_rate: [sign / 64.0, 0.0],
+                ..Config::default()
+            };
+            assert_eq!(config.validate(), Ok(()));
+        }
+        let config = Config {
+            duration_seconds: 3200,
+            velocity_drift_rate: [0.03125, 0.0],
+            ..Config::default()
+        };
+        assert_eq!(config.validate(), Ok(()));
     }
 }
