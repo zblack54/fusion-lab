@@ -1,0 +1,19 @@
+{
+  "status": "independent full-record aggregate audit passed",
+  "runs": 576,
+  "snapshots": 1728576,
+  "groups": 18,
+  "aggregate_numeric_comparisons": 786,
+  "protocol_sha256": "05f4bb8553c7166a4707fa0f9e466f5857252ef5976b9a9c96d0a553c919ea2e",
+  "revision": "80c39e4f15b77d84b6d69c7e7f06ce05be49fed2",
+  "frozen_sha256": "2d2a50f0c0afa849d1442862b463a6c351b2996b5c88442b8d29ed138bba60d8",
+  "records_sha256": "111596fb8a24d2e7503d788207d079f4b95bcb0f15d6a0b8780c58e4822eb8e4",
+  "aggregates_sha256": "fd9582ecec1bc320edef96672d3e972ed7e17362baf718d0da76651ea56ce8d6",
+  "csv_bytes_total": 779446833,
+  "rounding_boundary_keys": [],
+  "failed_attempts": [],
+  "limitations": [
+    "Independent aggregate audit from per-run source summaries; deleted raw CSVs cannot all be re-read",
+    "Per-run numerical verification/invariants performed by reviewed frozen executor, not rerun here"
+  ]
+}

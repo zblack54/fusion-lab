@@ -2,6 +2,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {Worker} from 'node:worker_threads';
+import {EventEmitter} from 'node:events';
 import {parseSnapshot,Replay,positionEllipse} from './data.mjs';
 
 test('issue51 anisotropic covariance retains its positive minor axis',()=>{
@@ -32,15 +33,65 @@ test('issue50 fractional replay time survives speed changes and pause/resume',()
  const paused=new Replay(recording);paused.play(0);paused.pause(5);paused.play(100);assert.equal(paused.frame(105).tick,1);
 });
 
+// Test-only lifecycle: thread/module startup has its own bounded allowance.
+// Once ready, every protocol response retains the original two-second limit.
+function workerMessages(worker,{startupTimeoutMs=15000,protocolTimeoutMs=2000}={}){
+ const queued=[],waiters=[];let online=false,ready=false,terminal=null;
+ function fail(error){if(terminal)return;terminal=error;for(const waiter of waiters.splice(0)){clearTimeout(waiter.timer);waiter.reject(error);}}
+ function onMessage(message){
+  if(message.type==='adapterReady')ready=true;
+  const at=waiters.findIndex(waiter=>waiter.type===message.type);
+  if(at>=0){const waiter=waiters.splice(at,1)[0];clearTimeout(waiter.timer);waiter.resolve(message);}else queued.push(message);
+ }
+ function onOnline(){online=true;}
+ function onError(error){fail(new Error(`Worker ${ready?'protocol':'startup'} error: ${error.message}`,{cause:error}));}
+ function onExit(code){fail(new Error(`Worker exited during ${ready?'protocol':'startup'} (code ${code})`));}
+ worker.on('message',onMessage);worker.on('online',onOnline);worker.on('error',onError);worker.on('exit',onExit);
+ function next(type,timeoutMs=protocolTimeoutMs,phase='protocol'){
+  if(terminal)return Promise.reject(terminal);
+  const at=queued.findIndex(message=>message.type===type);
+  if(at>=0)return Promise.resolve(queued.splice(at,1)[0]);
+  return new Promise((resolve,reject)=>{
+   const waiter={type,resolve,reject,timer:setTimeout(()=>{
+    waiters.splice(waiters.indexOf(waiter),1);
+    reject(new Error(`Worker ${phase} timeout: no ${type} within ${timeoutMs}ms (online=${online})`));
+   },timeoutMs)};waiters.push(waiter);
+  });
+ }
+ return {ready:()=>next('adapterReady',startupTimeoutMs,'startup'),next,
+  close(){fail(new Error('Worker test harness closed'));worker.off('message',onMessage);worker.off('online',onOnline);worker.off('error',onError);worker.off('exit',onExit);}
+ };
+}
+
+test('issue66 startup budget is separate from unchanged post-ready protocol deadline',async()=>{
+ const worker=new EventEmitter();const messages=workerMessages(worker,{startupTimeoutMs:1000,protocolTimeoutMs:20});
+ const startup=messages.ready();const signal=setTimeout(()=>{worker.emit('online');worker.emit('message',{type:'adapterReady'});},35);
+ try{await startup;await assert.rejects(messages.next('frame'),/Worker protocol timeout: no frame within 20ms/);}
+ finally{clearTimeout(signal);messages.close();}
+});
+test('issue66 missing module readiness reports a startup failure',async()=>{
+ const worker=new EventEmitter();const messages=workerMessages(worker,{startupTimeoutMs:20});worker.emit('online');
+ try{await assert.rejects(messages.ready(),/Worker startup timeout: no adapterReady within 20ms \(online=true\)/);}
+ finally{messages.close();}
+});
+test('issue66 worker errors propagate with their original cause',async()=>{
+ const worker=new EventEmitter();const messages=workerMessages(worker);const startup=messages.ready();const cause=new Error('module import failed');
+ try{worker.emit('error',cause);await assert.rejects(startup,error=>error.message==='Worker startup error: module import failed'&&error.cause===cause);await assert.rejects(messages.next('frame'),/module import failed/);}
+ finally{messages.close();}
+});
+test('issue66 premature worker exit fails the pending protocol response',async()=>{
+ const worker=new EventEmitter();const messages=workerMessages(worker);worker.emit('message',{type:'adapterReady'});await messages.ready();const response=messages.next('resetAck');
+ try{worker.emit('exit',7);await assert.rejects(response,/Worker exited during protocol \(code 7\)/);}
+ finally{messages.close();}
+});
+
 async function assertControlledWorker(delayLoadedMs=0){
  const moduleUrl=new URL(process.env.FUSION_WORKER_MODULE??'./parser-worker.mjs',import.meta.url).href;
  const adapter=`const {parentPort}=require('node:worker_threads');globalThis.onmessage=null;globalThis.postMessage=(message,transfer)=>{if(message.type==='loaded'){const until=performance.now()+${delayLoadedMs};while(performance.now()<until){}}parentPort.postMessage(message,transfer);};import(${JSON.stringify(moduleUrl)}).then(()=>{parentPort.on('message',data=>globalThis.onmessage({data}));parentPort.postMessage({type:'adapterReady'});});`;
  const worker=new Worker(adapter,{eval:true});
- const queued=[],waiters=[];
- worker.on('message',message=>{const at=waiters.findIndex(waiter=>waiter.type===message.type);if(at>=0){const waiter=waiters.splice(at,1)[0];clearTimeout(waiter.timer);waiter.resolve(message);}else queued.push(message);});
- function next(type){const at=queued.findIndex(message=>message.type===type);if(at>=0)return Promise.resolve(queued.splice(at,1)[0]);return new Promise((resolve,reject)=>{const waiter={type,resolve,timer:setTimeout(()=>{waiters.splice(waiters.indexOf(waiter),1);reject(new Error(`No ${type} message: final paused seek was lost`));},2000)};waiters.push(waiter);});}
+ const messages=workerMessages(worker);const next=type=>messages.next(type);
  try{
-  await next('adapterReady');worker.postMessage({type:'resetInput',generation:1});await next('resetAck');
+  await messages.ready();worker.postMessage({type:'resetInput',generation:1});await next('resetAck');
   const header='tick,time_s,true_x,true_y,true_vx,true_vy,estimated_x,estimated_y,estimated_vx,estimated_vy,position_x,position_y,velocity_x,velocity_y,hold_x,hold_y,integrated_x,integrated_y,position_outage,p00,p01,p02,p03,p10,p11,p12,p13,p20,p21,p22,p23,p30,p31,p32,p33';
   const first='0,0,0,0,1,1,0,0,1,1,0,0,1,1,0,0,0,0,false,1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1';
   const second='1,0.01,0.01,0.01,1,1,0.01,0.01,1,1,,,,,0,0,0.01,0.01,true,1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1';
@@ -52,7 +103,7 @@ async function assertControlledWorker(delayLoadedMs=0){
   const completedMetrics=(await next('metrics')).metrics;assert.equal(completedMetrics.input_readers,0);assert.equal(completedMetrics.recording_owners,1);assert.equal(completedMetrics.parser_owners,0);assert.ok(completedMetrics.numeric_buffers_bytes>0);assert.ok(completedMetrics.numeric_buffers_bytes<=100800280);
   if(delayLoadedMs)assert.ok(completedMetrics.max_active_work_before_yield_ms>=delayLoadedMs*.8,'continuous timing must observe synchronous notification work outside parser snippets');
   worker.postMessage({type:'resetInput',generation:2});const reset=await next('resetAck');assert.equal(reset.metrics.input_readers,0);assert.equal(reset.metrics.recording_owners,0);assert.equal(reset.metrics.numeric_buffers_bytes,0);
- }finally{await worker.terminate();for(const waiter of waiters)clearTimeout(waiter.timer);}
+ }finally{try{await worker.terminate();}finally{messages.close();}}
 }
 test('issue48 final paused seek is delivered after an outstanding frame acknowledgment',()=>assertControlledWorker());
 test('issue57 continuous worker meter detects a deliberately slow final notification',()=>assertControlledWorker(12));

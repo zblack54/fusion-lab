@@ -1,0 +1,23 @@
+{
+  "head": "fd2b06a7fd3571515345f23d05ebafbe0b3a8d1f",
+  "run": 40765060309,
+  "job": 123086991887,
+  "variant": "windows-stable",
+  "lockedTestsPassed": 17,
+  "nodeRegressionsPassed": 11,
+  "nodeRegressionsFailed": 1,
+  "failure": "No adapterReady message: final paused seek was lost",
+  "phase": "before reset/load/seek; workerstartup",
+  "testSource": "crates/experiment-service/web/regressions.test.mjs:57",
+  "limitations": "No production lost-seek inference established",
+  "remediation": {
+    "sourceSha256": "1310852a4edb81b15f75646d43d4a0182573674e78c991e670d9c3f016bd318a",
+    "scope": "supplementary test lifecycle only",
+    "startupDeadlineMs": 15000,
+    "postReadyProtocolDeadlineMs": 2000,
+    "productionChanged": false,
+    "lockedTestsChanged": false,
+    "nodeRegressionsPassed": 16,
+    "review": "main independently inspected diff; all original seek/ACK/ownership assertions retained; startup budget is fixture readiness rather than product timing contract"
+  }
+}

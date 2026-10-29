@@ -1,0 +1,18 @@
+{
+  "status": "pending acknowledgement independently verified without rerun",
+  "durable_verified": 141,
+  "pending_verified": 142,
+  "pending_key": [
+    1007,
+    "maneuver",
+    2,
+    0
+  ],
+  "prefix_identical": true,
+  "reference_transition_exact": true,
+  "csv_sha256": "b399be175176854e6a2e120dcf8b021cac48a74ec1d22fecb01976af5f1613f6",
+  "roundtrip_sha256": "29c029d0f6cd98e093cbd5eb118c56f95092dd75f824fdda6c2e877814569dca",
+  "old_checkpoint_sha256": "732f5948db45a874fdbaa068edb9c0b6e65a1c315c31c27fc89a69c5ea52ee13",
+  "pending_checkpoint_sha256": "e0cec7340657636e86af1abe526a4105b611645edaf395e8346b3854c9afd1f6",
+  "conclusion": "Pending journal represents exactly one completed verified numerical key; completing its durable acknowledgement preserves the fixed inventory and avoids numerical rerun. Main must verify frozen source/binary and exclusive ownership before promotion."
+}

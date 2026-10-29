@@ -1,0 +1,39 @@
+{
+  "status": "local verification passed; independent review pending",
+  "rootGates": [
+    {
+      "command": "cargo fmt --all -- --check",
+      "passed": true
+    },
+    {
+      "command": "cargo check --locked --all-targets",
+      "passed": true
+    },
+    {
+      "command": "cargo clippy --locked --all-targets -- -D warnings",
+      "passed": true
+    },
+    {
+      "command": "cargo test --locked",
+      "passed": true
+    },
+    {
+      "command": "cargo test --locked --doc",
+      "passed": true
+    },
+    {
+      "command": "cargo doc --locked --no-deps",
+      "passed": true
+    }
+  ],
+  "pythonFixtures": 14,
+  "actualWindowsSharing": "WinError5 reproduced with ownedreader no delete share; release then promotion passed",
+  "docs": "strictbuild passed",
+  "executedOriginalStudySource": "4764f053ee17b060e0fba205fb7cc246713bc24aeb9f6ddc9e531b37e3171185",
+  "hardenedSourceHashes": {
+    "research/robustness/study.py": "7a80c797d665ae0023d6390f78f1dc7f9e798e9d6dcfd2bd0e69b795ec06251d",
+    "research/robustness/test_study.py": "927377dae7ca8b023b5ef0d28d49b1fdf9c9869cac057b7898e1800675eb2001",
+    "research/robustness/README.md": "8fc16a4f05b90763468b52ba4038941adbed215f1d0308f69506b50de1a28f9f"
+  },
+  "noStudyRerun": true
+}

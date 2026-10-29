@@ -1,6 +1,6 @@
 # True sensor noise and assumed measurement covariance
 
-Status: implemented under issue #19 review. Core/library and CLI support the mismatch; the service/dashboard JSON remains unchanged and service-created jobs retain matched-noise behavior. No bias state, EKF or tuning study is added.
+Status: accepted and merged in [PR62](https://github.com/zblack54/fusion-lab/pull/62). Core/library and CLI support the mismatch; the service/dashboard JSON remains unchanged and service-created jobs retain matched-noise behavior. No bias state, EKF or tuning study is added.
 
 ## What changed and why
 

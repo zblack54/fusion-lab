@@ -1,0 +1,1214 @@
+[
+  {
+    "trajectory": "straight",
+    "scale": 0.5,
+    "bias": [
+      0.0,
+      0.0
+    ],
+    "outage_filter_rmse": {
+      "n": 32,
+      "mean": 0.41362250324210176,
+      "sample_sd": 0.21999073218656975,
+      "min": 0.11646761859132589,
+      "max": 0.8799550096734325
+    },
+    "outage_position_coverage": {
+      "n": 32,
+      "mean": 0.56421875,
+      "sample_sd": 0.4562505490496034,
+      "min": 0.0,
+      "max": 1.0
+    },
+    "overall_filter_rmse": {
+      "n": 32,
+      "mean": 0.5836041613576597,
+      "sample_sd": 0.15568553885745037,
+      "min": 0.37291018844544555,
+      "max": 0.9386206845214353
+    },
+    "overall_position_coverage": {
+      "n": 32,
+      "mean": 0.5239711762745751,
+      "sample_sd": 0.2908577722063031,
+      "min": 0.04031989336887704,
+      "max": 0.9323558813728757
+    },
+    "outage_hold_rmse": {
+      "n": 32,
+      "mean": 6.94521877527705,
+      "sample_sd": 1.6762970206421155,
+      "min": 3.601841431304165,
+      "max": 10.71984972268692
+    },
+    "outage_integration_rmse": {
+      "n": 32,
+      "mean": 2.3214769639533963,
+      "sample_sd": 1.160906850830706,
+      "min": 0.524685315334109,
+      "max": 4.870649671934002
+    },
+    "paired_outage_rmse_vs_scale1": {
+      "n": 32,
+      "mean": 0.00043988875686700206,
+      "sample_sd": 0.000730617214356326,
+      "min": -0.0011167270672521323,
+      "max": 0.001600444601126072,
+      "monte_carlo_standard_error": 0.00012915609668074586
+    },
+    "recovery": {
+      "total": 32,
+      "recovered": 32,
+      "censored": 0,
+      "recovered_latency_seconds": {
+        "n": 32,
+        "mean": 0.034375,
+        "sample_sd": 0.19445436482630057,
+        "min": 0.0,
+        "max": 1.1
+      }
+    }
+  },
+  {
+    "trajectory": "straight",
+    "scale": 0.5,
+    "bias": [
+      0.3,
+      -0.15
+    ],
+    "outage_filter_rmse": {
+      "n": 32,
+      "mean": 3.4214320500830953,
+      "sample_sd": 0.29285894384777605,
+      "min": 3.012705332902803,
+      "max": 4.264188796605357
+    },
+    "outage_position_coverage": {
+      "n": 32,
+      "mean": 0.0,
+      "sample_sd": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "overall_filter_rmse": {
+      "n": 32,
+      "mean": 3.0723599817167715,
+      "sample_sd": 0.2260588548369959,
+      "min": 2.694110229014389,
+      "max": 3.696941771827505
+    },
+    "overall_position_coverage": {
+      "n": 32,
+      "mean": 0.08395118293902033,
+      "sample_sd": 0.05242248553264694,
+      "min": 0.0,
+      "max": 0.19993335554815062
+    },
+    "outage_hold_rmse": {
+      "n": 32,
+      "mean": 6.94521877527705,
+      "sample_sd": 1.6762970206421155,
+      "min": 3.601841431304165,
+      "max": 10.71984972268692
+    },
+    "outage_integration_rmse": {
+      "n": 32,
+      "mean": 3.204203051341433,
+      "sample_sd": 1.178411271995081,
+      "min": 0.9738072082803136,
+      "max": 6.143127678455338
+    },
+    "paired_outage_rmse_vs_scale1": {
+      "n": 32,
+      "mean": -0.004070042250728129,
+      "sample_sd": 0.0006024575358056716,
+      "min": -0.005069422329528894,
+      "max": -0.00277677359654227,
+      "monte_carlo_standard_error": 0.0001065004522362819
+    },
+    "recovery": {
+      "total": 32,
+      "recovered": 0,
+      "censored": 32,
+      "recovered_latency_seconds": {
+        "values": []
+      }
+    }
+  },
+  {
+    "trajectory": "straight",
+    "scale": 0.5,
+    "bias": [
+      1.0,
+      -0.5
+    ],
+    "outage_filter_rmse": {
+      "n": 32,
+      "mean": 11.457942625259864,
+      "sample_sd": 0.2915468890807973,
+      "min": 11.058707178575517,
+      "max": 12.303741008078392
+    },
+    "outage_position_coverage": {
+      "n": 32,
+      "mean": 0.0,
+      "sample_sd": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "overall_filter_rmse": {
+      "n": 32,
+      "mean": 10.191048927284506,
+      "sample_sd": 0.22989998442386833,
+      "min": 9.799680841296679,
+      "max": 10.826117671279444
+    },
+    "overall_position_coverage": {
+      "n": 32,
+      "mean": 0.03525908030656448,
+      "sample_sd": 0.02123271019322058,
+      "min": 0.0,
+      "max": 0.0773075641452849
+    },
+    "outage_hold_rmse": {
+      "n": 32,
+      "mean": 6.94521877527705,
+      "sample_sd": 1.6762970206421155,
+      "min": 3.601841431304165,
+      "max": 10.71984972268692
+    },
+    "outage_integration_rmse": {
+      "n": 32,
+      "mean": 7.204970320627169,
+      "sample_sd": 1.4654843195269665,
+      "min": 3.996021830056307,
+      "max": 10.57665519232863
+    },
+    "paired_outage_rmse_vs_scale1": {
+      "n": 32,
+      "mean": -0.01390915048647634,
+      "sample_sd": 0.0005938295312714302,
+      "min": -0.014952260654329308,
+      "max": -0.012797012156090304,
+      "monte_carlo_standard_error": 0.00010497522210771432
+    },
+    "recovery": {
+      "total": 32,
+      "recovered": 0,
+      "censored": 32,
+      "recovered_latency_seconds": {
+        "values": []
+      }
+    }
+  },
+  {
+    "trajectory": "straight",
+    "scale": 1.0,
+    "bias": [
+      0.0,
+      0.0
+    ],
+    "outage_filter_rmse": {
+      "n": 32,
+      "mean": 0.41318261448523474,
+      "sample_sd": 0.21951193553267587,
+      "min": 0.11609917487837121,
+      "max": 0.878902915848351
+    },
+    "outage_position_coverage": {
+      "n": 32,
+      "mean": 0.95128125,
+      "sample_sd": 0.15505987072116537,
+      "min": 0.198,
+      "max": 1.0
+    },
+    "overall_filter_rmse": {
+      "n": 32,
+      "mean": 0.5706983275563473,
+      "sample_sd": 0.15281933553864335,
+      "min": 0.3671339151862298,
+      "max": 0.8973500556538065
+    },
+    "overall_position_coverage": {
+      "n": 32,
+      "mean": 0.9421338720426524,
+      "sample_sd": 0.10881450627866854,
+      "min": 0.5978007330889703,
+      "max": 1.0
+    },
+    "outage_hold_rmse": {
+      "n": 32,
+      "mean": 6.94521877527705,
+      "sample_sd": 1.6762970206421155,
+      "min": 3.601841431304165,
+      "max": 10.71984972268692
+    },
+    "outage_integration_rmse": {
+      "n": 32,
+      "mean": 2.3214769639533963,
+      "sample_sd": 1.160906850830706,
+      "min": 0.524685315334109,
+      "max": 4.870649671934002
+    },
+    "paired_outage_rmse_vs_scale1": {
+      "n": 32,
+      "mean": 0.0,
+      "sample_sd": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "monte_carlo_standard_error": 0.0
+    },
+    "recovery": {
+      "total": 32,
+      "recovered": 32,
+      "censored": 0,
+      "recovered_latency_seconds": {
+        "n": 32,
+        "mean": 0.034375,
+        "sample_sd": 0.19445436482630057,
+        "min": 0.0,
+        "max": 1.1
+      }
+    }
+  },
+  {
+    "trajectory": "straight",
+    "scale": 1.0,
+    "bias": [
+      0.3,
+      -0.15
+    ],
+    "outage_filter_rmse": {
+      "n": 32,
+      "mean": 3.4255020923338235,
+      "sample_sd": 0.29254574614557216,
+      "min": 3.0171712012081358,
+      "max": 4.267231686717967
+    },
+    "outage_position_coverage": {
+      "n": 32,
+      "mean": 0.0,
+      "sample_sd": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "overall_filter_rmse": {
+      "n": 32,
+      "mean": 3.076908002362287,
+      "sample_sd": 0.2264951696424661,
+      "min": 2.6992423730347,
+      "max": 3.703129513313508
+    },
+    "overall_position_coverage": {
+      "n": 32,
+      "mean": 0.16801691102965677,
+      "sample_sd": 0.05773643412133457,
+      "min": 0.039986671109630126,
+      "max": 0.2782405864711763
+    },
+    "outage_hold_rmse": {
+      "n": 32,
+      "mean": 6.94521877527705,
+      "sample_sd": 1.6762970206421155,
+      "min": 3.601841431304165,
+      "max": 10.71984972268692
+    },
+    "outage_integration_rmse": {
+      "n": 32,
+      "mean": 3.204203051341433,
+      "sample_sd": 1.178411271995081,
+      "min": 0.9738072082803136,
+      "max": 6.143127678455338
+    },
+    "paired_outage_rmse_vs_scale1": {
+      "n": 32,
+      "mean": 0.0,
+      "sample_sd": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "monte_carlo_standard_error": 0.0
+    },
+    "recovery": {
+      "total": 32,
+      "recovered": 0,
+      "censored": 32,
+      "recovered_latency_seconds": {
+        "values": []
+      }
+    }
+  },
+  {
+    "trajectory": "straight",
+    "scale": 1.0,
+    "bias": [
+      1.0,
+      -0.5
+    ],
+    "outage_filter_rmse": {
+      "n": 32,
+      "mean": 11.471851775746341,
+      "sample_sd": 0.2912362719514874,
+      "min": 11.072997417410113,
+      "max": 12.316575409559679
+    },
+    "outage_position_coverage": {
+      "n": 32,
+      "mean": 0.0,
+      "sample_sd": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "overall_filter_rmse": {
+      "n": 32,
+      "mean": 10.214394752388278,
+      "sample_sd": 0.23001880653391502,
+      "min": 9.823294070437985,
+      "max": 10.8496588689774
+    },
+    "overall_position_coverage": {
+      "n": 32,
+      "mean": 0.07771367877374208,
+      "sample_sd": 0.022804979660241302,
+      "min": 0.026657780739753417,
+      "max": 0.12595801399533488
+    },
+    "outage_hold_rmse": {
+      "n": 32,
+      "mean": 6.94521877527705,
+      "sample_sd": 1.6762970206421155,
+      "min": 3.601841431304165,
+      "max": 10.71984972268692
+    },
+    "outage_integration_rmse": {
+      "n": 32,
+      "mean": 7.204970320627169,
+      "sample_sd": 1.4654843195269665,
+      "min": 3.996021830056307,
+      "max": 10.57665519232863
+    },
+    "paired_outage_rmse_vs_scale1": {
+      "n": 32,
+      "mean": 0.0,
+      "sample_sd": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "monte_carlo_standard_error": 0.0
+    },
+    "recovery": {
+      "total": 32,
+      "recovered": 0,
+      "censored": 32,
+      "recovered_latency_seconds": {
+        "values": []
+      }
+    }
+  },
+  {
+    "trajectory": "straight",
+    "scale": 2.0,
+    "bias": [
+      0.0,
+      0.0
+    ],
+    "outage_filter_rmse": {
+      "n": 32,
+      "mean": 0.41121437154865864,
+      "sample_sd": 0.21768060260101582,
+      "min": 0.11540515039356504,
+      "max": 0.8736696102281388
+    },
+    "outage_position_coverage": {
+      "n": 32,
+      "mean": 1.0,
+      "sample_sd": 0.0,
+      "min": 1.0,
+      "max": 1.0
+    },
+    "overall_filter_rmse": {
+      "n": 32,
+      "mean": 0.5360351350264311,
+      "sample_sd": 0.14678191074077382,
+      "min": 0.33638200180446565,
+      "max": 0.7923779057366634
+    },
+    "overall_position_coverage": {
+      "n": 32,
+      "mean": 1.0,
+      "sample_sd": 0.0,
+      "min": 1.0,
+      "max": 1.0
+    },
+    "outage_hold_rmse": {
+      "n": 32,
+      "mean": 6.94521877527705,
+      "sample_sd": 1.6762970206421155,
+      "min": 3.601841431304165,
+      "max": 10.71984972268692
+    },
+    "outage_integration_rmse": {
+      "n": 32,
+      "mean": 2.3214769639533963,
+      "sample_sd": 1.160906850830706,
+      "min": 0.524685315334109,
+      "max": 4.870649671934002
+    },
+    "paired_outage_rmse_vs_scale1": {
+      "n": 32,
+      "mean": -0.0019682429365760925,
+      "sample_sd": 0.002869467734288947,
+      "min": -0.007091874925766795,
+      "max": 0.004581839597704057,
+      "monte_carlo_standard_error": 0.0005072550233279282
+    },
+    "recovery": {
+      "total": 32,
+      "recovered": 32,
+      "censored": 0,
+      "recovered_latency_seconds": {
+        "n": 32,
+        "mean": 0.0,
+        "sample_sd": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      }
+    }
+  },
+  {
+    "trajectory": "straight",
+    "scale": 2.0,
+    "bias": [
+      0.3,
+      -0.15
+    ],
+    "outage_filter_rmse": {
+      "n": 32,
+      "mean": 3.438298776039297,
+      "sample_sd": 0.2910048583801469,
+      "min": 3.0313147091945,
+      "max": 4.275082332922501
+    },
+    "outage_position_coverage": {
+      "n": 32,
+      "mean": 0.014687500000000001,
+      "sample_sd": 0.03248765274139025,
+      "min": 0.0,
+      "max": 0.115
+    },
+    "overall_filter_rmse": {
+      "n": 32,
+      "mean": 3.0826469357776243,
+      "sample_sd": 0.2268211874147593,
+      "min": 2.70811306352594,
+      "max": 3.710095490136861
+    },
+    "overall_position_coverage": {
+      "n": 32,
+      "mean": 0.3109796734421859,
+      "sample_sd": 0.04074394102564447,
+      "min": 0.19493502165944684,
+      "max": 0.3715428190603132
+    },
+    "outage_hold_rmse": {
+      "n": 32,
+      "mean": 6.94521877527705,
+      "sample_sd": 1.6762970206421155,
+      "min": 3.601841431304165,
+      "max": 10.71984972268692
+    },
+    "outage_integration_rmse": {
+      "n": 32,
+      "mean": 3.204203051341433,
+      "sample_sd": 1.178411271995081,
+      "min": 0.9738072082803136,
+      "max": 6.143127678455338
+    },
+    "paired_outage_rmse_vs_scale1": {
+      "n": 32,
+      "mean": 0.012796683705473641,
+      "sample_sd": 0.0024004410173477857,
+      "min": 0.00727333386845741,
+      "max": 0.01660075585639298,
+      "monte_carlo_standard_error": 0.00042434203030123854
+    },
+    "recovery": {
+      "total": 32,
+      "recovered": 0,
+      "censored": 32,
+      "recovered_latency_seconds": {
+        "values": []
+      }
+    }
+  },
+  {
+    "trajectory": "straight",
+    "scale": 2.0,
+    "bias": [
+      1.0,
+      -0.5
+    ],
+    "outage_filter_rmse": {
+      "n": 32,
+      "mean": 11.515241678135421,
+      "sample_sd": 0.2897095745173301,
+      "min": 11.117631146737207,
+      "max": 12.354920051516624
+    },
+    "outage_position_coverage": {
+      "n": 32,
+      "mean": 0.0,
+      "sample_sd": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "overall_filter_rmse": {
+      "n": 32,
+      "mean": 10.253728049112915,
+      "sample_sd": 0.22949944075925063,
+      "min": 9.865418864115894,
+      "max": 10.886996265347586
+    },
+    "overall_position_coverage": {
+      "n": 32,
+      "mean": 0.12750958013995334,
+      "sample_sd": 0.01938566402667719,
+      "min": 0.09063645451516161,
+      "max": 0.16327890703098968
+    },
+    "outage_hold_rmse": {
+      "n": 32,
+      "mean": 6.94521877527705,
+      "sample_sd": 1.6762970206421155,
+      "min": 3.601841431304165,
+      "max": 10.71984972268692
+    },
+    "outage_integration_rmse": {
+      "n": 32,
+      "mean": 7.204970320627169,
+      "sample_sd": 1.4654843195269665,
+      "min": 3.996021830056307,
+      "max": 10.57665519232863
+    },
+    "paired_outage_rmse_vs_scale1": {
+      "n": 32,
+      "mean": 0.04338990238907964,
+      "sample_sd": 0.0023810621933876594,
+      "min": 0.038020945702779585,
+      "max": 0.04703449561771578,
+      "monte_carlo_standard_error": 0.0004209163058428321
+    },
+    "recovery": {
+      "total": 32,
+      "recovered": 0,
+      "censored": 32,
+      "recovered_latency_seconds": {
+        "values": []
+      }
+    }
+  },
+  {
+    "trajectory": "maneuver",
+    "scale": 0.5,
+    "bias": [
+      0.0,
+      0.0
+    ],
+    "outage_filter_rmse": {
+      "n": 32,
+      "mean": 0.41388656060909584,
+      "sample_sd": 0.2199064364279887,
+      "min": 0.11684639304211228,
+      "max": 0.8785734460137744
+    },
+    "outage_position_coverage": {
+      "n": 32,
+      "mean": 0.56415625,
+      "sample_sd": 0.4568568004185881,
+      "min": 0.0,
+      "max": 1.0
+    },
+    "overall_filter_rmse": {
+      "n": 32,
+      "mean": 0.5837021420685161,
+      "sample_sd": 0.15563997488387485,
+      "min": 0.37241657606728434,
+      "max": 0.9386712568062198
+    },
+    "overall_position_coverage": {
+      "n": 32,
+      "mean": 0.5238462179273575,
+      "sample_sd": 0.29110290486370977,
+      "min": 0.04031989336887704,
+      "max": 0.9323558813728757
+    },
+    "outage_hold_rmse": {
+      "n": 32,
+      "mean": 13.032982310659545,
+      "sample_sd": 1.7153687205124009,
+      "min": 9.561996061169022,
+      "max": 17.060254263023072
+    },
+    "outage_integration_rmse": {
+      "n": 32,
+      "mean": 2.3239708809925306,
+      "sample_sd": 1.1602219203385802,
+      "min": 0.5249130131940094,
+      "max": 4.862368032561852
+    },
+    "paired_outage_rmse_vs_scale1": {
+      "n": 32,
+      "mean": -0.0003754237765764058,
+      "sample_sd": 0.0028808270521874313,
+      "min": -0.004657550945895872,
+      "max": 0.00554762989701163,
+      "monte_carlo_standard_error": 0.0005092630860068461
+    },
+    "recovery": {
+      "total": 32,
+      "recovered": 32,
+      "censored": 0,
+      "recovered_latency_seconds": {
+        "n": 32,
+        "mean": 0.034375,
+        "sample_sd": 0.19445436482630057,
+        "min": 0.0,
+        "max": 1.1
+      }
+    }
+  },
+  {
+    "trajectory": "maneuver",
+    "scale": 0.5,
+    "bias": [
+      0.3,
+      -0.15
+    ],
+    "outage_filter_rmse": {
+      "n": 32,
+      "mean": 3.4202388679296347,
+      "sample_sd": 0.2928557687587312,
+      "min": 3.011480099092813,
+      "max": 4.26292491438343
+    },
+    "outage_position_coverage": {
+      "n": 32,
+      "mean": 0.0,
+      "sample_sd": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "overall_filter_rmse": {
+      "n": 32,
+      "mean": 3.071554857364975,
+      "sample_sd": 0.22605084590357813,
+      "min": 2.6932829124624633,
+      "max": 3.696061888363929
+    },
+    "overall_position_coverage": {
+      "n": 32,
+      "mean": 0.08395118293902033,
+      "sample_sd": 0.05242248553264694,
+      "min": 0.0,
+      "max": 0.19993335554815062
+    },
+    "outage_hold_rmse": {
+      "n": 32,
+      "mean": 13.032982310659545,
+      "sample_sd": 1.7153687205124009,
+      "min": 9.561996061169022,
+      "max": 17.060254263023072
+    },
+    "outage_integration_rmse": {
+      "n": 32,
+      "mean": 3.216208033584346,
+      "sample_sd": 1.1777247451012167,
+      "min": 0.9901047958564257,
+      "max": 6.157587628365495
+    },
+    "paired_outage_rmse_vs_scale1": {
+      "n": 32,
+      "mean": -0.0004758400491328141,
+      "sample_sd": 0.0005897304507976807,
+      "min": -0.0014016097181404064,
+      "max": 0.0007616247495958461,
+      "monte_carlo_standard_error": 0.0001042506002078099
+    },
+    "recovery": {
+      "total": 32,
+      "recovered": 0,
+      "censored": 32,
+      "recovered_latency_seconds": {
+        "values": []
+      }
+    }
+  },
+  {
+    "trajectory": "maneuver",
+    "scale": 0.5,
+    "bias": [
+      1.0,
+      -0.5
+    ],
+    "outage_filter_rmse": {
+      "n": 32,
+      "mean": 11.456736318144568,
+      "sample_sd": 0.29154494066791803,
+      "min": 11.057492724219815,
+      "max": 12.302511428436404
+    },
+    "outage_position_coverage": {
+      "n": 32,
+      "mean": 0.0,
+      "sample_sd": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "overall_filter_rmse": {
+      "n": 32,
+      "mean": 10.190227870724112,
+      "sample_sd": 0.22989765706783943,
+      "min": 9.79885209691822,
+      "max": 10.825272918325853
+    },
+    "overall_position_coverage": {
+      "n": 32,
+      "mean": 0.03525908030656448,
+      "sample_sd": 0.02123271019322058,
+      "min": 0.0,
+      "max": 0.0773075641452849
+    },
+    "outage_hold_rmse": {
+      "n": 32,
+      "mean": 13.032982310659545,
+      "sample_sd": 1.7153687205124009,
+      "min": 9.561996061169022,
+      "max": 17.060254263023072
+    },
+    "outage_integration_rmse": {
+      "n": 32,
+      "mean": 7.220877851787087,
+      "sample_sd": 1.4650550168850867,
+      "min": 4.013203302682349,
+      "max": 10.592273302842765
+    },
+    "paired_outage_rmse_vs_scale1": {
+      "n": 32,
+      "mean": -0.0102753145691597,
+      "sample_sd": 0.0005890032026599694,
+      "min": -0.011221563805001722,
+      "max": -0.00913144748185779,
+      "monte_carlo_standard_error": 0.00010412203968536466
+    },
+    "recovery": {
+      "total": 32,
+      "recovered": 0,
+      "censored": 32,
+      "recovered_latency_seconds": {
+        "values": []
+      }
+    }
+  },
+  {
+    "trajectory": "maneuver",
+    "scale": 1.0,
+    "bias": [
+      0.0,
+      0.0
+    ],
+    "outage_filter_rmse": {
+      "n": 32,
+      "mean": 0.41426198438567224,
+      "sample_sd": 0.21918171430710426,
+      "min": 0.11771163536023259,
+      "max": 0.873370097283564
+    },
+    "outage_position_coverage": {
+      "n": 32,
+      "mean": 0.95134375,
+      "sample_sd": 0.15173525530216406,
+      "min": 0.224,
+      "max": 1.0
+    },
+    "overall_filter_rmse": {
+      "n": 32,
+      "mean": 0.571111775924959,
+      "sample_sd": 0.15261965206530792,
+      "min": 0.3688464801362759,
+      "max": 0.8975742210402764
+    },
+    "overall_position_coverage": {
+      "n": 32,
+      "mean": 0.9422380039986671,
+      "sample_sd": 0.10785349873752202,
+      "min": 0.6081306231256248,
+      "max": 1.0
+    },
+    "outage_hold_rmse": {
+      "n": 32,
+      "mean": 13.032982310659545,
+      "sample_sd": 1.7153687205124009,
+      "min": 9.561996061169022,
+      "max": 17.060254263023072
+    },
+    "outage_integration_rmse": {
+      "n": 32,
+      "mean": 2.3239708809925306,
+      "sample_sd": 1.1602219203385802,
+      "min": 0.5249130131940094,
+      "max": 4.862368032561852
+    },
+    "paired_outage_rmse_vs_scale1": {
+      "n": 32,
+      "mean": 0.0,
+      "sample_sd": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "monte_carlo_standard_error": 0.0
+    },
+    "recovery": {
+      "total": 32,
+      "recovered": 32,
+      "censored": 0,
+      "recovered_latency_seconds": {
+        "n": 32,
+        "mean": 0.034375,
+        "sample_sd": 0.19445436482630057,
+        "min": 0.0,
+        "max": 1.1
+      }
+    }
+  },
+  {
+    "trajectory": "maneuver",
+    "scale": 1.0,
+    "bias": [
+      0.3,
+      -0.15
+    ],
+    "outage_filter_rmse": {
+      "n": 32,
+      "mean": 3.4207147079787674,
+      "sample_sd": 0.2925332180460721,
+      "min": 3.0122567498311,
+      "max": 4.262163289633834
+    },
+    "outage_position_coverage": {
+      "n": 32,
+      "mean": 0.0,
+      "sample_sd": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "overall_filter_rmse": {
+      "n": 32,
+      "mean": 3.0736922635311896,
+      "sample_sd": 0.22646572001255966,
+      "min": 2.6959341829596415,
+      "max": 3.699626160756573
+    },
+    "overall_position_coverage": {
+      "n": 32,
+      "mean": 0.16814186937687436,
+      "sample_sd": 0.057845896857667035,
+      "min": 0.039986671109630126,
+      "max": 0.2782405864711763
+    },
+    "outage_hold_rmse": {
+      "n": 32,
+      "mean": 13.032982310659545,
+      "sample_sd": 1.7153687205124009,
+      "min": 9.561996061169022,
+      "max": 17.060254263023072
+    },
+    "outage_integration_rmse": {
+      "n": 32,
+      "mean": 3.216208033584346,
+      "sample_sd": 1.1777247451012167,
+      "min": 0.9901047958564257,
+      "max": 6.157587628365495
+    },
+    "paired_outage_rmse_vs_scale1": {
+      "n": 32,
+      "mean": 0.0,
+      "sample_sd": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "monte_carlo_standard_error": 0.0
+    },
+    "recovery": {
+      "total": 32,
+      "recovered": 0,
+      "censored": 32,
+      "recovered_latency_seconds": {
+        "values": []
+      }
+    }
+  },
+  {
+    "trajectory": "maneuver",
+    "scale": 1.0,
+    "bias": [
+      1.0,
+      -0.5
+    ],
+    "outage_filter_rmse": {
+      "n": 32,
+      "mean": 11.467011632713728,
+      "sample_sd": 0.29122856851991186,
+      "min": 11.068125013789821,
+      "max": 12.311642875918261
+    },
+    "outage_position_coverage": {
+      "n": 32,
+      "mean": 0.0,
+      "sample_sd": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "overall_filter_rmse": {
+      "n": 32,
+      "mean": 10.211117871713826,
+      "sample_sd": 0.23001018570378023,
+      "min": 9.819985435939541,
+      "max": 10.846290561637076
+    },
+    "overall_position_coverage": {
+      "n": 32,
+      "mean": 0.07771367877374208,
+      "sample_sd": 0.022804979660241302,
+      "min": 0.026657780739753417,
+      "max": 0.12595801399533488
+    },
+    "outage_hold_rmse": {
+      "n": 32,
+      "mean": 13.032982310659545,
+      "sample_sd": 1.7153687205124009,
+      "min": 9.561996061169022,
+      "max": 17.060254263023072
+    },
+    "outage_integration_rmse": {
+      "n": 32,
+      "mean": 7.220877851787087,
+      "sample_sd": 1.4650550168850867,
+      "min": 4.013203302682349,
+      "max": 10.592273302842765
+    },
+    "paired_outage_rmse_vs_scale1": {
+      "n": 32,
+      "mean": 0.0,
+      "sample_sd": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "monte_carlo_standard_error": 0.0
+    },
+    "recovery": {
+      "total": 32,
+      "recovered": 0,
+      "censored": 32,
+      "recovered_latency_seconds": {
+        "values": []
+      }
+    }
+  },
+  {
+    "trajectory": "maneuver",
+    "scale": 2.0,
+    "bias": [
+      0.0,
+      0.0
+    ],
+    "outage_filter_rmse": {
+      "n": 32,
+      "mean": 0.41584008492617647,
+      "sample_sd": 0.21653101196648306,
+      "min": 0.11598099331269902,
+      "max": 0.8518149416583938
+    },
+    "outage_position_coverage": {
+      "n": 32,
+      "mean": 1.0,
+      "sample_sd": 0.0,
+      "min": 1.0,
+      "max": 1.0
+    },
+    "overall_filter_rmse": {
+      "n": 32,
+      "mean": 0.5379890511108392,
+      "sample_sd": 0.14581904825122866,
+      "min": 0.34428155533338567,
+      "max": 0.7935062653297354
+    },
+    "overall_position_coverage": {
+      "n": 32,
+      "mean": 1.0,
+      "sample_sd": 0.0,
+      "min": 1.0,
+      "max": 1.0
+    },
+    "outage_hold_rmse": {
+      "n": 32,
+      "mean": 13.032982310659545,
+      "sample_sd": 1.7153687205124009,
+      "min": 9.561996061169022,
+      "max": 17.060254263023072
+    },
+    "outage_integration_rmse": {
+      "n": 32,
+      "mean": 2.3239708809925306,
+      "sample_sd": 1.1602219203385802,
+      "min": 0.5249130131940094,
+      "max": 4.862368032561852
+    },
+    "paired_outage_rmse_vs_scale1": {
+      "n": 32,
+      "mean": 0.001578100540504209,
+      "sample_sd": 0.01129118606474097,
+      "min": -0.02262430932973558,
+      "max": 0.01934396473979058,
+      "monte_carlo_standard_error": 0.0019960185585043465
+    },
+    "recovery": {
+      "total": 32,
+      "recovered": 32,
+      "censored": 0,
+      "recovered_latency_seconds": {
+        "n": 32,
+        "mean": 0.0359375,
+        "sample_sd": 0.2032931995911324,
+        "min": 0.0,
+        "max": 1.15
+      }
+    }
+  },
+  {
+    "trajectory": "maneuver",
+    "scale": 2.0,
+    "bias": [
+      0.3,
+      -0.15
+    ],
+    "outage_filter_rmse": {
+      "n": 32,
+      "mean": 3.4194356343276517,
+      "sample_sd": 0.2909581699408599,
+      "min": 3.011954881502096,
+      "max": 4.2551018991585225
+    },
+    "outage_position_coverage": {
+      "n": 32,
+      "mean": 0.01675,
+      "sample_sd": 0.034260858886094835,
+      "min": 0.0,
+      "max": 0.122
+    },
+    "overall_filter_rmse": {
+      "n": 32,
+      "mean": 3.0699770245359868,
+      "sample_sd": 0.22672416577027504,
+      "min": 2.6950493514350606,
+      "max": 3.696355298511096
+    },
+    "overall_position_coverage": {
+      "n": 32,
+      "mean": 0.313437187604132,
+      "sample_sd": 0.04058572367414872,
+      "min": 0.19493502165944684,
+      "max": 0.37387537487504163
+    },
+    "outage_hold_rmse": {
+      "n": 32,
+      "mean": 13.032982310659545,
+      "sample_sd": 1.7153687205124009,
+      "min": 9.561996061169022,
+      "max": 17.060254263023072
+    },
+    "outage_integration_rmse": {
+      "n": 32,
+      "mean": 3.216208033584346,
+      "sample_sd": 1.1777247451012167,
+      "min": 0.9901047958564257,
+      "max": 6.157587628365495
+    },
+    "paired_outage_rmse_vs_scale1": {
+      "n": 32,
+      "mean": -0.001279073651115542,
+      "sample_sd": 0.002555387073040551,
+      "min": -0.007692769453695014,
+      "max": 0.002782292274809084,
+      "monte_carlo_standard_error": 0.00045173288197585427
+    },
+    "recovery": {
+      "total": 32,
+      "recovered": 0,
+      "censored": 32,
+      "recovered_latency_seconds": {
+        "values": []
+      }
+    }
+  },
+  {
+    "trajectory": "maneuver",
+    "scale": 2.0,
+    "bias": [
+      1.0,
+      -0.5
+    ],
+    "outage_filter_rmse": {
+      "n": 32,
+      "mean": 11.49616138814191,
+      "sample_sd": 0.28968005951868164,
+      "min": 11.098424644283305,
+      "max": 12.335473911700046
+    },
+    "outage_position_coverage": {
+      "n": 32,
+      "mean": 0.0,
+      "sample_sd": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "overall_filter_rmse": {
+      "n": 32,
+      "mean": 10.240835229270868,
+      "sample_sd": 0.2294698245412893,
+      "min": 9.852393310973774,
+      "max": 10.873760691519132
+    },
+    "overall_position_coverage": {
+      "n": 32,
+      "mean": 0.12750958013995334,
+      "sample_sd": 0.01938566402667719,
+      "min": 0.09063645451516161,
+      "max": 0.16327890703098968
+    },
+    "outage_hold_rmse": {
+      "n": 32,
+      "mean": 13.032982310659545,
+      "sample_sd": 1.7153687205124009,
+      "min": 9.561996061169022,
+      "max": 17.060254263023072
+    },
+    "outage_integration_rmse": {
+      "n": 32,
+      "mean": 7.220877851787087,
+      "sample_sd": 1.4650550168850867,
+      "min": 4.013203302682349,
+      "max": 10.592273302842765
+    },
+    "paired_outage_rmse_vs_scale1": {
+      "n": 32,
+      "mean": 0.029149755428182156,
+      "sample_sd": 0.002417796651935237,
+      "min": 0.023495711797030694,
+      "max": 0.03298058509327895,
+      "monte_carlo_standard_error": 0.0004274101020283842
+    },
+    "recovery": {
+      "total": 32,
+      "recovered": 0,
+      "censored": 32,
+      "recovered_latency_seconds": {
+        "values": []
+      }
+    }
+  }
+]
