@@ -1,12 +1,14 @@
 """Fixed inventory executor and independent standard-library verifier for issue21."""
 import argparse
 import csv
+from datetime import datetime, timezone
 import hashlib
 import itertools
 import json
 import math
 import os
 import platform
+import secrets
 import sys
 from pathlib import Path
 import statistics
@@ -231,12 +233,57 @@ def bounded_run(command,output,seconds,cap_bytes=32*1024*1024):
                     raise subprocess.TimeoutExpired(command,seconds)
                 time.sleep(.05)
         except BaseException:
-            process.kill();process.wait();raise
+            try:
+                try: process.kill()
+                except ProcessLookupError: pass
+                finally: process.wait()
+            except BaseException as cleanup_error:
+                raise ChildCleanupError('owned child cleanup unconfirmed; retain output lease for manual reconciliation') from cleanup_error
+            raise
     if process.returncode:
         raise subprocess.CalledProcessError(process.returncode,command)
     if sum(p.stat().st_size for p in output.glob('current.*'))>cap_bytes:
         raise ValueError('artifact cap exceeded')
     return stdout.read_text(),stderr.read_text()
+
+class ChildCleanupError(RuntimeError):
+    """An owned child could not be confirmed stopped; its output lease stays held."""
+
+class OutputLeaseError(RuntimeError):
+    """Output ownership is busy, missing or changed; no automatic takeover."""
+
+class OutputLease:
+    """Cooperating processes acquire an exclusive marker before touching study state.
+
+    PID is advisory only. A crashed process leaves a stale marker requiring
+    explicit owner/child/artifact reconciliation; PID absence never authorizes
+    automatic deletion or takeover.
+    """
+    def __init__(self,output):
+        self.path=output/'.execution-lease.json'
+        self.owner={'pid':os.getpid(),'nonce':secrets.token_hex(16),
+                    'created_utc':datetime.now(timezone.utc).isoformat()}
+
+    def __enter__(self):
+        try: stream=self.path.open('x',encoding='utf-8')
+        except FileExistsError as error:
+            raise OutputLeaseError('output lease already exists; reject concurrent execution or manually reconcile stale owner and child') from error
+        # A partial marker after write/fsync failure is deliberately retained.
+        with stream:
+            json.dump(self.owner,stream,separators=(',',':'))
+            stream.flush();os.fsync(stream.fileno())
+        return self
+
+    def __exit__(self,kind,error,traceback):
+        if isinstance(error,ChildCleanupError):
+            return False
+        try: current=load_json(self.path)
+        except (OSError,ValueError) as ownership_error:
+            raise OutputLeaseError('output lease cannot be verified; preserve artifacts and manually reconcile ownership') from ownership_error
+        if current!=self.owner:
+            raise OutputLeaseError('output lease ownership changed; marker and artifacts retained for manual reconciliation')
+        self.path.unlink()
+        return False
 
 class CheckpointReplaceError(RuntimeError):
     """Bounded journal promotion failed; old and pending states remain inspectable."""
@@ -275,7 +322,11 @@ def commit_checkpoint(checkpoint,state):
 
 def execute(args):
     output=args.output.resolve();output.mkdir(parents=True,exist_ok=True)
-    if args.freeze and any(output.iterdir()):
+    with OutputLease(output) as lease:
+        return execute_owned(args,output,lease)
+
+def execute_owned(args,output,lease):
+    if args.freeze and any(path!=lease.path for path in output.iterdir()):
         raise ValueError('freeze requires a fresh dedicated empty output directory')
     binary=args.binary.resolve()
     fingerprint=fingerprints(binary)
@@ -322,6 +373,7 @@ def execute(args):
                 for artifact in artifacts: (evidence/artifact.name).write_bytes(artifact.read_bytes())
                 attempt['retained_boundary_evidence']=str(evidence)
         except Exception as error:
+            if isinstance(error,ChildCleanupError): raise
             transient=executing and isinstance(error,(OSError,subprocess.TimeoutExpired))
             evidence=output/'failure-evidence'/key_text(key)/str(len(history)+1)
             evidence.mkdir(parents=True,exist_ok=False)
