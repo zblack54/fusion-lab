@@ -41,6 +41,12 @@ struct Args {
     /// Fixed world-frame y velocity sensor bias in m/s (-100..=100).
     #[arg(long, default_value_t = 0.0, allow_hyphen_values = true)]
     velocity_bias_y: f64,
+    /// Linear x velocity sensor drift rate in m/s^2 (-1..=1).
+    #[arg(long, default_value_t = 0.0, allow_hyphen_values = true)]
+    velocity_drift_rate_x: f64,
+    /// Linear y velocity sensor drift rate in m/s^2 (-1..=1).
+    #[arg(long, default_value_t = 0.0, allow_hyphen_values = true)]
+    velocity_drift_rate_y: f64,
     /// Continuous white acceleration density in m^2/s^3.
     #[arg(long, default_value_t = 0.1)]
     acceleration_density: f64,
@@ -72,6 +78,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         assumed_position_sigma: args.assumed_position_sigma,
         assumed_velocity_sigma: args.assumed_velocity_sigma,
         velocity_bias: [args.velocity_bias_x, args.velocity_bias_y],
+        velocity_drift_rate: [args.velocity_drift_rate_x, args.velocity_drift_rate_y],
         acceleration_density: args.acceleration_density,
         outage: (!args.no_outage).then_some(Outage {
             start: args.outage_start,
@@ -174,8 +181,21 @@ fn report(experiment: &Experiment) -> String {
         config.position_sigma, config.velocity_sigma
     ));
     report.push_str(&format!(
-        "Fixed velocity sensor bias (world frame): x={:.12} m/s; y={:.12} m/s; deterministic offset, not Gaussian sigma or filter correction\n",
+        "Initial velocity sensor bias (world frame): x={:.12} m/s; y={:.12} m/s; deterministic offset, not Gaussian sigma or filter correction\n",
         config.velocity_bias[0], config.velocity_bias[1]
+    ));
+    let final_bias: [f64; 2] = std::array::from_fn(|axis| {
+        if config.velocity_drift_rate[axis] == 0.0 {
+            config.velocity_bias[axis]
+        } else {
+            config.velocity_bias[axis]
+                + config.velocity_drift_rate[axis] * f64::from(config.duration_seconds)
+        }
+    });
+    report.push_str(&format!(
+        "Linear velocity sensor drift (world frame): rate x={:.12} m/s^2; y={:.12} m/s^2; duration={} s; final offset x={:.12} m/s; y={:.12} m/s; bias(t)=initial_bias+rate*t_seconds, not physical acceleration or filter correction\n",
+        config.velocity_drift_rate[0], config.velocity_drift_rate[1],
+        config.duration_seconds, final_bias[0], final_bias[1]
     ));
     let requested_position = assumed_position.powi(2);
     let requested_velocity = assumed_velocity.powi(2);

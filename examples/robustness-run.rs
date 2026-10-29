@@ -144,6 +144,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         assumed_position_sigma: Some(2.0 * scale),
         assumed_velocity_sigma: Some(0.3 * scale),
         velocity_bias: bias,
+        velocity_drift_rate: [0.0; 2],
         acceleration_density: 0.1,
         outage: Some(Outage { start: 10, end: 20 }),
     };

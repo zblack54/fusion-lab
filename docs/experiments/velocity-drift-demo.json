@@ -1,0 +1,299 @@
+{
+  "protocol": {
+    "status": "prespecified before drift demonstration execution",
+    "seeds": [
+      7,
+      42,
+      314159
+    ],
+    "rates": [
+      [
+        0,
+        0
+      ],
+      [
+        0.01,
+        -0.005
+      ]
+    ],
+    "duration": 30,
+    "scenario": "maneuver",
+    "outage": [
+      10,
+      20
+    ],
+    "initialBias": [
+      0,
+      0
+    ],
+    "truePositionSigma": 1,
+    "trueVelocitySigma": 0.15,
+    "q": 0.1,
+    "scope": "six descriptive fixed runs; no tuning, general ranking or calibration; separate from completed576-key no-drift study"
+  },
+  "outcomes": [
+    {
+      "name": "7-zero",
+      "seed": 7,
+      "rate": [
+        0,
+        0
+      ],
+      "command": [
+        "cargo",
+        "run",
+        "--locked",
+        "--",
+        "--seed",
+        "7",
+        "--velocity-drift-rate-x",
+        "0",
+        "--velocity-drift-rate-y",
+        "0",
+        "--output",
+        "C:/Users/Admin/Documents/Codex/2026-10-20/if-x20/work/velocity-drift-demo/7-zero.csv"
+      ],
+      "report": "Fusion Lab 0.1.0\nConfiguration: Config { duration_seconds: 30, seed: 7, scenario: Maneuver, position_sigma: 1.0, velocity_sigma: 0.15, assumed_position_sigma: None, assumed_velocity_sigma: None, velocity_bias: [0.0, 0.0], velocity_drift_rate: [0.0, 0.0], acceleration_density: 0.1, outage: Some(Outage { start: 10, end: 20 }) }\nMeasurement noise (per-axis sigma): true position=1.000000000000 m; assumed position=1.000000000000 m (follows true); true velocity=0.150000000000 m/s; assumed velocity=0.150000000000 m/s (follows true)\nInitial velocity sensor bias (world frame): x=0.000000000000 m/s; y=0.000000000000 m/s; deterministic offset, not Gaussian sigma or filter correction\nLinear velocity sensor drift (world frame): rate x=0.000000000000 m/s^2; y=0.000000000000 m/s^2; duration=30 s; final offset x=0.000000000000 m/s; y=0.000000000000 m/s; bias(t)=initial_bias+rate*t_seconds, not physical acceleration or filter correction\nMeasurement covariance R (per-axis): requested position=1.000000000000e0 m^2; effective position=1.000000000000e0 m^2; requested velocity=2.250000000000e-2 (m/s)^2; effective velocity=2.250000000000e-2 (m/s)^2 (variance floor=1e-12)\nOverall (3001 samples):\n  position RMSE: filter=0.2128 m, hold=7.2665 m, integration=1.2499 m\n  nominal 95% position ellipse coverage: 100.00%\nPosition outage (1000 samples):\n  position RMSE: filter=0.0873 m, hold=12.4332 m, integration=0.9519 m\n  nominal 95% position ellipse coverage: 100.00%\nCoverage is descriptive; this run does not establish covariance calibration.\nCSV: C:/Users/Admin/Documents/Codex/2026-10-20/if-x20/work/velocity-drift-demo/7-zero.csv\n",
+      "csvSha256": "4e0c1dfb35bcafa7d936e759da73c36bc33fb384ed1d882cd20ea34d13f52bb1"
+    },
+    {
+      "name": "7-drift",
+      "seed": 7,
+      "rate": [
+        0.01,
+        -0.005
+      ],
+      "command": [
+        "cargo",
+        "run",
+        "--locked",
+        "--",
+        "--seed",
+        "7",
+        "--velocity-drift-rate-x",
+        "0.01",
+        "--velocity-drift-rate-y",
+        "-0.005",
+        "--output",
+        "C:/Users/Admin/Documents/Codex/2026-10-20/if-x20/work/velocity-drift-demo/7-drift.csv"
+      ],
+      "report": "Fusion Lab 0.1.0\nConfiguration: Config { duration_seconds: 30, seed: 7, scenario: Maneuver, position_sigma: 1.0, velocity_sigma: 0.15, assumed_position_sigma: None, assumed_velocity_sigma: None, velocity_bias: [0.0, 0.0], velocity_drift_rate: [0.01, -0.005], acceleration_density: 0.1, outage: Some(Outage { start: 10, end: 20 }) }\nMeasurement noise (per-axis sigma): true position=1.000000000000 m; assumed position=1.000000000000 m (follows true); true velocity=0.150000000000 m/s; assumed velocity=0.150000000000 m/s (follows true)\nInitial velocity sensor bias (world frame): x=0.000000000000 m/s; y=0.000000000000 m/s; deterministic offset, not Gaussian sigma or filter correction\nLinear velocity sensor drift (world frame): rate x=0.010000000000 m/s^2; y=-0.005000000000 m/s^2; duration=30 s; final offset x=0.300000000000 m/s; y=-0.150000000000 m/s; bias(t)=initial_bias+rate*t_seconds, not physical acceleration or filter correction\nMeasurement covariance R (per-axis): requested position=1.000000000000e0 m^2; effective position=1.000000000000e0 m^2; requested velocity=2.250000000000e-2 (m/s)^2; effective velocity=2.250000000000e-2 (m/s)^2 (variance floor=1e-12)\nOverall (3001 samples):\n  position RMSE: filter=1.4702 m, hold=7.2665 m, integration=1.3395 m\n  nominal 95% position ellipse coverage: 31.52%\nPosition outage (1000 samples):\n  position RMSE: filter=1.2745 m, hold=12.4332 m, integration=1.2614 m\n  nominal 95% position ellipse coverage: 0.00%\nCoverage is descriptive; this run does not establish covariance calibration.\nCSV: C:/Users/Admin/Documents/Codex/2026-10-20/if-x20/work/velocity-drift-demo/7-drift.csv\n",
+      "csvSha256": "cead078289f11a62b076fc0daf2806da78828233e65cff8bd873d90f8d81a56e"
+    },
+    {
+      "name": "42-zero",
+      "seed": 42,
+      "rate": [
+        0,
+        0
+      ],
+      "command": [
+        "cargo",
+        "run",
+        "--locked",
+        "--",
+        "--seed",
+        "42",
+        "--velocity-drift-rate-x",
+        "0",
+        "--velocity-drift-rate-y",
+        "0",
+        "--output",
+        "C:/Users/Admin/Documents/Codex/2026-10-20/if-x20/work/velocity-drift-demo/42-zero.csv"
+      ],
+      "report": "Fusion Lab 0.1.0\nConfiguration: Config { duration_seconds: 30, seed: 42, scenario: Maneuver, position_sigma: 1.0, velocity_sigma: 0.15, assumed_position_sigma: None, assumed_velocity_sigma: None, velocity_bias: [0.0, 0.0], velocity_drift_rate: [0.0, 0.0], acceleration_density: 0.1, outage: Some(Outage { start: 10, end: 20 }) }\nMeasurement noise (per-axis sigma): true position=1.000000000000 m; assumed position=1.000000000000 m (follows true); true velocity=0.150000000000 m/s; assumed velocity=0.150000000000 m/s (follows true)\nInitial velocity sensor bias (world frame): x=0.000000000000 m/s; y=0.000000000000 m/s; deterministic offset, not Gaussian sigma or filter correction\nLinear velocity sensor drift (world frame): rate x=0.000000000000 m/s^2; y=0.000000000000 m/s^2; duration=30 s; final offset x=0.000000000000 m/s; y=0.000000000000 m/s; bias(t)=initial_bias+rate*t_seconds, not physical acceleration or filter correction\nMeasurement covariance R (per-axis): requested position=1.000000000000e0 m^2; effective position=1.000000000000e0 m^2; requested velocity=2.250000000000e-2 (m/s)^2; effective velocity=2.250000000000e-2 (m/s)^2 (variance floor=1e-12)\nOverall (3001 samples):\n  position RMSE: filter=0.2667 m, hold=7.7399 m, integration=1.2877 m\n  nominal 95% position ellipse coverage: 100.00%\nPosition outage (1000 samples):\n  position RMSE: filter=0.1769 m, hold=13.2392 m, integration=0.8181 m\n  nominal 95% position ellipse coverage: 100.00%\nCoverage is descriptive; this run does not establish covariance calibration.\nCSV: C:/Users/Admin/Documents/Codex/2026-10-20/if-x20/work/velocity-drift-demo/42-zero.csv\n",
+      "csvSha256": "8e6444c2339cd9d334fdd71f2de3cb8c7529440549d59c6dd5aa542719ab3526"
+    },
+    {
+      "name": "42-drift",
+      "seed": 42,
+      "rate": [
+        0.01,
+        -0.005
+      ],
+      "command": [
+        "cargo",
+        "run",
+        "--locked",
+        "--",
+        "--seed",
+        "42",
+        "--velocity-drift-rate-x",
+        "0.01",
+        "--velocity-drift-rate-y",
+        "-0.005",
+        "--output",
+        "C:/Users/Admin/Documents/Codex/2026-10-20/if-x20/work/velocity-drift-demo/42-drift.csv"
+      ],
+      "report": "Fusion Lab 0.1.0\nConfiguration: Config { duration_seconds: 30, seed: 42, scenario: Maneuver, position_sigma: 1.0, velocity_sigma: 0.15, assumed_position_sigma: None, assumed_velocity_sigma: None, velocity_bias: [0.0, 0.0], velocity_drift_rate: [0.01, -0.005], acceleration_density: 0.1, outage: Some(Outage { start: 10, end: 20 }) }\nMeasurement noise (per-axis sigma): true position=1.000000000000 m; assumed position=1.000000000000 m (follows true); true velocity=0.150000000000 m/s; assumed velocity=0.150000000000 m/s (follows true)\nInitial velocity sensor bias (world frame): x=0.000000000000 m/s; y=0.000000000000 m/s; deterministic offset, not Gaussian sigma or filter correction\nLinear velocity sensor drift (world frame): rate x=0.010000000000 m/s^2; y=-0.005000000000 m/s^2; duration=30 s; final offset x=0.300000000000 m/s; y=-0.150000000000 m/s; bias(t)=initial_bias+rate*t_seconds, not physical acceleration or filter correction\nMeasurement covariance R (per-axis): requested position=1.000000000000e0 m^2; effective position=1.000000000000e0 m^2; requested velocity=2.250000000000e-2 (m/s)^2; effective velocity=2.250000000000e-2 (m/s)^2 (variance floor=1e-12)\nOverall (3001 samples):\n  position RMSE: filter=1.4687 m, hold=7.7399 m, integration=1.4354 m\n  nominal 95% position ellipse coverage: 20.03%\nPosition outage (1000 samples):\n  position RMSE: filter=1.3470 m, hold=13.2392 m, integration=1.3683 m\n  nominal 95% position ellipse coverage: 0.00%\nCoverage is descriptive; this run does not establish covariance calibration.\nCSV: C:/Users/Admin/Documents/Codex/2026-10-20/if-x20/work/velocity-drift-demo/42-drift.csv\n",
+      "csvSha256": "ced958487049c0354a3db712f05aad7f53442237fb45f33eacbe8e94b27886ee"
+    },
+    {
+      "name": "314159-zero",
+      "seed": 314159,
+      "rate": [
+        0,
+        0
+      ],
+      "command": [
+        "cargo",
+        "run",
+        "--locked",
+        "--",
+        "--seed",
+        "314159",
+        "--velocity-drift-rate-x",
+        "0",
+        "--velocity-drift-rate-y",
+        "0",
+        "--output",
+        "C:/Users/Admin/Documents/Codex/2026-10-20/if-x20/work/velocity-drift-demo/314159-zero.csv"
+      ],
+      "report": "Fusion Lab 0.1.0\nConfiguration: Config { duration_seconds: 30, seed: 314159, scenario: Maneuver, position_sigma: 1.0, velocity_sigma: 0.15, assumed_position_sigma: None, assumed_velocity_sigma: None, velocity_bias: [0.0, 0.0], velocity_drift_rate: [0.0, 0.0], acceleration_density: 0.1, outage: Some(Outage { start: 10, end: 20 }) }\nMeasurement noise (per-axis sigma): true position=1.000000000000 m; assumed position=1.000000000000 m (follows true); true velocity=0.150000000000 m/s; assumed velocity=0.150000000000 m/s (follows true)\nInitial velocity sensor bias (world frame): x=0.000000000000 m/s; y=0.000000000000 m/s; deterministic offset, not Gaussian sigma or filter correction\nLinear velocity sensor drift (world frame): rate x=0.000000000000 m/s^2; y=0.000000000000 m/s^2; duration=30 s; final offset x=0.000000000000 m/s; y=0.000000000000 m/s; bias(t)=initial_bias+rate*t_seconds, not physical acceleration or filter correction\nMeasurement covariance R (per-axis): requested position=1.000000000000e0 m^2; effective position=1.000000000000e0 m^2; requested velocity=2.250000000000e-2 (m/s)^2; effective velocity=2.250000000000e-2 (m/s)^2 (variance floor=1e-12)\nOverall (3001 samples):\n  position RMSE: filter=0.4147 m, hold=7.3583 m, integration=1.2733 m\n  nominal 95% position ellipse coverage: 65.14%\nPosition outage (1000 samples):\n  position RMSE: filter=0.4473 m, hold=12.5930 m, integration=0.9958 m\n  nominal 95% position ellipse coverage: 15.00%\nCoverage is descriptive; this run does not establish covariance calibration.\nCSV: C:/Users/Admin/Documents/Codex/2026-10-20/if-x20/work/velocity-drift-demo/314159-zero.csv\n",
+      "csvSha256": "abfb1f78d0ed94326460b10eac7b6de3ca529291654225655b23176b7e3e6908"
+    },
+    {
+      "name": "314159-drift",
+      "seed": 314159,
+      "rate": [
+        0.01,
+        -0.005
+      ],
+      "command": [
+        "cargo",
+        "run",
+        "--locked",
+        "--",
+        "--seed",
+        "314159",
+        "--velocity-drift-rate-x",
+        "0.01",
+        "--velocity-drift-rate-y",
+        "-0.005",
+        "--output",
+        "C:/Users/Admin/Documents/Codex/2026-10-20/if-x20/work/velocity-drift-demo/314159-drift.csv"
+      ],
+      "report": "Fusion Lab 0.1.0\nConfiguration: Config { duration_seconds: 30, seed: 314159, scenario: Maneuver, position_sigma: 1.0, velocity_sigma: 0.15, assumed_position_sigma: None, assumed_velocity_sigma: None, velocity_bias: [0.0, 0.0], velocity_drift_rate: [0.01, -0.005], acceleration_density: 0.1, outage: Some(Outage { start: 10, end: 20 }) }\nMeasurement noise (per-axis sigma): true position=1.000000000000 m; assumed position=1.000000000000 m (follows true); true velocity=0.150000000000 m/s; assumed velocity=0.150000000000 m/s (follows true)\nInitial velocity sensor bias (world frame): x=0.000000000000 m/s; y=0.000000000000 m/s; deterministic offset, not Gaussian sigma or filter correction\nLinear velocity sensor drift (world frame): rate x=0.010000000000 m/s^2; y=-0.005000000000 m/s^2; duration=30 s; final offset x=0.300000000000 m/s; y=-0.150000000000 m/s; bias(t)=initial_bias+rate*t_seconds, not physical acceleration or filter correction\nMeasurement covariance R (per-axis): requested position=1.000000000000e0 m^2; effective position=1.000000000000e0 m^2; requested velocity=2.250000000000e-2 (m/s)^2; effective velocity=2.250000000000e-2 (m/s)^2 (variance floor=1e-12)\nOverall (3001 samples):\n  position RMSE: filter=1.3135 m, hold=7.3583 m, integration=1.2972 m\n  nominal 95% position ellipse coverage: 26.66%\nPosition outage (1000 samples):\n  position RMSE: filter=1.0585 m, hold=12.5930 m, integration=1.0804 m\n  nominal 95% position ellipse coverage: 0.00%\nCoverage is descriptive; this run does not establish covariance calibration.\nCSV: C:/Users/Admin/Documents/Codex/2026-10-20/if-x20/work/velocity-drift-demo/314159-drift.csv\n",
+      "csvSha256": "221ab7344a1d60d990a01e82e33b5a778a7a9f496ade338fe7aadbe08d2bfe52"
+    }
+  ],
+  "compatibility": {
+    "reference": {
+      "head": "80c39e4f15b77d84b6d69c7e7f06ce05be49fed2",
+      "toolchain": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-msvc\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+      "sources": {
+        "src/simulation.rs": "ed0fba62df04b4374130d06891e129a80e04b831c3525f89b9584fd81ae82afb",
+        "src/main.rs": "6a9373bb7f31a1fe788d81879e8df3321229f1fae128b353c04e952507889612",
+        "src/sensors.rs": "d8eaae0d691535bcee6f68166babdb41c49de815ad0c3eb213c8b980c9ae29af",
+        "src/estimation.rs": "83a3b6936c53fc9d28c29a59b0840cf5d57611852246bc19c2c4cb258c092fdf",
+        "Cargo.lock": "1ff60b850d3f5928fc13476575700400765d31f7deb3268171f66176fb6cf6f3"
+      },
+      "cases": [
+        {
+          "name": "default",
+          "flags": [],
+          "csvSha256": "8e6444c2339cd9d334fdd71f2de3cb8c7529440549d59c6dd5aa542719ab3526"
+        },
+        {
+          "name": "constant-bias",
+          "flags": [
+            "--velocity-bias-x",
+            "0.5",
+            "--velocity-bias-y",
+            "-0.25"
+          ],
+          "csvSha256": "39a6b54c03c2121c636ead96bc6d2c332f72b338dd65d63acb5acb299ba1fd99"
+        },
+        {
+          "name": "noiseless",
+          "flags": [
+            "--duration",
+            "2",
+            "--scenario",
+            "straight",
+            "--no-outage",
+            "--position-sigma",
+            "0",
+            "--velocity-sigma",
+            "0"
+          ],
+          "csvSha256": "5c663368fb7db611d843e0479c735cb1ffe453e92b28c01e496d0d005fa6312c"
+        }
+      ]
+    },
+    "comparisons": [
+      {
+        "case": "default",
+        "variant": "implicit",
+        "beforeSha256": "8e6444c2339cd9d334fdd71f2de3cb8c7529440549d59c6dd5aa542719ab3526",
+        "afterSha256": "8e6444c2339cd9d334fdd71f2de3cb8c7529440549d59c6dd5aa542719ab3526",
+        "equal": true
+      },
+      {
+        "case": "default",
+        "variant": "negative-x-zero",
+        "beforeSha256": "8e6444c2339cd9d334fdd71f2de3cb8c7529440549d59c6dd5aa542719ab3526",
+        "afterSha256": "8e6444c2339cd9d334fdd71f2de3cb8c7529440549d59c6dd5aa542719ab3526",
+        "equal": true
+      },
+      {
+        "case": "default",
+        "variant": "negative-y-zero",
+        "beforeSha256": "8e6444c2339cd9d334fdd71f2de3cb8c7529440549d59c6dd5aa542719ab3526",
+        "afterSha256": "8e6444c2339cd9d334fdd71f2de3cb8c7529440549d59c6dd5aa542719ab3526",
+        "equal": true
+      },
+      {
+        "case": "constant-bias",
+        "variant": "implicit",
+        "beforeSha256": "39a6b54c03c2121c636ead96bc6d2c332f72b338dd65d63acb5acb299ba1fd99",
+        "afterSha256": "39a6b54c03c2121c636ead96bc6d2c332f72b338dd65d63acb5acb299ba1fd99",
+        "equal": true
+      },
+      {
+        "case": "constant-bias",
+        "variant": "negative-x-zero",
+        "beforeSha256": "39a6b54c03c2121c636ead96bc6d2c332f72b338dd65d63acb5acb299ba1fd99",
+        "afterSha256": "39a6b54c03c2121c636ead96bc6d2c332f72b338dd65d63acb5acb299ba1fd99",
+        "equal": true
+      },
+      {
+        "case": "constant-bias",
+        "variant": "negative-y-zero",
+        "beforeSha256": "39a6b54c03c2121c636ead96bc6d2c332f72b338dd65d63acb5acb299ba1fd99",
+        "afterSha256": "39a6b54c03c2121c636ead96bc6d2c332f72b338dd65d63acb5acb299ba1fd99",
+        "equal": true
+      },
+      {
+        "case": "noiseless",
+        "variant": "implicit",
+        "beforeSha256": "5c663368fb7db611d843e0479c735cb1ffe453e92b28c01e496d0d005fa6312c",
+        "afterSha256": "5c663368fb7db611d843e0479c735cb1ffe453e92b28c01e496d0d005fa6312c",
+        "equal": true
+      },
+      {
+        "case": "noiseless",
+        "variant": "negative-x-zero",
+        "beforeSha256": "5c663368fb7db611d843e0479c735cb1ffe453e92b28c01e496d0d005fa6312c",
+        "afterSha256": "5c663368fb7db611d843e0479c735cb1ffe453e92b28c01e496d0d005fa6312c",
+        "equal": true
+      },
+      {
+        "case": "noiseless",
+        "variant": "negative-y-zero",
+        "beforeSha256": "5c663368fb7db611d843e0479c735cb1ffe453e92b28c01e496d0d005fa6312c",
+        "afterSha256": "5c663368fb7db611d843e0479c735cb1ffe453e92b28c01e496d0d005fa6312c",
+        "equal": true
+      }
+    ]
+  },
+  "sourceHashes": {
+    "src/simulation.rs": "c0fd739c26e7190549736636c69720dc963707059463a45b7095159099fd7691",
+    "src/main.rs": "76574d18911bdce81082b9f76308cf3a31f69fa9967a0592f28eaf2630901d6b",
+    "src/sensors.rs": "d8eaae0d691535bcee6f68166babdb41c49de815ad0c3eb213c8b980c9ae29af",
+    "src/estimation.rs": "83a3b6936c53fc9d28c29a59b0840cf5d57611852246bc19c2c4cb258c092fdf",
+    "Cargo.lock": "1ff60b850d3f5928fc13476575700400765d31f7deb3268171f66176fb6cf6f3",
+    "examples/robustness-run.rs": "3c4223b8b6101557ef96dcba12737dca1a2dadb4402c9cfe06d1528df9b204d2"
+  },
+  "historicalStudy": "Original576-key study excluded drift. Its archived source/protocol/binary/results are unchanged; current research example only explicitly sets zero drift for Config compilation."
+}
