@@ -1,6 +1,6 @@
 # Reading a paired sensor-robustness study
 
-Status: all576prespecified runs completed and independently audited; PR65 product review and exact-head CI remain required. The frozen protocol remains authoritative; its original DRAFT header is preserved because main approval is recorded externally in [issue21comment6479640606](https://github.com/zblack54/fusion-lab/issues/21#issuecomment-6479640606). Main released reviewed execution in [issue21comment6479893719](https://github.com/zblack54/fusion-lab/issues/21#issuecomment-6479893719).
+Status: all 576 prespecified runs completed, independently audited and accepted in [PR #65](https://github.com/zblack54/fusion-lab/pull/65). The frozen protocol remains authoritative; its original DRAFT header is preserved because main approval is recorded externally in [issue21comment6479640606](https://github.com/zblack54/fusion-lab/issues/21#issuecomment-6479640606). Main released reviewed execution in [issue21comment6479893719](https://github.com/zblack54/fusion-lab/issues/21#issuecomment-6479893719).
 
 ## What this asks
 
@@ -82,3 +82,9 @@ This default command independently recomputes aggregates but reports source/bina
 These scripted trajectories, priors, true noise assumptions and three fixed offsets cannot establish general covariance calibration, real-world accuracy or best filter tuning. Drift remains untested. This study deliberately provides negative cases and a reproducible baseline for later work.
 
 Exercise: derive the quadratic distance for error[2,1] and P=[[4,1],[1,2]]. Then explain why dropping covariance cross-terms changes the answer. For paired seed differences1through32, compute sample variance and Monte Carlo standard error; explain why repeating each seed's value3001times would not create additional independent evidence.
+
+## Cooperative execution ownership
+
+The engineering probe reproduced two processes entering the same study key when they shared a frozen output directory. The probe used synthetic children; it did not establish numerical corruption in the completed study. [Issue #68](https://github.com/zblack54/fusion-lab/issues/68) adds an exclusive per-output execution lease before checkpoint reads, cleanup or child dispatch. A competing process fails before touching the first owner’s artifacts. Orderly exit releases only the unchanged owner marker; uncertain child cleanup or a hard crash leaves it for explicit reconciliation. PID absence alone never authorizes takeover.
+
+The [research ownership handoff](https://github.com/zblack54/fusion-lab/blob/main/research/robustness/README.md) explains the code boundary, stale-owner procedure, synthetic two-process tests and exercise. Main independently reviewed the source and ran all 23 Python fixtures, including actual competing processes and interrupted-child reaping on Windows. Native CI is required before acceptance. This cooperative marker is not a filesystem security boundary and was not the producer of the historical 576-run results.

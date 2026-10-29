@@ -1,6 +1,6 @@
 # A changing sensor offset without changing truth
 
-Status: deterministic linear drift implemented for library/CLI under [issue20approval](https://github.com/zblack54/fusion-lab/issues/20#issuecomment-6480183228), pending independent review and exact-head CI. This extends the accepted constant-bias slice; no random walk or bias estimator is added.
+Status: deterministic linear drift implemented for library/CLI under [issue20approval](https://github.com/zblack54/fusion-lab/issues/20#issuecomment-6480183228), accepted after independent review and exact-head native CI in [PR #67](https://github.com/zblack54/fusion-lab/pull/67). This extends the accepted constant-bias slice; no random walk or bias estimator is added.
 
 ## What changes
 

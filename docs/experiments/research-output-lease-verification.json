@@ -1,0 +1,54 @@
+{
+  "issue": 68,
+  "status": "implemented; local verification passed; independent review and exact-head CI pending",
+  "sourceHashes": {
+    "research/robustness/study.py": "df2c1ee860f2af6f168efd7f61bcc9055d36db68847bea99e79cb8722213fe95",
+    "research/robustness/test_study.py": "9d47baf0a310bfc4c89d8babd55224eb91fed6bc78b19cf05441050a92529856",
+    "research/robustness/README.md": "97c017cdb048768850f08c665cdea964cb09e798edc1887e9e1b090826e01dd2"
+  },
+  "scope": "research executor, supplementary Python fixtures and ownership learning handoff only",
+  "checks": [
+    {
+      "command": "python -m unittest discover -s research/robustness -p test_study.py -v",
+      "exit": 0,
+      "tests": 23,
+      "platform": "Windows",
+      "includes": [
+        "two actual executor processes and one bounded synthetic child; contender rejected before cleanup/dispatch",
+        "actual child interrupted and reaped before lease release",
+        "stale/changed/missing ownership fail closed",
+        "competing freeze rejected; fresh freeze excludes only its own marker",
+        "unconfirmed child cleanup retains marker",
+        "all prior14 numerical/checkpoint fixtures preserved"
+      ]
+    },
+    {
+      "command": "python research/robustness/audit_results.py --data-dir docs/experiments/robustness",
+      "exit": 0,
+      "verifiedRuns": 576,
+      "aggregateComparisons": 786,
+      "meaning": "audit existing historical records, not a numerical rerun"
+    },
+    {
+      "command": "bundled Python scripts/docs.py build",
+      "exit": 0
+    },
+    {
+      "commands": "six required root Cargo gates",
+      "exit": 0,
+      "localEvidence": "host work/issue68-root-gates.json"
+    }
+  ],
+  "historicalData": {
+    "protocolSha256": "05f4bb8553c7166a4707fa0f9e466f5857252ef5976b9a9c96d0a553c919ea2e",
+    "recordsDecompressedSha256": "111596fb8a24d2e7503d788207d079f4b95bcb0f15d6a0b8780c58e4822eb8e4",
+    "aggregatesSha256": "fd9582ecec1bc320edef96672d3e972ed7e17362baf718d0da76651ea56ce8d6",
+    "numericalStudyRerun": false
+  },
+  "limits": [
+    "Cooperative marker ownership, not a filesystem security boundary",
+    "Hard crashes retain stale leases; no automatic PID/age-based takeover",
+    "Unconfirmed child cleanup and changed ownership require manual reconciliation",
+    "Native Linux verification remains pending exact-head CI"
+  ]
+}

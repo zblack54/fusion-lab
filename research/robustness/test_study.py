@@ -1,8 +1,10 @@
 """Independent golden arithmetic and synthetic boundary fixtures; no study runs."""
 import json
 import math
+import os
 from pathlib import Path
 import tempfile
+import time
 import unittest
 from unittest import mock
 from types import SimpleNamespace
@@ -128,6 +130,148 @@ class ExecutionGuards(unittest.TestCase):
             with self.assertRaisesRegex(ValueError,'artifact cap'):
                 study.bounded_run([study.sys.executable,'-c',"from pathlib import Path;import time;Path(r'%s').write_bytes(b'x'*2048);time.sleep(5)"%str(output/'current.test')],output,2,cap_bytes=1024)
             self.assertTrue((output/'current.test').exists())
+
+class OutputOwnership(unittest.TestCase):
+    def test_lease_releases_on_success_failure_and_keyboard_interrupt(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            output=Path(temporary)
+            with study.OutputLease(output) as lease:
+                owner=study.load_json(lease.path)
+                self.assertEqual(owner['pid'],os.getpid())
+                self.assertEqual(len(owner['nonce']),32)
+                with self.assertRaises(study.OutputLeaseError):
+                    with study.OutputLease(output):self.fail('second owner entered')
+                self.assertEqual(study.load_json(lease.path),owner)
+            self.assertFalse(lease.path.exists())
+            for error in (ValueError('fixture'),KeyboardInterrupt()):
+                with self.assertRaises(type(error)):
+                    with study.OutputLease(output) as lease:raise error
+                self.assertFalse(lease.path.exists())
+
+    def test_stale_marker_is_never_adopted_from_pid_absence(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            output=Path(temporary);marker=output/'.execution-lease.json'
+            raw=b'{"pid":999999999,"nonce":"stale","created_utc":"historical"}'
+            marker.write_bytes(raw)
+            args=SimpleNamespace(output=output,binary=output/'never-run',freeze=True,execute=False,retry_key=None)
+            with mock.patch.object(study,'fingerprints') as fingerprint,mock.patch.object(study,'bounded_run') as child:
+                with self.assertRaises(study.OutputLeaseError):study.execute(args)
+                fingerprint.assert_not_called();child.assert_not_called()
+            self.assertEqual(marker.read_bytes(),raw)
+            self.assertEqual(list(output.iterdir()),[marker])
+
+    def test_changed_or_missing_lease_fails_closed(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            output=Path(temporary)
+            with self.assertRaisesRegex(study.OutputLeaseError,'ownership changed'):
+                with study.OutputLease(output) as lease:
+                    changed=dict(lease.owner,nonce='different-owner')
+                    lease.path.write_text(json.dumps(changed))
+            self.assertEqual(study.load_json(lease.path),changed)
+            lease.path.unlink() # Fixture explicitly owns this temporary directory.
+            with self.assertRaisesRegex(study.OutputLeaseError,'cannot be verified'):
+                with study.OutputLease(output) as lease:lease.path.unlink()
+
+    def test_unconfirmed_child_cleanup_retains_owned_marker(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            with self.assertRaises(study.ChildCleanupError):
+                with study.OutputLease(Path(temporary)) as lease:
+                    raise study.ChildCleanupError('synthetic reap failure')
+            self.assertEqual(study.load_json(lease.path),lease.owner)
+
+    def test_freeze_excludes_only_its_own_lease(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            output=Path(temporary)
+            args=SimpleNamespace(output=output,binary=output/'never-run',freeze=True,execute=False,retry_key=None)
+            with mock.patch.object(study,'fingerprints',return_value={'synthetic':'unchanged'}):study.execute(args)
+            self.assertEqual(study.load_json(output/'frozen.json'),{'synthetic':'unchanged'})
+            self.assertEqual(list(output.iterdir()),[output/'frozen.json'])
+
+    def test_competing_freeze_rejects_before_fingerprints_or_writes(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            output=Path(temporary)
+            args=SimpleNamespace(output=output,binary=output/'never-run',freeze=True,execute=False,retry_key=None)
+            with study.OutputLease(output) as owner:
+                raw=owner.path.read_bytes()
+                with mock.patch.object(study,'fingerprints') as fingerprints:
+                    with self.assertRaises(study.OutputLeaseError):study.execute(args)
+                    fingerprints.assert_not_called()
+                self.assertEqual(owner.path.read_bytes(),raw)
+                self.assertEqual(list(output.iterdir()),[owner.path])
+
+    def test_keyboard_interrupt_reaps_real_owned_child_before_lease_release(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            output=Path(temporary);spawned=[];original=study.subprocess.Popen
+            def spawn(*args,**kwargs):
+                process=original(*args,**kwargs);spawned.append(process);return process
+            with self.assertRaises(KeyboardInterrupt):
+                with study.OutputLease(output) as lease:
+                    try:
+                        with mock.patch.object(study.subprocess,'Popen',side_effect=spawn),mock.patch.object(study.time,'sleep',side_effect=KeyboardInterrupt):
+                            study.bounded_run([study.sys.executable,'-c','import time;time.sleep(5)'],output,10)
+                    finally:
+                        self.assertEqual(len(spawned),1)
+                        self.assertIsNotNone(spawned[0].poll(),'child must be reaped while lease remains held')
+                        self.assertTrue(lease.path.exists())
+            self.assertFalse(lease.path.exists())
+
+    def test_failed_reaping_propagates_and_execute_retains_lease(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            output=Path(temporary);(output/'frozen.json').write_text('{"synthetic":"same"}')
+            args=SimpleNamespace(output=output,binary=output/'never-run',freeze=False,execute=True,retry_key=None)
+            child=mock.Mock();child.poll.return_value=None
+            child.kill.side_effect=PermissionError('synthetic kill denial')
+            child.wait.side_effect=OSError('synthetic reap failure')
+            with mock.patch.object(study,'fingerprints',return_value={'synthetic':'same'}),mock.patch.object(study.subprocess,'Popen',return_value=child),mock.patch.object(study.time,'sleep',side_effect=KeyboardInterrupt):
+                with self.assertRaises(study.ChildCleanupError):study.execute(args)
+            child.kill.assert_called_once();child.wait.assert_called_once()
+            self.assertTrue((output/'.execution-lease.json').exists())
+            self.assertFalse((output/'checkpoint.json').exists())
+
+    def test_two_actual_processes_reject_second_before_child_or_cleanup(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            output=Path(temporary);(output/'frozen.json').write_text('{"synthetic":"same"}')
+            child_code="""import pathlib,sys,time
+p=pathlib.Path(sys.argv[1]);(p/'current.child-started').write_text(str(__import__('os').getpid()))
+end=time.monotonic()+10
+while not (p/'release-child').exists() and time.monotonic()<end:time.sleep(.01)
+(p/'child-exited').write_text('done')
+"""
+            owner_code=f"""import sys
+sys.path.insert(0,{str(Path(study.__file__).parent)!r})
+import study
+from pathlib import Path
+from types import SimpleNamespace
+study.fingerprints=lambda binary:{{'synthetic':'same'}}
+original=study.bounded_run
+study.bounded_run=lambda command,output,seconds:original([sys.executable,'-c',{child_code!r},str(output)],output,15)
+study.execute(SimpleNamespace(output=Path(sys.argv[1]),binary=Path(sys.argv[1])/'never-numerical',freeze=False,execute=True,retry_key=None))
+"""
+            owner=study.subprocess.Popen([study.sys.executable,'-c',owner_code,str(output)],stdout=study.subprocess.PIPE,stderr=study.subprocess.PIPE,text=True)
+            try:
+                deadline=time.monotonic()+10
+                while not (output/'current.child-started').exists() and owner.poll() is None and time.monotonic()<deadline:time.sleep(.01)
+                self.assertTrue((output/'current.child-started').exists(),'synthetic child did not start')
+                marker=(output/'.execution-lease.json').read_bytes()
+                child_pid=(output/'current.child-started').read_bytes()
+                sentinel=output/'current.owner-sentinel';sentinel.write_text('must survive contender')
+                contender=study.subprocess.run([study.sys.executable,'-c',owner_code,str(output)],capture_output=True,text=True,timeout=10)
+                self.assertNotEqual(contender.returncode,0)
+                self.assertIn('output lease already exists',contender.stderr)
+                self.assertEqual(sentinel.read_text(),'must survive contender')
+                self.assertEqual((output/'.execution-lease.json').read_bytes(),marker)
+                self.assertEqual((output/'current.child-started').read_bytes(),child_pid)
+                self.assertFalse((output/'checkpoint.json').exists())
+            finally:
+                (output/'release-child').write_text('release owned synthetic child')
+                stdout,stderr=owner.communicate(timeout=20)
+            # Deliberately absent numerical artifacts fail verification only after
+            # the owned synthetic child exits; orderly failure releases its lease.
+            self.assertNotEqual(owner.returncode,0)
+            self.assertIn('failed key checkpointed',stderr)
+            self.assertTrue((output/'child-exited').exists())
+            self.assertFalse((output/'.execution-lease.json').exists())
+
 
 class CheckpointSharing(unittest.TestCase):
     def test_transient_replace_retries_only_promotion_and_preserves_errors(self):
