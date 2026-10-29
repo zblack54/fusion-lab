@@ -1,0 +1,87 @@
+schema_version = 3
+id = "SPEC-OBSERVATION-DELIVERY"
+title = "Deterministic timestamped observation delivery"
+feature_slug = "observation-delivery"
+target_crate = "fusion-lab"
+target_revision = "fd466425aad08796ee2476fb8a1ba6cc4b619b69"
+status = "draft"
+ai_ready = false
+
+[target]
+edition = "2024"
+rust_version = "1.99"
+resolver = "3"
+supported_targets = ["host"]
+feature_sets = ["default"]
+toolchains = ["1.99.0", "stable"]
+
+[[target.validation]]
+id = "CFG-001"
+target = "host"
+feature_set = "default"
+toolchain = "1.99.0"
+
+[[target.validation]]
+id = "CFG-002"
+target = "host"
+feature_set = "default"
+toolchain = "stable"
+
+[ownership]
+repo_root = "../../.."
+test_suite_root = "../../../tests/observation-delivery"
+external_test_inputs = []
+production_roots = ["../../../src", "../../../Cargo.toml", "../../../Cargo.lock", "../../../examples"]
+test_owned = [
+  "spec.toml",
+  "intent",
+  "requirements",
+  "structure",
+  "constraints",
+  "tests",
+  "test-suite",
+  "decisions",
+  "traceability.toml",
+  "implementation-brief.md",
+  "implementation-plan.toml",
+  "verification",
+  "open-questions.toml",
+  "validation/waivers.toml",
+]
+implementation_roots = ["../../../src/delivery.rs", "../../../src/lib.rs", "../../../examples/observation_delivery.rs"]
+mutable_seams = ["../../../src/delivery.rs", "../../../src/lib.rs"]
+
+[[phase]]
+id = "P1"
+name = "Intent"
+status = "pending"
+
+[[phase]]
+id = "P2"
+name = "Requirements"
+status = "pending"
+
+[[phase]]
+id = "P3"
+name = "Structure"
+status = "pending"
+
+[[phase]]
+id = "P4"
+name = "Invariants and Constraints"
+status = "pending"
+
+[[phase]]
+id = "P5"
+name = "Tests"
+status = "pending"
+
+[[phase]]
+id = "P6"
+name = "Decisions"
+status = "pending"
+
+[[phase]]
+id = "P7"
+name = "Validation"
+status = "pending"

@@ -1,0 +1,66 @@
+[[acceptance]]
+id = "ACC-001"
+title = "Preserve the immediate experiment"
+actors = ["local researcher","independent reviewer"]
+given = ["An existing supported experiment and its exact observations","The matched replay model and zero delay/loss"]
+when = "The researcher projects and replays the observations"
+then = ["All numerical states/covariances/baselines match source bits","No truth or source configuration reaches the replay owner"]
+requirement_ids = ["REQ-012","REQ-020","REQ-021","REQ-031","REQ-036"]
+test_ids = ["TST-ACC-001","TST-ACC-003"]
+status = "active"
+
+[[acceptance]]
+id = "ACC-002"
+title = "Explain delivery decisions"
+actors = ["local researcher","independent reviewer"]
+given = ["A finite delayed/lossy observation inventory","A bounded virtual waiting capacity"]
+when = "The researcher replays the same inventory"
+then = ["Every identity has one source-time or arrival-time decision","The OnTimeOnly filter and baselines consume the same accepted subset"]
+requirement_ids = ["REQ-014","REQ-015","REQ-016","REQ-017","REQ-018","REQ-019","REQ-022","REQ-023"]
+test_ids = ["TST-ACC-002"]
+status = "active"
+
+[[acceptance]]
+id = "ACC-003"
+title = "Exchange inspectable recordings"
+actors = ["local researcher","independent reviewer"]
+given = ["Canonical version-one trace bytes"]
+when = "The researcher imports and regenerates the trace and ledger"
+then = ["Requested model and payload bits round-trip","Malformed or oversized input is rejected without repair"]
+requirement_ids = ["REQ-024","REQ-025","REQ-026","REQ-027","REQ-028"]
+test_ids = ["TST-ACC-002"]
+status = "active"
+
+[[acceptance]]
+id = "ACC-004"
+title = "Fail without partial success"
+actors = ["local researcher","independent reviewer"]
+given = ["An invalid input or a finite observation causing numerical overflow"]
+when = "The researcher requests construction or replay"
+then = ["The typed failure identifies the input or failing numerical stage","Borrowed input is preserved and no completed replay prefix is exposed"]
+requirement_ids = ["REQ-001","REQ-002","REQ-003","REQ-004","REQ-005","REQ-006","REQ-007","REQ-008","REQ-009","REQ-010","REQ-011","REQ-013","REQ-029","REQ-030"]
+test_ids = ["TST-ACC-004"]
+status = "active"
+
+[[acceptance]]
+id = "ACC-005"
+title = "Bound the work"
+actors = ["local researcher","independent reviewer"]
+given = ["The functional projection/replay path and exact maximum workload","The declared native reference environment"]
+when = "The researcher executes the functional path and the independent reviewer separately measures the prescribed release workload"
+then = ["Functional replay input/output acceptance is established by API tests","Measured resource/CPU obligations are established only by VER-004, never by a unit timing assertion"]
+requirement_ids = ["REQ-033","REQ-034","REQ-037","REQ-012","REQ-031"]
+test_ids = ["TST-ACC-001","TST-ACC-002"]
+status = "active"
+
+[[acceptance]]
+id = "ACC-006"
+title = "Keep scope understandable"
+actors = ["local researcher","independent reviewer"]
+given = ["The existing synchronous core and accepted adapters"]
+when = "The researcher uses the separate reproduction example"
+then = ["Legacy paths remain compatible","The handoff makes no actual asynchronous-channel or full issue6 claim"]
+requirement_ids = ["REQ-032","REQ-035","REQ-036","REQ-031"]
+test_ids = ["TST-ACC-001","TST-ACC-002"]
+status = "active"
+

@@ -1,0 +1,333 @@
+[[requirement]]
+id = "REQ-001"
+title = "Finite payload"
+kind = "behavioral"
+statement = "Observation construction SHALL reject every nonfinite payload component with its identity and axis."
+rationale = "Constrain the observable boundary before implementation; exact domain, examples and errors are specified in the API/format document."
+source_ids = ["ACC-004"]
+status = "active"
+
+[[requirement]]
+id = "REQ-002"
+title = "Scheduled identity"
+kind = "behavioral"
+statement = "Observation construction SHALL enforce per-sensor sequence equal to sample_tick divided by its exact 20-tick position or 5-tick velocity period."
+rationale = "Constrain the observable boundary before implementation; exact domain, examples and errors are specified in the API/format document."
+source_ids = ["ACC-004"]
+status = "active"
+
+[[requirement]]
+id = "REQ-003"
+title = "Causal timestamps"
+kind = "behavioral"
+statement = "Observation construction SHALL reject a planned arrival earlier than sampling."
+rationale = "Constrain the observable boundary before implementation; exact domain, examples and errors are specified in the API/format document."
+source_ids = ["ACC-004"]
+status = "active"
+
+[[requirement]]
+id = "REQ-004"
+title = "Bounded delay"
+kind = "behavioral"
+statement = "Observation and plan construction SHALL reject per-channel delays above 500 ticks with the appropriate observation or plan error."
+rationale = "Constrain the observable boundary before implementation; exact domain, examples and errors are specified in the API/format document."
+source_ids = ["ACC-004"]
+status = "active"
+
+[[requirement]]
+id = "REQ-005"
+title = "Requested model domain"
+kind = "behavioral"
+statement = "ReplayModel construction SHALL retain exactly finite requested sigmas and acceleration density in inclusive 0..100."
+rationale = "Constrain the observable boundary before implementation; exact domain, examples and errors are specified in the API/format document."
+source_ids = ["ACC-004"]
+status = "active"
+
+[[requirement]]
+id = "REQ-006"
+title = "Duration domain"
+kind = "behavioral"
+statement = "Trace construction SHALL accept only durations 1..3600 whole seconds and reject observations sampled after the final tick."
+rationale = "Constrain the observable boundary before implementation; exact domain, examples and errors are specified in the API/format document."
+source_ids = ["ACC-004"]
+status = "active"
+
+[[requirement]]
+id = "REQ-007"
+title = "Waiting capacity domain"
+kind = "behavioral"
+statement = "Trace and plan construction SHALL accept only pending capacities 1..128."
+rationale = "Constrain the observable boundary before implementation; exact domain, examples and errors are specified in the API/format document."
+source_ids = ["ACC-004"]
+status = "active"
+
+[[requirement]]
+id = "REQ-008"
+title = "Inventory cap"
+kind = "behavioral"
+statement = "Trace construction SHALL reject inventories above 90002 observations before contextual replay allocation."
+rationale = "Constrain the observable boundary before implementation; exact domain, examples and errors are specified in the API/format document."
+source_ids = ["ACC-004"]
+status = "active"
+
+[[requirement]]
+id = "REQ-009"
+title = "Unique identity"
+kind = "behavioral"
+statement = "Trace construction and decoding SHALL reject duplicate sensor/sequence identities across the entire inventory, including nonadjacent arrival records."
+rationale = "Constrain the observable boundary before implementation; exact domain, examples and errors are specified in the API/format document."
+source_ids = ["ACC-004"]
+status = "active"
+
+[[requirement]]
+id = "REQ-010"
+title = "Raw canonical normalization"
+kind = "behavioral"
+statement = "The raw Trace constructor SHALL normalize observation enumeration into planned-arrival/sample/position-before-velocity/sequence order."
+rationale = "Constrain the observable boundary before implementation; exact domain, examples and errors are specified in the API/format document."
+source_ids = ["ACC-004"]
+status = "active"
+
+[[requirement]]
+id = "REQ-011"
+title = "Strict imported order"
+kind = "behavioral"
+statement = "Trace decoding SHALL reject noncanonical recorded order without normalizing it."
+rationale = "Constrain the observable boundary before implementation; exact domain, examples and errors are specified in the API/format document."
+source_ids = ["ACC-004"]
+status = "active"
+
+[[requirement]]
+id = "REQ-012"
+title = "Observation-only projection"
+kind = "behavioral"
+statement = "Source projection SHALL copy only sampling ticks and present observation payloads into owned replay input without retaining a source borrow."
+rationale = "Constrain the observable boundary before implementation; exact domain, examples and errors are specified in the API/format document."
+source_ids = ["ACC-001","ACC-005"]
+status = "active"
+
+[[requirement]]
+id = "REQ-013"
+title = "Source layout validation"
+kind = "behavioral"
+statement = "Source projection SHALL reject wrong sample count, unexpected ticks and off-schedule measurements before returning a Trace."
+rationale = "Constrain the observable boundary before implementation; exact domain, examples and errors are specified in the API/format document."
+source_ids = ["ACC-004"]
+status = "active"
+
+[[requirement]]
+id = "REQ-014"
+title = "Scheduled loss"
+kind = "behavioral"
+statement = "Replay SHALL decide scripted loss from the original scheduled sequence using (sequence+1) modulo N at sampling time before queue or horizon decisions."
+rationale = "Constrain the observable boundary before implementation; exact domain, examples and errors are specified in the API/format document."
+source_ids = ["ACC-002"]
+status = "active"
+
+[[requirement]]
+id = "REQ-015"
+title = "Drain before admission"
+kind = "behavioral"
+statement = "Replay SHALL consume due arrivals before admitting newly sampled future observations at each tick."
+rationale = "Constrain the observable boundary before implementation; exact domain, examples and errors are specified in the API/format document."
+source_ids = ["ACC-002"]
+status = "active"
+
+[[requirement]]
+id = "REQ-016"
+title = "Zero-delay bypass"
+kind = "behavioral"
+statement = "Replay SHALL route on-time observations without requiring a waiting-buffer slot."
+rationale = "Constrain the observable boundary before implementation; exact domain, examples and errors are specified in the API/format document."
+source_ids = ["ACC-002"]
+status = "active"
+
+[[requirement]]
+id = "REQ-017"
+title = "Drop newest on full"
+kind = "behavioral"
+statement = "Replay SHALL preserve existing waiting entries and report the newly offered future observation as QueueFullDrop with occupancy equal to the validated capacity when full."
+rationale = "Constrain the observable boundary before implementation; exact domain, examples and errors are specified in the API/format document."
+source_ids = ["ACC-002"]
+status = "active"
+
+[[requirement]]
+id = "REQ-018"
+title = "OnTimeOnly"
+kind = "behavioral"
+statement = "Replay SHALL apply only arrived observations sampled at the current tick and report arrived positive-delay observations as StaleDrop without numerical or baseline updates."
+rationale = "Constrain the observable boundary before implementation; exact domain, examples and errors are specified in the API/format document."
+source_ids = ["ACC-002"]
+status = "active"
+
+[[requirement]]
+id = "REQ-019"
+title = "Finite horizon"
+kind = "behavioral"
+statement = "Replay SHALL stop snapshots at the configured final tick and finalize still-waiting observations as UndeliveredAtHorizon."
+rationale = "Constrain the observable boundary before implementation; exact domain, examples and errors are specified in the API/format document."
+source_ids = ["ACC-002"]
+status = "active"
+
+[[requirement]]
+id = "REQ-020"
+title = "Fixed numerical version one"
+kind = "behavioral"
+statement = "Replay SHALL use the fixed zero state, covariance diagonal 25/25/4/4, requested-model variance floor 1e-12, synchronous 10ms prediction and canonical observation updates."
+rationale = "Constrain the observable boundary before implementation; exact domain, examples and errors are specified in the API/format document."
+source_ids = ["ACC-001"]
+status = "active"
+
+[[requirement]]
+id = "REQ-021"
+title = "Policy-aligned baselines"
+kind = "behavioral"
+statement = "Replay SHALL supply only accepted observations to hold and preceding-tick velocity integration with position resets."
+rationale = "Constrain the observable boundary before implementation; exact domain, examples and errors are specified in the API/format document."
+source_ids = ["ACC-001"]
+status = "active"
+
+[[requirement]]
+id = "REQ-022"
+title = "Source ledger accounting"
+kind = "behavioral"
+statement = "Replay SHALL return one source-ordered terminal ledger entry per offered identity with the exact decision tick, planned time and outcome-specific queue occupancy."
+rationale = "Constrain the observable boundary before implementation; exact domain, examples and errors are specified in the API/format document."
+source_ids = ["ACC-002"]
+status = "active"
+
+[[requirement]]
+id = "REQ-023"
+title = "Arrival order accounting"
+kind = "behavioral"
+statement = "Replay SHALL expose only actually consumed Accepted/StaleDrop identities in canonical arrival order."
+rationale = "Constrain the observable boundary before implementation; exact domain, examples and errors are specified in the API/format document."
+source_ids = ["ACC-002"]
+status = "active"
+
+[[requirement]]
+id = "REQ-024"
+title = "Strict versioned TSV"
+kind = "behavioral"
+statement = "Trace encoding and decoding SHALL enforce the exact version-one ASCII/LF/header/field/integer grammar defined in structure/api-and-format.md."
+rationale = "Constrain the observable boundary before implementation; exact domain, examples and errors are specified in the API/format document."
+source_ids = ["ACC-003"]
+status = "active"
+
+[[requirement]]
+id = "REQ-025"
+title = "Round-trip floats"
+kind = "behavioral"
+statement = "Trace encoding and decoding SHALL preserve finite f64 payload and model bits through canonical Rust Display tokens including signed zero."
+rationale = "Constrain the observable boundary before implementation; exact domain, examples and errors are specified in the API/format document."
+source_ids = ["ACC-003"]
+status = "active"
+
+[[requirement]]
+id = "REQ-026"
+title = "Explicit fixed model metadata"
+kind = "behavioral"
+statement = "Trace artifacts SHALL encode only requested assumed sigmas and q in three fixed model lines while prior state and variance floor remain version-one constants."
+rationale = "Constrain the observable boundary before implementation; exact domain, examples and errors are specified in the API/format document."
+source_ids = ["ACC-003"]
+status = "active"
+
+[[requirement]]
+id = "REQ-027"
+title = "Bounded serialization"
+kind = "behavioral"
+statement = "Trace and ledger encoders SHALL enforce their 32MiB and 16MiB limits while appending without first materializing an oversized complete artifact."
+rationale = "Constrain the observable boundary before implementation; exact domain, examples and errors are specified in the API/format document."
+source_ids = ["ACC-003"]
+status = "active"
+
+[[requirement]]
+id = "REQ-028"
+title = "Bounded decoding"
+kind = "behavioral"
+statement = "Trace decoding SHALL reject oversize input before copying and enforce 327-byte tokens, 1024-byte line bodies, row inventory and exact canonical syntax."
+rationale = "Constrain the observable boundary before implementation; exact domain, examples and errors are specified in the API/format document."
+source_ids = ["ACC-003"]
+status = "active"
+
+[[requirement]]
+id = "REQ-029"
+title = "Typed numerical failure"
+kind = "behavioral"
+statement = "Replay SHALL return a typed prediction/update failure with tick, optional observation identity and original core Error without returning a successful prefix."
+rationale = "Constrain the observable boundary before implementation; exact domain, examples and errors are specified in the API/format document."
+source_ids = ["ACC-004"]
+status = "active"
+
+[[requirement]]
+id = "REQ-030"
+title = "Read-only transaction boundary"
+kind = "behavioral"
+statement = "Replay and codecs SHALL preserve borrowed inputs and return only complete validated values or typed errors without filesystem effects."
+rationale = "Constrain the observable boundary before implementation; exact domain, examples and errors are specified in the API/format document."
+source_ids = ["ACC-004"]
+status = "active"
+
+[[requirement]]
+id = "REQ-031"
+title = "Reference reproducibility"
+kind = "behavioral"
+statement = "Zero-delay/no-loss replay and same-trace regeneration SHALL reproduce every reference-target numerical bit and integer/disposition/order value."
+rationale = "Constrain the observable boundary before implementation; exact domain, examples and errors are specified in the API/format document."
+source_ids = ["ACC-001","ACC-005","ACC-006"]
+status = "active"
+
+[[requirement]]
+id = "REQ-032"
+title = "Synchronous validated API"
+kind = "quality"
+statement = "The feature SHALL preserve private validated state, read-only public accessors and the no-new-runtime/no-new-dependency root-crate boundary."
+rationale = "Constrain the observable boundary before implementation; exact domain, examples and errors are specified in the API/format document."
+source_ids = ["ACC-006"]
+status = "active"
+
+[[requirement]]
+id = "REQ-033"
+title = "Measured memory budget"
+kind = "quality"
+statement = "The prescribed maximum-duration release workload SHALL remain at or below 512MiB lifetime peak RSS in each declared native measurement environment."
+rationale = "Constrain the observable boundary before implementation; exact domain, examples and errors are specified in the API/format document."
+source_ids = ["ACC-005"]
+status = "active"
+
+[[requirement]]
+id = "REQ-034"
+title = "Measured CPU and complexity budget"
+kind = "quality"
+statement = "The prescribed maximum-duration release workload SHALL complete within 30seconds for each of three measured fresh processes after warmup."
+rationale = "Constrain the observable boundary before implementation; exact domain, examples and errors are specified in the API/format document."
+source_ids = ["ACC-005"]
+status = "active"
+
+[[requirement]]
+id = "REQ-035"
+title = "Separate reproduction example"
+kind = "quality"
+statement = "The new observation_delivery example SHALL publish only complete capped trace/ledger files in a fresh owned directory and disclose partial filesystem failures."
+rationale = "Constrain the observable boundary before implementation; exact domain, examples and errors are specified in the API/format document."
+source_ids = ["ACC-006"]
+status = "active"
+
+[[requirement]]
+id = "REQ-036"
+title = "Legacy compatibility and scope"
+kind = "quality"
+statement = "The change SHALL preserve legacy run/CLI CSV and accepted service/dashboard contracts."
+rationale = "Constrain the observable boundary before implementation; exact domain, examples and errors are specified in the API/format document."
+source_ids = ["ACC-001","ACC-006"]
+status = "active"
+
+[[requirement]]
+id = "REQ-037"
+title = "Replay complexity"
+kind = "quality"
+statement = "Replay SHALL perform O(H+NlogN) or better total work without scanning or sorting the complete observation inventory at every numerical tick."
+rationale = "Constrain the observable boundary before implementation; exact domain, examples and errors are specified in the API/format document."
+source_ids = ["ACC-005"]
+status = "active"
+

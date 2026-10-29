@@ -1,0 +1,40 @@
+[[module]]
+id = "MOD-001"
+path = "src/delivery.rs"
+responsibility = "Validated observational domain and source projection."
+owns = ["owned observation-only input","private validated fields"]
+depends_on = []
+exposes = ["Sensor","Observation","ReplayModel","DeliveryPlan","Trace"]
+requirement_ids = ["REQ-001","REQ-002","REQ-003","REQ-004","REQ-005","REQ-006","REQ-007","REQ-008","REQ-009","REQ-010","REQ-011","REQ-012","REQ-013","REQ-032"]
+status = "planned"
+
+[[module]]
+id = "MOD-002"
+path = "src/delivery.rs"
+responsibility = "Virtual waiting and synchronous OnTimeOnly replay."
+owns = ["filter and policy-aligned baselines","bounded waiting entries","complete source and arrival decisions"]
+depends_on = ["MOD-001"]
+exposes = ["replay_delivery","ReplayResult"]
+requirement_ids = ["REQ-014","REQ-015","REQ-016","REQ-017","REQ-018","REQ-019","REQ-020","REQ-021","REQ-022","REQ-023","REQ-029","REQ-030","REQ-031","REQ-033","REQ-034","REQ-037"]
+status = "planned"
+
+[[module]]
+id = "MOD-003"
+path = "src/delivery.rs"
+responsibility = "Strict bounded version-one TSV bytes."
+owns = ["bounded codec buffers"]
+depends_on = ["MOD-001"]
+exposes = ["Trace::decode_tsv","Trace::encode_tsv","ReplayResult::encode_ledger_tsv"]
+requirement_ids = ["REQ-024","REQ-025","REQ-026","REQ-027","REQ-028"]
+status = "planned"
+
+[[module]]
+id = "MOD-004"
+path = "examples/observation_delivery.rs"
+responsibility = "Small reproducible filesystem boundary and scope handoff."
+owns = ["new private output directory","temporary artifact writes"]
+depends_on = ["MOD-001","MOD-002","MOD-003"]
+exposes = ["separate research example"]
+requirement_ids = ["REQ-035","REQ-036"]
+status = "planned"
+
