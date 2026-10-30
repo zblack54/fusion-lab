@@ -1,5 +1,5 @@
-//! Validated observation-only inputs for deterministic delivery replay.
-//! Replay and codec boundaries remain diagnostic until their ordered slices.
+//! Validated observation-only inputs, bounded canonical TSV artifacts and
+//! deterministic synchronous delivery replay.
 use crate::{Error, Sample, State, estimation::KalmanFilter};
 use std::{
     cmp::Reverse,
@@ -9,10 +9,6 @@ use std::{
 
 const MAX_OBSERVATIONS: usize = 90_002;
 const MAX_DELAY_TICKS: u32 = 500;
-
-fn not_implemented<T>() -> T {
-    panic!("OBSERVATION_DELIVERY_NOT_IMPLEMENTED")
-}
 
 /// Sensor identity; simultaneous position observations precede velocity.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -303,12 +299,12 @@ impl Trace {
         )
     }
     /// Decode the strict version-one canonical TSV within its byte/token caps.
-    pub fn decode_tsv(_bytes: &[u8]) -> Result<(ReplayModel, Self), DeliveryError> {
-        not_implemented()
+    pub fn decode_tsv(bytes: &[u8]) -> Result<(ReplayModel, Self), DeliveryError> {
+        decode_trace(bytes)
     }
     /// Encode a complete canonical trace or return a typed resource error.
-    pub fn encode_tsv(&self, _model: &ReplayModel) -> Result<Vec<u8>, DeliveryError> {
-        not_implemented()
+    pub fn encode_tsv(&self, model: &ReplayModel) -> Result<Vec<u8>, DeliveryError> {
+        encode_trace(self, model)
     }
     /// Duration in whole seconds.
     pub fn duration_seconds(&self) -> u32 {
@@ -425,7 +421,7 @@ impl ReplayResult {
     }
     /// Encode the separate capped version-one source/arrival ledger.
     pub fn encode_ledger_tsv(&self) -> Result<Vec<u8>, DeliveryError> {
-        not_implemented()
+        encode_ledger(self)
     }
 }
 /// Model input whose requested value is invalid.
@@ -673,4 +669,321 @@ pub fn replay_delivery(model: &ReplayModel, trace: &Trace) -> Result<ReplayResul
         ledger,
         arrival_order,
     })
+}
+
+const TRACE_BYTES: usize = 32 * 1024 * 1024;
+const LEDGER_BYTES: usize = 16 * 1024 * 1024;
+
+fn malformed(row: usize, field: usize, reason: TsvViolation) -> DeliveryError {
+    DeliveryError::MalformedTsv { row, field, reason }
+}
+fn append_artifact(
+    output: &mut Vec<u8>,
+    line: &str,
+    kind: ArtifactKind,
+) -> Result<(), DeliveryError> {
+    let limit = match kind {
+        ArtifactKind::Trace => TRACE_BYTES,
+        ArtifactKind::Ledger => LEDGER_BYTES,
+    };
+    if line.len() > limit - output.len() {
+        return Err(DeliveryError::ArtifactTooLarge { kind, limit });
+    }
+    output.extend_from_slice(line.as_bytes());
+    Ok(())
+}
+fn sensor_token(sensor: Sensor) -> &'static str {
+    match sensor {
+        Sensor::Position => "position",
+        Sensor::Velocity => "velocity",
+    }
+}
+fn encode_trace(trace: &Trace, model: &ReplayModel) -> Result<Vec<u8>, DeliveryError> {
+    let mut output = Vec::new();
+    let fixed = "fusion-lab-delivery-trace\t1\nclock_ms\t10\nclock_kind\tvirtual_planned\npolicy\tOnTimeOnly\n";
+    append_artifact(&mut output, fixed, ArtifactKind::Trace)?;
+    for line in [
+        format!("duration_seconds\t{}\n", trace.duration_seconds),
+        format!("position_assumed_sigma\t{}\n", model.assumed_position_sigma),
+        format!("velocity_assumed_sigma\t{}\n", model.assumed_velocity_sigma),
+        format!("acceleration_density\t{}\n", model.acceleration_density),
+        format!(
+            "buffer\tcapacity\t{}\tposition_drop_every\t{}\tvelocity_drop_every\t{}\n",
+            trace.pending_capacity,
+            trace.drop_every[0].map_or(0, NonZeroU32::get),
+            trace.drop_every[1].map_or(0, NonZeroU32::get)
+        ),
+        format!("observations\t{}\n", trace.observations.len()),
+    ] {
+        append_artifact(&mut output, &line, ArtifactKind::Trace)?;
+    }
+    append_artifact(
+        &mut output,
+        "planned_arrival_tick\tsample_tick\tsensor\tsequence\tx\ty\n",
+        ArtifactKind::Trace,
+    )?;
+    for o in &trace.observations {
+        let line = format!(
+            "{}\t{}\t{}\t{}\t{}\t{}\n",
+            o.planned_arrival_tick,
+            o.sample_tick,
+            sensor_token(o.id.sensor),
+            o.id.sequence,
+            o.value[0],
+            o.value[1]
+        );
+        append_artifact(&mut output, &line, ArtifactKind::Trace)?;
+    }
+    Ok(output)
+}
+fn outcome_token(outcome: DeliveryOutcome) -> &'static str {
+    match outcome {
+        DeliveryOutcome::ScriptedLoss => "scripted_loss",
+        DeliveryOutcome::QueueFullDrop => "queue_full_drop",
+        DeliveryOutcome::Accepted => "accepted",
+        DeliveryOutcome::StaleDrop => "stale_drop",
+        DeliveryOutcome::UndeliveredAtHorizon => "undelivered_at_horizon",
+    }
+}
+fn encode_ledger(result: &ReplayResult) -> Result<Vec<u8>, DeliveryError> {
+    let mut output = Vec::new();
+    let mut counts = [0usize; 5];
+    for entry in &result.ledger {
+        let index = match entry.outcome {
+            DeliveryOutcome::Accepted => 0,
+            DeliveryOutcome::StaleDrop => 1,
+            DeliveryOutcome::ScriptedLoss => 2,
+            DeliveryOutcome::QueueFullDrop => 3,
+            DeliveryOutcome::UndeliveredAtHorizon => 4,
+        };
+        counts[index] += 1;
+    }
+    append_artifact(
+        &mut output,
+        "fusion-lab-delivery-ledger\t1\nclock_ms\t10\npolicy\tOnTimeOnly\n",
+        ArtifactKind::Ledger,
+    )?;
+    for line in [
+        format!("duration_seconds\t{}\n", (result.snapshots.len() - 1) / 100),
+        format!("offered\t{}\n", result.ledger.len()),
+        format!(
+            "counts\taccepted\t{}\tstale_drop\t{}\tscripted_loss\t{}\tqueue_full_drop\t{}\tundelivered_at_horizon\t{}\n",
+            counts[0], counts[1], counts[2], counts[3], counts[4]
+        ),
+        format!("source_rows\t{}\n", result.ledger.len()),
+    ] {
+        append_artifact(&mut output, &line, ArtifactKind::Ledger)?;
+    }
+    append_artifact(
+        &mut output,
+        "sensor\tsequence\tsample_tick\tplanned_arrival_tick\tdecision_tick\toutcome\tqueue_occupancy\n",
+        ArtifactKind::Ledger,
+    )?;
+    for e in &result.ledger {
+        let line = format!(
+            "{}\t{}\t{}\t{}\t{}\t{}\t{}\n",
+            sensor_token(e.id.sensor),
+            e.id.sequence,
+            e.sample_tick,
+            e.planned_arrival_tick,
+            e.decision_tick,
+            outcome_token(e.outcome),
+            e.queue_occupancy.unwrap_or(0)
+        );
+        append_artifact(&mut output, &line, ArtifactKind::Ledger)?;
+    }
+    append_artifact(
+        &mut output,
+        &format!(
+            "arrivals\t{}\nsensor\tsequence\n",
+            result.arrival_order.len()
+        ),
+        ArtifactKind::Ledger,
+    )?;
+    for id in &result.arrival_order {
+        append_artifact(
+            &mut output,
+            &format!("{}\t{}\n", sensor_token(id.sensor), id.sequence),
+            ArtifactKind::Ledger,
+        )?;
+    }
+    Ok(output)
+}
+
+fn parse_integer(token: &str, row: usize, field: usize) -> Result<u32, DeliveryError> {
+    let digits = token
+        .strip_prefix('+')
+        .or_else(|| token.strip_prefix('-'))
+        .unwrap_or(token);
+    if digits.is_empty() || !digits.bytes().all(|b| b.is_ascii_digit()) {
+        return Err(malformed(row, field, TsvViolation::InvalidInteger));
+    }
+    if token.starts_with(['+', '-']) || (token.len() > 1 && token.starts_with('0')) {
+        return Err(malformed(row, field, TsvViolation::NonCanonicalInteger));
+    }
+    token
+        .parse()
+        .map_err(|_| malformed(row, field, TsvViolation::InvalidInteger))
+}
+fn parse_float(token: &str, row: usize, field: usize) -> Result<f64, DeliveryError> {
+    let value: f64 = token
+        .parse()
+        .map_err(|_| malformed(row, field, TsvViolation::InvalidFloat))?;
+    // Domain constructors retain typed nonfinite diagnostics before canonical
+    // finite-token checks; stale/lost records never evade payload validation.
+    if value.is_finite() && value.to_string() != token {
+        return Err(malformed(row, field, TsvViolation::NonCanonicalFloat));
+    }
+    Ok(value)
+}
+struct TraceReader<'a> {
+    lines: std::str::SplitTerminator<'a, char>,
+    row: usize,
+}
+impl<'a> TraceReader<'a> {
+    fn record(&mut self, fields: usize) -> Result<Vec<&'a str>, DeliveryError> {
+        self.row += 1;
+        let line = self
+            .lines
+            .next()
+            .ok_or_else(|| malformed(self.row, 0, TsvViolation::WrongRowCount))?;
+        let values: Vec<_> = line.split('\t').collect();
+        if values.len() != fields {
+            return Err(malformed(self.row, 0, TsvViolation::WrongFieldCount));
+        }
+        Ok(values)
+    }
+    fn fixed(&mut self, expected: &[&str]) -> Result<(), DeliveryError> {
+        let actual = self.record(expected.len())?;
+        if actual != expected {
+            return Err(malformed(self.row, 0, TsvViolation::WrongHeader));
+        }
+        Ok(())
+    }
+    fn named(&mut self, name: &str) -> Result<&'a str, DeliveryError> {
+        let row = self.record(2)?;
+        if row[0] != name {
+            return Err(malformed(self.row, 1, TsvViolation::WrongHeader));
+        }
+        Ok(row[1])
+    }
+}
+fn decode_trace(bytes: &[u8]) -> Result<(ReplayModel, Trace), DeliveryError> {
+    if bytes.len() > TRACE_BYTES {
+        return Err(DeliveryError::ArtifactTooLarge {
+            kind: ArtifactKind::Trace,
+            limit: TRACE_BYTES,
+        });
+    }
+    let text =
+        std::str::from_utf8(bytes).map_err(|_| malformed(0, 0, TsvViolation::InvalidEncoding))?;
+    if text.starts_with('\u{feff}') || text.contains('\r') {
+        return Err(malformed(0, 0, TsvViolation::NonLfOrBom));
+    }
+    if !text.is_ascii() {
+        return Err(malformed(0, 0, TsvViolation::InvalidEncoding));
+    }
+    if !text.ends_with('\n') {
+        return Err(malformed(0, 0, TsvViolation::MissingFinalNewline));
+    }
+    // Validate borrowed line/token shapes before any contextual allocation.
+    for (index, line) in text.split_terminator('\n').enumerate() {
+        let row = index + 1;
+        if line.len() > 1024 {
+            return Err(malformed(row, 0, TsvViolation::LineTooLong));
+        }
+        if line.is_empty() {
+            return Err(malformed(row, 0, TsvViolation::BlankLine));
+        }
+        for (index, token) in line.split('\t').enumerate() {
+            if token.len() > 327 {
+                return Err(malformed(row, index + 1, TsvViolation::TokenTooLong));
+            }
+        }
+    }
+    let mut reader = TraceReader {
+        lines: text.split_terminator('\n'),
+        row: 0,
+    };
+    let magic = reader.record(2)?;
+    if magic[0] != "fusion-lab-delivery-trace" {
+        return Err(malformed(1, 1, TsvViolation::WrongHeader));
+    }
+    let version = parse_integer(magic[1], 1, 2)?;
+    if version != 1 {
+        return Err(DeliveryError::UnsupportedSchema { version });
+    }
+    reader.fixed(&["clock_ms", "10"])?;
+    reader.fixed(&["clock_kind", "virtual_planned"])?;
+    reader.fixed(&["policy", "OnTimeOnly"])?;
+    let duration = parse_integer(reader.named("duration_seconds")?, 5, 2)?;
+    validate_duration(duration)?;
+    let p = parse_float(reader.named("position_assumed_sigma")?, 6, 2)?;
+    let v = parse_float(reader.named("velocity_assumed_sigma")?, 7, 2)?;
+    let q = parse_float(reader.named("acceleration_density")?, 8, 2)?;
+    let model = ReplayModel::new(p, v, q)?;
+    let buffer = reader.record(7)?;
+    if buffer[0] != "buffer"
+        || buffer[1] != "capacity"
+        || buffer[3] != "position_drop_every"
+        || buffer[5] != "velocity_drop_every"
+    {
+        return Err(malformed(9, 0, TsvViolation::WrongHeader));
+    }
+    let capacity = parse_integer(buffer[2], 9, 3)? as usize;
+    validate_capacity(capacity)?;
+    let drops = [
+        NonZeroU32::new(parse_integer(buffer[4], 9, 5)?),
+        NonZeroU32::new(parse_integer(buffer[6], 9, 7)?),
+    ];
+    let count = parse_integer(reader.named("observations")?, 10, 2)? as usize;
+    if count > MAX_OBSERVATIONS {
+        return Err(DeliveryError::TooManyObservations {
+            count,
+            limit: MAX_OBSERVATIONS,
+        });
+    }
+    reader.fixed(&[
+        "planned_arrival_tick",
+        "sample_tick",
+        "sensor",
+        "sequence",
+        "x",
+        "y",
+    ])?;
+    if reader.lines.clone().count() != count {
+        return Err(malformed(0, 0, TsvViolation::WrongRowCount));
+    }
+    let mut observations = Vec::with_capacity(count);
+    let mut prior = None;
+    let mut inversion = None;
+    for _ in 0..count {
+        let row = reader.row + 1;
+        let fields = reader.record(6)?;
+        let arrival = parse_integer(fields[0], row, 1)?;
+        let sample = parse_integer(fields[1], row, 2)?;
+        let sensor = match fields[2] {
+            "position" => Sensor::Position,
+            "velocity" => Sensor::Velocity,
+            _ => return Err(malformed(row, 3, TsvViolation::InvalidSensor)),
+        };
+        let sequence = parse_integer(fields[3], row, 4)?;
+        let value = [
+            parse_float(fields[4], row, 5)?,
+            parse_float(fields[5], row, 6)?,
+        ];
+        let observation = Observation::new(sensor, sequence, sample, arrival, value)?;
+        let key = (arrival, sample, sensor.index(), sequence);
+        if prior.is_some_and(|p| p > key) && inversion.is_none() {
+            inversion = Some(row);
+        }
+        prior = Some(key);
+        observations.push(observation);
+    }
+    // Full-inventory identity validation precedes rejecting recorded inversion.
+    let trace = Trace::new(duration, capacity, drops, observations)?;
+    if let Some(row) = inversion {
+        return Err(DeliveryError::NonCanonicalOrder { row });
+    }
+    Ok((model, trace))
 }
