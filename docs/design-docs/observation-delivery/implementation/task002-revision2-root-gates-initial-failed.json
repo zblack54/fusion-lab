@@ -1,0 +1,42 @@
+[
+  {
+    "argv": [
+      "cargo",
+      "fmt",
+      "--all",
+      "--",
+      "--check"
+    ],
+    "exit": 0,
+    "seconds": 0.14099999982863665,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "cargo",
+      "check",
+      "--locked",
+      "--all-targets"
+    ],
+    "exit": 0,
+    "seconds": 0.4690000000409782,
+    "stdout": "",
+    "stderr": "    Checking fusion-lab v0.1.0 (C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.41s\n"
+  },
+  {
+    "argv": [
+      "cargo",
+      "clippy",
+      "--locked",
+      "--all-targets",
+      "--",
+      "-D",
+      "warnings"
+    ],
+    "exit": 101,
+    "seconds": 0.4059999999590218,
+    "stdout": "",
+    "stderr": "    Checking fusion-lab v0.1.0 (C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab)\nerror: manual implementation of `.is_multiple_of()`\n   --> src\\delivery.rs:615:17\n    |\n615 |                 (o.id.sequence + 1) % n.get() == 0\n    |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: replace with: `(o.id.sequence + 1).is_multiple_of(n.get())`\n    |\n    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.99.0/index.html#manual_is_multiple_of\n    = note: `-D clippy::manual-is-multiple-of` implied by `-D warnings`\n    = help: to override `-D warnings` add `#[allow(clippy::manual_is_multiple_of)]`\n\nerror: could not compile `fusion-lab` (lib) due to 1 previous error\nwarning: build failed, waiting for other jobs to finish...\nerror: could not compile `fusion-lab` (lib test) due to 1 previous error\n"
+  }
+]

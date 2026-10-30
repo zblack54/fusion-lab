@@ -1,1 +1,1 @@
-# No unresolved product or technical design decisions. Independent/main design review, native Linux evidence and main approval are complete under issue69comment6526992382. Main lock creation and external digest verification remain pending before implementation.
+# No unresolved design decisions. Main revision2 approval issue72comment6527647445 follows independent oracle/core review and all exact-head0e52c397 native/ordinary checks. Main must create/verify the superseding lock and externally publish its digest before implementation restoration.

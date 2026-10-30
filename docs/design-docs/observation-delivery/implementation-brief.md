@@ -1,4 +1,4 @@
-# Implementation brief — controlled revision 2 draft; no implementation authority
+# Implementation brief — main-approved revision2; lock handoff pending
 
 ## Non-negotiable rules
 
@@ -8,7 +8,7 @@
 
 ## Authority
 
-Main authorized only revision2 draft preparation in [issue72comment6527480873](https://github.com/zblack54/fusion-lab/issues/72#issuecomment-6527480873). The two independently derived rational expectations remain [5,10] and [2,1], but component comparisons use existing close(...,1e-12) because unchanged Cholesky arithmetic differs by roundoff. All other assertions, reference bit comparisons, public contracts and budgets remain unchanged. The original approved567eff28d5ec5b6af564284cb0f53292fbfe30b1b7292b9703be4d7b1838c3b9 package and partial TASK002sourcee262afab are preserved outside the candidate. Registry authority remains the old digest until main independently reviews, approves and locks a superseding contract. The original diagnostic seam is restored; this candidate grants no implementation authority. Main alone approves/locks/publishes the new external digest.
+Main approved technical revision2 in [issue72comment6527647445](https://github.com/zblack54/fusion-lab/issues/72#issuecomment-6527647445) after independent unchanged-core reproduction, exact two-assertion diff review, strict diagnostic P7 and all exact-head0e52c397 required CI/four native archive/source/rawlog reviews. Approval uses the owner’s delegated routine technical authority recorded in repository AGENTS.md and this chat; the design author only applies main’s decision. Revision2 supersedes the567eff28d5ec5b6af564284cb0f53292fbfe30b1b7292b9703be4d7b1838c3b9 contract after main creates/verifies its new lock and publishes the new external digest. The sole functional test change compares two unchanged rational expectations [5,10]/[2,1] componentwise with existing close(...,1e-12), respecting unchanged Cholesky rounding while retaining all reference-bit assertions. Main alone locks and updates external registry authority; registry remains567 until that actual record. No implementation restoration/resumption before verification of the superseding external digest. This is technical design approval, not product acceptance.
 
 ## Later implementation scope
 

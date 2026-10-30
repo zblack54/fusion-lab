@@ -4,8 +4,8 @@ title = "Deterministic timestamped observation delivery"
 feature_slug = "observation-delivery"
 target_crate = "fusion-lab"
 target_revision = "fd466425aad08796ee2476fb8a1ba6cc4b619b69"
-status = "draft"
-ai_ready = false
+status = "approved"
+ai_ready = true
 
 [target]
 edition = "2024"

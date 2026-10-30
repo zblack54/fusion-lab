@@ -12,3 +12,14 @@ Full receipts, archives and main review records are retained in host work/delive
 The public native driver is original test-owned support, not a copy of private trusted tools. Expected-red design proof is not implementation acceptance. Final acceptance requires all43green on all four native combinations, unchanged gates, reviewed measurements and every non-test obligation. Main switches production-owned CI to implementation mode before final acceptance. Parent6 asynchronous/history scope remains incomplete. No implementation begins before main’s lock and external digest verification.
 
 Hosted stable actually resolved Rust1.99.1 on both operating systems; hosted pinned1.99.0 resolved1.99.0. Local1.99.0/stable aliases both resolved1.99.0. The compiler identities in each raw receipt remain authoritative.
+
+## Revision2 final native requalification
+
+Main independently verified all four revised native artifacts at published head0e52c397. Each has41named expected-red+2structural-green, complete source/test/lock hashes and raw command proofs. No cross-compilation inference is used.
+
+- observation-delivery-ubuntu-latest-1.99.0.main-review.json: Linux-7.0.0-1017-azure-x86_64-with-glibc2.43, 1.99.0; archiveSHA256 `517f506970228ee070983a2af84462b325bbf0dc26e1b11ce82439cbe8e06dd8`; reviewSHA256 `36ec54915601536942732c9bfbf95998647f1292cd729a9344e95ac3966ca20b`.
+- observation-delivery-ubuntu-latest-stable.main-review.json: Linux-7.0.0-1017-azure-x86_64-with-glibc2.43, stable; archiveSHA256 `70afab219a354a9f02aa237236db70543c3548610a60ddfd6ab9709e7cb82bdd`; reviewSHA256 `d046ae8814a884a863e4a68fa15593545c09ad19647d0eb91ae81551098db2dc`.
+- observation-delivery-windows-latest-1.99.0.main-review.json: Windows-2025Server-10.0.26100-SP0, 1.99.0; archiveSHA256 `35822dd00dbd30c893f1602636cebf88ed95f89e0c3e0877c2386979491183fa`; reviewSHA256 `2504dda272b7a0cc8b7286b0cff33edb5b43d4edd1a9d7adf0024d0fd467df08`.
+- observation-delivery-windows-latest-stable.main-review.json: Windows-2025Server-10.0.26100-SP0, stable; archiveSHA256 `f22f674796f7e844ad5e8bca6ad8759d8184eb72c7122769d064b779921e2788`; reviewSHA256 `451d357eb1f447fdef750c6fe8322ce3b1b4f4452fa9ca3b0720f01976de0cf1`.
+
+Main revision2 approval is issue72comment6527647445. Earlier revision1 proofs remain historical; this revised matrix establishes diagnostic design requalification only. Actual implementation still requires the new externally published lock digest and final all43green/native/non-test acceptance.

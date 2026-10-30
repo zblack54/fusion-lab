@@ -1,0 +1,94 @@
+{
+  "baseline_digest": "e0d3a23f4335193f6442fa7d1b244621b93bbf3f08ee9ba9c4b860c2eb15911b",
+  "source_sha256": "e262afab2ba90cd37fe76f49298487704640c500b2a4bbb2a6622f0fd7941d25",
+  "results": [
+    {
+      "toolchain": "1.99.0",
+      "selector": "tst_beh_004_independent_cross_covariance_update",
+      "argv": [
+        "cargo",
+        "+1.99.0",
+        "test",
+        "--locked",
+        "--offline",
+        "--manifest-path",
+        "tests/observation-delivery/Cargo.toml",
+        "--test",
+        "contracts",
+        "tst_beh_004_independent_cross_covariance_update",
+        "--",
+        "--exact",
+        "--nocapture"
+      ],
+      "returncode": 0,
+      "stdout": "\nrunning 1 test\ntest tst_beh_004_independent_cross_covariance_update ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 42 filtered out; finished in 0.00s\n\n",
+      "stderr": "   Compiling fusion-lab v0.1.0 (C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab)\n   Compiling observation-delivery-spec-tests v0.0.0 (C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\observation-delivery)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.87s\n     Running tests\\contracts.rs (tests\\observation-delivery\\target\\debug\\deps\\contracts-80b65de10374ce79.exe)\n"
+    },
+    {
+      "toolchain": "1.99.0",
+      "selector": "tst_state_001_drain_bypass_and_source_arrival_ledgers",
+      "argv": [
+        "cargo",
+        "+1.99.0",
+        "test",
+        "--locked",
+        "--offline",
+        "--manifest-path",
+        "tests/observation-delivery/Cargo.toml",
+        "--test",
+        "contracts",
+        "tst_state_001_drain_bypass_and_source_arrival_ledgers",
+        "--",
+        "--exact",
+        "--nocapture"
+      ],
+      "returncode": 0,
+      "stdout": "\nrunning 1 test\ntest tst_state_001_drain_bypass_and_source_arrival_ledgers ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 42 filtered out; finished in 0.00s\n\n",
+      "stderr": "    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.07s\n     Running tests\\contracts.rs (tests\\observation-delivery\\target\\debug\\deps\\contracts-80b65de10374ce79.exe)\n"
+    },
+    {
+      "toolchain": "stable",
+      "selector": "tst_beh_004_independent_cross_covariance_update",
+      "argv": [
+        "cargo",
+        "+stable",
+        "test",
+        "--locked",
+        "--offline",
+        "--manifest-path",
+        "tests/observation-delivery/Cargo.toml",
+        "--test",
+        "contracts",
+        "tst_beh_004_independent_cross_covariance_update",
+        "--",
+        "--exact",
+        "--nocapture"
+      ],
+      "returncode": 0,
+      "stdout": "\nrunning 1 test\ntest tst_beh_004_independent_cross_covariance_update ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 42 filtered out; finished in 0.00s\n\n",
+      "stderr": "   Compiling observation-delivery-spec-tests v0.0.0 (C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\observation-delivery)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.69s\n     Running tests\\contracts.rs (tests\\observation-delivery\\target\\debug\\deps\\contracts-80b65de10374ce79.exe)\n"
+    },
+    {
+      "toolchain": "stable",
+      "selector": "tst_state_001_drain_bypass_and_source_arrival_ledgers",
+      "argv": [
+        "cargo",
+        "+stable",
+        "test",
+        "--locked",
+        "--offline",
+        "--manifest-path",
+        "tests/observation-delivery/Cargo.toml",
+        "--test",
+        "contracts",
+        "tst_state_001_drain_bypass_and_source_arrival_ledgers",
+        "--",
+        "--exact",
+        "--nocapture"
+      ],
+      "returncode": 0,
+      "stdout": "\nrunning 1 test\ntest tst_state_001_drain_bypass_and_source_arrival_ledgers ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 42 filtered out; finished in 0.00s\n\n",
+      "stderr": "    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.07s\n     Running tests\\contracts.rs (tests\\observation-delivery\\target\\debug\\deps\\contracts-80b65de10374ce79.exe)\n"
+    }
+  ]
+}

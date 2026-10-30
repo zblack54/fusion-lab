@@ -1,8 +1,8 @@
 # Validation report
 
-Status: NOT_READY
+Status: AI_READY
 
-## Controlled revision2 draft — issue72
+## Controlled revision2 approval — issue72
 
 Main authorized draft preparation only in issue72comment6527480873 after author and independent unchanged-core probes reproduced two exact-rational versus floating roundoff conflicts. TST-BEH-004 position[5,10] and TST-STATE-001 velocity[2,1] retain their independent expected values but now use existing componentwise close with1e-12 tolerance. All reference-target bitwise equality, signedzero/copy/prior assertions, other tests, requirements, API and numerical/resource bounds remain unchanged.
 
@@ -59,3 +59,15 @@ Main locked55entries with approved digest `567eff28d5ec5b6af564284cb0f53292fbfe3
 ## Revision2 draft diagnostic refresh
 
 Strict trusted diagnostic P7 passed: each local1.99.0/stable alias41named expected-red+2structural-green, all7supplemental gates pass, errors0. Strict docs build passed. Raw design-executionSHA256 `991075207264b0419ba7c58efcccb901c61ca735bf4b1f26014fa39d29730a2f` (1027321bytes). These are diagnostic baseline results, not successful replay implementation or revision2 approval. Independent/main review and any required hosted requalification remain pending; registry still authorizes only the prior567contract.
+
+## Final revision2 approval supersedes draft readiness checkpoints
+
+All seven phases are complete. Main technical revision2 approval issue72comment6527647445 follows independent exactdiff/core/P7 review and green required CI plus four independently verified native artifacts at0e52c397. Historical draft/NOT_READY/no-approval statements above are preserved checkpoints, not current authority. Approved/ai_ready=true metadata applies main’s decision; no additional requirements, API, test selectors or bounds changed. Registry remains567 until main’s actual new lock/external digest record. Final approved-byte strict P7 is refreshed next; main alone locks immediately afterward. No implementation restored or accepted.
+
+## Final revision2 approved-byte strict refresh
+
+Strict trusted design verification succeeded against final approval bytes: each configuration41named expected-red+2structural-green, all7CMDpass/errors0. RawSHA256 `e984577473dbc25b6ad8786cc3c7ba9fe27d4182093e003bb8c45f285beb2aa0` (1026609bytes), approved-byte contractdigest `e0d3a23f4335193f6442fa7d1b244621b93bbf3f08ee9ba9c4b860c2eb15911b`. Strict docs build passed. Main now owns required lock creation/verification/externalpublication; no implementation has been restored.
+
+## Main revision2 immutable lock
+
+Trusted main lock:55entries, digest `e0d3a23f4335193f6442fa7d1b244621b93bbf3f08ee9ba9c4b860c2eb15911b`; --require-lock validates with0errors/0warnings. External superseding authority: https://github.com/zblack54/fusion-lab/issues/72#issuecomment-6527689826 . Final raw approved design receipt1026609bytes/SHA256e984577473dbc25b6ad8786cc3c7ba9fe27d4182093e003bb8c45f285beb2aa0. Only the two approved mathematical comparisons changed; all legacy bitwise/signed-zero checks and feature budgets remain. Main may now restore the exact stopped implementation. Product remains NOT_ACCEPTED.
