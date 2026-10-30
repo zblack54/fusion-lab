@@ -50,7 +50,15 @@ def environment():
         if not ctypes.windll.kernel32.GlobalMemoryStatusEx(ctypes.byref(status)): raise ctypes.WinError()
         ram=status.total
     elif sys.platform.startswith('linux'): ram=os.sysconf('SC_PHYS_PAGES')*os.sysconf('SC_PAGE_SIZE')
-    return dict(os=platform.platform(),machine=platform.machine(),cpu=platform.processor() or os.environ.get('PROCESSOR_IDENTIFIER','unknown'),logical_cpus=os.cpu_count(),physical_ram_bytes=ram,python=sys.version)
+    cpu=platform.processor() or os.environ.get('PROCESSOR_IDENTIFIER','')
+    cpu_source='platform.processor/PROCESSOR_IDENTIFIER'
+    if sys.platform.startswith('linux'):
+        with open('/proc/cpuinfo',encoding='ascii',errors='replace') as file:
+            info=file.read(65536)
+        cpu=next((line.split(':',1)[1].strip() for line in info.splitlines() if line.lower().startswith('model name') and ':' in line),'')
+        cpu_source='bounded /proc/cpuinfo model name'
+    if not cpu or cpu.lower()=='unknown': raise RuntimeError('actual CPU identity unavailable; cannot qualify resource environment')
+    return dict(os=platform.platform(),machine=platform.machine(),cpu=cpu,cpu_source=cpu_source,logical_cpus=os.cpu_count(),physical_ram_bytes=ram,python=sys.version)
 
 OWNER_GUARD=None
 OWNER_TOKEN=None

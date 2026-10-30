@@ -16,7 +16,17 @@ For a scalar illustration, a zero prior mean with variance 25 and a position obs
 
 Follow the data through src/delivery.rs: Observation and ReplayModel validate inputs; Trace owns and orders observations; replay_delivery owns queue decisions and numerical state; the codecs produce capped canonical TSV. Fields are private with read-only accessors. The [API and format contract](../design-docs/observation-delivery/structure/api-and-format.md) defines error variants, byte limits and ordering. Numerical failures return the original error and no successful replay prefix.
 
-From a checkout with Rust 1.99+ and a native linker:
+For a new clone, preserve the recorded Git blob bytes rather than applying automatic newline conversion. Existing working files are never rewritten by the bootstrap:
+
+~~~sh
+git clone -c core.autocrlf=false https://github.com/zblack54/fusion-lab.git
+cd fusion-lab
+python docs/design-docs/observation-delivery/implementation/bootstrap_checkout.py --baseline-digest e0d3a23f4335193f6442fa7d1b244621b93bbf3f08ee9ba9c4b860c2eb15911b
+~~~
+
+[Issue #76](https://github.com/zblack54/fusion-lab/issues/76) records why two declared empty harness directories need materialization after checkout. A fresh byte-exact archive failed lock validation before their creation and passed afterward with all323 existing file hashes unchanged. The helper is a setup precondition, not a substitute for trusted validation; it refuses nonempty or reparse paths and changes no test or lock bytes.
+
+With Rust 1.99+ and a native linker, reproduce the example:
 
 ~~~sh
 cargo run --locked --release --example observation_delivery -- delivery-lesson-output
@@ -26,6 +36,8 @@ cargo test --locked --manifest-path tests/observation-delivery/Cargo.toml -- --t
 The example requires a new output directory. It finishes both bounded in-memory artifacts first, then writes and flushes owned temporary files and publishes trace.tsv followed by ledger.tsv. Repeating the same command rejects the existing directory and preserves its files. This is not an atomic two-file transaction: a ledger failure can leave a complete trace and an owned temporary, which the error message reports. The native fault demonstrations and raw receipts are supplementary evidence under the package implementation directory.
 
 At published core revision d36e705, all 43 tests pass on four hosted Windows/Linux and Rust 1.99.0/stable combinations; main independently verified archive, source and raw-log fingerprints. Local aliases both resolve to 1.99.0; hosted stable was 1.99.1. Required root, service and dashboard checks also passed. The immutable revision-two [external authority](https://github.com/zblack54/fusion-lab/issues/72#issuecomment-6527689826) fixes 37 requirements, eight constraints and 43 tests. Passing tests alone does not complete measured resource, example-failure or final conformance obligations. Those remain pending in this checkpoint.
+
+The declared resource case delays both sensor streams, so it stresses waiting/retention/codecs while replay accepts no delayed updates. The source simulation still performs its normal updates. [Companion benchmark #75](https://github.com/zblack54/fusion-lab/issues/75) will separately measure the accepted-update path; no universal worst-case claim follows from this one workload.
 
 The maximum release workload retains the source, trace, both replay results and original/regenerated artifacts through an owned measurement handshake. Acceptance requires a warmup then three fresh processes per native combination, each within 30 seconds and 512 MiB. A diagnostic is not that full series. [Issue #73](https://github.com/zblack54/fusion-lab/issues/73) tracks measurement-owner cleanup: an uncertain child termination or reap must retain ownership and block the next workload, not silently detach or retry numerical work.
 

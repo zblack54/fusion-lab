@@ -1,0 +1,62 @@
+{
+  "status": "BOOTSTRAP_PORTABILITY_PROOF_NOT_ACCEPTANCE",
+  "head": "0d32fd12c446db07af32aeecc667b37fdfb75f86",
+  "baseline_digest": "e0d3a23f4335193f6442fa7d1b244621b93bbf3f08ee9ba9c4b860c2eb15911b",
+  "bootstrap_sha256": "b0e2667b8ac7fa48e6d18b85f40e16182d4c974cf727543b71b7b220cda4e28c",
+  "all323_existing_file_bytes_unchanged": true,
+  "file_count": 323,
+  "before_validation_exit": 1,
+  "bootstrap_exit": 0,
+  "after_validation_exit": 0,
+  "nonempty_refused_without_file_change": true,
+  "results": [
+    {
+      "argv": [
+        "C:/Users/Admin/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "C:/Users/Admin/Documents/Codex/2026-10-14/i-x20/work/fusion-lab/.agents/skills/rust/spec-design/scripts/validate_design_package.py",
+        "docs/design-docs/observation-delivery",
+        "--require-lock"
+      ],
+      "exit": 1,
+      "stdout": "ERROR: AI-ready requires current successful design execution evidence\nERROR: test lock: contract inputs changed (modified, added, or removed)\nSUMMARY: acceptance=6, requirements=37, modules=4, constraints=8, tests=43, dispositions=0, questions=0, waivers=0\nNOT_READY: 2 error(s), 0 warning(s)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "C:/Users/Admin/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "C:/Users/Admin/Documents/Codex/2026-10-20/if-x20/work/fusion-lab/docs/design-docs/observation-delivery/implementation/bootstrap_checkout.py",
+        "--baseline-digest",
+        "e0d3a23f4335193f6442fa7d1b244621b93bbf3f08ee9ba9c4b860c2eb15911b",
+        "--repo",
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\delivery-bootstrap-check-1793395895831493100\\published"
+      ],
+      "exit": 0,
+      "stdout": "{\"status\": \"ENVIRONMENT_MATERIALIZED_NOT_VALIDATION_OR_ACCEPTANCE\", \"baseline_digest\": \"e0d3a23f4335193f6442fa7d1b244621b93bbf3f08ee9ba9c4b860c2eb15911b\", \"created_directories\": [\"tests/observation-delivery/benches\", \"tests/observation-delivery/fixtures\"], \"approved_directories\": [\"tests/observation-delivery/benches\", \"tests/observation-delivery/fixtures\"], \"file_fingerprints_before\": {\"tests/observation-delivery/Cargo.lock\": \"971dcf3c1bc142f37250ec23064ab6303478b19017cf223baff2f7ee45f08cef\", \"tests/observation-delivery/Cargo.toml\": \"a309b97c5f1d676cde7dd6201a9c375e4c3f922302a73343c0c8211e543118dd\", \"tests/observation-delivery/compile/privacy.rs\": \"8c5773c564aa3bd1054939f0a38e10656fd074cc3d5965125f3dfdb3b978043b\", \"tests/observation-delivery/src/lib.rs\": \"b465cbea721b18ee513755ee5da907df3c66bc28ba736b554876597ae0cf0115\", \"tests/observation-delivery/tests/contracts.rs\": \"e289654bb9178378182a231a52232d05448ccc6f7c310050518ed4d6924bcb9c\", \"tests/observation-delivery/tools/native_baseline.py\": \"88814e0c43703035f3839ce84cfa36a18ad4cfaea965021f99fa0a41a76dde7c\", \"tests/observation-delivery/compile/consumer/Cargo.lock\": \"e743220f79a6f6c61d068676d52b7a07e7129021b271bd022a3b9937cbe78b85\", \"tests/observation-delivery/compile/consumer/Cargo.toml\": \"7e1dad773e20a37953b3fd7b9b449bb8ab4a4b5aa29cc8ba529079678ae178da\", \"tests/observation-delivery/compile/consumer/src/lib.rs\": \"ed8449b1c6e7f2c63bf327de34db05ff42abb4a8336db0062bb6c73761afa7ba\", \"tests/observation-delivery/tests/support/mod.rs\": \"7142c814adab0eb0c88d394e208a630803e633a92375bb74add8a42c39e011df\", \"docs/design-docs/observation-delivery/validation/test-lock.json\": \"1dc2a43bf41076e16f2e2e8223f1696b27d63efbeb4346fe65b8f6a195e5f55b\"}, \"file_fingerprints_after\": {\"tests/observation-delivery/Cargo.lock\": \"971dcf3c1bc142f37250ec23064ab6303478b19017cf223baff2f7ee45f08cef\", \"tests/observation-delivery/Cargo.toml\": \"a309b97c5f1d676cde7dd6201a9c375e4c3f922302a73343c0c8211e543118dd\", \"tests/observation-delivery/compile/privacy.rs\": \"8c5773c564aa3bd1054939f0a38e10656fd074cc3d5965125f3dfdb3b978043b\", \"tests/observation-delivery/src/lib.rs\": \"b465cbea721b18ee513755ee5da907df3c66bc28ba736b554876597ae0cf0115\", \"tests/observation-delivery/tests/contracts.rs\": \"e289654bb9178378182a231a52232d05448ccc6f7c310050518ed4d6924bcb9c\", \"tests/observation-delivery/tools/native_baseline.py\": \"88814e0c43703035f3839ce84cfa36a18ad4cfaea965021f99fa0a41a76dde7c\", \"tests/observation-delivery/compile/consumer/Cargo.lock\": \"e743220f79a6f6c61d068676d52b7a07e7129021b271bd022a3b9937cbe78b85\", \"tests/observation-delivery/compile/consumer/Cargo.toml\": \"7e1dad773e20a37953b3fd7b9b449bb8ab4a4b5aa29cc8ba529079678ae178da\", \"tests/observation-delivery/compile/consumer/src/lib.rs\": \"ed8449b1c6e7f2c63bf327de34db05ff42abb4a8336db0062bb6c73761afa7ba\", \"tests/observation-delivery/tests/support/mod.rs\": \"7142c814adab0eb0c88d394e208a630803e633a92375bb74add8a42c39e011df\", \"docs/design-docs/observation-delivery/validation/test-lock.json\": \"1dc2a43bf41076e16f2e2e8223f1696b27d63efbeb4346fe65b8f6a195e5f55b\"}, \"all_input_bytes_unchanged\": true, \"precondition\": \"Exact Git blob bytes: core.autocrlf=false; no normalization performed\", \"next_step\": \"Run host-trusted require-lock/external-digest implementation verification\"}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "C:/Users/Admin/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "C:/Users/Admin/Documents/Codex/2026-10-14/i-x20/work/fusion-lab/.agents/skills/rust/spec-design/scripts/validate_design_package.py",
+        "docs/design-docs/observation-delivery",
+        "--require-lock"
+      ],
+      "exit": 0,
+      "stdout": "SUMMARY: acceptance=6, requirements=37, modules=4, constraints=8, tests=43, dispositions=0, questions=0, waivers=0\nVALID: 0 errors, 0 warning(s)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "C:/Users/Admin/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "C:/Users/Admin/Documents/Codex/2026-10-20/if-x20/work/fusion-lab/docs/design-docs/observation-delivery/implementation/bootstrap_checkout.py",
+        "--baseline-digest",
+        "e0d3a23f4335193f6442fa7d1b244621b93bbf3f08ee9ba9c4b860c2eb15911b",
+        "--repo",
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\delivery-bootstrap-check-1793395895831493100\\published"
+      ],
+      "exit": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\docs\\design-docs\\observation-delivery\\implementation\\bootstrap_checkout.py\", line 58, in <module>\n    if __name__=='__main__': main()\n                             ^^^^^^\n  File \"C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\docs\\design-docs\\observation-delivery\\implementation\\bootstrap_checkout.py\", line 47, in main\n    if path.exists() and any(path.iterdir()): raise ValueError('approved empty directory is nonempty: '+str(path))\n                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: approved empty directory is nonempty: C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\delivery-bootstrap-check-1793395895831493100\\published\\tests\\observation-delivery\\benches\n"
+    }
+  ]
+}

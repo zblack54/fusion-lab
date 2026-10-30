@@ -30,6 +30,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Materialize approved checkout directories without rewriting files
+        run: python docs/design-docs/observation-delivery/implementation/bootstrap_checkout.py --baseline-digest e0d3a23f4335193f6442fa7d1b244621b93bbf3f08ee9ba9c4b860c2eb15911b > native-checkout-bootstrap.json
       - run: rustup toolchain install ${{ matrix.toolchain }} --profile minimal --component rustfmt --component clippy
       - run: python tests/observation-delivery/tools/native_baseline.py --toolchain ${{ matrix.toolchain }} --mode implementation --output native-delivery-evidence
       - if: always()
@@ -37,6 +39,12 @@ jobs:
         with:
           name: observation-delivery-${{ matrix.os }}-${{ matrix.toolchain }}
           path: native-delivery-evidence
+          if-no-files-found: error
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: observation-delivery-bootstrap-baseline-${{ matrix.os }}-${{ matrix.toolchain }}
+          path: native-checkout-bootstrap.json
           if-no-files-found: error
 # Partial implementation remains draft: unfinished selectors do not permit acceptance.
 
@@ -63,6 +71,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Materialize approved checkout directories without rewriting files
+        run: python docs/design-docs/observation-delivery/implementation/bootstrap_checkout.py --baseline-digest e0d3a23f4335193f6442fa7d1b244621b93bbf3f08ee9ba9c4b860c2eb15911b > native-checkout-bootstrap.json
       - run: rustup toolchain install ${{ matrix.toolchain }} --profile minimal
       - run: cargo fetch --locked
       - run: cargo build --locked --release --example observation_delivery
@@ -93,4 +103,10 @@ jobs:
         with:
           name: observation-delivery-example-${{ matrix.os }}-${{ matrix.toolchain }}
           path: native-example-evidence
+          if-no-files-found: error
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: observation-delivery-bootstrap-resources-${{ matrix.os }}-${{ matrix.toolchain }}
+          path: native-checkout-bootstrap.json
           if-no-files-found: error
