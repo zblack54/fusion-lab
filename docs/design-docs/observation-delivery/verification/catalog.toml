@@ -7,7 +7,7 @@ covers = ["REQ-012","REQ-030","REQ-032","CON-001"]
 procedure = "Review the private validated type/accessor surface, source projection field reads and borrow ending, and the absence of source Config/truth/seed references or alternate unchecked construction paths. Inspect actual implementation after approval; combine poisoned-source and external record-update compile-negative results."
 acceptance = "Only source tick and present measurements influence projection; replay has observational/model authority only; every validated data field is private and no public mutable alias or unchecked constructor bypasses validation."
 design_evidence = "verification/authority-boundary.md"
-reviewed_by = "design author; independent main confirmation reserved"
+reviewed_by = "Main orchestrator and independent bias_review; technical design revision1 approved issue69comment6526992382 after exact-head42085624 evidence; implementation inspection remains required"
 
 [[verification]]
 id = "VER-002"
@@ -18,7 +18,7 @@ covers = ["REQ-015","REQ-017","REQ-024","REQ-025","REQ-027","REQ-028","REQ-037",
 procedure = "Review the scheduled-identity cardinality and waiting/arrival burst argument, finite Display token/line proof and actual Rust extreme probe, then inspect constructor/codec append limits and replay indexing for O(H+NlogN) or better work. Inspect no full N rescan per H tick and no oversized complete output before enforcing its cap."
 acceptance = "90002global observations, at most125future waiting and127due-plus-current arrivals under the source schedule/delay domain, validated capacity respected; float<=327/line<=1024; serializers can return ArtifactTooLarge on otherwise valid finite traces before materializing a larger full buffer."
 design_evidence = "verification/bounds-and-format.md"
-reviewed_by = "design author; independent main confirmation reserved"
+reviewed_by = "Main orchestrator and independent bias_review; technical design revision1 approved issue69comment6526992382 after exact-head42085624 evidence; implementation inspection remains required"
 
 [[verification]]
 id = "VER-003"
@@ -56,7 +56,7 @@ covers = ["REQ-031","REQ-036"]
 procedure = "Execute exact compiled catalog selectors on native Windows and Linux with1.99/stable. Native design evidence must show41diagnostic expected-red cases and2actual structural green cases per combination, with raw source/test/lock hashes and exact commands. After approved implementation require all43green, unchanged gates and exact-head CI."
 acceptance = "Each of four native OS/compiler combinations has real enumerated outcomes at the reviewed source. Local Windows execution is not foreign Linux proof; unavailable required matrix evidence keeps readinessNOT_READY without a waiver."
 design_evidence = "verification/native-matrix.md"
-reviewed_by = "design author; independent main confirmation reserved"
+reviewed_by = "Main orchestrator and independent bias_review; technical design revision1 approved issue69comment6526992382 after exact-head42085624 evidence; implementation inspection remains required"
 
 [[command]]
 id = "CMD-001"

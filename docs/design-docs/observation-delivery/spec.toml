@@ -4,8 +4,8 @@ title = "Deterministic timestamped observation delivery"
 feature_slug = "observation-delivery"
 target_crate = "fusion-lab"
 target_revision = "fd466425aad08796ee2476fb8a1ba6cc4b619b69"
-status = "draft"
-ai_ready = false
+status = "approved"
+ai_ready = true
 
 [target]
 edition = "2024"
@@ -54,34 +54,34 @@ mutable_seams = ["../../../src/delivery.rs", "../../../src/lib.rs"]
 [[phase]]
 id = "P1"
 name = "Intent"
-status = "pending"
+status = "complete"
 
 [[phase]]
 id = "P2"
 name = "Requirements"
-status = "pending"
+status = "complete"
 
 [[phase]]
 id = "P3"
 name = "Structure"
-status = "pending"
+status = "complete"
 
 [[phase]]
 id = "P4"
 name = "Invariants and Constraints"
-status = "pending"
+status = "complete"
 
 [[phase]]
 id = "P5"
 name = "Tests"
-status = "pending"
+status = "complete"
 
 [[phase]]
 id = "P6"
 name = "Decisions"
-status = "pending"
+status = "complete"
 
 [[phase]]
 id = "P7"
 name = "Validation"
-status = "pending"
+status = "complete"

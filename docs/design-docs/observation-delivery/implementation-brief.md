@@ -1,4 +1,4 @@
-# Implementation brief — not yet authorized
+# Implementation brief — main-approved revision 1; lock handoff pending
 
 ## Non-negotiable rules
 
@@ -8,7 +8,7 @@
 
 ## Authority
 
-Issue69comment6501213904authorizes formal preparation and the named diagnostic compile seam only. Main has reserved independent final design review, native matrix verification, approval and external digest publication. This package is draft/ai_ready=false, has no approved lock and grants no delivery implementation permission. RepositoryAGENTSdelegation supplies main's eventual routine technical authority; it does not let the design author self-approve/lock.
+Main orchestrator approved technical design revision 1 in [issue69 comment6526992382](https://github.com/zblack54/fusion-lab/issues/69#issuecomment-6526992382), under the owner’s delegated routine technical approval authority in repository AGENTS.md and this chat. Approval covers this bounded synchronous observational replay API, strict artifacts, unchanged43-selector contract and scoped implementation plan after independent review and exact-head native/ordinary CI at42085624b64fe7ddbd9f23b5c76dcca06cde16d7. The design author applies main’s recorded decision; this is not self-approval. Main alone creates and verifies the test lock and publishes its digest outside the candidate. No implementation may begin until that actual lock and external digest are verified. Approval is not product acceptance and does not authorize the parent6 asynchronous/history scope.
 
 ## Later implementation scope
 
