@@ -1,0 +1,50 @@
+{
+  "baseline_digest": "567eff28d5ec5b6af564284cb0f53292fbfe30b1b7292b9703be4d7b1838c3b9",
+  "source_sha256": "e262afab2ba90cd37fe76f49298487704640c500b2a4bbb2a6622f0fd7941d25",
+  "results": [
+    {
+      "toolchain": "1.99.0",
+      "selector": "tst_beh_003_stale_is_equivalent_to_omission",
+      "argv": [
+        "cargo",
+        "+1.99.0",
+        "test",
+        "--locked",
+        "--offline",
+        "--manifest-path",
+        "tests/observation-delivery/Cargo.toml",
+        "--test",
+        "contracts",
+        "tst_beh_003_stale_is_equivalent_to_omission",
+        "--",
+        "--exact",
+        "--nocapture"
+      ],
+      "returncode": 0,
+      "stdout": "\nrunning 1 test\ntest tst_beh_003_stale_is_equivalent_to_omission ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 42 filtered out; finished in 0.00s\n\n",
+      "stderr": "   Compiling fusion-lab v0.1.0 (C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab)\n   Compiling observation-delivery-spec-tests v0.0.0 (C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\observation-delivery)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.76s\n     Running tests\\contracts.rs (tests\\observation-delivery\\target\\debug\\deps\\contracts-80b65de10374ce79.exe)\n"
+    },
+    {
+      "toolchain": "1.99.0",
+      "selector": "tst_beh_004_independent_cross_covariance_update",
+      "argv": [
+        "cargo",
+        "+1.99.0",
+        "test",
+        "--locked",
+        "--offline",
+        "--manifest-path",
+        "tests/observation-delivery/Cargo.toml",
+        "--test",
+        "contracts",
+        "tst_beh_004_independent_cross_covariance_update",
+        "--",
+        "--exact",
+        "--nocapture"
+      ],
+      "returncode": 101,
+      "stdout": "\nrunning 1 test\ntest tst_beh_004_independent_cross_covariance_update ... FAILED\n\nfailures:\n\nfailures:\n    tst_beh_004_independent_cross_covariance_update\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 42 filtered out; finished in 0.00s\n\n",
+      "stderr": "    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.07s\n     Running tests\\contracts.rs (tests\\observation-delivery\\target\\debug\\deps\\contracts-80b65de10374ce79.exe)\n\nthread 'tst_beh_004_independent_cross_covariance_update' (110636) panicked at tests\\contracts.rs:197:5:\nassertion `left == right` failed\n  left: [4.999999999999999, 9.999999999999998]\n right: [5.0, 10.0]\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\nerror: test failed, to rerun pass `--test contracts`\n"
+    }
+  ]
+}

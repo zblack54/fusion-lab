@@ -194,7 +194,9 @@ fn tst_beh_004_independent_cross_covariance_update() {
     )
     .unwrap();
     let zero = &result.snapshots()[0];
-    assert_eq!(zero.estimate().position, [5.0, 10.0]);
+    for (actual, expected) in zero.estimate().position.into_iter().zip([5.0, 10.0]) {
+        close(actual, expected, 1e-12);
+    }
     assert_eq!(zero.estimate().velocity, [0.0; 2]);
     close(zero.covariance()[0][0], 12.5, 1e-12);
     let fifth = &result.snapshots()[5];
@@ -1058,7 +1060,9 @@ fn tst_state_001_drain_bypass_and_source_arrival_ledgers() {
     for (a, e) in s.estimate().position.into_iter().zip([0.3, 0.15]) {
         close(a, e, 1e-12);
     }
-    assert_eq!(s.estimate().velocity, [2.0, 1.0]);
+    for (actual, expected) in s.estimate().velocity.into_iter().zip([2.0, 1.0]) {
+        close(actual, expected, 1e-12);
+    }
     close(s.covariance()[0][0], 25.045, 1e-12);
     close(s.covariance()[0][2], 0.3, 1e-12);
     close(s.covariance()[2][2], 2.0, 1e-12);

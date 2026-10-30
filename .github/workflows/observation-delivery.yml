@@ -1,5 +1,5 @@
-# Implementation mode requires every immutable selector to pass before acceptance.
-name: Observation delivery implementation
+# Controlled revision qualification only; expected-red is never product acceptance.
+name: Observation delivery design revision
 on:
   pull_request:
   workflow_dispatch:
@@ -31,11 +31,11 @@ jobs:
         with:
           python-version: "3.12"
       - run: rustup toolchain install ${{ matrix.toolchain }} --profile minimal --component rustfmt --component clippy
-      - run: python tests/observation-delivery/tools/native_baseline.py --toolchain ${{ matrix.toolchain }} --mode implementation --output native-delivery-evidence
+      - run: python tests/observation-delivery/tools/native_baseline.py --toolchain ${{ matrix.toolchain }} --mode design --output native-delivery-evidence
       - if: always()
         uses: actions/upload-artifact@v4
         with:
           name: observation-delivery-${{ matrix.os }}-${{ matrix.toolchain }}
           path: native-delivery-evidence
           if-no-files-found: error
-# Partial implementation remains draft: failing unfinished selectors are not acceptance.
+# Main must restore implementation mode after revision lock before product acceptance.

@@ -1,6 +1,18 @@
 # Validation report
 
-Status: AI_READY
+Status: NOT_READY
+
+## Controlled revision2 draft — issue72
+
+Main authorized draft preparation only in issue72comment6527480873 after author and independent unchanged-core probes reproduced two exact-rational versus floating roundoff conflicts. TST-BEH-004 position[5,10] and TST-STATE-001 velocity[2,1] retain their independent expected values but now use existing componentwise close with1e-12 tolerance. All reference-target bitwise equality, signedzero/copy/prior assertions, other tests, requirements, API and numerical/resource bounds remain unchanged.
+
+The complete original567approved package/lock and partialTASK002sourcee262afab are preserved in protected host history; original failure logs remain unchanged. Diagnostic source is restored byte-for-byte from the approved snapshot. Registry remains567; P5/P7 are pending refreshed diagnostic verification and independent review. No revision2 approval, lock or implementation permission exists.
+
+## Historical revision1 report (superseded readiness only)
+
+# Validation report
+
+Historical status: AI_READY
 
 All seven phase exit gates were completed and Status: READY_FOR_REVIEW was recorded while draft/ai_ready=false before applying main’s established approval. Main approved technical design revision1 in [issue69comment6526992382](https://github.com/zblack54/fusion-lab/issues/69#issuecomment-6526992382), after independent review and exact-head42085624 normal CI and all four native artifact reviews. Metadata now records approved/ai_ready=true. Main alone performs the immediate lock and external digest publication; implementation remains prohibited until that verification. AI_READY describes approved design readiness, not implemented product acceptance.
 
@@ -43,3 +55,7 @@ The final metadata refresh succeeded: each local configuration41expected-red+2st
 ## Main trusted lock and external digest
 
 Main locked55entries with approved digest `567eff28d5ec5b6af564284cb0f53292fbfe30b1b7292b9703be4d7b1838c3b9`. Final trusted --require-lock validation:0errors/0warnings. External authority: issue69comment6527067252. Finalrawdesignexecution1026501bytes/SHA256d64054e53bfcd275f2ebc355ed2beee262c92267b6b498019a2c29d74ae1fc2e. This report is excluded from the lock. Scoped implementation may now begin; product remainsNOT_ACCEPTED until all final obligations pass.
+
+## Revision2 draft diagnostic refresh
+
+Strict trusted diagnostic P7 passed: each local1.99.0/stable alias41named expected-red+2structural-green, all7supplemental gates pass, errors0. Strict docs build passed. Raw design-executionSHA256 `991075207264b0419ba7c58efcccb901c61ca735bf4b1f26014fa39d29730a2f` (1027321bytes). These are diagnostic baseline results, not successful replay implementation or revision2 approval. Independent/main review and any required hosted requalification remain pending; registry still authorizes only the prior567contract.
