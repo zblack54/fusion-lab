@@ -208,7 +208,7 @@ impl ReplaySnapshot {
     pub fn estimate(&self) -> State {
         not_implemented()
     }
-    /// Full [px,py,vx,vy] covariance.
+    /// Full `[px, py, vx, vy]` covariance.
     pub fn covariance(&self) -> &[[f64; 4]; 4] {
         not_implemented()
     }

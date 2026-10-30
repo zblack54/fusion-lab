@@ -26,7 +26,7 @@ method = "inspection"
 stage = "implementation"
 owner = "independent exact-source conformance reviewer"
 covers = ["REQ-029","REQ-030","REQ-032","REQ-036","CON-005","CON-006"]
-procedure = "Inspect exact production diff and Cargo manifest/lock closure, error propagation and source chaining, private state commit, no new runtime/crate/dependencies/unsafe, absence of diagnostic marker, no I/O in library and unchanged legacy numerical/CSV/service/dashboard paths. Run all required legacy and contract gates at exact head."
+procedure = "Inspect exact production diff and Cargo manifest/lock closure, error propagation and source chaining, private state commit, no new production runtime/crate/dependencies or unsafe Rust, absence of diagnostic marker, no I/O in library and unchanged legacy numerical/CSV/service/dashboard paths. Run all required legacy and contract gates at exact head."
 acceptance = "No sentinel behavior, alternate truth source, silent numerical drop, successful partial result, filesystem side effect or adapter migration remains; every typed error and original core Error source is preserved; legacy gates and exact-source reviews are clear."
 
 [[verification]]
@@ -80,19 +80,19 @@ argv = ["cargo","clippy","--locked","--all-targets","--","-D","warnings"]
 id = "CMD-004"
 stage = "both"
 purpose = "Preserve the required root legacy gate 4."
-argv = ["cargo","test","--locked"]
+argv = ["cargo","--config","build.rustdocflags=[\"-D\",\"warnings\"]","test","--locked"]
 
 [[command]]
 id = "CMD-005"
 stage = "both"
 purpose = "Preserve the required root legacy gate 5."
-argv = ["cargo","test","--locked","--doc"]
+argv = ["cargo","--config","build.rustdocflags=[\"-D\",\"warnings\"]","test","--locked","--doc"]
 
 [[command]]
 id = "CMD-006"
 stage = "both"
 purpose = "Preserve the required root legacy gate 6."
-argv = ["cargo","doc","--locked","--no-deps"]
+argv = ["cargo","--config","build.rustdocflags=[\"-D\",\"warnings\"]","doc","--locked","--no-deps"]
 
 [[command]]
 id = "CMD-007"

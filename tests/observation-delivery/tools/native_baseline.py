@@ -62,12 +62,12 @@ def main():
     if platform.system() not in ('Windows','Linux'):raise SystemExit('required native platform is Windows or Linux')
     output=args.output.resolve();output.mkdir(parents=True,exist_ok=True)
     if any(output.iterdir()):raise SystemExit('evidence output directory must be fresh and empty')
-    env=os.environ.copy();env['RUSTUP_TOOLCHAIN']=args.toolchain;env['CARGO_TERM_COLOR']='never';env['RUST_BACKTRACE']='0'
+    env=os.environ.copy();env['RUSTUP_TOOLCHAIN']=args.toolchain;env['CARGO_TERM_COLOR']='never';env['RUST_BACKTRACE']='0';env['RUSTDOCFLAGS']='-D warnings'
     catalog=tomllib.loads((PACKAGE/'tests/tests.toml').read_text(encoding='utf-8'))['test']
     if not catalog or any(t['test_target']!='test:contracts' or not t.get('required',False) for t in catalog):raise SystemExit('unsupported/incomplete feature test catalog')
     names=[t['selector'] for t in catalog]
     if len(names)!=len(set(names)):raise SystemExit('duplicate catalog selectors')
-    receipt={'schema':1,'mode':args.mode,'platform':platform.platform(),'machine':platform.machine(),'python':platform.python_version(),'toolchain':args.toolchain,'source_before':fingerprints(),'commands':[],'tests':[],'success':False}
+    receipt={'schema':1,'mode':args.mode,'platform':platform.platform(),'machine':platform.machine(),'python':platform.python_version(),'toolchain':args.toolchain,'rustdocflags':env['RUSTDOCFLAGS'],'source_before':fingerprints(),'commands':[],'tests':[],'success':False}
     def command(argv,name,timeout=120,cap=4*1024*1024):
         record,text=invoke(argv,env,timeout,cap,output/name);receipt['commands'].append(record);return record,text
     try:
