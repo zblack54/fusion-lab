@@ -1,0 +1,34 @@
+{
+  "kind": "synthetic no OS process; PID123456 is fake",
+  "checks": "kill and reap exceptions retained; reap_confirmed=false; manual reconciliation=true; failure never accepted",
+  "result": {
+    "argv": [
+      "synthetic-no-process",
+      "maximum"
+    ],
+    "workload": "maximum",
+    "timeout_seconds": 60,
+    "pid": 123456,
+    "seconds_spawn_to_complete_work": 0,
+    "complete_line": "bad-complete\n",
+    "success": false,
+    "error": "RuntimeError('missing/malformed complete-work proof')",
+    "cleanup_owned_pid": 123456,
+    "cleanup_errors": [
+      {
+        "operation": "kill",
+        "error": "OSError('synthetic kill fault')"
+      },
+      {
+        "operation": "wait_reap",
+        "error": "TimeoutError('synthetic reap fault')"
+      }
+    ],
+    "kill_attempted": true,
+    "reap_confirmed": false,
+    "manual_reconciliation_required": true,
+    "manual_reconciliation": "Do not run more workloads. Reconcile this exact owned PID and preserved argv/process receipt manually.",
+    "stderr": "",
+    "seconds_owner_total": 0
+  }
+}

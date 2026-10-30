@@ -1,0 +1,31 @@
+{
+  "argv": [
+    "cargo",
+    "run",
+    "--locked",
+    "--offline",
+    "--example",
+    "observation_delivery",
+    "--",
+    "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\delivery-example-1793377846206671400"
+  ],
+  "first": {
+    "exit": 0,
+    "stdout": "Published complete trace.tsv (1811 bytes) and ledger.tsv (1509 bytes) in C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\delivery-example-1793377846206671400\nVirtual planned OnTimeOnly evidence: 101 snapshots, 27 offered observations; parent #6 async/channel/cancellation work remains incomplete.\n",
+    "stderr": "   Compiling fusion-lab v0.1.0 (C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.37s\n     Running `target\\debug\\examples\\observation_delivery.exe C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\delivery-example-1793377846206671400`\n"
+  },
+  "second": {
+    "exit": 1,
+    "stdout": "",
+    "stderr": "    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.06s\n     Running `target\\debug\\examples\\observation_delivery.exe C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\delivery-example-1793377846206671400`\nError: Os { code: 183, kind: AlreadyExists, message: \"Cannot create a file when that file already exists.\" }\nerror: process didn't exit successfully: `target\\debug\\examples\\observation_delivery.exe C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\delivery-example-1793377846206671400` (exit code: 1)\n"
+  },
+  "before": {
+    "ledger.tsv": "96065f4b796fd35cab0f183d59a1857d0ca7af88c7b9da9605f748187c6b5385",
+    "trace.tsv": "a72062bf612b8acc86fe92385cb1218f75e55096679d501018e0aa010e69b473"
+  },
+  "after": {
+    "ledger.tsv": "96065f4b796fd35cab0f183d59a1857d0ca7af88c7b9da9605f748187c6b5385",
+    "trace.tsv": "a72062bf612b8acc86fe92385cb1218f75e55096679d501018e0aa010e69b473"
+  },
+  "unchanged": true
+}

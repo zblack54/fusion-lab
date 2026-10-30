@@ -1,0 +1,34 @@
+{
+  "status": "Supplemental retained-file metadata for original6989series; no numerical rerun or relabeling",
+  "original_sampler_sha256": "6989eb8c3f77847bf51261bbb3b8f90e30545176ac9e7ee0207ba5fdc0130d54",
+  "original_receipt_sha256": "5ed71810febf6cc55bc77482b74b70ad6c3b8ca32b99d59fff3a7941900e3eed",
+  "files": {
+    "Cargo.toml": {
+      "actual_sha256": "c69d05018877546ac060ab9a7b9bb7c0ed16e498c5b3d50a928e94a2c6e70f6b",
+      "actual_bytes": 315,
+      "crlf_count": 15,
+      "lf_count": 15,
+      "normalized_utf8_lf_sha256": "0f7e893d9eddca3cc26fe35dc695f3110a525d0e162de59e5a3f6a36bd6bcaa0"
+    },
+    "Cargo.lock": {
+      "actual_sha256": "4fb8c6c7251cff898f7f9bd039f561e580888e24eb6313d6e2db3cd0f9c9cd63",
+      "actual_bytes": 12246,
+      "crlf_count": 0,
+      "lf_count": 474,
+      "normalized_utf8_lf_sha256": "4fb8c6c7251cff898f7f9bd039f561e580888e24eb6313d6e2db3cd0f9c9cd63"
+    },
+    "src/main.rs": {
+      "actual_sha256": "eae065b23277c70139b1ba45e9d8fa9d0d1cd8f3300d31c9060cb224a40f56bf",
+      "actual_bytes": 3692,
+      "crlf_count": 51,
+      "lf_count": 51,
+      "normalized_utf8_lf_sha256": "cba8398bb5e371cfdb8319e1d54b5d611d98f398cc45c3e5709e4ca6a908ef31"
+    }
+  },
+  "logical_driver_hash_from_original_receipt": "cba8398bb5e371cfdb8319e1d54b5d611d98f398cc45c3e5709e4ca6a908ef31",
+  "logical_manifest_hash_from_original_receipt": "0f7e893d9eddca3cc26fe35dc695f3110a525d0e162de59e5a3f6a36bd6bcaa0",
+  "driver_normalization_matches": true,
+  "manifest_normalization_matches": true,
+  "retained_binary_sha256": "304a7a5a9278a0614fc1f3539d7a1af3e841ca7cc3b10c1caa0cd6590253762b",
+  "binary_matches_original_receipt": true
+}
