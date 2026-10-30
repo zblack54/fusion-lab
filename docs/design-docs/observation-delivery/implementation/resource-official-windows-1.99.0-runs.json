@@ -1,0 +1,142 @@
+{
+  "warmup.json": {
+    "argv": [
+      "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\delivery-resource-official-windows-1.99.0\\project\\target\\release\\observation-delivery-resource-probe.exe",
+      "warmup"
+    ],
+    "workload": "warmup",
+    "timeout_seconds": 60,
+    "pid": 64692,
+    "seconds_spawn_to_complete_work": 0.0470000000204891,
+    "complete_line": "COMPLETE\t1\t27\t101\t1839\t1588\n",
+    "held_complete_work_memory": {
+      "lifetime_peak_bytes": 3706880,
+      "current_rss_bytes": 3702784,
+      "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+      "units": "bytes",
+      "owned_pid": 64692
+    },
+    "retained_phase": "all source/trace/results/encoded+regenerated buffers retained; child waits for owner release",
+    "exit": 0,
+    "reap_confirmed": true,
+    "stderr": "",
+    "post_exit_retained_handle_memory": {
+      "lifetime_peak_bytes": 4079616,
+      "current_rss_bytes": 32768,
+      "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+      "units": "bytes",
+      "owned_pid": 64692
+    },
+    "lifetime_peak_bytes": 4079616,
+    "seconds_total_including_hold_and_teardown": 0.0470000000204891,
+    "time_within_30_seconds": true,
+    "memory_within_512_MiB": true,
+    "success": true,
+    "seconds_owner_total": 0.0470000000204891
+  },
+  "maximum-1.json": {
+    "argv": [
+      "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\delivery-resource-official-windows-1.99.0\\project\\target\\release\\observation-delivery-resource-probe.exe",
+      "maximum"
+    ],
+    "workload": "maximum",
+    "timeout_seconds": 60,
+    "pid": 72400,
+    "seconds_spawn_to_complete_work": 0.4059999999590218,
+    "complete_line": "COMPLETE\t3600\t90002\t360001\t5894768\t5633112\n",
+    "held_complete_work_memory": {
+      "lifetime_peak_bytes": 286482432,
+      "current_rss_bytes": 284323840,
+      "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+      "units": "bytes",
+      "owned_pid": 72400
+    },
+    "retained_phase": "all source/trace/results/encoded+regenerated buffers retained; child waits for owner release",
+    "exit": 0,
+    "reap_confirmed": true,
+    "stderr": "",
+    "post_exit_retained_handle_memory": {
+      "lifetime_peak_bytes": 286482432,
+      "current_rss_bytes": 32768,
+      "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+      "units": "bytes",
+      "owned_pid": 72400
+    },
+    "lifetime_peak_bytes": 286482432,
+    "seconds_total_including_hold_and_teardown": 0.4220000000204891,
+    "time_within_30_seconds": true,
+    "memory_within_512_MiB": true,
+    "success": true,
+    "seconds_owner_total": 0.4220000000204891
+  },
+  "maximum-2.json": {
+    "argv": [
+      "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\delivery-resource-official-windows-1.99.0\\project\\target\\release\\observation-delivery-resource-probe.exe",
+      "maximum"
+    ],
+    "workload": "maximum",
+    "timeout_seconds": 60,
+    "pid": 114384,
+    "seconds_spawn_to_complete_work": 0.4220000000204891,
+    "complete_line": "COMPLETE\t3600\t90002\t360001\t5894768\t5633112\n",
+    "held_complete_work_memory": {
+      "lifetime_peak_bytes": 286425088,
+      "current_rss_bytes": 284332032,
+      "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+      "units": "bytes",
+      "owned_pid": 114384
+    },
+    "retained_phase": "all source/trace/results/encoded+regenerated buffers retained; child waits for owner release",
+    "exit": 0,
+    "reap_confirmed": true,
+    "stderr": "",
+    "post_exit_retained_handle_memory": {
+      "lifetime_peak_bytes": 286425088,
+      "current_rss_bytes": 32768,
+      "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+      "units": "bytes",
+      "owned_pid": 114384
+    },
+    "lifetime_peak_bytes": 286425088,
+    "seconds_total_including_hold_and_teardown": 0.4369999999180436,
+    "time_within_30_seconds": true,
+    "memory_within_512_MiB": true,
+    "success": true,
+    "seconds_owner_total": 0.4369999999180436
+  },
+  "maximum-3.json": {
+    "argv": [
+      "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\delivery-resource-official-windows-1.99.0\\project\\target\\release\\observation-delivery-resource-probe.exe",
+      "maximum"
+    ],
+    "workload": "maximum",
+    "timeout_seconds": 60,
+    "pid": 114460,
+    "seconds_spawn_to_complete_work": 0.4220000000204891,
+    "complete_line": "COMPLETE\t3600\t90002\t360001\t5894768\t5633112\n",
+    "held_complete_work_memory": {
+      "lifetime_peak_bytes": 286478336,
+      "current_rss_bytes": 284385280,
+      "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+      "units": "bytes",
+      "owned_pid": 114460
+    },
+    "retained_phase": "all source/trace/results/encoded+regenerated buffers retained; child waits for owner release",
+    "exit": 0,
+    "reap_confirmed": true,
+    "stderr": "",
+    "post_exit_retained_handle_memory": {
+      "lifetime_peak_bytes": 286478336,
+      "current_rss_bytes": 32768,
+      "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+      "units": "bytes",
+      "owned_pid": 114460
+    },
+    "lifetime_peak_bytes": 286478336,
+    "seconds_total_including_hold_and_teardown": 0.4380000000819564,
+    "time_within_30_seconds": true,
+    "memory_within_512_MiB": true,
+    "success": true,
+    "seconds_owner_total": 0.4380000000819564
+  }
+}

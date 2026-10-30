@@ -1,0 +1,26 @@
+{
+  "status": "actual owned Windows directory junction refused; targetfile preserved",
+  "junction_command": [
+    "cmd.exe",
+    "/d",
+    "/c",
+    "mklink",
+    "/J",
+    "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\delivery-bootstrap-check-1793395895831493100\\published-junction\\tests\\observation-delivery\\benches",
+    "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\delivery-bootstrap-check-1793395895831493100\\owned-junction-target"
+  ],
+  "junction_exit": 0,
+  "junction_stdout": "Junction created for C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\delivery-bootstrap-check-1793395895831493100\\published-junction\\tests\\observation-delivery\\benches <<===>> C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\delivery-bootstrap-check-1793395895831493100\\owned-junction-target\n",
+  "bootstrap_command": [
+    "C:/Users/Admin/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+    "C:/Users/Admin/Documents/Codex/2026-10-20/if-x20/work/fusion-lab/docs/design-docs/observation-delivery/implementation/bootstrap_checkout.py",
+    "--baseline-digest",
+    "e0d3a23f4335193f6442fa7d1b244621b93bbf3f08ee9ba9c4b860c2eb15911b",
+    "--repo",
+    "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\delivery-bootstrap-check-1793395895831493100\\published-junction"
+  ],
+  "bootstrap_exit": 1,
+  "bootstrap_stdout": "",
+  "bootstrap_stderr": "Traceback (most recent call last):\n  File \"C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\docs\\design-docs\\observation-delivery\\implementation\\bootstrap_checkout.py\", line 58, in <module>\n    if __name__=='__main__': main()\n                             ^^^^^^\n  File \"C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\docs\\design-docs\\observation-delivery\\implementation\\bootstrap_checkout.py\", line 46, in main\n    check_path(repo,path)\n  File \"C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\docs\\design-docs\\observation-delivery\\implementation\\bootstrap_checkout.py\", line 18, in check_path\n    if cursor.exists() or cursor.is_symlink(): refuse_link(cursor)\n                                               ^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\docs\\design-docs\\observation-delivery\\implementation\\bootstrap_checkout.py\", line 10, in refuse_link\n    raise ValueError('symlink/reparse path refused: '+str(path))\nValueError: symlink/reparse path refused: C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\delivery-bootstrap-check-1793395895831493100\\published-junction\\tests\\observation-delivery\\benches\n",
+  "target_file_unchanged": true
+}

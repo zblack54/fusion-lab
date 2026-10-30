@@ -7,11 +7,17 @@
 //! # Ok::<(), fusion_lab::Error>(())
 //! ```
 
+mod delivery;
 mod estimation;
 mod evaluation;
 mod sensors;
 mod simulation;
 
+pub use delivery::{
+    ArtifactKind, DeliveryError, DeliveryOutcome, DeliveryPlan, LedgerEntry, ModelField,
+    Observation, ObservationId, ReplayModel, ReplayResult, ReplaySnapshot, Sensor, SourceViolation,
+    Trace, TsvViolation, replay_delivery,
+};
 pub use evaluation::{Metrics, Summary};
 pub use simulation::{Config, Experiment, Outage, Sample, Scenario, State, run};
 

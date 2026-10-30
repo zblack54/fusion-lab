@@ -1,0 +1,162 @@
+{
+  "status": "DIAGNOSTIC_NOT_ACCEPTANCE",
+  "baseline_authority": "issue72comment6527689826",
+  "baseline_digest": "e0d3a23f4335193f6442fa7d1b244621b93bbf3f08ee9ba9c4b860c2eb15911b",
+  "environment": {
+    "os": "Windows-10-10.0.19043-SP0",
+    "machine": "AMD64",
+    "cpu": "AMD64 Family 25 Model 33 Stepping 0, AuthenticAMD",
+    "logical_cpus": 16,
+    "physical_ram_bytes": 34266181632,
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]"
+  },
+  "source_before": {
+    "Cargo.toml": "107801ee283d274781df7496d22eaa46a09748e2b624ccb48a8b7b9eda975462",
+    "Cargo.lock": "1ff60b850d3f5928fc13476575700400765d31f7deb3268171f66176fb6cf6f3",
+    "rust-toolchain.toml": "ccced9ef5cf5a0c35bb5ba4e4b525188b72aa07aab8cc3fb5b644778ade8f125",
+    "src/delivery.rs": "12d7fbdcee02d7ae986658bb2f43116f56283f1689adc2c74e4f360d45389120",
+    "src/estimation.rs": "83a3b6936c53fc9d28c29a59b0840cf5d57611852246bc19c2c4cb258c092fdf",
+    "src/evaluation.rs": "cf83337582b8887dc3ae71b62a8daf10c9f8b578eddd74b212069d30d76ba870",
+    "src/lib.rs": "886ec0ba1cf84439c2a4e0913f2b6be33bc1da93aae9b51e93f10e7049959a52",
+    "src/main.rs": "76574d18911bdce81082b9f76308cf3a31f69fa9967a0592f28eaf2630901d6b",
+    "src/sensors.rs": "d8eaae0d691535bcee6f68166babdb41c49de815ad0c3eb213c8b980c9ae29af",
+    "src/simulation.rs": "c0fd739c26e7190549736636c69720dc963707059463a45b7095159099fd7691",
+    "tests/observation-delivery/Cargo.lock": "971dcf3c1bc142f37250ec23064ab6303478b19017cf223baff2f7ee45f08cef",
+    "tests/observation-delivery/Cargo.toml": "a309b97c5f1d676cde7dd6201a9c375e4c3f922302a73343c0c8211e543118dd",
+    "tests/observation-delivery/compile/consumer/Cargo.lock": "e743220f79a6f6c61d068676d52b7a07e7129021b271bd022a3b9937cbe78b85",
+    "tests/observation-delivery/compile/consumer/Cargo.toml": "7e1dad773e20a37953b3fd7b9b449bb8ab4a4b5aa29cc8ba529079678ae178da",
+    "tests/observation-delivery/compile/consumer/src/lib.rs": "ed8449b1c6e7f2c63bf327de34db05ff42abb4a8336db0062bb6c73761afa7ba",
+    "tests/observation-delivery/compile/privacy.rs": "8c5773c564aa3bd1054939f0a38e10656fd074cc3d5965125f3dfdb3b978043b",
+    "tests/observation-delivery/src/lib.rs": "b465cbea721b18ee513755ee5da907df3c66bc28ba736b554876597ae0cf0115",
+    "tests/observation-delivery/tests/contracts.rs": "e289654bb9178378182a231a52232d05448ccc6f7c310050518ed4d6924bcb9c",
+    "tests/observation-delivery/tests/support/mod.rs": "7142c814adab0eb0c88d394e208a630803e633a92375bb74add8a42c39e011df",
+    "tests/observation-delivery/tools/native_baseline.py": "88814e0c43703035f3839ce84cfa36a18ad4cfaea965021f99fa0a41a76dde7c",
+    "docs/design-docs/observation-delivery/validation/test-lock.json": "1dc2a43bf41076e16f2e2e8223f1696b27d63efbeb4346fe65b8f6a195e5f55b"
+  },
+  "sampler_sha256": "cced646b1514d21c08f7f87d0e34ff86273b95972be4490b3441f631b6f78909",
+  "driver_sha256": "cba8398bb5e371cfdb8319e1d54b5d611d98f398cc45c3e5709e4ca6a908ef31",
+  "generated_manifest_sha256": "0f7e893d9eddca3cc26fe35dc695f3110a525d0e162de59e5a3f6a36bd6bcaa0",
+  "generated_lock_sha256": "4fb8c6c7251cff898f7f9bd039f561e580888e24eb6313d6e2db3cd0f9c9cd63",
+  "commands": [
+    {
+      "argv": [
+        "rustc",
+        "+1.99.0",
+        "-Vv"
+      ],
+      "exit": 0,
+      "stdout": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-msvc\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "cargo",
+        "+1.99.0",
+        "build",
+        "--release",
+        "--locked",
+        "--offline",
+        "--manifest-path",
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\delivery-resource-diagnostic-1\\project\\Cargo.toml"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "   Compiling autocfg v1.5.1\n   Compiling libm v0.2.16\n   Compiling proc-macro2 v1.0.107\n   Compiling windows-link v0.2.1\n   Compiling quote v1.0.47\n   Compiling unicode-ident v1.0.27\n   Compiling bytemuck v1.25.2\n   Compiling utf8parse v0.2.2\n   Compiling anstyle v1.0.14\n   Compiling once_cell_polyfill v1.70.2\n   Compiling zerocopy v0.8.63\n   Compiling colorchoice v1.0.5\n   Compiling is_terminal_polyfill v1.70.2\n   Compiling rand_core v0.10.1\n   Compiling heck v0.5.0\n   Compiling clap_lex v1.1.1\n   Compiling windows-sys v0.61.2\n   Compiling anstyle-parse v1.0.0\n   Compiling rawpointer v0.2.1\n   Compiling strsim v0.11.1\n   Compiling typenum v1.20.1\n   Compiling rand v0.10.3\n   Compiling safe_arch v1.2.0\n   Compiling num-traits v0.2.19\n   Compiling matrixmultiply v0.3.11\n   Compiling wide v1.7.1\n   Compiling anstyle-wincon v3.0.11\n   Compiling anstyle-query v1.1.5\n   Compiling anstream v1.0.0\n   Compiling clap_builder v4.6.7\n   Compiling syn v3.0.9\n   Compiling num-integer v0.1.47\n   Compiling approx v0.5.1\n   Compiling num-complex v0.4.6\n   Compiling rand_distr v0.6.0\n   Compiling num-rational v0.4.2\n   Compiling clap_derive v4.6.7\n   Compiling ppv-lite86 v0.2.21\n   Compiling rand_chacha v0.10.0\n   Compiling clap v4.6.7\n   Compiling simba v0.10.2\n   Compiling nalgebra v0.35.0\n   Compiling fusion-lab v0.1.0 (C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab)\n   Compiling observation-delivery-resource-probe v0.0.0 (C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\delivery-resource-diagnostic-1\\project)\n    Finished `release` profile [optimized] target(s) in 19.92s\n"
+    }
+  ],
+  "runs": [
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\delivery-resource-diagnostic-1\\project\\target\\release\\observation-delivery-resource-probe.exe",
+        "maximum"
+      ],
+      "workload": "maximum",
+      "timeout_seconds": 60,
+      "pid": 110812,
+      "seconds_spawn_to_complete_work": 0.4529999999795109,
+      "complete_line": "COMPLETE\t3600\t90002\t360001\t5894768\t5633112\n",
+      "held_complete_work_memory": {
+        "lifetime_peak_bytes": 286466048,
+        "current_rss_bytes": 284372992,
+        "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+        "units": "bytes",
+        "owned_pid": 110812
+      },
+      "retained_phase": "all source/trace/results/encoded+regenerated buffers retained; child waits for owner release",
+      "exit": 0,
+      "stderr": "",
+      "post_exit_retained_handle_memory": {
+        "lifetime_peak_bytes": 286466048,
+        "current_rss_bytes": 32768,
+        "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+        "units": "bytes",
+        "owned_pid": 110812
+      },
+      "lifetime_peak_bytes": 286466048,
+      "seconds_total_including_hold_and_teardown": 0.4839999999385327,
+      "time_within_30_seconds": true,
+      "memory_within_512_MiB": true,
+      "success": true,
+      "seconds_owner_total": 0.4839999999385327
+    }
+  ],
+  "binary_sha256": "59547683b2ac9cd8d14bccb5a8410a4fb3f9fc7f6c64a6636fb5d46c8a627369",
+  "warmup": {
+    "argv": [
+      "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\delivery-resource-diagnostic-1\\project\\target\\release\\observation-delivery-resource-probe.exe",
+      "warmup"
+    ],
+    "workload": "warmup",
+    "timeout_seconds": 60,
+    "pid": 95212,
+    "seconds_spawn_to_complete_work": 0.030999999959021807,
+    "complete_line": "COMPLETE\t1\t27\t101\t1839\t1588\n",
+    "held_complete_work_memory": {
+      "lifetime_peak_bytes": 3710976,
+      "current_rss_bytes": 3706880,
+      "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+      "units": "bytes",
+      "owned_pid": 95212
+    },
+    "retained_phase": "all source/trace/results/encoded+regenerated buffers retained; child waits for owner release",
+    "exit": 0,
+    "stderr": "",
+    "post_exit_retained_handle_memory": {
+      "lifetime_peak_bytes": 4087808,
+      "current_rss_bytes": 32768,
+      "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+      "units": "bytes",
+      "owned_pid": 95212
+    },
+    "lifetime_peak_bytes": 4087808,
+    "seconds_total_including_hold_and_teardown": 0.030999999959021807,
+    "time_within_30_seconds": true,
+    "memory_within_512_MiB": true,
+    "success": true,
+    "seconds_owner_total": 0.030999999959021807
+  },
+  "source_after": {
+    "Cargo.toml": "107801ee283d274781df7496d22eaa46a09748e2b624ccb48a8b7b9eda975462",
+    "Cargo.lock": "1ff60b850d3f5928fc13476575700400765d31f7deb3268171f66176fb6cf6f3",
+    "rust-toolchain.toml": "ccced9ef5cf5a0c35bb5ba4e4b525188b72aa07aab8cc3fb5b644778ade8f125",
+    "src/delivery.rs": "12d7fbdcee02d7ae986658bb2f43116f56283f1689adc2c74e4f360d45389120",
+    "src/estimation.rs": "83a3b6936c53fc9d28c29a59b0840cf5d57611852246bc19c2c4cb258c092fdf",
+    "src/evaluation.rs": "cf83337582b8887dc3ae71b62a8daf10c9f8b578eddd74b212069d30d76ba870",
+    "src/lib.rs": "886ec0ba1cf84439c2a4e0913f2b6be33bc1da93aae9b51e93f10e7049959a52",
+    "src/main.rs": "76574d18911bdce81082b9f76308cf3a31f69fa9967a0592f28eaf2630901d6b",
+    "src/sensors.rs": "d8eaae0d691535bcee6f68166babdb41c49de815ad0c3eb213c8b980c9ae29af",
+    "src/simulation.rs": "c0fd739c26e7190549736636c69720dc963707059463a45b7095159099fd7691",
+    "tests/observation-delivery/Cargo.lock": "971dcf3c1bc142f37250ec23064ab6303478b19017cf223baff2f7ee45f08cef",
+    "tests/observation-delivery/Cargo.toml": "a309b97c5f1d676cde7dd6201a9c375e4c3f922302a73343c0c8211e543118dd",
+    "tests/observation-delivery/compile/consumer/Cargo.lock": "e743220f79a6f6c61d068676d52b7a07e7129021b271bd022a3b9937cbe78b85",
+    "tests/observation-delivery/compile/consumer/Cargo.toml": "7e1dad773e20a37953b3fd7b9b449bb8ab4a4b5aa29cc8ba529079678ae178da",
+    "tests/observation-delivery/compile/consumer/src/lib.rs": "ed8449b1c6e7f2c63bf327de34db05ff42abb4a8336db0062bb6c73761afa7ba",
+    "tests/observation-delivery/compile/privacy.rs": "8c5773c564aa3bd1054939f0a38e10656fd074cc3d5965125f3dfdb3b978043b",
+    "tests/observation-delivery/src/lib.rs": "b465cbea721b18ee513755ee5da907df3c66bc28ba736b554876597ae0cf0115",
+    "tests/observation-delivery/tests/contracts.rs": "e289654bb9178378182a231a52232d05448ccc6f7c310050518ed4d6924bcb9c",
+    "tests/observation-delivery/tests/support/mod.rs": "7142c814adab0eb0c88d394e208a630803e633a92375bb74add8a42c39e011df",
+    "tests/observation-delivery/tools/native_baseline.py": "88814e0c43703035f3839ce84cfa36a18ad4cfaea965021f99fa0a41a76dde7c",
+    "docs/design-docs/observation-delivery/validation/test-lock.json": "1dc2a43bf41076e16f2e2e8223f1696b27d63efbeb4346fe65b8f6a195e5f55b"
+  },
+  "success": true
+}

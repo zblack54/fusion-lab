@@ -1,0 +1,88 @@
+[[constraint]]
+id = "CON-001"
+title = "Observation authority"
+kind = "invariant"
+statement = "Replay SHALL NOT access truth, source seed/configuration, previous source estimates or non-observation Sample fields."
+rationale = "Protect the selected first-slice boundary and evidence integrity."
+enforcement = "mixed"
+test_ids = ["TST-ACC-003","TST-STRUCT-001","TST-STRUCT-002"]
+verification_ids = ["VER-001"]
+status = "active"
+
+[[constraint]]
+id = "CON-002"
+title = "No stale numerical side effects"
+kind = "negative"
+statement = "A stale arrival SHALL NOT change estimator or baseline state."
+rationale = "Protect the selected first-slice boundary and evidence integrity."
+enforcement = "test"
+test_ids = ["TST-BEH-003","TST-PROP-003","TST-STATE-001"]
+verification_ids = []
+status = "active"
+
+[[constraint]]
+id = "CON-003"
+title = "Finite waiting ownership"
+kind = "invariant"
+statement = "Virtual delivery SHALL retain no more future observations than its validated capacity."
+rationale = "Protect the selected first-slice boundary and evidence integrity."
+enforcement = "mixed"
+test_ids = ["TST-STATE-001","TST-STATE-002","TST-BOUND-004","TST-PROP-004"]
+verification_ids = ["VER-002"]
+status = "active"
+
+[[constraint]]
+id = "CON-004"
+title = "Finite codec ownership"
+kind = "anti_pattern"
+statement = "The codec SHALL NOT allocate an unbounded input copy or full oversized output before enforcing byte/token/line/count limits."
+rationale = "Protect the selected first-slice boundary and evidence integrity."
+enforcement = "mixed"
+test_ids = ["TST-NEG-012","TST-PERF-001","TST-BOUND-005"]
+verification_ids = ["VER-002"]
+status = "active"
+
+[[constraint]]
+id = "CON-005"
+title = "No successful partial replay"
+kind = "invariant"
+statement = "A failed numerical operation SHALL NOT expose a successful ReplayResult prefix or mutate borrowed inputs."
+rationale = "Protect the selected first-slice boundary and evidence integrity."
+enforcement = "mixed"
+test_ids = ["TST-ACC-004","TST-NEG-014","TST-INV-001"]
+verification_ids = ["VER-003"]
+status = "active"
+
+[[constraint]]
+id = "CON-006"
+title = "No runtime or legacy migration"
+kind = "negative"
+statement = "This slice SHALL NOT add a production runtime, production crate, production dependency, unsafe Rust implementation or legacy CSV/service/dashboard migration."
+rationale = "Protect the selected first-slice boundary and evidence integrity."
+enforcement = "mixed"
+test_ids = ["TST-ACC-001","TST-ANTI-001","TST-STRUCT-001","TST-STRUCT-002"]
+verification_ids = ["VER-003"]
+status = "active"
+
+[[constraint]]
+id = "CON-007"
+title = "Measured resource limits"
+kind = "performance"
+statement = "The declared maximum release workload SHALL satisfy the measured 512MiB/30second budgets without claiming OS enforcement."
+rationale = "Protect the selected first-slice boundary and evidence integrity."
+enforcement = "verification"
+test_ids = []
+verification_ids = ["VER-004"]
+status = "active"
+
+[[constraint]]
+id = "CON-008"
+title = "Partial asynchronous scope"
+kind = "non_goal"
+statement = "The handoff SHALL NOT describe virtual waiting or replay as actual channel/slow-consumer/shutdown acceptance or completed parent issue6."
+rationale = "Protect the selected first-slice boundary and evidence integrity."
+enforcement = "verification"
+test_ids = []
+verification_ids = ["VER-005"]
+status = "active"
+

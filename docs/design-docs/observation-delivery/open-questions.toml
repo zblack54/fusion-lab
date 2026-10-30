@@ -1,0 +1,1 @@
+# No unresolved design decisions. Main revision2 approval issue72comment6527647445 follows independent oracle/core review and all exact-head0e52c397 native/ordinary checks. Main must create/verify the superseding lock and externally publish its digest before implementation restoration.

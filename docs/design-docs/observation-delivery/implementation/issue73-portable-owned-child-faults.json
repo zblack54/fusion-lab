@@ -1,0 +1,304 @@
+{
+  "persistent_pending.json": {
+    "argv": [
+      "synthetic-fault-fixture-no-numerical-work",
+      "maximum"
+    ],
+    "workload": "maximum",
+    "timeout_seconds": 60,
+    "pid": 112500,
+    "seconds_spawn_to_complete_work": 0.014999999897554517,
+    "complete_line": "FAULT\r\n",
+    "success": false,
+    "error": "RuntimeError('missing/malformed complete-work proof')",
+    "cleanup_owned_pid": 112500,
+    "reap_confirmed": true,
+    "cleanup_cycle": 2,
+    "cleanup_attempt": 1,
+    "kill_attempted": true,
+    "cleanup_error_count": 6,
+    "cleanup_errors": [
+      {
+        "operation": "kill",
+        "error": "PermissionError('injected owned-child kill failure')"
+      },
+      {
+        "operation": "wait_reap",
+        "error": "TimeoutError('injected owned-child wait failure')"
+      },
+      {
+        "operation": "kill",
+        "error": "PermissionError('injected owned-child kill failure')"
+      },
+      {
+        "operation": "wait_reap",
+        "error": "TimeoutError('injected owned-child wait failure')"
+      },
+      {
+        "operation": "kill",
+        "error": "PermissionError('injected owned-child kill failure')"
+      },
+      {
+        "operation": "wait_reap",
+        "error": "TimeoutError('injected owned-child wait failure')"
+      }
+    ],
+    "latest_cleanup_error": {
+      "operation": "wait_reap",
+      "error": "TimeoutError('injected owned-child wait failure')"
+    },
+    "cleanup_status": "reaped",
+    "manual_reconciliation_required": false,
+    "same_child_and_memory_handle_retained": true,
+    "original_error_preserved": "RuntimeError('missing/malformed complete-work proof')",
+    "no_next_workload_until_reaped": true,
+    "exit": 1,
+    "stderr": "",
+    "seconds_owner_total": 5.030999999959022
+  },
+  "persistent_pending.pending.json": {
+    "argv": [
+      "synthetic-fault-fixture-no-numerical-work",
+      "maximum"
+    ],
+    "workload": "maximum",
+    "timeout_seconds": 60,
+    "pid": 112500,
+    "seconds_spawn_to_complete_work": 0.014999999897554517,
+    "complete_line": "FAULT\r\n",
+    "success": false,
+    "error": "RuntimeError('missing/malformed complete-work proof')",
+    "cleanup_owned_pid": 112500,
+    "reap_confirmed": true,
+    "cleanup_cycle": 2,
+    "cleanup_attempt": 1,
+    "kill_attempted": true,
+    "cleanup_error_count": 6,
+    "cleanup_errors": [
+      {
+        "operation": "kill",
+        "error": "PermissionError('injected owned-child kill failure')"
+      },
+      {
+        "operation": "wait_reap",
+        "error": "TimeoutError('injected owned-child wait failure')"
+      },
+      {
+        "operation": "kill",
+        "error": "PermissionError('injected owned-child kill failure')"
+      },
+      {
+        "operation": "wait_reap",
+        "error": "TimeoutError('injected owned-child wait failure')"
+      },
+      {
+        "operation": "kill",
+        "error": "PermissionError('injected owned-child kill failure')"
+      },
+      {
+        "operation": "wait_reap",
+        "error": "TimeoutError('injected owned-child wait failure')"
+      }
+    ],
+    "latest_cleanup_error": {
+      "operation": "wait_reap",
+      "error": "TimeoutError('injected owned-child wait failure')"
+    },
+    "cleanup_status": "reaped",
+    "manual_reconciliation_required": false,
+    "same_child_and_memory_handle_retained": true,
+    "original_error_preserved": "RuntimeError('missing/malformed complete-work proof')",
+    "no_next_workload_until_reaped": true,
+    "exit": 1
+  },
+  "summary.json": {
+    "helper_sha256": "a0ef217968711b63d80c3eebb3d32756b19f0552b2975ea1eeff84e1825a17e7",
+    "kind": "actual owned Python children with deterministic injected OS-operation faults; NO numerical workload",
+    "sampler_sha256": "6989eb8c3f77847bf51261bbb3b8f90e30545176ac9e7ee0207ba5fdc0130d54",
+    "results": [
+      {
+        "mode": "transient_kill",
+        "actual_owned_pid": 104656,
+        "exit": 1,
+        "reap_confirmed": true,
+        "cleanup_error_count": 2,
+        "persistent_pending_observed": false,
+        "original_error": "RuntimeError('missing/malformed complete-work proof')",
+        "receipt": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\delivery-owned-faults-portable-1\\transient_kill.json"
+      },
+      {
+        "mode": "transient_wait",
+        "actual_owned_pid": 102932,
+        "exit": 1,
+        "reap_confirmed": true,
+        "cleanup_error_count": 1,
+        "persistent_pending_observed": false,
+        "original_error": "RuntimeError('missing/malformed complete-work proof')",
+        "receipt": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\delivery-owned-faults-portable-1\\transient_wait.json"
+      },
+      {
+        "mode": "persistent_pending",
+        "actual_owned_pid": 112500,
+        "exit": 1,
+        "reap_confirmed": true,
+        "cleanup_error_count": 6,
+        "persistent_pending_observed": true,
+        "original_error": "RuntimeError('missing/malformed complete-work proof')",
+        "receipt": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\delivery-owned-faults-portable-1\\persistent_pending.json"
+      }
+    ],
+    "all_reaped": true
+  },
+  "transient_kill.json": {
+    "argv": [
+      "synthetic-fault-fixture-no-numerical-work",
+      "maximum"
+    ],
+    "workload": "maximum",
+    "timeout_seconds": 60,
+    "pid": 104656,
+    "seconds_spawn_to_complete_work": 0.031999999890103936,
+    "complete_line": "FAULT\r\n",
+    "success": false,
+    "error": "RuntimeError('missing/malformed complete-work proof')",
+    "cleanup_owned_pid": 104656,
+    "reap_confirmed": true,
+    "cleanup_cycle": 1,
+    "cleanup_attempt": 2,
+    "kill_attempted": true,
+    "cleanup_error_count": 2,
+    "cleanup_errors": [
+      {
+        "operation": "kill",
+        "error": "PermissionError('injected owned-child kill failure')"
+      },
+      {
+        "operation": "wait_reap",
+        "error": "TimeoutExpired(['C:\\\\Users\\\\Admin\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\python\\\\python.exe', '-c', 'import sys,time;print(\"FAULT\",flush=True);time.sleep(120)'], 1)"
+      }
+    ],
+    "latest_cleanup_error": {
+      "operation": "wait_reap",
+      "error": "TimeoutExpired(['C:\\\\Users\\\\Admin\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\python\\\\python.exe', '-c', 'import sys,time;print(\"FAULT\",flush=True);time.sleep(120)'], 1)"
+    },
+    "exit": 1,
+    "cleanup_status": "reaped",
+    "manual_reconciliation_required": false,
+    "same_child_and_memory_handle_retained": true,
+    "original_error_preserved": "RuntimeError('missing/malformed complete-work proof')",
+    "no_next_workload_until_reaped": true,
+    "stderr": "",
+    "seconds_owner_total": 1.047000000020489
+  },
+  "transient_kill.pending.json": {
+    "argv": [
+      "synthetic-fault-fixture-no-numerical-work",
+      "maximum"
+    ],
+    "workload": "maximum",
+    "timeout_seconds": 60,
+    "pid": 104656,
+    "seconds_spawn_to_complete_work": 0.031999999890103936,
+    "complete_line": "FAULT\r\n",
+    "success": false,
+    "error": "RuntimeError('missing/malformed complete-work proof')",
+    "cleanup_owned_pid": 104656,
+    "reap_confirmed": true,
+    "cleanup_cycle": 1,
+    "cleanup_attempt": 2,
+    "kill_attempted": true,
+    "cleanup_error_count": 2,
+    "cleanup_errors": [
+      {
+        "operation": "kill",
+        "error": "PermissionError('injected owned-child kill failure')"
+      },
+      {
+        "operation": "wait_reap",
+        "error": "TimeoutExpired(['C:\\\\Users\\\\Admin\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\python\\\\python.exe', '-c', 'import sys,time;print(\"FAULT\",flush=True);time.sleep(120)'], 1)"
+      }
+    ],
+    "latest_cleanup_error": {
+      "operation": "wait_reap",
+      "error": "TimeoutExpired(['C:\\\\Users\\\\Admin\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\python\\\\python.exe', '-c', 'import sys,time;print(\"FAULT\",flush=True);time.sleep(120)'], 1)"
+    },
+    "exit": 1,
+    "cleanup_status": "reaped",
+    "manual_reconciliation_required": false,
+    "same_child_and_memory_handle_retained": true,
+    "original_error_preserved": "RuntimeError('missing/malformed complete-work proof')",
+    "no_next_workload_until_reaped": true
+  },
+  "transient_wait.json": {
+    "argv": [
+      "synthetic-fault-fixture-no-numerical-work",
+      "maximum"
+    ],
+    "workload": "maximum",
+    "timeout_seconds": 60,
+    "pid": 102932,
+    "seconds_spawn_to_complete_work": 0.015999999828636646,
+    "complete_line": "FAULT\r\n",
+    "success": false,
+    "error": "RuntimeError('missing/malformed complete-work proof')",
+    "cleanup_owned_pid": 102932,
+    "reap_confirmed": true,
+    "cleanup_cycle": 1,
+    "cleanup_attempt": 2,
+    "kill_attempted": true,
+    "cleanup_error_count": 1,
+    "cleanup_errors": [
+      {
+        "operation": "wait_reap",
+        "error": "TimeoutError('injected owned-child wait failure')"
+      }
+    ],
+    "latest_cleanup_error": {
+      "operation": "wait_reap",
+      "error": "TimeoutError('injected owned-child wait failure')"
+    },
+    "exit": 1,
+    "cleanup_status": "reaped",
+    "manual_reconciliation_required": false,
+    "same_child_and_memory_handle_retained": true,
+    "original_error_preserved": "RuntimeError('missing/malformed complete-work proof')",
+    "no_next_workload_until_reaped": true,
+    "stderr": "",
+    "seconds_owner_total": 0.031999999890103936
+  },
+  "transient_wait.pending.json": {
+    "argv": [
+      "synthetic-fault-fixture-no-numerical-work",
+      "maximum"
+    ],
+    "workload": "maximum",
+    "timeout_seconds": 60,
+    "pid": 102932,
+    "seconds_spawn_to_complete_work": 0.015999999828636646,
+    "complete_line": "FAULT\r\n",
+    "success": false,
+    "error": "RuntimeError('missing/malformed complete-work proof')",
+    "cleanup_owned_pid": 102932,
+    "reap_confirmed": true,
+    "cleanup_cycle": 1,
+    "cleanup_attempt": 2,
+    "kill_attempted": true,
+    "cleanup_error_count": 1,
+    "cleanup_errors": [
+      {
+        "operation": "wait_reap",
+        "error": "TimeoutError('injected owned-child wait failure')"
+      }
+    ],
+    "latest_cleanup_error": {
+      "operation": "wait_reap",
+      "error": "TimeoutError('injected owned-child wait failure')"
+    },
+    "exit": 1,
+    "cleanup_status": "reaped",
+    "manual_reconciliation_required": false,
+    "same_child_and_memory_handle_retained": true,
+    "original_error_preserved": "RuntimeError('missing/malformed complete-work proof')",
+    "no_next_workload_until_reaped": true
+  }
+}

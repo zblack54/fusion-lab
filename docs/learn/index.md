@@ -3,7 +3,7 @@
 Fusion Lab asks a concrete question: where is a moving robot when its position
 beacon disappears, but velocity measurements keep arriving? The current v0.1
 experiment is an offline Rust program. Truth is known to simulation and evaluation;
-the estimator sees observations only. The local service is available; browser UI and delayed delivery remain in progress or planned. None is required for this walkthrough.
+the estimator sees observations only. The local service and dashboard are available. [Timestamped delivery and replay](observation-delivery.md) is being verified separately. None is required for this walkthrough.
 
 ## Minutes 0–3: run one experiment
 
@@ -50,9 +50,7 @@ confusing a blank measurement with the numerical value zero.
 
 Read the [research guide](research.md). The repeated-seed outage study reports
 paired effects, uncertainty, and the seeds where integration beat the filter.
-An ellipse labelled 95% does not guarantee 95% empirical coverage. Changing
-sensor sigma currently changes both generated noise and assumed covariance;
-true/assumed noise mismatch and velocity bias are [future work](../roadmap.md).
+An ellipse labelled 95% does not guarantee 95% empirical coverage. The accepted [noise-mismatch controls](noise-mismatch.md) separate generated noise from assumed covariance; [velocity bias](velocity-bias.md) and [drift](velocity-drift.md) add systematic errors. The [held-out study](robustness-study.md) records their measured limits.
 
 ## Minutes 13–15: test your understanding
 

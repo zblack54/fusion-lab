@@ -1,0 +1,555 @@
+[[test]]
+id = "TST-ACC-001"
+title = "zero delay matches original bits"
+kind = "acceptance"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_acc_001_zero_delay_matches_original_bits"
+test_target = "test:contracts"
+covers = ["REQ-012","REQ-020","REQ-021","REQ-031","REQ-036","CON-006"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "OBSERVATION_DELIVERY_NOT_IMPLEMENTED"
+expected_failure_reason = "The authorized diagnostic seam has no delivery behavior; this observable contract reaches its single named not-implemented boundary."
+required = true
+
+[[test]]
+id = "TST-ACC-002"
+title = "record import replay same result"
+kind = "acceptance"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_acc_002_record_import_replay_same_result"
+test_target = "test:contracts"
+covers = ["REQ-018","REQ-020","REQ-021","REQ-022","REQ-023","REQ-024","REQ-025","REQ-031"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "OBSERVATION_DELIVERY_NOT_IMPLEMENTED"
+expected_failure_reason = "The authorized diagnostic seam has no delivery behavior; this observable contract reaches its single named not-implemented boundary."
+required = true
+
+[[test]]
+id = "TST-ACC-003"
+title = "projection copies only observations"
+kind = "acceptance"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_acc_003_projection_copies_only_observations"
+test_target = "test:contracts"
+covers = ["REQ-012","REQ-013","REQ-030","REQ-032","CON-001"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "OBSERVATION_DELIVERY_NOT_IMPLEMENTED"
+expected_failure_reason = "The authorized diagnostic seam has no delivery behavior; this observable contract reaches its single named not-implemented boundary."
+required = true
+
+[[test]]
+id = "TST-ACC-004"
+title = "numerical failure has no successful prefix"
+kind = "acceptance"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_acc_004_numerical_failure_has_no_successful_prefix"
+test_target = "test:contracts"
+covers = ["REQ-029","REQ-030","CON-005"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "OBSERVATION_DELIVERY_NOT_IMPLEMENTED"
+expected_failure_reason = "The authorized diagnostic seam has no delivery behavior; this observable contract reaches its single named not-implemented boundary."
+required = true
+
+[[test]]
+id = "TST-BEH-001"
+title = "readonly observation identity"
+kind = "behavioral"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_beh_001_readonly_observation_identity"
+test_target = "test:contracts"
+covers = ["REQ-001","REQ-002","REQ-003","REQ-004"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "OBSERVATION_DELIVERY_NOT_IMPLEMENTED"
+expected_failure_reason = "The authorized diagnostic seam has no delivery behavior; this observable contract reaches its single named not-implemented boundary."
+required = true
+
+[[test]]
+id = "TST-BEH-002"
+title = "raw constructor normalizes ties"
+kind = "behavioral"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_beh_002_raw_constructor_normalizes_ties"
+test_target = "test:contracts"
+covers = ["REQ-010","REQ-023"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "OBSERVATION_DELIVERY_NOT_IMPLEMENTED"
+expected_failure_reason = "The authorized diagnostic seam has no delivery behavior; this observable contract reaches its single named not-implemented boundary."
+required = true
+
+[[test]]
+id = "TST-BEH-003"
+title = "stale is equivalent to omission"
+kind = "behavioral"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_beh_003_stale_is_equivalent_to_omission"
+test_target = "test:contracts"
+covers = ["REQ-018","REQ-021","CON-002"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "OBSERVATION_DELIVERY_NOT_IMPLEMENTED"
+expected_failure_reason = "The authorized diagnostic seam has no delivery behavior; this observable contract reaches its single named not-implemented boundary."
+required = true
+
+[[test]]
+id = "TST-BEH-004"
+title = "independent cross covariance update"
+kind = "behavioral"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_beh_004_independent_cross_covariance_update"
+test_target = "test:contracts"
+covers = ["REQ-020","REQ-021"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "OBSERVATION_DELIVERY_NOT_IMPLEMENTED"
+expected_failure_reason = "The authorized diagnostic seam has no delivery behavior; this observable contract reaches its single named not-implemented boundary."
+required = true
+
+[[test]]
+id = "TST-BEH-005"
+title = "loss uses scheduled sequence gaps"
+kind = "behavioral"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_beh_005_loss_uses_scheduled_sequence_gaps"
+test_target = "test:contracts"
+covers = ["REQ-012","REQ-014"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "OBSERVATION_DELIVERY_NOT_IMPLEMENTED"
+expected_failure_reason = "The authorized diagnostic seam has no delivery behavior; this observable contract reaches its single named not-implemented boundary."
+required = true
+
+[[test]]
+id = "TST-BEH-006"
+title = "fixed prior process noise and floor"
+kind = "behavioral"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_beh_006_fixed_prior_process_noise_and_floor"
+test_target = "test:contracts"
+covers = ["REQ-020","REQ-026"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "OBSERVATION_DELIVERY_NOT_IMPLEMENTED"
+expected_failure_reason = "The authorized diagnostic seam has no delivery behavior; this observable contract reaches its single named not-implemented boundary."
+required = true
+
+[[test]]
+id = "TST-BEH-007"
+title = "model preserves requested endpoints"
+kind = "behavioral"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_beh_007_model_preserves_requested_endpoints"
+test_target = "test:contracts"
+covers = ["REQ-005","REQ-026"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "OBSERVATION_DELIVERY_NOT_IMPLEMENTED"
+expected_failure_reason = "The authorized diagnostic seam has no delivery behavior; this observable contract reaches its single named not-implemented boundary."
+required = true
+
+[[test]]
+id = "TST-BOUND-001"
+title = "duration and capacity edges"
+kind = "boundary"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_bound_001_duration_and_capacity_edges"
+test_target = "test:contracts"
+covers = ["REQ-006","REQ-007"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "OBSERVATION_DELIVERY_NOT_IMPLEMENTED"
+expected_failure_reason = "The authorized diagnostic seam has no delivery behavior; this observable contract reaches its single named not-implemented boundary."
+required = true
+
+[[test]]
+id = "TST-BOUND-002"
+title = "delay endpoints and plan"
+kind = "boundary"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_bound_002_delay_endpoints_and_plan"
+test_target = "test:contracts"
+covers = ["REQ-003","REQ-004","REQ-007"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "OBSERVATION_DELIVERY_NOT_IMPLEMENTED"
+expected_failure_reason = "The authorized diagnostic seam has no delivery behavior; this observable contract reaches its single named not-implemented boundary."
+required = true
+
+[[test]]
+id = "TST-BOUND-003"
+title = "final arrival and future horizon"
+kind = "boundary"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_bound_003_final_arrival_and_future_horizon"
+test_target = "test:contracts"
+covers = ["REQ-015","REQ-017","REQ-019","REQ-022"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "OBSERVATION_DELIVERY_NOT_IMPLEMENTED"
+expected_failure_reason = "The authorized diagnostic seam has no delivery behavior; this observable contract reaches its single named not-implemented boundary."
+required = true
+
+[[test]]
+id = "TST-BOUND-004"
+title = "attainable 127 arrival burst"
+kind = "boundary"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_bound_004_attainable_127_arrival_burst"
+test_target = "test:contracts"
+covers = ["REQ-008","REQ-015","REQ-016","REQ-018","REQ-023","CON-003"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "OBSERVATION_DELIVERY_NOT_IMPLEMENTED"
+expected_failure_reason = "The authorized diagnostic seam has no delivery behavior; this observable contract reaches its single named not-implemented boundary."
+required = true
+
+[[test]]
+id = "TST-BOUND-005"
+title = "extreme float tokens and split model header"
+kind = "boundary"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_bound_005_extreme_float_tokens_and_split_model_header"
+test_target = "test:contracts"
+covers = ["REQ-024","REQ-025","REQ-026","REQ-027","REQ-028","CON-004"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "OBSERVATION_DELIVERY_NOT_IMPLEMENTED"
+expected_failure_reason = "The authorized diagnostic seam has no delivery behavior; this observable contract reaches its single named not-implemented boundary."
+required = true
+
+[[test]]
+id = "TST-BOUND-006"
+title = "maximum source inventory"
+kind = "boundary"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_bound_006_maximum_source_inventory"
+test_target = "test:contracts"
+covers = ["REQ-006","REQ-008"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "OBSERVATION_DELIVERY_NOT_IMPLEMENTED"
+expected_failure_reason = "The authorized diagnostic seam has no delivery behavior; this observable contract reaches its single named not-implemented boundary."
+required = true
+
+[[test]]
+id = "TST-NEG-001"
+title = "model rejects nonfinite and outside domain"
+kind = "negative"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_neg_001_model_rejects_nonfinite_and_outside_domain"
+test_target = "test:contracts"
+covers = ["REQ-005"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "OBSERVATION_DELIVERY_NOT_IMPLEMENTED"
+expected_failure_reason = "The authorized diagnostic seam has no delivery behavior; this observable contract reaches its single named not-implemented boundary."
+required = true
+
+[[test]]
+id = "TST-NEG-002"
+title = "payload nonfinite is not loss"
+kind = "negative"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_neg_002_payload_nonfinite_is_not_loss"
+test_target = "test:contracts"
+covers = ["REQ-001"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "OBSERVATION_DELIVERY_NOT_IMPLEMENTED"
+expected_failure_reason = "The authorized diagnostic seam has no delivery behavior; this observable contract reaches its single named not-implemented boundary."
+required = true
+
+[[test]]
+id = "TST-NEG-003"
+title = "sequence schedule and horizon are checked"
+kind = "negative"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_neg_003_sequence_schedule_and_horizon_are_checked"
+test_target = "test:contracts"
+covers = ["REQ-002","REQ-006"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "OBSERVATION_DELIVERY_NOT_IMPLEMENTED"
+expected_failure_reason = "The authorized diagnostic seam has no delivery behavior; this observable contract reaches its single named not-implemented boundary."
+required = true
+
+[[test]]
+id = "TST-NEG-004"
+title = "causality and delay excess"
+kind = "negative"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_neg_004_causality_and_delay_excess"
+test_target = "test:contracts"
+covers = ["REQ-003","REQ-004"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "OBSERVATION_DELIVERY_NOT_IMPLEMENTED"
+expected_failure_reason = "The authorized diagnostic seam has no delivery behavior; this observable contract reaches its single named not-implemented boundary."
+required = true
+
+[[test]]
+id = "TST-NEG-005"
+title = "nonadjacent duplicate identity"
+kind = "negative"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_neg_005_nonadjacent_duplicate_identity"
+test_target = "test:contracts"
+covers = ["REQ-009","REQ-011"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "OBSERVATION_DELIVERY_NOT_IMPLEMENTED"
+expected_failure_reason = "The authorized diagnostic seam has no delivery behavior; this observable contract reaches its single named not-implemented boundary."
+required = true
+
+[[test]]
+id = "TST-NEG-006"
+title = "projection layout is validated"
+kind = "negative"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_neg_006_projection_layout_is_validated"
+test_target = "test:contracts"
+covers = ["REQ-013"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "OBSERVATION_DELIVERY_NOT_IMPLEMENTED"
+expected_failure_reason = "The authorized diagnostic seam has no delivery behavior; this observable contract reaches its single named not-implemented boundary."
+required = true
+
+[[test]]
+id = "TST-NEG-007"
+title = "encoding and newline grammar"
+kind = "negative"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_neg_007_encoding_and_newline_grammar"
+test_target = "test:contracts"
+covers = ["REQ-024","REQ-028"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "OBSERVATION_DELIVERY_NOT_IMPLEMENTED"
+expected_failure_reason = "The authorized diagnostic seam has no delivery behavior; this observable contract reaches its single named not-implemented boundary."
+required = true
+
+[[test]]
+id = "TST-NEG-008"
+title = "schema and fixed header fields"
+kind = "negative"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_neg_008_schema_and_fixed_header_fields"
+test_target = "test:contracts"
+covers = ["REQ-024","REQ-026"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "OBSERVATION_DELIVERY_NOT_IMPLEMENTED"
+expected_failure_reason = "The authorized diagnostic seam has no delivery behavior; this observable contract reaches its single named not-implemented boundary."
+required = true
+
+[[test]]
+id = "TST-NEG-009"
+title = "noncanonical numeric tokens"
+kind = "negative"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_neg_009_noncanonical_numeric_tokens"
+test_target = "test:contracts"
+covers = ["REQ-024","REQ-025"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "OBSERVATION_DELIVERY_NOT_IMPLEMENTED"
+expected_failure_reason = "The authorized diagnostic seam has no delivery behavior; this observable contract reaches its single named not-implemented boundary."
+required = true
+
+[[test]]
+id = "TST-NEG-010"
+title = "row count and column count"
+kind = "negative"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_neg_010_row_count_and_column_count"
+test_target = "test:contracts"
+covers = ["REQ-024","REQ-028"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "OBSERVATION_DELIVERY_NOT_IMPLEMENTED"
+expected_failure_reason = "The authorized diagnostic seam has no delivery behavior; this observable contract reaches its single named not-implemented boundary."
+required = true
+
+[[test]]
+id = "TST-NEG-011"
+title = "import rejects order inversion"
+kind = "negative"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_neg_011_import_rejects_order_inversion"
+test_target = "test:contracts"
+covers = ["REQ-011"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "OBSERVATION_DELIVERY_NOT_IMPLEMENTED"
+expected_failure_reason = "The authorized diagnostic seam has no delivery behavior; this observable contract reaches its single named not-implemented boundary."
+required = true
+
+[[test]]
+id = "TST-NEG-012"
+title = "input byte token and line caps"
+kind = "negative"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_neg_012_input_byte_token_and_line_caps"
+test_target = "test:contracts"
+covers = ["REQ-027","REQ-028","CON-004"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "OBSERVATION_DELIVERY_NOT_IMPLEMENTED"
+expected_failure_reason = "The authorized diagnostic seam has no delivery behavior; this observable contract reaches its single named not-implemented boundary."
+required = true
+
+[[test]]
+id = "TST-NEG-013"
+title = "cardinality before duplicate allocation"
+kind = "negative"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_neg_013_cardinality_before_duplicate_allocation"
+test_target = "test:contracts"
+covers = ["REQ-008"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "OBSERVATION_DELIVERY_NOT_IMPLEMENTED"
+expected_failure_reason = "The authorized diagnostic seam has no delivery behavior; this observable contract reaches its single named not-implemented boundary."
+required = true
+
+[[test]]
+id = "TST-PROP-001"
+title = "all raw permutations are equivalent"
+kind = "property"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_prop_001_all_raw_permutations_are_equivalent"
+test_target = "test:contracts"
+covers = ["REQ-010","REQ-015","REQ-016","REQ-017","REQ-023","REQ-031"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "OBSERVATION_DELIVERY_NOT_IMPLEMENTED"
+expected_failure_reason = "The authorized diagnostic seam has no delivery behavior; this observable contract reaches its single named not-implemented boundary."
+required = true
+
+[[test]]
+id = "TST-PROP-002"
+title = "finite payload roundtrip preserves bits"
+kind = "property"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_prop_002_finite_payload_roundtrip_preserves_bits"
+test_target = "test:contracts"
+covers = ["REQ-025","REQ-031"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "OBSERVATION_DELIVERY_NOT_IMPLEMENTED"
+expected_failure_reason = "The authorized diagnostic seam has no delivery behavior; this observable contract reaches its single named not-implemented boundary."
+required = true
+
+[[test]]
+id = "TST-PROP-003"
+title = "finite extreme late inputs have no numerical effect"
+kind = "property"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_prop_003_finite_extreme_late_inputs_have_no_numerical_effect"
+test_target = "test:contracts"
+covers = ["REQ-001","REQ-018","REQ-021","REQ-029","CON-002"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "OBSERVATION_DELIVERY_NOT_IMPLEMENTED"
+expected_failure_reason = "The authorized diagnostic seam has no delivery behavior; this observable contract reaches its single named not-implemented boundary."
+required = true
+
+[[test]]
+id = "TST-PROP-004"
+title = "ledger partitions bounded plan grid"
+kind = "property"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_prop_004_ledger_partitions_bounded_plan_grid"
+test_target = "test:contracts"
+covers = ["REQ-014","REQ-015","REQ-016","REQ-017","REQ-018","REQ-019","REQ-022","REQ-023","CON-003"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "OBSERVATION_DELIVERY_NOT_IMPLEMENTED"
+expected_failure_reason = "The authorized diagnostic seam has no delivery behavior; this observable contract reaches its single named not-implemented boundary."
+required = true
+
+[[test]]
+id = "TST-STATE-001"
+title = "drain bypass and source arrival ledgers"
+kind = "state_transition"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_state_001_drain_bypass_and_source_arrival_ledgers"
+test_target = "test:contracts"
+covers = ["REQ-015","REQ-016","REQ-017","REQ-018","REQ-021","REQ-022","REQ-023","CON-002","CON-003"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "OBSERVATION_DELIVERY_NOT_IMPLEMENTED"
+expected_failure_reason = "The authorized diagnostic seam has no delivery behavior; this observable contract reaches its single named not-implemented boundary."
+required = true
+
+[[test]]
+id = "TST-STATE-002"
+title = "scripted loss precedes queue and horizon"
+kind = "state_transition"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_state_002_scripted_loss_precedes_queue_and_horizon"
+test_target = "test:contracts"
+covers = ["REQ-014","REQ-017","REQ-019","REQ-022","CON-003"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "OBSERVATION_DELIVERY_NOT_IMPLEMENTED"
+expected_failure_reason = "The authorized diagnostic seam has no delivery behavior; this observable contract reaches its single named not-implemented boundary."
+required = true
+
+[[test]]
+id = "TST-CONTRACT-001"
+title = "exact version one artifacts"
+kind = "contract"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_contract_001_exact_version_one_artifacts"
+test_target = "test:contracts"
+covers = ["REQ-022","REQ-023","REQ-024","REQ-025","REQ-026"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "OBSERVATION_DELIVERY_NOT_IMPLEMENTED"
+expected_failure_reason = "The authorized diagnostic seam has no delivery behavior; this observable contract reaches its single named not-implemented boundary."
+required = true
+
+[[test]]
+id = "TST-PERF-001"
+title = "valid large trace fails serialization at cap"
+kind = "performance"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_perf_001_valid_large_trace_fails_serialization_at_cap"
+test_target = "test:contracts"
+covers = ["REQ-008","REQ-027","CON-004"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "OBSERVATION_DELIVERY_NOT_IMPLEMENTED"
+expected_failure_reason = "The authorized diagnostic seam has no delivery behavior; this observable contract reaches its single named not-implemented boundary."
+required = true
+
+[[test]]
+id = "TST-ANTI-001"
+title = "named seam removed before implementation acceptance"
+kind = "anti_pattern"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_anti_001_named_seam_removed_before_implementation_acceptance"
+test_target = "test:contracts"
+covers = ["REQ-032","CON-006"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "OBSERVATION_DELIVERY_NOT_IMPLEMENTED"
+expected_failure_reason = "The authorized diagnostic seam has no delivery behavior; this observable contract reaches its single named not-implemented boundary."
+required = true
+
+[[test]]
+id = "TST-STRUCT-001"
+title = "readonly surface is downstream usable"
+kind = "structural"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_struct_001_readonly_surface_is_downstream_usable"
+test_target = "test:contracts"
+covers = ["REQ-012","REQ-030","REQ-032","CON-001","CON-006"]
+expected_pre_implementation = "pass"
+required = true
+
+[[test]]
+id = "TST-INV-001"
+title = "replay is readonly and repeatable"
+kind = "invariant"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_inv_001_replay_is_readonly_and_repeatable"
+test_target = "test:contracts"
+covers = ["REQ-029","REQ-030","REQ-031","CON-005"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "OBSERVATION_DELIVERY_NOT_IMPLEMENTED"
+expected_failure_reason = "The authorized diagnostic seam has no delivery behavior; this observable contract reaches its single named not-implemented boundary."
+required = true
+
+[[test]]
+id = "TST-NEG-014"
+title = "on time update overflow preserves source error"
+kind = "negative"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_neg_014_on_time_update_overflow_preserves_source_error"
+test_target = "test:contracts"
+covers = ["REQ-029","REQ-030","CON-005"]
+expected_pre_implementation = "fail"
+expected_failure_contains = "OBSERVATION_DELIVERY_NOT_IMPLEMENTED"
+expected_failure_reason = "The authorized diagnostic seam has no delivery behavior; this observable contract reaches its single named not-implemented boundary."
+required = true
+
+[[test]]
+id = "TST-STRUCT-002"
+title = "external record update is rejected"
+kind = "structural"
+path = "test-suite/tests/contracts.rs"
+selector = "tst_struct_002_external_record_update_is_rejected"
+test_target = "test:contracts"
+covers = ["REQ-030","REQ-032","CON-001","CON-006"]
+expected_pre_implementation = "pass"
+required = true
+

@@ -1,0 +1,40 @@
+[[task]]
+id = "TASK-001"
+title = "Implement validated observational input and source projection"
+depends_on = []
+requirement_ids = ["REQ-001","REQ-002","REQ-003","REQ-004","REQ-005","REQ-006","REQ-007","REQ-008","REQ-012","REQ-013","REQ-032"]
+constraint_ids = ["CON-001"]
+test_ids = ["TST-BEH-001","TST-BEH-007","TST-BOUND-001","TST-NEG-001","TST-NEG-003","TST-NEG-004","TST-NEG-006","TST-NEG-013","TST-STRUCT-001","TST-STRUCT-002"]
+verification_ids = ["VER-001"]
+completion = "Stage-local domain/source-layout and downstream type/privacy selectors listed here pass with VER-001 inspection. Replay/codec/anti-marker integration selectors are explicitly deferred to TASK-003; this does not claim complete verification of every linked feature requirement."
+
+[[task]]
+id = "TASK-002"
+title = "Implement virtual waiting and complete synchronous replay"
+depends_on = ["TASK-001"]
+requirement_ids = ["REQ-014","REQ-015","REQ-016","REQ-017","REQ-018","REQ-019","REQ-020","REQ-021","REQ-022","REQ-023"]
+constraint_ids = ["CON-002"]
+test_ids = ["TST-BEH-003","TST-BEH-004","TST-BEH-005","TST-BEH-006","TST-BOUND-003","TST-BOUND-004","TST-PROP-003","TST-PROP-004","TST-STATE-001","TST-STATE-002"]
+verification_ids = []
+completion = "Stage-local pure replay selectors listed here pass after TASK-001. Codec-roundtrip, input-byte-preservation and complete-seam-removal selectors remain deferred until TASK-003; measured budgets/native full acceptance remain TASK-004 obligations."
+
+[[task]]
+id = "TASK-003"
+title = "Implement strict bounded round-trip trace and ledger codecs"
+depends_on = ["TASK-001","TASK-002"]
+requirement_ids = ["REQ-009","REQ-010","REQ-011","REQ-024","REQ-025","REQ-026","REQ-027","REQ-028","REQ-029","REQ-030","REQ-031","REQ-037"]
+constraint_ids = ["CON-003","CON-004","CON-005"]
+test_ids = ["TST-ACC-001","TST-ACC-002","TST-ACC-003","TST-ACC-004","TST-BEH-001","TST-BEH-002","TST-BEH-003","TST-BEH-004","TST-BEH-005","TST-BEH-006","TST-BEH-007","TST-BOUND-001","TST-BOUND-002","TST-BOUND-003","TST-BOUND-004","TST-BOUND-005","TST-BOUND-006","TST-NEG-001","TST-NEG-002","TST-NEG-003","TST-NEG-004","TST-NEG-005","TST-NEG-006","TST-NEG-007","TST-NEG-008","TST-NEG-009","TST-NEG-010","TST-NEG-011","TST-NEG-012","TST-NEG-013","TST-PROP-001","TST-PROP-002","TST-PROP-003","TST-PROP-004","TST-STATE-001","TST-STATE-002","TST-CONTRACT-001","TST-PERF-001","TST-ANTI-001","TST-STRUCT-001","TST-INV-001","TST-NEG-014","TST-STRUCT-002"]
+verification_ids = ["VER-002"]
+completion = "All43 selectors, including deferred domain/replay integration, strict codec, typed failure and seam removal, pass unchanged. Every earlier deferred functional obligation is now checked; resource/example/native final acceptance remains TASK-004."
+
+[[task]]
+id = "TASK-004"
+title = "Finish separate example and human acceptance evidence"
+depends_on = ["TASK-001","TASK-002","TASK-003"]
+requirement_ids = ["REQ-001","REQ-002","REQ-003","REQ-004","REQ-005","REQ-006","REQ-007","REQ-008","REQ-009","REQ-010","REQ-011","REQ-012","REQ-013","REQ-014","REQ-015","REQ-016","REQ-017","REQ-018","REQ-019","REQ-020","REQ-021","REQ-022","REQ-023","REQ-024","REQ-025","REQ-026","REQ-027","REQ-028","REQ-029","REQ-030","REQ-031","REQ-032","REQ-033","REQ-034","REQ-035","REQ-036","REQ-037"]
+constraint_ids = ["CON-001","CON-002","CON-003","CON-004","CON-005","CON-006","CON-007","CON-008"]
+test_ids = ["TST-ACC-001","TST-ACC-002","TST-ACC-003","TST-ACC-004","TST-BEH-001","TST-BEH-002","TST-BEH-003","TST-BEH-004","TST-BEH-005","TST-BEH-006","TST-BEH-007","TST-BOUND-001","TST-BOUND-002","TST-BOUND-003","TST-BOUND-004","TST-BOUND-005","TST-BOUND-006","TST-NEG-001","TST-NEG-002","TST-NEG-003","TST-NEG-004","TST-NEG-005","TST-NEG-006","TST-NEG-007","TST-NEG-008","TST-NEG-009","TST-NEG-010","TST-NEG-011","TST-NEG-012","TST-NEG-013","TST-PROP-001","TST-PROP-002","TST-PROP-003","TST-PROP-004","TST-STATE-001","TST-STATE-002","TST-CONTRACT-001","TST-PERF-001","TST-ANTI-001","TST-STRUCT-001","TST-INV-001","TST-NEG-014","TST-STRUCT-002"]
+verification_ids = ["VER-001","VER-002","VER-003","VER-004","VER-005","VER-006"]
+completion = "All37requirements and8constraints have final conformance evidence, the full43selector suite is green on four native combinations, exact-source inspected append/queue/complexity obligations and measured budgets pass, and the separate example/handoff is accepted by main. Earlier slices never waive these final integration obligations."
+

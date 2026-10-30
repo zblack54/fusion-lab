@@ -1,0 +1,40 @@
+# Proposal only: main may activate as .github/workflows/observation-delivery.yml
+# Design mode deliberately requires cataloged diagnostic failures, not product acceptance.
+name: Observation delivery design baseline
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  native-baseline:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+        toolchain: ["1.99.0", stable]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    env:
+      RUSTUP_TOOLCHAIN: ${{ matrix.toolchain }}
+      CARGO_TERM_COLOR: never
+      GIT_CONFIG_COUNT: "1"
+      GIT_CONFIG_KEY_0: core.autocrlf
+      GIT_CONFIG_VALUE_0: "false"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: rustup toolchain install ${{ matrix.toolchain }} --profile minimal --component rustfmt --component clippy
+      - run: python tests/observation-delivery/tools/native_baseline.py --toolchain ${{ matrix.toolchain }} --mode design --output native-delivery-evidence
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: observation-delivery-${{ matrix.os }}-${{ matrix.toolchain }}
+          path: native-delivery-evidence
+          if-no-files-found: error
+# After approved implementation, main must switch the active workflow to --mode
+# implementation (all selectors green) before final product acceptance.
