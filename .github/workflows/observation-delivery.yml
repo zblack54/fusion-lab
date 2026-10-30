@@ -1,5 +1,5 @@
-# Design mode deliberately requires cataloged diagnostic failures, not product acceptance.
-name: Observation delivery design baseline
+# Implementation mode requires every immutable selector to pass before acceptance.
+name: Observation delivery implementation
 on:
   pull_request:
   workflow_dispatch:
@@ -31,12 +31,11 @@ jobs:
         with:
           python-version: "3.12"
       - run: rustup toolchain install ${{ matrix.toolchain }} --profile minimal --component rustfmt --component clippy
-      - run: python tests/observation-delivery/tools/native_baseline.py --toolchain ${{ matrix.toolchain }} --mode design --output native-delivery-evidence
+      - run: python tests/observation-delivery/tools/native_baseline.py --toolchain ${{ matrix.toolchain }} --mode implementation --output native-delivery-evidence
       - if: always()
         uses: actions/upload-artifact@v4
         with:
           name: observation-delivery-${{ matrix.os }}-${{ matrix.toolchain }}
           path: native-delivery-evidence
           if-no-files-found: error
-# After approved implementation, main must switch the active workflow to --mode
-# implementation (all selectors green) before final product acceptance.
+# Partial implementation remains draft: failing unfinished selectors are not acceptance.

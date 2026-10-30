@@ -1,0 +1,77 @@
+[
+  {
+    "argv": [
+      "cargo",
+      "fmt",
+      "--all",
+      "--",
+      "--check"
+    ],
+    "exit": 0,
+    "seconds": 0.3279999999795109,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "cargo",
+      "check",
+      "--locked",
+      "--all-targets"
+    ],
+    "exit": 0,
+    "seconds": 1.1559999999590218,
+    "stdout": "",
+    "stderr": "    Checking fusion-lab v0.1.0 (C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.09s\n"
+  },
+  {
+    "argv": [
+      "cargo",
+      "clippy",
+      "--locked",
+      "--all-targets",
+      "--",
+      "-D",
+      "warnings"
+    ],
+    "exit": 0,
+    "seconds": 0.75,
+    "stdout": "",
+    "stderr": "    Checking fusion-lab v0.1.0 (C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.61s\n"
+  },
+  {
+    "argv": [
+      "cargo",
+      "test",
+      "--locked"
+    ],
+    "exit": 0,
+    "seconds": 5.452999999979511,
+    "stdout": "\nrunning 6 tests\ntest estimation::tests::prediction_transports_velocity_and_covariance ... ok\ntest estimation::tests::white_acceleration_covariance_has_correct_units ... ok\ntest estimation::tests::failed_update_preserves_filter_state ... ok\ntest estimation::tests::known_scalar_measurement_update ... ok\ntest evaluation::tests::metrics_use_euclidean_error_and_joint_ellipse ... ok\ntest simulation::tests::affine_endpoint_validation_accepts_exact_long_horizon_bounds_without_sampling ... ok\n\ntest result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest tests::csv_has_full_covariance_and_empty_unsampled_measurements ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 7 tests\ntest invalid_output_is_rejected_before_simulation_validation ... ok\ntest signed_bias_cli_reports_units_and_preserves_csv_shape ... ok\ntest signed_drift_cli_reports_initial_rate_duration_and_final_offset ... ok\ntest reports_distinguish_true_assumed_and_effective_zero_variance ... ok\ntest invalid_assumed_noise_creates_no_output_parent ... ok\ntest invalid_velocity_bias_creates_no_output_parent ... ok\ntest invalid_drift_rates_and_whole_horizons_create_no_output_parent ... ok\n\ntest result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.44s\n\n\nrunning 16 tests\ntest invalid_configuration_is_rejected_before_a_run ... ok\ntest biased_velocity_tick_zero_and_integration_match_independent_values ... ok\ntest mismatched_tick_zero_matches_independent_scalar_updates ... ok\ntest omitted_assumptions_follow_their_own_channel ... ok\ntest assumed_noise_validation_is_finite_and_inclusive ... ok\ntest bias_validation_and_component_zero_compatibility ... ok\ntest maneuver_truth_integrates_scripted_acceleration ... ok\ntest noiseless_straight_motion_matches_analytical_solution ... ok\ntest sample_rates_and_outage_boundaries_are_exact ... ok\ntest covariance_stays_symmetric_positive_definite_and_grows_during_outage ... ok\ntest outages_do_not_perturb_sensor_random_streams ... ok\ntest explicit_matched_assumptions_preserve_default_samples ... ok\ntest assumed_noise_does_not_change_truth_observations_or_baselines ... ok\ntest seeded_runs_are_identical_and_other_seeds_change_observations ... ok\ntest bias_preserves_truth_position_stream_schedule_and_covariance ... ok\ntest fusion_beats_baselines_across_fixed_seed_suite ... ok\n\ntest result: ok. 16 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.59s\n\n\nrunning 4 tests\ntest drift_observations_filter_and_integration_match_independent_rationals ... ok\ntest rate_and_whole_horizon_validation_are_finite_and_inclusive ... ok\ntest signed_zero_rate_axes_and_zero_crossing_preserve_constant_path ... ok\ntest drift_preserves_truth_position_schedule_covariance_and_noise_streams ... ok\n\ntest result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.28s\n\n\nrunning 1 test\ntest src\\lib.rs - (line 3) ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.08s\n\nall doctests ran in 0.50s; merged doctests compilation took 0.33s\n",
+    "stderr": "   Compiling fusion-lab v0.1.0 (C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.06s\n     Running unittests src\\lib.rs (target\\debug\\deps\\fusion_lab-1d27257bf1ef4ffd.exe)\n     Running unittests src\\main.rs (target\\debug\\deps\\fusion_lab-3f14e8ad536c45ff.exe)\n     Running tests\\cli.rs (target\\debug\\deps\\cli-545e1590ac6e1549.exe)\n     Running tests\\experiments.rs (target\\debug\\deps\\experiments-e061d5991a9514fc.exe)\n     Running tests\\velocity_drift.rs (target\\debug\\deps\\velocity_drift-0c876b6e88ec3248.exe)\n   Doc-tests fusion_lab\n"
+  },
+  {
+    "argv": [
+      "cargo",
+      "test",
+      "--locked",
+      "--doc"
+    ],
+    "exit": 0,
+    "seconds": 0.6410000000614673,
+    "stdout": "\nrunning 1 test\ntest src\\lib.rs - (line 3) ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.08s\n\nall doctests ran in 0.48s; merged doctests compilation took 0.30s\n",
+    "stderr": "    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.06s\n   Doc-tests fusion_lab\n"
+  },
+  {
+    "argv": [
+      "cargo",
+      "doc",
+      "--locked",
+      "--no-deps"
+    ],
+    "exit": 0,
+    "seconds": 1.0150000001303852,
+    "stdout": "",
+    "stderr": " Documenting fusion-lab v0.1.0 (C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.95s\n   Generated C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\target\\doc\\fusion_lab\\index.html\n"
+  }
+]
