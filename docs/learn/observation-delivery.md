@@ -1,6 +1,6 @@
 # Timestamped observation delivery and replay
 
-Status: implemented and independently reviewed through the codec slice; final example, resource and native conformance are in progress. Tracking: [issue #69](https://github.com/zblack54/fusion-lab/issues/69), [draft PR #71](https://github.com/zblack54/fusion-lab/pull/71), v0.3 delivery milestone. No deployment or completed asynchronous adapter is claimed.
+Status: verified implementation; final PR acceptance and merge are recorded in issue #69. Tracking: [issue #69](https://github.com/zblack54/fusion-lab/issues/69), [draft PR #71](https://github.com/zblack54/fusion-lab/pull/71), v0.3 delivery milestone. No deployment or completed asynchronous adapter is claimed.
 
 A measurement has two clocks: when the sensor sampled it and when it becomes available. Previously the simulation consumed observations at their sample tick. The new observation-only API records sample time, planned arrival time and scheduled identity separately, so a delayed measurement cannot silently become a new measurement of the present.
 
@@ -35,11 +35,20 @@ cargo test --locked --manifest-path tests/observation-delivery/Cargo.toml -- --t
 
 The example requires a new output directory. It finishes both bounded in-memory artifacts first, then writes and flushes owned temporary files and publishes trace.tsv followed by ledger.tsv. Repeating the same command rejects the existing directory and preserves its files. This is not an atomic two-file transaction: a ledger failure can leave a complete trace and an owned temporary, which the error message reports. The native fault demonstrations and raw receipts are supplementary evidence under the package implementation directory.
 
-At published core revision d36e705, all 43 tests pass on four hosted Windows/Linux and Rust 1.99.0/stable combinations; main independently verified archive, source and raw-log fingerprints. Local aliases both resolve to 1.99.0; hosted stable was 1.99.1. Required root, service and dashboard checks also passed. The immutable revision-two [external authority](https://github.com/zblack54/fusion-lab/issues/72#issuecomment-6527689826) fixes 37 requirements, eight constraints and 43 tests. Passing tests alone does not complete measured resource, example-failure or final conformance obligations. Those remain pending in this checkpoint.
+At published core revision d36e705, all 43 tests pass on four hosted Windows/Linux and Rust 1.99.0/stable combinations; main independently verified archive, source and raw-log fingerprints. Local aliases both resolve to 1.99.0; hosted stable was 1.99.1. Required root, service and dashboard checks also passed. The immutable revision-two [external authority](https://github.com/zblack54/fusion-lab/issues/72#issuecomment-6527689826) fixes 37 requirements, eight constraints and 43 tests. The final f3fc4b24 qualification additionally verifies all24native artifacts: the full test matrix,12maximum-workload processes, real Linux trace/ledger ENOSPC failures, cleanup faults and byte-preserving bootstrap. The [conformance record](../design-docs/observation-delivery/implementation/acceptance.md) accounts for every obligation.
 
 The declared resource case delays both sensor streams, so it stresses waiting/retention/codecs while replay accepts no delayed updates. The source simulation still performs its normal updates. [Companion benchmark #75](https://github.com/zblack54/fusion-lab/issues/75) will separately measure the accepted-update path; no universal worst-case claim follows from this one workload.
 
-The maximum release workload retains the source, trace, both replay results and original/regenerated artifacts through an owned measurement handshake. Acceptance requires a warmup then three fresh processes per native combination, each within 30 seconds and 512 MiB. A diagnostic is not that full series. [Issue #73](https://github.com/zblack54/fusion-lab/issues/73) tracks measurement-owner cleanup: an uncertain child termination or reap must retain ownership and block the next workload, not silently detach or retry numerical work.
+The maximum release workload retains the source, trace, both replay results and original/regenerated artifacts through an owned measurement handshake. Acceptance requires a warmup then three fresh processes per native combination, each within 30 seconds and 512 MiB. A diagnostic is not that full series. The final qualification performed all12maximum runs; every individual result passed, without averaging a failure. Rounded maxima are below; full CPU/RAM/OS/compiler/source/binary records and raw archives are retained in the [machine-readable evidence](../design-docs/observation-delivery/implementation/final-native-qualification.json).
+
+| Native combination | Largest observed seconds | Largest peak MiB |
+|---|---:|---:|
+| windows-latest-1.99.0 | 0.672 | 273.54 |
+| ubuntu-latest-1.99.0 | 0.568 | 272.22 |
+| windows-latest-stable | 0.500 | 273.61 |
+| ubuntu-latest-stable | 0.467 | 272.22 |
+
+Windows peaks use an owned retained handle, including a post-exit read. Linux VmHWM is the lifetime high-water counter read while all required work objects remain held; that complete-work phase and subsequent teardown are disclosed. These are observed limits, not hard OS quotas or calibration/accuracy results. [Issue #73](https://github.com/zblack54/fusion-lab/issues/73) tracks measurement-owner cleanup: an uncertain child termination or reap must retain ownership and block the next workload, not silently detach or retry numerical work.
 
 [Issue #74](https://github.com/zblack54/fusion-lab/issues/74) distinguishes logical LF source hashes from actual generated Windows CRLF bytes. The original measured series and binary were preserved with supplemental byte provenance; future probes record actual materialized input hashes. This metadata correction did not rerun or relabel the original numerical work.
 
