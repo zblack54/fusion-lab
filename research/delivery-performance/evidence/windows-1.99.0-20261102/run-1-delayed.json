@@ -1,0 +1,45 @@
+{
+  "argv": [
+    "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\accepted-update-sealed-20261102\\project\\target\\release\\delivery-performance-paired-probe.exe",
+    "delayed"
+  ],
+  "profile": "delayed",
+  "watchdog_seconds": 60,
+  "no_product_time_or_memory_pass_budget": true,
+  "pid": 117588,
+  "seconds_spawn_to_complete_work": 0.4220000000204891,
+  "complete_line": "COMPLETE\tdelayed\t3600\t90002\t360001\t0\t89877\t125\t0\t0\t5894768\t5633112\n",
+  "actual_counts": {
+    "duration_seconds": 3600,
+    "offered": 90002,
+    "snapshots": 360001,
+    "accepted": 0,
+    "stale": 89877,
+    "horizon": 125,
+    "queue_full": 0,
+    "scripted_loss": 0,
+    "trace_bytes": 5894768,
+    "ledger_bytes": 5633112
+  },
+  "held_complete_work_memory": {
+    "lifetime_peak_bytes": 286461952,
+    "current_rss_bytes": 284307456,
+    "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+    "units": "bytes",
+    "owned_pid": 117588
+  },
+  "retention": "source Experiment, both traces/results and encoded/regenerated buffers live across owner acknowledgement",
+  "exit": 0,
+  "reap_confirmed": true,
+  "post_exit_retained_handle_memory": {
+    "lifetime_peak_bytes": 286461952,
+    "current_rss_bytes": 32768,
+    "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+    "units": "bytes",
+    "owned_pid": 117588
+  },
+  "lifetime_peak_bytes": 286461952,
+  "success": true,
+  "stderr": "",
+  "seconds_owner_total_including_hold_and_teardown": 0.4380000000819564
+}

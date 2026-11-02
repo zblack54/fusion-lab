@@ -1,0 +1,176 @@
+{
+  "status": "POST_SERIES_QUALIFICATION_NOT_MEASUREMENT",
+  "RUSTDOCFLAGS": "-D warnings",
+  "cargo_precheck": "tasklist reported no cargo.exe before starting",
+  "source_before": {
+    "Cargo.toml": "107801ee283d274781df7496d22eaa46a09748e2b624ccb48a8b7b9eda975462",
+    "Cargo.lock": "1ff60b850d3f5928fc13476575700400765d31f7deb3268171f66176fb6cf6f3",
+    "src\\delivery.rs": "12d7fbdcee02d7ae986658bb2f43116f56283f1689adc2c74e4f360d45389120",
+    "src\\estimation.rs": "83a3b6936c53fc9d28c29a59b0840cf5d57611852246bc19c2c4cb258c092fdf",
+    "src\\evaluation.rs": "cf83337582b8887dc3ae71b62a8daf10c9f8b578eddd74b212069d30d76ba870",
+    "src\\lib.rs": "886ec0ba1cf84439c2a4e0913f2b6be33bc1da93aae9b51e93f10e7049959a52",
+    "src\\main.rs": "76574d18911bdce81082b9f76308cf3a31f69fa9967a0592f28eaf2630901d6b",
+    "src\\sensors.rs": "d8eaae0d691535bcee6f68166babdb41c49de815ad0c3eb213c8b980c9ae29af",
+    "src\\simulation.rs": "c0fd739c26e7190549736636c69720dc963707059463a45b7095159099fd7691",
+    "examples\\observation_delivery.rs": "fc00f2d15dca19ac6b362b09f2cbbfd2aabd66e88dfbf2272048984be4a9958a",
+    "examples\\robustness-run.rs": "3c4223b8b6101557ef96dcba12737dca1a2dadb4402c9cfe06d1528df9b204d2",
+    "research\\delivery-performance\\driver.rs": "a18121fd017ac7b5078478412915f9162b2d6f7ba138e83c2c2367987dad61cc",
+    "research\\delivery-performance\\paired_probe.py": "660a9c93c89007dc8a89cfd8b7bc014925bd8574f909569d5403a2481d0797a8",
+    "research\\delivery-performance\\protocol.md": "b24d67e385cc9a90e44ccc2e3f536103fe834b8047b433a0b6c6ddbf379ae215",
+    "research\\delivery-performance\\results.md": "5391dd0213f52b3037cf1ee5851f8f56383e9b3b024b9be63e4aca376363fa2f"
+  },
+  "root_gates": [
+    {
+      "argv": [
+        "cargo",
+        "fmt",
+        "--all",
+        "--",
+        "--check"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "exit": 0,
+      "seconds": 0.3119999999180436,
+      "stdout_path": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\accepted-update-root-gates-logs-1793584105840522800\\root-1.stdout.log",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_path": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\accepted-update-root-gates-logs-1793584105840522800\\root-1.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "cargo",
+        "check",
+        "--locked",
+        "--all-targets"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "exit": 0,
+      "seconds": 1.2660000000614673,
+      "stdout_path": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\accepted-update-root-gates-logs-1793584105840522800\\root-2.stdout.log",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_path": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\accepted-update-root-gates-logs-1793584105840522800\\root-2.stderr.log",
+      "stderr_sha256": "1ce30166979e15305dd43a647527db29b4152e251074ee1db4d5b7a3f9a3c743"
+    },
+    {
+      "argv": [
+        "cargo",
+        "clippy",
+        "--locked",
+        "--all-targets",
+        "--",
+        "-D",
+        "warnings"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "exit": 0,
+      "seconds": 0.28199999989010394,
+      "stdout_path": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\accepted-update-root-gates-logs-1793584105840522800\\root-3.stdout.log",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_path": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\accepted-update-root-gates-logs-1793584105840522800\\root-3.stderr.log",
+      "stderr_sha256": "2b34696728dc82b03cbf6311d7e3a6a41658bbde097834c3010a78bc82842c1a"
+    },
+    {
+      "argv": [
+        "cargo",
+        "test",
+        "--locked"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "exit": 0,
+      "seconds": 2.968000000109896,
+      "stdout_path": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\accepted-update-root-gates-logs-1793584105840522800\\root-4.stdout.log",
+      "stdout_sha256": "d21ba853f209a072e82c5989a4712cbabb910f9d0b8b817207be14a477d9b020",
+      "stderr_path": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\accepted-update-root-gates-logs-1793584105840522800\\root-4.stderr.log",
+      "stderr_sha256": "c64b427b9e038ac99f9aa05df21107913902f1498dd8804f13c0c73e958db07f"
+    },
+    {
+      "argv": [
+        "cargo",
+        "test",
+        "--locked",
+        "--doc"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "exit": 0,
+      "seconds": 0.6099999998696148,
+      "stdout_path": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\accepted-update-root-gates-logs-1793584105840522800\\root-5.stdout.log",
+      "stdout_sha256": "28e1a20979c54727486a1da6404e61589afdc50df9a9ff752b93a242e572dd4f",
+      "stderr_path": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\accepted-update-root-gates-logs-1793584105840522800\\root-5.stderr.log",
+      "stderr_sha256": "90041eb615a9715f53cc56dc06735e68d4126232e0f78f9884427077f0104cac"
+    },
+    {
+      "argv": [
+        "cargo",
+        "doc",
+        "--locked",
+        "--no-deps"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "exit": 0,
+      "seconds": 1.047000000020489,
+      "stdout_path": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\accepted-update-root-gates-logs-1793584105840522800\\root-6.stdout.log",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_path": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\accepted-update-root-gates-logs-1793584105840522800\\root-6.stderr.log",
+      "stderr_sha256": "fe03cdcf29564373d0a0e4728987ed84ba7efc8e439a07c8c6200bee3089da9b"
+    }
+  ],
+  "measured_series_rerun": false,
+  "measured_binary_before": "85e334ee81b9f2d0cfd227c61378c931d52cc87f87d43dd6a550b6eef2ea6aa9",
+  "generated_inputs_before": {
+    "Cargo.toml": "2cdee79fd23bff948de7b173c15f9d571773c5fc54a2fffc3af371d40b7b17e2",
+    "Cargo.lock": "09432caa3c95dfe9f40db09495ad3cef6743ba47ac3c66203a1b2aa84bdb609e",
+    "src\\main.rs": "a18121fd017ac7b5078478412915f9162b2d6f7ba138e83c2c2367987dad61cc"
+  },
+  "external_project_post_series_clippy": {
+    "argv": [
+      "cargo",
+      "+1.99.0",
+      "clippy",
+      "--release",
+      "--locked",
+      "--offline",
+      "--manifest-path",
+      "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\accepted-update-sealed-20261102\\project\\Cargo.toml",
+      "--target-dir",
+      "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\accepted-update-root-gates-logs-1793584105840522800\\post-series-clippy-target",
+      "--",
+      "-D",
+      "warnings"
+    ],
+    "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+    "exit": 0,
+    "seconds": 13.577999999979511,
+    "stdout_path": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\accepted-update-root-gates-logs-1793584105840522800\\external-clippy.stdout.log",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_path": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\accepted-update-root-gates-logs-1793584105840522800\\external-clippy.stderr.log",
+    "stderr_sha256": "98f957a873de48eed3ae1256268d410f49126c30fb67a975c8ff32d576f8842f",
+    "qualification": "Lint metadata in separate fresh target directory; measured binary not rebuilt or executed"
+  },
+  "measured_binary_after": "85e334ee81b9f2d0cfd227c61378c931d52cc87f87d43dd6a550b6eef2ea6aa9",
+  "generated_inputs_after": {
+    "Cargo.toml": "2cdee79fd23bff948de7b173c15f9d571773c5fc54a2fffc3af371d40b7b17e2",
+    "Cargo.lock": "09432caa3c95dfe9f40db09495ad3cef6743ba47ac3c66203a1b2aa84bdb609e",
+    "src\\main.rs": "a18121fd017ac7b5078478412915f9162b2d6f7ba138e83c2c2367987dad61cc"
+  },
+  "measured_binary_unchanged": true,
+  "generated_inputs_unchanged": true,
+  "source_after": {
+    "Cargo.toml": "107801ee283d274781df7496d22eaa46a09748e2b624ccb48a8b7b9eda975462",
+    "Cargo.lock": "1ff60b850d3f5928fc13476575700400765d31f7deb3268171f66176fb6cf6f3",
+    "src\\delivery.rs": "12d7fbdcee02d7ae986658bb2f43116f56283f1689adc2c74e4f360d45389120",
+    "src\\estimation.rs": "83a3b6936c53fc9d28c29a59b0840cf5d57611852246bc19c2c4cb258c092fdf",
+    "src\\evaluation.rs": "cf83337582b8887dc3ae71b62a8daf10c9f8b578eddd74b212069d30d76ba870",
+    "src\\lib.rs": "886ec0ba1cf84439c2a4e0913f2b6be33bc1da93aae9b51e93f10e7049959a52",
+    "src\\main.rs": "76574d18911bdce81082b9f76308cf3a31f69fa9967a0592f28eaf2630901d6b",
+    "src\\sensors.rs": "d8eaae0d691535bcee6f68166babdb41c49de815ad0c3eb213c8b980c9ae29af",
+    "src\\simulation.rs": "c0fd739c26e7190549736636c69720dc963707059463a45b7095159099fd7691",
+    "examples\\observation_delivery.rs": "fc00f2d15dca19ac6b362b09f2cbbfd2aabd66e88dfbf2272048984be4a9958a",
+    "examples\\robustness-run.rs": "3c4223b8b6101557ef96dcba12737dca1a2dadb4402c9cfe06d1528df9b204d2",
+    "research\\delivery-performance\\driver.rs": "a18121fd017ac7b5078478412915f9162b2d6f7ba138e83c2c2367987dad61cc",
+    "research\\delivery-performance\\paired_probe.py": "660a9c93c89007dc8a89cfd8b7bc014925bd8574f909569d5403a2481d0797a8",
+    "research\\delivery-performance\\protocol.md": "b24d67e385cc9a90e44ccc2e3f536103fe834b8047b433a0b6c6ddbf379ae215",
+    "research\\delivery-performance\\results.md": "5391dd0213f52b3037cf1ee5851f8f56383e9b3b024b9be63e4aca376363fa2f"
+  },
+  "source_unchanged": true,
+  "success": true
+}

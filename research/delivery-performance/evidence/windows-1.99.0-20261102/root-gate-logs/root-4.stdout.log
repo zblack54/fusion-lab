@@ -1,0 +1,66 @@
+
+running 6 tests
+test estimation::tests::prediction_transports_velocity_and_covariance ... ok
+test estimation::tests::white_acceleration_covariance_has_correct_units ... ok
+test estimation::tests::failed_update_preserves_filter_state ... ok
+test estimation::tests::known_scalar_measurement_update ... ok
+test evaluation::tests::metrics_use_euclidean_error_and_joint_ellipse ... ok
+test simulation::tests::affine_endpoint_validation_accepts_exact_long_horizon_bounds_without_sampling ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 1 test
+test tests::csv_has_full_covariance_and_empty_unsampled_measurements ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 7 tests
+test invalid_output_is_rejected_before_simulation_validation ... ok
+test signed_bias_cli_reports_units_and_preserves_csv_shape ... ok
+test signed_drift_cli_reports_initial_rate_duration_and_final_offset ... ok
+test reports_distinguish_true_assumed_and_effective_zero_variance ... ok
+test invalid_assumed_noise_creates_no_output_parent ... ok
+test invalid_velocity_bias_creates_no_output_parent ... ok
+test invalid_drift_rates_and_whole_horizons_create_no_output_parent ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.14s
+
+
+running 16 tests
+test invalid_configuration_is_rejected_before_a_run ... ok
+test biased_velocity_tick_zero_and_integration_match_independent_values ... ok
+test mismatched_tick_zero_matches_independent_scalar_updates ... ok
+test assumed_noise_validation_is_finite_and_inclusive ... ok
+test omitted_assumptions_follow_their_own_channel ... ok
+test bias_validation_and_component_zero_compatibility ... ok
+test sample_rates_and_outage_boundaries_are_exact ... ok
+test maneuver_truth_integrates_scripted_acceleration ... ok
+test noiseless_straight_motion_matches_analytical_solution ... ok
+test covariance_stays_symmetric_positive_definite_and_grows_during_outage ... ok
+test outages_do_not_perturb_sensor_random_streams ... ok
+test explicit_matched_assumptions_preserve_default_samples ... ok
+test assumed_noise_does_not_change_truth_observations_or_baselines ... ok
+test bias_preserves_truth_position_stream_schedule_and_covariance ... ok
+test seeded_runs_are_identical_and_other_seeds_change_observations ... ok
+test fusion_beats_baselines_across_fixed_seed_suite ... ok
+
+test result: ok. 16 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.59s
+
+
+running 4 tests
+test drift_observations_filter_and_integration_match_independent_rationals ... ok
+test signed_zero_rate_axes_and_zero_crossing_preserve_constant_path ... ok
+test rate_and_whole_horizon_validation_are_finite_and_inclusive ... ok
+test drift_preserves_truth_position_schedule_covariance_and_noise_streams ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.27s
+
+
+running 1 test
+test src\lib.rs - (line 3) ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.07s
+
+all doctests ran in 0.67s; merged doctests compilation took 0.53s

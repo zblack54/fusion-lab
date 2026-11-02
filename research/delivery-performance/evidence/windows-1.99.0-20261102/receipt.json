@@ -1,0 +1,580 @@
+{
+  "status": "RESEARCH_CANDIDATE_NOT_ACCEPTED",
+  "authority": "https://github.com/zblack54/fusion-lab/issues/75#issuecomment-6534442577",
+  "protocol_sha256": "b24d67e385cc9a90e44ccc2e3f536103fe834b8047b433a0b6c6ddbf379ae215",
+  "research_before": {
+    "protocol.md": "b24d67e385cc9a90e44ccc2e3f536103fe834b8047b433a0b6c6ddbf379ae215",
+    "paired_probe.py": "660a9c93c89007dc8a89cfd8b7bc014925bd8574f909569d5403a2481d0797a8",
+    "driver.rs": "a18121fd017ac7b5078478412915f9162b2d6f7ba138e83c2c2367987dad61cc"
+  },
+  "source_before": {
+    "Cargo.toml": "107801ee283d274781df7496d22eaa46a09748e2b624ccb48a8b7b9eda975462",
+    "Cargo.lock": "1ff60b850d3f5928fc13476575700400765d31f7deb3268171f66176fb6cf6f3",
+    "rust-toolchain.toml": "ccced9ef5cf5a0c35bb5ba4e4b525188b72aa07aab8cc3fb5b644778ade8f125",
+    "src/delivery.rs": "12d7fbdcee02d7ae986658bb2f43116f56283f1689adc2c74e4f360d45389120",
+    "src/estimation.rs": "83a3b6936c53fc9d28c29a59b0840cf5d57611852246bc19c2c4cb258c092fdf",
+    "src/evaluation.rs": "cf83337582b8887dc3ae71b62a8daf10c9f8b578eddd74b212069d30d76ba870",
+    "src/lib.rs": "886ec0ba1cf84439c2a4e0913f2b6be33bc1da93aae9b51e93f10e7049959a52",
+    "src/main.rs": "76574d18911bdce81082b9f76308cf3a31f69fa9967a0592f28eaf2630901d6b",
+    "src/sensors.rs": "d8eaae0d691535bcee6f68166babdb41c49de815ad0c3eb213c8b980c9ae29af",
+    "src/simulation.rs": "c0fd739c26e7190549736636c69720dc963707059463a45b7095159099fd7691",
+    "tests/observation-delivery/Cargo.lock": "971dcf3c1bc142f37250ec23064ab6303478b19017cf223baff2f7ee45f08cef",
+    "tests/observation-delivery/Cargo.toml": "a309b97c5f1d676cde7dd6201a9c375e4c3f922302a73343c0c8211e543118dd",
+    "tests/observation-delivery/compile/consumer/Cargo.lock": "e743220f79a6f6c61d068676d52b7a07e7129021b271bd022a3b9937cbe78b85",
+    "tests/observation-delivery/compile/consumer/Cargo.toml": "7e1dad773e20a37953b3fd7b9b449bb8ab4a4b5aa29cc8ba529079678ae178da",
+    "tests/observation-delivery/compile/consumer/src/lib.rs": "ed8449b1c6e7f2c63bf327de34db05ff42abb4a8336db0062bb6c73761afa7ba",
+    "tests/observation-delivery/compile/privacy.rs": "8c5773c564aa3bd1054939f0a38e10656fd074cc3d5965125f3dfdb3b978043b",
+    "tests/observation-delivery/src/lib.rs": "b465cbea721b18ee513755ee5da907df3c66bc28ba736b554876597ae0cf0115",
+    "tests/observation-delivery/tests/contracts.rs": "e289654bb9178378182a231a52232d05448ccc6f7c310050518ed4d6924bcb9c",
+    "tests/observation-delivery/tests/support/mod.rs": "7142c814adab0eb0c88d394e208a630803e633a92375bb74add8a42c39e011df",
+    "tests/observation-delivery/tools/native_baseline.py": "88814e0c43703035f3839ce84cfa36a18ad4cfaea965021f99fa0a41a76dde7c",
+    "docs/design-docs/observation-delivery/validation/test-lock.json": "1dc2a43bf41076e16f2e2e8223f1696b27d63efbeb4346fe65b8f6a195e5f55b"
+  },
+  "owner_helper_sha256": "ab851ab12ec6f54ee52baec37b0b59b80f8db069b5a92179c3f12f23cc9b924c",
+  "environment": {
+    "os": "Windows-10-10.0.19043-SP0",
+    "machine": "AMD64",
+    "cpu": "AMD64 Family 25 Model 33 Stepping 0, AuthenticAMD",
+    "cpu_source": "platform.processor/PROCESSOR_IDENTIFIER",
+    "logical_cpus": 16,
+    "physical_ram_bytes": 34266181632,
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]"
+  },
+  "generated_before_build": {
+    "Cargo.toml": {
+      "sha256": "2cdee79fd23bff948de7b173c15f9d571773c5fc54a2fffc3af371d40b7b17e2",
+      "bytes": 298
+    },
+    "Cargo.lock": {
+      "sha256": "09432caa3c95dfe9f40db09495ad3cef6743ba47ac3c66203a1b2aa84bdb609e",
+      "bytes": 12244
+    },
+    "src/main.rs": {
+      "sha256": "a18121fd017ac7b5078478412915f9162b2d6f7ba138e83c2c2367987dad61cc",
+      "bytes": 5943
+    }
+  },
+  "order": [
+    "delayed",
+    "accepted",
+    "accepted",
+    "delayed",
+    "delayed",
+    "accepted"
+  ],
+  "commands": [
+    {
+      "argv": [
+        "rustc",
+        "+1.99.0",
+        "-Vv"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "timeout_seconds": 240,
+      "scope": "direct Popen child only; compiler descendants are not process-tree contained",
+      "process_tree_cleanup_guaranteed": false,
+      "pid": 107976,
+      "status": "direct_command_reaped_success",
+      "exit": 0,
+      "reap_confirmed": true,
+      "success": true,
+      "seconds_total": 0.03100000019185245,
+      "stdout": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-msvc\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+      "stdout_prefix_truncated": false,
+      "stdout_path": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\accepted-update-sealed-20261102\\command-1.stdout.log",
+      "stdout_observed_bytes": 194,
+      "stderr": "",
+      "stderr_prefix_truncated": false,
+      "stderr_path": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\accepted-update-sealed-20261102\\command-1.stderr.log",
+      "stderr_observed_bytes": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "+1.99.0",
+        "build",
+        "--release",
+        "--locked",
+        "--offline",
+        "--manifest-path",
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\accepted-update-sealed-20261102\\project\\Cargo.toml"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "timeout_seconds": 240,
+      "scope": "direct Popen child only; compiler descendants are not process-tree contained",
+      "process_tree_cleanup_guaranteed": false,
+      "pid": 109464,
+      "status": "direct_command_reaped_success",
+      "exit": 0,
+      "reap_confirmed": true,
+      "success": true,
+      "seconds_total": 16.641000000061467,
+      "stdout": "",
+      "stdout_prefix_truncated": false,
+      "stdout_path": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\accepted-update-sealed-20261102\\command-2.stdout.log",
+      "stdout_observed_bytes": 0,
+      "stderr": "   Compiling autocfg v1.5.1\n   Compiling libm v0.2.16\n   Compiling windows-link v0.2.1\n   Compiling proc-macro2 v1.0.107\n   Compiling quote v1.0.47\n   Compiling unicode-ident v1.0.27\n   Compiling utf8parse v0.2.2\n   Compiling once_cell_polyfill v1.70.2\n   Compiling bytemuck v1.25.2\n   Compiling zerocopy v0.8.63\n   Compiling anstyle v1.0.14\n   Compiling rand_core v0.10.1\n   Compiling is_terminal_polyfill v1.70.2\n   Compiling colorchoice v1.0.5\n   Compiling rawpointer v0.2.1\n   Compiling strsim v0.11.1\n   Compiling windows-sys v0.61.2\n   Compiling anstyle-parse v1.0.0\n   Compiling heck v0.5.0\n   Compiling clap_lex v1.1.1\n   Compiling rand v0.10.3\n   Compiling typenum v1.20.1\n   Compiling safe_arch v1.2.0\n   Compiling num-traits v0.2.19\n   Compiling matrixmultiply v0.3.11\n   Compiling wide v1.7.1\n   Compiling anstyle-query v1.1.5\n   Compiling anstyle-wincon v3.0.11\n   Compiling anstream v1.0.0\n   Compiling clap_builder v4.6.7\n   Compiling syn v3.0.9\n   Compiling approx v0.5.1\n   Compiling num-integer v0.1.47\n   Compiling num-complex v0.4.6\n   Compiling rand_distr v0.6.0\n   Compiling num-rational v0.4.2\n   Compiling clap_derive v4.6.7\n   Compiling ppv-lite86 v0.2.21\n   Compiling rand_chacha v0.10.0\n   Compiling clap v4.6.7\n   Compiling simba v0.10.2\n   Compiling nalgebra v0.35.0\n   Compiling fusion-lab v0.1.0 (C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab)\n   Compiling delivery-performance-paired-probe v0.0.0 (C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\accepted-update-sealed-20261102\\project)\n    Finished `release` profile [optimized] target(s) in 16.60s\n",
+      "stderr_prefix_truncated": false,
+      "stderr_path": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\accepted-update-sealed-20261102\\command-2.stderr.log",
+      "stderr_observed_bytes": 1607
+    }
+  ],
+  "warmups": [
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\accepted-update-sealed-20261102\\project\\target\\release\\delivery-performance-paired-probe.exe",
+        "warmup-delayed"
+      ],
+      "profile": "warmup-delayed",
+      "watchdog_seconds": 60,
+      "no_product_time_or_memory_pass_budget": true,
+      "pid": 117068,
+      "seconds_spawn_to_complete_work": 0.03100000019185245,
+      "complete_line": "COMPLETE\twarmup-delayed\t1\t27\t101\t0\t0\t27\t0\t0\t1839\t1588\n",
+      "actual_counts": {
+        "duration_seconds": 1,
+        "offered": 27,
+        "snapshots": 101,
+        "accepted": 0,
+        "stale": 0,
+        "horizon": 27,
+        "queue_full": 0,
+        "scripted_loss": 0,
+        "trace_bytes": 1839,
+        "ledger_bytes": 1588
+      },
+      "held_complete_work_memory": {
+        "lifetime_peak_bytes": 3710976,
+        "current_rss_bytes": 3706880,
+        "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+        "units": "bytes",
+        "owned_pid": 117068
+      },
+      "retention": "source Experiment, both traces/results and encoded/regenerated buffers live across owner acknowledgement",
+      "exit": 0,
+      "reap_confirmed": true,
+      "post_exit_retained_handle_memory": {
+        "lifetime_peak_bytes": 4100096,
+        "current_rss_bytes": 32768,
+        "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+        "units": "bytes",
+        "owned_pid": 117068
+      },
+      "lifetime_peak_bytes": 4100096,
+      "success": true,
+      "stderr": "",
+      "seconds_owner_total_including_hold_and_teardown": 0.03100000019185245
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\accepted-update-sealed-20261102\\project\\target\\release\\delivery-performance-paired-probe.exe",
+        "warmup-accepted"
+      ],
+      "profile": "warmup-accepted",
+      "watchdog_seconds": 60,
+      "no_product_time_or_memory_pass_budget": true,
+      "pid": 82784,
+      "seconds_spawn_to_complete_work": 0.015999999828636646,
+      "complete_line": "COMPLETE\twarmup-accepted\t1\t27\t101\t27\t0\t0\t0\t0\t1811\t1463\n",
+      "actual_counts": {
+        "duration_seconds": 1,
+        "offered": 27,
+        "snapshots": 101,
+        "accepted": 27,
+        "stale": 0,
+        "horizon": 0,
+        "queue_full": 0,
+        "scripted_loss": 0,
+        "trace_bytes": 1811,
+        "ledger_bytes": 1463
+      },
+      "held_complete_work_memory": {
+        "lifetime_peak_bytes": 3690496,
+        "current_rss_bytes": 3686400,
+        "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+        "units": "bytes",
+        "owned_pid": 82784
+      },
+      "retention": "source Experiment, both traces/results and encoded/regenerated buffers live across owner acknowledgement",
+      "exit": 0,
+      "reap_confirmed": true,
+      "post_exit_retained_handle_memory": {
+        "lifetime_peak_bytes": 4067328,
+        "current_rss_bytes": 32768,
+        "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+        "units": "bytes",
+        "owned_pid": 82784
+      },
+      "lifetime_peak_bytes": 4067328,
+      "success": true,
+      "stderr": "",
+      "seconds_owner_total_including_hold_and_teardown": 0.015999999828636646
+    }
+  ],
+  "runs": [
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\accepted-update-sealed-20261102\\project\\target\\release\\delivery-performance-paired-probe.exe",
+        "delayed"
+      ],
+      "profile": "delayed",
+      "watchdog_seconds": 60,
+      "no_product_time_or_memory_pass_budget": true,
+      "pid": 117588,
+      "seconds_spawn_to_complete_work": 0.4220000000204891,
+      "complete_line": "COMPLETE\tdelayed\t3600\t90002\t360001\t0\t89877\t125\t0\t0\t5894768\t5633112\n",
+      "actual_counts": {
+        "duration_seconds": 3600,
+        "offered": 90002,
+        "snapshots": 360001,
+        "accepted": 0,
+        "stale": 89877,
+        "horizon": 125,
+        "queue_full": 0,
+        "scripted_loss": 0,
+        "trace_bytes": 5894768,
+        "ledger_bytes": 5633112
+      },
+      "held_complete_work_memory": {
+        "lifetime_peak_bytes": 286461952,
+        "current_rss_bytes": 284307456,
+        "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+        "units": "bytes",
+        "owned_pid": 117588
+      },
+      "retention": "source Experiment, both traces/results and encoded/regenerated buffers live across owner acknowledgement",
+      "exit": 0,
+      "reap_confirmed": true,
+      "post_exit_retained_handle_memory": {
+        "lifetime_peak_bytes": 286461952,
+        "current_rss_bytes": 32768,
+        "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+        "units": "bytes",
+        "owned_pid": 117588
+      },
+      "lifetime_peak_bytes": 286461952,
+      "success": true,
+      "stderr": "",
+      "seconds_owner_total_including_hold_and_teardown": 0.4380000000819564
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\accepted-update-sealed-20261102\\project\\target\\release\\delivery-performance-paired-probe.exe",
+        "accepted"
+      ],
+      "profile": "accepted",
+      "watchdog_seconds": 60,
+      "no_product_time_or_memory_pass_budget": true,
+      "pid": 108636,
+      "seconds_spawn_to_complete_work": 0.4369999999180436,
+      "complete_line": "COMPLETE\taccepted\t3600\t90002\t360001\t90002\t0\t0\t0\t0\t5894365\t5452675\n",
+      "actual_counts": {
+        "duration_seconds": 3600,
+        "offered": 90002,
+        "snapshots": 360001,
+        "accepted": 90002,
+        "stale": 0,
+        "horizon": 0,
+        "queue_full": 0,
+        "scripted_loss": 0,
+        "trace_bytes": 5894365,
+        "ledger_bytes": 5452675
+      },
+      "held_complete_work_memory": {
+        "lifetime_peak_bytes": 286244864,
+        "current_rss_bytes": 284024832,
+        "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+        "units": "bytes",
+        "owned_pid": 108636
+      },
+      "retention": "source Experiment, both traces/results and encoded/regenerated buffers live across owner acknowledgement",
+      "exit": 0,
+      "reap_confirmed": true,
+      "post_exit_retained_handle_memory": {
+        "lifetime_peak_bytes": 286244864,
+        "current_rss_bytes": 28672,
+        "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+        "units": "bytes",
+        "owned_pid": 108636
+      },
+      "lifetime_peak_bytes": 286244864,
+      "success": true,
+      "stderr": "",
+      "seconds_owner_total_including_hold_and_teardown": 0.4529999999795109
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\accepted-update-sealed-20261102\\project\\target\\release\\delivery-performance-paired-probe.exe",
+        "accepted"
+      ],
+      "profile": "accepted",
+      "watchdog_seconds": 60,
+      "no_product_time_or_memory_pass_budget": true,
+      "pid": 121568,
+      "seconds_spawn_to_complete_work": 0.4529999999795109,
+      "complete_line": "COMPLETE\taccepted\t3600\t90002\t360001\t90002\t0\t0\t0\t0\t5894365\t5452675\n",
+      "actual_counts": {
+        "duration_seconds": 3600,
+        "offered": 90002,
+        "snapshots": 360001,
+        "accepted": 90002,
+        "stale": 0,
+        "horizon": 0,
+        "queue_full": 0,
+        "scripted_loss": 0,
+        "trace_bytes": 5894365,
+        "ledger_bytes": 5452675
+      },
+      "held_complete_work_memory": {
+        "lifetime_peak_bytes": 286228480,
+        "current_rss_bytes": 284008448,
+        "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+        "units": "bytes",
+        "owned_pid": 121568
+      },
+      "retention": "source Experiment, both traces/results and encoded/regenerated buffers live across owner acknowledgement",
+      "exit": 0,
+      "reap_confirmed": true,
+      "post_exit_retained_handle_memory": {
+        "lifetime_peak_bytes": 286228480,
+        "current_rss_bytes": 32768,
+        "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+        "units": "bytes",
+        "owned_pid": 121568
+      },
+      "lifetime_peak_bytes": 286228480,
+      "success": true,
+      "stderr": "",
+      "seconds_owner_total_including_hold_and_teardown": 0.46800000010989606
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\accepted-update-sealed-20261102\\project\\target\\release\\delivery-performance-paired-probe.exe",
+        "delayed"
+      ],
+      "profile": "delayed",
+      "watchdog_seconds": 60,
+      "no_product_time_or_memory_pass_budget": true,
+      "pid": 119760,
+      "seconds_spawn_to_complete_work": 0.4220000000204891,
+      "complete_line": "COMPLETE\tdelayed\t3600\t90002\t360001\t0\t89877\t125\t0\t0\t5894768\t5633112\n",
+      "actual_counts": {
+        "duration_seconds": 3600,
+        "offered": 90002,
+        "snapshots": 360001,
+        "accepted": 0,
+        "stale": 89877,
+        "horizon": 125,
+        "queue_full": 0,
+        "scripted_loss": 0,
+        "trace_bytes": 5894768,
+        "ledger_bytes": 5633112
+      },
+      "held_complete_work_memory": {
+        "lifetime_peak_bytes": 286441472,
+        "current_rss_bytes": 284352512,
+        "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+        "units": "bytes",
+        "owned_pid": 119760
+      },
+      "retention": "source Experiment, both traces/results and encoded/regenerated buffers live across owner acknowledgement",
+      "exit": 0,
+      "reap_confirmed": true,
+      "post_exit_retained_handle_memory": {
+        "lifetime_peak_bytes": 286441472,
+        "current_rss_bytes": 32768,
+        "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+        "units": "bytes",
+        "owned_pid": 119760
+      },
+      "lifetime_peak_bytes": 286441472,
+      "success": true,
+      "stderr": "",
+      "seconds_owner_total_including_hold_and_teardown": 0.43799999984912574
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\accepted-update-sealed-20261102\\project\\target\\release\\delivery-performance-paired-probe.exe",
+        "delayed"
+      ],
+      "profile": "delayed",
+      "watchdog_seconds": 60,
+      "no_product_time_or_memory_pass_budget": true,
+      "pid": 74828,
+      "seconds_spawn_to_complete_work": 0.4220000000204891,
+      "complete_line": "COMPLETE\tdelayed\t3600\t90002\t360001\t0\t89877\t125\t0\t0\t5894768\t5633112\n",
+      "actual_counts": {
+        "duration_seconds": 3600,
+        "offered": 90002,
+        "snapshots": 360001,
+        "accepted": 0,
+        "stale": 89877,
+        "horizon": 125,
+        "queue_full": 0,
+        "scripted_loss": 0,
+        "trace_bytes": 5894768,
+        "ledger_bytes": 5633112
+      },
+      "held_complete_work_memory": {
+        "lifetime_peak_bytes": 286523392,
+        "current_rss_bytes": 284434432,
+        "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+        "units": "bytes",
+        "owned_pid": 74828
+      },
+      "retention": "source Experiment, both traces/results and encoded/regenerated buffers live across owner acknowledgement",
+      "exit": 0,
+      "reap_confirmed": true,
+      "post_exit_retained_handle_memory": {
+        "lifetime_peak_bytes": 286523392,
+        "current_rss_bytes": 32768,
+        "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+        "units": "bytes",
+        "owned_pid": 74828
+      },
+      "lifetime_peak_bytes": 286523392,
+      "success": true,
+      "stderr": "",
+      "seconds_owner_total_including_hold_and_teardown": 0.43700000015087426
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\accepted-update-sealed-20261102\\project\\target\\release\\delivery-performance-paired-probe.exe",
+        "accepted"
+      ],
+      "profile": "accepted",
+      "watchdog_seconds": 60,
+      "no_product_time_or_memory_pass_budget": true,
+      "pid": 55972,
+      "seconds_spawn_to_complete_work": 0.43799999984912574,
+      "complete_line": "COMPLETE\taccepted\t3600\t90002\t360001\t90002\t0\t0\t0\t0\t5894365\t5452675\n",
+      "actual_counts": {
+        "duration_seconds": 3600,
+        "offered": 90002,
+        "snapshots": 360001,
+        "accepted": 90002,
+        "stale": 0,
+        "horizon": 0,
+        "queue_full": 0,
+        "scripted_loss": 0,
+        "trace_bytes": 5894365,
+        "ledger_bytes": 5452675
+      },
+      "held_complete_work_memory": {
+        "lifetime_peak_bytes": 286298112,
+        "current_rss_bytes": 284078080,
+        "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+        "units": "bytes",
+        "owned_pid": 55972
+      },
+      "retention": "source Experiment, both traces/results and encoded/regenerated buffers live across owner acknowledgement",
+      "exit": 0,
+      "reap_confirmed": true,
+      "post_exit_retained_handle_memory": {
+        "lifetime_peak_bytes": 286298112,
+        "current_rss_bytes": 32768,
+        "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+        "units": "bytes",
+        "owned_pid": 55972
+      },
+      "lifetime_peak_bytes": 286298112,
+      "success": true,
+      "stderr": "",
+      "seconds_owner_total_including_hold_and_teardown": 0.45399999991059303
+    }
+  ],
+  "budgets": "No new30s/512MiB pass criterion;60s owned watchdog only",
+  "generated_after_build": {
+    "Cargo.toml": {
+      "sha256": "2cdee79fd23bff948de7b173c15f9d571773c5fc54a2fffc3af371d40b7b17e2",
+      "bytes": 298
+    },
+    "Cargo.lock": {
+      "sha256": "09432caa3c95dfe9f40db09495ad3cef6743ba47ac3c66203a1b2aa84bdb609e",
+      "bytes": 12244
+    },
+    "src/main.rs": {
+      "sha256": "a18121fd017ac7b5078478412915f9162b2d6f7ba138e83c2c2367987dad61cc",
+      "bytes": 5943
+    }
+  },
+  "binary_sha256": "85e334ee81b9f2d0cfd227c61378c931d52cc87f87d43dd6a550b6eef2ea6aa9",
+  "pairs": [
+    {
+      "pair": 1,
+      "run_indices": [
+        1,
+        2
+      ],
+      "profiles": [
+        "delayed",
+        "accepted"
+      ]
+    },
+    {
+      "pair": 2,
+      "run_indices": [
+        3,
+        4
+      ],
+      "profiles": [
+        "accepted",
+        "delayed"
+      ]
+    },
+    {
+      "pair": 3,
+      "run_indices": [
+        5,
+        6
+      ],
+      "profiles": [
+        "delayed",
+        "accepted"
+      ]
+    }
+  ],
+  "generated_after_series": {
+    "Cargo.toml": {
+      "sha256": "2cdee79fd23bff948de7b173c15f9d571773c5fc54a2fffc3af371d40b7b17e2",
+      "bytes": 298
+    },
+    "Cargo.lock": {
+      "sha256": "09432caa3c95dfe9f40db09495ad3cef6743ba47ac3c66203a1b2aa84bdb609e",
+      "bytes": 12244
+    },
+    "src/main.rs": {
+      "sha256": "a18121fd017ac7b5078478412915f9162b2d6f7ba138e83c2c2367987dad61cc",
+      "bytes": 5943
+    }
+  },
+  "source_after": {
+    "Cargo.toml": "107801ee283d274781df7496d22eaa46a09748e2b624ccb48a8b7b9eda975462",
+    "Cargo.lock": "1ff60b850d3f5928fc13476575700400765d31f7deb3268171f66176fb6cf6f3",
+    "rust-toolchain.toml": "ccced9ef5cf5a0c35bb5ba4e4b525188b72aa07aab8cc3fb5b644778ade8f125",
+    "src/delivery.rs": "12d7fbdcee02d7ae986658bb2f43116f56283f1689adc2c74e4f360d45389120",
+    "src/estimation.rs": "83a3b6936c53fc9d28c29a59b0840cf5d57611852246bc19c2c4cb258c092fdf",
+    "src/evaluation.rs": "cf83337582b8887dc3ae71b62a8daf10c9f8b578eddd74b212069d30d76ba870",
+    "src/lib.rs": "886ec0ba1cf84439c2a4e0913f2b6be33bc1da93aae9b51e93f10e7049959a52",
+    "src/main.rs": "76574d18911bdce81082b9f76308cf3a31f69fa9967a0592f28eaf2630901d6b",
+    "src/sensors.rs": "d8eaae0d691535bcee6f68166babdb41c49de815ad0c3eb213c8b980c9ae29af",
+    "src/simulation.rs": "c0fd739c26e7190549736636c69720dc963707059463a45b7095159099fd7691",
+    "tests/observation-delivery/Cargo.lock": "971dcf3c1bc142f37250ec23064ab6303478b19017cf223baff2f7ee45f08cef",
+    "tests/observation-delivery/Cargo.toml": "a309b97c5f1d676cde7dd6201a9c375e4c3f922302a73343c0c8211e543118dd",
+    "tests/observation-delivery/compile/consumer/Cargo.lock": "e743220f79a6f6c61d068676d52b7a07e7129021b271bd022a3b9937cbe78b85",
+    "tests/observation-delivery/compile/consumer/Cargo.toml": "7e1dad773e20a37953b3fd7b9b449bb8ab4a4b5aa29cc8ba529079678ae178da",
+    "tests/observation-delivery/compile/consumer/src/lib.rs": "ed8449b1c6e7f2c63bf327de34db05ff42abb4a8336db0062bb6c73761afa7ba",
+    "tests/observation-delivery/compile/privacy.rs": "8c5773c564aa3bd1054939f0a38e10656fd074cc3d5965125f3dfdb3b978043b",
+    "tests/observation-delivery/src/lib.rs": "b465cbea721b18ee513755ee5da907df3c66bc28ba736b554876597ae0cf0115",
+    "tests/observation-delivery/tests/contracts.rs": "e289654bb9178378182a231a52232d05448ccc6f7c310050518ed4d6924bcb9c",
+    "tests/observation-delivery/tests/support/mod.rs": "7142c814adab0eb0c88d394e208a630803e633a92375bb74add8a42c39e011df",
+    "tests/observation-delivery/tools/native_baseline.py": "88814e0c43703035f3839ce84cfa36a18ad4cfaea965021f99fa0a41a76dde7c",
+    "docs/design-docs/observation-delivery/validation/test-lock.json": "1dc2a43bf41076e16f2e2e8223f1696b27d63efbeb4346fe65b8f6a195e5f55b"
+  },
+  "research_after": {
+    "protocol.md": "b24d67e385cc9a90e44ccc2e3f536103fe834b8047b433a0b6c6ddbf379ae215",
+    "paired_probe.py": "660a9c93c89007dc8a89cfd8b7bc014925bd8574f909569d5403a2481d0797a8",
+    "driver.rs": "a18121fd017ac7b5078478412915f9162b2d6f7ba138e83c2c2367987dad61cc"
+  },
+  "success": true
+}
