@@ -1,0 +1,25 @@
+{
+  "argv": [
+    "rustc",
+    "+1.99.0",
+    "-Vv"
+  ],
+  "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+  "timeout_seconds": 240,
+  "scope": "direct Popen child only; compiler descendants are not process-tree contained",
+  "process_tree_cleanup_guaranteed": false,
+  "pid": 107976,
+  "status": "direct_command_reaped_success",
+  "exit": 0,
+  "reap_confirmed": true,
+  "success": true,
+  "seconds_total": 0.03100000019185245,
+  "stdout": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-msvc\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+  "stdout_prefix_truncated": false,
+  "stdout_path": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\accepted-update-sealed-20261102\\command-1.stdout.log",
+  "stdout_observed_bytes": 194,
+  "stderr": "",
+  "stderr_prefix_truncated": false,
+  "stderr_path": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\accepted-update-sealed-20261102\\command-1.stderr.log",
+  "stderr_observed_bytes": 0
+}

@@ -1,0 +1,7 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.62s
+     Running unittests src\lib.rs (target\debug\deps\fusion_lab-1d27257bf1ef4ffd.exe)
+     Running unittests src\main.rs (target\debug\deps\fusion_lab-3f14e8ad536c45ff.exe)
+     Running tests\cli.rs (target\debug\deps\cli-545e1590ac6e1549.exe)
+     Running tests\experiments.rs (target\debug\deps\experiments-e061d5991a9514fc.exe)
+     Running tests\velocity_drift.rs (target\debug\deps\velocity_drift-0c876b6e88ec3248.exe)
+   Doc-tests fusion_lab

@@ -1,0 +1,15 @@
+[package]
+name = "delivery-performance-paired-probe"
+version = "0.0.0"
+edition = "2024"
+rust-version = "1.99"
+publish = false
+
+[workspace]
+resolver = "3"
+
+[dependencies]
+fusion-lab = { path = "C:/Users/Admin/Documents/Codex/2026-10-20/if-x20/work/fusion-lab" }
+
+[lints.rust]
+unsafe_code = "forbid"

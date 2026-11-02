@@ -1,0 +1,42 @@
+{
+  "status": "NONNUMERICAL_REAL_DIRECT_CHILD_COMMAND_FAULT_PROOF_NOT_BENCHMARK",
+  "probe_sha256": "4966d2a005ba294a5002c8bb121b03c83a2e2e0c4de5c06ce65caa867e65f700",
+  "paired_source_sha256": "660a9c93c89007dc8a89cfd8b7bc014925bd8574f909569d5403a2481d0797a8",
+  "results": [
+    {
+      "mode": "normal_metadata",
+      "actual_owned_pid": 116528,
+      "exit": 0,
+      "reap_confirmed": true,
+      "original_error": null,
+      "guard_retained": true,
+      "descendant_reconciliation_required": false,
+      "command_receipt_sha256": "b56d721564004cc25df4e5f804758d037604379eed4b55676fe3a2879d13671b",
+      "receipt": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\accepted-update-command-faults-1793583881910274900\\normal_metadata.json"
+    },
+    {
+      "mode": "transient_kill",
+      "actual_owned_pid": 118316,
+      "exit": 1,
+      "reap_confirmed": true,
+      "original_error": "TimeoutExpired(['C:\\\\Users\\\\Admin\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\python\\\\python.exe', '-c', 'import time;time.sleep(120)'], 5, 'injected command-watchdog failure')",
+      "guard_retained": true,
+      "descendant_reconciliation_required": true,
+      "command_receipt_sha256": "2e22843c1f11dffea9d6f987eb316f2f2b0b5ff6ed229a18d101398d64f7754e",
+      "receipt": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\accepted-update-command-faults-1793583881910274900\\transient_kill.json"
+    },
+    {
+      "mode": "transient_wait",
+      "actual_owned_pid": 113844,
+      "exit": 1,
+      "reap_confirmed": true,
+      "original_error": "TimeoutExpired(['C:\\\\Users\\\\Admin\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\python\\\\python.exe', '-c', 'import time;time.sleep(120)'], 5, 'injected command-watchdog failure')",
+      "guard_retained": true,
+      "descendant_reconciliation_required": true,
+      "command_receipt_sha256": "dec9a9d78e549a80bd87f25c6b3175eff4960817014167a9869b7b9c47ad91c0",
+      "receipt": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\accepted-update-command-faults-1793583881910274900\\transient_wait.json"
+    }
+  ],
+  "all_direct_children_reaped": true,
+  "no_compiler_or_benchmark_started": true
+}

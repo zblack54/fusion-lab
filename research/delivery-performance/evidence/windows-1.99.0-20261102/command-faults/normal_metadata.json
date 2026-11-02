@@ -1,0 +1,25 @@
+{
+  "argv": [
+    "C:\\Users\\Admin\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+    "-c",
+    "print(\"ordinary nonnumerical command\")"
+  ],
+  "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\accepted-update-command-faults-1793583881910274900",
+  "timeout_seconds": 5,
+  "scope": "direct Popen child only; compiler descendants are not process-tree contained",
+  "process_tree_cleanup_guaranteed": false,
+  "pid": 116528,
+  "status": "direct_command_reaped_success",
+  "exit": 0,
+  "reap_confirmed": true,
+  "success": true,
+  "seconds_total": 0.01500000013038516,
+  "stdout": "ordinary nonnumerical command\r\n",
+  "stdout_prefix_truncated": false,
+  "stdout_path": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\accepted-update-command-faults-1793583881910274900\\normal_metadata.stdout.log",
+  "stdout_observed_bytes": 31,
+  "stderr": "",
+  "stderr_prefix_truncated": false,
+  "stderr_path": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\accepted-update-command-faults-1793583881910274900\\normal_metadata.stderr.log",
+  "stderr_observed_bytes": 0
+}

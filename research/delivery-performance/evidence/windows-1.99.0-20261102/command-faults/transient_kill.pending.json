@@ -1,0 +1,41 @@
+{
+  "argv": [
+    "C:\\Users\\Admin\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+    "-c",
+    "import time;time.sleep(120)"
+  ],
+  "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\accepted-update-command-faults-1793583881910274900",
+  "timeout_seconds": 5,
+  "scope": "direct Popen child only; compiler descendants are not process-tree contained",
+  "process_tree_cleanup_guaranteed": false,
+  "pid": 118316,
+  "status": "command_failed_stop_before_series",
+  "success": false,
+  "error": "TimeoutExpired(['C:\\\\Users\\\\Admin\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\python\\\\python.exe', '-c', 'import time;time.sleep(120)'], 5, 'injected command-watchdog failure')",
+  "cleanup_owned_pid": 118316,
+  "reap_confirmed": true,
+  "cleanup_cycle": 1,
+  "cleanup_attempt": 2,
+  "kill_attempted": true,
+  "cleanup_error_count": 2,
+  "cleanup_errors": [
+    {
+      "operation": "kill",
+      "error": "PermissionError('injected transient kill operation failure')"
+    },
+    {
+      "operation": "wait_reap",
+      "error": "TimeoutExpired(['C:\\\\Users\\\\Admin\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\python\\\\python.exe', '-c', 'import time;time.sleep(120)'], 1)"
+    }
+  ],
+  "latest_cleanup_error": {
+    "operation": "wait_reap",
+    "error": "TimeoutExpired(['C:\\\\Users\\\\Admin\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\python\\\\python.exe', '-c', 'import time;time.sleep(120)'], 1)"
+  },
+  "exit": 1,
+  "cleanup_status": "reaped",
+  "manual_reconciliation_required": false,
+  "same_child_and_memory_handle_retained": true,
+  "original_error_preserved": "TimeoutExpired(['C:\\\\Users\\\\Admin\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\python\\\\python.exe', '-c', 'import time;time.sleep(120)'], 5, 'injected command-watchdog failure')",
+  "no_next_workload_until_reaped": true
+}

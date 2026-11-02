@@ -1,0 +1,48 @@
+{
+  "argv": [
+    "C:\\Users\\Admin\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+    "-c",
+    "import time;time.sleep(120)"
+  ],
+  "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\accepted-update-command-faults-1793583881910274900",
+  "timeout_seconds": 5,
+  "scope": "direct Popen child only; compiler descendants are not process-tree contained",
+  "process_tree_cleanup_guaranteed": false,
+  "pid": 113844,
+  "status": "command_failed_stop_before_series",
+  "success": false,
+  "error": "TimeoutExpired(['C:\\\\Users\\\\Admin\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\python\\\\python.exe', '-c', 'import time;time.sleep(120)'], 5, 'injected command-watchdog failure')",
+  "cleanup_owned_pid": 113844,
+  "reap_confirmed": true,
+  "cleanup_cycle": 1,
+  "cleanup_attempt": 2,
+  "kill_attempted": true,
+  "cleanup_error_count": 1,
+  "cleanup_errors": [
+    {
+      "operation": "wait_reap",
+      "error": "OSError('injected transient reap operation failure')"
+    }
+  ],
+  "latest_cleanup_error": {
+    "operation": "wait_reap",
+    "error": "OSError('injected transient reap operation failure')"
+  },
+  "exit": 1,
+  "cleanup_status": "reaped",
+  "manual_reconciliation_required": false,
+  "same_child_and_memory_handle_retained": true,
+  "original_error_preserved": "TimeoutExpired(['C:\\\\Users\\\\Admin\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\python\\\\python.exe', '-c', 'import time;time.sleep(120)'], 5, 'injected command-watchdog failure')",
+  "no_next_workload_until_reaped": true,
+  "descendant_reconciliation_required": true,
+  "descendant_limit": "Direct child reaped, but compiler descendants are not contained. Keep guard and manually reconcile before any new build or numerical series.",
+  "seconds_total": 0.01500000013038516,
+  "stdout": "",
+  "stdout_prefix_truncated": false,
+  "stdout_path": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\accepted-update-command-faults-1793583881910274900\\transient_wait.stdout.log",
+  "stdout_observed_bytes": 0,
+  "stderr": "",
+  "stderr_prefix_truncated": false,
+  "stderr_path": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\accepted-update-command-faults-1793583881910274900\\transient_wait.stderr.log",
+  "stderr_observed_bytes": 0
+}

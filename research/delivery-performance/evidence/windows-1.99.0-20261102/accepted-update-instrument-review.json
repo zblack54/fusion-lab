@@ -1,0 +1,38 @@
+{
+  "status": "STATIC_MEASUREMENT_CORE_CLEAR_BUILD_OWNERSHIP_AND_PROTOCOL_CLARIFICATION_REQUIRED_BEFORE_SERIES",
+  "files": {
+    "research/delivery-performance/protocol.md": "4c28ce5c93fc8931f233ae41897e258e4583e77576b1974cf86302e46141a7de",
+    "research/delivery-performance/paired_probe.py": "1607abe4642ffa6d785655eebb2c9d56c80e70304878f1aa3ee239811d4d9730",
+    "research/delivery-performance/driver.rs": "2bf55185276fa7aa7736baf0601edb4b23f0b5752a722f49b16b7650f496f54c"
+  },
+  "agentContract": "AGENTS.md read; optional local Rust skill suite absent in current checkout; fallback project review contract applied.",
+  "approvedHostProtocol": "work/accepted-update-companion-protocol.md; operative approval linked by candidate protocol issue75comment6534442577",
+  "findings": [
+    {
+      "priority": "P1",
+      "path": "research/delivery-performance/paired_probe.py",
+      "scope": "Static exceptional build cleanup hypothesis, not observed failure",
+      "problem": "Build subprocess.run240s path lacks explicit owned-child reap evidence. Normal TimeoutExpired handles direct child, but exceptional kill/reap failure can escape into unconditional finished guard removal.",
+      "remedy": "Use owned Popen command lifecycle and accepted reap_owned for exceptional cleanup; retain guard/pending on uncertain cleanup; record original build error,PID and actual reap before any series."
+    },
+    {
+      "priority": "P2",
+      "path": "research/delivery-performance/protocol.md",
+      "problem": "Frozen configuration file promised but driver actually uses Config defaults plus explicit duration/outage; final no-implementation authorization wording conflicts with approved code checkpoint.",
+      "remedy": "Describe actual immutable source/default configuration provenance and distinguish approved implementation from still-unapproved numerical execution."
+    }
+  ],
+  "verifiedStatically": [
+    "Fixed warmups delayed then accepted; exact maximum order delayed/accepted,accepted/delayed,delayed/accepted with fresh Popen percase and stop-on-first-failure/no retries",
+    "Independent arithmetic: position floor((360000-500)/20)+1=17976 and velocity floor((360000-500)/5)+1=71901 =>89877stale125horizon; acceptedcase90002 and warmups27",
+    "Same root registry entries/checksums, locked offline1.99release build; explicit actual generatedfile hashes and before/after root/research/binary fingerprints",
+    "Required source/traces/results/original+regenerated buffers referenced across ownerACK; allsnapshot floatbits/model/payload/ledger/arrival/canonical bytes compared",
+    "Exact accepted ownership helper SHA; samePopen reap_owned recovery and sharedexclusiveguard;60s owned watchdog; Windows lifetime PeakWorkingSet held+retainedhandlepostexit",
+    "No inherited30s/512MiB passcondition; only proof/count/cleanup success and60s executionwatchdog; no foreignplatform oraccuracyclaim"
+  ],
+  "limits": [
+    "Static only: no build/warmup/maximumseries launched by reviewer.",
+    "Main must compile-qualify and approve exact frozen instrumentation before --run-approved-series.",
+    "Measurements compare entire complete workloads including delay-dependent codec/ledger work, not isolated per-update kernel costs."
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "status": "ISSUE77_PRERUN_BLOCKER_RESOLVED_INDEPENDENT_STATIC_AND_NONNUMERICAL_RECEIPT_REVIEW_CLEAR",
+  "hashes": {
+    "protocol.md": "b24d67e385cc9a90e44ccc2e3f536103fe834b8047b433a0b6c6ddbf379ae215",
+    "paired_probe.py": "660a9c93c89007dc8a89cfd8b7bc014925bd8574f909569d5403a2481d0797a8",
+    "driver.rs": "a18121fd017ac7b5078478412915f9162b2d6f7ba138e83c2c2367987dad61cc"
+  },
+  "records": [
+    {
+      "mode": "normal_metadata",
+      "hashMatch": true,
+      "pidMatch": true,
+      "reap": true
+    },
+    {
+      "mode": "transient_kill",
+      "hashMatch": true,
+      "pidMatch": true,
+      "reap": true,
+      "error": "TimeoutExpired(['C:\\\\Users\\\\Admin\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\python\\\\python.exe', '-c', 'import time;time.sleep(120)'], 5, 'injected command-watchdog failure')",
+      "descendants": true,
+      "cleanupErrors": 2
+    },
+    {
+      "mode": "transient_wait",
+      "hashMatch": true,
+      "pidMatch": true,
+      "reap": true,
+      "error": "TimeoutExpired(['C:\\\\Users\\\\Admin\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\python\\\\python.exe', '-c', 'import time;time.sleep(120)'], 5, 'injected command-watchdog failure')",
+      "descendants": true,
+      "cleanupErrors": 1
+    }
+  ],
+  "review": [
+    "Owned Popen metadata/build commands record originalerror/PID/argv, actualsamechildreap before return, failure marks compilerdescendants unverified",
+    "Main finally retains guard on any unconfirmedchild or commanddescendantreconciliation; no build/warmup/series continuation after commandfailure",
+    "Normal complete commands permit onefixedreleasebinary and same immutable defaultConfig/driver/rootsource protocol; corrected no separate configurationfile statement",
+    "Originalpaired order/count/equality/buffers/watchdog/no30s512budget unchanged"
+  ],
+  "limits": [
+    "Directcommandchild ownership only, compiler process tree is not contained; any commandfailure requires explicit manual reconciliation before resume.",
+    "No compilerbuild, warmup or numericalseries executed by reviewer; main exact frozen compile/series authorization still required.",
+    "Wholeworkload effects include codec/ledger, not isolated updatekernel timing."
+  ],
+  "findings": []
+}
