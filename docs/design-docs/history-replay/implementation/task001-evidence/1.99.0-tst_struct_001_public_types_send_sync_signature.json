@@ -1,0 +1,22 @@
+{
+  "argv": [
+    "cargo",
+    "+1.99.0",
+    "test",
+    "--manifest-path",
+    "tests/history-replay/Cargo.toml",
+    "--locked",
+    "--test",
+    "contracts",
+    "tst_struct_001_public_types_send_sync_signature",
+    "--",
+    "--exact",
+    "--nocapture",
+    "--test-threads=1"
+  ],
+  "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+  "exit": 0,
+  "seconds": 0.10899999993853271,
+  "log": "1.99.0-tst_struct_001_public_types_send_sync_signature.log",
+  "sha256": "42cdef129b9822a279024e997dbf2919ebb1a0d2beaed8d2e8a2e94182506921"
+}

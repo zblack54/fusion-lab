@@ -1,4 +1,4 @@
-name: History replay design qualification
+name: History replay implementation
 on:
   pull_request:
   workflow_dispatch:
@@ -30,8 +30,8 @@ jobs:
         with:
           python-version: "3.12"
       - run: rustup toolchain install ${{ matrix.toolchain }} --profile minimal --component rustfmt --component clippy
-      - name: Execute every catalog selector against the diagnostic seam
-        run: python tests/history-replay/tools/native_baseline.py --toolchain ${{ matrix.toolchain }} --mode design --output "${{ runner.temp }}/history-replay-${{ matrix.toolchain }}"
+      - name: Require every immutable catalog selector to pass
+        run: python tests/history-replay/tools/native_baseline.py --toolchain ${{ matrix.toolchain }} --mode implementation --output "${{ runner.temp }}/history-replay-${{ matrix.toolchain }}"
       - if: always()
         uses: actions/upload-artifact@v4
         with:

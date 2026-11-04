@@ -1,0 +1,554 @@
+{
+  "status": "TASK001_INDEPENDENT_REVIEW_CLEAR_STAGE_ONLY",
+  "issue": 22,
+  "approvedGitSource": "6403941a",
+  "externalBaseline": {
+    "digest": "8c57cf49bd99b927012ac7215ea44688bc8cde928ea6b233a2f37abc41f13095",
+    "source": "https://github.com/zblack54/fusion-lab/issues/22#issuecomment-6637065066",
+    "matchedLiteral": "8c57cf49bd99b927012ac7215ea44688bc8cde928ea6b233a2f37abc41f13095"
+  },
+  "source": {
+    "path": "src/history_replay.rs",
+    "sha256": "a12ef02b15b480eea8d5a1bc8ee78e3a3d8807ce4485af26ab3811480000d893",
+    "exactApprovedDiffIsConstructorOnly": true,
+    "behavior": "u32 window<=500 returns private HistoryPlan; larger returns InvalidWindow preserving value; no allocation/I/O/dependency/truth access",
+    "replayDiagnosticRetained": true
+  },
+  "preservation": {
+    "approvedGitProtectedFiles": 43,
+    "mismatches": [],
+    "files": [
+      {
+        "path": "Cargo.lock",
+        "bytes": 12136,
+        "match": true,
+        "sha256": "1ff60b850d3f5928fc13476575700400765d31f7deb3268171f66176fb6cf6f3"
+      },
+      {
+        "path": "Cargo.toml",
+        "bytes": 530,
+        "match": true,
+        "sha256": "107801ee283d274781df7496d22eaa46a09748e2b624ccb48a8b7b9eda975462"
+      },
+      {
+        "path": "docs/design-docs/history-replay/constraints/constraints.toml",
+        "bytes": 2033,
+        "match": true,
+        "sha256": "95f51cc57145b7ade7c228e3e90dd41589bc4d2a88b22c7ec5bd70c2ceccdf2a"
+      },
+      {
+        "path": "docs/design-docs/history-replay/decisions/ADR-001-causal-batch-correction.md",
+        "bytes": 1727,
+        "match": true,
+        "sha256": "32291bb40de5d607750dee80ec1005539fbeda4df00b922b9765341a484d6fc9"
+      },
+      {
+        "path": "docs/design-docs/history-replay/decisions/index.md",
+        "bytes": 278,
+        "match": true,
+        "sha256": "83959be5d037d01dd61bf683c0cc4d4e841f3a96f1e48fe5e3745c3291c982ca"
+      },
+      {
+        "path": "docs/design-docs/history-replay/implementation-brief.md",
+        "bytes": 3212,
+        "match": true,
+        "sha256": "ae9e85cd1b00bfa1023487be75139e9d011c7232a3c8ba8dc952fda2c0a0d5b9"
+      },
+      {
+        "path": "docs/design-docs/history-replay/implementation-plan.toml",
+        "bytes": 2917,
+        "match": true,
+        "sha256": "887a7b9cc9803b2a23793b3e83ecebbd7f841ca6503d50a7cdfb82c11c7aba50"
+      },
+      {
+        "path": "docs/design-docs/history-replay/intent/acceptance.toml",
+        "bytes": 923,
+        "match": true,
+        "sha256": "f085954bb52782a08bbaa3cddf075138fb192a321cd618e0ecaf201b4bf0f4ff"
+      },
+      {
+        "path": "docs/design-docs/history-replay/intent/summary.md",
+        "bytes": 539,
+        "match": true,
+        "sha256": "b64db88257f33a156093690caf8007c19ed7e45008d4d4cb999b28a249139314"
+      },
+      {
+        "path": "docs/design-docs/history-replay/open-questions.toml",
+        "bytes": 169,
+        "match": true,
+        "sha256": "d8b62360b085ef790c7db92a7b050544d51f521e2cc3a8652e13748086cedcdd"
+      },
+      {
+        "path": "docs/design-docs/history-replay/requirements/glossary.md",
+        "bytes": 477,
+        "match": true,
+        "sha256": "45eb43212609627f25718bbd029e51609d9bd5bb03f13b65738a9a3b61499ff9"
+      },
+      {
+        "path": "docs/design-docs/history-replay/requirements/requirements.toml",
+        "bytes": 8947,
+        "match": true,
+        "sha256": "4436e921c15f50910b216c653ce5843b61905151c662d7c22aa243631cb07b3e"
+      },
+      {
+        "path": "docs/design-docs/history-replay/spec.toml",
+        "bytes": 1775,
+        "match": true,
+        "sha256": "de2fb876c959ac557571ffd8a2465da4ce55881f68a20b448a1ca3301fe0c28f"
+      },
+      {
+        "path": "docs/design-docs/history-replay/structure/architecture.md",
+        "bytes": 9915,
+        "match": true,
+        "sha256": "865b16e31023287137e1dea8164f86ab5e981e8e9ecc56641980b3a1a33d9f2e"
+      },
+      {
+        "path": "docs/design-docs/history-replay/structure/modules.toml",
+        "bytes": 658,
+        "match": true,
+        "sha256": "f9f10bfe54f267c1f2188f8951a37960c43dfb9a9ca36f2b594313207cc35875"
+      },
+      {
+        "path": "docs/design-docs/history-replay/tests/tests.toml",
+        "bytes": 16760,
+        "match": true,
+        "sha256": "65e2a3acb95d0cdb799e9c638c4d2a7af192c7e841804946d3d135ebf8d17bed"
+      },
+      {
+        "path": "docs/design-docs/history-replay/traceability.toml",
+        "bytes": 4036,
+        "match": true,
+        "sha256": "22adb296e550ebf45c0deecee892dbbdd2f2483fd2042e9c2a81f673f78e55cb"
+      },
+      {
+        "path": "docs/design-docs/history-replay/validation/design-execution.json",
+        "bytes": 1012632,
+        "match": true,
+        "sha256": "481803eb850c472f54cfa1858771b0f4f6379d3ae5eaa00436b4405f56904e6a"
+      },
+      {
+        "path": "docs/design-docs/history-replay/validation/test-lock.json",
+        "bytes": 4176,
+        "match": true,
+        "sha256": "80f48203f95dde2d526ba59e5cc3a8ce9f9fa5bf0d8fd85a7af5d77f8bf174f5"
+      },
+      {
+        "path": "docs/design-docs/history-replay/validation/waivers.toml",
+        "bytes": 23,
+        "match": true,
+        "sha256": "60c7e0d172b70a0ac95d9de0a003671727ab0aacede9adea59524d8a21cda5c4"
+      },
+      {
+        "path": "docs/design-docs/history-replay/verification/authority-boundary.md",
+        "bytes": 668,
+        "match": true,
+        "sha256": "80cdeaf738a8f6340afcb0a2d58e77f815b45b315c5e26cd72320962afd6b5e3"
+      },
+      {
+        "path": "docs/design-docs/history-replay/verification/bounds.md",
+        "bytes": 2366,
+        "match": true,
+        "sha256": "5dbf09e02bd9160a1bf0313b32167d3e6b5e314db7d5ce58046f1902c74dae2c"
+      },
+      {
+        "path": "docs/design-docs/history-replay/verification/catalog.toml",
+        "bytes": 5535,
+        "match": true,
+        "sha256": "f81e656b0a5b4d70b637508e6e69a800f9da2af8e6a0f3123bffafa44e3e1ed7"
+      },
+      {
+        "path": "docs/design-docs/history-replay/verification/native-matrix.md",
+        "bytes": 647,
+        "match": true,
+        "sha256": "13f1bf4bcf6ee792b89751e752b2d2c865a7e3800458f18688c90c891fb4e83c"
+      },
+      {
+        "path": "docs/design-docs/history-replay/verification/resource-workload.md",
+        "bytes": 1911,
+        "match": true,
+        "sha256": "1980d513f9b71bbf9b579c45164c35be0703f6d0551c12222a15b282098bc75d"
+      },
+      {
+        "path": "docs/design-docs/history-replay/verification/rewind-overflow-oracle.rs",
+        "bytes": 2271,
+        "match": true,
+        "sha256": "7576559286bc3bda695695b4097e51704e1f0320daf046dfbb12abd3193dc0c7"
+      },
+      {
+        "path": "docs/design-docs/history-replay/verification/rewind-overflow-qualification.json",
+        "bytes": 6478,
+        "match": true,
+        "sha256": "7276e64daed7e6b7d1842c0b279390544dfb2b352908a467444efbe1a9335822"
+      },
+      {
+        "path": "docs/design-docs/history-replay/verification/test-efficacy.md",
+        "bytes": 1125,
+        "match": true,
+        "sha256": "22cd6939bf78b979dde4f1040f29d6115bacee1947b408948a4d4f0de6d60c69"
+      },
+      {
+        "path": "docs/design-docs/observation-delivery/implementation/resource_probe.py",
+        "bytes": 19314,
+        "match": true,
+        "sha256": "ab851ab12ec6f54ee52baec37b0b59b80f8db069b5a92179c3f12f23cc9b924c"
+      },
+      {
+        "path": "rust-toolchain.toml",
+        "bytes": 87,
+        "match": true,
+        "sha256": "ccced9ef5cf5a0c35bb5ba4e4b525188b72aa07aab8cc3fb5b644778ade8f125"
+      },
+      {
+        "path": "src/delivery.rs",
+        "bytes": 33975,
+        "match": true,
+        "sha256": "12d7fbdcee02d7ae986658bb2f43116f56283f1689adc2c74e4f360d45389120"
+      },
+      {
+        "path": "src/estimation.rs",
+        "bytes": 4637,
+        "match": true,
+        "sha256": "83a3b6936c53fc9d28c29a59b0840cf5d57611852246bc19c2c4cb258c092fdf"
+      },
+      {
+        "path": "src/evaluation.rs",
+        "bytes": 3962,
+        "match": true,
+        "sha256": "cf83337582b8887dc3ae71b62a8daf10c9f8b578eddd74b212069d30d76ba870"
+      },
+      {
+        "path": "src/lib.rs",
+        "bytes": 1666,
+        "match": true,
+        "sha256": "f1707ae4d0fe5b0f773406860546d1147134440daef190fdaf6ac72bb09b8f85"
+      },
+      {
+        "path": "src/main.rs",
+        "bytes": 9647,
+        "match": true,
+        "sha256": "76574d18911bdce81082b9f76308cf3a31f69fa9967a0592f28eaf2630901d6b"
+      },
+      {
+        "path": "src/sensors.rs",
+        "bytes": 961,
+        "match": true,
+        "sha256": "d8eaae0d691535bcee6f68166babdb41c49de815ad0c3eb213c8b980c9ae29af"
+      },
+      {
+        "path": "src/simulation.rs",
+        "bytes": 11510,
+        "match": true,
+        "sha256": "c0fd739c26e7190549736636c69720dc963707059463a45b7095159099fd7691"
+      },
+      {
+        "path": "tests/history-replay/Cargo.lock",
+        "bytes": 12236,
+        "match": true,
+        "sha256": "f74d20e99ca6c2d452092ebc3b1aec5165b62a8be986d2bc8c3ed779be9c47fa"
+      },
+      {
+        "path": "tests/history-replay/Cargo.toml",
+        "bytes": 208,
+        "match": true,
+        "sha256": "1ea2369b23d0ea2911920c54169da4483815fd814743bdb09dd2963936223080"
+      },
+      {
+        "path": "tests/history-replay/build.rs",
+        "bytes": 216,
+        "match": true,
+        "sha256": "2bf7b4646820440e9a997ccd67663aebb4e9296d07c798a947ba361eff903dcb"
+      },
+      {
+        "path": "tests/history-replay/src/lib.rs",
+        "bytes": 65,
+        "match": true,
+        "sha256": "55297e78b51534d85aa43e80aff822fc64f0b474937213cb31a5862abc7863d2"
+      },
+      {
+        "path": "tests/history-replay/tests/contracts.rs",
+        "bytes": 28695,
+        "match": true,
+        "sha256": "3c1d0f1699997e60c37611cee8e1cf171ece46f97098c167a909658be223feea"
+      },
+      {
+        "path": "tests/history-replay/tools/native_baseline.py",
+        "bytes": 10103,
+        "match": true,
+        "sha256": "4cb083eccbc260fd8bc16bfdfd60d66d3e608c2a000a73f9c7f3c1a13757f6a8"
+      }
+    ]
+  },
+  "evidence": {
+    "finalCommandRecordsIncludingCompilerAndValidator": 20,
+    "reportedStageCommandsExcludingCompilerInspection": 18,
+    "allExitZero": true,
+    "allFinalRawLogHashesMatch": true,
+    "exactSelectorResults": [
+      {
+        "file": "1.99.0-tst_anti_001_private_plan_cannot_be_forged.json",
+        "exit": 0,
+        "alias": "+1.99.0",
+        "selector": "tst_anti_001_private_plan_cannot_be_forged",
+        "counts": [
+          1,
+          0,
+          0,
+          0,
+          37
+        ]
+      },
+      {
+        "file": "1.99.0-tst_bound_001_window_zero_and_maximum_valid.json",
+        "exit": 0,
+        "alias": "+1.99.0",
+        "selector": "tst_bound_001_window_zero_and_maximum_valid",
+        "counts": [
+          1,
+          0,
+          0,
+          0,
+          37
+        ]
+      },
+      {
+        "file": "1.99.0-tst_neg_001_window_501_rejected.json",
+        "exit": 0,
+        "alias": "+1.99.0",
+        "selector": "tst_neg_001_window_501_rejected",
+        "counts": [
+          1,
+          0,
+          0,
+          0,
+          37
+        ]
+      },
+      {
+        "file": "1.99.0-tst_neg_002_window_integer_max_rejected.json",
+        "exit": 0,
+        "alias": "+1.99.0",
+        "selector": "tst_neg_002_window_integer_max_rejected",
+        "counts": [
+          1,
+          0,
+          0,
+          0,
+          37
+        ]
+      },
+      {
+        "file": "1.99.0-tst_struct_001_public_types_send_sync_signature.json",
+        "exit": 0,
+        "alias": "+1.99.0",
+        "selector": "tst_struct_001_public_types_send_sync_signature",
+        "counts": [
+          1,
+          0,
+          0,
+          0,
+          37
+        ]
+      },
+      {
+        "file": "stable-tst_anti_001_private_plan_cannot_be_forged.json",
+        "exit": 0,
+        "alias": "+stable",
+        "selector": "tst_anti_001_private_plan_cannot_be_forged",
+        "counts": [
+          1,
+          0,
+          0,
+          0,
+          37
+        ]
+      },
+      {
+        "file": "stable-tst_bound_001_window_zero_and_maximum_valid.json",
+        "exit": 0,
+        "alias": "+stable",
+        "selector": "tst_bound_001_window_zero_and_maximum_valid",
+        "counts": [
+          1,
+          0,
+          0,
+          0,
+          37
+        ]
+      },
+      {
+        "file": "stable-tst_neg_001_window_501_rejected.json",
+        "exit": 0,
+        "alias": "+stable",
+        "selector": "tst_neg_001_window_501_rejected",
+        "counts": [
+          1,
+          0,
+          0,
+          0,
+          37
+        ]
+      },
+      {
+        "file": "stable-tst_neg_002_window_integer_max_rejected.json",
+        "exit": 0,
+        "alias": "+stable",
+        "selector": "tst_neg_002_window_integer_max_rejected",
+        "counts": [
+          1,
+          0,
+          0,
+          0,
+          37
+        ]
+      },
+      {
+        "file": "stable-tst_struct_001_public_types_send_sync_signature.json",
+        "exit": 0,
+        "alias": "+stable",
+        "selector": "tst_struct_001_public_types_send_sync_signature",
+        "counts": [
+          1,
+          0,
+          0,
+          0,
+          37
+        ]
+      }
+    ],
+    "actualCompilerAliases": [
+      {
+        "file": "1.99.0-rustc.json",
+        "output": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-msvc\nrelease: 1.99.0\nLLVM version: 23.1.1\n"
+      },
+      {
+        "file": "stable-rustc.json",
+        "output": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-msvc\nrelease: 1.99.0\nLLVM version: 23.1.1\n"
+      }
+    ],
+    "gates": [
+      {
+        "argv": [
+          "cargo",
+          "fmt",
+          "--all",
+          "--",
+          "--check"
+        ],
+        "exit": 0,
+        "log": "gate-1.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "argv": [
+          "cargo",
+          "check",
+          "--locked",
+          "--all-targets"
+        ],
+        "exit": 0,
+        "log": "gate-2.log",
+        "sha256": "d57f1fad36cddb7127a891621c74927c20ee47abfb2a9fcffb336bb017a9141d"
+      },
+      {
+        "argv": [
+          "cargo",
+          "clippy",
+          "--locked",
+          "--all-targets",
+          "--",
+          "-D",
+          "warnings"
+        ],
+        "exit": 0,
+        "log": "gate-3.log",
+        "sha256": "d7d473bcea2e9a1a91d273dbb0d844abb33901777804dd0e0530c9e6c3a1b528"
+      },
+      {
+        "argv": [
+          "cargo",
+          "test",
+          "--locked"
+        ],
+        "exit": 0,
+        "log": "gate-4.log",
+        "sha256": "d6824d3595b9916c5898ef3833f291d6946fe0436a20ae087b752f204b4932bd"
+      },
+      {
+        "argv": [
+          "cargo",
+          "test",
+          "--locked",
+          "--doc"
+        ],
+        "exit": 0,
+        "log": "gate-5.log",
+        "sha256": "a0c20f2837ec993777e53f72036944651be0034359ef56512ddb69017cdde7ed"
+      },
+      {
+        "argv": [
+          "cargo",
+          "doc",
+          "--locked",
+          "--no-deps"
+        ],
+        "exit": 0,
+        "log": "gate-6.log",
+        "sha256": "e2a1a9692bbbd9115cc7e6886b601d79cbb79fe85b8ce7447268ad6d4c3abc2f"
+      },
+      {
+        "argv": [
+          "cargo",
+          "clippy",
+          "--manifest-path",
+          "tests/history-replay/Cargo.toml",
+          "--locked",
+          "--all-targets",
+          "--",
+          "-D",
+          "warnings"
+        ],
+        "exit": 0,
+        "log": "gate-7.log",
+        "sha256": "67000cc8c672733248776ebaeea30074f7503e41e9eae61e5db091892fe4b6a2"
+      }
+    ],
+    "rustdocFlags": "-D warnings recorded in stage summary",
+    "beforeAndAfterValidation": {
+      "beforeArgv": [
+        "C:\\Users\\Admin\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "C:/Users/Admin/Documents/Codex/2026-10-14/i-x20/work/fusion-lab/.agents/skills/rust/spec-design/scripts/validate_design_package.py",
+        "docs/design-docs/history-replay",
+        "--require-lock",
+        "--baseline-digest",
+        "8c57cf49bd99b927012ac7215ea44688bc8cde928ea6b233a2f37abc41f13095"
+      ],
+      "beforeExit": 0,
+      "beforeLog": "SUMMARY: acceptance=1, requirements=26, modules=1, constraints=6, tests=38, dispositions=0, questions=0, waivers=0\r\nVALID: 0 errors, 0 warning(s)\r\n",
+      "beforeHashMatch": true,
+      "afterArgv": [
+        "C:\\Users\\Admin\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "C:/Users/Admin/Documents/Codex/2026-10-14/i-x20/work/fusion-lab/.agents/skills/rust/spec-design/scripts/validate_design_package.py",
+        "docs/design-docs/history-replay",
+        "--require-lock",
+        "--baseline-digest",
+        "8c57cf49bd99b927012ac7215ea44688bc8cde928ea6b233a2f37abc41f13095"
+      ],
+      "afterExit": 0,
+      "afterLog": "SUMMARY: acceptance=1, requirements=26, modules=1, constraints=6, tests=38, dispositions=0, questions=0, waivers=0\r\nVALID: 0 errors, 0 warning(s)\r\n",
+      "afterHashMatch": true
+    },
+    "originalFmtFailurePreserved": {
+      "exit": 1,
+      "sha256": "b8852f9f956cdb63953679ea9330cbd87188b4a09fa66ad091d9645b08662faf",
+      "reason": "Only standard multiline formatting of new InvalidWindow error literal; full final rerun passed"
+    }
+  },
+  "method": "Read source, exact Git comparison, independently hash protected files and raw logs; no code edits or duplicate test execution",
+  "findings": [],
+  "acceptanceLimits": [
+    "Only TASK001 plan/privacy stage is reviewed clear.",
+    "Replay remains diagnostic; full38 selector implementation verification, TASK002 numerical/transport/history behavior and TASK003 actual native/resource/example conformance remain unaccepted.",
+    "Both local compiler aliases actually1.99.0 Windows; no new hosted Linux/stable implementation claim.",
+    "Main publication/review/next-slice authorization remains separate."
+  ]
+}

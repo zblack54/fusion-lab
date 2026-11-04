@@ -11,8 +11,13 @@ pub struct HistoryPlan {
 }
 impl HistoryPlan {
     /// Validate a history window in 0..=500 ticks.
-    pub fn new(_window_ticks: u32) -> Result<Self, HistoryError> {
-        not_implemented()
+    pub fn new(window_ticks: u32) -> Result<Self, HistoryError> {
+        if window_ticks > 500 {
+            return Err(HistoryError::InvalidWindow {
+                value: window_ticks,
+            });
+        }
+        Ok(Self { window_ticks })
     }
     /// Requested inclusive age window in 10 ms ticks.
     pub fn window_ticks(&self) -> u32 {

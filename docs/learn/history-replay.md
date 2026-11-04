@@ -1,7 +1,8 @@
 # Correcting with late observations
 
-Status: proposed design for [issue #22](https://github.com/zblack54/fusion-lab/issues/22).
-The contract and implementation are not accepted yet. The existing
+Status: approved, locked design for [issue #22](https://github.com/zblack54/fusion-lab/issues/22).
+The constructor slice is verified; correction behavior and final feature acceptance
+remain outstanding. The existing
 [timestamped replay](observation-delivery.md) still rejects stale observations.
 
 An observation has a sampling time and an availability time. Updating the current
@@ -58,3 +59,17 @@ Exercise: with the same late velocity observation, predict the raw-velocity
 integration baseline at tick1. It is [0.02, -0.02] m because it integrates the
 measurement, whereas the filter integrates its posterior velocity. Explain why
 neither correction permits rewriting the online tick0 snapshot.
+
+
+## Current implementation progress
+
+The first slice validates an integer history window from0 through500ticks and
+returns `HistoryError::InvalidWindow` with the original request for larger values.
+Five exact contract selectors passed on each installed alias, all seven gates
+passed, and independent review confirmed only the constructor changed. Both local
+aliases currently resolve to Rust1.99.0; the approved design also has hosted
+Windows/Linux evidence on1.99.0 and1.99.1.
+
+The correction engine remains under construction. Its full38selectors, resource
+qualification, example and complete conformance review are required before
+acceptance. Do not use the diagnostic replay boundary as completed functionality.

@@ -1,0 +1,12 @@
+{
+  "argv": [
+    "rustc",
+    "+1.99.0",
+    "-Vv"
+  ],
+  "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+  "exit": 0,
+  "seconds": 0.030999999959021807,
+  "log": "1.99.0-rustc.log",
+  "sha256": "5477f9bad65b15c4c5b31fc050fc72feba651ea1b330bc75cf356a4d6b0fbc80"
+}
