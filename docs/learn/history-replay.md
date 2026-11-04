@@ -1,8 +1,8 @@
 # Correcting with late observations
 
 Status: approved, locked design for [issue #22](https://github.com/zblack54/fusion-lab/issues/22).
-The constructor slice is verified; correction behavior and final feature acceptance
-remain outstanding. The existing
+The constructor and correction core are locally verified and independently reviewed;
+native resource/example conformance and final feature acceptance remain outstanding. The existing
 [timestamped replay](observation-delivery.md) still rejects stale observations.
 
 An observation has a sampling time and an availability time. Updating the current
@@ -70,6 +70,28 @@ passed, and independent review confirmed only the constructor changed. Both loca
 aliases currently resolve to Rust1.99.0; the approved design also has hosted
 Windows/Linux evidence on1.99.0 and1.99.1.
 
-The correction engine remains under construction. Its full38selectors, resource
-qualification, example and complete conformance review are required before
-acceptance. Do not use the diagnostic replay boundary as completed functionality.
+The correction engine now passes all38locked selectors on both installed aliases
+and all seven gates. Independent review also passed54deterministic causal cases
+covering10,854online snapshots, plus101extreme-value W0 snapshots matching the
+legacy baseline bits. These are scoped functional checks, not a universal proof
+or a performance result. Native resource qualification, the example and complete
+conformance review remain required before acceptance.
+
+
+## Ownership and correction code tour
+
+`replay_history` sorts source indices once using metadata, drains due waiting
+records before new admissions, and keeps transport decisions independent of
+filter values. `record_arrival` inserts only arrived, admitted, window-eligible
+indices into numerical history; discarded or future payloads are never applied.
+
+Each tick chooses its ordinary or correction branch before numerical work.
+`Working::restore` restores end(sample-1), or the original prior before sample0.
+Candidate history is replayed in sample/position/velocity order using the existing
+filter equations. Buffer swaps and a new online snapshot occur only after the
+whole batch succeeds. Earlier online snapshots remain untouched.
+
+`HistoryWork` increments counters at the actual prediction/update call sites and
+reports committed objects, simultaneous original/candidate objects and reserved
+slot capacity separately. Source/output storage and allocator overhead belong
+to the complete-process measurement; logical history counts do not equal RSS.

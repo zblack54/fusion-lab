@@ -1,0 +1,22 @@
+{
+  "argv": [
+    "cargo",
+    "test",
+    "--manifest-path",
+    "tests/history-replay/Cargo.toml",
+    "--locked",
+    "--test",
+    "contracts",
+    "tst_acc_001_late_velocity_rational_oracle",
+    "--",
+    "--exact",
+    "--nocapture",
+    "--test-threads=1"
+  ],
+  "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+  "exit": 0,
+  "seconds": 1.0160000000614673,
+  "rustdocflags": "-D warnings",
+  "log": "tst_acc_001_late_velocity_rational_oracle.log",
+  "sha256": "2533767caebd1491e2ef0c29d3ce3f4fb173a7954f00dbe94fc96eceb1d93afc"
+}

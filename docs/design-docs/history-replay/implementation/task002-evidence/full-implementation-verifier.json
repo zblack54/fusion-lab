@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "C:\\Users\\Admin\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+    "C:\\Users\\Admin\\Documents\\Codex\\2026-10-14\\i-x20\\work\\fusion-lab\\.agents\\skills\\rust\\spec-design\\scripts\\verify_test_suite.py",
+    "docs/design-docs/history-replay",
+    "--mode",
+    "implementation",
+    "--baseline-digest",
+    "8c57cf49bd99b927012ac7215ea44688bc8cde928ea6b233a2f37abc41f13095",
+    "--offline"
+  ],
+  "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+  "exit": 0,
+  "seconds": 12.656000000191852,
+  "rustdocflags": "-D warnings",
+  "log": "full-implementation-verifier.log",
+  "sha256": "b241a0f00df3fa3deefc6b808ad01b8f6c0b5466bc6b64a6a9c8ec2cdc993479"
+}

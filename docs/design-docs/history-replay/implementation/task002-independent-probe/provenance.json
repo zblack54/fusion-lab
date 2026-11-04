@@ -1,0 +1,12 @@
+{
+  "purpose": "Independent bounded causal differential oracle; no normative test/source edits or numerical accuracy claim",
+  "sourceSha256": "553925e3f3ff7f2c9601237de157eaee889031ec9d8fafc81f1aef0a46e63f18",
+  "sourceInputs": {
+    "Cargo.toml": "9fef2cf7ec60fd79d46f4b228e26d6f809b852e83a72e75e0c9ced4a3b635a46",
+    "Cargo.lock": "07f5aa7add86e0f4e07f268b6268561fce5c790dc6e15e4895406c744acd00ad",
+    "src/main.rs": "57b20fd6c715481239af292fab195bcac9e09cffc4212ba2ee71522b02a752c4"
+  },
+  "caseOrder": "seed0..2, three fixed models, windows0/1/7/20/25/500, cutoff0..200, then one legacy extremeW0 compatibilitycase",
+  "oracle": "Accepted all-onTime replay of only actually arrived/eligible observations; cap128/no transport losses, no outcome derived from new code",
+  "stopOnFirstMismatch": true
+}

@@ -1,0 +1,22 @@
+{
+  "argv": [
+    "cargo",
+    "test",
+    "--manifest-path",
+    "tests/history-replay/Cargo.toml",
+    "--locked",
+    "--test",
+    "contracts",
+    "tst_perf_001_exact_maximum_correction_batch",
+    "--",
+    "--exact",
+    "--nocapture",
+    "--test-threads=1"
+  ],
+  "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+  "exit": 0,
+  "seconds": 0.20399999991059303,
+  "rustdocflags": "-D warnings",
+  "log": "tst_perf_001_exact_maximum_correction_batch.log",
+  "sha256": "d8e9dac2c32abdcb870dec8b43f71420f5f7eabf07980f211efb27d5af2fd734"
+}
