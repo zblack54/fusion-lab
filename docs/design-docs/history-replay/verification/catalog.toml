@@ -1,0 +1,101 @@
+[[verification]]
+id="VER-001"
+method="inspection"
+stage="both"
+owner="independent main-design/conformance reviewer"
+covers=["REQ-018", "REQ-023", "REQ-014", "CON-001"]
+procedure="Inspect private fields, borrowed public inputs and metadata-only scheduler access before numerical arrival; verify no truth, Config, RNG, I/O or wall clocks cross the boundary."
+acceptance="Every construction/access path preserves observational authority; unarrived payloads cannot influence the earlier output prefix."
+design_evidence="verification/authority-boundary.md"
+reviewed_by="Pending independent final package review; main API scope issue22comment6636494428 is not contract approval"
+
+[[verification]]
+id="VER-002"
+method="proof"
+stage="both"
+owner="independent main-design/conformance reviewer"
+covers=["REQ-011", "REQ-012", "REQ-013", "REQ-024", "REQ-025", "CON-003"]
+procedure="Review anchor/index arithmetic, actual call instrumentation, candidate pruning, retained and reserved storage, no whole-input tick rescans; inspect actual code and counters after implementation."
+acceptance="At mostW+1 totalpredictioncalls/127measurementcalls, W+2/127committed and2*(W+2)/254livehistory; slot capacity accurately reported, full source/results/scratch counted separately."
+design_evidence="verification/bounds.md"
+reviewed_by="Pending independent final package review; main API scope issue22comment6636494428 is not contract approval"
+
+[[verification]]
+id="VER-003"
+method="inspection"
+stage="implementation"
+owner="independent main-design/conformance reviewer"
+covers=["REQ-016", "REQ-019", "REQ-023", "CON-001", "CON-002", "CON-004"]
+procedure="Inspect exact production diff, typed source/error transitions and atomic local candidate commit, legacy gates and manifest/lock closure."
+acceptance="No diagnostic seam, equations/streams/accepted codec change, successful partial result, unsafe or new dependency remains."
+
+[[verification]]
+id="VER-004"
+method="demonstration"
+stage="implementation"
+owner="independent main-design/conformance reviewer"
+covers=["REQ-020", "REQ-021", "CON-003"]
+procedure="Run exact declared resource profiles with reviewed nonproduction owned sampler on four native OS/compiler combinations, one small warmup then threefreshprocesses perprofile and collect full fingerprint/actualCPU/RAM/OS/binary/elapsed/lifetimeHWM/equality/reap receipts."
+acceptance="Every declared complete process takes<=120seconds and lifetime peakRSS<=768MiB,180s watchdog; source/input/results/comparator/equality and work buffers stay live across HWM observation; original failures retained and no numerical retry or relaxedbudget."
+
+[[verification]]
+id="VER-005"
+method="demonstration"
+stage="implementation"
+owner="independent main-design/conformance reviewer"
+covers=["REQ-022", "CON-005"]
+procedure="Run the separate deterministic one-second example, inspect counts/current correction/stale comparison and read the learning/issue/PR handoff."
+acceptance="Example uses observation-only APIs, shows immutable prefix and explicit policy difference, returns typed errors, no deployment/async/accuracy claim; no artifacts or codec required."
+
+[[verification]]
+id="VER-006"
+method="demonstration"
+stage="both"
+owner="independent main-design/conformance reviewer"
+covers=["REQ-019", "REQ-026", "CON-004", "CON-006"]
+procedure="Build/enumerate/execute all compiled selectors on nativeWindows/Linux with1.99.0/stable using the public feature adapter; retain exact rawsource/lock/compiler/outcome evidence; after implementation require allgreen and declared resourceproof."
+acceptance="Each required native combination has actual reviewed38selector outcomes: design36namedred+2structuralgreen, implementation38green; no localexecution mislabeled foreignproof or zero-test success."
+design_evidence="verification/native-matrix.md"
+reviewed_by="Pending independent final package review; main API scope issue22comment6636494428 is not contract approval"
+
+[[command]]
+id="CMD-001"
+stage="both"
+purpose="Required legacy or independent harness gate 1"
+argv=["cargo", "fmt", "--all", "--", "--check"]
+
+[[command]]
+id="CMD-002"
+stage="both"
+purpose="Required legacy or independent harness gate 2"
+argv=["cargo", "check", "--locked", "--all-targets"]
+
+[[command]]
+id="CMD-003"
+stage="both"
+purpose="Required legacy or independent harness gate 3"
+argv=["cargo", "clippy", "--locked", "--all-targets", "--", "-D", "warnings"]
+
+[[command]]
+id="CMD-004"
+stage="both"
+purpose="Required legacy or independent harness gate 4"
+argv=["cargo", "--config", "build.rustdocflags=[\"-D\",\"warnings\"]", "test", "--locked"]
+
+[[command]]
+id="CMD-005"
+stage="both"
+purpose="Required legacy or independent harness gate 5"
+argv=["cargo", "--config", "build.rustdocflags=[\"-D\",\"warnings\"]", "test", "--locked", "--doc"]
+
+[[command]]
+id="CMD-006"
+stage="both"
+purpose="Required legacy or independent harness gate 6"
+argv=["cargo", "--config", "build.rustdocflags=[\"-D\",\"warnings\"]", "doc", "--locked", "--no-deps"]
+
+[[command]]
+id="CMD-007"
+stage="both"
+purpose="Required legacy or independent harness gate 7"
+argv=["cargo", "clippy", "--manifest-path", "tests/history-replay/Cargo.toml", "--locked", "--all-targets", "--", "-D", "warnings"]

@@ -1,0 +1,100 @@
+{
+  "status": "ACCEPTED_PUBLIC_API_NATURAL_OVERFLOW_QUALIFIED_WITH_LEGACY_BASELINE_LIMITATION",
+  "accepted_revision": "2944a1342275ff298ec4df29bf94df81891d6755",
+  "fixture_directory": "C:/Users/Admin/Documents/Codex/2026-10-20/if-x20/work/history-overflow-oracle-1793811431296",
+  "source_provenance": {
+    "accepted_revision": "2944a1342275ff298ec4df29bf94df81891d6755",
+    "source_inventory": {
+      "src/delivery.rs": "12d7fbdcee02d7ae986658bb2f43116f56283f1689adc2c74e4f360d45389120",
+      "src/estimation.rs": "83a3b6936c53fc9d28c29a59b0840cf5d57611852246bc19c2c4cb258c092fdf",
+      "src/evaluation.rs": "cf83337582b8887dc3ae71b62a8daf10c9f8b578eddd74b212069d30d76ba870",
+      "src/lib.rs": "886ec0ba1cf84439c2a4e0913f2b6be33bc1da93aae9b51e93f10e7049959a52",
+      "src/main.rs": "76574d18911bdce81082b9f76308cf3a31f69fa9967a0592f28eaf2630901d6b",
+      "src/sensors.rs": "d8eaae0d691535bcee6f68166babdb41c49de815ad0c3eb213c8b980c9ae29af",
+      "src/simulation.rs": "c0fd739c26e7190549736636c69720dc963707059463a45b7095159099fd7691",
+      "Cargo.toml": "107801ee283d274781df7496d22eaa46a09748e2b624ccb48a8b7b9eda975462",
+      "Cargo.lock": "1ff60b850d3f5928fc13476575700400765d31f7deb3268171f66176fb6cf6f3",
+      "rust-toolchain.toml": "ccced9ef5cf5a0c35bb5ba4e4b525188b72aa07aab8cc3fb5b644778ade8f125"
+    },
+    "registry_closure_exact": true,
+    "inputs": {
+      "Cargo.toml": "dba1936b1f1836819c4d837035dd67717a5ef80a2b8fdfd595aec31d0eadd52a",
+      "Cargo.lock": "3d64f84a08cfdbc8945f4f8eac8ea2bc709a4f548a3279117d8c76cb116dc239",
+      "src/main.rs": "7576559286bc3bda695695b4097e51704e1f0320daf046dfbb12abd3193dc0c7"
+    }
+  },
+  "compiler": {
+    "chunk_id": "877a77",
+    "wall_time_seconds": 0.0876605,
+    "exit_code": 0,
+    "original_token_count": 49,
+    "output": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-msvc\nrelease: 1.99.0\nLLVM version: 23.1.1\n"
+  },
+  "build": {
+    "first_tool_chunk": {
+      "chunk_id": "728b33",
+      "wall_time_seconds": 10.0158993,
+      "session_id": 40017,
+      "original_token_count": 317,
+      "output": "   Compiling autocfg v1.5.1\n   Compiling libm v0.2.16\n   Compiling proc-macro2 v1.0.107\n   Compiling windows-link v0.2.1\n   Compiling unicode-ident v1.0.27\n   Compiling quote v1.0.47\n   Compiling utf8parse v0.2.2\n   Compiling bytemuck v1.25.2\n   Compiling zerocopy v0.8.63\n   Compiling anstyle v1.0.14\n   Compiling once_cell_polyfill v1.70.2\n   Compiling rand_core v0.10.1\n   Compiling colorchoice v1.0.5\n   Compiling is_terminal_polyfill v1.70.2\n   Compiling heck v0.5.0\n   Compiling rawpointer v0.2.1\n   Compiling windows-sys v0.61.2\n   Compiling anstyle-parse v1.0.0\n   Compiling safe_arch v1.2.0\n   Compiling strsim v0.11.1\n   Compiling clap_lex v1.1.1\n   Compiling rand v0.10.3\n   Compiling typenum v1.20.1\n   Compiling num-traits v0.2.19\n   Compiling matrixmultiply v0.3.11\n   Compiling wide v1.7.1\n   Compiling anstyle-query v1.1.5\n   Compiling anstyle-wincon v3.0.11\n   Compiling anstream v1.0.0\n   Compiling syn v3.0.9\n   Compiling clap_builder v4.6.7\n   Compiling num-integer v0.1.47\n   Compiling approx v0.5.1\n   Compiling num-complex v0.4.6\n   Compiling rand_distr v0.6.0\n   Compiling num-rational v0.4.2\n   Compiling clap_derive v4.6.7\n   Compiling ppv-lite86 v0.2.21\n   Compiling rand_chacha v0.10.0\n   Compiling clap v4.6.7\n   Compiling simba v0.10.2\n"
+    },
+    "final_tool_chunk": {
+      "chunk_id": "f628bb",
+      "wall_time_seconds": 0.0000074,
+      "exit_code": 0,
+      "original_token_count": 51,
+      "output": "   Compiling history-overflow-oracle v0.0.0 (C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\history-overflow-oracle-1793811431296)\n    Finished `release` profile [optimized] target(s) in 20.18s\n"
+    },
+    "note": "Tool-chunk evidence, not a claim of one complete compilerlog; intermediate chunk0714cf records nalgebra and accepted-root fusion-lab compilation in transcript."
+  },
+  "execution": {
+    "chunk_id": "c4dfee",
+    "wall_time_seconds": 0.0000142,
+    "exit_code": 0,
+    "original_token_count": 85,
+    "output": "BASELINE_POLICY_OK first_nonfinite_raw_integration_tick=Some(80) filter_all_finite=true snapshots=101\nONTIME_ERROR tick=80 observation=None source=NumericalFailure\nDELAYED_SUCCESS snapshots=301 pos=[9.999999999999603e307, 9.999999999999603e307] vel=[0.0, 0.0] held=[1e308, 1e308] integrated=[1e308, 1e308] Vdecision=300 Voutcome=StaleDrop\n"
+  },
+  "binary_sha256": "ff38fd6a6b33a4f67ab2d725928b6611fdbabc0e5345ee4a5a9363153f3bf8a8",
+  "inputs_and_accepted_snapshot_unchanged_after_build_and_run": true,
+  "actual_cases": [
+    {
+      "case": "original-model baseline policy",
+      "model": [
+        5,
+        2,
+        0
+      ],
+      "duration_seconds": 1,
+      "observations": "P0=V0=[1e308,1e308], both ontime",
+      "actual": "Ok101snapshots; filterstate/covariance finite throughout; firstnonfinite rawintegratedposition at80."
+    },
+    {
+      "case": "baseline-safe filter overflow",
+      "model": [
+        0,
+        0,
+        0
+      ],
+      "duration_seconds": 3,
+      "observations": "P0=V0=[1e308,1e308], both ontime",
+      "actual": "ErrNumericalFailure tick80 observationNone sourceNumericalFailure. Driver exit0 verified exact expectedvariant/tick."
+    },
+    {
+      "case": "stale comparator remains finite",
+      "model": [
+        0,
+        0,
+        0
+      ],
+      "duration_seconds": 3,
+      "observations": "P0=[1e308,1e308] ontime0; V0samevalue delayed300",
+      "actual": "Ok301snapshots; allstate/covariance/held/integrated components finite; Vdecision300 StaleDrop; finalvelocity0."
+    }
+  ],
+  "proposed_history_contract": "W300 delayedV should restore initialprior atarrival300 and failfilterprediction atrewindtick80, preserving sourceerror/no successfulprefix. This newhistory behavior has NOT been executed or implemented here.",
+  "baseline_policy_warning": "Accepted OnTimeOnly raw baseline arithmetic can become nonfinite for finitepayloads even while filter remainsfinite. StrictW0 bitcompatibility must not accidentally add a blanket all-output-finite guarantee. Main decides whether separatefuturepolicyissue warranted; no acceptedcoreedit.",
+  "original_requested_three_second_model_5_2_0_run": false,
+  "no_retries": true,
+  "no_root_source_or_lock_changes": true,
+  "no_live_process": true
+}

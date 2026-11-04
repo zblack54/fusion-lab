@@ -1,0 +1,15 @@
+
+running 1 test
+test tst_neg_002_window_integer_max_rejected ... 
+thread 'tst_neg_002_window_integer_max_rejected' (135160) panicked at C:\Users\Admin\Documents\Codex\2026-10-20\if-x20\work\fusion-lab\src\history_replay.rs:5:5:
+HISTORY_REPLAY_NOT_IMPLEMENTED
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+FAILED
+
+failures:
+
+failures:
+    tst_neg_002_window_integer_max_rejected
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 37 filtered out; finished in 0.00s
+

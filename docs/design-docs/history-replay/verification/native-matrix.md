@@ -1,0 +1,3 @@
+# Native qualification
+
+Required nativeWindows/Linux floor1.99.0/stable. Local installed aliases must be recorded as actual versions, not assumed different compilers. tests/history-replay/tools/native_baseline.py builds/enumerates the compiled contract and executes every selector exactly once, preserving source/test/lock/actualrustc/raw logs and named diagnostic reasons. Full trusted design-execution.json stays lossless. Local evidence is not Linux evidence; readiness remains pending until hosted four-native proof is reviewed. No hidden test filtering/retry, compilererror masquerading as expectedred, zero-test green or model/API fallback.

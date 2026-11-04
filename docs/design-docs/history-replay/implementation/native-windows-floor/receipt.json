@@ -1,0 +1,1426 @@
+{
+  "schema": 1,
+  "mode": "design",
+  "platform": "Windows-10-10.0.19043-SP0",
+  "machine": "AMD64",
+  "python": "3.12.14",
+  "toolchain": "1.99.0",
+  "rustdocflags": "-D warnings",
+  "source_before": {
+    "Cargo.toml": "107801ee283d274781df7496d22eaa46a09748e2b624ccb48a8b7b9eda975462",
+    "Cargo.lock": "1ff60b850d3f5928fc13476575700400765d31f7deb3268171f66176fb6cf6f3",
+    "rust-toolchain.toml": "ccced9ef5cf5a0c35bb5ba4e4b525188b72aa07aab8cc3fb5b644778ade8f125",
+    "src/delivery.rs": "12d7fbdcee02d7ae986658bb2f43116f56283f1689adc2c74e4f360d45389120",
+    "src/estimation.rs": "83a3b6936c53fc9d28c29a59b0840cf5d57611852246bc19c2c4cb258c092fdf",
+    "src/evaluation.rs": "cf83337582b8887dc3ae71b62a8daf10c9f8b578eddd74b212069d30d76ba870",
+    "src/history_replay.rs": "3bd95e3a6d0211c0933d15fb7369ba247d5c3b01d8ce40572769f8d4841203eb",
+    "src/lib.rs": "f1707ae4d0fe5b0f773406860546d1147134440daef190fdaf6ac72bb09b8f85",
+    "src/main.rs": "76574d18911bdce81082b9f76308cf3a31f69fa9967a0592f28eaf2630901d6b",
+    "src/sensors.rs": "d8eaae0d691535bcee6f68166babdb41c49de815ad0c3eb213c8b980c9ae29af",
+    "src/simulation.rs": "c0fd739c26e7190549736636c69720dc963707059463a45b7095159099fd7691",
+    "docs/design-docs/observation-delivery/implementation/resource_probe.py": "ab851ab12ec6f54ee52baec37b0b59b80f8db069b5a92179c3f12f23cc9b924c",
+    "tests/history-replay/build.rs": "2bf7b4646820440e9a997ccd67663aebb4e9296d07c798a947ba361eff903dcb",
+    "tests/history-replay/Cargo.lock": "f74d20e99ca6c2d452092ebc3b1aec5165b62a8be986d2bc8c3ed779be9c47fa",
+    "tests/history-replay/Cargo.toml": "1ea2369b23d0ea2911920c54169da4483815fd814743bdb09dd2963936223080",
+    "tests/history-replay/src/lib.rs": "55297e78b51534d85aa43e80aff822fc64f0b474937213cb31a5862abc7863d2",
+    "tests/history-replay/tests/contracts.rs": "3c1d0f1699997e60c37611cee8e1cf171ece46f97098c167a909658be223feea",
+    "tests/history-replay/tools/native_baseline.py": "4cb083eccbc260fd8bc16bfdfd60d66d3e608c2a000a73f9c7f3c1a13757f6a8",
+    "docs/design-docs/history-replay/constraints/constraints.toml": "95f51cc57145b7ade7c228e3e90dd41589bc4d2a88b22c7ec5bd70c2ceccdf2a",
+    "docs/design-docs/history-replay/decisions/ADR-001-causal-batch-correction.md": "d0641d3ef59cbc37c692f3fb6de88ea35be51ddb5ce43bc0287240e8666a5b54",
+    "docs/design-docs/history-replay/decisions/index.md": "c77805876f7abef12602964614ddad6de942d1fa253e4461f0bb56d332972ca8",
+    "docs/design-docs/history-replay/implementation-brief.md": "58e71f60b146a797d4f992a2e02c6b194bcab1164c8c61193743d45c32fcbc4f",
+    "docs/design-docs/history-replay/implementation-plan.toml": "887a7b9cc9803b2a23793b3e83ecebbd7f841ca6503d50a7cdfb82c11c7aba50",
+    "docs/design-docs/history-replay/intent/acceptance.toml": "f085954bb52782a08bbaa3cddf075138fb192a321cd618e0ecaf201b4bf0f4ff",
+    "docs/design-docs/history-replay/intent/summary.md": "b64db88257f33a156093690caf8007c19ed7e45008d4d4cb999b28a249139314",
+    "docs/design-docs/history-replay/open-questions.toml": "d8b62360b085ef790c7db92a7b050544d51f521e2cc3a8652e13748086cedcdd",
+    "docs/design-docs/history-replay/requirements/glossary.md": "45eb43212609627f25718bbd029e51609d9bd5bb03f13b65738a9a3b61499ff9",
+    "docs/design-docs/history-replay/requirements/requirements.toml": "4436e921c15f50910b216c653ce5843b61905151c662d7c22aa243631cb07b3e",
+    "docs/design-docs/history-replay/spec.toml": "dbbe841b5b07b3524bddbfa4e2f0a271ed2662490226326fbc4cc13d93622211",
+    "docs/design-docs/history-replay/structure/architecture.md": "33e10ea82395c5765609964464f60cf10751afdb6480fc3ec054cd9c145a6774",
+    "docs/design-docs/history-replay/structure/modules.toml": "f9f10bfe54f267c1f2188f8951a37960c43dfb9a9ca36f2b594313207cc35875",
+    "docs/design-docs/history-replay/tests/tests.toml": "65e2a3acb95d0cdb799e9c638c4d2a7af192c7e841804946d3d135ebf8d17bed",
+    "docs/design-docs/history-replay/traceability.toml": "22adb296e550ebf45c0deecee892dbbdd2f2483fd2042e9c2a81f673f78e55cb",
+    "docs/design-docs/history-replay/verification/authority-boundary.md": "80cdeaf738a8f6340afcb0a2d58e77f815b45b315c5e26cd72320962afd6b5e3",
+    "docs/design-docs/history-replay/verification/bounds.md": "5dbf09e02bd9160a1bf0313b32167d3e6b5e314db7d5ce58046f1902c74dae2c",
+    "docs/design-docs/history-replay/verification/catalog.toml": "55b46d831d14e4ba783bb56c45a9d02170853767a3a1f66f9c46c7b659a5b04a",
+    "docs/design-docs/history-replay/verification/native-matrix.md": "13f1bf4bcf6ee792b89751e752b2d2c865a7e3800458f18688c90c891fb4e83c",
+    "docs/design-docs/history-replay/verification/resource-workload.md": "1980d513f9b71bbf9b579c45164c35be0703f6d0551c12222a15b282098bc75d",
+    "docs/design-docs/history-replay/verification/rewind-overflow-oracle.rs": "7576559286bc3bda695695b4097e51704e1f0320daf046dfbb12abd3193dc0c7",
+    "docs/design-docs/history-replay/verification/rewind-overflow-qualification.json": "7276e64daed7e6b7d1842c0b279390544dfb2b352908a467444efbe1a9335822",
+    "docs/design-docs/history-replay/verification/test-efficacy.md": "22cd6939bf78b979dde4f1040f29d6115bacee1947b408948a4d4f0de6d60c69"
+  },
+  "commands": [
+    {
+      "argv": [
+        "rustc",
+        "-Vv"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "output": "rustc.txt",
+      "pid": 74496,
+      "reap_confirmed": true,
+      "returncode": 0,
+      "seconds": 0.0470000000204891,
+      "output_sha256": "5477f9bad65b15c4c5b31fc050fc72feba651ea1b330bc75cf356a4d6b0fbc80",
+      "output_bytes": 194,
+      "excerpt": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-msvc\nrelease: 1.99.0\nLLVM version: 23.1.1\n"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "safe.directory=C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "output": "revision.txt",
+      "pid": 106356,
+      "reap_confirmed": true,
+      "returncode": 0,
+      "seconds": 0.030999999959021807,
+      "output_sha256": "63b63e671f1eaec00c9f88b152ec3644aa418696a400edc968b586a7adaa2e10",
+      "output_bytes": 41,
+      "excerpt": "2944a1342275ff298ec4df29bf94df81891d6755\n"
+    },
+    {
+      "argv": [
+        "cargo",
+        "test",
+        "--manifest-path",
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\history-replay\\Cargo.toml",
+        "--locked",
+        "--no-run",
+        "--message-format=json"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "output": "compile.jsonl",
+      "pid": 136668,
+      "reap_confirmed": true,
+      "returncode": 0,
+      "seconds": 0.1720000000204891,
+      "output_sha256": "8bc711c9f4350a2492063ec3adbbb179299cacbdaece162073211f92008fa447",
+      "output_bytes": 55442,
+      "excerpt": "{\"reason\":\"compiler-artifact\",\"package_id\":\"registry+https://github.com/rust-lang/crates.io-index#autocfg@1.5.1\",\"manifest_path\":\"C:\\\\Users\\\\Admin\\\\.cargo\\\\registry\\\\src\\\\index.crates.io-1949cf8c6b5b557f\\\\autocfg-1.5.1\\\\Cargo.toml\",\"target\":{\"kind\":[\"lib\"],\"crate_types\":[\"lib\"],\"name\":\"autocfg\",\"src_path\":\"C:\\\\Users\\\\Admin\\\\.cargo\\\\registry\\\\src\\\\index.crates.io-1949cf8c6b5b557f\\\\autocfg-1.5.1\\\\src\\\\lib.rs\",\"edition\":\"2015\",\"doc\":true,\"doctest\":true,\"test\":true},\"profile\":{\"opt_level\":\"0\",\"debuginfo\":0,\"debug_assertions\":true,\"overflow_checks\":true,\"test\":false},\"features\":[],\"filenames\":[\"C:\\\\Users\\\\Admin\\\\Documents\\\\Codex\\\\2026-10-20\\\\if-x20\\\\work\\\\fusion-lab\\\\tests\\\\history-replay\\\\target\\\\debug\\\\deps\\\\libautocfg-41afca61c85981c6.rlib\",\"C:\\\\Users\\\\Admin\\\\Documents\\\\Codex\\\\2026-10-20\\\\if-x20\\\\work\\\\fusion-lab\\\\tests\\\\history-replay\\\\target\\\\debug\\\\deps\\\\libautocfg-41afca61c85981c6.rmeta\"],\"executable\":null,\"fresh\":true}\n{\"reason\":\"compiler-artifact\",\"package_id\":\"registry+https://github.com/rust-lang/crates.io-index#libm@0.2.16\",\"manifest_path\":\"C:\\\\Users\\\\Admin\\\\.cargo\\\\registry\\\\src\\\\index.crates.io-1949cf8c6b5b557f\\\\libm-0.2.16\\\\Cargo.toml\",\"target\":{\"kind\":[\"custom-build\"],\"crate_types\":[\"bin\"],\"name\":\"build-script-build\",\"src_path\":\"C:\\\\Users\\\\Admin\\\\.cargo\\\\registry\\\\src\\\\index.crates.io-1949cf8c6b5b557f\\\\libm-0.2.16\\\\build.rs\",\"edition\":\"2021\",\"doc\":false,\"doctest\":false,\"test\":false},\"profile\":{\"opt_level\":\"0\",\"debuginfo\":0,\"debug_assertions\":true,\"overflow_checks\":true,\"test\":false},\"features\":[\"arch\",\"default\"],\"filenames\":[\"C:\\\\Users\\\\Admin\\\\Documents\\\\Codex\\\\2026-10-20\\\\if-x20\\\\work\\\\fusion-lab\\\\tests\\\\history-replay\\\\target\\\\debug\\\\build\\\\libm-ac059782f8e7f44c\\\\build-script-build.exe\",\"C:\\\\Users\\\\Admin\\\\Documents\\\\Codex\\\\2026-10-20\\\\if-x20\\\\work\\\\fusion-lab\\\\tests\\\\history-replay\\\\target\\\\debug\\\\build\\\\libm-ac059782f8e7f44c\\\\build_script_build.pdb\"],\"executable\":null,\"fresh\":true}\n{\"reason\":\"compiler-artifact\",\"package_id\":\"registry+https://github.com/rust-lang/crates.io-index#num-traits@0.2.19\",\"manifest_path\":\"C:\\\\Users\\\\Admin\\\\.cargo\\\\registry\\\\src\\\\index.crates.io-1949cf8c6b5b557f\\\\num-traits-0.2.19\\\\Cargo.toml\",\"target\":{\"kind\":[\"custom-build\"],\"crate_types\":[\"bin\"],\"name\":\"build-script-build\",\"src_path\":\"C:\\\\Users\\\\Admin\\\\.cargo\\\\registry\\\\src\\\\index.crates.io-1949cf8c6b5b557f\\\\num-traits-0.2.19\\\\build.rs\",\"edition\":\"2021\",\"doc\":false,\"doctest\":false,\"test\":false},\"profile\":{\"opt_level\":\"0\",\"debuginfo\":0,\"debug_assertions\":true,\"overflow_checks\":true,\"test\":false},\"features\":[\"i128\",\"libm\",\"std\"],\"filenames\":[\"C:\\\\Users\\\\Admin\\\\Documents\\\\Codex\\\\2026-10-20\\\\if-x20\\\\work\\\\fusion-lab\\\\tests\\\\history-replay\\\\target\\\\debug\\\\build\\\\num-traits-33828fcc4e809a56\\\\build-script-build.exe\",\"C:\\\\Users\\\\Admin\\\\Documents\\\\Codex\\\\2026-10-20\\\\if-x20\\\\work\\\\fusion-lab\\\\tests\\\\history-replay\\\\target\\\\debug\\\\build\\\\num-traits-33828fcc4e809a56\\\\build_script_build.pdb\"],\"executable\":null,\"fresh\":true}\n{\"reason\":\"compiler-artifact\",\"package_id\":\"r"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\history-replay\\target\\debug\\deps\\contracts-aff9082d217ff400.exe",
+        "--list"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "output": "enumeration.txt",
+      "pid": 132632,
+      "reap_confirmed": true,
+      "returncode": 0,
+      "seconds": 0.01600000006146729,
+      "output_sha256": "f135ed92276d5058a5669599f01e0446d054b15b5d29e1ad237800ac482eaf9b",
+      "output_bytes": 2026,
+      "excerpt": "tst_acc_001_late_velocity_rational_oracle: test\ntst_acc_002_zero_window_preserves_legacy_bits: test\ntst_acc_003_batch_late_and_current_once: test\ntst_anti_001_private_plan_cannot_be_forged: test\ntst_beh_001_empty_trace_predicts_original_prior: test\ntst_beh_002_simultaneous_sensors_canonical: test\ntst_beh_003_normal_work_counts_actual_calls: test\ntst_beh_004_correction_branch_no_wasted_normal_work: test\ntst_beh_005_requested_model_assumptions_used: test\ntst_beh_006_zero_window_signed_zero_legacy_bits: test\ntst_beh_007_late_position_requested_sigma_oracle: test\ntst_beh_008_nonzero_process_density_normal_and_rewind: test\ntst_bound_001_window_zero_and_maximum_valid: test\ntst_bound_002_inclusive_age_boundary_corrected: test\ntst_bound_003_older_than_window_explicit_drop: test\ntst_bound_004_max_age_initial_anchor: test\ntst_bound_005_arrival_at_final_horizon_processed: test\ntst_bound_006_beyond_horizon_retains_horizon_outcome: test\ntst_contract_001_immediate_bypasses_full_waiting: test\ntst_contract_002_drain_due_before_admit: test\ntst_contract_003_scheduled_loss_missing_sequence: test\ntst_contract_004_scripted_loss_payload_never_consumed: test\ntst_contract_005_queue_full_payload_never_consumed: test\ntst_inv_001_input_bytes_preserved: test\ntst_inv_002_too_old_payload_absent_from_tail_and_rewind: test\ntst_neg_001_window_501_rejected: test\ntst_neg_002_window_integer_max_rejected: test\ntst_neg_003_overflow_preserves_typed_source: test\ntst_neg_004_rewind_overflow_preserves_arrival_and_replay_tick: test\ntst_perf_001_exact_maximum_correction_batch: test\ntst_perf_002_actual_history_and_work_caps: test\ntst_prop_001_input_permutation_irrelevant: test\ntst_prop_002_sampled_future_prefix_causality: test\ntst_prop_003_unarrived_payload_not_numerical_input: test\ntst_prop_004_repeat_deterministic_full_result: test\ntst_state_001_repeated_correction_preserves_information: test\ntst_state_002_emitted_prefix_never_retroactively_rewritten: test\ntst_struct_001_public_types_send_sync_signature: test\n\n38 tests, 0 benchmarks\n"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\history-replay\\target\\debug\\deps\\contracts-aff9082d217ff400.exe",
+        "tst_acc_001_late_velocity_rational_oracle",
+        "--exact",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "output": "TST-ACC-001.txt",
+      "pid": 128620,
+      "reap_confirmed": true,
+      "returncode": 101,
+      "seconds": 0.01500000013038516,
+      "output_sha256": "8f7c0dc5a18222144f30419da1a58eb7dc03af73b550f90de9b4cbe436cd04cd",
+      "output_bytes": 517,
+      "excerpt": "\nrunning 1 test\ntest tst_acc_001_late_velocity_rational_oracle ... \nthread 'tst_acc_001_late_velocity_rational_oracle' (135008) panicked at C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\src\\history_replay.rs:5:5:\nHISTORY_REPLAY_NOT_IMPLEMENTED\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\nFAILED\n\nfailures:\n\nfailures:\n    tst_acc_001_late_velocity_rational_oracle\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 37 filtered out; finished in 0.00s\n\n"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\history-replay\\target\\debug\\deps\\contracts-aff9082d217ff400.exe",
+        "tst_acc_002_zero_window_preserves_legacy_bits",
+        "--exact",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "output": "TST-ACC-002.txt",
+      "pid": 134720,
+      "reap_confirmed": true,
+      "returncode": 101,
+      "seconds": 0.015999999828636646,
+      "output_sha256": "367e811251c64c87a64904470dae6c47ba2e6301c69e27812ec7df2739984965",
+      "output_bytes": 529,
+      "excerpt": "\nrunning 1 test\ntest tst_acc_002_zero_window_preserves_legacy_bits ... \nthread 'tst_acc_002_zero_window_preserves_legacy_bits' (137976) panicked at C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\src\\history_replay.rs:5:5:\nHISTORY_REPLAY_NOT_IMPLEMENTED\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\nFAILED\n\nfailures:\n\nfailures:\n    tst_acc_002_zero_window_preserves_legacy_bits\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 37 filtered out; finished in 0.00s\n\n"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\history-replay\\target\\debug\\deps\\contracts-aff9082d217ff400.exe",
+        "tst_acc_003_batch_late_and_current_once",
+        "--exact",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "output": "TST-ACC-003.txt",
+      "pid": 130152,
+      "reap_confirmed": true,
+      "returncode": 101,
+      "seconds": 0.01600000006146729,
+      "output_sha256": "35b6dc662239207b93030206a0cf33fc023065ed9f01ac70fde8ffbeb5259fb8",
+      "output_bytes": 511,
+      "excerpt": "\nrunning 1 test\ntest tst_acc_003_batch_late_and_current_once ... \nthread 'tst_acc_003_batch_late_and_current_once' (127500) panicked at C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\src\\history_replay.rs:5:5:\nHISTORY_REPLAY_NOT_IMPLEMENTED\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\nFAILED\n\nfailures:\n\nfailures:\n    tst_acc_003_batch_late_and_current_once\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 37 filtered out; finished in 0.00s\n\n"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\history-replay\\target\\debug\\deps\\contracts-aff9082d217ff400.exe",
+        "tst_beh_001_empty_trace_predicts_original_prior",
+        "--exact",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "output": "TST-BEH-001.txt",
+      "pid": 120148,
+      "reap_confirmed": true,
+      "returncode": 101,
+      "seconds": 0.014999999897554517,
+      "output_sha256": "8ec0ae1519636f7d3e2cd95c28e05cdb3f7625557a4007a7b8f827ca8d8feba0",
+      "output_bytes": 535,
+      "excerpt": "\nrunning 1 test\ntest tst_beh_001_empty_trace_predicts_original_prior ... \nthread 'tst_beh_001_empty_trace_predicts_original_prior' (132268) panicked at C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\src\\history_replay.rs:5:5:\nHISTORY_REPLAY_NOT_IMPLEMENTED\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\nFAILED\n\nfailures:\n\nfailures:\n    tst_beh_001_empty_trace_predicts_original_prior\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 37 filtered out; finished in 0.00s\n\n"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\history-replay\\target\\debug\\deps\\contracts-aff9082d217ff400.exe",
+        "tst_bound_001_window_zero_and_maximum_valid",
+        "--exact",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "output": "TST-BOUND-001.txt",
+      "pid": 138008,
+      "reap_confirmed": true,
+      "returncode": 101,
+      "seconds": 0.01600000006146729,
+      "output_sha256": "8baf57f53234898657a0aef456729a91e555a087027c7b5d3e585c9ea64320e1",
+      "output_bytes": 523,
+      "excerpt": "\nrunning 1 test\ntest tst_bound_001_window_zero_and_maximum_valid ... \nthread 'tst_bound_001_window_zero_and_maximum_valid' (135696) panicked at C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\src\\history_replay.rs:5:5:\nHISTORY_REPLAY_NOT_IMPLEMENTED\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\nFAILED\n\nfailures:\n\nfailures:\n    tst_bound_001_window_zero_and_maximum_valid\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 37 filtered out; finished in 0.00s\n\n"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\history-replay\\target\\debug\\deps\\contracts-aff9082d217ff400.exe",
+        "tst_neg_001_window_501_rejected",
+        "--exact",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "output": "TST-NEG-001.txt",
+      "pid": 132732,
+      "reap_confirmed": true,
+      "returncode": 101,
+      "seconds": 0.01500000013038516,
+      "output_sha256": "94da2266146b2fd6c1472adbbb39d6d70ed6fd82976f66e9fe47ff02a5a8df02",
+      "output_bytes": 486,
+      "excerpt": "\nrunning 1 test\ntest tst_neg_001_window_501_rejected ... \nthread 'tst_neg_001_window_501_rejected' (27240) panicked at C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\src\\history_replay.rs:5:5:\nHISTORY_REPLAY_NOT_IMPLEMENTED\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\nFAILED\n\nfailures:\n\nfailures:\n    tst_neg_001_window_501_rejected\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 37 filtered out; finished in 0.00s\n\n"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\history-replay\\target\\debug\\deps\\contracts-aff9082d217ff400.exe",
+        "tst_neg_002_window_integer_max_rejected",
+        "--exact",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "output": "TST-NEG-002.txt",
+      "pid": 138268,
+      "reap_confirmed": true,
+      "returncode": 101,
+      "seconds": 0.015999999828636646,
+      "output_sha256": "79073d53277fc39aeb9aad4e89948c4a6d24ac29f3822c74e39f0920e966d063",
+      "output_bytes": 511,
+      "excerpt": "\nrunning 1 test\ntest tst_neg_002_window_integer_max_rejected ... \nthread 'tst_neg_002_window_integer_max_rejected' (135160) panicked at C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\src\\history_replay.rs:5:5:\nHISTORY_REPLAY_NOT_IMPLEMENTED\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\nFAILED\n\nfailures:\n\nfailures:\n    tst_neg_002_window_integer_max_rejected\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 37 filtered out; finished in 0.00s\n\n"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\history-replay\\target\\debug\\deps\\contracts-aff9082d217ff400.exe",
+        "tst_bound_002_inclusive_age_boundary_corrected",
+        "--exact",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "output": "TST-BOUND-002.txt",
+      "pid": 137400,
+      "reap_confirmed": true,
+      "returncode": 101,
+      "seconds": 0.01600000006146729,
+      "output_sha256": "afa31d7009ccd8ecad555ca9af4e22e46f767913036531c59ff284b18481a7fb",
+      "output_bytes": 532,
+      "excerpt": "\nrunning 1 test\ntest tst_bound_002_inclusive_age_boundary_corrected ... \nthread 'tst_bound_002_inclusive_age_boundary_corrected' (121936) panicked at C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\src\\history_replay.rs:5:5:\nHISTORY_REPLAY_NOT_IMPLEMENTED\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\nFAILED\n\nfailures:\n\nfailures:\n    tst_bound_002_inclusive_age_boundary_corrected\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 37 filtered out; finished in 0.00s\n\n"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\history-replay\\target\\debug\\deps\\contracts-aff9082d217ff400.exe",
+        "tst_bound_003_older_than_window_explicit_drop",
+        "--exact",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "output": "TST-BOUND-003.txt",
+      "pid": 86104,
+      "reap_confirmed": true,
+      "returncode": 101,
+      "seconds": 0.01500000013038516,
+      "output_sha256": "3d20aafb74f889d62b26562ff072333f2dd471c2724fdc9bbded5f654f5ba0d8",
+      "output_bytes": 529,
+      "excerpt": "\nrunning 1 test\ntest tst_bound_003_older_than_window_explicit_drop ... \nthread 'tst_bound_003_older_than_window_explicit_drop' (133500) panicked at C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\src\\history_replay.rs:5:5:\nHISTORY_REPLAY_NOT_IMPLEMENTED\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\nFAILED\n\nfailures:\n\nfailures:\n    tst_bound_003_older_than_window_explicit_drop\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 37 filtered out; finished in 0.00s\n\n"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\history-replay\\target\\debug\\deps\\contracts-aff9082d217ff400.exe",
+        "tst_bound_004_max_age_initial_anchor",
+        "--exact",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "output": "TST-BOUND-004.txt",
+      "pid": 98788,
+      "reap_confirmed": true,
+      "returncode": 101,
+      "seconds": 0.015999999828636646,
+      "output_sha256": "31bb68ed5c082212a2da9ea15407b10444e6b17474ddfca862971ce3462a294a",
+      "output_bytes": 502,
+      "excerpt": "\nrunning 1 test\ntest tst_bound_004_max_age_initial_anchor ... \nthread 'tst_bound_004_max_age_initial_anchor' (135196) panicked at C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\src\\history_replay.rs:5:5:\nHISTORY_REPLAY_NOT_IMPLEMENTED\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\nFAILED\n\nfailures:\n\nfailures:\n    tst_bound_004_max_age_initial_anchor\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 37 filtered out; finished in 0.00s\n\n"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\history-replay\\target\\debug\\deps\\contracts-aff9082d217ff400.exe",
+        "tst_bound_005_arrival_at_final_horizon_processed",
+        "--exact",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "output": "TST-BOUND-005.txt",
+      "pid": 127240,
+      "reap_confirmed": true,
+      "returncode": 101,
+      "seconds": 0.01600000006146729,
+      "output_sha256": "9a9d6826a570783d96c5360db20671890d48812b252bcbab25dff9b6021d0709",
+      "output_bytes": 538,
+      "excerpt": "\nrunning 1 test\ntest tst_bound_005_arrival_at_final_horizon_processed ... \nthread 'tst_bound_005_arrival_at_final_horizon_processed' (133552) panicked at C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\src\\history_replay.rs:5:5:\nHISTORY_REPLAY_NOT_IMPLEMENTED\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\nFAILED\n\nfailures:\n\nfailures:\n    tst_bound_005_arrival_at_final_horizon_processed\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 37 filtered out; finished in 0.00s\n\n"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\history-replay\\target\\debug\\deps\\contracts-aff9082d217ff400.exe",
+        "tst_bound_006_beyond_horizon_retains_horizon_outcome",
+        "--exact",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "output": "TST-BOUND-006.txt",
+      "pid": 116444,
+      "reap_confirmed": true,
+      "returncode": 101,
+      "seconds": 0.014999999897554517,
+      "output_sha256": "ce96c2f30ad6e0c6353f05a67506d353552e7c4f0d19ce4ba583ea5a6d307c33",
+      "output_bytes": 550,
+      "excerpt": "\nrunning 1 test\ntest tst_bound_006_beyond_horizon_retains_horizon_outcome ... \nthread 'tst_bound_006_beyond_horizon_retains_horizon_outcome' (133216) panicked at C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\src\\history_replay.rs:5:5:\nHISTORY_REPLAY_NOT_IMPLEMENTED\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\nFAILED\n\nfailures:\n\nfailures:\n    tst_bound_006_beyond_horizon_retains_horizon_outcome\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 37 filtered out; finished in 0.00s\n\n"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\history-replay\\target\\debug\\deps\\contracts-aff9082d217ff400.exe",
+        "tst_beh_002_simultaneous_sensors_canonical",
+        "--exact",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "output": "TST-BEH-002.txt",
+      "pid": 137656,
+      "reap_confirmed": true,
+      "returncode": 101,
+      "seconds": 0.01600000006146729,
+      "output_sha256": "31081665796c2bf6a00fdd4196352322ce17ee8aa918dec636b50ee5797b11eb",
+      "output_bytes": 520,
+      "excerpt": "\nrunning 1 test\ntest tst_beh_002_simultaneous_sensors_canonical ... \nthread 'tst_beh_002_simultaneous_sensors_canonical' (137028) panicked at C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\src\\history_replay.rs:5:5:\nHISTORY_REPLAY_NOT_IMPLEMENTED\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\nFAILED\n\nfailures:\n\nfailures:\n    tst_beh_002_simultaneous_sensors_canonical\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 37 filtered out; finished in 0.00s\n\n"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\history-replay\\target\\debug\\deps\\contracts-aff9082d217ff400.exe",
+        "tst_prop_001_input_permutation_irrelevant",
+        "--exact",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "output": "TST-PROP-001.txt",
+      "pid": 132392,
+      "reap_confirmed": true,
+      "returncode": 101,
+      "seconds": 0.01500000013038516,
+      "output_sha256": "0a6fcb602eeb076205fc819cabed0e357555c916a48a8078c0322970a94b3239",
+      "output_bytes": 517,
+      "excerpt": "\nrunning 1 test\ntest tst_prop_001_input_permutation_irrelevant ... \nthread 'tst_prop_001_input_permutation_irrelevant' (136616) panicked at C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\src\\history_replay.rs:5:5:\nHISTORY_REPLAY_NOT_IMPLEMENTED\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\nFAILED\n\nfailures:\n\nfailures:\n    tst_prop_001_input_permutation_irrelevant\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 37 filtered out; finished in 0.00s\n\n"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\history-replay\\target\\debug\\deps\\contracts-aff9082d217ff400.exe",
+        "tst_perf_001_exact_maximum_correction_batch",
+        "--exact",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "output": "TST-PERF-001.txt",
+      "pid": 115252,
+      "reap_confirmed": true,
+      "returncode": 101,
+      "seconds": 0.03100000019185245,
+      "output_sha256": "599ddce643f5c4fda604e4cefc90aacf5866ea6728a27417dfa70af98e24a108",
+      "output_bytes": 523,
+      "excerpt": "\nrunning 1 test\ntest tst_perf_001_exact_maximum_correction_batch ... \nthread 'tst_perf_001_exact_maximum_correction_batch' (133236) panicked at C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\src\\history_replay.rs:5:5:\nHISTORY_REPLAY_NOT_IMPLEMENTED\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\nFAILED\n\nfailures:\n\nfailures:\n    tst_perf_001_exact_maximum_correction_batch\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 37 filtered out; finished in 0.02s\n\n"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\history-replay\\target\\debug\\deps\\contracts-aff9082d217ff400.exe",
+        "tst_perf_002_actual_history_and_work_caps",
+        "--exact",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "output": "TST-PERF-002.txt",
+      "pid": 138496,
+      "reap_confirmed": true,
+      "returncode": 101,
+      "seconds": 0.031999999890103936,
+      "output_sha256": "ec79012fbcf34b518829cd5f30b62372d00cd6755a35548b6d75984564da788a",
+      "output_bytes": 517,
+      "excerpt": "\nrunning 1 test\ntest tst_perf_002_actual_history_and_work_caps ... \nthread 'tst_perf_002_actual_history_and_work_caps' (135888) panicked at C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\src\\history_replay.rs:5:5:\nHISTORY_REPLAY_NOT_IMPLEMENTED\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\nFAILED\n\nfailures:\n\nfailures:\n    tst_perf_002_actual_history_and_work_caps\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 37 filtered out; finished in 0.02s\n\n"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\history-replay\\target\\debug\\deps\\contracts-aff9082d217ff400.exe",
+        "tst_beh_003_normal_work_counts_actual_calls",
+        "--exact",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "output": "TST-BEH-003.txt",
+      "pid": 138912,
+      "reap_confirmed": true,
+      "returncode": 101,
+      "seconds": 0.0,
+      "output_sha256": "41f1727bf8b767db7648351398005005c32e4e369dd8a5e212db3fdc6fff337b",
+      "output_bytes": 523,
+      "excerpt": "\nrunning 1 test\ntest tst_beh_003_normal_work_counts_actual_calls ... \nthread 'tst_beh_003_normal_work_counts_actual_calls' (138556) panicked at C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\src\\history_replay.rs:5:5:\nHISTORY_REPLAY_NOT_IMPLEMENTED\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\nFAILED\n\nfailures:\n\nfailures:\n    tst_beh_003_normal_work_counts_actual_calls\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 37 filtered out; finished in 0.00s\n\n"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\history-replay\\target\\debug\\deps\\contracts-aff9082d217ff400.exe",
+        "tst_beh_004_correction_branch_no_wasted_normal_work",
+        "--exact",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "output": "TST-BEH-004.txt",
+      "pid": 135152,
+      "reap_confirmed": true,
+      "returncode": 101,
+      "seconds": 0.0,
+      "output_sha256": "a6ce1bbd4c8c2d5421d64a3e34c0928436770115164694f22e860d09e8f0b2a2",
+      "output_bytes": 547,
+      "excerpt": "\nrunning 1 test\ntest tst_beh_004_correction_branch_no_wasted_normal_work ... \nthread 'tst_beh_004_correction_branch_no_wasted_normal_work' (128420) panicked at C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\src\\history_replay.rs:5:5:\nHISTORY_REPLAY_NOT_IMPLEMENTED\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\nFAILED\n\nfailures:\n\nfailures:\n    tst_beh_004_correction_branch_no_wasted_normal_work\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 37 filtered out; finished in 0.00s\n\n"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\history-replay\\target\\debug\\deps\\contracts-aff9082d217ff400.exe",
+        "tst_prop_002_sampled_future_prefix_causality",
+        "--exact",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "output": "TST-PROP-002.txt",
+      "pid": 137452,
+      "reap_confirmed": true,
+      "returncode": 101,
+      "seconds": 0.0,
+      "output_sha256": "ff42fbfeea3bed386c1ff0de99af6ac5030ccc499855929dd44cac25784abbf9",
+      "output_bytes": 526,
+      "excerpt": "\nrunning 1 test\ntest tst_prop_002_sampled_future_prefix_causality ... \nthread 'tst_prop_002_sampled_future_prefix_causality' (132736) panicked at C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\src\\history_replay.rs:5:5:\nHISTORY_REPLAY_NOT_IMPLEMENTED\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\nFAILED\n\nfailures:\n\nfailures:\n    tst_prop_002_sampled_future_prefix_causality\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 37 filtered out; finished in 0.00s\n\n"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\history-replay\\target\\debug\\deps\\contracts-aff9082d217ff400.exe",
+        "tst_prop_003_unarrived_payload_not_numerical_input",
+        "--exact",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "output": "TST-PROP-003.txt",
+      "pid": 135108,
+      "reap_confirmed": true,
+      "returncode": 101,
+      "seconds": 0.0,
+      "output_sha256": "169f05599e20dfadab5333200e1bb5eb0e8d97032d8f67e11a5603b9de2e58ce",
+      "output_bytes": 544,
+      "excerpt": "\nrunning 1 test\ntest tst_prop_003_unarrived_payload_not_numerical_input ... \nthread 'tst_prop_003_unarrived_payload_not_numerical_input' (133116) panicked at C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\src\\history_replay.rs:5:5:\nHISTORY_REPLAY_NOT_IMPLEMENTED\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\nFAILED\n\nfailures:\n\nfailures:\n    tst_prop_003_unarrived_payload_not_numerical_input\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 37 filtered out; finished in 0.00s\n\n"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\history-replay\\target\\debug\\deps\\contracts-aff9082d217ff400.exe",
+        "tst_contract_001_immediate_bypasses_full_waiting",
+        "--exact",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "output": "TST-CONTRACT-001.txt",
+      "pid": 127660,
+      "reap_confirmed": true,
+      "returncode": 101,
+      "seconds": 0.01500000013038516,
+      "output_sha256": "967cb360c94f2f24f5c7b404251a83ea685cf0217e9c84eaa5989972d4f4b252",
+      "output_bytes": 536,
+      "excerpt": "\nrunning 1 test\ntest tst_contract_001_immediate_bypasses_full_waiting ... \nthread 'tst_contract_001_immediate_bypasses_full_waiting' (3048) panicked at C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\src\\history_replay.rs:5:5:\nHISTORY_REPLAY_NOT_IMPLEMENTED\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\nFAILED\n\nfailures:\n\nfailures:\n    tst_contract_001_immediate_bypasses_full_waiting\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 37 filtered out; finished in 0.00s\n\n"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\history-replay\\target\\debug\\deps\\contracts-aff9082d217ff400.exe",
+        "tst_contract_002_drain_due_before_admit",
+        "--exact",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "output": "TST-CONTRACT-002.txt",
+      "pid": 125580,
+      "reap_confirmed": true,
+      "returncode": 101,
+      "seconds": 0.015999999828636646,
+      "output_sha256": "10def867634455c13dde471f09793af195f403e1f5f865394b39ae4c0e5dbe8b",
+      "output_bytes": 511,
+      "excerpt": "\nrunning 1 test\ntest tst_contract_002_drain_due_before_admit ... \nthread 'tst_contract_002_drain_due_before_admit' (112732) panicked at C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\src\\history_replay.rs:5:5:\nHISTORY_REPLAY_NOT_IMPLEMENTED\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\nFAILED\n\nfailures:\n\nfailures:\n    tst_contract_002_drain_due_before_admit\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 37 filtered out; finished in 0.00s\n\n"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\history-replay\\target\\debug\\deps\\contracts-aff9082d217ff400.exe",
+        "tst_contract_003_scheduled_loss_missing_sequence",
+        "--exact",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "output": "TST-CONTRACT-003.txt",
+      "pid": 107336,
+      "reap_confirmed": true,
+      "returncode": 101,
+      "seconds": 0.01600000006146729,
+      "output_sha256": "c9256c05708d0c7ea2e213a9c6ebb09c0f3f3eadbd43509288b6541123b5d1f8",
+      "output_bytes": 538,
+      "excerpt": "\nrunning 1 test\ntest tst_contract_003_scheduled_loss_missing_sequence ... \nthread 'tst_contract_003_scheduled_loss_missing_sequence' (128232) panicked at C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\src\\history_replay.rs:5:5:\nHISTORY_REPLAY_NOT_IMPLEMENTED\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\nFAILED\n\nfailures:\n\nfailures:\n    tst_contract_003_scheduled_loss_missing_sequence\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 37 filtered out; finished in 0.00s\n\n"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\history-replay\\target\\debug\\deps\\contracts-aff9082d217ff400.exe",
+        "tst_inv_001_input_bytes_preserved",
+        "--exact",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "output": "TST-INV-001.txt",
+      "pid": 52156,
+      "reap_confirmed": true,
+      "returncode": 101,
+      "seconds": 0.014999999897554517,
+      "output_sha256": "b81b49de0e871bb6fc75e7724c84bfabc67675a824bc89cd81c846502eb86322",
+      "output_bytes": 493,
+      "excerpt": "\nrunning 1 test\ntest tst_inv_001_input_bytes_preserved ... \nthread 'tst_inv_001_input_bytes_preserved' (134432) panicked at C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\src\\history_replay.rs:5:5:\nHISTORY_REPLAY_NOT_IMPLEMENTED\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\nFAILED\n\nfailures:\n\nfailures:\n    tst_inv_001_input_bytes_preserved\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 37 filtered out; finished in 0.00s\n\n"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\history-replay\\target\\debug\\deps\\contracts-aff9082d217ff400.exe",
+        "tst_beh_005_requested_model_assumptions_used",
+        "--exact",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "output": "TST-BEH-005.txt",
+      "pid": 136440,
+      "reap_confirmed": true,
+      "returncode": 101,
+      "seconds": 0.01600000006146729,
+      "output_sha256": "fbc5d7aaa10f4141d303cb7f5b3a5d9b8c8aca927412cb1dbe581eb706fdfde4",
+      "output_bytes": 526,
+      "excerpt": "\nrunning 1 test\ntest tst_beh_005_requested_model_assumptions_used ... \nthread 'tst_beh_005_requested_model_assumptions_used' (107244) panicked at C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\src\\history_replay.rs:5:5:\nHISTORY_REPLAY_NOT_IMPLEMENTED\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\nFAILED\n\nfailures:\n\nfailures:\n    tst_beh_005_requested_model_assumptions_used\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 37 filtered out; finished in 0.00s\n\n"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\history-replay\\target\\debug\\deps\\contracts-aff9082d217ff400.exe",
+        "tst_state_001_repeated_correction_preserves_information",
+        "--exact",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "output": "TST-STATE-001.txt",
+      "pid": 132192,
+      "reap_confirmed": true,
+      "returncode": 101,
+      "seconds": 0.0,
+      "output_sha256": "1ee37d643eebcc6b1d78a5f2ab153e25ed6d1b4d60b7cc5bbc77cf2f4b9bb15d",
+      "output_bytes": 559,
+      "excerpt": "\nrunning 1 test\ntest tst_state_001_repeated_correction_preserves_information ... \nthread 'tst_state_001_repeated_correction_preserves_information' (127928) panicked at C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\src\\history_replay.rs:5:5:\nHISTORY_REPLAY_NOT_IMPLEMENTED\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\nFAILED\n\nfailures:\n\nfailures:\n    tst_state_001_repeated_correction_preserves_information\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 37 filtered out; finished in 0.00s\n\n"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\history-replay\\target\\debug\\deps\\contracts-aff9082d217ff400.exe",
+        "tst_state_002_emitted_prefix_never_retroactively_rewritten",
+        "--exact",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "output": "TST-STATE-002.txt",
+      "pid": 133048,
+      "reap_confirmed": true,
+      "returncode": 101,
+      "seconds": 0.01600000006146729,
+      "output_sha256": "542bb0d183702adf480fd1ff68044cebc03bc8f013f57854cc16dd0542a05607",
+      "output_bytes": 568,
+      "excerpt": "\nrunning 1 test\ntest tst_state_002_emitted_prefix_never_retroactively_rewritten ... \nthread 'tst_state_002_emitted_prefix_never_retroactively_rewritten' (128496) panicked at C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\src\\history_replay.rs:5:5:\nHISTORY_REPLAY_NOT_IMPLEMENTED\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\nFAILED\n\nfailures:\n\nfailures:\n    tst_state_002_emitted_prefix_never_retroactively_rewritten\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 37 filtered out; finished in 0.00s\n\n"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\history-replay\\target\\debug\\deps\\contracts-aff9082d217ff400.exe",
+        "tst_neg_003_overflow_preserves_typed_source",
+        "--exact",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "output": "TST-NEG-003.txt",
+      "pid": 132688,
+      "reap_confirmed": true,
+      "returncode": 101,
+      "seconds": 0.01500000013038516,
+      "output_sha256": "957dc1c25683e70caf08e2779073b36ce1140dadccaadf50e4e284af1c8f4cd1",
+      "output_bytes": 522,
+      "excerpt": "\nrunning 1 test\ntest tst_neg_003_overflow_preserves_typed_source ... \nthread 'tst_neg_003_overflow_preserves_typed_source' (95604) panicked at C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\src\\history_replay.rs:5:5:\nHISTORY_REPLAY_NOT_IMPLEMENTED\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\nFAILED\n\nfailures:\n\nfailures:\n    tst_neg_003_overflow_preserves_typed_source\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 37 filtered out; finished in 0.00s\n\n"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\history-replay\\target\\debug\\deps\\contracts-aff9082d217ff400.exe",
+        "tst_prop_004_repeat_deterministic_full_result",
+        "--exact",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "output": "TST-PROP-004.txt",
+      "pid": 132792,
+      "reap_confirmed": true,
+      "returncode": 101,
+      "seconds": 0.015999999828636646,
+      "output_sha256": "da14a28ac2522b737483db2e5f4997a7eb5bb9d895fce7fc083eb0f2c4100dcb",
+      "output_bytes": 529,
+      "excerpt": "\nrunning 1 test\ntest tst_prop_004_repeat_deterministic_full_result ... \nthread 'tst_prop_004_repeat_deterministic_full_result' (132856) panicked at C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\src\\history_replay.rs:5:5:\nHISTORY_REPLAY_NOT_IMPLEMENTED\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\nFAILED\n\nfailures:\n\nfailures:\n    tst_prop_004_repeat_deterministic_full_result\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 37 filtered out; finished in 0.00s\n\n"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\history-replay\\target\\debug\\deps\\contracts-aff9082d217ff400.exe",
+        "tst_beh_006_zero_window_signed_zero_legacy_bits",
+        "--exact",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "output": "TST-BEH-006.txt",
+      "pid": 134412,
+      "reap_confirmed": true,
+      "returncode": 101,
+      "seconds": 0.01600000006146729,
+      "output_sha256": "11ce1da2257d9601959228b753af3a227c543e71dce77a88bfff39dfc0ff8417",
+      "output_bytes": 535,
+      "excerpt": "\nrunning 1 test\ntest tst_beh_006_zero_window_signed_zero_legacy_bits ... \nthread 'tst_beh_006_zero_window_signed_zero_legacy_bits' (116804) panicked at C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\src\\history_replay.rs:5:5:\nHISTORY_REPLAY_NOT_IMPLEMENTED\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\nFAILED\n\nfailures:\n\nfailures:\n    tst_beh_006_zero_window_signed_zero_legacy_bits\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 37 filtered out; finished in 0.00s\n\n"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\history-replay\\target\\debug\\deps\\contracts-aff9082d217ff400.exe",
+        "tst_struct_001_public_types_send_sync_signature",
+        "--exact",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "output": "TST-STRUCT-001.txt",
+      "pid": 101028,
+      "reap_confirmed": true,
+      "returncode": 0,
+      "seconds": 0.014999999897554517,
+      "output_sha256": "e423202cc3510caa439f3cb5d6fe3f603362cdb05b737c1e2840750e530d4b8a",
+      "output_bytes": 173,
+      "excerpt": "\nrunning 1 test\ntest tst_struct_001_public_types_send_sync_signature ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 37 filtered out; finished in 0.00s\n\n"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\history-replay\\target\\debug\\deps\\contracts-aff9082d217ff400.exe",
+        "tst_anti_001_private_plan_cannot_be_forged",
+        "--exact",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "output": "TST-ANTI-001.txt",
+      "pid": 128216,
+      "reap_confirmed": true,
+      "returncode": 0,
+      "seconds": 0.07800000021234155,
+      "output_sha256": "19592704d9af69e819d536ba8d92c3e6ad93318eb150958814d318548b91e273",
+      "output_bytes": 168,
+      "excerpt": "\nrunning 1 test\ntest tst_anti_001_private_plan_cannot_be_forged ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 37 filtered out; finished in 0.04s\n\n"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\history-replay\\target\\debug\\deps\\contracts-aff9082d217ff400.exe",
+        "tst_neg_004_rewind_overflow_preserves_arrival_and_replay_tick",
+        "--exact",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "output": "TST-NEG-004.txt",
+      "pid": 80080,
+      "reap_confirmed": true,
+      "returncode": 101,
+      "seconds": 0.031999999890103936,
+      "output_sha256": "972b2b826c80494e467361f46c70f675d83bed825339de049e85fc7cfc045b2a",
+      "output_bytes": 577,
+      "excerpt": "\nrunning 1 test\ntest tst_neg_004_rewind_overflow_preserves_arrival_and_replay_tick ... \nthread 'tst_neg_004_rewind_overflow_preserves_arrival_and_replay_tick' (112712) panicked at C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\src\\history_replay.rs:5:5:\nHISTORY_REPLAY_NOT_IMPLEMENTED\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\nFAILED\n\nfailures:\n\nfailures:\n    tst_neg_004_rewind_overflow_preserves_arrival_and_replay_tick\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 37 filtered out; finished in 0.00s\n\n"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\history-replay\\target\\debug\\deps\\contracts-aff9082d217ff400.exe",
+        "tst_beh_007_late_position_requested_sigma_oracle",
+        "--exact",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "output": "TST-BEH-007.txt",
+      "pid": 134488,
+      "reap_confirmed": true,
+      "returncode": 101,
+      "seconds": 0.0,
+      "output_sha256": "54ae36a6186fe9b952df898618686def635f0edafc5ad6504f616b4af10666a9",
+      "output_bytes": 538,
+      "excerpt": "\nrunning 1 test\ntest tst_beh_007_late_position_requested_sigma_oracle ... \nthread 'tst_beh_007_late_position_requested_sigma_oracle' (134964) panicked at C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\src\\history_replay.rs:5:5:\nHISTORY_REPLAY_NOT_IMPLEMENTED\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\nFAILED\n\nfailures:\n\nfailures:\n    tst_beh_007_late_position_requested_sigma_oracle\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 37 filtered out; finished in 0.00s\n\n"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\history-replay\\target\\debug\\deps\\contracts-aff9082d217ff400.exe",
+        "tst_beh_008_nonzero_process_density_normal_and_rewind",
+        "--exact",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "output": "TST-BEH-008.txt",
+      "pid": 136768,
+      "reap_confirmed": true,
+      "returncode": 101,
+      "seconds": 0.01500000013038516,
+      "output_sha256": "7b3aceaa626b454535af5f493780910c77d8426945e9c842a17d30e7ed4dc30e",
+      "output_bytes": 553,
+      "excerpt": "\nrunning 1 test\ntest tst_beh_008_nonzero_process_density_normal_and_rewind ... \nthread 'tst_beh_008_nonzero_process_density_normal_and_rewind' (137040) panicked at C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\src\\history_replay.rs:5:5:\nHISTORY_REPLAY_NOT_IMPLEMENTED\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\nFAILED\n\nfailures:\n\nfailures:\n    tst_beh_008_nonzero_process_density_normal_and_rewind\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 37 filtered out; finished in 0.00s\n\n"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\history-replay\\target\\debug\\deps\\contracts-aff9082d217ff400.exe",
+        "tst_contract_004_scripted_loss_payload_never_consumed",
+        "--exact",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "output": "TST-CONTRACT-004.txt",
+      "pid": 138860,
+      "reap_confirmed": true,
+      "returncode": 101,
+      "seconds": 0.015999999828636646,
+      "output_sha256": "2f89b68eda58d1b253af9087c87c7588e06e70ab8cf10784e7d7931d022686c7",
+      "output_bytes": 552,
+      "excerpt": "\nrunning 1 test\ntest tst_contract_004_scripted_loss_payload_never_consumed ... \nthread 'tst_contract_004_scripted_loss_payload_never_consumed' (89992) panicked at C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\src\\history_replay.rs:5:5:\nHISTORY_REPLAY_NOT_IMPLEMENTED\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\nFAILED\n\nfailures:\n\nfailures:\n    tst_contract_004_scripted_loss_payload_never_consumed\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 37 filtered out; finished in 0.00s\n\n"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\history-replay\\target\\debug\\deps\\contracts-aff9082d217ff400.exe",
+        "tst_contract_005_queue_full_payload_never_consumed",
+        "--exact",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "output": "TST-CONTRACT-005.txt",
+      "pid": 135096,
+      "reap_confirmed": true,
+      "returncode": 101,
+      "seconds": 0.01500000013038516,
+      "output_sha256": "df488ce8cd90783107589be7acea515f71c4789ec34e541f41b31d7cb5bb2952",
+      "output_bytes": 544,
+      "excerpt": "\nrunning 1 test\ntest tst_contract_005_queue_full_payload_never_consumed ... \nthread 'tst_contract_005_queue_full_payload_never_consumed' (136776) panicked at C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\src\\history_replay.rs:5:5:\nHISTORY_REPLAY_NOT_IMPLEMENTED\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\nFAILED\n\nfailures:\n\nfailures:\n    tst_contract_005_queue_full_payload_never_consumed\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 37 filtered out; finished in 0.00s\n\n"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\tests\\history-replay\\target\\debug\\deps\\contracts-aff9082d217ff400.exe",
+        "tst_inv_002_too_old_payload_absent_from_tail_and_rewind",
+        "--exact",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "output": "TST-INV-002.txt",
+      "pid": 132476,
+      "reap_confirmed": true,
+      "returncode": 101,
+      "seconds": 0.015999999828636646,
+      "output_sha256": "b0827702180c00f0d37ae6163ea7a30cdf14f6dadb0cd1fce944257368ffcca8",
+      "output_bytes": 558,
+      "excerpt": "\nrunning 1 test\ntest tst_inv_002_too_old_payload_absent_from_tail_and_rewind ... \nthread 'tst_inv_002_too_old_payload_absent_from_tail_and_rewind' (98472) panicked at C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\src\\history_replay.rs:5:5:\nHISTORY_REPLAY_NOT_IMPLEMENTED\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\nFAILED\n\nfailures:\n\nfailures:\n    tst_inv_002_too_old_payload_absent_from_tail_and_rewind\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 37 filtered out; finished in 0.00s\n\n"
+    }
+  ],
+  "tests": [
+    {
+      "id": "TST-ACC-001",
+      "selector": "tst_acc_001_late_velocity_rational_oracle",
+      "expected": "fail",
+      "counts": [
+        0,
+        1,
+        0,
+        0,
+        37
+      ],
+      "valid": true,
+      "output": "TST-ACC-001.txt",
+      "output_sha256": "8f7c0dc5a18222144f30419da1a58eb7dc03af73b550f90de9b4cbe436cd04cd"
+    },
+    {
+      "id": "TST-ACC-002",
+      "selector": "tst_acc_002_zero_window_preserves_legacy_bits",
+      "expected": "fail",
+      "counts": [
+        0,
+        1,
+        0,
+        0,
+        37
+      ],
+      "valid": true,
+      "output": "TST-ACC-002.txt",
+      "output_sha256": "367e811251c64c87a64904470dae6c47ba2e6301c69e27812ec7df2739984965"
+    },
+    {
+      "id": "TST-ACC-003",
+      "selector": "tst_acc_003_batch_late_and_current_once",
+      "expected": "fail",
+      "counts": [
+        0,
+        1,
+        0,
+        0,
+        37
+      ],
+      "valid": true,
+      "output": "TST-ACC-003.txt",
+      "output_sha256": "35b6dc662239207b93030206a0cf33fc023065ed9f01ac70fde8ffbeb5259fb8"
+    },
+    {
+      "id": "TST-BEH-001",
+      "selector": "tst_beh_001_empty_trace_predicts_original_prior",
+      "expected": "fail",
+      "counts": [
+        0,
+        1,
+        0,
+        0,
+        37
+      ],
+      "valid": true,
+      "output": "TST-BEH-001.txt",
+      "output_sha256": "8ec0ae1519636f7d3e2cd95c28e05cdb3f7625557a4007a7b8f827ca8d8feba0"
+    },
+    {
+      "id": "TST-BOUND-001",
+      "selector": "tst_bound_001_window_zero_and_maximum_valid",
+      "expected": "fail",
+      "counts": [
+        0,
+        1,
+        0,
+        0,
+        37
+      ],
+      "valid": true,
+      "output": "TST-BOUND-001.txt",
+      "output_sha256": "8baf57f53234898657a0aef456729a91e555a087027c7b5d3e585c9ea64320e1"
+    },
+    {
+      "id": "TST-NEG-001",
+      "selector": "tst_neg_001_window_501_rejected",
+      "expected": "fail",
+      "counts": [
+        0,
+        1,
+        0,
+        0,
+        37
+      ],
+      "valid": true,
+      "output": "TST-NEG-001.txt",
+      "output_sha256": "94da2266146b2fd6c1472adbbb39d6d70ed6fd82976f66e9fe47ff02a5a8df02"
+    },
+    {
+      "id": "TST-NEG-002",
+      "selector": "tst_neg_002_window_integer_max_rejected",
+      "expected": "fail",
+      "counts": [
+        0,
+        1,
+        0,
+        0,
+        37
+      ],
+      "valid": true,
+      "output": "TST-NEG-002.txt",
+      "output_sha256": "79073d53277fc39aeb9aad4e89948c4a6d24ac29f3822c74e39f0920e966d063"
+    },
+    {
+      "id": "TST-BOUND-002",
+      "selector": "tst_bound_002_inclusive_age_boundary_corrected",
+      "expected": "fail",
+      "counts": [
+        0,
+        1,
+        0,
+        0,
+        37
+      ],
+      "valid": true,
+      "output": "TST-BOUND-002.txt",
+      "output_sha256": "afa31d7009ccd8ecad555ca9af4e22e46f767913036531c59ff284b18481a7fb"
+    },
+    {
+      "id": "TST-BOUND-003",
+      "selector": "tst_bound_003_older_than_window_explicit_drop",
+      "expected": "fail",
+      "counts": [
+        0,
+        1,
+        0,
+        0,
+        37
+      ],
+      "valid": true,
+      "output": "TST-BOUND-003.txt",
+      "output_sha256": "3d20aafb74f889d62b26562ff072333f2dd471c2724fdc9bbded5f654f5ba0d8"
+    },
+    {
+      "id": "TST-BOUND-004",
+      "selector": "tst_bound_004_max_age_initial_anchor",
+      "expected": "fail",
+      "counts": [
+        0,
+        1,
+        0,
+        0,
+        37
+      ],
+      "valid": true,
+      "output": "TST-BOUND-004.txt",
+      "output_sha256": "31bb68ed5c082212a2da9ea15407b10444e6b17474ddfca862971ce3462a294a"
+    },
+    {
+      "id": "TST-BOUND-005",
+      "selector": "tst_bound_005_arrival_at_final_horizon_processed",
+      "expected": "fail",
+      "counts": [
+        0,
+        1,
+        0,
+        0,
+        37
+      ],
+      "valid": true,
+      "output": "TST-BOUND-005.txt",
+      "output_sha256": "9a9d6826a570783d96c5360db20671890d48812b252bcbab25dff9b6021d0709"
+    },
+    {
+      "id": "TST-BOUND-006",
+      "selector": "tst_bound_006_beyond_horizon_retains_horizon_outcome",
+      "expected": "fail",
+      "counts": [
+        0,
+        1,
+        0,
+        0,
+        37
+      ],
+      "valid": true,
+      "output": "TST-BOUND-006.txt",
+      "output_sha256": "ce96c2f30ad6e0c6353f05a67506d353552e7c4f0d19ce4ba583ea5a6d307c33"
+    },
+    {
+      "id": "TST-BEH-002",
+      "selector": "tst_beh_002_simultaneous_sensors_canonical",
+      "expected": "fail",
+      "counts": [
+        0,
+        1,
+        0,
+        0,
+        37
+      ],
+      "valid": true,
+      "output": "TST-BEH-002.txt",
+      "output_sha256": "31081665796c2bf6a00fdd4196352322ce17ee8aa918dec636b50ee5797b11eb"
+    },
+    {
+      "id": "TST-PROP-001",
+      "selector": "tst_prop_001_input_permutation_irrelevant",
+      "expected": "fail",
+      "counts": [
+        0,
+        1,
+        0,
+        0,
+        37
+      ],
+      "valid": true,
+      "output": "TST-PROP-001.txt",
+      "output_sha256": "0a6fcb602eeb076205fc819cabed0e357555c916a48a8078c0322970a94b3239"
+    },
+    {
+      "id": "TST-PERF-001",
+      "selector": "tst_perf_001_exact_maximum_correction_batch",
+      "expected": "fail",
+      "counts": [
+        0,
+        1,
+        0,
+        0,
+        37
+      ],
+      "valid": true,
+      "output": "TST-PERF-001.txt",
+      "output_sha256": "599ddce643f5c4fda604e4cefc90aacf5866ea6728a27417dfa70af98e24a108"
+    },
+    {
+      "id": "TST-PERF-002",
+      "selector": "tst_perf_002_actual_history_and_work_caps",
+      "expected": "fail",
+      "counts": [
+        0,
+        1,
+        0,
+        0,
+        37
+      ],
+      "valid": true,
+      "output": "TST-PERF-002.txt",
+      "output_sha256": "ec79012fbcf34b518829cd5f30b62372d00cd6755a35548b6d75984564da788a"
+    },
+    {
+      "id": "TST-BEH-003",
+      "selector": "tst_beh_003_normal_work_counts_actual_calls",
+      "expected": "fail",
+      "counts": [
+        0,
+        1,
+        0,
+        0,
+        37
+      ],
+      "valid": true,
+      "output": "TST-BEH-003.txt",
+      "output_sha256": "41f1727bf8b767db7648351398005005c32e4e369dd8a5e212db3fdc6fff337b"
+    },
+    {
+      "id": "TST-BEH-004",
+      "selector": "tst_beh_004_correction_branch_no_wasted_normal_work",
+      "expected": "fail",
+      "counts": [
+        0,
+        1,
+        0,
+        0,
+        37
+      ],
+      "valid": true,
+      "output": "TST-BEH-004.txt",
+      "output_sha256": "a6ce1bbd4c8c2d5421d64a3e34c0928436770115164694f22e860d09e8f0b2a2"
+    },
+    {
+      "id": "TST-PROP-002",
+      "selector": "tst_prop_002_sampled_future_prefix_causality",
+      "expected": "fail",
+      "counts": [
+        0,
+        1,
+        0,
+        0,
+        37
+      ],
+      "valid": true,
+      "output": "TST-PROP-002.txt",
+      "output_sha256": "ff42fbfeea3bed386c1ff0de99af6ac5030ccc499855929dd44cac25784abbf9"
+    },
+    {
+      "id": "TST-PROP-003",
+      "selector": "tst_prop_003_unarrived_payload_not_numerical_input",
+      "expected": "fail",
+      "counts": [
+        0,
+        1,
+        0,
+        0,
+        37
+      ],
+      "valid": true,
+      "output": "TST-PROP-003.txt",
+      "output_sha256": "169f05599e20dfadab5333200e1bb5eb0e8d97032d8f67e11a5603b9de2e58ce"
+    },
+    {
+      "id": "TST-CONTRACT-001",
+      "selector": "tst_contract_001_immediate_bypasses_full_waiting",
+      "expected": "fail",
+      "counts": [
+        0,
+        1,
+        0,
+        0,
+        37
+      ],
+      "valid": true,
+      "output": "TST-CONTRACT-001.txt",
+      "output_sha256": "967cb360c94f2f24f5c7b404251a83ea685cf0217e9c84eaa5989972d4f4b252"
+    },
+    {
+      "id": "TST-CONTRACT-002",
+      "selector": "tst_contract_002_drain_due_before_admit",
+      "expected": "fail",
+      "counts": [
+        0,
+        1,
+        0,
+        0,
+        37
+      ],
+      "valid": true,
+      "output": "TST-CONTRACT-002.txt",
+      "output_sha256": "10def867634455c13dde471f09793af195f403e1f5f865394b39ae4c0e5dbe8b"
+    },
+    {
+      "id": "TST-CONTRACT-003",
+      "selector": "tst_contract_003_scheduled_loss_missing_sequence",
+      "expected": "fail",
+      "counts": [
+        0,
+        1,
+        0,
+        0,
+        37
+      ],
+      "valid": true,
+      "output": "TST-CONTRACT-003.txt",
+      "output_sha256": "c9256c05708d0c7ea2e213a9c6ebb09c0f3f3eadbd43509288b6541123b5d1f8"
+    },
+    {
+      "id": "TST-INV-001",
+      "selector": "tst_inv_001_input_bytes_preserved",
+      "expected": "fail",
+      "counts": [
+        0,
+        1,
+        0,
+        0,
+        37
+      ],
+      "valid": true,
+      "output": "TST-INV-001.txt",
+      "output_sha256": "b81b49de0e871bb6fc75e7724c84bfabc67675a824bc89cd81c846502eb86322"
+    },
+    {
+      "id": "TST-BEH-005",
+      "selector": "tst_beh_005_requested_model_assumptions_used",
+      "expected": "fail",
+      "counts": [
+        0,
+        1,
+        0,
+        0,
+        37
+      ],
+      "valid": true,
+      "output": "TST-BEH-005.txt",
+      "output_sha256": "fbc5d7aaa10f4141d303cb7f5b3a5d9b8c8aca927412cb1dbe581eb706fdfde4"
+    },
+    {
+      "id": "TST-STATE-001",
+      "selector": "tst_state_001_repeated_correction_preserves_information",
+      "expected": "fail",
+      "counts": [
+        0,
+        1,
+        0,
+        0,
+        37
+      ],
+      "valid": true,
+      "output": "TST-STATE-001.txt",
+      "output_sha256": "1ee37d643eebcc6b1d78a5f2ab153e25ed6d1b4d60b7cc5bbc77cf2f4b9bb15d"
+    },
+    {
+      "id": "TST-STATE-002",
+      "selector": "tst_state_002_emitted_prefix_never_retroactively_rewritten",
+      "expected": "fail",
+      "counts": [
+        0,
+        1,
+        0,
+        0,
+        37
+      ],
+      "valid": true,
+      "output": "TST-STATE-002.txt",
+      "output_sha256": "542bb0d183702adf480fd1ff68044cebc03bc8f013f57854cc16dd0542a05607"
+    },
+    {
+      "id": "TST-NEG-003",
+      "selector": "tst_neg_003_overflow_preserves_typed_source",
+      "expected": "fail",
+      "counts": [
+        0,
+        1,
+        0,
+        0,
+        37
+      ],
+      "valid": true,
+      "output": "TST-NEG-003.txt",
+      "output_sha256": "957dc1c25683e70caf08e2779073b36ce1140dadccaadf50e4e284af1c8f4cd1"
+    },
+    {
+      "id": "TST-PROP-004",
+      "selector": "tst_prop_004_repeat_deterministic_full_result",
+      "expected": "fail",
+      "counts": [
+        0,
+        1,
+        0,
+        0,
+        37
+      ],
+      "valid": true,
+      "output": "TST-PROP-004.txt",
+      "output_sha256": "da14a28ac2522b737483db2e5f4997a7eb5bb9d895fce7fc083eb0f2c4100dcb"
+    },
+    {
+      "id": "TST-BEH-006",
+      "selector": "tst_beh_006_zero_window_signed_zero_legacy_bits",
+      "expected": "fail",
+      "counts": [
+        0,
+        1,
+        0,
+        0,
+        37
+      ],
+      "valid": true,
+      "output": "TST-BEH-006.txt",
+      "output_sha256": "11ce1da2257d9601959228b753af3a227c543e71dce77a88bfff39dfc0ff8417"
+    },
+    {
+      "id": "TST-STRUCT-001",
+      "selector": "tst_struct_001_public_types_send_sync_signature",
+      "expected": "pass",
+      "counts": [
+        1,
+        0,
+        0,
+        0,
+        37
+      ],
+      "valid": true,
+      "output": "TST-STRUCT-001.txt",
+      "output_sha256": "e423202cc3510caa439f3cb5d6fe3f603362cdb05b737c1e2840750e530d4b8a"
+    },
+    {
+      "id": "TST-ANTI-001",
+      "selector": "tst_anti_001_private_plan_cannot_be_forged",
+      "expected": "pass",
+      "counts": [
+        1,
+        0,
+        0,
+        0,
+        37
+      ],
+      "valid": true,
+      "output": "TST-ANTI-001.txt",
+      "output_sha256": "19592704d9af69e819d536ba8d92c3e6ad93318eb150958814d318548b91e273"
+    },
+    {
+      "id": "TST-NEG-004",
+      "selector": "tst_neg_004_rewind_overflow_preserves_arrival_and_replay_tick",
+      "expected": "fail",
+      "counts": [
+        0,
+        1,
+        0,
+        0,
+        37
+      ],
+      "valid": true,
+      "output": "TST-NEG-004.txt",
+      "output_sha256": "972b2b826c80494e467361f46c70f675d83bed825339de049e85fc7cfc045b2a"
+    },
+    {
+      "id": "TST-BEH-007",
+      "selector": "tst_beh_007_late_position_requested_sigma_oracle",
+      "expected": "fail",
+      "counts": [
+        0,
+        1,
+        0,
+        0,
+        37
+      ],
+      "valid": true,
+      "output": "TST-BEH-007.txt",
+      "output_sha256": "54ae36a6186fe9b952df898618686def635f0edafc5ad6504f616b4af10666a9"
+    },
+    {
+      "id": "TST-BEH-008",
+      "selector": "tst_beh_008_nonzero_process_density_normal_and_rewind",
+      "expected": "fail",
+      "counts": [
+        0,
+        1,
+        0,
+        0,
+        37
+      ],
+      "valid": true,
+      "output": "TST-BEH-008.txt",
+      "output_sha256": "7b3aceaa626b454535af5f493780910c77d8426945e9c842a17d30e7ed4dc30e"
+    },
+    {
+      "id": "TST-CONTRACT-004",
+      "selector": "tst_contract_004_scripted_loss_payload_never_consumed",
+      "expected": "fail",
+      "counts": [
+        0,
+        1,
+        0,
+        0,
+        37
+      ],
+      "valid": true,
+      "output": "TST-CONTRACT-004.txt",
+      "output_sha256": "2f89b68eda58d1b253af9087c87c7588e06e70ab8cf10784e7d7931d022686c7"
+    },
+    {
+      "id": "TST-CONTRACT-005",
+      "selector": "tst_contract_005_queue_full_payload_never_consumed",
+      "expected": "fail",
+      "counts": [
+        0,
+        1,
+        0,
+        0,
+        37
+      ],
+      "valid": true,
+      "output": "TST-CONTRACT-005.txt",
+      "output_sha256": "df488ce8cd90783107589be7acea515f71c4789ec34e541f41b31d7cb5bb2952"
+    },
+    {
+      "id": "TST-INV-002",
+      "selector": "tst_inv_002_too_old_payload_absent_from_tail_and_rewind",
+      "expected": "fail",
+      "counts": [
+        0,
+        1,
+        0,
+        0,
+        37
+      ],
+      "valid": true,
+      "output": "TST-INV-002.txt",
+      "output_sha256": "b0827702180c00f0d37ae6163ea7a30cdf14f6dadb0cd1fce944257368ffcca8"
+    }
+  ],
+  "success": true,
+  "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-msvc\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+  "revision": "2944a1342275ff298ec4df29bf94df81891d6755",
+  "source_after": {
+    "Cargo.toml": "107801ee283d274781df7496d22eaa46a09748e2b624ccb48a8b7b9eda975462",
+    "Cargo.lock": "1ff60b850d3f5928fc13476575700400765d31f7deb3268171f66176fb6cf6f3",
+    "rust-toolchain.toml": "ccced9ef5cf5a0c35bb5ba4e4b525188b72aa07aab8cc3fb5b644778ade8f125",
+    "src/delivery.rs": "12d7fbdcee02d7ae986658bb2f43116f56283f1689adc2c74e4f360d45389120",
+    "src/estimation.rs": "83a3b6936c53fc9d28c29a59b0840cf5d57611852246bc19c2c4cb258c092fdf",
+    "src/evaluation.rs": "cf83337582b8887dc3ae71b62a8daf10c9f8b578eddd74b212069d30d76ba870",
+    "src/history_replay.rs": "3bd95e3a6d0211c0933d15fb7369ba247d5c3b01d8ce40572769f8d4841203eb",
+    "src/lib.rs": "f1707ae4d0fe5b0f773406860546d1147134440daef190fdaf6ac72bb09b8f85",
+    "src/main.rs": "76574d18911bdce81082b9f76308cf3a31f69fa9967a0592f28eaf2630901d6b",
+    "src/sensors.rs": "d8eaae0d691535bcee6f68166babdb41c49de815ad0c3eb213c8b980c9ae29af",
+    "src/simulation.rs": "c0fd739c26e7190549736636c69720dc963707059463a45b7095159099fd7691",
+    "docs/design-docs/observation-delivery/implementation/resource_probe.py": "ab851ab12ec6f54ee52baec37b0b59b80f8db069b5a92179c3f12f23cc9b924c",
+    "tests/history-replay/build.rs": "2bf7b4646820440e9a997ccd67663aebb4e9296d07c798a947ba361eff903dcb",
+    "tests/history-replay/Cargo.lock": "f74d20e99ca6c2d452092ebc3b1aec5165b62a8be986d2bc8c3ed779be9c47fa",
+    "tests/history-replay/Cargo.toml": "1ea2369b23d0ea2911920c54169da4483815fd814743bdb09dd2963936223080",
+    "tests/history-replay/src/lib.rs": "55297e78b51534d85aa43e80aff822fc64f0b474937213cb31a5862abc7863d2",
+    "tests/history-replay/tests/contracts.rs": "3c1d0f1699997e60c37611cee8e1cf171ece46f97098c167a909658be223feea",
+    "tests/history-replay/tools/native_baseline.py": "4cb083eccbc260fd8bc16bfdfd60d66d3e608c2a000a73f9c7f3c1a13757f6a8",
+    "docs/design-docs/history-replay/constraints/constraints.toml": "95f51cc57145b7ade7c228e3e90dd41589bc4d2a88b22c7ec5bd70c2ceccdf2a",
+    "docs/design-docs/history-replay/decisions/ADR-001-causal-batch-correction.md": "d0641d3ef59cbc37c692f3fb6de88ea35be51ddb5ce43bc0287240e8666a5b54",
+    "docs/design-docs/history-replay/decisions/index.md": "c77805876f7abef12602964614ddad6de942d1fa253e4461f0bb56d332972ca8",
+    "docs/design-docs/history-replay/implementation-brief.md": "58e71f60b146a797d4f992a2e02c6b194bcab1164c8c61193743d45c32fcbc4f",
+    "docs/design-docs/history-replay/implementation-plan.toml": "887a7b9cc9803b2a23793b3e83ecebbd7f841ca6503d50a7cdfb82c11c7aba50",
+    "docs/design-docs/history-replay/intent/acceptance.toml": "f085954bb52782a08bbaa3cddf075138fb192a321cd618e0ecaf201b4bf0f4ff",
+    "docs/design-docs/history-replay/intent/summary.md": "b64db88257f33a156093690caf8007c19ed7e45008d4d4cb999b28a249139314",
+    "docs/design-docs/history-replay/open-questions.toml": "d8b62360b085ef790c7db92a7b050544d51f521e2cc3a8652e13748086cedcdd",
+    "docs/design-docs/history-replay/requirements/glossary.md": "45eb43212609627f25718bbd029e51609d9bd5bb03f13b65738a9a3b61499ff9",
+    "docs/design-docs/history-replay/requirements/requirements.toml": "4436e921c15f50910b216c653ce5843b61905151c662d7c22aa243631cb07b3e",
+    "docs/design-docs/history-replay/spec.toml": "dbbe841b5b07b3524bddbfa4e2f0a271ed2662490226326fbc4cc13d93622211",
+    "docs/design-docs/history-replay/structure/architecture.md": "33e10ea82395c5765609964464f60cf10751afdb6480fc3ec054cd9c145a6774",
+    "docs/design-docs/history-replay/structure/modules.toml": "f9f10bfe54f267c1f2188f8951a37960c43dfb9a9ca36f2b594313207cc35875",
+    "docs/design-docs/history-replay/tests/tests.toml": "65e2a3acb95d0cdb799e9c638c4d2a7af192c7e841804946d3d135ebf8d17bed",
+    "docs/design-docs/history-replay/traceability.toml": "22adb296e550ebf45c0deecee892dbbdd2f2483fd2042e9c2a81f673f78e55cb",
+    "docs/design-docs/history-replay/verification/authority-boundary.md": "80cdeaf738a8f6340afcb0a2d58e77f815b45b315c5e26cd72320962afd6b5e3",
+    "docs/design-docs/history-replay/verification/bounds.md": "5dbf09e02bd9160a1bf0313b32167d3e6b5e314db7d5ce58046f1902c74dae2c",
+    "docs/design-docs/history-replay/verification/catalog.toml": "55b46d831d14e4ba783bb56c45a9d02170853767a3a1f66f9c46c7b659a5b04a",
+    "docs/design-docs/history-replay/verification/native-matrix.md": "13f1bf4bcf6ee792b89751e752b2d2c865a7e3800458f18688c90c891fb4e83c",
+    "docs/design-docs/history-replay/verification/resource-workload.md": "1980d513f9b71bbf9b579c45164c35be0703f6d0551c12222a15b282098bc75d",
+    "docs/design-docs/history-replay/verification/rewind-overflow-oracle.rs": "7576559286bc3bda695695b4097e51704e1f0320daf046dfbb12abd3193dc0c7",
+    "docs/design-docs/history-replay/verification/rewind-overflow-qualification.json": "7276e64daed7e6b7d1842c0b279390544dfb2b352908a467444efbe1a9335822",
+    "docs/design-docs/history-replay/verification/test-efficacy.md": "22cd6939bf78b979dde4f1040f29d6115bacee1947b408948a4d4f0de6d60c69"
+  },
+  "expected_red": 36,
+  "passed": 2
+}

@@ -1,0 +1,5 @@
+# Independent executable-contract review
+
+Before approval, independent main reviewer inspected architecture and assertion strength. Original shortcuts could hardcode position sigma/q or consume loss/too-old payload while only ledger assertions passed. Tests now vary sigma/q with independent rational/unchanged-reference oracles, compare full snapshot tails with dropped records absent, check explicit lengths before zipped comparisons, and exercise actual maximum replay calls plus immutable original prefix. Qualified large-value rewind failure checks arrival versus historical failureticks. Privacy compiles an actual invalid external literal with Cargo-selected compiler and requires E0451; Send+Sync/signature test is compile-time only. No counter formula alone proves actual instrumentation; VER-002 exact code inspection remains mandatory.
+
+No correction implementation or mutation of one exists yet. The named diagnostic boundary makes all36runtime selectors fail for the declared reason; setup/build failures and unexpectedpasses are rejected. A fresh final trusted/native execution is required after these changes.

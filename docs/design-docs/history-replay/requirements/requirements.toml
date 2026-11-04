@@ -1,0 +1,233 @@
+[[requirement]]
+id="REQ-001"
+title="Window domain"
+kind="behavioral"
+statement="HistoryPlan SHALL accept exactly integer windows0..500 and reject larger requests with InvalidWindow preserving the requested value."
+rationale="Observable bounded causal comparison without altering the accepted comparator."
+source_ids=["ACC-001"]
+status="active"
+
+[[requirement]]
+id="REQ-002"
+title="Late eligibility"
+kind="behavioral"
+statement="Arrivals SHALL be corrected exactly when their positive age is at most the requested inclusive window."
+rationale="Observable bounded causal comparison without altering the accepted comparator."
+source_ids=["ACC-001"]
+status="active"
+
+[[requirement]]
+id="REQ-003"
+title="Checkpoint phase"
+kind="behavioral"
+statement="Correction SHALL restore the state immediately before the earliest eligible sample, using the original prior before sample0."
+rationale="Observable bounded causal comparison without altering the accepted comparator."
+source_ids=["ACC-001"]
+status="active"
+
+[[requirement]]
+id="REQ-004"
+title="Numerical equations"
+kind="behavioral"
+statement="Replay SHALL use the unchanged core10ms F/Q/Joseph equations, requested model sigmas and1e-12 variance floor."
+rationale="Observable bounded causal comparison without altering the accepted comparator."
+source_ids=["ACC-001"]
+status="active"
+
+[[requirement]]
+id="REQ-005"
+title="Zero-window compatibility"
+kind="behavioral"
+statement="Window0 SHALL preserve accepted OnTimeOnly snapshot/baseline bits and map stale arrivals explicitly to TooOldDrop."
+rationale="Observable bounded causal comparison without altering the accepted comparator."
+source_ids=["ACC-001"]
+status="active"
+
+[[requirement]]
+id="REQ-006"
+title="Frozen transport"
+kind="behavioral"
+statement="Admission SHALL match accepted drain-before-admit, immediate-bypass, capacity and scheduled-loss decisions independently of numerical policy."
+rationale="Observable bounded causal comparison without altering the accepted comparator."
+source_ids=["ACC-001"]
+status="active"
+
+[[requirement]]
+id="REQ-007"
+title="Canonical one batch"
+kind="behavioral"
+statement="Each tick SHALL choose correction or ordinary progress before numerical work and apply known measurements exactly once in canonical sample/sensor/sequence order."
+rationale="Observable bounded causal comparison without altering the accepted comparator."
+source_ids=["ACC-001"]
+status="active"
+
+[[requirement]]
+id="REQ-008"
+title="Online immutable prefix"
+kind="behavioral"
+statement="Correction SHALL preserve emitted online snapshots and commit current state/history only after the entire batch succeeds."
+rationale="Observable bounded causal comparison without altering the accepted comparator."
+source_ids=["ACC-001"]
+status="active"
+
+[[requirement]]
+id="REQ-009"
+title="Dense reporting"
+kind="behavioral"
+statement="Success SHALL return one snapshot and work record for every tick0 through the validated horizon, including empty inputs."
+rationale="Observable bounded causal comparison without altering the accepted comparator."
+source_ids=["ACC-001"]
+status="active"
+
+[[requirement]]
+id="REQ-010"
+title="Complete ledger"
+kind="behavioral"
+statement="Success SHALL preserve one source-order decision per offered identity and canonical delivered arrival order with original timestamps."
+rationale="Observable bounded causal comparison without altering the accepted comparator."
+source_ids=["ACC-001"]
+status="active"
+
+[[requirement]]
+id="REQ-011"
+title="Actual work counters"
+kind="behavioral"
+statement="HistoryWork SHALL count total actual numerical calls on both branches, including any discarded work."
+rationale="Observable bounded causal comparison without altering the accepted comparator."
+source_ids=["ACC-001"]
+status="active"
+
+[[requirement]]
+id="REQ-012"
+title="Numerical work ceilings"
+kind="behavioral"
+statement="Every tick SHALL execute at mostW+1 prediction calls and127measurement calls, with no extra ordinary work before correction."
+rationale="Observable bounded causal comparison without altering the accepted comparator."
+source_ids=["ACC-001"]
+status="active"
+
+[[requirement]]
+id="REQ-013"
+title="Live history ceilings"
+kind="behavioral"
+statement="Live committed history SHALL contain at mostW+2 checkpoints and127observations, with original-plus-candidate peaks at most2*(W+2) checkpoints and254history observations."
+rationale="Observable bounded causal comparison without altering the accepted comparator."
+source_ids=["ACC-001"]
+status="active"
+
+[[requirement]]
+id="REQ-014"
+title="Causal data access"
+kind="behavioral"
+statement="Numerical correction SHALL read observation payloads only at or after their admitted arrival tick."
+rationale="Observable bounded causal comparison without altering the accepted comparator."
+source_ids=["ACC-001"]
+status="active"
+
+[[requirement]]
+id="REQ-015"
+title="Borrowed input preservation"
+kind="behavioral"
+statement="Replay SHALL leave the validated input Trace and ReplayModel unchanged."
+rationale="Observable bounded causal comparison without altering the accepted comparator."
+source_ids=["ACC-001"]
+status="active"
+
+[[requirement]]
+id="REQ-016"
+title="Typed atomic failure"
+kind="behavioral"
+statement="Replay SHALL return a typed numerical error with arrival tick, replay tick, optional identity and original Error source, or a typed invariant failure, without a successful partial result."
+rationale="Observable bounded causal comparison without altering the accepted comparator."
+source_ids=["ACC-001"]
+status="active"
+
+[[requirement]]
+id="REQ-017"
+title="Deterministic results"
+kind="behavioral"
+statement="Repeated calls SHALL return identical snapshot/ledger/arrival/work values for identical valid inputs."
+rationale="Observable bounded causal comparison without altering the accepted comparator."
+source_ids=["ACC-001"]
+status="active"
+
+[[requirement]]
+id="REQ-018"
+title="Private observational API"
+kind="behavioral"
+statement="History data SHALL expose only private-field read-only observational/model APIs with Send+Sync result types."
+rationale="Observable bounded causal comparison without altering the accepted comparator."
+source_ids=["ACC-001"]
+status="active"
+
+[[requirement]]
+id="REQ-019"
+title="Legacy compatibility"
+kind="quality"
+statement="The change SHALL preserve accepted production numerical/simulation/delivery/codec behavior, dependency closure and required legacy gates."
+rationale="Observable bounded causal comparison without altering the accepted comparator."
+source_ids=["ACC-001"]
+status="active"
+
+[[requirement]]
+id="REQ-020"
+title="Native resource targets"
+kind="quality"
+statement="Each declared complete-work native process SHALL finish within120seconds with lifetime peak resident memory at most768MiB."
+rationale="Observable bounded causal comparison without altering the accepted comparator."
+source_ids=["ACC-001"]
+status="active"
+
+[[requirement]]
+id="REQ-021"
+title="Owned measurement cleanup"
+kind="quality"
+statement="The nonproduction sampler SHALL retain the same child and ownership fence until actual reap under execution or cleanup failure."
+rationale="Observable bounded causal comparison without altering the accepted comparator."
+source_ids=["ACC-001"]
+status="active"
+
+[[requirement]]
+id="REQ-022"
+title="Knowledge example"
+kind="quality"
+statement="The separate deterministic example SHALL demonstrate correction and explicit stale comparison with a reproducible human learning handoff."
+rationale="Observable bounded causal comparison without altering the accepted comparator."
+source_ids=["ACC-001"]
+status="active"
+
+[[requirement]]
+id="REQ-023"
+title="No authority escalation"
+kind="quality"
+statement="The numerical API SHALL NOT require truth, Config, RNG, filesystem, network or wall-clock authority."
+rationale="Observable bounded causal comparison without altering the accepted comparator."
+source_ids=["ACC-001"]
+status="active"
+
+[[requirement]]
+id="REQ-024"
+title="Bounded complexity"
+kind="quality"
+statement="The implementation SHALL avoid whole-trace rescans per numerical tick and bound replay work by the selected window and finite admitted history."
+rationale="Observable bounded causal comparison without altering the accepted comparator."
+source_ids=["ACC-001"]
+status="active"
+
+[[requirement]]
+id="REQ-025"
+title="Reserved capacity diagnostics"
+kind="quality"
+statement="HistoryWork SHALL report actual per-tick peak reserved checkpoint and history-observation slot capacities separately from live objects."
+rationale="Observable bounded causal comparison without altering the accepted comparator."
+source_ids=["ACC-001"]
+status="active"
+
+[[requirement]]
+id="REQ-026"
+title="Native qualification"
+kind="quality"
+statement="Final acceptance SHALL include actual full catalog and declared resource evidence on native Windows/Linux with Rust1.99.0/stable."
+rationale="Observable bounded causal comparison without altering the accepted comparator."
+source_ids=["ACC-001"]
+status="active"
