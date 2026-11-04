@@ -1,6 +1,8 @@
 # History replay implementation handoff
 
-Status: DRAFT; do not implement, self-approve or lock. Main scope/API selection issue22comment6636494428 follows repository delegated review authority; final independently reviewed contract and externally published digest are still required.
+Status: MAIN DESIGN APPROVED for immutable handoff finalization. Approver: main orchestrator, acting under AGENTS.md delegated routine design/review authority and the owner instructions in this chat. Actual final approval: https://github.com/zblack54/fusion-lab/issues/22#issuecomment-6637007196, after independent preflight/API/contract/final-delta review and main audit of four native design artifacts at published head b13bfb58ce0769aa5047ede33ff0acc519b50500. Approved scope is this26REQ/6CON/38test/6VER/3task contract, selected API/causal/window/admission/rollback/work/storage policy and120s/768MiB per declared resource process with180s owned watchdog. No semantic, assertion, dependency or production behavior change is authorized by metadata finalization.
+
+The author may refresh approved metadata/evidence, lock and validate. Do not implement until main independently verifies the final lock and publishes its digest in the protected host registry/external issue record. Final design approval is not product or merge acceptance; all final implementation/non-test/native/resource/example obligations remain.
 
 1. Make all required tests pass.
 2. Do not modify any test-owned file, test catalog, fixture, snapshot, test dependency, test command, or test lock.

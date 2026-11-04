@@ -1,0 +1,62 @@
+[
+  {
+    "status": "independently_verified_draft_design_only",
+    "published_head": "b13bfb58ce0769aa5047ede33ff0acc519b50500",
+    "executed_revision": "b69ef8e24eb7091584375b4025c87849bab41b69",
+    "platform": "Windows-2025Server-10.0.26100-SP0",
+    "toolchain": "1.99.0",
+    "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-msvc\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+    "source_hashes": 41,
+    "raw_commands": 42,
+    "selectors": 38,
+    "expected_red": 36,
+    "structural_pass": 2,
+    "zip_sha256": "e8395441f4715cfa2da250074bace50566da720a150d97910f4fb101521d55bb",
+    "limitation": "No implementation or contract approval implied"
+  },
+  {
+    "status": "independently_verified_draft_design_only",
+    "published_head": "b13bfb58ce0769aa5047ede33ff0acc519b50500",
+    "executed_revision": "b69ef8e24eb7091584375b4025c87849bab41b69",
+    "platform": "Windows-2025Server-10.0.26100-SP0",
+    "toolchain": "stable",
+    "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)\nbinary: rustc\ncommit-hash: 58cf8f9c35b355199727627d07ae34a4e2846d67\ncommit-date: 2026-10-13\nhost: x86_64-pc-windows-msvc\nrelease: 1.99.1\nLLVM version: 23.1.1\n",
+    "source_hashes": 41,
+    "raw_commands": 42,
+    "selectors": 38,
+    "expected_red": 36,
+    "structural_pass": 2,
+    "zip_sha256": "e9028f4ec5834d505a080bbe4dce9b6f2e525b59ab97f399891be4b977449002",
+    "limitation": "No implementation or contract approval implied"
+  },
+  {
+    "status": "independently_verified_draft_design_only",
+    "published_head": "b13bfb58ce0769aa5047ede33ff0acc519b50500",
+    "executed_revision": "b69ef8e24eb7091584375b4025c87849bab41b69",
+    "platform": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.43",
+    "toolchain": "1.99.0",
+    "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-unknown-linux-gnu\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+    "source_hashes": 41,
+    "raw_commands": 42,
+    "selectors": 38,
+    "expected_red": 36,
+    "structural_pass": 2,
+    "zip_sha256": "81f4b46a44cc91a935b7e13084b4de5dcfb15a041be369acfaea79da2b9cd305",
+    "limitation": "No implementation or contract approval implied"
+  },
+  {
+    "status": "independently_verified_draft_design_only",
+    "published_head": "b13bfb58ce0769aa5047ede33ff0acc519b50500",
+    "executed_revision": "b69ef8e24eb7091584375b4025c87849bab41b69",
+    "platform": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.43",
+    "toolchain": "stable",
+    "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)\nbinary: rustc\ncommit-hash: 58cf8f9c35b355199727627d07ae34a4e2846d67\ncommit-date: 2026-10-13\nhost: x86_64-unknown-linux-gnu\nrelease: 1.99.1\nLLVM version: 23.1.1\n",
+    "source_hashes": 41,
+    "raw_commands": 42,
+    "selectors": 38,
+    "expected_red": 36,
+    "structural_pass": 2,
+    "zip_sha256": "2f0eea19c9c0ee0c7f3e9082175a9c5c6b6c5a624005a61688acf73c6027194d",
+    "limitation": "No implementation or contract approval implied"
+  }
+]

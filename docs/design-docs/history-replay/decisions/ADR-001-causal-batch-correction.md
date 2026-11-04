@@ -1,6 +1,6 @@
 # ADR-001: causal batch rollback
 
-Status: proposed.
+Status: accepted by main design approval issue22comment6637007196; product implementation acceptance remains separate.
 
 Context: late observations are currently explicit stale drops. Alternatives: silently update at arrival time (changes measurement meaning); unbounded noncausal full replay (cost/knowledge violation); or bounded sample-time rollback of currently known observations.
 

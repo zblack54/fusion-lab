@@ -4,8 +4,8 @@ title = "HistoryReplay"
 feature_slug = "history-replay"
 target_crate = "fusion-lab"
 target_revision = "2944a1342275ff298ec4df29bf94df81891d6755"
-status = "draft"
-ai_ready = false
+status = "approved"
+ai_ready = true
 
 [target]
 edition = "2024"
@@ -84,4 +84,4 @@ status = "complete"
 [[phase]]
 id = "P7"
 name = "Validation"
-status = "pending"
+status = "complete"

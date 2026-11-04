@@ -7,7 +7,7 @@ covers=["REQ-018", "REQ-023", "REQ-014", "CON-001"]
 procedure="Inspect private fields, borrowed public inputs and metadata-only scheduler access before numerical arrival; verify no truth, Config, RNG, I/O or wall clocks cross the boundary."
 acceptance="Every construction/access path preserves observational authority; unarrived payloads cannot influence the earlier output prefix."
 design_evidence="verification/authority-boundary.md"
-reviewed_by="Pending independent final package review; main API scope issue22comment6636494428 is not contract approval"
+reviewed_by="Main orchestrator and independent final-delta reviewer; actual main final-design approval issue22comment6637007196 after four-native source/raw/selector audit at b13bfb58. Implementation inspection remains required."
 
 [[verification]]
 id="VER-002"
@@ -18,7 +18,7 @@ covers=["REQ-011", "REQ-012", "REQ-013", "REQ-024", "REQ-025", "CON-003"]
 procedure="Review anchor/index arithmetic, actual call instrumentation, candidate pruning, retained and reserved storage, no whole-input tick rescans; inspect actual code and counters after implementation."
 acceptance="At mostW+1 totalpredictioncalls/127measurementcalls, W+2/127committed and2*(W+2)/254livehistory; slot capacity accurately reported, full source/results/scratch counted separately."
 design_evidence="verification/bounds.md"
-reviewed_by="Pending independent final package review; main API scope issue22comment6636494428 is not contract approval"
+reviewed_by="Main orchestrator and independent final-delta reviewer; actual main final-design approval issue22comment6637007196 after four-native source/raw/selector audit at b13bfb58. Implementation inspection remains required."
 
 [[verification]]
 id="VER-003"
@@ -56,7 +56,7 @@ covers=["REQ-019", "REQ-026", "CON-004", "CON-006"]
 procedure="Build/enumerate/execute all compiled selectors on nativeWindows/Linux with1.99.0/stable using the public feature adapter; retain exact rawsource/lock/compiler/outcome evidence; after implementation require allgreen and declared resourceproof."
 acceptance="Each required native combination has actual reviewed38selector outcomes: design36namedred+2structuralgreen, implementation38green; no localexecution mislabeled foreignproof or zero-test success."
 design_evidence="verification/native-matrix.md"
-reviewed_by="Pending independent final package review; main API scope issue22comment6636494428 is not contract approval"
+reviewed_by="Main orchestrator and independent final-delta reviewer; actual main final-design approval issue22comment6637007196 after four-native source/raw/selector audit at b13bfb58. Implementation inspection remains required."
 
 [[command]]
 id="CMD-001"
