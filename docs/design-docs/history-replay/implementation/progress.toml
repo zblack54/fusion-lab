@@ -10,7 +10,7 @@ scope = "Validated constructor and existing private observational API only; runt
 
 [[task]]
 id = "TASK-002"
-state = "awaiting-human-review"
+state = "verified"
 source_sha256 = "553925e3f3ff7f2c9601237de157eaee889031ec9d8fafc81f1aef0a46e63f18"
 evidence = "task002-evidence/summary.json"
 execution = "execution.json"
@@ -19,4 +19,8 @@ scope = "Pure frozen admission and causal correction; local full functional veri
 
 [[task]]
 id = "TASK-003"
-state = "planned"
+state = "implementing"
+phase = "instrumentation-awaiting-main-and-independent-review"
+manifest = "task003-instrumentation-manifest.json"
+report = "task003-instrumentation-report.md"
+scope = "Example, embedded driver and owned sampler compiled; actual nonnumerical cleanup proof passed. No resource warmup or maximum series executed."

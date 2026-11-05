@@ -1,0 +1,5 @@
+one second: 101 snapshots, 3 offered, 2 on time, 1 corrected late
+immutable tick 0: velocity=[0.0, 0.0], integration=[10.0, -5.0]
+tick 1, W1 correction: velocity=[0.9999999999999999, -0.9999999999999999], integration=[10.02, -5.02]
+tick 1, W0 stale drop: velocity=[0.0, 0.0], integration=[10.0, -5.0]
+policy demonstration only; no accuracy or calibration claim

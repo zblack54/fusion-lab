@@ -1,0 +1,75 @@
+{
+  "argv": [
+    "C:\\Users\\Admin\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+    "-c",
+    "import time; time.sleep(60)"
+  ],
+  "workload": {
+    "profile": "NONNUMERICAL",
+    "duration_seconds": 1,
+    "numerical": false
+  },
+  "watchdog_seconds": 180,
+  "product_seconds": 120,
+  "product_bytes": 805306368,
+  "classification": "NONNUMERICAL_CLEANUP_PROOF",
+  "pid": 133136,
+  "success": false,
+  "error": "RuntimeError('original injected workload error')",
+  "cleanup_owned_pid": 133136,
+  "reap_confirmed": true,
+  "cleanup_cycle": 2,
+  "cleanup_attempt": 1,
+  "cleanup_error_count": 9,
+  "cleanup_errors": [
+    {
+      "operation": "poll",
+      "error": "OSError('injected poll failure')"
+    },
+    {
+      "operation": "kill",
+      "error": "OSError('injected kill failure')"
+    },
+    {
+      "operation": "wait_reap",
+      "error": "OSError('injected wait failure')"
+    },
+    {
+      "operation": "poll",
+      "error": "OSError('injected poll failure')"
+    },
+    {
+      "operation": "kill",
+      "error": "OSError('injected kill failure')"
+    },
+    {
+      "operation": "wait_reap",
+      "error": "OSError('injected wait failure')"
+    },
+    {
+      "operation": "poll",
+      "error": "OSError('injected poll failure')"
+    },
+    {
+      "operation": "kill",
+      "error": "OSError('injected kill failure')"
+    },
+    {
+      "operation": "wait_reap",
+      "error": "OSError('injected wait failure')"
+    }
+  ],
+  "latest_cleanup_error": {
+    "operation": "wait_reap",
+    "error": "OSError('injected wait failure')"
+  },
+  "kill_attempted": true,
+  "cleanup_status": "reaped",
+  "manual_reconciliation_required": false,
+  "same_child_and_memory_handle_retained": true,
+  "original_error_preserved": "RuntimeError('original injected workload error')",
+  "no_next_workload_until_reaped": true,
+  "exit": 1,
+  "stderr": "",
+  "seconds_owner_total": 5.0310000001918525
+}

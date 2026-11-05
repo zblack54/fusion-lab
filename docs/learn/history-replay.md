@@ -95,3 +95,16 @@ whole batch succeeds. Earlier online snapshots remain untouched.
 reports committed objects, simultaneous original/candidate objects and reserved
 slot capacity separately. Source/output storage and allocator overhead belong
 to the complete-process measurement; logical history counts do not equal RSS.
+
+## Run the one-second example
+
+Run `cargo run --locked --offline --example history_replay`. The example offers
+three observations and produces 101 snapshots. One velocity observation arrives
+late. The one-tick window corrects the current estimate while the earlier online
+snapshot retains the estimate available at that tick. The zero-window comparison
+shows the stale-drop behavior.
+
+The local Windows qualification ran two warmups and six fresh maximum workloads
+with Rust 1.99.0. The slowest maximum run took 10.063 seconds and the largest
+process peak was 524,996,608 bytes. These results apply to the two declared
+profiles on this machine. Hosted qualification and final review are pending.

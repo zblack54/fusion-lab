@@ -38,3 +38,49 @@ jobs:
           name: history-replay-${{ matrix.os }}-${{ matrix.toolchain }}
           path: ${{ runner.temp }}/history-replay-${{ matrix.toolchain }}
           if-no-files-found: error
+  native-resources:
+    needs: native-baseline
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+        toolchain: ["1.99.0", stable]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 40
+    env:
+      RUSTUP_TOOLCHAIN: ${{ matrix.toolchain }}
+      CARGO_TERM_COLOR: never
+      GIT_CONFIG_COUNT: "1"
+      GIT_CONFIG_KEY_0: core.autocrlf
+      GIT_CONFIG_VALUE_0: "false"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: rustup toolchain install ${{ matrix.toolchain }} --profile minimal --component rustfmt
+      - name: Fetch the locked registry closure for offline builds
+        run: cargo fetch --locked
+      - name: Prove owned-child cleanup with nonnumerical faults
+        run: python docs/design-docs/history-replay/implementation/cleanup_probe.py --output "${{ runner.temp }}/history-cleanup-${{ matrix.toolchain }}"
+      - name: Demonstrate the one-second observational example
+        run: python docs/design-docs/history-replay/implementation/example_probe.py --toolchain ${{ matrix.toolchain }} --output "${{ runner.temp }}/history-example-${{ matrix.toolchain }}"
+      - name: Run the reviewed resource series
+        run: python docs/design-docs/history-replay/implementation/resource_probe.py --toolchain ${{ matrix.toolchain }} --output "${{ runner.temp }}/history-resource-${{ matrix.toolchain }}" --run-series
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: history-replay-resources-${{ matrix.os }}-${{ matrix.toolchain }}
+          path: |
+            ${{ runner.temp }}/history-resource-${{ matrix.toolchain }}/*.json
+            ${{ runner.temp }}/history-resource-${{ matrix.toolchain }}/*.log
+            ${{ runner.temp }}/history-resource-${{ matrix.toolchain }}/project/Cargo.toml
+            ${{ runner.temp }}/history-resource-${{ matrix.toolchain }}/project/Cargo.lock
+            ${{ runner.temp }}/history-resource-${{ matrix.toolchain }}/project/src/main.rs
+            ${{ runner.temp }}/history-cleanup-${{ matrix.toolchain }}/*.json
+            ${{ runner.temp }}/history-cleanup-${{ matrix.toolchain }}/*.log
+            ${{ runner.temp }}/history-example-${{ matrix.toolchain }}/*.json
+            ${{ runner.temp }}/history-example-${{ matrix.toolchain }}/*.log
+          if-no-files-found: error

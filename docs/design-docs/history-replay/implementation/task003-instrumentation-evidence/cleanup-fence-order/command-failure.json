@@ -1,0 +1,25 @@
+{
+  "argv": [
+    "C:\\Users\\Admin\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+    "-c",
+    "raise SystemExit(7)"
+  ],
+  "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+  "timeout_seconds": 240,
+  "pid": 146528,
+  "exit": 7,
+  "reap_confirmed": true,
+  "error": "RuntimeError('owned command failed')",
+  "cleanup_owned_pid": 146528,
+  "cleanup_cycle": 1,
+  "cleanup_attempt": 1,
+  "cleanup_status": "reaped",
+  "manual_reconciliation_required": false,
+  "same_child_and_memory_handle_retained": true,
+  "original_error_preserved": "RuntimeError('owned command failed')",
+  "no_next_workload_until_reaped": true,
+  "compiler_descendants_unverified": true,
+  "seconds": 0.0470000000204891,
+  "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "log_bytes": 0
+}

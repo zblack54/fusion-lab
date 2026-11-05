@@ -1,0 +1,2623 @@
+{
+  "schema": 1,
+  "stage": "RESOURCE_SERIES_CANDIDATE",
+  "success": true,
+  "baseline_digest": "8c57cf49bd99b927012ac7215ea44688bc8cde928ea6b233a2f37abc41f13095",
+  "sampler_sha256": "73dfd000179906813a4960612300988910bd5b314af9273827f615e961a69976",
+  "owner_helper_sha256": "ab851ab12ec6f54ee52baec37b0b59b80f8db069b5a92179c3f12f23cc9b924c",
+  "product_seconds": 120,
+  "product_bytes": 805306368,
+  "watchdog_seconds": 180,
+  "commands": [
+    {
+      "argv": [
+        "rustc",
+        "+1.99.0",
+        "-Vv"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "timeout_seconds": 240,
+      "pid": 132548,
+      "exit": 0,
+      "reap_confirmed": true,
+      "seconds": 0.06200000015087426,
+      "log_sha256": "5477f9bad65b15c4c5b31fc050fc72feba651ea1b330bc75cf356a4d6b0fbc80",
+      "log_bytes": 194
+    },
+    {
+      "argv": [
+        "rustfmt",
+        "+1.99.0",
+        "--edition",
+        "2024",
+        "--check",
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\history-task003-qualification-windows-floor\\project\\src\\main.rs"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "timeout_seconds": 240,
+      "pid": 129580,
+      "exit": 0,
+      "reap_confirmed": true,
+      "seconds": 0.0779999999795109,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "log_bytes": 0
+    },
+    {
+      "argv": [
+        "cargo",
+        "+1.99.0",
+        "build",
+        "--release",
+        "--locked",
+        "--offline",
+        "--manifest-path",
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\history-task003-qualification-windows-floor\\project\\Cargo.toml"
+      ],
+      "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+      "timeout_seconds": 240,
+      "pid": 142832,
+      "exit": 0,
+      "reap_confirmed": true,
+      "seconds": 17.125,
+      "log_sha256": "fbeeabc30f8a363b4340e68490059a52c02e19daad85dfac9baeb4f1eab2499e",
+      "log_bytes": 1615
+    }
+  ],
+  "runs": [
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\history-task003-qualification-windows-floor\\project\\target\\release\\history-replay-resource-probe.exe",
+        "A",
+        "warmup",
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\history-task003-qualification-windows-floor\\A-warmup-0.artifacts"
+      ],
+      "workload": {
+        "profile": "A",
+        "duration_seconds": 1
+      },
+      "watchdog_seconds": 180,
+      "product_seconds": 120,
+      "product_bytes": 805306368,
+      "classification": "NUMERICAL_RESOURCE_CANDIDATE",
+      "pid": 141440,
+      "seconds_spawn_to_complete_work": 0.0470000000204891,
+      "complete_line": "COMPLETE\t{\"schema\":1,\"profile\":\"A\",\"duration_seconds\":1,\"source_samples\":101,\"observations\":27,\"snapshots_per_result\":101,\"canonical_bytes\":1839,\"canonical_capacity\":2720,\"regenerated_capacity\":2720,\"zero_component_rows\":101,\"repeat_component_rows\":101,\"ledger_rows\":27,\"work_rows\":101,\"logical_payload_minimum_bytes\":137208,\"owned_public_capacity_bytes\":39057,\"source_sample_capacity\":101,\"zero_equality_capacity\":101,\"repeat_equality_capacity\":101,\"ledger_equality_capacity\":27,\"work_equality_capacity\":101,\"model_capacity\":140,\"regenerated_model_capacity\":140,\"prediction_total\":100,\"measurement_total\":0,\"work_maxima\":[1, 0, 102, 0, 203, 0, 1004, 254],\"outcomes\":[0, 0, 0, 0, 0, 27],\"all_equalities_passed\":true}\n",
+      "complete": {
+        "schema": 1,
+        "profile": "A",
+        "duration_seconds": 1,
+        "source_samples": 101,
+        "observations": 27,
+        "snapshots_per_result": 101,
+        "canonical_bytes": 1839,
+        "canonical_capacity": 2720,
+        "regenerated_capacity": 2720,
+        "zero_component_rows": 101,
+        "repeat_component_rows": 101,
+        "ledger_rows": 27,
+        "work_rows": 101,
+        "logical_payload_minimum_bytes": 137208,
+        "owned_public_capacity_bytes": 39057,
+        "source_sample_capacity": 101,
+        "zero_equality_capacity": 101,
+        "repeat_equality_capacity": 101,
+        "ledger_equality_capacity": 27,
+        "work_equality_capacity": 101,
+        "model_capacity": 140,
+        "regenerated_model_capacity": 140,
+        "prediction_total": 100,
+        "measurement_total": 0,
+        "work_maxima": [
+          1,
+          0,
+          102,
+          0,
+          203,
+          0,
+          1004,
+          254
+        ],
+        "outcomes": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          27
+        ],
+        "all_equalities_passed": true
+      },
+      "held_complete_work_memory": {
+        "lifetime_peak_bytes": 3829760,
+        "current_rss_bytes": 3825664,
+        "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+        "units": "bytes",
+        "owned_pid": 141440
+      },
+      "held_hash_deadline_method": "cooperative checks around synchronous reads; an OS call can return after the deadline",
+      "artifacts_at_held_complete_work": {
+        "canonical-before.tsv": {
+          "sha256": "ae8fa00d20918d73cac9aa0a854fb31b3ea4f643998bf5c39ecfeaf7b13230d5",
+          "bytes": 1839
+        },
+        "canonical-after.tsv": {
+          "sha256": "ae8fa00d20918d73cac9aa0a854fb31b3ea4f643998bf5c39ecfeaf7b13230d5",
+          "bytes": 1839
+        },
+        "model-before.tsv": {
+          "sha256": "313dd38d32feb7cac4d16b93cac89d334bc122feb0e0ef936a2e71853272a061",
+          "bytes": 78
+        },
+        "model-after.tsv": {
+          "sha256": "313dd38d32feb7cac4d16b93cac89d334bc122feb0e0ef936a2e71853272a061",
+          "bytes": 78
+        }
+      },
+      "seconds_held_artifact_hash": 0.0,
+      "held_hash_watchdog_overshoot_seconds": 0.0,
+      "retained_phase": "all source/trace/results/diagnostics/canonical/equality buffers live awaiting owner ACK",
+      "exit": 0,
+      "reap_confirmed": true,
+      "post_exit_retained_handle_memory": {
+        "lifetime_peak_bytes": 4124672,
+        "current_rss_bytes": 32768,
+        "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+        "units": "bytes",
+        "owned_pid": 141440
+      },
+      "lifetime_peak_bytes": 4124672,
+      "seconds_total_including_hold_and_teardown": 0.0470000000204891,
+      "artifacts_after_reap": {
+        "canonical-before.tsv": {
+          "sha256": "ae8fa00d20918d73cac9aa0a854fb31b3ea4f643998bf5c39ecfeaf7b13230d5",
+          "bytes": 1839
+        },
+        "canonical-after.tsv": {
+          "sha256": "ae8fa00d20918d73cac9aa0a854fb31b3ea4f643998bf5c39ecfeaf7b13230d5",
+          "bytes": 1839
+        },
+        "model-before.tsv": {
+          "sha256": "313dd38d32feb7cac4d16b93cac89d334bc122feb0e0ef936a2e71853272a061",
+          "bytes": 78
+        },
+        "model-after.tsv": {
+          "sha256": "313dd38d32feb7cac4d16b93cac89d334bc122feb0e0ef936a2e71853272a061",
+          "bytes": 78
+        }
+      },
+      "within_120_seconds": true,
+      "within_768_MiB": true,
+      "success": true,
+      "stderr": "",
+      "seconds_owner_total": 0.0470000000204891,
+      "binary_sha256_before": "0ef660efab793ae841d02998e43471552b72cd5e8d9b10a7d655909817831bdc",
+      "binary_sha256_after": "0ef660efab793ae841d02998e43471552b72cd5e8d9b10a7d655909817831bdc"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\history-task003-qualification-windows-floor\\project\\target\\release\\history-replay-resource-probe.exe",
+        "A",
+        "maximum",
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\history-task003-qualification-windows-floor\\A-maximum-1.artifacts"
+      ],
+      "workload": {
+        "profile": "A",
+        "duration_seconds": 3600
+      },
+      "watchdog_seconds": 180,
+      "product_seconds": 120,
+      "product_bytes": 805306368,
+      "classification": "NUMERICAL_RESOURCE_CANDIDATE",
+      "pid": 144924,
+      "seconds_spawn_to_complete_work": 9.875,
+      "complete_line": "COMPLETE\t{\"schema\":1,\"profile\":\"A\",\"duration_seconds\":3600,\"source_samples\":360001,\"observations\":90002,\"snapshots_per_result\":360001,\"canonical_bytes\":5894765,\"canonical_capacity\":11141120,\"regenerated_capacity\":11141120,\"zero_component_rows\":360001,\"repeat_component_rows\":360001,\"ledger_rows\":90002,\"work_rows\":360001,\"logical_payload_minimum_bytes\":491037672,\"owned_public_capacity_bytes\":141082857,\"source_sample_capacity\":360001,\"zero_equality_capacity\":360001,\"repeat_equality_capacity\":360001,\"ledger_equality_capacity\":90002,\"work_equality_capacity\":360001,\"model_capacity\":140,\"regenerated_model_capacity\":140,\"prediction_total\":45280522,\"measurement_total\":107853,\"work_maxima\":[501, 2, 502, 2, 1004, 3, 1004, 254],\"outcomes\":[0, 0, 0, 89877, 0, 125],\"all_equalities_passed\":true}\n",
+      "complete": {
+        "schema": 1,
+        "profile": "A",
+        "duration_seconds": 3600,
+        "source_samples": 360001,
+        "observations": 90002,
+        "snapshots_per_result": 360001,
+        "canonical_bytes": 5894765,
+        "canonical_capacity": 11141120,
+        "regenerated_capacity": 11141120,
+        "zero_component_rows": 360001,
+        "repeat_component_rows": 360001,
+        "ledger_rows": 90002,
+        "work_rows": 360001,
+        "logical_payload_minimum_bytes": 491037672,
+        "owned_public_capacity_bytes": 141082857,
+        "source_sample_capacity": 360001,
+        "zero_equality_capacity": 360001,
+        "repeat_equality_capacity": 360001,
+        "ledger_equality_capacity": 90002,
+        "work_equality_capacity": 360001,
+        "model_capacity": 140,
+        "regenerated_model_capacity": 140,
+        "prediction_total": 45280522,
+        "measurement_total": 107853,
+        "work_maxima": [
+          501,
+          2,
+          502,
+          2,
+          1004,
+          3,
+          1004,
+          254
+        ],
+        "outcomes": [
+          0,
+          0,
+          0,
+          89877,
+          0,
+          125
+        ],
+        "all_equalities_passed": true
+      },
+      "held_complete_work_memory": {
+        "lifetime_peak_bytes": 524943360,
+        "current_rss_bytes": 524939264,
+        "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+        "units": "bytes",
+        "owned_pid": 144924
+      },
+      "held_hash_deadline_method": "cooperative checks around synchronous reads; an OS call can return after the deadline",
+      "artifacts_at_held_complete_work": {
+        "canonical-before.tsv": {
+          "sha256": "5198eace34068a756aa56543d1522f4341ac4ceeb09349a1aed011cc1eab1301",
+          "bytes": 5894765
+        },
+        "canonical-after.tsv": {
+          "sha256": "5198eace34068a756aa56543d1522f4341ac4ceeb09349a1aed011cc1eab1301",
+          "bytes": 5894765
+        },
+        "model-before.tsv": {
+          "sha256": "313dd38d32feb7cac4d16b93cac89d334bc122feb0e0ef936a2e71853272a061",
+          "bytes": 78
+        },
+        "model-after.tsv": {
+          "sha256": "313dd38d32feb7cac4d16b93cac89d334bc122feb0e0ef936a2e71853272a061",
+          "bytes": 78
+        }
+      },
+      "seconds_held_artifact_hash": 0.0,
+      "held_hash_watchdog_overshoot_seconds": 0.0,
+      "retained_phase": "all source/trace/results/diagnostics/canonical/equality buffers live awaiting owner ACK",
+      "exit": 0,
+      "reap_confirmed": true,
+      "post_exit_retained_handle_memory": {
+        "lifetime_peak_bytes": 524943360,
+        "current_rss_bytes": 32768,
+        "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+        "units": "bytes",
+        "owned_pid": 144924
+      },
+      "lifetime_peak_bytes": 524943360,
+      "seconds_total_including_hold_and_teardown": 9.906000000191852,
+      "artifacts_after_reap": {
+        "canonical-before.tsv": {
+          "sha256": "5198eace34068a756aa56543d1522f4341ac4ceeb09349a1aed011cc1eab1301",
+          "bytes": 5894765
+        },
+        "canonical-after.tsv": {
+          "sha256": "5198eace34068a756aa56543d1522f4341ac4ceeb09349a1aed011cc1eab1301",
+          "bytes": 5894765
+        },
+        "model-before.tsv": {
+          "sha256": "313dd38d32feb7cac4d16b93cac89d334bc122feb0e0ef936a2e71853272a061",
+          "bytes": 78
+        },
+        "model-after.tsv": {
+          "sha256": "313dd38d32feb7cac4d16b93cac89d334bc122feb0e0ef936a2e71853272a061",
+          "bytes": 78
+        }
+      },
+      "within_120_seconds": true,
+      "within_768_MiB": true,
+      "success": true,
+      "stderr": "",
+      "seconds_owner_total": 9.922000000020489,
+      "binary_sha256_before": "0ef660efab793ae841d02998e43471552b72cd5e8d9b10a7d655909817831bdc",
+      "binary_sha256_after": "0ef660efab793ae841d02998e43471552b72cd5e8d9b10a7d655909817831bdc"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\history-task003-qualification-windows-floor\\project\\target\\release\\history-replay-resource-probe.exe",
+        "A",
+        "maximum",
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\history-task003-qualification-windows-floor\\A-maximum-2.artifacts"
+      ],
+      "workload": {
+        "profile": "A",
+        "duration_seconds": 3600
+      },
+      "watchdog_seconds": 180,
+      "product_seconds": 120,
+      "product_bytes": 805306368,
+      "classification": "NUMERICAL_RESOURCE_CANDIDATE",
+      "pid": 112232,
+      "seconds_spawn_to_complete_work": 9.859000000171363,
+      "complete_line": "COMPLETE\t{\"schema\":1,\"profile\":\"A\",\"duration_seconds\":3600,\"source_samples\":360001,\"observations\":90002,\"snapshots_per_result\":360001,\"canonical_bytes\":5894765,\"canonical_capacity\":11141120,\"regenerated_capacity\":11141120,\"zero_component_rows\":360001,\"repeat_component_rows\":360001,\"ledger_rows\":90002,\"work_rows\":360001,\"logical_payload_minimum_bytes\":491037672,\"owned_public_capacity_bytes\":141082857,\"source_sample_capacity\":360001,\"zero_equality_capacity\":360001,\"repeat_equality_capacity\":360001,\"ledger_equality_capacity\":90002,\"work_equality_capacity\":360001,\"model_capacity\":140,\"regenerated_model_capacity\":140,\"prediction_total\":45280522,\"measurement_total\":107853,\"work_maxima\":[501, 2, 502, 2, 1004, 3, 1004, 254],\"outcomes\":[0, 0, 0, 89877, 0, 125],\"all_equalities_passed\":true}\n",
+      "complete": {
+        "schema": 1,
+        "profile": "A",
+        "duration_seconds": 3600,
+        "source_samples": 360001,
+        "observations": 90002,
+        "snapshots_per_result": 360001,
+        "canonical_bytes": 5894765,
+        "canonical_capacity": 11141120,
+        "regenerated_capacity": 11141120,
+        "zero_component_rows": 360001,
+        "repeat_component_rows": 360001,
+        "ledger_rows": 90002,
+        "work_rows": 360001,
+        "logical_payload_minimum_bytes": 491037672,
+        "owned_public_capacity_bytes": 141082857,
+        "source_sample_capacity": 360001,
+        "zero_equality_capacity": 360001,
+        "repeat_equality_capacity": 360001,
+        "ledger_equality_capacity": 90002,
+        "work_equality_capacity": 360001,
+        "model_capacity": 140,
+        "regenerated_model_capacity": 140,
+        "prediction_total": 45280522,
+        "measurement_total": 107853,
+        "work_maxima": [
+          501,
+          2,
+          502,
+          2,
+          1004,
+          3,
+          1004,
+          254
+        ],
+        "outcomes": [
+          0,
+          0,
+          0,
+          89877,
+          0,
+          125
+        ],
+        "all_equalities_passed": true
+      },
+      "held_complete_work_memory": {
+        "lifetime_peak_bytes": 524988416,
+        "current_rss_bytes": 524984320,
+        "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+        "units": "bytes",
+        "owned_pid": 112232
+      },
+      "held_hash_deadline_method": "cooperative checks around synchronous reads; an OS call can return after the deadline",
+      "artifacts_at_held_complete_work": {
+        "canonical-before.tsv": {
+          "sha256": "5198eace34068a756aa56543d1522f4341ac4ceeb09349a1aed011cc1eab1301",
+          "bytes": 5894765
+        },
+        "canonical-after.tsv": {
+          "sha256": "5198eace34068a756aa56543d1522f4341ac4ceeb09349a1aed011cc1eab1301",
+          "bytes": 5894765
+        },
+        "model-before.tsv": {
+          "sha256": "313dd38d32feb7cac4d16b93cac89d334bc122feb0e0ef936a2e71853272a061",
+          "bytes": 78
+        },
+        "model-after.tsv": {
+          "sha256": "313dd38d32feb7cac4d16b93cac89d334bc122feb0e0ef936a2e71853272a061",
+          "bytes": 78
+        }
+      },
+      "seconds_held_artifact_hash": 0.0,
+      "held_hash_watchdog_overshoot_seconds": 0.0,
+      "retained_phase": "all source/trace/results/diagnostics/canonical/equality buffers live awaiting owner ACK",
+      "exit": 0,
+      "reap_confirmed": true,
+      "post_exit_retained_handle_memory": {
+        "lifetime_peak_bytes": 524988416,
+        "current_rss_bytes": 32768,
+        "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+        "units": "bytes",
+        "owned_pid": 112232
+      },
+      "lifetime_peak_bytes": 524988416,
+      "seconds_total_including_hold_and_teardown": 9.905999999959022,
+      "artifacts_after_reap": {
+        "canonical-before.tsv": {
+          "sha256": "5198eace34068a756aa56543d1522f4341ac4ceeb09349a1aed011cc1eab1301",
+          "bytes": 5894765
+        },
+        "canonical-after.tsv": {
+          "sha256": "5198eace34068a756aa56543d1522f4341ac4ceeb09349a1aed011cc1eab1301",
+          "bytes": 5894765
+        },
+        "model-before.tsv": {
+          "sha256": "313dd38d32feb7cac4d16b93cac89d334bc122feb0e0ef936a2e71853272a061",
+          "bytes": 78
+        },
+        "model-after.tsv": {
+          "sha256": "313dd38d32feb7cac4d16b93cac89d334bc122feb0e0ef936a2e71853272a061",
+          "bytes": 78
+        }
+      },
+      "within_120_seconds": true,
+      "within_768_MiB": true,
+      "success": true,
+      "stderr": "",
+      "seconds_owner_total": 9.905999999959022,
+      "binary_sha256_before": "0ef660efab793ae841d02998e43471552b72cd5e8d9b10a7d655909817831bdc",
+      "binary_sha256_after": "0ef660efab793ae841d02998e43471552b72cd5e8d9b10a7d655909817831bdc"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\history-task003-qualification-windows-floor\\project\\target\\release\\history-replay-resource-probe.exe",
+        "A",
+        "maximum",
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\history-task003-qualification-windows-floor\\A-maximum-3.artifacts"
+      ],
+      "workload": {
+        "profile": "A",
+        "duration_seconds": 3600
+      },
+      "watchdog_seconds": 180,
+      "product_seconds": 120,
+      "product_bytes": 805306368,
+      "classification": "NUMERICAL_RESOURCE_CANDIDATE",
+      "pid": 147388,
+      "seconds_spawn_to_complete_work": 10.063000000081956,
+      "complete_line": "COMPLETE\t{\"schema\":1,\"profile\":\"A\",\"duration_seconds\":3600,\"source_samples\":360001,\"observations\":90002,\"snapshots_per_result\":360001,\"canonical_bytes\":5894765,\"canonical_capacity\":11141120,\"regenerated_capacity\":11141120,\"zero_component_rows\":360001,\"repeat_component_rows\":360001,\"ledger_rows\":90002,\"work_rows\":360001,\"logical_payload_minimum_bytes\":491037672,\"owned_public_capacity_bytes\":141082857,\"source_sample_capacity\":360001,\"zero_equality_capacity\":360001,\"repeat_equality_capacity\":360001,\"ledger_equality_capacity\":90002,\"work_equality_capacity\":360001,\"model_capacity\":140,\"regenerated_model_capacity\":140,\"prediction_total\":45280522,\"measurement_total\":107853,\"work_maxima\":[501, 2, 502, 2, 1004, 3, 1004, 254],\"outcomes\":[0, 0, 0, 89877, 0, 125],\"all_equalities_passed\":true}\n",
+      "complete": {
+        "schema": 1,
+        "profile": "A",
+        "duration_seconds": 3600,
+        "source_samples": 360001,
+        "observations": 90002,
+        "snapshots_per_result": 360001,
+        "canonical_bytes": 5894765,
+        "canonical_capacity": 11141120,
+        "regenerated_capacity": 11141120,
+        "zero_component_rows": 360001,
+        "repeat_component_rows": 360001,
+        "ledger_rows": 90002,
+        "work_rows": 360001,
+        "logical_payload_minimum_bytes": 491037672,
+        "owned_public_capacity_bytes": 141082857,
+        "source_sample_capacity": 360001,
+        "zero_equality_capacity": 360001,
+        "repeat_equality_capacity": 360001,
+        "ledger_equality_capacity": 90002,
+        "work_equality_capacity": 360001,
+        "model_capacity": 140,
+        "regenerated_model_capacity": 140,
+        "prediction_total": 45280522,
+        "measurement_total": 107853,
+        "work_maxima": [
+          501,
+          2,
+          502,
+          2,
+          1004,
+          3,
+          1004,
+          254
+        ],
+        "outcomes": [
+          0,
+          0,
+          0,
+          89877,
+          0,
+          125
+        ],
+        "all_equalities_passed": true
+      },
+      "held_complete_work_memory": {
+        "lifetime_peak_bytes": 524976128,
+        "current_rss_bytes": 524972032,
+        "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+        "units": "bytes",
+        "owned_pid": 147388
+      },
+      "held_hash_deadline_method": "cooperative checks around synchronous reads; an OS call can return after the deadline",
+      "artifacts_at_held_complete_work": {
+        "canonical-before.tsv": {
+          "sha256": "5198eace34068a756aa56543d1522f4341ac4ceeb09349a1aed011cc1eab1301",
+          "bytes": 5894765
+        },
+        "canonical-after.tsv": {
+          "sha256": "5198eace34068a756aa56543d1522f4341ac4ceeb09349a1aed011cc1eab1301",
+          "bytes": 5894765
+        },
+        "model-before.tsv": {
+          "sha256": "313dd38d32feb7cac4d16b93cac89d334bc122feb0e0ef936a2e71853272a061",
+          "bytes": 78
+        },
+        "model-after.tsv": {
+          "sha256": "313dd38d32feb7cac4d16b93cac89d334bc122feb0e0ef936a2e71853272a061",
+          "bytes": 78
+        }
+      },
+      "seconds_held_artifact_hash": 0.0,
+      "held_hash_watchdog_overshoot_seconds": 0.0,
+      "retained_phase": "all source/trace/results/diagnostics/canonical/equality buffers live awaiting owner ACK",
+      "exit": 0,
+      "reap_confirmed": true,
+      "post_exit_retained_handle_memory": {
+        "lifetime_peak_bytes": 524976128,
+        "current_rss_bytes": 32768,
+        "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+        "units": "bytes",
+        "owned_pid": 147388
+      },
+      "lifetime_peak_bytes": 524976128,
+      "seconds_total_including_hold_and_teardown": 10.110000000102445,
+      "artifacts_after_reap": {
+        "canonical-before.tsv": {
+          "sha256": "5198eace34068a756aa56543d1522f4341ac4ceeb09349a1aed011cc1eab1301",
+          "bytes": 5894765
+        },
+        "canonical-after.tsv": {
+          "sha256": "5198eace34068a756aa56543d1522f4341ac4ceeb09349a1aed011cc1eab1301",
+          "bytes": 5894765
+        },
+        "model-before.tsv": {
+          "sha256": "313dd38d32feb7cac4d16b93cac89d334bc122feb0e0ef936a2e71853272a061",
+          "bytes": 78
+        },
+        "model-after.tsv": {
+          "sha256": "313dd38d32feb7cac4d16b93cac89d334bc122feb0e0ef936a2e71853272a061",
+          "bytes": 78
+        }
+      },
+      "within_120_seconds": true,
+      "within_768_MiB": true,
+      "success": true,
+      "stderr": "",
+      "seconds_owner_total": 10.110000000102445,
+      "binary_sha256_before": "0ef660efab793ae841d02998e43471552b72cd5e8d9b10a7d655909817831bdc",
+      "binary_sha256_after": "0ef660efab793ae841d02998e43471552b72cd5e8d9b10a7d655909817831bdc"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\history-task003-qualification-windows-floor\\project\\target\\release\\history-replay-resource-probe.exe",
+        "C",
+        "warmup",
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\history-task003-qualification-windows-floor\\C-warmup-0.artifacts"
+      ],
+      "workload": {
+        "profile": "C",
+        "duration_seconds": 1
+      },
+      "watchdog_seconds": 180,
+      "product_seconds": 120,
+      "product_bytes": 805306368,
+      "classification": "NUMERICAL_RESOURCE_CANDIDATE",
+      "pid": 128204,
+      "seconds_spawn_to_complete_work": 0.014999999897554517,
+      "complete_line": "COMPLETE\t{\"schema\":1,\"profile\":\"C\",\"duration_seconds\":1,\"source_samples\":101,\"observations\":27,\"snapshots_per_result\":101,\"canonical_bytes\":1833,\"canonical_capacity\":2720,\"regenerated_capacity\":2720,\"zero_component_rows\":101,\"repeat_component_rows\":101,\"ledger_rows\":27,\"work_rows\":101,\"logical_payload_minimum_bytes\":137400,\"owned_public_capacity_bytes\":39057,\"source_sample_capacity\":101,\"zero_equality_capacity\":101,\"repeat_equality_capacity\":101,\"ledger_equality_capacity\":27,\"work_equality_capacity\":101,\"model_capacity\":140,\"regenerated_model_capacity\":140,\"prediction_total\":100,\"measurement_total\":6,\"work_maxima\":[1, 1, 102, 6, 203, 11, 1004, 254],\"outcomes\":[0, 0, 6, 0, 0, 21],\"all_equalities_passed\":true}\n",
+      "complete": {
+        "schema": 1,
+        "profile": "C",
+        "duration_seconds": 1,
+        "source_samples": 101,
+        "observations": 27,
+        "snapshots_per_result": 101,
+        "canonical_bytes": 1833,
+        "canonical_capacity": 2720,
+        "regenerated_capacity": 2720,
+        "zero_component_rows": 101,
+        "repeat_component_rows": 101,
+        "ledger_rows": 27,
+        "work_rows": 101,
+        "logical_payload_minimum_bytes": 137400,
+        "owned_public_capacity_bytes": 39057,
+        "source_sample_capacity": 101,
+        "zero_equality_capacity": 101,
+        "repeat_equality_capacity": 101,
+        "ledger_equality_capacity": 27,
+        "work_equality_capacity": 101,
+        "model_capacity": 140,
+        "regenerated_model_capacity": 140,
+        "prediction_total": 100,
+        "measurement_total": 6,
+        "work_maxima": [
+          1,
+          1,
+          102,
+          6,
+          203,
+          11,
+          1004,
+          254
+        ],
+        "outcomes": [
+          0,
+          0,
+          6,
+          0,
+          0,
+          21
+        ],
+        "all_equalities_passed": true
+      },
+      "held_complete_work_memory": {
+        "lifetime_peak_bytes": 3846144,
+        "current_rss_bytes": 3842048,
+        "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+        "units": "bytes",
+        "owned_pid": 128204
+      },
+      "held_hash_deadline_method": "cooperative checks around synchronous reads; an OS call can return after the deadline",
+      "artifacts_at_held_complete_work": {
+        "canonical-before.tsv": {
+          "sha256": "33c187a7b78f14d7d5c97084b425a29797497c7119001a9541e644f35ff2fa9e",
+          "bytes": 1833
+        },
+        "canonical-after.tsv": {
+          "sha256": "33c187a7b78f14d7d5c97084b425a29797497c7119001a9541e644f35ff2fa9e",
+          "bytes": 1833
+        },
+        "model-before.tsv": {
+          "sha256": "313dd38d32feb7cac4d16b93cac89d334bc122feb0e0ef936a2e71853272a061",
+          "bytes": 78
+        },
+        "model-after.tsv": {
+          "sha256": "313dd38d32feb7cac4d16b93cac89d334bc122feb0e0ef936a2e71853272a061",
+          "bytes": 78
+        }
+      },
+      "seconds_held_artifact_hash": 0.0,
+      "held_hash_watchdog_overshoot_seconds": 0.0,
+      "retained_phase": "all source/trace/results/diagnostics/canonical/equality buffers live awaiting owner ACK",
+      "exit": 0,
+      "reap_confirmed": true,
+      "post_exit_retained_handle_memory": {
+        "lifetime_peak_bytes": 4136960,
+        "current_rss_bytes": 32768,
+        "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+        "units": "bytes",
+        "owned_pid": 128204
+      },
+      "lifetime_peak_bytes": 4136960,
+      "seconds_total_including_hold_and_teardown": 0.030999999959021807,
+      "artifacts_after_reap": {
+        "canonical-before.tsv": {
+          "sha256": "33c187a7b78f14d7d5c97084b425a29797497c7119001a9541e644f35ff2fa9e",
+          "bytes": 1833
+        },
+        "canonical-after.tsv": {
+          "sha256": "33c187a7b78f14d7d5c97084b425a29797497c7119001a9541e644f35ff2fa9e",
+          "bytes": 1833
+        },
+        "model-before.tsv": {
+          "sha256": "313dd38d32feb7cac4d16b93cac89d334bc122feb0e0ef936a2e71853272a061",
+          "bytes": 78
+        },
+        "model-after.tsv": {
+          "sha256": "313dd38d32feb7cac4d16b93cac89d334bc122feb0e0ef936a2e71853272a061",
+          "bytes": 78
+        }
+      },
+      "within_120_seconds": true,
+      "within_768_MiB": true,
+      "success": true,
+      "stderr": "",
+      "seconds_owner_total": 0.030999999959021807,
+      "binary_sha256_before": "0ef660efab793ae841d02998e43471552b72cd5e8d9b10a7d655909817831bdc",
+      "binary_sha256_after": "0ef660efab793ae841d02998e43471552b72cd5e8d9b10a7d655909817831bdc"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\history-task003-qualification-windows-floor\\project\\target\\release\\history-replay-resource-probe.exe",
+        "C",
+        "maximum",
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\history-task003-qualification-windows-floor\\C-maximum-1.artifacts"
+      ],
+      "workload": {
+        "profile": "C",
+        "duration_seconds": 3600
+      },
+      "watchdog_seconds": 180,
+      "product_seconds": 120,
+      "product_bytes": 805306368,
+      "classification": "NUMERICAL_RESOURCE_CANDIDATE",
+      "pid": 142612,
+      "seconds_spawn_to_complete_work": 9.312000000150874,
+      "complete_line": "COMPLETE\t{\"schema\":1,\"profile\":\"C\",\"duration_seconds\":3600,\"source_samples\":360001,\"observations\":90002,\"snapshots_per_result\":360001,\"canonical_bytes\":5894687,\"canonical_capacity\":11141120,\"regenerated_capacity\":11141120,\"zero_component_rows\":360001,\"repeat_component_rows\":360001,\"ledger_rows\":90002,\"work_rows\":360001,\"logical_payload_minimum_bytes\":491038472,\"owned_public_capacity_bytes\":141082857,\"source_sample_capacity\":360001,\"zero_equality_capacity\":360001,\"repeat_equality_capacity\":360001,\"ledger_equality_capacity\":90002,\"work_equality_capacity\":360001,\"model_capacity\":140,\"regenerated_model_capacity\":140,\"prediction_total\":36310499,\"measurement_total\":1887427,\"work_maxima\":[501, 27, 502, 27, 1004, 52, 1004, 254],\"outcomes\":[0, 0, 18001, 71901, 0, 100],\"all_equalities_passed\":true}\n",
+      "complete": {
+        "schema": 1,
+        "profile": "C",
+        "duration_seconds": 3600,
+        "source_samples": 360001,
+        "observations": 90002,
+        "snapshots_per_result": 360001,
+        "canonical_bytes": 5894687,
+        "canonical_capacity": 11141120,
+        "regenerated_capacity": 11141120,
+        "zero_component_rows": 360001,
+        "repeat_component_rows": 360001,
+        "ledger_rows": 90002,
+        "work_rows": 360001,
+        "logical_payload_minimum_bytes": 491038472,
+        "owned_public_capacity_bytes": 141082857,
+        "source_sample_capacity": 360001,
+        "zero_equality_capacity": 360001,
+        "repeat_equality_capacity": 360001,
+        "ledger_equality_capacity": 90002,
+        "work_equality_capacity": 360001,
+        "model_capacity": 140,
+        "regenerated_model_capacity": 140,
+        "prediction_total": 36310499,
+        "measurement_total": 1887427,
+        "work_maxima": [
+          501,
+          27,
+          502,
+          27,
+          1004,
+          52,
+          1004,
+          254
+        ],
+        "outcomes": [
+          0,
+          0,
+          18001,
+          71901,
+          0,
+          100
+        ],
+        "all_equalities_passed": true
+      },
+      "held_complete_work_memory": {
+        "lifetime_peak_bytes": 524984320,
+        "current_rss_bytes": 524980224,
+        "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+        "units": "bytes",
+        "owned_pid": 142612
+      },
+      "held_hash_deadline_method": "cooperative checks around synchronous reads; an OS call can return after the deadline",
+      "artifacts_at_held_complete_work": {
+        "canonical-before.tsv": {
+          "sha256": "7a95e2781bebf9153d3d8b0fd1e048587aff9c36b19905f193330fa0c0c17442",
+          "bytes": 5894687
+        },
+        "canonical-after.tsv": {
+          "sha256": "7a95e2781bebf9153d3d8b0fd1e048587aff9c36b19905f193330fa0c0c17442",
+          "bytes": 5894687
+        },
+        "model-before.tsv": {
+          "sha256": "313dd38d32feb7cac4d16b93cac89d334bc122feb0e0ef936a2e71853272a061",
+          "bytes": 78
+        },
+        "model-after.tsv": {
+          "sha256": "313dd38d32feb7cac4d16b93cac89d334bc122feb0e0ef936a2e71853272a061",
+          "bytes": 78
+        }
+      },
+      "seconds_held_artifact_hash": 0.015999999828636646,
+      "held_hash_watchdog_overshoot_seconds": 0.0,
+      "retained_phase": "all source/trace/results/diagnostics/canonical/equality buffers live awaiting owner ACK",
+      "exit": 0,
+      "reap_confirmed": true,
+      "post_exit_retained_handle_memory": {
+        "lifetime_peak_bytes": 524984320,
+        "current_rss_bytes": 32768,
+        "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+        "units": "bytes",
+        "owned_pid": 142612
+      },
+      "lifetime_peak_bytes": 524984320,
+      "seconds_total_including_hold_and_teardown": 9.358999999938533,
+      "artifacts_after_reap": {
+        "canonical-before.tsv": {
+          "sha256": "7a95e2781bebf9153d3d8b0fd1e048587aff9c36b19905f193330fa0c0c17442",
+          "bytes": 5894687
+        },
+        "canonical-after.tsv": {
+          "sha256": "7a95e2781bebf9153d3d8b0fd1e048587aff9c36b19905f193330fa0c0c17442",
+          "bytes": 5894687
+        },
+        "model-before.tsv": {
+          "sha256": "313dd38d32feb7cac4d16b93cac89d334bc122feb0e0ef936a2e71853272a061",
+          "bytes": 78
+        },
+        "model-after.tsv": {
+          "sha256": "313dd38d32feb7cac4d16b93cac89d334bc122feb0e0ef936a2e71853272a061",
+          "bytes": 78
+        }
+      },
+      "within_120_seconds": true,
+      "within_768_MiB": true,
+      "success": true,
+      "stderr": "",
+      "seconds_owner_total": 9.375,
+      "binary_sha256_before": "0ef660efab793ae841d02998e43471552b72cd5e8d9b10a7d655909817831bdc",
+      "binary_sha256_after": "0ef660efab793ae841d02998e43471552b72cd5e8d9b10a7d655909817831bdc"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\history-task003-qualification-windows-floor\\project\\target\\release\\history-replay-resource-probe.exe",
+        "C",
+        "maximum",
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\history-task003-qualification-windows-floor\\C-maximum-2.artifacts"
+      ],
+      "workload": {
+        "profile": "C",
+        "duration_seconds": 3600
+      },
+      "watchdog_seconds": 180,
+      "product_seconds": 120,
+      "product_bytes": 805306368,
+      "classification": "NUMERICAL_RESOURCE_CANDIDATE",
+      "pid": 145652,
+      "seconds_spawn_to_complete_work": 9.327999999979511,
+      "complete_line": "COMPLETE\t{\"schema\":1,\"profile\":\"C\",\"duration_seconds\":3600,\"source_samples\":360001,\"observations\":90002,\"snapshots_per_result\":360001,\"canonical_bytes\":5894687,\"canonical_capacity\":11141120,\"regenerated_capacity\":11141120,\"zero_component_rows\":360001,\"repeat_component_rows\":360001,\"ledger_rows\":90002,\"work_rows\":360001,\"logical_payload_minimum_bytes\":491038472,\"owned_public_capacity_bytes\":141082857,\"source_sample_capacity\":360001,\"zero_equality_capacity\":360001,\"repeat_equality_capacity\":360001,\"ledger_equality_capacity\":90002,\"work_equality_capacity\":360001,\"model_capacity\":140,\"regenerated_model_capacity\":140,\"prediction_total\":36310499,\"measurement_total\":1887427,\"work_maxima\":[501, 27, 502, 27, 1004, 52, 1004, 254],\"outcomes\":[0, 0, 18001, 71901, 0, 100],\"all_equalities_passed\":true}\n",
+      "complete": {
+        "schema": 1,
+        "profile": "C",
+        "duration_seconds": 3600,
+        "source_samples": 360001,
+        "observations": 90002,
+        "snapshots_per_result": 360001,
+        "canonical_bytes": 5894687,
+        "canonical_capacity": 11141120,
+        "regenerated_capacity": 11141120,
+        "zero_component_rows": 360001,
+        "repeat_component_rows": 360001,
+        "ledger_rows": 90002,
+        "work_rows": 360001,
+        "logical_payload_minimum_bytes": 491038472,
+        "owned_public_capacity_bytes": 141082857,
+        "source_sample_capacity": 360001,
+        "zero_equality_capacity": 360001,
+        "repeat_equality_capacity": 360001,
+        "ledger_equality_capacity": 90002,
+        "work_equality_capacity": 360001,
+        "model_capacity": 140,
+        "regenerated_model_capacity": 140,
+        "prediction_total": 36310499,
+        "measurement_total": 1887427,
+        "work_maxima": [
+          501,
+          27,
+          502,
+          27,
+          1004,
+          52,
+          1004,
+          254
+        ],
+        "outcomes": [
+          0,
+          0,
+          18001,
+          71901,
+          0,
+          100
+        ],
+        "all_equalities_passed": true
+      },
+      "held_complete_work_memory": {
+        "lifetime_peak_bytes": 524988416,
+        "current_rss_bytes": 524984320,
+        "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+        "units": "bytes",
+        "owned_pid": 145652
+      },
+      "held_hash_deadline_method": "cooperative checks around synchronous reads; an OS call can return after the deadline",
+      "artifacts_at_held_complete_work": {
+        "canonical-before.tsv": {
+          "sha256": "7a95e2781bebf9153d3d8b0fd1e048587aff9c36b19905f193330fa0c0c17442",
+          "bytes": 5894687
+        },
+        "canonical-after.tsv": {
+          "sha256": "7a95e2781bebf9153d3d8b0fd1e048587aff9c36b19905f193330fa0c0c17442",
+          "bytes": 5894687
+        },
+        "model-before.tsv": {
+          "sha256": "313dd38d32feb7cac4d16b93cac89d334bc122feb0e0ef936a2e71853272a061",
+          "bytes": 78
+        },
+        "model-after.tsv": {
+          "sha256": "313dd38d32feb7cac4d16b93cac89d334bc122feb0e0ef936a2e71853272a061",
+          "bytes": 78
+        }
+      },
+      "seconds_held_artifact_hash": 0.0,
+      "held_hash_watchdog_overshoot_seconds": 0.0,
+      "retained_phase": "all source/trace/results/diagnostics/canonical/equality buffers live awaiting owner ACK",
+      "exit": 0,
+      "reap_confirmed": true,
+      "post_exit_retained_handle_memory": {
+        "lifetime_peak_bytes": 524988416,
+        "current_rss_bytes": 32768,
+        "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+        "units": "bytes",
+        "owned_pid": 145652
+      },
+      "lifetime_peak_bytes": 524988416,
+      "seconds_total_including_hold_and_teardown": 9.375,
+      "artifacts_after_reap": {
+        "canonical-before.tsv": {
+          "sha256": "7a95e2781bebf9153d3d8b0fd1e048587aff9c36b19905f193330fa0c0c17442",
+          "bytes": 5894687
+        },
+        "canonical-after.tsv": {
+          "sha256": "7a95e2781bebf9153d3d8b0fd1e048587aff9c36b19905f193330fa0c0c17442",
+          "bytes": 5894687
+        },
+        "model-before.tsv": {
+          "sha256": "313dd38d32feb7cac4d16b93cac89d334bc122feb0e0ef936a2e71853272a061",
+          "bytes": 78
+        },
+        "model-after.tsv": {
+          "sha256": "313dd38d32feb7cac4d16b93cac89d334bc122feb0e0ef936a2e71853272a061",
+          "bytes": 78
+        }
+      },
+      "within_120_seconds": true,
+      "within_768_MiB": true,
+      "success": true,
+      "stderr": "",
+      "seconds_owner_total": 9.375,
+      "binary_sha256_before": "0ef660efab793ae841d02998e43471552b72cd5e8d9b10a7d655909817831bdc",
+      "binary_sha256_after": "0ef660efab793ae841d02998e43471552b72cd5e8d9b10a7d655909817831bdc"
+    },
+    {
+      "argv": [
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\history-task003-qualification-windows-floor\\project\\target\\release\\history-replay-resource-probe.exe",
+        "C",
+        "maximum",
+        "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\history-task003-qualification-windows-floor\\C-maximum-3.artifacts"
+      ],
+      "workload": {
+        "profile": "C",
+        "duration_seconds": 3600
+      },
+      "watchdog_seconds": 180,
+      "product_seconds": 120,
+      "product_bytes": 805306368,
+      "classification": "NUMERICAL_RESOURCE_CANDIDATE",
+      "pid": 138036,
+      "seconds_spawn_to_complete_work": 9.390000000130385,
+      "complete_line": "COMPLETE\t{\"schema\":1,\"profile\":\"C\",\"duration_seconds\":3600,\"source_samples\":360001,\"observations\":90002,\"snapshots_per_result\":360001,\"canonical_bytes\":5894687,\"canonical_capacity\":11141120,\"regenerated_capacity\":11141120,\"zero_component_rows\":360001,\"repeat_component_rows\":360001,\"ledger_rows\":90002,\"work_rows\":360001,\"logical_payload_minimum_bytes\":491038472,\"owned_public_capacity_bytes\":141082857,\"source_sample_capacity\":360001,\"zero_equality_capacity\":360001,\"repeat_equality_capacity\":360001,\"ledger_equality_capacity\":90002,\"work_equality_capacity\":360001,\"model_capacity\":140,\"regenerated_model_capacity\":140,\"prediction_total\":36310499,\"measurement_total\":1887427,\"work_maxima\":[501, 27, 502, 27, 1004, 52, 1004, 254],\"outcomes\":[0, 0, 18001, 71901, 0, 100],\"all_equalities_passed\":true}\n",
+      "complete": {
+        "schema": 1,
+        "profile": "C",
+        "duration_seconds": 3600,
+        "source_samples": 360001,
+        "observations": 90002,
+        "snapshots_per_result": 360001,
+        "canonical_bytes": 5894687,
+        "canonical_capacity": 11141120,
+        "regenerated_capacity": 11141120,
+        "zero_component_rows": 360001,
+        "repeat_component_rows": 360001,
+        "ledger_rows": 90002,
+        "work_rows": 360001,
+        "logical_payload_minimum_bytes": 491038472,
+        "owned_public_capacity_bytes": 141082857,
+        "source_sample_capacity": 360001,
+        "zero_equality_capacity": 360001,
+        "repeat_equality_capacity": 360001,
+        "ledger_equality_capacity": 90002,
+        "work_equality_capacity": 360001,
+        "model_capacity": 140,
+        "regenerated_model_capacity": 140,
+        "prediction_total": 36310499,
+        "measurement_total": 1887427,
+        "work_maxima": [
+          501,
+          27,
+          502,
+          27,
+          1004,
+          52,
+          1004,
+          254
+        ],
+        "outcomes": [
+          0,
+          0,
+          18001,
+          71901,
+          0,
+          100
+        ],
+        "all_equalities_passed": true
+      },
+      "held_complete_work_memory": {
+        "lifetime_peak_bytes": 524996608,
+        "current_rss_bytes": 524992512,
+        "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+        "units": "bytes",
+        "owned_pid": 138036
+      },
+      "held_hash_deadline_method": "cooperative checks around synchronous reads; an OS call can return after the deadline",
+      "artifacts_at_held_complete_work": {
+        "canonical-before.tsv": {
+          "sha256": "7a95e2781bebf9153d3d8b0fd1e048587aff9c36b19905f193330fa0c0c17442",
+          "bytes": 5894687
+        },
+        "canonical-after.tsv": {
+          "sha256": "7a95e2781bebf9153d3d8b0fd1e048587aff9c36b19905f193330fa0c0c17442",
+          "bytes": 5894687
+        },
+        "model-before.tsv": {
+          "sha256": "313dd38d32feb7cac4d16b93cac89d334bc122feb0e0ef936a2e71853272a061",
+          "bytes": 78
+        },
+        "model-after.tsv": {
+          "sha256": "313dd38d32feb7cac4d16b93cac89d334bc122feb0e0ef936a2e71853272a061",
+          "bytes": 78
+        }
+      },
+      "seconds_held_artifact_hash": 0.015999999828636646,
+      "held_hash_watchdog_overshoot_seconds": 0.0,
+      "retained_phase": "all source/trace/results/diagnostics/canonical/equality buffers live awaiting owner ACK",
+      "exit": 0,
+      "reap_confirmed": true,
+      "post_exit_retained_handle_memory": {
+        "lifetime_peak_bytes": 524996608,
+        "current_rss_bytes": 32768,
+        "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+        "units": "bytes",
+        "owned_pid": 138036
+      },
+      "lifetime_peak_bytes": 524996608,
+      "seconds_total_including_hold_and_teardown": 9.437000000150874,
+      "artifacts_after_reap": {
+        "canonical-before.tsv": {
+          "sha256": "7a95e2781bebf9153d3d8b0fd1e048587aff9c36b19905f193330fa0c0c17442",
+          "bytes": 5894687
+        },
+        "canonical-after.tsv": {
+          "sha256": "7a95e2781bebf9153d3d8b0fd1e048587aff9c36b19905f193330fa0c0c17442",
+          "bytes": 5894687
+        },
+        "model-before.tsv": {
+          "sha256": "313dd38d32feb7cac4d16b93cac89d334bc122feb0e0ef936a2e71853272a061",
+          "bytes": 78
+        },
+        "model-after.tsv": {
+          "sha256": "313dd38d32feb7cac4d16b93cac89d334bc122feb0e0ef936a2e71853272a061",
+          "bytes": 78
+        }
+      },
+      "within_120_seconds": true,
+      "within_768_MiB": true,
+      "success": true,
+      "stderr": "",
+      "seconds_owner_total": 9.452999999979511,
+      "binary_sha256_before": "0ef660efab793ae841d02998e43471552b72cd5e8d9b10a7d655909817831bdc",
+      "binary_sha256_after": "0ef660efab793ae841d02998e43471552b72cd5e8d9b10a7d655909817831bdc"
+    }
+  ],
+  "inventory_limit": "slice lengths*sizeof are retained logical payload minima; explicit owned Vec capacities are exact; neither sum is allocator-total; whole-process HWM includes allocator overhead",
+  "environment": {
+    "os": "Windows-10-10.0.19043-SP0",
+    "machine": "AMD64",
+    "cpu": "AMD64 Family 25 Model 33 Stepping 0, AuthenticAMD",
+    "cpu_source": "platform.processor/PROCESSOR_IDENTIFIER",
+    "logical_cpus": 16,
+    "physical_ram_bytes": 34266181632,
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]"
+  },
+  "source_before": {
+    "Cargo.toml": "107801ee283d274781df7496d22eaa46a09748e2b624ccb48a8b7b9eda975462",
+    "Cargo.lock": "1ff60b850d3f5928fc13476575700400765d31f7deb3268171f66176fb6cf6f3",
+    "rust-toolchain.toml": "ccced9ef5cf5a0c35bb5ba4e4b525188b72aa07aab8cc3fb5b644778ade8f125",
+    "src/delivery.rs": "12d7fbdcee02d7ae986658bb2f43116f56283f1689adc2c74e4f360d45389120",
+    "src/estimation.rs": "83a3b6936c53fc9d28c29a59b0840cf5d57611852246bc19c2c4cb258c092fdf",
+    "src/evaluation.rs": "cf83337582b8887dc3ae71b62a8daf10c9f8b578eddd74b212069d30d76ba870",
+    "src/history_replay.rs": "553925e3f3ff7f2c9601237de157eaee889031ec9d8fafc81f1aef0a46e63f18",
+    "src/lib.rs": "f1707ae4d0fe5b0f773406860546d1147134440daef190fdaf6ac72bb09b8f85",
+    "src/main.rs": "76574d18911bdce81082b9f76308cf3a31f69fa9967a0592f28eaf2630901d6b",
+    "src/sensors.rs": "d8eaae0d691535bcee6f68166babdb41c49de815ad0c3eb213c8b980c9ae29af",
+    "src/simulation.rs": "c0fd739c26e7190549736636c69720dc963707059463a45b7095159099fd7691",
+    "examples/history_replay.rs": "008f6a1f45febfc0db18bdc0b467d68d5bafec775f1bc13b301986442efad76b",
+    "tests/history-replay/build.rs": "2bf7b4646820440e9a997ccd67663aebb4e9296d07c798a947ba361eff903dcb",
+    "tests/history-replay/Cargo.lock": "f74d20e99ca6c2d452092ebc3b1aec5165b62a8be986d2bc8c3ed779be9c47fa",
+    "tests/history-replay/Cargo.toml": "1ea2369b23d0ea2911920c54169da4483815fd814743bdb09dd2963936223080",
+    "tests/history-replay/src/lib.rs": "55297e78b51534d85aa43e80aff822fc64f0b474937213cb31a5862abc7863d2",
+    "tests/history-replay/tests/contracts.rs": "3c1d0f1699997e60c37611cee8e1cf171ece46f97098c167a909658be223feea",
+    "tests/history-replay/tools/native_baseline.py": "4cb083eccbc260fd8bc16bfdfd60d66d3e608c2a000a73f9c7f3c1a13757f6a8",
+    "docs/design-docs/history-replay/constraints/constraints.toml": "95f51cc57145b7ade7c228e3e90dd41589bc4d2a88b22c7ec5bd70c2ceccdf2a",
+    "docs/design-docs/history-replay/decisions/ADR-001-causal-batch-correction.md": "32291bb40de5d607750dee80ec1005539fbeda4df00b922b9765341a484d6fc9",
+    "docs/design-docs/history-replay/decisions/index.md": "83959be5d037d01dd61bf683c0cc4d4e841f3a96f1e48fe5e3745c3291c982ca",
+    "docs/design-docs/history-replay/implementation-brief.md": "ae9e85cd1b00bfa1023487be75139e9d011c7232a3c8ba8dc952fda2c0a0d5b9",
+    "docs/design-docs/history-replay/implementation-plan.toml": "887a7b9cc9803b2a23793b3e83ecebbd7f841ca6503d50a7cdfb82c11c7aba50",
+    "docs/design-docs/history-replay/intent/acceptance.toml": "f085954bb52782a08bbaa3cddf075138fb192a321cd618e0ecaf201b4bf0f4ff",
+    "docs/design-docs/history-replay/intent/summary.md": "b64db88257f33a156093690caf8007c19ed7e45008d4d4cb999b28a249139314",
+    "docs/design-docs/history-replay/open-questions.toml": "d8b62360b085ef790c7db92a7b050544d51f521e2cc3a8652e13748086cedcdd",
+    "docs/design-docs/history-replay/requirements/glossary.md": "45eb43212609627f25718bbd029e51609d9bd5bb03f13b65738a9a3b61499ff9",
+    "docs/design-docs/history-replay/requirements/requirements.toml": "4436e921c15f50910b216c653ce5843b61905151c662d7c22aa243631cb07b3e",
+    "docs/design-docs/history-replay/spec.toml": "de2fb876c959ac557571ffd8a2465da4ce55881f68a20b448a1ca3301fe0c28f",
+    "docs/design-docs/history-replay/structure/architecture.md": "865b16e31023287137e1dea8164f86ab5e981e8e9ecc56641980b3a1a33d9f2e",
+    "docs/design-docs/history-replay/structure/modules.toml": "f9f10bfe54f267c1f2188f8951a37960c43dfb9a9ca36f2b594313207cc35875",
+    "docs/design-docs/history-replay/tests/tests.toml": "65e2a3acb95d0cdb799e9c638c4d2a7af192c7e841804946d3d135ebf8d17bed",
+    "docs/design-docs/history-replay/traceability.toml": "22adb296e550ebf45c0deecee892dbbdd2f2483fd2042e9c2a81f673f78e55cb",
+    "docs/design-docs/history-replay/verification/authority-boundary.md": "80cdeaf738a8f6340afcb0a2d58e77f815b45b315c5e26cd72320962afd6b5e3",
+    "docs/design-docs/history-replay/verification/bounds.md": "5dbf09e02bd9160a1bf0313b32167d3e6b5e314db7d5ce58046f1902c74dae2c",
+    "docs/design-docs/history-replay/verification/catalog.toml": "f81e656b0a5b4d70b637508e6e69a800f9da2af8e6a0f3123bffafa44e3e1ed7",
+    "docs/design-docs/history-replay/verification/native-matrix.md": "13f1bf4bcf6ee792b89751e752b2d2c865a7e3800458f18688c90c891fb4e83c",
+    "docs/design-docs/history-replay/verification/resource-workload.md": "1980d513f9b71bbf9b579c45164c35be0703f6d0551c12222a15b282098bc75d",
+    "docs/design-docs/history-replay/verification/rewind-overflow-oracle.rs": "7576559286bc3bda695695b4097e51704e1f0320daf046dfbb12abd3193dc0c7",
+    "docs/design-docs/history-replay/verification/rewind-overflow-qualification.json": "7276e64daed7e6b7d1842c0b279390544dfb2b352908a467444efbe1a9335822",
+    "docs/design-docs/history-replay/verification/test-efficacy.md": "22cd6939bf78b979dde4f1040f29d6115bacee1947b408948a4d4f0de6d60c69",
+    "docs/design-docs/history-replay/validation/test-lock.json": "80f48203f95dde2d526ba59e5cc3a8ce9f9fa5bf0d8fd85a7af5d77f8bf174f5",
+    "docs/design-docs/history-replay/validation/design-execution.json": "481803eb850c472f54cfa1858771b0f4f6379d3ae5eaa00436b4405f56904e6a",
+    "docs/design-docs/observation-delivery/implementation/resource_probe.py": "ab851ab12ec6f54ee52baec37b0b59b80f8db069b5a92179c3f12f23cc9b924c"
+  },
+  "closure_before": {
+    "registry_entries": [
+      {
+        "name": "anstream",
+        "version": "1.0.0",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "824a212faf96e9acacdbd09febd34438f8f711fb84e09a8916013cd7815ca28d",
+        "dependencies": [
+          "anstyle",
+          "anstyle-parse",
+          "anstyle-query",
+          "anstyle-wincon",
+          "colorchoice",
+          "is_terminal_polyfill",
+          "utf8parse"
+        ]
+      },
+      {
+        "name": "anstyle",
+        "version": "1.0.14",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "940b3a0ca603d1eade50a4846a2afffd5ef57a9feac2c0e2ec2e14f9ead76000"
+      },
+      {
+        "name": "anstyle-parse",
+        "version": "1.0.0",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "52ce7f38b242319f7cabaa6813055467063ecdc9d355bbb4ce0c68908cd8130e",
+        "dependencies": [
+          "utf8parse"
+        ]
+      },
+      {
+        "name": "anstyle-query",
+        "version": "1.1.5",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "40c48f72fd53cd289104fc64099abca73db4166ad86ea0b4341abe65af83dadc",
+        "dependencies": [
+          "windows-sys"
+        ]
+      },
+      {
+        "name": "anstyle-wincon",
+        "version": "3.0.11",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "291e6a250ff86cd4a820112fb8898808a366d8f9f58ce16d1f538353ad55747d",
+        "dependencies": [
+          "anstyle",
+          "once_cell_polyfill",
+          "windows-sys"
+        ]
+      },
+      {
+        "name": "approx",
+        "version": "0.5.1",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "cab112f0a86d568ea0e627cc1d6be74a1e9cd55214684db5561995f6dad897c6",
+        "dependencies": [
+          "num-traits"
+        ]
+      },
+      {
+        "name": "autocfg",
+        "version": "1.5.1",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "f2032f911046de80f0a198e0901378627c33f59ea0ac00e363d481118bd70a53"
+      },
+      {
+        "name": "bytemuck",
+        "version": "1.25.2",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "95832e849adfb21180ccb6826a99da14e5d266ae5c2e668e1602cf234f153797"
+      },
+      {
+        "name": "cfg-if",
+        "version": "1.0.5",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "4e7648175b45a9a48536d676f68d918270699102aa8dab5496df06904c914600"
+      },
+      {
+        "name": "clap",
+        "version": "4.6.7",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "aa8876b300ab35ba921adea3dfd70157a46249b33f95c9084ae5709785478946",
+        "dependencies": [
+          "clap_builder",
+          "clap_derive"
+        ]
+      },
+      {
+        "name": "clap_builder",
+        "version": "4.6.7",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "ec0797fb7aeb1406c84efac526901f7ec3ead2124f946b494e72879d4b54704d",
+        "dependencies": [
+          "anstream",
+          "anstyle",
+          "clap_lex",
+          "strsim"
+        ]
+      },
+      {
+        "name": "clap_derive",
+        "version": "4.6.7",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "f9c751b79415d4e559e3d1fcf128e09e720eb673a06d26cf6f392d37d75b66e0",
+        "dependencies": [
+          "heck",
+          "proc-macro2",
+          "quote",
+          "syn 3.0.9"
+        ]
+      },
+      {
+        "name": "clap_lex",
+        "version": "1.1.1",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "1c133bc6a41be0d194c306b5506d15e6feeea7b1d6604bd3f8310dfb2ca96486"
+      },
+      {
+        "name": "colorchoice",
+        "version": "1.0.5",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "1d07550c9036bf2ae0c684c4297d503f838287c83c53686d05370d0e139ae570"
+      },
+      {
+        "name": "getrandom",
+        "version": "0.4.3",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "300e883d756b2e4ec94e02791f39b04b522276138852cfc41d9fb7e904106099",
+        "dependencies": [
+          "cfg-if",
+          "libc",
+          "r-efi"
+        ]
+      },
+      {
+        "name": "glam",
+        "version": "0.30.10",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "19fc433e8437a212d1b6f1e68c7824af3aed907da60afa994e7f542d18d12aa9"
+      },
+      {
+        "name": "glam",
+        "version": "0.31.1",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "556f6b2ea90b8d15a74e0e7bb41671c9bdf38cd9f78c284d750b9ce58a2b5be7"
+      },
+      {
+        "name": "glam",
+        "version": "0.32.1",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "f70749695b063ecbf6b62949ccccde2e733ec3ecbbd71d467dca4e5c6c97cca0"
+      },
+      {
+        "name": "glam",
+        "version": "0.33.12",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "37bfe73dc8ec21f54d181e5a60554327ec3f1c600c455a75ccbfc65d2106a6c4"
+      },
+      {
+        "name": "heck",
+        "version": "0.5.0",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "2304e00983f87ffb38b55b444b5e3b60a884b5d30c0fca7d82fe33449bbe55ea"
+      },
+      {
+        "name": "is_terminal_polyfill",
+        "version": "1.70.2",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "a6cb138bb79a146c1bd460005623e142ef0181e3d0219cb493e02f7d08a35695"
+      },
+      {
+        "name": "libc",
+        "version": "0.2.190",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "ce5d3ddc6d3fa000eb1536d85e147bfe31aacaba692ed6a876f95cb7c855be78"
+      },
+      {
+        "name": "libm",
+        "version": "0.2.16",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "b6d2cec3eae94f9f509c767b45932f1ada8350c4bdb85af2fcab4a3c14807981"
+      },
+      {
+        "name": "matrixmultiply",
+        "version": "0.3.11",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "3f607c237553f086e7043417a51df26b2eb899d3caff94e6a67592ff992fedc7",
+        "dependencies": [
+          "autocfg",
+          "rawpointer"
+        ]
+      },
+      {
+        "name": "nalgebra",
+        "version": "0.35.0",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "adc43a60c217b0c6ff46e47f26911015ad8d2e5a8be1af668c67e370d99a4346",
+        "dependencies": [
+          "approx",
+          "glam 0.30.10",
+          "glam 0.31.1",
+          "glam 0.32.1",
+          "glam 0.33.12",
+          "matrixmultiply",
+          "num-complex",
+          "num-rational",
+          "num-traits",
+          "simba",
+          "typenum"
+        ]
+      },
+      {
+        "name": "num-bigint",
+        "version": "0.4.8",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "c89e69e7e0f03bea5ef08013795c25018e101932225a656383bd384495ecc367",
+        "dependencies": [
+          "num-integer",
+          "num-traits"
+        ]
+      },
+      {
+        "name": "num-complex",
+        "version": "0.4.6",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "73f88a1307638156682bada9d7604135552957b7818057dcef22705b4d509495",
+        "dependencies": [
+          "num-traits"
+        ]
+      },
+      {
+        "name": "num-integer",
+        "version": "0.1.47",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "7ce2d95d4b3734dc35aa2f45e1aa22cd416814592a4f9d9205e11affd5b8e10b",
+        "dependencies": [
+          "num-traits"
+        ]
+      },
+      {
+        "name": "num-rational",
+        "version": "0.4.2",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "f83d14da390562dca69fc84082e73e548e1ad308d24accdedd2720017cb37824",
+        "dependencies": [
+          "num-bigint",
+          "num-integer",
+          "num-traits"
+        ]
+      },
+      {
+        "name": "num-traits",
+        "version": "0.2.19",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "071dfc062690e90b734c0b2273ce72ad0ffa95f0c74596bc250dcfd960262841",
+        "dependencies": [
+          "autocfg",
+          "libm"
+        ]
+      },
+      {
+        "name": "once_cell_polyfill",
+        "version": "1.70.2",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "384b8ab6d37215f3c5301a95a4accb5d64aa607f1fcb26a11b5303878451b4fe"
+      },
+      {
+        "name": "ppv-lite86",
+        "version": "0.2.21",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "85eae3c4ed2f50dcfe72643da4befc30deadb458a9b590d720cde2f2b1e97da9",
+        "dependencies": [
+          "zerocopy"
+        ]
+      },
+      {
+        "name": "proc-macro2",
+        "version": "1.0.107",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "985e7ec9bb745e6ce6535b544d84d6cd6f7ad8bd711c398938ae983b91a766d9",
+        "dependencies": [
+          "unicode-ident"
+        ]
+      },
+      {
+        "name": "quote",
+        "version": "1.0.47",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "1fbf4db142a473a8d80c26bbf18454ed458bf8d26c8219c331daecfdbd079001",
+        "dependencies": [
+          "proc-macro2"
+        ]
+      },
+      {
+        "name": "r-efi",
+        "version": "6.0.0",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "f8dcc9c7d52a811697d2151c701e0d08956f92b0e24136cf4cf27b57a6a0d9bf"
+      },
+      {
+        "name": "rand",
+        "version": "0.10.3",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "65c9fb96cbc91e3478eaae79a69fcd3f1ae4ad052e471fe6732fff548984b4af",
+        "dependencies": [
+          "getrandom",
+          "rand_core"
+        ]
+      },
+      {
+        "name": "rand_chacha",
+        "version": "0.10.0",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "3e6af7f3e25ded52c41df4e0b1af2d047e45896c2f3281792ed68a1c243daedb",
+        "dependencies": [
+          "ppv-lite86",
+          "rand_core"
+        ]
+      },
+      {
+        "name": "rand_core",
+        "version": "0.10.1",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "63b8176103e19a2643978565ca18b50549f6101881c443590420e4dc998a3c69"
+      },
+      {
+        "name": "rand_distr",
+        "version": "0.6.0",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "4d431c2703ccf129de4d45253c03f49ebb22b97d6ad79ee3ecfc7e3f4862c1d8",
+        "dependencies": [
+          "num-traits",
+          "rand"
+        ]
+      },
+      {
+        "name": "rawpointer",
+        "version": "0.2.1",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "60a357793950651c4ed0f3f52338f53b2f809f32d83a07f72909fa13e4c6c1e3"
+      },
+      {
+        "name": "safe_arch",
+        "version": "1.2.0",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "42c6efa15875e6ecb39ca61fb0b0c1a40b84fac5a5ffe71eef7d1000c8eb3f5f",
+        "dependencies": [
+          "bytemuck"
+        ]
+      },
+      {
+        "name": "simba",
+        "version": "0.10.2",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "f1a7200d82ff1c7b4235efd12f11e2537a402c91cf83a5cb97ce80eef787fde7",
+        "dependencies": [
+          "approx",
+          "num-complex",
+          "num-traits",
+          "wide"
+        ]
+      },
+      {
+        "name": "strsim",
+        "version": "0.11.1",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "7da8b5736845d9f2fcb837ea5d9e2628564b3b043a70948a3f0b778838c5fb4f"
+      },
+      {
+        "name": "syn",
+        "version": "2.0.119",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "872831b642d1a07999a962a351ed35b955ea2cfc8f3862091e2a240a84f17297",
+        "dependencies": [
+          "proc-macro2",
+          "quote",
+          "unicode-ident"
+        ]
+      },
+      {
+        "name": "syn",
+        "version": "3.0.9",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "d78c8dee4c7bf0e14673097256fed6142ce9d3b85a408189d07482442145823b",
+        "dependencies": [
+          "proc-macro2",
+          "quote",
+          "unicode-ident"
+        ]
+      },
+      {
+        "name": "typenum",
+        "version": "1.20.1",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "b6f5e870be6c3b371b77fe0ee0bafb859fa4964b4404c27de1d380043c4dda20"
+      },
+      {
+        "name": "unicode-ident",
+        "version": "1.0.27",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "a2c754d6c33795a1c324727428e5a7dedb5b06195f9890bdbcba760d3e246563"
+      },
+      {
+        "name": "utf8parse",
+        "version": "0.2.2",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "06abde3611657adf66d383f00b093d7faecc7fa57071cce2578660c9f1010821"
+      },
+      {
+        "name": "wide",
+        "version": "1.7.1",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "d920ac99c3c8edce110cb8d07dbb324d6d026011dce85b1e9355b70f0adacc4f",
+        "dependencies": [
+          "bytemuck",
+          "safe_arch"
+        ]
+      },
+      {
+        "name": "windows-link",
+        "version": "0.2.1",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "f0805222e57f7521d6a62e36fa9163bc891acd422f971defe97d64e70d0a4fe5"
+      },
+      {
+        "name": "windows-sys",
+        "version": "0.61.2",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "ae137229bcbd6cdf0f7b80a31df61766145077ddf49416a728b02cb3921ff3fc",
+        "dependencies": [
+          "windows-link"
+        ]
+      },
+      {
+        "name": "zerocopy",
+        "version": "0.8.63",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "e5fe1f8f1b06191a00962174c61aa5005e0bb391a6d80d07e24d115c01a92ed8",
+        "dependencies": [
+          "zerocopy-derive"
+        ]
+      },
+      {
+        "name": "zerocopy-derive",
+        "version": "0.8.63",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "863ad3ac83293fb4d740aedbfdc9240dd8d1a50c1099acd76ce80ce7c7230c7f",
+        "dependencies": [
+          "proc-macro2",
+          "quote",
+          "syn 2.0.119"
+        ]
+      }
+    ],
+    "registry_json_sha256": "c3be4704aa12889ca6138387bca4188ac9e0191b35196af5356c56b9489cb2f3",
+    "root_lock_sha256": "1ff60b850d3f5928fc13476575700400765d31f7deb3268171f66176fb6cf6f3",
+    "generated_lock_sha256": "1c3f213773387a6134c0650a77b3dc8653fa99c1dbaa4a6cad8608871e435434"
+  },
+  "generated_before": {
+    "Cargo.toml": {
+      "sha256": "f5269a67231a879b5485cf018a6117446aaae21ef418f2925fae69cf6465c4ce",
+      "bytes": 271
+    },
+    "Cargo.lock": {
+      "sha256": "1c3f213773387a6134c0650a77b3dc8653fa99c1dbaa4a6cad8608871e435434",
+      "bytes": 12240
+    },
+    "src/main.rs": {
+      "sha256": "80714dcb34e4b0f8e095f5e5f209b6b3748b144d89fc4c2e5e9e6ef137d284b0",
+      "bytes": 13312
+    }
+  },
+  "driver_logical_utf8_lf_sha256": "80714dcb34e4b0f8e095f5e5f209b6b3748b144d89fc4c2e5e9e6ef137d284b0",
+  "generated_after_build": {
+    "Cargo.toml": {
+      "sha256": "f5269a67231a879b5485cf018a6117446aaae21ef418f2925fae69cf6465c4ce",
+      "bytes": 271
+    },
+    "Cargo.lock": {
+      "sha256": "1c3f213773387a6134c0650a77b3dc8653fa99c1dbaa4a6cad8608871e435434",
+      "bytes": 12240
+    },
+    "src/main.rs": {
+      "sha256": "80714dcb34e4b0f8e095f5e5f209b6b3748b144d89fc4c2e5e9e6ef137d284b0",
+      "bytes": 13312
+    }
+  },
+  "binary": {
+    "path": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\history-task003-qualification-windows-floor\\project\\target\\release\\history-replay-resource-probe.exe",
+    "sha256": "0ef660efab793ae841d02998e43471552b72cd5e8d9b10a7d655909817831bdc",
+    "bytes": 334848
+  },
+  "source_after": {
+    "Cargo.toml": "107801ee283d274781df7496d22eaa46a09748e2b624ccb48a8b7b9eda975462",
+    "Cargo.lock": "1ff60b850d3f5928fc13476575700400765d31f7deb3268171f66176fb6cf6f3",
+    "rust-toolchain.toml": "ccced9ef5cf5a0c35bb5ba4e4b525188b72aa07aab8cc3fb5b644778ade8f125",
+    "src/delivery.rs": "12d7fbdcee02d7ae986658bb2f43116f56283f1689adc2c74e4f360d45389120",
+    "src/estimation.rs": "83a3b6936c53fc9d28c29a59b0840cf5d57611852246bc19c2c4cb258c092fdf",
+    "src/evaluation.rs": "cf83337582b8887dc3ae71b62a8daf10c9f8b578eddd74b212069d30d76ba870",
+    "src/history_replay.rs": "553925e3f3ff7f2c9601237de157eaee889031ec9d8fafc81f1aef0a46e63f18",
+    "src/lib.rs": "f1707ae4d0fe5b0f773406860546d1147134440daef190fdaf6ac72bb09b8f85",
+    "src/main.rs": "76574d18911bdce81082b9f76308cf3a31f69fa9967a0592f28eaf2630901d6b",
+    "src/sensors.rs": "d8eaae0d691535bcee6f68166babdb41c49de815ad0c3eb213c8b980c9ae29af",
+    "src/simulation.rs": "c0fd739c26e7190549736636c69720dc963707059463a45b7095159099fd7691",
+    "examples/history_replay.rs": "008f6a1f45febfc0db18bdc0b467d68d5bafec775f1bc13b301986442efad76b",
+    "tests/history-replay/build.rs": "2bf7b4646820440e9a997ccd67663aebb4e9296d07c798a947ba361eff903dcb",
+    "tests/history-replay/Cargo.lock": "f74d20e99ca6c2d452092ebc3b1aec5165b62a8be986d2bc8c3ed779be9c47fa",
+    "tests/history-replay/Cargo.toml": "1ea2369b23d0ea2911920c54169da4483815fd814743bdb09dd2963936223080",
+    "tests/history-replay/src/lib.rs": "55297e78b51534d85aa43e80aff822fc64f0b474937213cb31a5862abc7863d2",
+    "tests/history-replay/tests/contracts.rs": "3c1d0f1699997e60c37611cee8e1cf171ece46f97098c167a909658be223feea",
+    "tests/history-replay/tools/native_baseline.py": "4cb083eccbc260fd8bc16bfdfd60d66d3e608c2a000a73f9c7f3c1a13757f6a8",
+    "docs/design-docs/history-replay/constraints/constraints.toml": "95f51cc57145b7ade7c228e3e90dd41589bc4d2a88b22c7ec5bd70c2ceccdf2a",
+    "docs/design-docs/history-replay/decisions/ADR-001-causal-batch-correction.md": "32291bb40de5d607750dee80ec1005539fbeda4df00b922b9765341a484d6fc9",
+    "docs/design-docs/history-replay/decisions/index.md": "83959be5d037d01dd61bf683c0cc4d4e841f3a96f1e48fe5e3745c3291c982ca",
+    "docs/design-docs/history-replay/implementation-brief.md": "ae9e85cd1b00bfa1023487be75139e9d011c7232a3c8ba8dc952fda2c0a0d5b9",
+    "docs/design-docs/history-replay/implementation-plan.toml": "887a7b9cc9803b2a23793b3e83ecebbd7f841ca6503d50a7cdfb82c11c7aba50",
+    "docs/design-docs/history-replay/intent/acceptance.toml": "f085954bb52782a08bbaa3cddf075138fb192a321cd618e0ecaf201b4bf0f4ff",
+    "docs/design-docs/history-replay/intent/summary.md": "b64db88257f33a156093690caf8007c19ed7e45008d4d4cb999b28a249139314",
+    "docs/design-docs/history-replay/open-questions.toml": "d8b62360b085ef790c7db92a7b050544d51f521e2cc3a8652e13748086cedcdd",
+    "docs/design-docs/history-replay/requirements/glossary.md": "45eb43212609627f25718bbd029e51609d9bd5bb03f13b65738a9a3b61499ff9",
+    "docs/design-docs/history-replay/requirements/requirements.toml": "4436e921c15f50910b216c653ce5843b61905151c662d7c22aa243631cb07b3e",
+    "docs/design-docs/history-replay/spec.toml": "de2fb876c959ac557571ffd8a2465da4ce55881f68a20b448a1ca3301fe0c28f",
+    "docs/design-docs/history-replay/structure/architecture.md": "865b16e31023287137e1dea8164f86ab5e981e8e9ecc56641980b3a1a33d9f2e",
+    "docs/design-docs/history-replay/structure/modules.toml": "f9f10bfe54f267c1f2188f8951a37960c43dfb9a9ca36f2b594313207cc35875",
+    "docs/design-docs/history-replay/tests/tests.toml": "65e2a3acb95d0cdb799e9c638c4d2a7af192c7e841804946d3d135ebf8d17bed",
+    "docs/design-docs/history-replay/traceability.toml": "22adb296e550ebf45c0deecee892dbbdd2f2483fd2042e9c2a81f673f78e55cb",
+    "docs/design-docs/history-replay/verification/authority-boundary.md": "80cdeaf738a8f6340afcb0a2d58e77f815b45b315c5e26cd72320962afd6b5e3",
+    "docs/design-docs/history-replay/verification/bounds.md": "5dbf09e02bd9160a1bf0313b32167d3e6b5e314db7d5ce58046f1902c74dae2c",
+    "docs/design-docs/history-replay/verification/catalog.toml": "f81e656b0a5b4d70b637508e6e69a800f9da2af8e6a0f3123bffafa44e3e1ed7",
+    "docs/design-docs/history-replay/verification/native-matrix.md": "13f1bf4bcf6ee792b89751e752b2d2c865a7e3800458f18688c90c891fb4e83c",
+    "docs/design-docs/history-replay/verification/resource-workload.md": "1980d513f9b71bbf9b579c45164c35be0703f6d0551c12222a15b282098bc75d",
+    "docs/design-docs/history-replay/verification/rewind-overflow-oracle.rs": "7576559286bc3bda695695b4097e51704e1f0320daf046dfbb12abd3193dc0c7",
+    "docs/design-docs/history-replay/verification/rewind-overflow-qualification.json": "7276e64daed7e6b7d1842c0b279390544dfb2b352908a467444efbe1a9335822",
+    "docs/design-docs/history-replay/verification/test-efficacy.md": "22cd6939bf78b979dde4f1040f29d6115bacee1947b408948a4d4f0de6d60c69",
+    "docs/design-docs/history-replay/validation/test-lock.json": "80f48203f95dde2d526ba59e5cc3a8ce9f9fa5bf0d8fd85a7af5d77f8bf174f5",
+    "docs/design-docs/history-replay/validation/design-execution.json": "481803eb850c472f54cfa1858771b0f4f6379d3ae5eaa00436b4405f56904e6a",
+    "docs/design-docs/observation-delivery/implementation/resource_probe.py": "ab851ab12ec6f54ee52baec37b0b59b80f8db069b5a92179c3f12f23cc9b924c"
+  },
+  "generated_after": {
+    "Cargo.toml": {
+      "sha256": "f5269a67231a879b5485cf018a6117446aaae21ef418f2925fae69cf6465c4ce",
+      "bytes": 271
+    },
+    "Cargo.lock": {
+      "sha256": "1c3f213773387a6134c0650a77b3dc8653fa99c1dbaa4a6cad8608871e435434",
+      "bytes": 12240
+    },
+    "src/main.rs": {
+      "sha256": "80714dcb34e4b0f8e095f5e5f209b6b3748b144d89fc4c2e5e9e6ef137d284b0",
+      "bytes": 13312
+    }
+  },
+  "closure_after": {
+    "root": [
+      {
+        "name": "anstream",
+        "version": "1.0.0",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "824a212faf96e9acacdbd09febd34438f8f711fb84e09a8916013cd7815ca28d",
+        "dependencies": [
+          "anstyle",
+          "anstyle-parse",
+          "anstyle-query",
+          "anstyle-wincon",
+          "colorchoice",
+          "is_terminal_polyfill",
+          "utf8parse"
+        ]
+      },
+      {
+        "name": "anstyle",
+        "version": "1.0.14",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "940b3a0ca603d1eade50a4846a2afffd5ef57a9feac2c0e2ec2e14f9ead76000"
+      },
+      {
+        "name": "anstyle-parse",
+        "version": "1.0.0",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "52ce7f38b242319f7cabaa6813055467063ecdc9d355bbb4ce0c68908cd8130e",
+        "dependencies": [
+          "utf8parse"
+        ]
+      },
+      {
+        "name": "anstyle-query",
+        "version": "1.1.5",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "40c48f72fd53cd289104fc64099abca73db4166ad86ea0b4341abe65af83dadc",
+        "dependencies": [
+          "windows-sys"
+        ]
+      },
+      {
+        "name": "anstyle-wincon",
+        "version": "3.0.11",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "291e6a250ff86cd4a820112fb8898808a366d8f9f58ce16d1f538353ad55747d",
+        "dependencies": [
+          "anstyle",
+          "once_cell_polyfill",
+          "windows-sys"
+        ]
+      },
+      {
+        "name": "approx",
+        "version": "0.5.1",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "cab112f0a86d568ea0e627cc1d6be74a1e9cd55214684db5561995f6dad897c6",
+        "dependencies": [
+          "num-traits"
+        ]
+      },
+      {
+        "name": "autocfg",
+        "version": "1.5.1",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "f2032f911046de80f0a198e0901378627c33f59ea0ac00e363d481118bd70a53"
+      },
+      {
+        "name": "bytemuck",
+        "version": "1.25.2",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "95832e849adfb21180ccb6826a99da14e5d266ae5c2e668e1602cf234f153797"
+      },
+      {
+        "name": "cfg-if",
+        "version": "1.0.5",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "4e7648175b45a9a48536d676f68d918270699102aa8dab5496df06904c914600"
+      },
+      {
+        "name": "clap",
+        "version": "4.6.7",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "aa8876b300ab35ba921adea3dfd70157a46249b33f95c9084ae5709785478946",
+        "dependencies": [
+          "clap_builder",
+          "clap_derive"
+        ]
+      },
+      {
+        "name": "clap_builder",
+        "version": "4.6.7",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "ec0797fb7aeb1406c84efac526901f7ec3ead2124f946b494e72879d4b54704d",
+        "dependencies": [
+          "anstream",
+          "anstyle",
+          "clap_lex",
+          "strsim"
+        ]
+      },
+      {
+        "name": "clap_derive",
+        "version": "4.6.7",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "f9c751b79415d4e559e3d1fcf128e09e720eb673a06d26cf6f392d37d75b66e0",
+        "dependencies": [
+          "heck",
+          "proc-macro2",
+          "quote",
+          "syn 3.0.9"
+        ]
+      },
+      {
+        "name": "clap_lex",
+        "version": "1.1.1",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "1c133bc6a41be0d194c306b5506d15e6feeea7b1d6604bd3f8310dfb2ca96486"
+      },
+      {
+        "name": "colorchoice",
+        "version": "1.0.5",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "1d07550c9036bf2ae0c684c4297d503f838287c83c53686d05370d0e139ae570"
+      },
+      {
+        "name": "getrandom",
+        "version": "0.4.3",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "300e883d756b2e4ec94e02791f39b04b522276138852cfc41d9fb7e904106099",
+        "dependencies": [
+          "cfg-if",
+          "libc",
+          "r-efi"
+        ]
+      },
+      {
+        "name": "glam",
+        "version": "0.30.10",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "19fc433e8437a212d1b6f1e68c7824af3aed907da60afa994e7f542d18d12aa9"
+      },
+      {
+        "name": "glam",
+        "version": "0.31.1",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "556f6b2ea90b8d15a74e0e7bb41671c9bdf38cd9f78c284d750b9ce58a2b5be7"
+      },
+      {
+        "name": "glam",
+        "version": "0.32.1",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "f70749695b063ecbf6b62949ccccde2e733ec3ecbbd71d467dca4e5c6c97cca0"
+      },
+      {
+        "name": "glam",
+        "version": "0.33.12",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "37bfe73dc8ec21f54d181e5a60554327ec3f1c600c455a75ccbfc65d2106a6c4"
+      },
+      {
+        "name": "heck",
+        "version": "0.5.0",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "2304e00983f87ffb38b55b444b5e3b60a884b5d30c0fca7d82fe33449bbe55ea"
+      },
+      {
+        "name": "is_terminal_polyfill",
+        "version": "1.70.2",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "a6cb138bb79a146c1bd460005623e142ef0181e3d0219cb493e02f7d08a35695"
+      },
+      {
+        "name": "libc",
+        "version": "0.2.190",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "ce5d3ddc6d3fa000eb1536d85e147bfe31aacaba692ed6a876f95cb7c855be78"
+      },
+      {
+        "name": "libm",
+        "version": "0.2.16",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "b6d2cec3eae94f9f509c767b45932f1ada8350c4bdb85af2fcab4a3c14807981"
+      },
+      {
+        "name": "matrixmultiply",
+        "version": "0.3.11",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "3f607c237553f086e7043417a51df26b2eb899d3caff94e6a67592ff992fedc7",
+        "dependencies": [
+          "autocfg",
+          "rawpointer"
+        ]
+      },
+      {
+        "name": "nalgebra",
+        "version": "0.35.0",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "adc43a60c217b0c6ff46e47f26911015ad8d2e5a8be1af668c67e370d99a4346",
+        "dependencies": [
+          "approx",
+          "glam 0.30.10",
+          "glam 0.31.1",
+          "glam 0.32.1",
+          "glam 0.33.12",
+          "matrixmultiply",
+          "num-complex",
+          "num-rational",
+          "num-traits",
+          "simba",
+          "typenum"
+        ]
+      },
+      {
+        "name": "num-bigint",
+        "version": "0.4.8",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "c89e69e7e0f03bea5ef08013795c25018e101932225a656383bd384495ecc367",
+        "dependencies": [
+          "num-integer",
+          "num-traits"
+        ]
+      },
+      {
+        "name": "num-complex",
+        "version": "0.4.6",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "73f88a1307638156682bada9d7604135552957b7818057dcef22705b4d509495",
+        "dependencies": [
+          "num-traits"
+        ]
+      },
+      {
+        "name": "num-integer",
+        "version": "0.1.47",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "7ce2d95d4b3734dc35aa2f45e1aa22cd416814592a4f9d9205e11affd5b8e10b",
+        "dependencies": [
+          "num-traits"
+        ]
+      },
+      {
+        "name": "num-rational",
+        "version": "0.4.2",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "f83d14da390562dca69fc84082e73e548e1ad308d24accdedd2720017cb37824",
+        "dependencies": [
+          "num-bigint",
+          "num-integer",
+          "num-traits"
+        ]
+      },
+      {
+        "name": "num-traits",
+        "version": "0.2.19",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "071dfc062690e90b734c0b2273ce72ad0ffa95f0c74596bc250dcfd960262841",
+        "dependencies": [
+          "autocfg",
+          "libm"
+        ]
+      },
+      {
+        "name": "once_cell_polyfill",
+        "version": "1.70.2",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "384b8ab6d37215f3c5301a95a4accb5d64aa607f1fcb26a11b5303878451b4fe"
+      },
+      {
+        "name": "ppv-lite86",
+        "version": "0.2.21",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "85eae3c4ed2f50dcfe72643da4befc30deadb458a9b590d720cde2f2b1e97da9",
+        "dependencies": [
+          "zerocopy"
+        ]
+      },
+      {
+        "name": "proc-macro2",
+        "version": "1.0.107",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "985e7ec9bb745e6ce6535b544d84d6cd6f7ad8bd711c398938ae983b91a766d9",
+        "dependencies": [
+          "unicode-ident"
+        ]
+      },
+      {
+        "name": "quote",
+        "version": "1.0.47",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "1fbf4db142a473a8d80c26bbf18454ed458bf8d26c8219c331daecfdbd079001",
+        "dependencies": [
+          "proc-macro2"
+        ]
+      },
+      {
+        "name": "r-efi",
+        "version": "6.0.0",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "f8dcc9c7d52a811697d2151c701e0d08956f92b0e24136cf4cf27b57a6a0d9bf"
+      },
+      {
+        "name": "rand",
+        "version": "0.10.3",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "65c9fb96cbc91e3478eaae79a69fcd3f1ae4ad052e471fe6732fff548984b4af",
+        "dependencies": [
+          "getrandom",
+          "rand_core"
+        ]
+      },
+      {
+        "name": "rand_chacha",
+        "version": "0.10.0",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "3e6af7f3e25ded52c41df4e0b1af2d047e45896c2f3281792ed68a1c243daedb",
+        "dependencies": [
+          "ppv-lite86",
+          "rand_core"
+        ]
+      },
+      {
+        "name": "rand_core",
+        "version": "0.10.1",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "63b8176103e19a2643978565ca18b50549f6101881c443590420e4dc998a3c69"
+      },
+      {
+        "name": "rand_distr",
+        "version": "0.6.0",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "4d431c2703ccf129de4d45253c03f49ebb22b97d6ad79ee3ecfc7e3f4862c1d8",
+        "dependencies": [
+          "num-traits",
+          "rand"
+        ]
+      },
+      {
+        "name": "rawpointer",
+        "version": "0.2.1",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "60a357793950651c4ed0f3f52338f53b2f809f32d83a07f72909fa13e4c6c1e3"
+      },
+      {
+        "name": "safe_arch",
+        "version": "1.2.0",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "42c6efa15875e6ecb39ca61fb0b0c1a40b84fac5a5ffe71eef7d1000c8eb3f5f",
+        "dependencies": [
+          "bytemuck"
+        ]
+      },
+      {
+        "name": "simba",
+        "version": "0.10.2",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "f1a7200d82ff1c7b4235efd12f11e2537a402c91cf83a5cb97ce80eef787fde7",
+        "dependencies": [
+          "approx",
+          "num-complex",
+          "num-traits",
+          "wide"
+        ]
+      },
+      {
+        "name": "strsim",
+        "version": "0.11.1",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "7da8b5736845d9f2fcb837ea5d9e2628564b3b043a70948a3f0b778838c5fb4f"
+      },
+      {
+        "name": "syn",
+        "version": "2.0.119",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "872831b642d1a07999a962a351ed35b955ea2cfc8f3862091e2a240a84f17297",
+        "dependencies": [
+          "proc-macro2",
+          "quote",
+          "unicode-ident"
+        ]
+      },
+      {
+        "name": "syn",
+        "version": "3.0.9",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "d78c8dee4c7bf0e14673097256fed6142ce9d3b85a408189d07482442145823b",
+        "dependencies": [
+          "proc-macro2",
+          "quote",
+          "unicode-ident"
+        ]
+      },
+      {
+        "name": "typenum",
+        "version": "1.20.1",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "b6f5e870be6c3b371b77fe0ee0bafb859fa4964b4404c27de1d380043c4dda20"
+      },
+      {
+        "name": "unicode-ident",
+        "version": "1.0.27",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "a2c754d6c33795a1c324727428e5a7dedb5b06195f9890bdbcba760d3e246563"
+      },
+      {
+        "name": "utf8parse",
+        "version": "0.2.2",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "06abde3611657adf66d383f00b093d7faecc7fa57071cce2578660c9f1010821"
+      },
+      {
+        "name": "wide",
+        "version": "1.7.1",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "d920ac99c3c8edce110cb8d07dbb324d6d026011dce85b1e9355b70f0adacc4f",
+        "dependencies": [
+          "bytemuck",
+          "safe_arch"
+        ]
+      },
+      {
+        "name": "windows-link",
+        "version": "0.2.1",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "f0805222e57f7521d6a62e36fa9163bc891acd422f971defe97d64e70d0a4fe5"
+      },
+      {
+        "name": "windows-sys",
+        "version": "0.61.2",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "ae137229bcbd6cdf0f7b80a31df61766145077ddf49416a728b02cb3921ff3fc",
+        "dependencies": [
+          "windows-link"
+        ]
+      },
+      {
+        "name": "zerocopy",
+        "version": "0.8.63",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "e5fe1f8f1b06191a00962174c61aa5005e0bb391a6d80d07e24d115c01a92ed8",
+        "dependencies": [
+          "zerocopy-derive"
+        ]
+      },
+      {
+        "name": "zerocopy-derive",
+        "version": "0.8.63",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "863ad3ac83293fb4d740aedbfdc9240dd8d1a50c1099acd76ce80ce7c7230c7f",
+        "dependencies": [
+          "proc-macro2",
+          "quote",
+          "syn 2.0.119"
+        ]
+      }
+    ],
+    "generated": [
+      {
+        "name": "anstream",
+        "version": "1.0.0",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "824a212faf96e9acacdbd09febd34438f8f711fb84e09a8916013cd7815ca28d",
+        "dependencies": [
+          "anstyle",
+          "anstyle-parse",
+          "anstyle-query",
+          "anstyle-wincon",
+          "colorchoice",
+          "is_terminal_polyfill",
+          "utf8parse"
+        ]
+      },
+      {
+        "name": "anstyle",
+        "version": "1.0.14",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "940b3a0ca603d1eade50a4846a2afffd5ef57a9feac2c0e2ec2e14f9ead76000"
+      },
+      {
+        "name": "anstyle-parse",
+        "version": "1.0.0",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "52ce7f38b242319f7cabaa6813055467063ecdc9d355bbb4ce0c68908cd8130e",
+        "dependencies": [
+          "utf8parse"
+        ]
+      },
+      {
+        "name": "anstyle-query",
+        "version": "1.1.5",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "40c48f72fd53cd289104fc64099abca73db4166ad86ea0b4341abe65af83dadc",
+        "dependencies": [
+          "windows-sys"
+        ]
+      },
+      {
+        "name": "anstyle-wincon",
+        "version": "3.0.11",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "291e6a250ff86cd4a820112fb8898808a366d8f9f58ce16d1f538353ad55747d",
+        "dependencies": [
+          "anstyle",
+          "once_cell_polyfill",
+          "windows-sys"
+        ]
+      },
+      {
+        "name": "approx",
+        "version": "0.5.1",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "cab112f0a86d568ea0e627cc1d6be74a1e9cd55214684db5561995f6dad897c6",
+        "dependencies": [
+          "num-traits"
+        ]
+      },
+      {
+        "name": "autocfg",
+        "version": "1.5.1",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "f2032f911046de80f0a198e0901378627c33f59ea0ac00e363d481118bd70a53"
+      },
+      {
+        "name": "bytemuck",
+        "version": "1.25.2",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "95832e849adfb21180ccb6826a99da14e5d266ae5c2e668e1602cf234f153797"
+      },
+      {
+        "name": "cfg-if",
+        "version": "1.0.5",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "4e7648175b45a9a48536d676f68d918270699102aa8dab5496df06904c914600"
+      },
+      {
+        "name": "clap",
+        "version": "4.6.7",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "aa8876b300ab35ba921adea3dfd70157a46249b33f95c9084ae5709785478946",
+        "dependencies": [
+          "clap_builder",
+          "clap_derive"
+        ]
+      },
+      {
+        "name": "clap_builder",
+        "version": "4.6.7",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "ec0797fb7aeb1406c84efac526901f7ec3ead2124f946b494e72879d4b54704d",
+        "dependencies": [
+          "anstream",
+          "anstyle",
+          "clap_lex",
+          "strsim"
+        ]
+      },
+      {
+        "name": "clap_derive",
+        "version": "4.6.7",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "f9c751b79415d4e559e3d1fcf128e09e720eb673a06d26cf6f392d37d75b66e0",
+        "dependencies": [
+          "heck",
+          "proc-macro2",
+          "quote",
+          "syn 3.0.9"
+        ]
+      },
+      {
+        "name": "clap_lex",
+        "version": "1.1.1",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "1c133bc6a41be0d194c306b5506d15e6feeea7b1d6604bd3f8310dfb2ca96486"
+      },
+      {
+        "name": "colorchoice",
+        "version": "1.0.5",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "1d07550c9036bf2ae0c684c4297d503f838287c83c53686d05370d0e139ae570"
+      },
+      {
+        "name": "getrandom",
+        "version": "0.4.3",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "300e883d756b2e4ec94e02791f39b04b522276138852cfc41d9fb7e904106099",
+        "dependencies": [
+          "cfg-if",
+          "libc",
+          "r-efi"
+        ]
+      },
+      {
+        "name": "glam",
+        "version": "0.30.10",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "19fc433e8437a212d1b6f1e68c7824af3aed907da60afa994e7f542d18d12aa9"
+      },
+      {
+        "name": "glam",
+        "version": "0.31.1",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "556f6b2ea90b8d15a74e0e7bb41671c9bdf38cd9f78c284d750b9ce58a2b5be7"
+      },
+      {
+        "name": "glam",
+        "version": "0.32.1",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "f70749695b063ecbf6b62949ccccde2e733ec3ecbbd71d467dca4e5c6c97cca0"
+      },
+      {
+        "name": "glam",
+        "version": "0.33.12",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "37bfe73dc8ec21f54d181e5a60554327ec3f1c600c455a75ccbfc65d2106a6c4"
+      },
+      {
+        "name": "heck",
+        "version": "0.5.0",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "2304e00983f87ffb38b55b444b5e3b60a884b5d30c0fca7d82fe33449bbe55ea"
+      },
+      {
+        "name": "is_terminal_polyfill",
+        "version": "1.70.2",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "a6cb138bb79a146c1bd460005623e142ef0181e3d0219cb493e02f7d08a35695"
+      },
+      {
+        "name": "libc",
+        "version": "0.2.190",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "ce5d3ddc6d3fa000eb1536d85e147bfe31aacaba692ed6a876f95cb7c855be78"
+      },
+      {
+        "name": "libm",
+        "version": "0.2.16",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "b6d2cec3eae94f9f509c767b45932f1ada8350c4bdb85af2fcab4a3c14807981"
+      },
+      {
+        "name": "matrixmultiply",
+        "version": "0.3.11",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "3f607c237553f086e7043417a51df26b2eb899d3caff94e6a67592ff992fedc7",
+        "dependencies": [
+          "autocfg",
+          "rawpointer"
+        ]
+      },
+      {
+        "name": "nalgebra",
+        "version": "0.35.0",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "adc43a60c217b0c6ff46e47f26911015ad8d2e5a8be1af668c67e370d99a4346",
+        "dependencies": [
+          "approx",
+          "glam 0.30.10",
+          "glam 0.31.1",
+          "glam 0.32.1",
+          "glam 0.33.12",
+          "matrixmultiply",
+          "num-complex",
+          "num-rational",
+          "num-traits",
+          "simba",
+          "typenum"
+        ]
+      },
+      {
+        "name": "num-bigint",
+        "version": "0.4.8",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "c89e69e7e0f03bea5ef08013795c25018e101932225a656383bd384495ecc367",
+        "dependencies": [
+          "num-integer",
+          "num-traits"
+        ]
+      },
+      {
+        "name": "num-complex",
+        "version": "0.4.6",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "73f88a1307638156682bada9d7604135552957b7818057dcef22705b4d509495",
+        "dependencies": [
+          "num-traits"
+        ]
+      },
+      {
+        "name": "num-integer",
+        "version": "0.1.47",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "7ce2d95d4b3734dc35aa2f45e1aa22cd416814592a4f9d9205e11affd5b8e10b",
+        "dependencies": [
+          "num-traits"
+        ]
+      },
+      {
+        "name": "num-rational",
+        "version": "0.4.2",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "f83d14da390562dca69fc84082e73e548e1ad308d24accdedd2720017cb37824",
+        "dependencies": [
+          "num-bigint",
+          "num-integer",
+          "num-traits"
+        ]
+      },
+      {
+        "name": "num-traits",
+        "version": "0.2.19",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "071dfc062690e90b734c0b2273ce72ad0ffa95f0c74596bc250dcfd960262841",
+        "dependencies": [
+          "autocfg",
+          "libm"
+        ]
+      },
+      {
+        "name": "once_cell_polyfill",
+        "version": "1.70.2",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "384b8ab6d37215f3c5301a95a4accb5d64aa607f1fcb26a11b5303878451b4fe"
+      },
+      {
+        "name": "ppv-lite86",
+        "version": "0.2.21",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "85eae3c4ed2f50dcfe72643da4befc30deadb458a9b590d720cde2f2b1e97da9",
+        "dependencies": [
+          "zerocopy"
+        ]
+      },
+      {
+        "name": "proc-macro2",
+        "version": "1.0.107",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "985e7ec9bb745e6ce6535b544d84d6cd6f7ad8bd711c398938ae983b91a766d9",
+        "dependencies": [
+          "unicode-ident"
+        ]
+      },
+      {
+        "name": "quote",
+        "version": "1.0.47",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "1fbf4db142a473a8d80c26bbf18454ed458bf8d26c8219c331daecfdbd079001",
+        "dependencies": [
+          "proc-macro2"
+        ]
+      },
+      {
+        "name": "r-efi",
+        "version": "6.0.0",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "f8dcc9c7d52a811697d2151c701e0d08956f92b0e24136cf4cf27b57a6a0d9bf"
+      },
+      {
+        "name": "rand",
+        "version": "0.10.3",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "65c9fb96cbc91e3478eaae79a69fcd3f1ae4ad052e471fe6732fff548984b4af",
+        "dependencies": [
+          "getrandom",
+          "rand_core"
+        ]
+      },
+      {
+        "name": "rand_chacha",
+        "version": "0.10.0",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "3e6af7f3e25ded52c41df4e0b1af2d047e45896c2f3281792ed68a1c243daedb",
+        "dependencies": [
+          "ppv-lite86",
+          "rand_core"
+        ]
+      },
+      {
+        "name": "rand_core",
+        "version": "0.10.1",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "63b8176103e19a2643978565ca18b50549f6101881c443590420e4dc998a3c69"
+      },
+      {
+        "name": "rand_distr",
+        "version": "0.6.0",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "4d431c2703ccf129de4d45253c03f49ebb22b97d6ad79ee3ecfc7e3f4862c1d8",
+        "dependencies": [
+          "num-traits",
+          "rand"
+        ]
+      },
+      {
+        "name": "rawpointer",
+        "version": "0.2.1",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "60a357793950651c4ed0f3f52338f53b2f809f32d83a07f72909fa13e4c6c1e3"
+      },
+      {
+        "name": "safe_arch",
+        "version": "1.2.0",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "42c6efa15875e6ecb39ca61fb0b0c1a40b84fac5a5ffe71eef7d1000c8eb3f5f",
+        "dependencies": [
+          "bytemuck"
+        ]
+      },
+      {
+        "name": "simba",
+        "version": "0.10.2",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "f1a7200d82ff1c7b4235efd12f11e2537a402c91cf83a5cb97ce80eef787fde7",
+        "dependencies": [
+          "approx",
+          "num-complex",
+          "num-traits",
+          "wide"
+        ]
+      },
+      {
+        "name": "strsim",
+        "version": "0.11.1",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "7da8b5736845d9f2fcb837ea5d9e2628564b3b043a70948a3f0b778838c5fb4f"
+      },
+      {
+        "name": "syn",
+        "version": "2.0.119",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "872831b642d1a07999a962a351ed35b955ea2cfc8f3862091e2a240a84f17297",
+        "dependencies": [
+          "proc-macro2",
+          "quote",
+          "unicode-ident"
+        ]
+      },
+      {
+        "name": "syn",
+        "version": "3.0.9",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "d78c8dee4c7bf0e14673097256fed6142ce9d3b85a408189d07482442145823b",
+        "dependencies": [
+          "proc-macro2",
+          "quote",
+          "unicode-ident"
+        ]
+      },
+      {
+        "name": "typenum",
+        "version": "1.20.1",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "b6f5e870be6c3b371b77fe0ee0bafb859fa4964b4404c27de1d380043c4dda20"
+      },
+      {
+        "name": "unicode-ident",
+        "version": "1.0.27",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "a2c754d6c33795a1c324727428e5a7dedb5b06195f9890bdbcba760d3e246563"
+      },
+      {
+        "name": "utf8parse",
+        "version": "0.2.2",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "06abde3611657adf66d383f00b093d7faecc7fa57071cce2578660c9f1010821"
+      },
+      {
+        "name": "wide",
+        "version": "1.7.1",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "d920ac99c3c8edce110cb8d07dbb324d6d026011dce85b1e9355b70f0adacc4f",
+        "dependencies": [
+          "bytemuck",
+          "safe_arch"
+        ]
+      },
+      {
+        "name": "windows-link",
+        "version": "0.2.1",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "f0805222e57f7521d6a62e36fa9163bc891acd422f971defe97d64e70d0a4fe5"
+      },
+      {
+        "name": "windows-sys",
+        "version": "0.61.2",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "ae137229bcbd6cdf0f7b80a31df61766145077ddf49416a728b02cb3921ff3fc",
+        "dependencies": [
+          "windows-link"
+        ]
+      },
+      {
+        "name": "zerocopy",
+        "version": "0.8.63",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "e5fe1f8f1b06191a00962174c61aa5005e0bb391a6d80d07e24d115c01a92ed8",
+        "dependencies": [
+          "zerocopy-derive"
+        ]
+      },
+      {
+        "name": "zerocopy-derive",
+        "version": "0.8.63",
+        "source": "registry+https://github.com/rust-lang/crates.io-index",
+        "checksum": "863ad3ac83293fb4d740aedbfdc9240dd8d1a50c1099acd76ce80ce7c7230c7f",
+        "dependencies": [
+          "proc-macro2",
+          "quote",
+          "syn 2.0.119"
+        ]
+      }
+    ]
+  },
+  "fence_released": true
+}

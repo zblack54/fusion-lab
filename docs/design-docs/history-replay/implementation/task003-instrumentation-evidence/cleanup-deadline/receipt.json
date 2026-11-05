@@ -1,0 +1,130 @@
+{
+  "success": true,
+  "classification": "NONNUMERICAL_CLEANUP_PROOF",
+  "sampler_sha256": "73dfd000179906813a4960612300988910bd5b314af9273827f615e961a69976",
+  "cleanup_probe_sha256": "e155d5031e4fb48238411b49c550512c001c161e9faa427b9ae7dc771f28d085",
+  "owner_helper_sha256": "ab851ab12ec6f54ee52baec37b0b59b80f8db069b5a92179c3f12f23cc9b924c",
+  "transient": {
+    "passed": true,
+    "classification": "NONNUMERICAL_CLEANUP_PROOF_NOT_RESOURCE_MEASUREMENT",
+    "persistent": false,
+    "actual_child_pid": 132728,
+    "injected_operation_counts": {
+      "poll": 2,
+      "kill": 2,
+      "wait": 2
+    },
+    "observations": {
+      "memory_handle_closed_after_reap": true
+    },
+    "original_error": "RuntimeError('original injected workload error')",
+    "reap_confirmed": true
+  },
+  "persistent": {
+    "passed": true,
+    "classification": "NONNUMERICAL_CLEANUP_PROOF_NOT_RESOURCE_MEASUREMENT",
+    "persistent": true,
+    "actual_child_pid": 145240,
+    "injected_operation_counts": {
+      "poll": 4,
+      "kill": 4,
+      "wait": 4
+    },
+    "observations": {
+      "next_job_blocked_by_exclusive_fence": true,
+      "durable_pending_same_child": {
+        "argv": [
+          "C:\\Users\\Admin\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+          "-c",
+          "import time; time.sleep(60)"
+        ],
+        "workload": {
+          "profile": "NONNUMERICAL",
+          "duration_seconds": 1,
+          "numerical": false
+        },
+        "watchdog_seconds": 180,
+        "product_seconds": 120,
+        "product_bytes": 805306368,
+        "classification": "NONNUMERICAL_CLEANUP_PROOF",
+        "pid": 145240,
+        "success": false,
+        "error": "RuntimeError('original injected workload error')",
+        "cleanup_owned_pid": 145240,
+        "reap_confirmed": false,
+        "cleanup_cycle": 1,
+        "cleanup_attempt": 3,
+        "cleanup_error_count": 9,
+        "cleanup_errors": [
+          {
+            "operation": "poll",
+            "error": "OSError('injected poll failure')"
+          },
+          {
+            "operation": "kill",
+            "error": "OSError('injected kill failure')"
+          },
+          {
+            "operation": "wait_reap",
+            "error": "OSError('injected wait failure')"
+          },
+          {
+            "operation": "poll",
+            "error": "OSError('injected poll failure')"
+          },
+          {
+            "operation": "kill",
+            "error": "OSError('injected kill failure')"
+          },
+          {
+            "operation": "wait_reap",
+            "error": "OSError('injected wait failure')"
+          },
+          {
+            "operation": "poll",
+            "error": "OSError('injected poll failure')"
+          },
+          {
+            "operation": "kill",
+            "error": "OSError('injected kill failure')"
+          },
+          {
+            "operation": "wait_reap",
+            "error": "OSError('injected wait failure')"
+          }
+        ],
+        "latest_cleanup_error": {
+          "operation": "wait_reap",
+          "error": "OSError('injected wait failure')"
+        },
+        "kill_attempted": true,
+        "cleanup_status": "owned_pending",
+        "manual_reconciliation_required": true,
+        "same_child_and_memory_handle_retained": true,
+        "original_error_preserved": "RuntimeError('original injected workload error')",
+        "no_next_workload_until_reaped": true
+      },
+      "memory_handle_closed_after_reap": true
+    },
+    "original_error": "RuntimeError('original injected workload error')",
+    "reap_confirmed": true
+  },
+  "command_original_error": "RuntimeError('owned command failed')",
+  "command_failure_retained_fence": {
+    "token": "30ecbb5e065f8b2448f252c7d1fd34e0",
+    "owner_pid": 146508,
+    "status": "manual_reconciliation_required",
+    "output": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\history-task003-cleanup-deadline",
+    "baseline_digest": "8c57cf49bd99b927012ac7215ea44688bc8cde928ea6b233a2f37abc41f13095",
+    "child_pid": 145672,
+    "child_argv": [
+      "C:\\Users\\Admin\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "-c",
+      "raise SystemExit(7)"
+    ],
+    "pending_receipt": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\history-task003-cleanup-deadline\\command-failure.failure.pending.json",
+    "compiler_descendants_unverified": true
+  },
+  "explicit_fixture_reconciliation": "known SystemExit-only child; confirmed exit7/reap; no compiler executed",
+  "fence_released": true
+}
