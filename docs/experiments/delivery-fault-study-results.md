@@ -1,6 +1,6 @@
 # Delivery faults and bounded history correction
 
-Issue #8 compared stale-drop (W0) with a 500-tick history window (W500) on the same observations in healthy, delay-only, loss-only, and combined arms. The [frozen protocol](delivery-fault-study-protocol.md) specifies the 100 paired seeds and analysis. This run produced all 800 required records on Windows with Rust 1.99.0. The driver verified transport parity between policies in every arm and bitwise snapshot parity in the healthy and loss-only arms.
+Issue #8 was completed in [PR #84](https://github.com/zblack54/fusion-lab/pull/84) at `ea787ec0ea3358683f230bca2835340d6ae7312a`. All 30 hosted checks passed. The study compared stale-drop (W0) with a 500-tick history window (W500) on the same observations in healthy, delay-only, loss-only, and combined arms. The [frozen protocol](delivery-fault-study-protocol.md) specifies the 100 paired seeds and analysis. This run produced all 800 required records on Windows with Rust 1.99.0. The driver verified transport parity between policies in every arm and bitwise snapshot parity in the healthy and loss-only arms.
 
 | Scenario | Combined-arm RMSE difference, W500 − W0 | 95% paired bootstrap interval |
 | --- | ---: | ---: |
