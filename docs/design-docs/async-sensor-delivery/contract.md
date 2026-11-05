@@ -34,3 +34,7 @@ Use a private test rendezvous at closure and dequeue claim. Control phases with 
 The replay fixture records each offer ordinal, original observation bits and admission result, plus the terminal report. FIFO can include repeated IDs and sample ticks out of order. This record is separate from the existing Trace format. Replaying the attempted failing item is opt-in and assumes a fresh deterministic consumer in equivalent initial state.
 
 The owner is thread-affine. This prevents the callback from moving the owner onto its own worker and attempting a self-join. The caller owns any playback record.
+
+Callbacks must return or unwind and the captured consumer must have a non-panicking destructor. A callback panic publishes closure before the worker disposes of the caught payload. If that payload destructor unwinds, the worker contains it and retains the original terminal classification.
+
+Run the controlled tests with `cargo test --locked --offline async_delivery`. They cover saturation, drain, cancellation after claim, active owner drop, failure publication, panic payload disposal and bitwise FIFO playback under two schedules.

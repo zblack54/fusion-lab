@@ -76,6 +76,7 @@ struct Shared {
 
 /// Owns one delivery worker. Keep the owner on its creating thread.
 /// Callbacks must eventually return so shutdown can join the worker.
+/// The captured consumer must have a non-panicking destructor.
 pub struct AsyncDelivery<E> {
     shared: Arc<Shared>,
     capacity: usize,
@@ -87,7 +88,20 @@ impl<E: Send + 'static> AsyncDelivery<E> {
     /// Start a worker with room for the given number of waiting observations.
     pub fn start(
         capacity: usize,
+        consume: impl FnMut(Observation) -> Result<(), E> + Send + 'static,
+    ) -> Result<Self, StartError> {
+        Self::start_inner(
+            capacity,
+            consume,
+            #[cfg(test)]
+            || {},
+        )
+    }
+
+    fn start_inner(
+        capacity: usize,
         mut consume: impl FnMut(Observation) -> Result<(), E> + Send + 'static,
+        #[cfg(test)] mut after_claim: impl FnMut() + Send + 'static,
     ) -> Result<Self, StartError> {
         if !(1..=1024).contains(&capacity) {
             return Err(StartError::InvalidCapacity(capacity));
@@ -124,18 +138,32 @@ impl<E: Send + 'static> AsyncDelivery<E> {
                             }
                         }
                     };
+                    #[cfg(test)]
+                    after_claim();
+                    let mut panic_payload = None;
                     let stop = match catch_unwind(AssertUnwindSafe(|| consume(observation))) {
                         Ok(Ok(())) => {
                             completed += 1;
                             continue;
                         }
                         Ok(Err(error)) => Stop::ConsumerError(error),
-                        Err(_) => Stop::ConsumerPanicked,
+                        Err(payload) => {
+                            panic_payload = Some(payload);
+                            Stop::ConsumerPanicked
+                        }
                     };
                     let mut queue = input.queue.lock().unwrap();
                     queue.mode = Mode::Cancel;
                     queue.pending.clear();
-                    return report(&queue, completed, stop);
+                    let report = report(&queue, completed, stop);
+                    drop(queue);
+                    if let Some(payload) = panic_payload
+                        && let Err(nested) = catch_unwind(AssertUnwindSafe(|| drop(payload)))
+                    {
+                        // A second hostile payload has no safe destructor contract.
+                        std::mem::forget(nested);
+                    }
+                    return report;
                 }
             })
             .map_err(StartError::Spawn)?;
@@ -318,5 +346,140 @@ mod tests {
         }
         let owner = AsyncDelivery::start(1, |_| Ok::<_, ()>(())).unwrap();
         assert_eq!(owner.cancel().stop, Stop::Cancelled);
+    }
+
+    #[test]
+    fn claim_before_cancel_may_start_after_close_and_drop_joins() {
+        for drop_owner in [false, true] {
+            let (claimed, claim) = mpsc::channel();
+            let (release, gate) = mpsc::channel();
+            let (calls, called) = mpsc::channel();
+            let mut owner = AsyncDelivery::start_inner(
+                1,
+                move |item: Observation| {
+                    calls.send(item.id().sequence()).unwrap();
+                    Ok::<_, ()>(())
+                },
+                move || {
+                    claimed.send(()).unwrap();
+                    gate.recv_timeout(Duration::from_secs(5)).unwrap();
+                },
+            )
+            .unwrap();
+            assert!(matches!(owner.offer(observation(3)), Offer::Accepted));
+            claim.recv_timeout(Duration::from_secs(5)).unwrap();
+            assert!(matches!(owner.offer(observation(1)), Offer::Accepted));
+            let shared = Arc::clone(&owner.shared);
+            let observer = thread::spawn(move || {
+                let queue = shared.queue.lock().unwrap();
+                let (queue, _) = shared
+                    .ready
+                    .wait_timeout_while(queue, Duration::from_secs(5), |q| q.mode == Mode::Open)
+                    .unwrap();
+                assert!(queue.mode == Mode::Cancel);
+                assert!(queue.pending.is_empty());
+                release.send(()).unwrap();
+            });
+            if drop_owner {
+                drop(owner);
+            } else {
+                let report = owner.cancel();
+                assert_eq!(
+                    report,
+                    DeliveryReport {
+                        accepted: 2,
+                        completed: 1,
+                        discarded: 1,
+                        stop: Stop::Cancelled
+                    }
+                );
+            }
+            observer.join().unwrap();
+            assert_eq!(called.try_recv().unwrap(), 3);
+            assert_eq!(called.try_recv(), Err(mpsc::TryRecvError::Disconnected));
+        }
+    }
+
+    #[test]
+    fn failure_closes_open_admission_even_when_panic_payload_drop_unwinds() {
+        struct HostilePayload;
+        impl Drop for HostilePayload {
+            fn drop(&mut self) {
+                panic!("payload destructor");
+            }
+        }
+        for panics in [false, true] {
+            let (entered, entry) = mpsc::channel();
+            let (release, gate) = mpsc::channel();
+            let mut owner = AsyncDelivery::start(1, move |_| {
+                entered.send(()).unwrap();
+                gate.recv_timeout(Duration::from_secs(5)).unwrap();
+                if panics {
+                    std::panic::panic_any(HostilePayload);
+                }
+                Err(7)
+            })
+            .unwrap();
+            assert!(matches!(owner.offer(observation(3)), Offer::Accepted));
+            entry.recv_timeout(Duration::from_secs(5)).unwrap();
+            assert!(matches!(owner.offer(observation(1)), Offer::Accepted));
+            release.send(()).unwrap();
+            let report = owner.worker.take().unwrap().join().unwrap();
+            assert_eq!(report.accepted, 2);
+            assert_eq!(report.completed, 0);
+            assert_eq!(report.discarded, 1);
+            assert_eq!(
+                report.stop,
+                if panics {
+                    Stop::ConsumerPanicked
+                } else {
+                    Stop::ConsumerError(7)
+                }
+            );
+            assert!(matches!(owner.offer(observation(2)), Offer::Closed(_)));
+        }
+    }
+
+    #[test]
+    fn recorded_inputs_play_back_bitwise_under_two_pacings() {
+        let play = |serial: bool| {
+            let (send, receive) = mpsc::channel();
+            let (release, gate) = mpsc::channel();
+            let mut gate = Some(gate);
+            let mut owner = AsyncDelivery::start(3, move |item: Observation| {
+                if let Some(gate) = gate.take() {
+                    gate.recv_timeout(Duration::from_secs(5)).unwrap();
+                }
+                send.send((
+                    item.id(),
+                    item.sample_tick(),
+                    item.planned_arrival_tick(),
+                    item.value().map(f64::to_bits),
+                ))
+                .unwrap();
+                Ok::<_, ()>(())
+            })
+            .unwrap();
+            let mut output = Vec::new();
+            if serial {
+                release.send(()).unwrap();
+            }
+            for sequence in [3, 1, 1] {
+                assert!(matches!(
+                    owner.offer(observation(sequence)),
+                    Offer::Accepted
+                ));
+                if serial {
+                    output.push(receive.recv_timeout(Duration::from_secs(5)).unwrap());
+                }
+            }
+            if !serial {
+                release.send(()).unwrap();
+            }
+            let report = owner.finish();
+            output.extend(receive);
+            (output, report)
+        };
+        assert_eq!(play(true), play(false));
     }
 }
