@@ -1,6 +1,6 @@
 # Bounded asynchronous observation delivery
 
-Implementation review candidate for issue #6. This slice is a single-producer adapter that runs an observation consumer on an owned worker thread using the Rust standard library. It takes validated Observation values and leaves estimator invocation and persistence to callers.
+Issue #6 shipped in [PR #82](https://github.com/zblack54/fusion-lab/pull/82) at merge revision `54c574321ad3a4ae2c1ac31c66904adca200822a`. Independent review cleared the published source, six controlled local tests passed, and all 30 hosted checks completed without failure. This slice is a single-producer adapter that runs an observation consumer on an owned worker thread using the Rust standard library. It takes validated Observation values and leaves estimator invocation and persistence to callers.
 
 - Start with an explicit capacity from 1 through 1024. The capacity counts waiting observations and excludes the one observation the worker may be processing.
 - Offering never waits for consumer progress. Return Accepted, Full, or Closed. Full and Closed leave ownership of the offered observation with the caller. Process accepted observations in offer order.
