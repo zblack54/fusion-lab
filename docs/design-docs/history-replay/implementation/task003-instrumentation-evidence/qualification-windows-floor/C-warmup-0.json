@@ -1,0 +1,129 @@
+{
+  "argv": [
+    "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\history-task003-qualification-windows-floor\\project\\target\\release\\history-replay-resource-probe.exe",
+    "C",
+    "warmup",
+    "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\history-task003-qualification-windows-floor\\C-warmup-0.artifacts"
+  ],
+  "workload": {
+    "profile": "C",
+    "duration_seconds": 1
+  },
+  "watchdog_seconds": 180,
+  "product_seconds": 120,
+  "product_bytes": 805306368,
+  "classification": "NUMERICAL_RESOURCE_CANDIDATE",
+  "pid": 128204,
+  "seconds_spawn_to_complete_work": 0.014999999897554517,
+  "complete_line": "COMPLETE\t{\"schema\":1,\"profile\":\"C\",\"duration_seconds\":1,\"source_samples\":101,\"observations\":27,\"snapshots_per_result\":101,\"canonical_bytes\":1833,\"canonical_capacity\":2720,\"regenerated_capacity\":2720,\"zero_component_rows\":101,\"repeat_component_rows\":101,\"ledger_rows\":27,\"work_rows\":101,\"logical_payload_minimum_bytes\":137400,\"owned_public_capacity_bytes\":39057,\"source_sample_capacity\":101,\"zero_equality_capacity\":101,\"repeat_equality_capacity\":101,\"ledger_equality_capacity\":27,\"work_equality_capacity\":101,\"model_capacity\":140,\"regenerated_model_capacity\":140,\"prediction_total\":100,\"measurement_total\":6,\"work_maxima\":[1, 1, 102, 6, 203, 11, 1004, 254],\"outcomes\":[0, 0, 6, 0, 0, 21],\"all_equalities_passed\":true}\n",
+  "complete": {
+    "schema": 1,
+    "profile": "C",
+    "duration_seconds": 1,
+    "source_samples": 101,
+    "observations": 27,
+    "snapshots_per_result": 101,
+    "canonical_bytes": 1833,
+    "canonical_capacity": 2720,
+    "regenerated_capacity": 2720,
+    "zero_component_rows": 101,
+    "repeat_component_rows": 101,
+    "ledger_rows": 27,
+    "work_rows": 101,
+    "logical_payload_minimum_bytes": 137400,
+    "owned_public_capacity_bytes": 39057,
+    "source_sample_capacity": 101,
+    "zero_equality_capacity": 101,
+    "repeat_equality_capacity": 101,
+    "ledger_equality_capacity": 27,
+    "work_equality_capacity": 101,
+    "model_capacity": 140,
+    "regenerated_model_capacity": 140,
+    "prediction_total": 100,
+    "measurement_total": 6,
+    "work_maxima": [
+      1,
+      1,
+      102,
+      6,
+      203,
+      11,
+      1004,
+      254
+    ],
+    "outcomes": [
+      0,
+      0,
+      6,
+      0,
+      0,
+      21
+    ],
+    "all_equalities_passed": true
+  },
+  "held_complete_work_memory": {
+    "lifetime_peak_bytes": 3846144,
+    "current_rss_bytes": 3842048,
+    "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+    "units": "bytes",
+    "owned_pid": 128204
+  },
+  "held_hash_deadline_method": "cooperative checks around synchronous reads; an OS call can return after the deadline",
+  "artifacts_at_held_complete_work": {
+    "canonical-before.tsv": {
+      "sha256": "33c187a7b78f14d7d5c97084b425a29797497c7119001a9541e644f35ff2fa9e",
+      "bytes": 1833
+    },
+    "canonical-after.tsv": {
+      "sha256": "33c187a7b78f14d7d5c97084b425a29797497c7119001a9541e644f35ff2fa9e",
+      "bytes": 1833
+    },
+    "model-before.tsv": {
+      "sha256": "313dd38d32feb7cac4d16b93cac89d334bc122feb0e0ef936a2e71853272a061",
+      "bytes": 78
+    },
+    "model-after.tsv": {
+      "sha256": "313dd38d32feb7cac4d16b93cac89d334bc122feb0e0ef936a2e71853272a061",
+      "bytes": 78
+    }
+  },
+  "seconds_held_artifact_hash": 0.0,
+  "held_hash_watchdog_overshoot_seconds": 0.0,
+  "retained_phase": "all source/trace/results/diagnostics/canonical/equality buffers live awaiting owner ACK",
+  "exit": 0,
+  "reap_confirmed": true,
+  "post_exit_retained_handle_memory": {
+    "lifetime_peak_bytes": 4136960,
+    "current_rss_bytes": 32768,
+    "method": "Windows GetProcessMemoryInfo.PeakWorkingSetSize",
+    "units": "bytes",
+    "owned_pid": 128204
+  },
+  "lifetime_peak_bytes": 4136960,
+  "seconds_total_including_hold_and_teardown": 0.030999999959021807,
+  "artifacts_after_reap": {
+    "canonical-before.tsv": {
+      "sha256": "33c187a7b78f14d7d5c97084b425a29797497c7119001a9541e644f35ff2fa9e",
+      "bytes": 1833
+    },
+    "canonical-after.tsv": {
+      "sha256": "33c187a7b78f14d7d5c97084b425a29797497c7119001a9541e644f35ff2fa9e",
+      "bytes": 1833
+    },
+    "model-before.tsv": {
+      "sha256": "313dd38d32feb7cac4d16b93cac89d334bc122feb0e0ef936a2e71853272a061",
+      "bytes": 78
+    },
+    "model-after.tsv": {
+      "sha256": "313dd38d32feb7cac4d16b93cac89d334bc122feb0e0ef936a2e71853272a061",
+      "bytes": 78
+    }
+  },
+  "within_120_seconds": true,
+  "within_768_MiB": true,
+  "success": true,
+  "stderr": "",
+  "seconds_owner_total": 0.030999999959021807,
+  "binary_sha256_before": "0ef660efab793ae841d02998e43471552b72cd5e8d9b10a7d655909817831bdc",
+  "binary_sha256_after": "0ef660efab793ae841d02998e43471552b72cd5e8d9b10a7d655909817831bdc"
+}

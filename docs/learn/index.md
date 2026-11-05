@@ -68,5 +68,7 @@ at 20 s and must fit inside the run.
 
 Continue with [running experiments](../experiments.md), the
 [design contract](../design/v0.1.md), and the [roadmap](../roadmap.md).
+The [late-observation correction proposal](history-replay.md) explains the next
+numerical design and distinguishes it from accepted replay behavior.
 When you change something, use the [iteration handoff](iteration-handoff.md)
 to explain it to the next reader.

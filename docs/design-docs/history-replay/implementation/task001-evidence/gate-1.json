@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "cargo",
+    "fmt",
+    "--all",
+    "--",
+    "--check"
+  ],
+  "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+  "exit": 1,
+  "seconds": 0.375,
+  "log": "gate-1.log",
+  "sha256": "b8852f9f956cdb63953679ea9330cbd87188b4a09fa66ad091d9645b08662faf"
+}

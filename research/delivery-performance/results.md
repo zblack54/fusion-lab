@@ -1,6 +1,6 @@
 # Accepted-update companion measurement
 
-Measured research candidate; publication review and exact-head CI remain required. Issues [#75](https://github.com/zblack54/fusion-lab/issues/75) and [#77](https://github.com/zblack54/fusion-lab/issues/77). The frozen [protocol](protocol.md) records the pre-run checkpoint; its historical no-execution statements describe that checkpoint. Main authorized the sealed series in [comment6567116231](https://github.com/zblack54/fusion-lab/issues/75#issuecomment-6567116231).
+Accepted research companion in [PR #78](https://github.com/zblack54/fusion-lab/pull/78), merged after independent evidence review and all22checks. Original measured-candidate receipts remain unchanged. Issues [#75](https://github.com/zblack54/fusion-lab/issues/75) and [#77](https://github.com/zblack54/fusion-lab/issues/77). The frozen [protocol](protocol.md) records the pre-run checkpoint; its historical no-execution statements describe that checkpoint. Main authorized the sealed series in [comment6567116231](https://github.com/zblack54/fusion-lab/issues/75#issuecomment-6567116231).
 
 One Windows x86_64-pc-windows-msvc Rust1.99.0 release binary on AMD64 Family25 Model33 Stepping0, 16 logical CPUs, 34,266,181,632 bytes physical RAM. Binary SHA256 `85e334ee81b9f2d0cfd227c61378c931d52cc87f87d43dd6a550b6eef2ea6aa9`. A delayed and accepted one-second warmup preceded exactly D/A, A/D, D/A. All eight processes exited0 and were reaped. No measurement retry occurred.
 

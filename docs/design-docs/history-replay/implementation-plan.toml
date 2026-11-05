@@ -1,0 +1,30 @@
+[[task]]
+id="TASK-001"
+title="Validated plan and observational API"
+depends_on=[]
+requirement_ids=["REQ-001", "REQ-018"]
+constraint_ids=[]
+test_ids=["TST-BOUND-001", "TST-NEG-001", "TST-NEG-002", "TST-STRUCT-001", "TST-ANTI-001"]
+verification_ids=["VER-001"]
+completion="Plan domain/privacy selectors pass; full runtime behavior remains explicitly deferred to TASK-002."
+
+[[task]]
+id="TASK-002"
+title="Pure frozen-admission causal correction and complete contracts"
+depends_on=["TASK-001"]
+requirement_ids=["REQ-001", "REQ-002", "REQ-003", "REQ-004", "REQ-005", "REQ-006", "REQ-007", "REQ-008", "REQ-009", "REQ-010", "REQ-011", "REQ-012", "REQ-013", "REQ-014", "REQ-015", "REQ-016", "REQ-017", "REQ-018"]
+constraint_ids=[]
+test_ids=["TST-ACC-001", "TST-ACC-002", "TST-ACC-003", "TST-BEH-001", "TST-BOUND-001", "TST-NEG-001", "TST-NEG-002", "TST-BOUND-002", "TST-BOUND-003", "TST-BOUND-004", "TST-BOUND-005", "TST-BOUND-006", "TST-BEH-002", "TST-PROP-001", "TST-PERF-001", "TST-PERF-002", "TST-BEH-003", "TST-BEH-004", "TST-PROP-002", "TST-PROP-003", "TST-CONTRACT-001", "TST-CONTRACT-002", "TST-CONTRACT-003", "TST-INV-001", "TST-BEH-005", "TST-STATE-001", "TST-STATE-002", "TST-NEG-003", "TST-NEG-004", "TST-INV-002", "TST-CONTRACT-005", "TST-CONTRACT-004", "TST-BEH-008", "TST-BEH-007", "TST-PROP-004", "TST-BEH-006", "TST-STRUCT-001", "TST-ANTI-001"]
+verification_ids=["VER-001", "VER-002", "VER-003"]
+completion="All38functional selectors pass unchanged, no seam remains; measured native budgets and example remain TASK-003 obligations."
+
+[[task]]
+id="TASK-003"
+title="Example, native resource proof and human acceptance"
+depends_on=["TASK-002"]
+requirement_ids=["REQ-001", "REQ-002", "REQ-003", "REQ-004", "REQ-005", "REQ-006", "REQ-007", "REQ-008", "REQ-009", "REQ-010", "REQ-011", "REQ-012", "REQ-013", "REQ-014", "REQ-015", "REQ-016", "REQ-017", "REQ-018", "REQ-019", "REQ-020", "REQ-021", "REQ-022", "REQ-023", "REQ-024", "REQ-025", "REQ-026"]
+constraint_ids=["CON-001", "CON-002", "CON-003", "CON-004", "CON-005", "CON-006"]
+test_ids=["TST-ACC-001", "TST-ACC-002", "TST-ACC-003", "TST-BEH-001", "TST-BOUND-001", "TST-NEG-001", "TST-NEG-002", "TST-BOUND-002", "TST-BOUND-003", "TST-BOUND-004", "TST-BOUND-005", "TST-BOUND-006", "TST-BEH-002", "TST-PROP-001", "TST-PERF-001", "TST-PERF-002", "TST-BEH-003", "TST-BEH-004", "TST-PROP-002", "TST-PROP-003", "TST-CONTRACT-001", "TST-CONTRACT-002", "TST-CONTRACT-003", "TST-INV-001", "TST-BEH-005", "TST-STATE-001", "TST-STATE-002", "TST-NEG-003", "TST-NEG-004", "TST-INV-002", "TST-CONTRACT-005", "TST-CONTRACT-004", "TST-BEH-008", "TST-BEH-007", "TST-PROP-004", "TST-BEH-006", "TST-STRUCT-001", "TST-ANTI-001"]
+verification_ids=["VER-001", "VER-002", "VER-003", "VER-004", "VER-005", "VER-006"]
+completion="Every requirement/constraint has full exact-source test/non-test/native evidence and main acceptance; prior stage passes do not waive final conformance."
+

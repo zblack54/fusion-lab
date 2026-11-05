@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "cargo",
+    "+1.99.0",
+    "build",
+    "--release",
+    "--locked",
+    "--offline",
+    "--manifest-path",
+    "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\history-task003-qualification-windows-floor\\project\\Cargo.toml"
+  ],
+  "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+  "timeout_seconds": 240,
+  "pid": 142832,
+  "exit": 0,
+  "reap_confirmed": true,
+  "seconds": 17.125,
+  "log_sha256": "fbeeabc30f8a363b4340e68490059a52c02e19daad85dfac9baeb4f1eab2499e",
+  "log_bytes": 1615
+}

@@ -10,6 +10,7 @@
 mod delivery;
 mod estimation;
 mod evaluation;
+mod history_replay;
 mod sensors;
 mod simulation;
 
@@ -42,3 +43,8 @@ impl std::fmt::Display for Error {
 }
 
 impl std::error::Error for Error {}
+
+pub use history_replay::{
+    HistoryError, HistoryInvariant, HistoryLedgerEntry, HistoryOutcome, HistoryPlan, HistoryResult,
+    HistorySnapshot, HistoryWork, replay_history,
+};

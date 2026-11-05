@@ -1,0 +1,22 @@
+{
+  "argv": [
+    "cargo",
+    "+1.99.0",
+    "test",
+    "--manifest-path",
+    "tests/history-replay/Cargo.toml",
+    "--locked",
+    "--test",
+    "contracts",
+    "tst_bound_001_window_zero_and_maximum_valid",
+    "--",
+    "--exact",
+    "--nocapture",
+    "--test-threads=1"
+  ],
+  "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+  "exit": 0,
+  "seconds": 1.1089999999385327,
+  "log": "1.99.0-tst_bound_001_window_zero_and_maximum_valid.log",
+  "sha256": "73472fac6f5aaedbf960d4203b5fdb41c2a887e97d325958f2e68d68dc06046d"
+}

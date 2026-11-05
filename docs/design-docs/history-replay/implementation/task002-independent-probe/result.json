@@ -1,0 +1,52 @@
+{
+  "status": "INDEPENDENT_CAUSAL_DIFFERENTIAL_AND_LEGACY_EXTREME_CHECK_PASSED",
+  "source": {
+    "purpose": "Independent bounded causal differential oracle; no normative test/source edits or numerical accuracy claim",
+    "sourceSha256": "553925e3f3ff7f2c9601237de157eaee889031ec9d8fafc81f1aef0a46e63f18",
+    "sourceInputs": {
+      "Cargo.toml": "9fef2cf7ec60fd79d46f4b228e26d6f809b852e83a72e75e0c9ced4a3b635a46",
+      "Cargo.lock": "07f5aa7add86e0f4e07f268b6268561fce5c790dc6e15e4895406c744acd00ad",
+      "src/main.rs": "57b20fd6c715481239af292fab195bcac9e09cffc4212ba2ee71522b02a752c4"
+    },
+    "caseOrder": "seed0..2, three fixed models, windows0/1/7/20/25/500, cutoff0..200, then one legacy extremeW0 compatibilitycase",
+    "oracle": "Accepted all-onTime replay of only actually arrived/eligible observations; cap128/no transport losses, no outcome derived from new code",
+    "stopOnFirstMismatch": true
+  },
+  "compiler": "rustc1.99.0 b940084d7eb6a299eb4bfeb8e34901bc051e7ac4 x86_64-pc-windows-msvc LLVM23.1.1",
+  "build": {
+    "argv": [
+      "cargo",
+      "+1.99.0",
+      "build",
+      "--release",
+      "--locked",
+      "--offline",
+      "--manifest-path",
+      "C:/Users/Admin/Documents/Codex/2026-10-20/if-x20/work/history-task002-differential-1793830724264/Cargo.toml"
+    ],
+    "exit": 0,
+    "firstToolChunk": "0ea345",
+    "finalToolChunk": "53c827",
+    "note": "Two actual tool output chunks cover the release build; no numerical retry or source change after launch."
+  },
+  "run": {
+    "chunk_id": "afe284",
+    "wall_time_seconds": 0.1318939,
+    "exit_code": 0,
+    "original_token_count": 57,
+    "output": "DIFFERENTIAL_OK cases=54 online_bit_comparisons=10854 windows=0,1,7,20,25,500 models=3 seeds=3 snapshots_each=201\nLEGACY_EXTREME_OK W0_all101snapshotbits_equal first_nonfinite_integration_tick=Some(80) filter_all_finite=true\n"
+  },
+  "binarySha256": "9858c1cb5f9a3f1251c61f89ffb3845ebf2560614af8f6d712dae64578cae380",
+  "afterInputHashes": {
+    "Cargo.toml": "9fef2cf7ec60fd79d46f4b228e26d6f809b852e83a72e75e0c9ced4a3b635a46",
+    "Cargo.lock": "07f5aa7add86e0f4e07f268b6268561fce5c790dc6e15e4895406c744acd00ad",
+    "src/main.rs": "57b20fd6c715481239af292fab195bcac9e09cffc4212ba2ee71522b02a752c4"
+  },
+  "inputsUnchanged": true,
+  "productionSourceAfterSha256": "553925e3f3ff7f2c9601237de157eaee889031ec9d8fafc81f1aef0a46e63f18",
+  "harnessRegistryClosureCopiedExactly": true,
+  "comparisons": 10854,
+  "cases": 54,
+  "legacyExtremeComparisons": 101,
+  "limits": "Deterministic bounded supplement, one local Windows compiler, no transport-loss stress or runtime/RSS claim; locked38-selector/fullnative/resource/example obligations unchanged."
+}

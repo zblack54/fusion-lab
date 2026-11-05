@@ -1,0 +1,22 @@
+{
+  "argv": [
+    "cargo",
+    "+1.99.0",
+    "test",
+    "--manifest-path",
+    "tests/history-replay/Cargo.toml",
+    "--locked",
+    "--test",
+    "contracts",
+    "tst_anti_001_private_plan_cannot_be_forged",
+    "--",
+    "--exact",
+    "--nocapture",
+    "--test-threads=1"
+  ],
+  "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+  "exit": 0,
+  "seconds": 0.39000000013038516,
+  "log": "1.99.0-tst_anti_001_private_plan_cannot_be_forged.log",
+  "sha256": "4edb7db3af865647936146a9e8527cf416e5f43eb10f1ba652cdc99fe26b4a08"
+}

@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "cargo",
+    "+1.99.0",
+    "build",
+    "--release",
+    "--locked",
+    "--offline",
+    "--manifest-path",
+    "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\history-task003-build-1\\project\\Cargo.toml"
+  ],
+  "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+  "timeout_seconds": 240,
+  "pid": 111704,
+  "exit": 0,
+  "reap_confirmed": true,
+  "seconds": 18.985000000102445,
+  "log_sha256": "10636cf44f257b0bc8adbc6ed5986436022c047958425f42af0401edb37f9f0b",
+  "log_bytes": 1595
+}

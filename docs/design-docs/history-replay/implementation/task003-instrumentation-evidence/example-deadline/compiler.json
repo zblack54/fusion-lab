@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "rustc",
+    "+1.99.0",
+    "-Vv"
+  ],
+  "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+  "timeout_seconds": 240,
+  "pid": 144860,
+  "exit": 0,
+  "reap_confirmed": true,
+  "seconds": 0.0470000000204891,
+  "log_sha256": "5477f9bad65b15c4c5b31fc050fc72feba651ea1b330bc75cf356a4d6b0fbc80",
+  "log_bytes": 194
+}

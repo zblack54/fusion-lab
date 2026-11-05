@@ -1,0 +1,11 @@
+{
+  "success": true,
+  "sampler_sha256": "73dfd000179906813a4960612300988910bd5b314af9273827f615e961a69976",
+  "classification": "synthetic artifact check",
+  "outcomes": {
+    "oversized": "RuntimeError('artifact exceeded expected bytes: synthetic.bin')",
+    "truncated": "RuntimeError('artifact size mismatch: synthetic.bin')",
+    "canonical_over_encoder_cap": "RuntimeError('canonical artifact size exceeds encoder bound')",
+    "elapsed_after_read": "TimeoutError('owned watchdog elapsed during held artifact hash')"
+  }
+}

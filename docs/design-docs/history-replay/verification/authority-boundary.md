@@ -1,0 +1,3 @@
+# Authority and privacy review plan
+
+The signature borrows ReplayModel/Trace/HistoryPlan only. Validated fields remain private; tests execute real downstream privacy compilation using the exact compiler Cargo supplied to immutable build.rs, not ambient stable. The scheduler may inspect sample/arrival/identity/loss metadata but must not read numerical payloads before admission+arrival. Fixed-metadata future-payload metamorphic tests protect the prefix; appending future observations requires sample ticks AFTER cutoff. Earlier-sampled future waiters can legitimately change later capacity. Main API scope is reviewed; implementation inspection remains unperformed.

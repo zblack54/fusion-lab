@@ -1,0 +1,22 @@
+{
+  "argv": [
+    "cargo",
+    "test",
+    "--manifest-path",
+    "tests/history-replay/Cargo.toml",
+    "--locked",
+    "--test",
+    "contracts",
+    "tst_beh_006_zero_window_signed_zero_legacy_bits",
+    "--",
+    "--exact",
+    "--nocapture",
+    "--test-threads=1"
+  ],
+  "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+  "exit": 0,
+  "seconds": 0.14099999982863665,
+  "rustdocflags": "-D warnings",
+  "log": "tst_beh_006_zero_window_signed_zero_legacy_bits.log",
+  "sha256": "3cfe50ae1f8e872815b52d7aafc64655cb107eb72ede331ccf0e1e76d7fc2106"
+}

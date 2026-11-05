@@ -1,0 +1,65 @@
+[[constraint]]
+id="CON-001"
+title="Authority isolation"
+kind="invariant"
+statement="The library SHALL NOT access truth, source Config, RNG, I/O or wall clocks."
+rationale="Preserve the reviewed role and product boundary."
+enforcement="verification"
+test_ids=[]
+verification_ids=["VER-001", "VER-003"]
+status="active"
+
+[[constraint]]
+id="CON-002"
+title="No partial correction"
+kind="invariant"
+statement="The API SHALL NOT expose a successful output prefix after numerical or invariant failure."
+rationale="Preserve the reviewed role and product boundary."
+enforcement="verification"
+test_ids=[]
+verification_ids=["VER-003"]
+status="active"
+
+[[constraint]]
+id="CON-003"
+title="Fixed work and memory"
+kind="performance"
+statement="Replay SHALL preserve the explicit logical work/live-history ceilings and separately measured total resource targets."
+rationale="Preserve the reviewed role and product boundary."
+enforcement="verification"
+test_ids=[]
+verification_ids=["VER-002", "VER-004"]
+status="active"
+
+[[constraint]]
+id="CON-004"
+title="Legacy unchanged"
+kind="negative"
+statement="The change SHALL NOT modify accepted equations, streams, codecs, contracts or dependency closure."
+rationale="Preserve the reviewed role and product boundary."
+enforcement="verification"
+test_ids=[]
+verification_ids=["VER-003", "VER-006"]
+status="active"
+
+[[constraint]]
+id="CON-005"
+title="No research claim"
+kind="non_goal"
+statement="This slice SHALL NOT claim calibration, accuracy superiority, real async transport or universal resource bounds."
+rationale="Preserve the reviewed role and product boundary."
+enforcement="verification"
+test_ids=[]
+verification_ids=["VER-005"]
+status="active"
+
+[[constraint]]
+id="CON-006"
+title="No candidate approval"
+kind="negative"
+statement="Implementation SHALL NOT start before independently reviewed executable design and externally recorded approval digest."
+rationale="Preserve the reviewed role and product boundary."
+enforcement="verification"
+test_ids=[]
+verification_ids=["VER-006"]
+status="active"

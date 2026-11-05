@@ -1,0 +1,94 @@
+{
+  "status": "FINAL_DELTA_CLEAR_FOR_DRAFT_PUBLICATION_AND_HOSTED_DESIGN_QUALIFICATION_NOT_APPROVAL",
+  "issue": 22,
+  "method": "Read-only final batched delta inspection; no numerical or test reruns; all source/raw receipts checked directly",
+  "manifest": {
+    "path": "work/history-replay-files.json",
+    "files": 123,
+    "sha256": "7f35ee53b9da9448a7948b5dd224886c5428f275432cb0e7dff6fc2ef06538ac",
+    "allBytesLengthsSha256AndGitBlobSha1Match": true
+  },
+  "source": {
+    "seamSha256": "3bd95e3a6d0211c0933d15fb7369ba247d5c3b01d8ce40572769f8d4841203eb",
+    "libSha256": "f1707ae4d0fe5b0f773406860546d1147134440daef190fdaf6ac72bb09b8f85",
+    "contractsSha256": "3c1d0f1699997e60c37611cee8e1cf171ece46f97098c167a909658be223feea",
+    "libDelta": "module declaration and public exports only",
+    "existingCoreManifestLockToolchainPreserved": true
+  },
+  "findingsClosed": [
+    {
+      "id": "REVIEW-H1",
+      "evidence": "TST-BEH-007 independently checks late position sigma10 gain1/5, state[2,-1], covariance20.0004/.04/4; TST-BEH-008 checks q0.1 and1 plus varied both sigmas on normal and rewind paths against unchanged accepted reference."
+    },
+    {
+      "id": "REVIEW-H2",
+      "evidence": "TST-CONTRACT-004/005 compare complete snapshot tails with forbidden scripted/queue payload omitted; TST-INV-002 compares complete tail including later rewinds with TooOld record omitted. Contractual zip lengths explicit."
+    },
+    {
+      "id": "REVIEW-H3",
+      "evidence": "Workflow run/upload now both use runner.temp external directory, satisfying adapter path boundary."
+    },
+    {
+      "id": "REVIEW-H4",
+      "evidence": "Architecture opening now draft with seam/harness, selected API omits nonexistent corrected_batch and specifies typed invariant variants without unresolved conditional."
+    },
+    {
+      "id": "REVIEW-H5",
+      "evidence": "Brief explicitly allows mutable implementation/resource_probe.py, cleanup_probe.py and example_probe.py while preserving accepted owner helper and locked test/tool surface."
+    }
+  ],
+  "additionalDelta": {
+    "qualifiedNegative": "TST-NEG-004 matches independent accepted-core qualification: model0/0/0 P0/V0=1e308, Vlate300 gives accepted stale finite301snapshots; W299 matches stale; W300 must return NumericalFailure arrival300/replay80/observationNone/original source. No fake fault hook or baseline-finiteness policy change.",
+    "rawBaselinePolicy": "Architecture explicitly preserves legacy raw arithmetic and W0 bits; separate issue79 owns extreme finite-payload baseline policy."
+  },
+  "localExecution": {
+    "rawBytes": 1013430,
+    "rawSha256": "f61e334c62a97066c65ff907e5ad1efbbd9c9851d2e9e13c923f98591ee49c2d",
+    "success": true,
+    "configurationOutcomes": {
+      "CFG-001": {
+        "expected_red": 36,
+        "pass": 2
+      },
+      "CFG-002": {
+        "expected_red": 36,
+        "pass": 2
+      }
+    },
+    "tests": 76,
+    "commands": 93,
+    "errors": [],
+    "allSevenGatesPass": true,
+    "publicNativeAudit": [
+      {
+        "path": "docs/design-docs/history-replay/implementation/native-windows-floor/receipt.json",
+        "sourceFiles": 41,
+        "rawCommands": 42,
+        "tests": 38,
+        "bad": []
+      },
+      {
+        "path": "docs/design-docs/history-replay/implementation/native-windows-stable/receipt.json",
+        "sourceFiles": 41,
+        "rawCommands": 42,
+        "tests": 38,
+        "bad": []
+      }
+    ],
+    "actualCompilerAliases": "Both local Windows aliases resolve to Rust1.99.0; not misrepresented as hosted stable/Linux."
+  },
+  "authority": {
+    "specDraft": true,
+    "aiReady": false,
+    "lockAbsent": true,
+    "reportStatus": "NOT_READY",
+    "P7": "pending hosted four-native matrix and final independent/main approval",
+    "noProductionBehavior": "HistoryPlan constructor and replay_history remain at named HISTORY_REPLAY_NOT_IMPLEMENTED boundary"
+  },
+  "remaining": [
+    "Publish draft and collect/review actual four-native expected-red artifacts against exact published source.",
+    "Then obtain main final contract approval, refresh final metadata/execution and publish approved digest outside candidate before any lock/implementation.",
+    "Implementation-stage full green matrix, actual resource/ownership/example conformance remain entirely unrun."
+  ],
+  "nonBlockingEditorialNote": "Architecture oracle sketch retains historical phrase fixture still to qualify although the exact qualified case is now test/catalog/report evidence. Can normalize before final metadata freeze; it does not alter the explicit executable fixture or permit implementation."
+}

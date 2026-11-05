@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "cargo",
+    "+1.99.0",
+    "build",
+    "--locked",
+    "--offline",
+    "--example",
+    "history_replay"
+  ],
+  "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+  "timeout_seconds": 240,
+  "pid": 135116,
+  "exit": 0,
+  "reap_confirmed": true,
+  "seconds": 0.125,
+  "log_sha256": "99f71393b9903dca098310bb446022a4bdee195ea9996f351a787195555210a6",
+  "log_bytes": 72
+}

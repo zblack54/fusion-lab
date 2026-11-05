@@ -1,0 +1,13 @@
+{
+  "argv": [
+    "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab\\target\\debug\\examples\\history_replay.exe"
+  ],
+  "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+  "timeout_seconds": 30,
+  "pid": 136844,
+  "exit": 0,
+  "reap_confirmed": true,
+  "seconds": 0.04600000008940697,
+  "log_sha256": "6be5dbc4ac28ec177d7d354aecae9c8e954b4f8e39223d1610cbbe5bf95c041b",
+  "log_bytes": 361
+}

@@ -1,0 +1,15 @@
+{
+  "status": "independently_verified_draft_design_only",
+  "published_head": "6403941a3608025a6865afbb174020a116dee5e2",
+  "executed_revision": "7e6f340d375f6a39669d3dc85d58b17e488a84e6",
+  "platform": "Windows-2025Server-10.0.26100-SP0",
+  "toolchain": "1.99.0",
+  "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-msvc\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+  "source_hashes": 41,
+  "raw_commands": 42,
+  "selectors": 38,
+  "expected_red": 36,
+  "structural_pass": 2,
+  "zip_sha256": "eb3a3a59114ba129e4090ec8050c1eab1a28c20d854896bb1e5d035bfb9ca36c",
+  "limitation": "No implementation or contract approval implied"
+}

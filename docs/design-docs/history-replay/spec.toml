@@ -1,0 +1,87 @@
+schema_version = 3
+id = "SPEC-HISTORY-REPLAY"
+title = "HistoryReplay"
+feature_slug = "history-replay"
+target_crate = "fusion-lab"
+target_revision = "2944a1342275ff298ec4df29bf94df81891d6755"
+status = "approved"
+ai_ready = true
+
+[target]
+edition = "2024"
+rust_version = "1.99"
+resolver = "3"
+supported_targets = ["host"]
+feature_sets = ["default"]
+toolchains = ["1.99.0", "stable"]
+
+[[target.validation]]
+id = "CFG-001"
+target = "host"
+feature_set = "default"
+toolchain = "1.99.0"
+
+[[target.validation]]
+id = "CFG-002"
+target = "host"
+feature_set = "default"
+toolchain = "stable"
+
+[ownership]
+repo_root = "../../.."
+test_suite_root = "../../../tests/history-replay"
+external_test_inputs = ["Cargo.lock", "docs/design-docs/observation-delivery/implementation/resource_probe.py"]
+production_roots = ["../../../src", "../../../Cargo.toml", "../../../examples"]
+test_owned = [
+  "spec.toml",
+  "intent",
+  "requirements",
+  "structure",
+  "constraints",
+  "tests",
+  "test-suite",
+  "decisions",
+  "traceability.toml",
+  "implementation-brief.md",
+  "implementation-plan.toml",
+  "verification",
+  "open-questions.toml",
+  "validation/waivers.toml",
+]
+implementation_roots = ["../../../src/history_replay.rs", "../../../src/lib.rs", "../../../examples/history_replay.rs"]
+mutable_seams = ["../../../src/history_replay.rs", "../../../src/lib.rs"]
+
+[[phase]]
+id = "P1"
+name = "Intent"
+status = "complete"
+
+[[phase]]
+id = "P2"
+name = "Requirements"
+status = "complete"
+
+[[phase]]
+id = "P3"
+name = "Structure"
+status = "complete"
+
+[[phase]]
+id = "P4"
+name = "Invariants and Constraints"
+status = "complete"
+
+[[phase]]
+id = "P5"
+name = "Tests"
+status = "complete"
+
+[[phase]]
+id = "P6"
+name = "Decisions"
+status = "complete"
+
+[[phase]]
+id = "P7"
+name = "Validation"
+status = "complete"

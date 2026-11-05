@@ -1,0 +1,489 @@
+[[test]]
+id="TST-ACC-001"
+title="late velocity rational oracle"
+kind="acceptance"
+path="test-suite/tests/contracts.rs"
+selector="tst_acc_001_late_velocity_rational_oracle"
+test_target="test:contracts"
+covers=["REQ-001", "REQ-002", "REQ-003", "REQ-004"]
+expected_pre_implementation="fail"
+expected_failure_contains="HISTORY_REPLAY_NOT_IMPLEMENTED"
+expected_failure_reason="Only the named diagnostic compile seam exists; no history behavior is implemented."
+required=true
+
+[[test]]
+id="TST-ACC-002"
+title="zero window preserves legacy bits"
+kind="acceptance"
+path="test-suite/tests/contracts.rs"
+selector="tst_acc_002_zero_window_preserves_legacy_bits"
+test_target="test:contracts"
+covers=["REQ-005", "REQ-006"]
+expected_pre_implementation="fail"
+expected_failure_contains="HISTORY_REPLAY_NOT_IMPLEMENTED"
+expected_failure_reason="Only the named diagnostic compile seam exists; no history behavior is implemented."
+required=true
+
+[[test]]
+id="TST-ACC-003"
+title="batch late and current once"
+kind="acceptance"
+path="test-suite/tests/contracts.rs"
+selector="tst_acc_003_batch_late_and_current_once"
+test_target="test:contracts"
+covers=["REQ-007", "REQ-008"]
+expected_pre_implementation="fail"
+expected_failure_contains="HISTORY_REPLAY_NOT_IMPLEMENTED"
+expected_failure_reason="Only the named diagnostic compile seam exists; no history behavior is implemented."
+required=true
+
+[[test]]
+id="TST-BEH-001"
+title="empty trace predicts original prior"
+kind="behavioral"
+path="test-suite/tests/contracts.rs"
+selector="tst_beh_001_empty_trace_predicts_original_prior"
+test_target="test:contracts"
+covers=["REQ-001", "REQ-009"]
+expected_pre_implementation="fail"
+expected_failure_contains="HISTORY_REPLAY_NOT_IMPLEMENTED"
+expected_failure_reason="Only the named diagnostic compile seam exists; no history behavior is implemented."
+required=true
+
+[[test]]
+id="TST-BOUND-001"
+title="window zero and maximum valid"
+kind="boundary"
+path="test-suite/tests/contracts.rs"
+selector="tst_bound_001_window_zero_and_maximum_valid"
+test_target="test:contracts"
+covers=["REQ-001"]
+expected_pre_implementation="fail"
+expected_failure_contains="HISTORY_REPLAY_NOT_IMPLEMENTED"
+expected_failure_reason="Only the named diagnostic compile seam exists; no history behavior is implemented."
+required=true
+
+[[test]]
+id="TST-NEG-001"
+title="window 501 rejected"
+kind="negative"
+path="test-suite/tests/contracts.rs"
+selector="tst_neg_001_window_501_rejected"
+test_target="test:contracts"
+covers=["REQ-001"]
+expected_pre_implementation="fail"
+expected_failure_contains="HISTORY_REPLAY_NOT_IMPLEMENTED"
+expected_failure_reason="Only the named diagnostic compile seam exists; no history behavior is implemented."
+required=true
+
+[[test]]
+id="TST-NEG-002"
+title="window integer max rejected"
+kind="negative"
+path="test-suite/tests/contracts.rs"
+selector="tst_neg_002_window_integer_max_rejected"
+test_target="test:contracts"
+covers=["REQ-001"]
+expected_pre_implementation="fail"
+expected_failure_contains="HISTORY_REPLAY_NOT_IMPLEMENTED"
+expected_failure_reason="Only the named diagnostic compile seam exists; no history behavior is implemented."
+required=true
+
+[[test]]
+id="TST-BOUND-002"
+title="inclusive age boundary corrected"
+kind="boundary"
+path="test-suite/tests/contracts.rs"
+selector="tst_bound_002_inclusive_age_boundary_corrected"
+test_target="test:contracts"
+covers=["REQ-002"]
+expected_pre_implementation="fail"
+expected_failure_contains="HISTORY_REPLAY_NOT_IMPLEMENTED"
+expected_failure_reason="Only the named diagnostic compile seam exists; no history behavior is implemented."
+required=true
+
+[[test]]
+id="TST-BOUND-003"
+title="older than window explicit drop"
+kind="boundary"
+path="test-suite/tests/contracts.rs"
+selector="tst_bound_003_older_than_window_explicit_drop"
+test_target="test:contracts"
+covers=["REQ-002", "REQ-005"]
+expected_pre_implementation="fail"
+expected_failure_contains="HISTORY_REPLAY_NOT_IMPLEMENTED"
+expected_failure_reason="Only the named diagnostic compile seam exists; no history behavior is implemented."
+required=true
+
+[[test]]
+id="TST-BOUND-004"
+title="max age initial anchor"
+kind="boundary"
+path="test-suite/tests/contracts.rs"
+selector="tst_bound_004_max_age_initial_anchor"
+test_target="test:contracts"
+covers=["REQ-003", "REQ-004"]
+expected_pre_implementation="fail"
+expected_failure_contains="HISTORY_REPLAY_NOT_IMPLEMENTED"
+expected_failure_reason="Only the named diagnostic compile seam exists; no history behavior is implemented."
+required=true
+
+[[test]]
+id="TST-BOUND-005"
+title="arrival at final horizon processed"
+kind="boundary"
+path="test-suite/tests/contracts.rs"
+selector="tst_bound_005_arrival_at_final_horizon_processed"
+test_target="test:contracts"
+covers=["REQ-002", "REQ-010"]
+expected_pre_implementation="fail"
+expected_failure_contains="HISTORY_REPLAY_NOT_IMPLEMENTED"
+expected_failure_reason="Only the named diagnostic compile seam exists; no history behavior is implemented."
+required=true
+
+[[test]]
+id="TST-BOUND-006"
+title="beyond horizon retains horizon outcome"
+kind="boundary"
+path="test-suite/tests/contracts.rs"
+selector="tst_bound_006_beyond_horizon_retains_horizon_outcome"
+test_target="test:contracts"
+covers=["REQ-010"]
+expected_pre_implementation="fail"
+expected_failure_contains="HISTORY_REPLAY_NOT_IMPLEMENTED"
+expected_failure_reason="Only the named diagnostic compile seam exists; no history behavior is implemented."
+required=true
+
+[[test]]
+id="TST-BEH-002"
+title="simultaneous sensors canonical"
+kind="behavioral"
+path="test-suite/tests/contracts.rs"
+selector="tst_beh_002_simultaneous_sensors_canonical"
+test_target="test:contracts"
+covers=["REQ-007", "REQ-008"]
+expected_pre_implementation="fail"
+expected_failure_contains="HISTORY_REPLAY_NOT_IMPLEMENTED"
+expected_failure_reason="Only the named diagnostic compile seam exists; no history behavior is implemented."
+required=true
+
+[[test]]
+id="TST-PROP-001"
+title="input permutation irrelevant"
+kind="property"
+path="test-suite/tests/contracts.rs"
+selector="tst_prop_001_input_permutation_irrelevant"
+test_target="test:contracts"
+covers=["REQ-007", "REQ-010"]
+expected_pre_implementation="fail"
+expected_failure_contains="HISTORY_REPLAY_NOT_IMPLEMENTED"
+expected_failure_reason="Only the named diagnostic compile seam exists; no history behavior is implemented."
+required=true
+
+[[test]]
+id="TST-PERF-001"
+title="exact maximum correction batch"
+kind="performance"
+path="test-suite/tests/contracts.rs"
+selector="tst_perf_001_exact_maximum_correction_batch"
+test_target="test:contracts"
+covers=["REQ-011", "REQ-012"]
+expected_pre_implementation="fail"
+expected_failure_contains="HISTORY_REPLAY_NOT_IMPLEMENTED"
+expected_failure_reason="Only the named diagnostic compile seam exists; no history behavior is implemented."
+required=true
+
+[[test]]
+id="TST-PERF-002"
+title="actual history and work caps"
+kind="performance"
+path="test-suite/tests/contracts.rs"
+selector="tst_perf_002_actual_history_and_work_caps"
+test_target="test:contracts"
+covers=["REQ-011", "REQ-012", "REQ-013", "REQ-025"]
+expected_pre_implementation="fail"
+expected_failure_contains="HISTORY_REPLAY_NOT_IMPLEMENTED"
+expected_failure_reason="Only the named diagnostic compile seam exists; no history behavior is implemented."
+required=true
+
+[[test]]
+id="TST-BEH-003"
+title="normal work counts actual calls"
+kind="behavioral"
+path="test-suite/tests/contracts.rs"
+selector="tst_beh_003_normal_work_counts_actual_calls"
+test_target="test:contracts"
+covers=["REQ-011"]
+expected_pre_implementation="fail"
+expected_failure_contains="HISTORY_REPLAY_NOT_IMPLEMENTED"
+expected_failure_reason="Only the named diagnostic compile seam exists; no history behavior is implemented."
+required=true
+
+[[test]]
+id="TST-BEH-004"
+title="correction branch no wasted normal work"
+kind="behavioral"
+path="test-suite/tests/contracts.rs"
+selector="tst_beh_004_correction_branch_no_wasted_normal_work"
+test_target="test:contracts"
+covers=["REQ-007", "REQ-011"]
+expected_pre_implementation="fail"
+expected_failure_contains="HISTORY_REPLAY_NOT_IMPLEMENTED"
+expected_failure_reason="Only the named diagnostic compile seam exists; no history behavior is implemented."
+required=true
+
+[[test]]
+id="TST-PROP-002"
+title="sampled future prefix causality"
+kind="property"
+path="test-suite/tests/contracts.rs"
+selector="tst_prop_002_sampled_future_prefix_causality"
+test_target="test:contracts"
+covers=["REQ-014"]
+expected_pre_implementation="fail"
+expected_failure_contains="HISTORY_REPLAY_NOT_IMPLEMENTED"
+expected_failure_reason="Only the named diagnostic compile seam exists; no history behavior is implemented."
+required=true
+
+[[test]]
+id="TST-PROP-003"
+title="unarrived payload not numerical input"
+kind="property"
+path="test-suite/tests/contracts.rs"
+selector="tst_prop_003_unarrived_payload_not_numerical_input"
+test_target="test:contracts"
+covers=["REQ-014"]
+expected_pre_implementation="fail"
+expected_failure_contains="HISTORY_REPLAY_NOT_IMPLEMENTED"
+expected_failure_reason="Only the named diagnostic compile seam exists; no history behavior is implemented."
+required=true
+
+[[test]]
+id="TST-CONTRACT-001"
+title="immediate bypasses full waiting"
+kind="contract"
+path="test-suite/tests/contracts.rs"
+selector="tst_contract_001_immediate_bypasses_full_waiting"
+test_target="test:contracts"
+covers=["REQ-006", "REQ-010"]
+expected_pre_implementation="fail"
+expected_failure_contains="HISTORY_REPLAY_NOT_IMPLEMENTED"
+expected_failure_reason="Only the named diagnostic compile seam exists; no history behavior is implemented."
+required=true
+
+[[test]]
+id="TST-CONTRACT-002"
+title="drain due before admit"
+kind="contract"
+path="test-suite/tests/contracts.rs"
+selector="tst_contract_002_drain_due_before_admit"
+test_target="test:contracts"
+covers=["REQ-006", "REQ-010"]
+expected_pre_implementation="fail"
+expected_failure_contains="HISTORY_REPLAY_NOT_IMPLEMENTED"
+expected_failure_reason="Only the named diagnostic compile seam exists; no history behavior is implemented."
+required=true
+
+[[test]]
+id="TST-CONTRACT-003"
+title="scheduled loss missing sequence"
+kind="contract"
+path="test-suite/tests/contracts.rs"
+selector="tst_contract_003_scheduled_loss_missing_sequence"
+test_target="test:contracts"
+covers=["REQ-006", "REQ-010"]
+expected_pre_implementation="fail"
+expected_failure_contains="HISTORY_REPLAY_NOT_IMPLEMENTED"
+expected_failure_reason="Only the named diagnostic compile seam exists; no history behavior is implemented."
+required=true
+
+[[test]]
+id="TST-INV-001"
+title="input bytes preserved"
+kind="invariant"
+path="test-suite/tests/contracts.rs"
+selector="tst_inv_001_input_bytes_preserved"
+test_target="test:contracts"
+covers=["REQ-015"]
+expected_pre_implementation="fail"
+expected_failure_contains="HISTORY_REPLAY_NOT_IMPLEMENTED"
+expected_failure_reason="Only the named diagnostic compile seam exists; no history behavior is implemented."
+required=true
+
+[[test]]
+id="TST-BEH-005"
+title="requested model assumptions used"
+kind="behavioral"
+path="test-suite/tests/contracts.rs"
+selector="tst_beh_005_requested_model_assumptions_used"
+test_target="test:contracts"
+covers=["REQ-004"]
+expected_pre_implementation="fail"
+expected_failure_contains="HISTORY_REPLAY_NOT_IMPLEMENTED"
+expected_failure_reason="Only the named diagnostic compile seam exists; no history behavior is implemented."
+required=true
+
+[[test]]
+id="TST-STATE-001"
+title="repeated correction preserves information"
+kind="state_transition"
+path="test-suite/tests/contracts.rs"
+selector="tst_state_001_repeated_correction_preserves_information"
+test_target="test:contracts"
+covers=["REQ-003", "REQ-008"]
+expected_pre_implementation="fail"
+expected_failure_contains="HISTORY_REPLAY_NOT_IMPLEMENTED"
+expected_failure_reason="Only the named diagnostic compile seam exists; no history behavior is implemented."
+required=true
+
+[[test]]
+id="TST-STATE-002"
+title="emitted prefix never retroactively rewritten"
+kind="state_transition"
+path="test-suite/tests/contracts.rs"
+selector="tst_state_002_emitted_prefix_never_retroactively_rewritten"
+test_target="test:contracts"
+covers=["REQ-008", "REQ-014"]
+expected_pre_implementation="fail"
+expected_failure_contains="HISTORY_REPLAY_NOT_IMPLEMENTED"
+expected_failure_reason="Only the named diagnostic compile seam exists; no history behavior is implemented."
+required=true
+
+[[test]]
+id="TST-NEG-003"
+title="overflow preserves typed source"
+kind="negative"
+path="test-suite/tests/contracts.rs"
+selector="tst_neg_003_overflow_preserves_typed_source"
+test_target="test:contracts"
+covers=["REQ-016"]
+expected_pre_implementation="fail"
+expected_failure_contains="HISTORY_REPLAY_NOT_IMPLEMENTED"
+expected_failure_reason="Only the named diagnostic compile seam exists; no history behavior is implemented."
+required=true
+
+[[test]]
+id="TST-PROP-004"
+title="repeat deterministic full result"
+kind="property"
+path="test-suite/tests/contracts.rs"
+selector="tst_prop_004_repeat_deterministic_full_result"
+test_target="test:contracts"
+covers=["REQ-015", "REQ-017"]
+expected_pre_implementation="fail"
+expected_failure_contains="HISTORY_REPLAY_NOT_IMPLEMENTED"
+expected_failure_reason="Only the named diagnostic compile seam exists; no history behavior is implemented."
+required=true
+
+[[test]]
+id="TST-BEH-006"
+title="zero window signed zero legacy bits"
+kind="behavioral"
+path="test-suite/tests/contracts.rs"
+selector="tst_beh_006_zero_window_signed_zero_legacy_bits"
+test_target="test:contracts"
+covers=["REQ-005"]
+expected_pre_implementation="fail"
+expected_failure_contains="HISTORY_REPLAY_NOT_IMPLEMENTED"
+expected_failure_reason="Only the named diagnostic compile seam exists; no history behavior is implemented."
+required=true
+
+[[test]]
+id="TST-STRUCT-001"
+title="public types send sync signature"
+kind="structural"
+path="test-suite/tests/contracts.rs"
+selector="tst_struct_001_public_types_send_sync_signature"
+test_target="test:contracts"
+covers=["REQ-018"]
+expected_pre_implementation="pass"
+required=true
+
+[[test]]
+id="TST-ANTI-001"
+title="private plan cannot be forged"
+kind="anti_pattern"
+path="test-suite/tests/contracts.rs"
+selector="tst_anti_001_private_plan_cannot_be_forged"
+test_target="test:contracts"
+covers=["REQ-018"]
+expected_pre_implementation="pass"
+required=true
+
+[[test]]
+id="TST-NEG-004"
+title="rewind overflow preserves arrival and replay tick"
+kind="negative"
+path="test-suite/tests/contracts.rs"
+selector="tst_neg_004_rewind_overflow_preserves_arrival_and_replay_tick"
+test_target="test:contracts"
+covers=["REQ-016"]
+expected_pre_implementation="fail"
+expected_failure_contains="HISTORY_REPLAY_NOT_IMPLEMENTED"
+expected_failure_reason="Named compile seam has no correction behavior."
+required=true
+
+[[test]]
+id="TST-BEH-007"
+title="late position requested sigma oracle"
+kind="behavioral"
+path="test-suite/tests/contracts.rs"
+selector="tst_beh_007_late_position_requested_sigma_oracle"
+test_target="test:contracts"
+covers=["REQ-003", "REQ-004"]
+expected_pre_implementation="fail"
+expected_failure_contains="HISTORY_REPLAY_NOT_IMPLEMENTED"
+expected_failure_reason="Named diagnostic compile seam has no history behavior."
+required=true
+
+[[test]]
+id="TST-BEH-008"
+title="nonzero process density normal and rewind"
+kind="behavioral"
+path="test-suite/tests/contracts.rs"
+selector="tst_beh_008_nonzero_process_density_normal_and_rewind"
+test_target="test:contracts"
+covers=["REQ-004"]
+expected_pre_implementation="fail"
+expected_failure_contains="HISTORY_REPLAY_NOT_IMPLEMENTED"
+expected_failure_reason="Named diagnostic compile seam has no history behavior."
+required=true
+
+[[test]]
+id="TST-CONTRACT-004"
+title="scripted loss payload never consumed"
+kind="contract"
+path="test-suite/tests/contracts.rs"
+selector="tst_contract_004_scripted_loss_payload_never_consumed"
+test_target="test:contracts"
+covers=["REQ-006", "REQ-010"]
+expected_pre_implementation="fail"
+expected_failure_contains="HISTORY_REPLAY_NOT_IMPLEMENTED"
+expected_failure_reason="Named diagnostic compile seam has no history behavior."
+required=true
+
+[[test]]
+id="TST-CONTRACT-005"
+title="queue full payload never consumed"
+kind="contract"
+path="test-suite/tests/contracts.rs"
+selector="tst_contract_005_queue_full_payload_never_consumed"
+test_target="test:contracts"
+covers=["REQ-006", "REQ-010"]
+expected_pre_implementation="fail"
+expected_failure_contains="HISTORY_REPLAY_NOT_IMPLEMENTED"
+expected_failure_reason="Named diagnostic compile seam has no history behavior."
+required=true
+
+[[test]]
+id="TST-INV-002"
+title="too old payload absent from tail and rewind"
+kind="invariant"
+path="test-suite/tests/contracts.rs"
+selector="tst_inv_002_too_old_payload_absent_from_tail_and_rewind"
+test_target="test:contracts"
+covers=["REQ-002", "REQ-008", "REQ-014"]
+expected_pre_implementation="fail"
+expected_failure_contains="HISTORY_REPLAY_NOT_IMPLEMENTED"
+expected_failure_reason="Named diagnostic compile seam has no history behavior."
+required=true

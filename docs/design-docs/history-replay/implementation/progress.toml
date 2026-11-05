@@ -1,0 +1,26 @@
+# Mutable execution status only; never redefine the locked contract here.
+
+[[task]]
+id = "TASK-001"
+state = "verified"
+source_sha256 = "a12ef02b15b480eea8d5a1bc8ee78e3a3d8807ce4485af26ab3811480000d893"
+evidence = "task001-final-evidence/summary.json"
+report = "task001-report.md"
+scope = "Validated constructor and existing private observational API only; runtime diagnostic retained."
+
+[[task]]
+id = "TASK-002"
+state = "verified"
+source_sha256 = "553925e3f3ff7f2c9601237de157eaee889031ec9d8fafc81f1aef0a46e63f18"
+evidence = "task002-evidence/summary.json"
+execution = "execution.json"
+report = "task002-report.md"
+scope = "Pure frozen admission and causal correction; local full functional verification complete, final native/resource/example acceptance outstanding."
+
+[[task]]
+id = "TASK-003"
+state = "implementing"
+phase = "instrumentation-awaiting-main-and-independent-review"
+manifest = "task003-instrumentation-manifest.json"
+report = "task003-instrumentation-report.md"
+scope = "Example, embedded driver and owned sampler compiled; actual nonnumerical cleanup proof passed. No resource warmup or maximum series executed."

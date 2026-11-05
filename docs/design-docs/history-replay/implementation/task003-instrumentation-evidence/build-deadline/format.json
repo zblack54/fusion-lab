@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "rustfmt",
+    "+1.99.0",
+    "--edition",
+    "2024",
+    "--check",
+    "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\history-task003-build-deadline\\project\\src\\main.rs"
+  ],
+  "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+  "timeout_seconds": 240,
+  "pid": 132076,
+  "exit": 0,
+  "reap_confirmed": true,
+  "seconds": 0.06199999991804361,
+  "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "log_bytes": 0
+}

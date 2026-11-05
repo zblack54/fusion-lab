@@ -1,0 +1,11 @@
+Diff in \\?\C:\Users\Admin\Documents\Codex\2026-10-20\if-x20\work\fusion-lab\src\history_replay.rs:13:
+     /// Validate a history window in 0..=500 ticks.
+     pub fn new(window_ticks: u32) -> Result<Self, HistoryError> {
+         if window_ticks > 500 {
+-            return Err(HistoryError::InvalidWindow { value: window_ticks });
++            return Err(HistoryError::InvalidWindow {
++                value: window_ticks,
++            });
+         }
+         Ok(Self { window_ticks })
+     }

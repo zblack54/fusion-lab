@@ -1,0 +1,497 @@
+{
+  "status": "TASK002_CORE_INDEPENDENT_REVIEW_CLEAR_NOT_PRODUCT_ACCEPTANCE",
+  "issue": 22,
+  "sourceSha256": "553925e3f3ff7f2c9601237de157eaee889031ec9d8fafc81f1aef0a46e63f18",
+  "externalBaseline": {
+    "digest": "8c57cf49bd99b927012ac7215ea44688bc8cde928ea6b233a2f37abc41f13095",
+    "source": "https://github.com/zblack54/fusion-lab/issues/22#issuecomment-6637065066"
+  },
+  "findings": [],
+  "verification": {
+    "VER-001": {
+      "status": "core inspection clear",
+      "authority": "Borrowed validated Trace/ReplayModel; source sort, admission, loss/queue decisions and history pruning use metadata only. Observation::value has one callsite inside numerical application after admitted/arrived/eligible insertion. No truth, Config, RNG, I/O, wall clock, unsafe or new dependency.",
+      "admission": "Due minheap drains before source admission; source-order position/velocity canonical keys; scripted loss before immediate bypass; only future waiters occupy <=128 validated capacity; ordinal ledger source order and actual arrivals including too-old retained."
+    },
+    "VER-002": {
+      "status": "constructive code/counter inspection clear; actual process proof pending TASK003",
+      "anchor": "Original pre0 prior retained while sample0 eligible. At tickt required start>=t-W, anchor start-1 exists in previous retained endtick prefix. Prior0 and inclusive W boundaries covered by unchanged tests and differential oracle.",
+      "transaction": "Original checkpoint/history buffers remain unchanged during candidate numerical batch. Candidates prune expired observations before new insertion, sort canonical arrived indices and choose restore branch before ordinary work. Swap/clear and online append occur only after full numerical success and bounds checks; old online snapshots untouched.",
+      "actualWork": "Exactly one core predict/update callsite each, counters increment immediately before call. Start>=t-W implies <=W+1 predictions, at most127 unique candidate records consumed once; no discarded ordinary branch. Record peak live old+candidate lengths is valid because old lengths fixed and candidates grow monotonically.",
+      "storage": "Two fixed-capacity W+2 checkpoint vectors and two127-entry history vectors, actual capacities reported as pair sums even when scratch empty; no reserve growth tied to horizon/source. Working filter/baseline scalar scratch distinct; full input/sourceorder/ledger/heap/snapshots/work outputs are separate wholeprocess allocations.",
+      "complexity": "Sort source indices once; next_source processes each once and heap entries drain once; per-tick scans/sorts/anchor lookup bounded by W+2/127, not whole input."
+    },
+    "VER-003": {
+      "status": "current core diff/error inspection clear",
+      "error": "Unchanged KalmanFilter modelq and requested sigmas/variance floor reused; typed failure preserves arrival/replay tick, optional observation identity and original Error source. Natural rewind case arrival300/replay80 passes. Ledger/candidate edits remain local and no partial HistoryResult escapes Err.",
+      "compatibility": "Restoration reconstructs filter with requested q then copies saved state/covariance and raw baseline/lastvelocity, keeping accepted 0.01 integration/update order. W0 signed-zero and independently executed extreme raw Inf semantics match accepted snapshot bits.",
+      "preservation": "43 approvedGit6403941a normative/harness/core/manifest/lock/toolchain/helper files byte-identical; only permitted history module behavior changed."
+    }
+  },
+  "evidence": {
+    "trustedImplementation": {
+      "path": "docs/design-docs/history-replay/implementation/execution.json",
+      "bytes": 980710,
+      "sha256": "a2321ebc3b021674ea03be925011f5289a0f03e340b6a6d5a476e8203d8ee0de",
+      "mode": "implementation",
+      "contractDigest": "8c57cf49bd99b927012ac7215ea44688bc8cde928ea6b233a2f37abc41f13095",
+      "success": true,
+      "configurationOutcomes": {
+        "CFG-001": {
+          "pass": 38
+        },
+        "CFG-002": {
+          "pass": 38
+        }
+      },
+      "tests": 76,
+      "commands": 93,
+      "allCommandsExit0": true,
+      "exactLibtestCommands": 76,
+      "allExactOnePassZeroFailedIgnored37Filtered": true,
+      "checks": [
+        {
+          "id": "CMD-001",
+          "status": "pass"
+        },
+        {
+          "id": "CMD-002",
+          "status": "pass"
+        },
+        {
+          "id": "CMD-003",
+          "status": "pass"
+        },
+        {
+          "id": "CMD-004",
+          "status": "pass"
+        },
+        {
+          "id": "CMD-005",
+          "status": "pass"
+        },
+        {
+          "id": "CMD-006",
+          "status": "pass"
+        },
+        {
+          "id": "CMD-007",
+          "status": "pass"
+        }
+      ],
+      "errors": [],
+      "actualCompilers": "Both localWindows aliases Rust1.99.0 b940084d7eb6a299eb4bfeb8e34901bc051e7ac4 x86_64-pc-windows-msvc"
+    },
+    "stageRawAudit": {
+      "records": [
+        {
+          "file": "contract-after-verification.json",
+          "argv": [
+            "C:\\Users\\Admin\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+            "C:\\Users\\Admin\\Documents\\Codex\\2026-10-14\\i-x20\\work\\fusion-lab\\.agents\\skills\\rust\\spec-design\\scripts\\validate_design_package.py",
+            "docs/design-docs/history-replay",
+            "--require-lock",
+            "--baseline-digest",
+            "8c57cf49bd99b927012ac7215ea44688bc8cde928ea6b233a2f37abc41f13095"
+          ],
+          "exit": 0,
+          "hashMatches": true
+        },
+        {
+          "file": "contract-before-verification.json",
+          "argv": [
+            "C:\\Users\\Admin\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+            "C:\\Users\\Admin\\Documents\\Codex\\2026-10-14\\i-x20\\work\\fusion-lab\\.agents\\skills\\rust\\spec-design\\scripts\\validate_design_package.py",
+            "docs/design-docs/history-replay",
+            "--require-lock",
+            "--baseline-digest",
+            "8c57cf49bd99b927012ac7215ea44688bc8cde928ea6b233a2f37abc41f13095"
+          ],
+          "exit": 0,
+          "hashMatches": true
+        },
+        {
+          "file": "full-implementation-verifier.json",
+          "argv": [
+            "C:\\Users\\Admin\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+            "C:\\Users\\Admin\\Documents\\Codex\\2026-10-14\\i-x20\\work\\fusion-lab\\.agents\\skills\\rust\\spec-design\\scripts\\verify_test_suite.py",
+            "docs/design-docs/history-replay",
+            "--mode",
+            "implementation",
+            "--baseline-digest",
+            "8c57cf49bd99b927012ac7215ea44688bc8cde928ea6b233a2f37abc41f13095",
+            "--offline"
+          ],
+          "exit": 0,
+          "hashMatches": true
+        },
+        {
+          "file": "tst_acc_001_late_velocity_rational_oracle.json",
+          "argv": [
+            "cargo",
+            "test",
+            "--manifest-path",
+            "tests/history-replay/Cargo.toml",
+            "--locked",
+            "--test",
+            "contracts",
+            "tst_acc_001_late_velocity_rational_oracle",
+            "--",
+            "--exact",
+            "--nocapture",
+            "--test-threads=1"
+          ],
+          "exit": 0,
+          "hashMatches": true
+        },
+        {
+          "file": "tst_beh_006_zero_window_signed_zero_legacy_bits.json",
+          "argv": [
+            "cargo",
+            "test",
+            "--manifest-path",
+            "tests/history-replay/Cargo.toml",
+            "--locked",
+            "--test",
+            "contracts",
+            "tst_beh_006_zero_window_signed_zero_legacy_bits",
+            "--",
+            "--exact",
+            "--nocapture",
+            "--test-threads=1"
+          ],
+          "exit": 0,
+          "hashMatches": true
+        },
+        {
+          "file": "tst_neg_004_rewind_overflow_preserves_arrival_and_replay_tick.json",
+          "argv": [
+            "cargo",
+            "test",
+            "--manifest-path",
+            "tests/history-replay/Cargo.toml",
+            "--locked",
+            "--test",
+            "contracts",
+            "tst_neg_004_rewind_overflow_preserves_arrival_and_replay_tick",
+            "--",
+            "--exact",
+            "--nocapture",
+            "--test-threads=1"
+          ],
+          "exit": 0,
+          "hashMatches": true
+        },
+        {
+          "file": "tst_perf_001_exact_maximum_correction_batch.json",
+          "argv": [
+            "cargo",
+            "test",
+            "--manifest-path",
+            "tests/history-replay/Cargo.toml",
+            "--locked",
+            "--test",
+            "contracts",
+            "tst_perf_001_exact_maximum_correction_batch",
+            "--",
+            "--exact",
+            "--nocapture",
+            "--test-threads=1"
+          ],
+          "exit": 0,
+          "hashMatches": true
+        }
+      ],
+      "allHashesMatch": true,
+      "beforeAfterExternalValidator0errors0warnings": true
+    },
+    "protectedFiles": [
+      {
+        "path": "Cargo.lock",
+        "bytes": 12136,
+        "sha256": "1ff60b850d3f5928fc13476575700400765d31f7deb3268171f66176fb6cf6f3",
+        "match": true
+      },
+      {
+        "path": "Cargo.toml",
+        "bytes": 530,
+        "sha256": "107801ee283d274781df7496d22eaa46a09748e2b624ccb48a8b7b9eda975462",
+        "match": true
+      },
+      {
+        "path": "docs/design-docs/history-replay/constraints/constraints.toml",
+        "bytes": 2033,
+        "sha256": "95f51cc57145b7ade7c228e3e90dd41589bc4d2a88b22c7ec5bd70c2ceccdf2a",
+        "match": true
+      },
+      {
+        "path": "docs/design-docs/history-replay/decisions/ADR-001-causal-batch-correction.md",
+        "bytes": 1727,
+        "sha256": "32291bb40de5d607750dee80ec1005539fbeda4df00b922b9765341a484d6fc9",
+        "match": true
+      },
+      {
+        "path": "docs/design-docs/history-replay/decisions/index.md",
+        "bytes": 278,
+        "sha256": "83959be5d037d01dd61bf683c0cc4d4e841f3a96f1e48fe5e3745c3291c982ca",
+        "match": true
+      },
+      {
+        "path": "docs/design-docs/history-replay/implementation-brief.md",
+        "bytes": 3212,
+        "sha256": "ae9e85cd1b00bfa1023487be75139e9d011c7232a3c8ba8dc952fda2c0a0d5b9",
+        "match": true
+      },
+      {
+        "path": "docs/design-docs/history-replay/implementation-plan.toml",
+        "bytes": 2917,
+        "sha256": "887a7b9cc9803b2a23793b3e83ecebbd7f841ca6503d50a7cdfb82c11c7aba50",
+        "match": true
+      },
+      {
+        "path": "docs/design-docs/history-replay/intent/acceptance.toml",
+        "bytes": 923,
+        "sha256": "f085954bb52782a08bbaa3cddf075138fb192a321cd618e0ecaf201b4bf0f4ff",
+        "match": true
+      },
+      {
+        "path": "docs/design-docs/history-replay/intent/summary.md",
+        "bytes": 539,
+        "sha256": "b64db88257f33a156093690caf8007c19ed7e45008d4d4cb999b28a249139314",
+        "match": true
+      },
+      {
+        "path": "docs/design-docs/history-replay/open-questions.toml",
+        "bytes": 169,
+        "sha256": "d8b62360b085ef790c7db92a7b050544d51f521e2cc3a8652e13748086cedcdd",
+        "match": true
+      },
+      {
+        "path": "docs/design-docs/history-replay/requirements/glossary.md",
+        "bytes": 477,
+        "sha256": "45eb43212609627f25718bbd029e51609d9bd5bb03f13b65738a9a3b61499ff9",
+        "match": true
+      },
+      {
+        "path": "docs/design-docs/history-replay/requirements/requirements.toml",
+        "bytes": 8947,
+        "sha256": "4436e921c15f50910b216c653ce5843b61905151c662d7c22aa243631cb07b3e",
+        "match": true
+      },
+      {
+        "path": "docs/design-docs/history-replay/spec.toml",
+        "bytes": 1775,
+        "sha256": "de2fb876c959ac557571ffd8a2465da4ce55881f68a20b448a1ca3301fe0c28f",
+        "match": true
+      },
+      {
+        "path": "docs/design-docs/history-replay/structure/architecture.md",
+        "bytes": 9915,
+        "sha256": "865b16e31023287137e1dea8164f86ab5e981e8e9ecc56641980b3a1a33d9f2e",
+        "match": true
+      },
+      {
+        "path": "docs/design-docs/history-replay/structure/modules.toml",
+        "bytes": 658,
+        "sha256": "f9f10bfe54f267c1f2188f8951a37960c43dfb9a9ca36f2b594313207cc35875",
+        "match": true
+      },
+      {
+        "path": "docs/design-docs/history-replay/tests/tests.toml",
+        "bytes": 16760,
+        "sha256": "65e2a3acb95d0cdb799e9c638c4d2a7af192c7e841804946d3d135ebf8d17bed",
+        "match": true
+      },
+      {
+        "path": "docs/design-docs/history-replay/traceability.toml",
+        "bytes": 4036,
+        "sha256": "22adb296e550ebf45c0deecee892dbbdd2f2483fd2042e9c2a81f673f78e55cb",
+        "match": true
+      },
+      {
+        "path": "docs/design-docs/history-replay/validation/design-execution.json",
+        "bytes": 1012632,
+        "sha256": "481803eb850c472f54cfa1858771b0f4f6379d3ae5eaa00436b4405f56904e6a",
+        "match": true
+      },
+      {
+        "path": "docs/design-docs/history-replay/validation/test-lock.json",
+        "bytes": 4176,
+        "sha256": "80f48203f95dde2d526ba59e5cc3a8ce9f9fa5bf0d8fd85a7af5d77f8bf174f5",
+        "match": true
+      },
+      {
+        "path": "docs/design-docs/history-replay/validation/waivers.toml",
+        "bytes": 23,
+        "sha256": "60c7e0d172b70a0ac95d9de0a003671727ab0aacede9adea59524d8a21cda5c4",
+        "match": true
+      },
+      {
+        "path": "docs/design-docs/history-replay/verification/authority-boundary.md",
+        "bytes": 668,
+        "sha256": "80cdeaf738a8f6340afcb0a2d58e77f815b45b315c5e26cd72320962afd6b5e3",
+        "match": true
+      },
+      {
+        "path": "docs/design-docs/history-replay/verification/bounds.md",
+        "bytes": 2366,
+        "sha256": "5dbf09e02bd9160a1bf0313b32167d3e6b5e314db7d5ce58046f1902c74dae2c",
+        "match": true
+      },
+      {
+        "path": "docs/design-docs/history-replay/verification/catalog.toml",
+        "bytes": 5535,
+        "sha256": "f81e656b0a5b4d70b637508e6e69a800f9da2af8e6a0f3123bffafa44e3e1ed7",
+        "match": true
+      },
+      {
+        "path": "docs/design-docs/history-replay/verification/native-matrix.md",
+        "bytes": 647,
+        "sha256": "13f1bf4bcf6ee792b89751e752b2d2c865a7e3800458f18688c90c891fb4e83c",
+        "match": true
+      },
+      {
+        "path": "docs/design-docs/history-replay/verification/resource-workload.md",
+        "bytes": 1911,
+        "sha256": "1980d513f9b71bbf9b579c45164c35be0703f6d0551c12222a15b282098bc75d",
+        "match": true
+      },
+      {
+        "path": "docs/design-docs/history-replay/verification/rewind-overflow-oracle.rs",
+        "bytes": 2271,
+        "sha256": "7576559286bc3bda695695b4097e51704e1f0320daf046dfbb12abd3193dc0c7",
+        "match": true
+      },
+      {
+        "path": "docs/design-docs/history-replay/verification/rewind-overflow-qualification.json",
+        "bytes": 6478,
+        "sha256": "7276e64daed7e6b7d1842c0b279390544dfb2b352908a467444efbe1a9335822",
+        "match": true
+      },
+      {
+        "path": "docs/design-docs/history-replay/verification/test-efficacy.md",
+        "bytes": 1125,
+        "sha256": "22cd6939bf78b979dde4f1040f29d6115bacee1947b408948a4d4f0de6d60c69",
+        "match": true
+      },
+      {
+        "path": "docs/design-docs/observation-delivery/implementation/resource_probe.py",
+        "bytes": 19314,
+        "sha256": "ab851ab12ec6f54ee52baec37b0b59b80f8db069b5a92179c3f12f23cc9b924c",
+        "match": true
+      },
+      {
+        "path": "rust-toolchain.toml",
+        "bytes": 87,
+        "sha256": "ccced9ef5cf5a0c35bb5ba4e4b525188b72aa07aab8cc3fb5b644778ade8f125",
+        "match": true
+      },
+      {
+        "path": "src/delivery.rs",
+        "bytes": 33975,
+        "sha256": "12d7fbdcee02d7ae986658bb2f43116f56283f1689adc2c74e4f360d45389120",
+        "match": true
+      },
+      {
+        "path": "src/estimation.rs",
+        "bytes": 4637,
+        "sha256": "83a3b6936c53fc9d28c29a59b0840cf5d57611852246bc19c2c4cb258c092fdf",
+        "match": true
+      },
+      {
+        "path": "src/evaluation.rs",
+        "bytes": 3962,
+        "sha256": "cf83337582b8887dc3ae71b62a8daf10c9f8b578eddd74b212069d30d76ba870",
+        "match": true
+      },
+      {
+        "path": "src/lib.rs",
+        "bytes": 1666,
+        "sha256": "f1707ae4d0fe5b0f773406860546d1147134440daef190fdaf6ac72bb09b8f85",
+        "match": true
+      },
+      {
+        "path": "src/main.rs",
+        "bytes": 9647,
+        "sha256": "76574d18911bdce81082b9f76308cf3a31f69fa9967a0592f28eaf2630901d6b",
+        "match": true
+      },
+      {
+        "path": "src/sensors.rs",
+        "bytes": 961,
+        "sha256": "d8eaae0d691535bcee6f68166babdb41c49de815ad0c3eb213c8b980c9ae29af",
+        "match": true
+      },
+      {
+        "path": "src/simulation.rs",
+        "bytes": 11510,
+        "sha256": "c0fd739c26e7190549736636c69720dc963707059463a45b7095159099fd7691",
+        "match": true
+      },
+      {
+        "path": "tests/history-replay/Cargo.lock",
+        "bytes": 12236,
+        "sha256": "f74d20e99ca6c2d452092ebc3b1aec5165b62a8be986d2bc8c3ed779be9c47fa",
+        "match": true
+      },
+      {
+        "path": "tests/history-replay/Cargo.toml",
+        "bytes": 208,
+        "sha256": "1ea2369b23d0ea2911920c54169da4483815fd814743bdb09dd2963936223080",
+        "match": true
+      },
+      {
+        "path": "tests/history-replay/build.rs",
+        "bytes": 216,
+        "sha256": "2bf7b4646820440e9a997ccd67663aebb4e9296d07c798a947ba361eff903dcb",
+        "match": true
+      },
+      {
+        "path": "tests/history-replay/src/lib.rs",
+        "bytes": 65,
+        "sha256": "55297e78b51534d85aa43e80aff822fc64f0b474937213cb31a5862abc7863d2",
+        "match": true
+      },
+      {
+        "path": "tests/history-replay/tests/contracts.rs",
+        "bytes": 28695,
+        "sha256": "3c1d0f1699997e60c37611cee8e1cf171ece46f97098c167a909658be223feea",
+        "match": true
+      },
+      {
+        "path": "tests/history-replay/tools/native_baseline.py",
+        "bytes": 10103,
+        "sha256": "4cb083eccbc260fd8bc16bfdfd60d66d3e608c2a000a73f9c7f3c1a13757f6a8",
+        "match": true
+      }
+    ],
+    "independentSupplement": {
+      "path": "C:/Users/Admin/Documents/Codex/2026-10-20/if-x20/work/history-task002-differential-1793830724264/result.json",
+      "sha256": "0576a3cd7301473f3c581b822bcc4cc64cfb3234c35efbc37de402ae2222490a",
+      "cases": 54,
+      "onlineBitComparisons": 10854,
+      "windows": [
+        0,
+        1,
+        7,
+        20,
+        25,
+        500
+      ],
+      "models": 3,
+      "deterministicPatterns": 3,
+      "reference": "Accepted all-onTime replay of only actually available and window-eligible observations, independently selected from source metadata; cap128/no losses",
+      "legacyExtremeW0": "All101snapshotf64bits match accepted model5/2/0 extreme case including raw integrationInf firsttick80 while filterfinite",
+      "firstRunPassed": true,
+      "numericalRetry": false,
+      "inputsAndSourceUnchanged": true,
+      "binarySha256": "9858c1cb5f9a3f1251c61f89ffb3845ebf2560614af8f6d712dae64578cae380"
+    }
+  },
+  "acceptanceLimits": [
+    "Current core stage reviewed clear, not final feature/merge acceptance.",
+    "TASK003 full four-native implementation qualification, measured120s/768MiB workloads/ownership cleanup/example and human learning conformance remain outstanding.",
+    "Independent supplement is one bounded local Windows compiler proof, not accuracy, universal timing/RSS or async evidence.",
+    "No locked tests/contracts/gates/dependencies were edited or weakened; no production edits by reviewer."
+  ]
+}

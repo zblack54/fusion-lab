@@ -1,0 +1,13 @@
+{
+  "argv": [
+    "cargo",
+    "test",
+    "--locked",
+    "--doc"
+  ],
+  "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+  "exit": 0,
+  "seconds": 0.6870000001508743,
+  "log": "gate-5.log",
+  "sha256": "a0c20f2837ec993777e53f72036944651be0034359ef56512ddb69017cdde7ed"
+}

@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "C:\\Users\\Admin\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+    "C:/Users/Admin/Documents/Codex/2026-10-14/i-x20/work/fusion-lab/.agents/skills/rust/spec-design/scripts/validate_design_package.py",
+    "docs/design-docs/history-replay",
+    "--require-lock",
+    "--baseline-digest",
+    "8c57cf49bd99b927012ac7215ea44688bc8cde928ea6b233a2f37abc41f13095"
+  ],
+  "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+  "exit": 0,
+  "seconds": 0.6880000000819564,
+  "log": "contract-after.log",
+  "sha256": "0b8f314656524239c06a43570adaa19fedf9f0de611178f73c2c1ba8bccc8e07"
+}

@@ -1,0 +1,22 @@
+{
+  "argv": [
+    "cargo",
+    "test",
+    "--manifest-path",
+    "tests/history-replay/Cargo.toml",
+    "--locked",
+    "--test",
+    "contracts",
+    "tst_neg_004_rewind_overflow_preserves_arrival_and_replay_tick",
+    "--",
+    "--exact",
+    "--nocapture",
+    "--test-threads=1"
+  ],
+  "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+  "exit": 0,
+  "seconds": 0.15600000019185245,
+  "rustdocflags": "-D warnings",
+  "log": "tst_neg_004_rewind_overflow_preserves_arrival_and_replay_tick.log",
+  "sha256": "dc6300197deaabb813d56988208ac58ecb0f418a6f165dbaa9de76d87d63dc02"
+}

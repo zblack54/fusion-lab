@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "cargo",
+    "clippy",
+    "--locked",
+    "--all-targets",
+    "--",
+    "-D",
+    "warnings"
+  ],
+  "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+  "exit": 0,
+  "seconds": 0.5780000002123415,
+  "log": "gate-3.log",
+  "sha256": "d7d473bcea2e9a1a91d273dbb0d844abb33901777804dd0e0530c9e6c3a1b528"
+}

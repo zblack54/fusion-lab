@@ -1,0 +1,110 @@
+# Correcting with late observations
+
+Status: approved, locked design for [issue #22](https://github.com/zblack54/fusion-lab/issues/22).
+The constructor and correction core are locally verified and independently reviewed;
+native resource/example conformance and final feature acceptance remain outstanding. The existing
+[timestamped replay](observation-delivery.md) still rejects stale observations.
+
+An observation has a sampling time and an availability time. Updating the current
+filter as if an old measurement described the present changes its meaning. The
+proposed alternative restores an earlier checkpoint, applies measurements in
+sampling order, and predicts forward using only information available now.
+
+For example, take a velocity observation [2, -2] m/s sampled at tick0 and arriving
+at tick1, with no other observations. Start from zero estimated state and zero
+baselines, per-axis position variance25, velocity variance4 and position/velocity
+cross covariance0. With zero acceleration density and measurement variance4,
+the scalar Kalman gain is4/(4+4)=1/2. Correcting at the sample gives
+velocity [1, -1] m/s. Predicting one10ms interval gives current position
+[0.01, -0.01] m. Per axis, the current covariance is Ppp=25.0002,
+Ppv=0.02 and Pvv=2. These are independent mathematical expectations; floating
+tests use a stated component tolerance rather than assuming exact decimal bits.
+
+The online tick0 estimate remains what the system knew at tick0. Internal
+checkpoints can be revised; already emitted online snapshots cannot. Replacing
+old online estimates with hindsight would give a misleading comparison with
+the stale-drop policy. Truth remains with the evaluator and never enters the
+correction API.
+
+The proposed history window is at most500ticks (five seconds). A late observation
+at age exactly the window remains eligible; one beyond it is explicitly dropped.
+The initial prior supplies the anchor before sample0. A batch merges late and
+on-time arrivals once in sample/position/velocity order. It chooses the replay
+branch before doing current-tick work, so that work is not silently duplicated.
+
+History size and process memory are different quantities. The draft must count
+committed checkpoints, candidate transaction storage, reserved capacity, the
+complete source trace, online outputs and verification buffers. A finite history
+alone does not establish a process memory limit. The resource plan will measure
+declared stress profiles with actual binary, source and machine provenance.
+
+The zero-window comparison also preserves existing raw-baseline arithmetic.
+An independent boundary check found that extreme finite direct observations can
+overflow raw integration while the filter stays finite. [Issue #79](https://github.com/zblack54/fusion-lab/issues/79)
+tracks that separate policy decision. The draft does not promise finite raw
+baselines for every finite floating-point payload or silently clip those values.
+
+Both policies use identical transport admission: scripted losses, waiting queue
+capacity, drain-before-admit timing and horizon decisions. Only their numerical
+use of available late information differs. Changing an unarrived payload must
+not affect an earlier online prefix; adding an already sampled future waiter
+can legitimately change queue occupancy, so it is not a valid equivalent test.
+
+Follow the [issue](https://github.com/zblack54/fusion-lab/issues/22) for the reviewed
+API, executable contract, commands and eventual implementation evidence. Actual
+asynchronous channels, slow consumers and shutdown remain under
+[parent #6](https://github.com/zblack54/fusion-lab/issues/6).
+
+Exercise: with the same late velocity observation, predict the raw-velocity
+integration baseline at tick1. It is [0.02, -0.02] m because it integrates the
+measurement, whereas the filter integrates its posterior velocity. Explain why
+neither correction permits rewriting the online tick0 snapshot.
+
+
+## Current implementation progress
+
+The first slice validates an integer history window from0 through500ticks and
+returns `HistoryError::InvalidWindow` with the original request for larger values.
+Five exact contract selectors passed on each installed alias, all seven gates
+passed, and independent review confirmed only the constructor changed. Both local
+aliases currently resolve to Rust1.99.0; the approved design also has hosted
+Windows/Linux evidence on1.99.0 and1.99.1.
+
+The correction engine now passes all38locked selectors on both installed aliases
+and all seven gates. Independent review also passed54deterministic causal cases
+covering10,854online snapshots, plus101extreme-value W0 snapshots matching the
+legacy baseline bits. These are scoped functional checks, not a universal proof
+or a performance result. Native resource qualification, the example and complete
+conformance review remain required before acceptance.
+
+
+## Ownership and correction code tour
+
+`replay_history` sorts source indices once using metadata, drains due waiting
+records before new admissions, and keeps transport decisions independent of
+filter values. `record_arrival` inserts only arrived, admitted, window-eligible
+indices into numerical history; discarded or future payloads are never applied.
+
+Each tick chooses its ordinary or correction branch before numerical work.
+`Working::restore` restores end(sample-1), or the original prior before sample0.
+Candidate history is replayed in sample/position/velocity order using the existing
+filter equations. Buffer swaps and a new online snapshot occur only after the
+whole batch succeeds. Earlier online snapshots remain untouched.
+
+`HistoryWork` increments counters at the actual prediction/update call sites and
+reports committed objects, simultaneous original/candidate objects and reserved
+slot capacity separately. Source/output storage and allocator overhead belong
+to the complete-process measurement; logical history counts do not equal RSS.
+
+## Run the one-second example
+
+Run `cargo run --locked --offline --example history_replay`. The example offers
+three observations and produces 101 snapshots. One velocity observation arrives
+late. The one-tick window corrects the current estimate while the earlier online
+snapshot retains the estimate available at that tick. The zero-window comparison
+shows the stale-drop behavior.
+
+The local Windows qualification ran two warmups and six fresh maximum workloads
+with Rust 1.99.0. The slowest maximum run took 10.063 seconds and the largest
+process peak was 524,996,608 bytes. These results apply to the two declared
+profiles on this machine. Hosted qualification and final review are pending.

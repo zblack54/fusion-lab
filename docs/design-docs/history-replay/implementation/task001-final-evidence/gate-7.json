@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "cargo",
+    "clippy",
+    "--manifest-path",
+    "tests/history-replay/Cargo.toml",
+    "--locked",
+    "--all-targets",
+    "--",
+    "-D",
+    "warnings"
+  ],
+  "cwd": "C:\\Users\\Admin\\Documents\\Codex\\2026-10-20\\if-x20\\work\\fusion-lab",
+  "exit": 0,
+  "seconds": 0.578999999910593,
+  "log": "gate-7.log",
+  "sha256": "67000cc8c672733248776ebaeea30074f7503e41e9eae61e5db091892fe4b6a2"
+}
