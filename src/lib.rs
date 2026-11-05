@@ -12,6 +12,7 @@ mod delivery;
 mod estimation;
 mod evaluation;
 mod history_replay;
+pub mod planar_ekf;
 mod sensors;
 mod simulation;
 pub mod wheel_motion;
