@@ -7,6 +7,7 @@
 //! # Ok::<(), fusion_lab::Error>(())
 //! ```
 
+pub mod async_delivery;
 mod delivery;
 mod estimation;
 mod evaluation;
