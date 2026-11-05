@@ -1,0 +1,17 @@
+# Planar wheel motion contract
+
+Issue #23 adds a synchronous differential-drive model beside the Cartesian baseline. Signed wheel travel is measured in metres and heading in radians. One reporting tick is 10 ms. The first slice models travel directly. Count quantization, slip, calibration and estimation belong to later work.
+
+`Pose` has public x, y and heading fields. `WheelTravel` has signed left and right fields. `step(pose, track_width, travel)` integrates a constant twist over one supplied travel pair. Time is a schedule concern because travel already integrates velocity over the interval.
+
+Accept finite coordinates with magnitude at most 1e9 m, headings in the closed input interval [−π,π], track width in [0.01,100] m, and wheel travel magnitude at most 100 m per interval. Reject values outside these limits with `WheelError::Pose`, `TrackWidth` or `Travel`. Validate in that order. Reject output coordinates outside the same pose domain with `Pose`. Compute center travel (r+l)/2, turn (r−l)/b and displacement using sinc(turn/2) at the midpoint heading. Use sinc(0)=1. Normalize output heading to [−π,π) using signed remainder and range adjustment. Exact ±π maps to −π, and an interior heading with zero turn stays interior.
+
+`simulate(config, initial, &[WheelTravel])` returns an owned result with end poses and separate wheel observation records. Each record has a zero-based sequence, start tick, end tick, and noisy travel. No observation carries a truth pose. The interval is constant within one simulation. Require 1–10000 ticks per interval, at most 10000 input pairs, and a final tick representable as u32. Empty input produces empty output. Invalid length or tick geometry yields `Schedule`. Validate both noise sigmas as finite values in [0,10] m with `Noise`. Validate geometry and initial pose even for empty input. An error returns no partial result.
+
+Initialize ChaCha8Rng with seed_from_u64 and assign streams 0 (left) and 1 (right). For each nonzero sigma draw one StandardNormal in that wheel's stream and add sigma times the draw to ideal travel. For zero sigma return the ideal bits directly. Noise does not drive truth. Repeatability is scoped to the same locked dependencies and native build. No dependency additions.
+
+## Executable acceptance
+
+Run cargo test --locked --test wheel_motion on Windows and Linux. The catalog covers straight/reverse, in-place, pivot and finite-radius geometry, a rotated world pose, wraparound and near-straight motion. Geometry tolerance is 1e-12 absolute except tiny lateral displacement, which uses 1e-8 relative. Heading boundary and signed-zero observation cases use exact bits. Invalid input and cumulative output errors are typed. Schedule and seeded noise tests verify bitwise repeatability, independent streams and no effect on truth. Existing locked tests and normal Rust and documentation gates must pass.
+
+Public fields: pose and travel components, track width and both sigma entries are f64. Seed is u64. Sequence, interval and absolute ticks are u32. The two vectors contain post-interval poses and wheel observations respectively. The 100 m bound applies to ideal inputs. A noisy observation may exceed it. Simulation validates schedule, then noise, then initial pose and track width. Each step validates pose, width and travel before integration. Exact RNG draws are checked against the locked distribution and stream APIs.

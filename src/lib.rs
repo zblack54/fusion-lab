@@ -14,6 +14,7 @@ mod evaluation;
 mod history_replay;
 mod sensors;
 mod simulation;
+pub mod wheel_motion;
 
 pub use delivery::{
     ArtifactKind, DeliveryError, DeliveryOutcome, DeliveryPlan, LedgerEntry, ModelField,
